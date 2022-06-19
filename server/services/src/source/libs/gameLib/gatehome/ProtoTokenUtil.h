@@ -1,0 +1,37 @@
+#ifndef __PROTOTOKENUTIL_H__
+#define __PROTOTOKENUTIL_H__
+
+#include <cmsLib/prolib/core_type.h>
+
+//14:slot 50:timestamp
+#define USERTOKEN_MASK_ZERO_H	0b0000000000000011111111111111111111111111111111111111111111111111
+#define USERTOKEN_MASK_ZERO_L	0b1111111111111100000000000000000000000000000000000000000000000000
+
+#define MAKE_USERTOKEN( SLOT, TOKEN, USERTOKEN) { USERTOKEN = ((SLOT<<50)&USERTOKEN_MASK_ZERO_L)|TOKEN;}
+#define PARSE_USERTOKEN( USERTOKEN, SLOT, TOKEN) { SLOT = (int)((USERTOKEN&USERTOKEN_MASK_ZERO_L)>>50); TOKEN = (USERTOKEN&USERTOKEN_MASK_ZERO_H);}
+
+//20:gate 43:useriid
+#define USERGATE_MASK_ZERO_H	0b0000000000000000000001111111111111111111111111111111111111111111
+#define USERGATE_MASK_ZERO_L	0b1111111111111111111110000000000000000000000000000000000000000000
+
+#define MAKE_USERGATE( GATEID, USERID, USERGATE) { USERGATE = ((GATEID<<43)&USERGATE_MASK_ZERO_L)|USERID;}
+#define PARSE_USERGATE( USERGATE, GATEID, USERID) { GATEID = (USERGATE&USERGATE_MASK_ZERO_L)>>43; USERID = (USERGATE&USERGATE_MASK_ZERO_H);}
+
+
+class ProtoTokenUtil
+{
+private:
+	ProtoTokenUtil() {}
+
+public:
+	static S_INT_64 build_usertoken(S_INT_64 slot, S_INT_64 token);
+	static void parse_usertoken(S_INT_64 utoken, int& slot, S_INT_64& token);
+	static void parse_usertoken2(S_INT_64 utoken, int& slot);
+
+	static S_INT_64 build_usergate(S_INT_64 gateiid, S_INT_64 useriid);
+	static void parse_usergate(S_INT_64 giduid, S_INT_64& gateid, S_INT_64& useriid);
+	static void parse_usergate2(S_INT_64 giduid, S_INT_64& useriid);
+	static void parse_usergate3(S_INT_64 giduid, S_INT_64& gateid);
+};
+
+#endif

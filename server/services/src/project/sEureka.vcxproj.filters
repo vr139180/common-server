@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{12aabf74-8011-444e-8e2a-e1539558c29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cluster">
+      <UniqueIdentifier>{b2cdcb6f-649f-428a-9c83-299b5363f62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{1be959ac-bee3-4667-ab9e-28de083e87d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rediscript">
+      <UniqueIdentifier>{2e21ac40-446f-4396-8f12-cb7f71fff10c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\sEureka\sEurekaApp.cpp" />
+    <ClCompile Include="..\source\sEureka\sMain.cpp" />
+    <ClCompile Include="..\source\sEureka\network\EurekaSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\network\EurekaLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\network\EurekaLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Timer.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_NetCmd.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Maintnce.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_NetCmd.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_Redis.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Boost.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_Timer.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_Maintnce.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\rediscript\homegate_script.cpp">
+      <Filter>rediscript</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\EurekaService.cpp" />
+    <ClCompile Include="..\source\sEureka\network\ServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\sEureka\sEurekaApp.h" />
+    <ClInclude Include="..\source\sEureka\network\EurekaSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\cluster\EurekaClusterCtrl.h">
+      <Filter>cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\network\IEurekaNodeLink.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\network\EurekaLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\network\EurekaLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\services\ServiceRegisterCtrl.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\rediscript\homegate_script.h">
+      <Filter>rediscript</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\EurekaService.h" />
+    <ClInclude Include="..\source\sEureka\network\ServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\debugdefine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\sEureka\ReadMe.txt" />
+  </ItemGroup>
+</Project>

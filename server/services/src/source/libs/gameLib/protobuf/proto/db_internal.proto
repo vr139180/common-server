@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message DBRowDel{
+  uint32 ver_ = 1;
+  int64 id = 2;
+}
+
+message DBRowDeletes{
+  repeated DBRowDel dels = 1;
+}
+
+message DBRoleBaseInfo{
+  uint32 ver_ = 1;
+  int64 role_iid = 2;
+  int64 user_iid = 3;
+  string nickname = 4;
+  int32 registime = 5;
+}
+
+message DBUserRoles{
+  repeated DBRoleBaseInfo roles = 1;
+}
+
+message DBUserHome{
+  uint32 ver_ = 1;
+  int64 role_iid = 2;
+  string home_name = 3;
+  int64 ground_resid = 4;
+  string look_at = 5;
+  string geo_pos = 6;
+  int32 reside_time = 7;
+  int32 last_residedate = 8;
+}
+
+message DBUserHomeStructureItem{
+  uint32 ver_ = 1;
+  int64 building_iid = 2;
+  int64 home_iid = 3;
+  int64 parent_building = 4;
+  int64 building_resid = 5;
+  string look_at = 6;
+  string building_pos = 7;
+}
+
+message DBUserHomeStructure{
+  repeated DBUserHomeStructureItem items = 1;
+}
+
+message DBPetCategory{
+  int64 pet_iid = 2;
+  int32 pet_type = 3;
+  int64 pet_resid = 4;
+  int32 pet_sex = 5;
+  string pet_name = 6;
+}
+
+message DBUserPetItem{
+  uint32 ver_ = 1;
+  int64 mypet_iid = 2;
+  int64 role_iid = 3;
+  int64 pet_iid = 4;
+  int32 pet_age = 5;
+  int32 birthday = 6;
+}
+
+message DBUserPets{
+  repeated DBUserPetItem pets = 1;
+}
+

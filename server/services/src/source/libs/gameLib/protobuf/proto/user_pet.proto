@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+import "db_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Pet_AdoptOne_req{
+  optional UserToken utoken = 1;
+  //宠物id
+  int64 pet_iid = 2;
+}
+
+message Pet_AdoptOne_ack{
+  optional UserToken utoken = 1;
+  //0 success 1 资源不存在
+  int32 result = 2;
+  //success 返回pet对象
+  optional DBUserPetItem pet = 3;
+}
+
+message Pet_ReleaseOne_req{
+  optional UserToken utoken = 1;
+  int64 mypet_iid = 2;
+}
+
+message Pet_ReleaseOne_ack{
+  optional UserToken utoken = 1;
+  int64 mypet_iid = 2;
+  //0 success 1 fail
+  int32 result = 3;
+}

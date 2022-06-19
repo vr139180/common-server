@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+//import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Item_UserBindItems_req{
+}
+
+message Item_UserBindItems_ack{
+}

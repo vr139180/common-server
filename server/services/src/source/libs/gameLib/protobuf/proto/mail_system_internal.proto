@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Mail_SystemMail_req {
+  int64 sender_iid = 2;
+  //0:无附件 1:有附件
+  int32 attachment = 3;
+  //附件json字符串
+  string attachinfo = 4;
+  string title = 5;
+  string contents = 6;
+}
+
+message Mail_SystemMail_ack {
+  //0:success 1:failed
+  int32 result = 1;
+  optional MailSystemItem mail = 2;
+}
+
+message Mail_SystemMail_ntf {
+  int64 mailiid = 1;
+}
+
+message Mail_NewMail_req {
+  //1系统邮件 2工会邮件
+  int32 stype = 1;
+  int64 receiver_iid = 2;
+  int64 sender_iid = 3;
+  //0:无附件 1:有附件
+  int32 attachment = 4;
+  //附件json字符串
+  string attachinfo = 5;
+  string title = 6;
+  string contents = 7;
+}
+
+message Mail_NewMail_ack {
+  //0:success
+  int32 result = 1;
+  optional MailNormalItem mail = 2;
+}

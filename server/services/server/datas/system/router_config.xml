@@ -1,0 +1,6 @@
+<router loopnum="500" service_thread_num="4">
+	<redis name="master" ip="127.0.0.1" port="6379" db="5" auth="123456" socket_timeout="100" />
+	<chathash chatmax="1"/>
+	<mailhash mailmax="1"/>
+	<friendhash frdmax="1"/>
+</router>

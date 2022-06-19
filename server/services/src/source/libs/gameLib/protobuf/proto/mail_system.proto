@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+enum MailType {
+  MailType_Init = 0;
+  MailType_System = 1;
+  MailType_Union = 2;
+  MailType_Max = 3;
+}
+
+message MailUserBox {
+  int32 ver_ = 1;
+  int64 role_iid = 2;
+  //最后一次获取的系统邮件
+  int64 sysmail_sync = 3;
+  //最后一次获取的邮件iid
+  int64 lastlist_mail = 4;
+}
+
+message Mail_NewMail_ntf {
+  optional UserToken utoken = 1;
+}
+
+message Mail_MailGet_req {
+  optional UserToken utoken = 1;
+  //当前最大的邮件iid, == 0 获取最新的邮件列表 50个
+  // > 0 获取比这个iid小的50个邮件信息
+  int64 mailiid = 2;
+  //true 从大到小翻页 false 从小到大
+  bool next = 3;
+  int32 num = 4;
+}
+
+message Mail_MailGet_ack {
+  optional UserToken utoken = 1;
+  repeated MailNormalItem mails = 2;
+  int32 totle = 3;
+}
+
+message Mail_UserOnline_active {
+  optional UserToken utoken = 1;
+  //客户端本地保存的最大mailiid
+  int64 last_mailiid = 2;
+  //登陆成功后第一发送设置为true
+  bool 	firstactive = 3;
+}
+
+message Mail_ReadMail_req {
+  optional UserToken utoken = 1;
+  int64 mail_iid = 2;
+}
+
+message Mail_ReadMail_ack {
+  optional UserToken utoken = 1;
+  //0:success 1:system error 2:not exist 3:already read
+  int32 result = 2;
+  int64 mail_iid = 3;
+}
+
+message Mail_DeleteMail_req {
+  optional UserToken utoken = 1;
+  int64 mail_iid = 2;
+}
+
+message Mail_DeleteMail_ack {
+  optional UserToken utoken = 1;
+  //0:success 1:system error 2:not exist
+  int32 result = 2;
+  int64 mail_iid = 3;
+}
+
+message Mail_UnBindAttachs_req {
+  optional UserToken utoken = 1;
+  int64 mail_iid = 2;
+}
+
+message Mail_UnBindAttachs_ack {
+  optional UserToken utoken = 1;
+  //0:success 1:not exist 2:already unbinded
+  int32 result = 2;
+  int64 mail_iid = 3;
+}

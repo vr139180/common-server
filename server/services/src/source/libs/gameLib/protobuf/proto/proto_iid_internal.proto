@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+// 对应的协议编号
+enum ERK_PROTYPE {
+  UNIVERSAL_1 = 0;
+  //绑定请求
+  ERK_EUREKABIND_REQ = 1;
+  ERK_EUREKABIND_ACK = 2;
+  ERK_EUREKAUPDATE_NTF = 3;
+  ERK_EUREKA_SYNC = 4;
+  
+  ERK_SERVICEREGIST_REQ = 10;
+  ERK_SERVICEREGIST_ACK = 11;
+  ERK_SERVICEREGIST_CONFIRM = 12;
+  ERK_SERVICEBIND_REQ = 13;
+  ERK_SERVICEBIND_ACK = 14;
+  ERK_SERVICESUBSCRIBE_REQ = 15;
+  ERK_SERVICESUBSCRIBE_ACK = 16;
+  ERK_SERVICESHUTDOWN_NTF = 17;
+  
+  SVR_LIVETICK_NTF = 49;
+  SVR_SERVICEBINDSERVICE_REQ = 50;
+  SVR_SERVICEBINDSERVICE_ACK = 51;
+  SVR_GATEBINDHOME_REQ = 52;
+  SVR_GATEBINDHOME_ACK = 53;
+  SVR_GATEBINDHOME_CONFIRM = 54;
+  
+  //资源服务
+  RES_USERSLOT_REQ = 100;
+  RES_USERSLOT_ACK = 101;
+  RES_PROXYUSERSLOT_REQ = 102;
+  RES_PROXYUSERSLOT_ACK = 103;
+  RES_SYNCGATESLOT_NTF = 104;
+}
+
+//gatehome
+enum GATEHOME_PROTYPE {
+  UNIVERSAL_200 = 0;
+  GHS_USERINIT_REQ = 201;
+  GHS_USERLOGOUT_NTF = 202;
+  GHS_ROLEDETAIL_ASK = 203;
+}

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="cmdtest">
+      <UniqueIdentifier>{c324bc44-ab1f-4423-b22f-2061bd1eb98a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cmdtest\ui">
+      <UniqueIdentifier>{d4f33c07-1cc2-41ba-a758-096f87f63777}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework">
+      <UniqueIdentifier>{d4cafb58-2e34-45da-94ac-704617576d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CommandTestImpl.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Script.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptDlg.cpp">
+      <Filter>cmdtest\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgNotify.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadTest.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadTestDlg.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_Building.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_Pets.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_Mail.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_ChatTask.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_Friend.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommandTestImpl.h">
+      <Filter>cmdtest</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptDlg.h">
+      <Filter>cmdtest\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgNotify.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadTestDlg.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ThreadTest.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ThreadTest.rc">
+      <Filter>framework\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

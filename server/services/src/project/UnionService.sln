@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1300
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmsLib", "cmsLib.vcxproj", "{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnionService", "UnionService.vcxproj", "{30281700-F119-4DF1-965C-E14AE6D97FCA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
+		{53D53FF1-2475-485F-9343-407DE29E8AC6} = {53D53FF1-2475-485F-9343-407DE29E8AC6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gameLib", "gameLib.vcxproj", "{53D53FF1-2475-485F-9343-407DE29E8AC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Debug|x64.ActiveCfg = Debug|x64
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Debug|x64.Build.0 = Debug|x64
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Release|x64.ActiveCfg = Release|x64
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Release|x64.Build.0 = Release|x64
+		{30281700-F119-4DF1-965C-E14AE6D97FCA}.Debug|x64.ActiveCfg = Debug|x64
+		{30281700-F119-4DF1-965C-E14AE6D97FCA}.Debug|x64.Build.0 = Debug|x64
+		{30281700-F119-4DF1-965C-E14AE6D97FCA}.Release|x64.ActiveCfg = Release|x64
+		{30281700-F119-4DF1-965C-E14AE6D97FCA}.Release|x64.Build.0 = Release|x64
+		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Debug|x64.ActiveCfg = Debug|x64
+		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Debug|x64.Build.0 = Debug|x64
+		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.ActiveCfg = Release|x64
+		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B4ADA91-1DAA-46A0-8787-146EB9764F7F}
+	EndGlobalSection
+EndGlobal

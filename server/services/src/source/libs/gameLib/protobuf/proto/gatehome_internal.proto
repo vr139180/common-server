@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message GHS_UserInit_req{
+  optional UserToken utoken = 1;
+  int64 gateiid = 2;
+}
+
+message GHS_UserLogout_ntf{
+  optional UserToken utoken = 1;
+}
+
+//选择角色后请求role的详情 gate to home auto
+message GHS_RoleDetail_ask{
+  optional UserToken utoken = 1;
+}

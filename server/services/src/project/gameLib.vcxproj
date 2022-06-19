@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{53D53FF1-2475-485F-9343-407DE29E8AC6}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\libs\gameLib\config\ConfigHelper.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\config\ConfigTool.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\config\DatabaseOption.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\config\FileConfigSourceImpl.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\config\HttpConfigSourceImpl.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\config\RedisOption.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\EurekaClusterClient.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\EurekaClusterClient_NetCmd.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\EurekaClusterLink.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\EurekaNodeInfo.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\ServiceNodeInfo.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\db_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\friend_system_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\gatehome_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\item_warehouse.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\mail_system.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\mail_system_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\proto_iid.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_building.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_chat.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_pet.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\ProtocolFactory_NetPro.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\ProtoUtil.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\redis\DTaskRedis.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\libs\gameLib\commons\LinkFromHolder.h" />
+    <ClInclude Include="..\source\libs\gameLib\commons\LinkToHolder.h" />
+    <ClInclude Include="..\source\libs\gameLib\commons\NetLinkFromBase.h" />
+    <ClInclude Include="..\source\libs\gameLib\commons\SessionMthHolder.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\ConfigHelper.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\ConfigTool.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\DatabaseOption.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\EurekaConfig.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\FileConfigSourceImpl.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\GlobalOption.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\HttpConfigSourceImpl.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\IConfigContentSource.h" />
+    <ClInclude Include="..\source\libs\gameLib\config\RedisOption.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\EurekaClusterClient.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\EurekaClusterLink.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\EurekaNodeInfo.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\IEurekaClientIntegrate.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\ServiceNodeInfo.h" />
+    <ClInclude Include="..\source\libs\gameLib\GameDef.h" />
+    <ClInclude Include="..\source\libs\gameLib\gatehome\GHUsersSeparate.h" />
+    <ClInclude Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.h" />
+    <ClInclude Include="..\source\libs\gameLib\global_const.h" />
+    <ClInclude Include="..\source\libs\gameLib\LogExt.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\db_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\friend_system_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\gatehome_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\item_warehouse.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\mail_system.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\mail_system_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\proto_iid.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_building.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_chat.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_pet.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\ProtoUtil.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\Proto_all.h" />
+    <ClInclude Include="..\source\libs\gameLib\redis\DTaskRedis.h" />
+    <ClInclude Include="..\source\libs\gameLib\redis\global_redis_const.h" />
+    <ClInclude Include="..\source\libs\gameLib\redis\user_redis_const.h" />
+    <ClInclude Include="..\source\libs\gameLib\service_type.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\libs\</OutDir>
+    <IntDir>..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_RELEASE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

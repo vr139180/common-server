@@ -1,0 +1,3 @@
+
+1.friend相关的协议中 UserToken字段，解析出的useriid应该理解为roleiid
+2.friend中和用户数据关联的存储之类的，都是使用的roleiid

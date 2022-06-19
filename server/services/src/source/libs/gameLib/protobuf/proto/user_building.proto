@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+import "db_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Build_AddItem_req{
+  optional UserToken utoken = 1;
+  //父建筑 0表示没有
+  int64 parent_building = 2;
+  //资源id
+  int64 building_resid = 3;
+  //朝向
+  string look_at = 4;
+  //相对父建筑位置
+  string building_pos = 5;
+}
+
+message Build_AddItem_ack{
+  optional UserToken utoken = 1;
+  //0 success 1 资源不存在
+  int32 result = 2;
+  //success 返回建筑对象
+  optional DBUserHomeStructureItem item = 3;
+}
+
+message Build_DelItem_req{
+  optional UserToken utoken = 1;
+  int64 building_iid = 2;
+}
+
+message Build_DelItem_ack{
+  optional UserToken utoken = 1;
+  int64 building_iid = 2;
+  //0 success 1 fail
+  int32 result = 3;
+}

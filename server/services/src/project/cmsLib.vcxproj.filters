@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="base">
+      <UniqueIdentifier>{4218862a-8982-4d77-a777-f93a5987fa4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="os">
+      <UniqueIdentifier>{4cd88488-523e-40c5-ac49-3f4df2eeddcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="os\win32">
+      <UniqueIdentifier>{fdf53e96-3583-4535-a337-27f3d0e884d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="os\linux">
+      <UniqueIdentifier>{745e76f7-d0ee-47dd-b50a-48ef12ec8fcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{d7ef8c5d-38d6-4cf5-836a-a93455881f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{1995f515-41b9-42e1-8bf1-75a757f45cd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{a968b048-3891-4c89-9d00-1ba66a8e59ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="condition">
+      <UniqueIdentifier>{0a2a400d-febd-4524-bdd5-56a21113f2d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="jobsystem">
+      <UniqueIdentifier>{b500ffcb-930c-45c8-8d99-c66e8c3f084e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\encryption">
+      <UniqueIdentifier>{1f7032e1-b694-4e26-89b2-55f4a181e91d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\encryption\md5">
+      <UniqueIdentifier>{1634e2a5-a6a5-4e0e-ae49-cb3d92e8d473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\serialization">
+      <UniqueIdentifier>{842aec64-6a31-4bbc-9818-791c8690392d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\serialization\base64">
+      <UniqueIdentifier>{ecafeb94-3493-43ed-a53b-eb02116cfae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\httpcurl">
+      <UniqueIdentifier>{cffa08be-9117-4b59-a005-e6fd169d3b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\wincrash">
+      <UniqueIdentifier>{6b54aaa4-b1c4-4b8f-8542-0b92bf2753c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util\encryption\rsa">
+      <UniqueIdentifier>{d9562d2a-1152-4870-b83c-2c4ce7b8b827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua">
+      <UniqueIdentifier>{7480fdf3-cb57-4f21-a00e-05ca32c21c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="prolib">
+      <UniqueIdentifier>{e958eb41-2b66-4b42-9c13-933ab77d04ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml">
+      <UniqueIdentifier>{a12792e1-599b-4f00-8b4a-2de258a67412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xml\tinyxml2">
+      <UniqueIdentifier>{69e6513f-b7dd-4432-ae23-fae1a1ef4f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lua\lua_src">
+      <UniqueIdentifier>{e4a0a455-b410-46f0-83c0-90872db481dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{d00b3967-fbdc-42b8-b9fb-36bf7fbe0533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="redis">
+      <UniqueIdentifier>{e5bff701-1e83-493f-a58b-0aab3b9f18a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{07f99716-d3ef-4a18-8667-8f350b6c752e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\libs\cmsLib\base\Profile.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\OSDriver.cpp">
+      <Filter>os</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\os\win32\OSDriverWin32.cpp">
+      <Filter>os\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.cpp">
+      <Filter>os\linux</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\wincrash\crashhandler.cpp">
+      <Filter>util\wincrash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\util\FileLogOnlyOnce.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\util\FileUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\util\ShareUtil.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\MutexAllocator.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\NetAcceptor.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\NetConnector.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\NetDriverX.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\NetSession.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\system\CommandBase.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\ServerAppBase.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\ServerAppWrapper.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\ThreadLock.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\system\TimerContainer.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionElement.cpp">
+      <Filter>condition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionLeaf.cpp">
+      <Filter>condition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionNode.cpp">
+      <Filter>condition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionValue.cpp">
+      <Filter>condition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\encryption\md5\md5.cpp">
+      <Filter>util\encryption\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\serialization\base64\base64.cpp">
+      <Filter>util\serialization\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpUtilities.cpp">
+      <Filter>util\httpcurl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpUrl.cpp">
+      <Filter>util\httpcurl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\httpcurl\HTTPCurlRequest.cpp">
+      <Filter>util\httpcurl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpClient.cpp">
+      <Filter>util\httpcurl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\system\AppStateMonitor.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\Version.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\encryption\rsa\RSAUtil.cpp">
+      <Filter>util\encryption\rsa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\system\VirtualMainThread.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\base\OSSystem.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua\ScriptContext.cpp">
+      <Filter>lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\util\XmlUtil.cpp">
+      <Filter>xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\tinyxml2\tinyxml2.cpp">
+      <Filter>xml\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lapi.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lauxlib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lbaselib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lcode.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lcorolib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lctype.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ldblib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ldebug.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ldo.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ldump.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lfunc.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lgc.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\linit.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\liolib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\llex.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lmathlib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lmem.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\loadlib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lobject.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lopcodes.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\loslib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lparser.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lstate.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lstring.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lstrlib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ltable.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ltablib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\ltm.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lua.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\luac.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lundump.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lutf8lib.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lvm.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\lua_src\lzio.c">
+      <Filter>lua\lua_src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\log\LoggerHelper.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\redis\RedisClient.cpp">
+      <Filter>redis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\json\JSONUtil.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\prolib\ProtocolFactory.cpp">
+      <Filter>prolib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\LinkToBase.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\libs\cmsLib\base\HashTable.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\base\Hierarchy.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\base\Profile.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\OSDriver.h">
+      <Filter>os</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\os\win32\OSDriverWin32.h">
+      <Filter>os\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.h">
+      <Filter>os\linux</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\core_type.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\prolibdef.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\ProtocolFactory.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\SingletonT.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\StaticString.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\TStaticArray.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\wincrash\crashhandler.h">
+      <Filter>util\wincrash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\util\FileLogOnlyOnce.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\util\FileUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\util\ShareUtil.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\CommandListener.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\MutexAllocator.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetAcceptor.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetAcceptorEvent.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetConnector.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetDriverX.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetSession.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetSessionBindEvent.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\system\CommandBase.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\ServerAppBase.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\ServerAppWrapper.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\ThreadLock.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\system\TimerContainer.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionContext.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionElement.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionLeaf.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionNode.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionValue.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\condition\IPropertyOperator.h">
+      <Filter>condition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\encryption\md5\md5.h">
+      <Filter>util\encryption\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\serialization\base64\base64.h">
+      <Filter>util\serialization\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\cmsLib.h" />
+    <ClInclude Include="..\source\libs\cmsLib\Log.h" />
+    <ClInclude Include="..\source\libs\cmsLib\Version.h" />
+    <ClInclude Include="..\source\libs\cmsLib\jobsystem\JobMTBase.h">
+      <Filter>jobsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\jobsystem\JobSystem.h">
+      <Filter>jobsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\jobsystem\ThreadContext.h">
+      <Filter>jobsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\jobsystem\ThreadContextFactory.h">
+      <Filter>jobsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPBinData.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPData.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPBinWrite.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpWrite.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpReader.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpHeaders.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPProxy.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPStringData.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpStringWrite.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpResponse.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpUtilities.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpUrl.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPCurlRequest.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpClient.h">
+      <Filter>util\httpcurl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\jobsystem\ThreadContextPool.h">
+      <Filter>jobsystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\system\AppStateMonitor.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\base\DataTable.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\GlobalSettings.h" />
+    <ClInclude Include="..\source\libs\cmsLib\encryption\rsa\RSAUtil.h">
+      <Filter>util\encryption\rsa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\system\VirtualMainThread.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\base\OSSystem.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\lua\ScriptContext.h">
+      <Filter>lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\util\XmlUtil.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\tinyxml2\tinyxml2.h">
+      <Filter>xml\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\log\LoggerHelper.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\redis\RedisClient.h">
+      <Filter>redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\json\JSONUtil.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\prolib\BasicProtocol.h">
+      <Filter>prolib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\util\Random.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\redis\RedisProtoBufThreadCache.h">
+      <Filter>redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\LinkToBase.h">
+      <Filter>net</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

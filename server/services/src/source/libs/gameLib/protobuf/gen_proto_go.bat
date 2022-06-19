@@ -1,0 +1,1 @@
+protoc --proto_path=./proto --go_out=./go ./proto/*.proto

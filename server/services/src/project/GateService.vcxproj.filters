@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\GateService\GateServiceApp.cpp" />
+    <ClCompile Include="..\source\GateService\GateServiceApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\GateService\sMain.cpp" />
+    <ClCompile Include="..\source\GateService\network\GateSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayer.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayerCtrl.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayer_Network.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\PlayerChannel.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayerCtrl_Network.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\PlayerChannel_Network.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayerCtrl_Maintnce.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\network\GameServiceLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\network\HomeServiceLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\network\RouterServiceLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\network\UnionClusterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\GateService\network\GateSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\GateServiceApp.h" />
+    <ClInclude Include="..\source\GateService\config\GateConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\player\GamePlayer.h">
+      <Filter>player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\player\GamePlayerCtrl.h">
+      <Filter>player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\player\PlayerChannel.h">
+      <Filter>player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\network\GameServiceLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\network\HomeServiceLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\network\RouterServiceLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\network\UnionClusterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\GateService\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{39254e0f-5f7d-4fa8-93c5-01914676d959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{29b243af-fc7e-4e00-9662-1cdf17fa93d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="player">
+      <UniqueIdentifier>{396f4671-1177-47e5-8175-94bc28226dbc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message UserToken{
+  //20bit gateid+43bit userid
+  int64 giduid = 1;
+  int64 slottoken = 2;
+}
+
+//系统邮件信息
+message MailSystemItem {
+  int64 iid = 1;
+  int64 sender_iid = 2;
+  string title = 3;
+  string contents = 4;
+  //0:无附件 1:有附件
+  int32 attachment = 5;
+  //附件json字符串
+  string attachinfo = 6;
+  //创建时间second
+  int32  createtime = 7;
+}
+
+message MailSystemItems {
+  repeated MailSystemItem mails = 1;
+}
+
+//邮件信息
+message MailNormalItem {
+  int64 iid = 1;
+  //0系统邮件 1工会邮件
+  int32 stype = 2;
+  int64 sender_iid = 3;
+  int64 receiver_iid = 4;
+  //0:无附件 1:有附件
+  int32 attachment = 5;
+  //附件json字符串
+  string attachinfo = 6;
+  string title = 7;
+  string contents = 8;
+  //创建时间second
+  int32  createtime = 9;
+  int32  readtime = 10;
+}
+
+message MailNormalItems {
+  //从小到大排列
+  repeated MailNormalItem mails = 1;
+}
+
+message FriendInviteItem {
+  int64 iid = 1;
+  //邀请人
+  int64 from_iid = 2;
+  //邀请人昵称
+  string nickname = 3;
+  //邀请时间
+  int32 invitetime = 4;
+}
+
+message FriendRelation {
+  int64 iid = 1;
+  int64 friendiid = 2;
+  string nickname = 3;
+  //最后更新时间
+  bool online = 4;
+}
+
+//好友系统的用户数据
+message FriendUserInfo {
+  UserToken token = 1;
+}

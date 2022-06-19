@@ -1,0 +1,233 @@
+syntax = "proto3";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+//服务器类型
+enum ERK_SERVICETYPE{
+	ERK_SERVICE_NONE = 0;
+	ERK_SERVICE_EUREKA = 1;
+	//资源分配
+	ERK_SERVICE_RES = 2;
+	//客户端直连网关
+	ERK_SERVICE_GATE = 3;
+	//部署任务系统，购买等逻辑
+	ERK_SERVICE_HOME = 4;
+	//全局服务，比如工会、战斗匹配
+	//身份认证服务，登陆排队等
+	ERK_SERVICE_LOGIN = 5;
+	ERK_SERVICE_UNION = 6;
+	//游戏逻辑服务器
+	ERK_SERVICE_GAME = 7;
+	//数据同步服务器
+	ERK_SERVICE_DATASYNC = 8;
+	//router
+	ERK_SERVICE_ROUTER = 9;
+	//chat
+	ERK_SERVICE_CHAT = 10;
+	//mail
+	ERK_SERVICE_MAIL = 11;
+	//friend
+	ERK_SERVICE_FRIEND = 12;
+	ERK_SERVICE_MAX = 13;
+}
+
+//eureka server node info
+message EurekaServerNode{
+  //服务器sn
+  int64 iid = 1;
+  //对方token，用于验证
+  int64 token = 2;
+  //动态ip
+  string ip = 3;
+  //服务器port
+  int32 port = 4;
+}
+
+//Eureka服务器相互绑定
+message Erk_EurekaBind_req {
+  //我的iid
+  int64 iid = 1;
+  //我的token，用于验证
+  int64 token = 2;
+  //动态ip
+  string ip = 3;
+  //服务器port
+  int32 port = 4;
+}
+
+message Erk_EurekaBind_ack{
+  //0:成功 1:失
+  int32 result = 1;
+}
+
+//通知其他服务eureka服务上线或下线
+message Erk_EurekaUpdate_ntf{
+  //请求方iid
+  int64 myiid = 1;
+  //上线的服务
+  repeated EurekaServerNode online = 2;
+  //下线的服务iid
+  repeated int64 offline = 3;
+}
+
+//其他服务和eureka服务的同步请求
+message Erk_Eureka_sync{
+  //请求方iid
+  int64 myiid = 1;
+  //存在的eureka服务
+  repeated int64 exists = 2;
+}
+
+//server node info
+message ServerNode{
+  //服务器sn
+  int64 iid = 1;
+  //对方token，用于验证
+  int64 token = 2;
+  //动态ip
+  string ip = 3;
+  //服务器port
+  int32 port = 4;
+  //扩展信息
+  map<string,string> exts = 5;
+}
+
+//其他服务向eureka注册中心，注册服务
+message Erk_ServiceRegist_req{
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 1;
+  string ip = 2;
+  int32 port = 3;
+  //扩展信息
+  map<string,string> exts = 4;
+}
+
+message Erk_ServiceRegist_ack{
+  //0:成功 1:失败
+  int32 result = 1;
+  //service编号，由eureka保证唯一
+  optional int64 iid = 2;
+  optional int64 token = 3;
+  //eureka iid
+  optional int64 eurekaiid = 4;
+  optional int64 eurekatoken = 5;
+}
+
+//注册service再次确认
+message Erk_ServiceRegist_Confirm{
+  int64 iid = 1;
+  int64 token = 2;
+}
+
+//其他服务向eureka注册中心，注册服务
+message Erk_ServiceBind_req{
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 1;
+  //service编号，由eureka保证唯一
+  int64 iid = 2;
+  int64 token = 3;
+}
+
+message Erk_ServiceBind_ack{
+  //0:成功 1:失败
+  int32 result = 1;
+}
+
+//其他服务向eureka注册中心，订阅服务信息
+message Erk_ServiceSubscribe_req{
+  message svrinfo{
+    //订阅类型
+	int32 svr_type = 1;
+	//已经存在的服务
+	repeated int64 exits = 2;
+  }
+  //请求方iid
+  int64 myiid = 1;
+  //请求放服务类型
+  int32 mysvrtype = 2;
+  //ip port方便过滤算法
+  string myip = 3;
+  int32 myport = 4;
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  repeated svrinfo svr_type = 5;
+}
+
+message Erk_ServiceSubscribe_ack{
+  //请求方iid
+  int64 myiid = 1;
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 2;
+  //新上线的服务
+  repeated ServerNode online = 3;
+  //下线的服务
+  repeated int64 offline = 4;
+}
+
+//服务下线通知
+message Erk_ServiceShutdown_ntf{
+  //下线的服务
+  int32 svr_type = 1;
+  int64 service = 2;
+}
+
+message Svr_LiveTick_ntf{
+}
+
+//服务之间相互注册
+message Svr_ServiceBindService_req{
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 1;
+  //请求方service编号
+  int64 myiid = 2;
+  int64 mytoken = 3;
+  //扩展信息
+  map<string,string> myexts = 4;
+  //被请求方service编号
+  int64 toiid = 10;
+  int64 totoken = 11;
+}
+
+message Svr_ServiceBindService_ack{
+  //0:成功 1:失败
+  int32 result = 1;
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 2;
+  //被请求方service编号
+  int64 toiid = 3;
+  int64 totoken = 4;
+}
+
+//gate请求home资源绑定
+message Svr_GateBindHome_req{
+  int64 gateiid = 1;
+  int64 gatetoken = 2;
+}
+
+message Svr_GateBindHome_ack{
+  //0:成功 1:没有资源可以绑定 2:已经完成绑定
+  int32 result = 1;
+  optional int64 gateiid = 2;
+  //绑定的home信息
+  optional int64 homeiid = 3;
+  optional int64 hometoken = 4;
+  optional string homeip = 5;
+  optional int32 homeport = 6;
+  //这次绑定的token用来确认验证
+  optional int64 bindtoken = 7;
+}
+
+message Svr_GateBindHome_confirm{
+  int64 gateiid = 1;
+  //绑定的home信息
+  int64 homeiid = 2;
+  //hometoken在经过home服务时填写
+  int64 hometoken = 3;
+  //这次绑定的token用来确认验证
+  int64 bindtoken = 4;
+}

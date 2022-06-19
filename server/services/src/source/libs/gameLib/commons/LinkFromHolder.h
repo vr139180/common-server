@@ -1,0 +1,130 @@
+#ifndef __LINKFROMHOLDER_H__
+#define __LINKFROMHOLDER_H__
+
+#include <set>
+#include <list>
+#include <boost/unordered_map.hpp>
+#include <cmsLib/ThreadLock.h>
+#include <cmsLib/prolib/core_type.h>
+
+template<typename T>
+class LinkFromHolder
+{
+	typedef boost::unordered_map<S_INT_64, T*> SERVICEMAP;
+public:
+	LinkFromHolder();
+	~LinkFromHolder();
+	void init_holder();
+	virtual void uninit_holder();
+
+	T* ask_free_link();
+	T* get_servicelink_byiid(S_INT_64 iid);
+	virtual void return_freelink(T* link);
+	virtual T* regist_onlinelink(T* link);
+
+	template<class M>
+	void broadcast(M* pro)
+	{
+		ThreadLockWrapper guard(lock_);
+
+		for (boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin(); iter != online_links_.end(); ++iter)
+		{
+			M* msg = new M();
+			msg->CopyFrom(*pro);
+
+			T* link = iter->second;
+			link->send_protocol(msg);
+		}
+	}
+
+protected:
+	std::list<T*>	all_service_link_;
+	std::set<T*>	free_links_;
+	SERVICEMAP		online_links_;
+
+	ThreadLock	lock_;
+};
+
+template<typename T>
+LinkFromHolder<T>::LinkFromHolder()
+{
+}
+
+template<typename T>
+LinkFromHolder<T>::~LinkFromHolder()
+{
+	uninit_holder();
+}
+
+template<typename T>
+void LinkFromHolder<T>::init_holder()
+{
+	ThreadLockWrapper guard(lock_);
+}
+
+template<typename T>
+void LinkFromHolder<T>::uninit_holder()
+{
+	ThreadLockWrapper guard(lock_);
+
+	online_links_.clear();
+	free_links_.clear();
+
+	for (std::list<T*>::iterator iter = all_service_link_.begin(); iter != all_service_link_.end(); ++iter)
+	{
+		delete (*iter);
+	}
+	all_service_link_.clear();
+}
+
+template<typename T>
+T* LinkFromHolder<T>::ask_free_link()
+{
+	ThreadLockWrapper guard(lock_);
+
+	T* ret = 0;
+	if (free_links_.size() == 0)
+	{
+		ret = new T();
+		all_service_link_.push_back(ret);
+	}
+	else
+	{
+		std::set<T*>::iterator iter = free_links_.begin();
+		ret = (*iter);
+		free_links_.erase(iter);
+	}
+
+	return ret;
+}
+
+template<typename T>
+void LinkFromHolder<T>::return_freelink(T* link)
+{
+	ThreadLockWrapper guard(lock_);
+
+	online_links_.erase(link->get_iid());
+	free_links_.insert(link);
+}
+
+template<typename T>
+T* LinkFromHolder<T>::regist_onlinelink(T* link)
+{
+	ThreadLockWrapper guard(lock_);
+
+	online_links_[link->get_iid()] = link;
+	return link;
+}
+
+template<typename T>
+T* LinkFromHolder<T>::get_servicelink_byiid(S_INT_64 iid)
+{
+	ThreadLockWrapper guard(lock_);
+
+	boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
+	if (fiter == online_links_.end())
+		return 0;
+	return fiter->second;
+}
+
+#endif /__LINKFROMHOLDER_H__

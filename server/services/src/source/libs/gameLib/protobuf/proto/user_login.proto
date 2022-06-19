@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+import "db_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+// 用户登陆请求
+message User_Login_req {
+  //登录类型 1:用户名密码 2:token登录
+  int32 type = 1;
+  //账户信息 acc+pwd
+  optional string account = 2;
+  //md5编码密码
+  optional string pwd = 3;
+  //token登录 userid+token
+  optional string token = 4;
+  optional int64 userid = 5;
+}
+
+message User_Login_ack {
+  //登录类型 1:用户名密码 2:token登录
+  int32 type = 1;
+  //0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+  int32 result = 2;
+  //成功返回 用户iid
+  optional int64 user_iid = 3;
+  //token登陆时用到的
+  optional string logintoken = 4;
+  //proxytoken
+  optional int64 proxytoken = 10;
+  optional int32 slot = 11;
+  optional string proxyip = 12;
+  optional int32 proxyport = 13;
+}
+
+//用户在gate登录
+message User_ProxyLogin_req{
+  //用户iid
+  int64 user_iid = 1;
+  //proxytoken
+  int64 proxytoken = 2;
+  int32 slot = 3;
+}
+
+message User_ProxyLogin_ack{
+  //0:成功 1:失败
+  int32 result = 1;
+}
+
+//user logout
+message User_Logout_ntf{
+  optional UserToken utoken = 1;
+}
+
+message User_RoleList_ack{
+  optional UserToken utoken = 1;
+  DBUserRoles roles = 2;
+}
+
+message User_RoleCreate_req{
+  optional UserToken utoken = 1;
+  string nickname = 2;
+}
+
+message User_RoleCreate_ack{
+  optional UserToken utoken = 1;
+  //0:成功 1:不允许创建角色 2:创建角色失败
+  int32 result = 2;
+  optional int64 role_iid = 3;
+}
+
+message User_RoleSelect_req{
+  optional UserToken utoken = 1;
+  int64 role_iid = 2;
+}
+
+message User_RoleSelect_ack{
+  optional UserToken utoken = 1;
+  //0:成功 1:role不存在 2:角色已选择
+  int32 result = 2;
+  int64 role_iid = 3;
+}
+
+//role detail info
+message User_RoleDetailA_ntf{
+  optional UserToken utoken = 1;
+  
+  DBUserHome home = 2;
+  DBUserHomeStructure homeitems = 3;
+}
+
+message User_RoleDetailB_ntf{
+  optional UserToken utoken = 1;
+  DBUserPets pets = 2;
+}
+
+message User_RoleDetailEnd_ntf{
+  optional UserToken utoken = 1;
+}

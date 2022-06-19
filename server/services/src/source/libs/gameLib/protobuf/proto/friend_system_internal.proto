@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Frd_FriendChangeOther_ntf {
+  int64 notify_roleiid = 1;
+  //true add, false del
+  bool addordel = 2;
+  //好友
+  int64 friendiid = 3;
+  optional FriendRelation friend = 4;
+}

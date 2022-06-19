@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\GameService\GameServiceApp.cpp" />
+    <ClCompile Include="..\source\GameService\sMain.cpp" />
+    <ClCompile Include="..\source\GameService\GameServiceApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\GameService\network\GameSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\network\GateServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\network\HomeServiceLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\GameService\GameServiceApp.h" />
+    <ClInclude Include="..\source\GameService\network\GameSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\config\GameConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\network\GateServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\network\HomeServiceLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\GameService\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{9335a345-3d24-4d0d-8947-e5c1829d7912}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
