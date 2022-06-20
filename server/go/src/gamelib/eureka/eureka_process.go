@@ -13,18 +13,30 @@ import (
 func (ec *EurekaCluster) timerAutoConnect(now int64, interval int, tid int64) (finish bool) {
 	finish = false
 
-	wm := make(map[*eurekaServerNode]void)
-	for node := range ec.waitConnections {
-		ns := newEurekaSession(ec, node)
-		err := ec.tcpServer.Connect(node.ip, node.port, ns)
-		if err != nil {
-			logx.Errorf("eureka connect to node[ip:%s port:%d] falied", node.ip, node.port)
-			wm[node] = setEmptyMemeber
-		}
+	if len(ec.waitConnections) == 0 {
+		return
 	}
 
-	//替换成新的
-	ec.waitConnections = wm
+	if (!ec.IsRegisted()) || ec.IsReady() {
+		wm := make(map[int64]*eurekaServerNode)
+		for _, node := range ec.waitConnections {
+			ns := newEurekaSession(ec, node)
+			err := ns.ConnectTo()
+			if err != nil {
+				logx.Errorf(">>>>>>> connect to eureka node[ip:%s port:%d] falied", ns.GetIp(), ns.GetPort())
+				//未完成注册的
+				if !ec.IsRegisted() {
+					wm[node.iid] = node
+				} else if ec.IsExistEurekaNode(node.iid) {
+					//存在于eurekanode的
+					wm[node.iid] = node
+				}
+			}
+		}
+
+		//替换成新的
+		ec.waitConnections = wm
+	}
 
 	return
 }
@@ -32,7 +44,7 @@ func (ec *EurekaCluster) timerAutoConnect(now int64, interval int, tid int64) (f
 func (ec *EurekaCluster) timerSyncEureka(now int64, interval int, tid int64) (finish bool) {
 	finish = false
 
-	if !ec.isRegisted() {
+	if !ec.IsRegisted() {
 		return
 	}
 
@@ -83,7 +95,6 @@ func (ec *EurekaCluster) timerSyncEureka(now int64, interval int, tid int64) (fi
 
 // 一个节点连接成功
 func (ec *EurekaCluster) OnEurekaNodeConnected(node *EurekaSession) {
-
 	cmd := server.NewNetSessionCmd(node, ec.onMthEurekaConnected)
 	ec.RegistNetCmd(cmd)
 }
@@ -95,11 +106,10 @@ func (ec *EurekaCluster) OnEurekaNodeDisConnected(node *EurekaSession) {
 }
 
 func (ec *EurekaCluster) onMthEurekaConnected(s gnet.NetSession) {
-
 	esess := s.(*EurekaSession)
 	ec.authsConnection[esess] = setEmptyMemeber
 
-	if !ec.isRegisted() {
+	if !ec.IsRegisted() {
 		esess.registToEurekaCenter(ec.mynode.SvrType)
 	} else {
 		esess.bindToEurekaCenter(ec.mynode.SvrType)
@@ -109,28 +119,32 @@ func (ec *EurekaCluster) onMthEurekaConnected(s gnet.NetSession) {
 func (ec *EurekaCluster) onMthEurekaDisConnected(s gnet.NetSession) {
 	esess := s.(*EurekaSession)
 
+	node := esess.node
+
+	delete(ec.waitConnections, node.iid)
 	delete(ec.authsConnection, esess)
-	delete(ec.eurekaConnections, esess.node.iid)
-	delete(ec.waitConnections, esess.node)
+	delete(ec.eurekaConnections, esess.GetIid())
 
 	ind := ec.eurekaVector.IndexOf(esess)
 	if ind != -1 {
 		ec.eurekaVector.Remove(ind)
 	}
 
-	node := esess.node
-	if !ec.isRegisted() {
+	node = node.Clone()
+	if !ec.IsRegisted() {
 		// 注册未完成
-		ec.waitConnections[node] = setEmptyMemeber
+		ec.waitConnections[node.iid] = node
 	} else {
 		// 是否是有效的连接
 		_, ok := ec.eurekaNodes[node.iid]
 		if ok {
-			ec.waitConnections[node] = setEmptyMemeber
+			ec.waitConnections[node.iid] = node
 		}
 	}
 
 	esess.OnClose()
+
+	logx.Debugf("----+++++++eureka:%d disconnection, connections:%d vector:%d waits:%d auths:%d", esess.GetIid(), len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 
 	//如果是注册成功了
 	if ec.IsReady() {
@@ -144,18 +158,20 @@ func (ec *EurekaCluster) onMthEurekaDisConnected(s gnet.NetSession) {
 
 func (ec *EurekaCluster) onMthServiceRegistAck(ns gnet.NetSession, id int, msg proto.Message) {
 	es, _ := ns.(*EurekaSession)
+
 	ack, _ := msg.(*gpro.Erk_ServiceRegistAck)
 
+	node := es.node
+
+	delete(ec.waitConnections, node.iid)
 	delete(ec.authsConnection, es)
-	delete(ec.eurekaConnections, es.node.iid)
-	delete(ec.waitConnections, es.node)
+	delete(ec.eurekaConnections, es.GetIid())
 
 	ind := ec.eurekaVector.IndexOf(es)
 	if ind != -1 {
 		ec.eurekaVector.Remove(ind)
 	}
 
-	node := es.node
 	if ack.GetResult() == 0 {
 		//succeess
 		node.iid = ack.GetEurekaiid()
@@ -166,28 +182,34 @@ func (ec *EurekaCluster) onMthServiceRegistAck(ns gnet.NetSession, id int, msg p
 		ec.eurekaVector.Add(es)
 
 		ec.curState = eurekaRegisted
+
 		ec.mynode.Iid = ack.GetIid()
 		ec.mynode.Token = ack.GetToken()
+
 	} else {
 		//放回wait列表
-		ec.waitConnections[node] = setEmptyMemeber
+		node = node.Clone()
+		ec.waitConnections[node.iid] = node
 	}
+
+	logx.Debugf("-------regist result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 }
 
 func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, id int, msg proto.Message) {
 	es, _ := ns.(*EurekaSession)
 	ack, _ := msg.(*gpro.Erk_ServiceBindAck)
 
+	node := es.node
+
+	delete(ec.waitConnections, node.iid)
 	delete(ec.authsConnection, es)
 	delete(ec.eurekaConnections, es.node.iid)
-	delete(ec.waitConnections, es.node)
 
 	ind := ec.eurekaVector.IndexOf(es)
 	if ind != -1 {
 		ec.eurekaVector.Remove(ind)
 	}
 
-	node := es.node
 	if ack.GetResult() == 0 {
 		//succeess
 		ec.eurekaConnections[node.iid] = es
@@ -196,9 +218,11 @@ func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, id int, msg pro
 		//放回wait列表
 		_, ok := ec.eurekaNodes[node.iid]
 		if ok {
-			ec.waitConnections[node] = setEmptyMemeber
+			ec.waitConnections[node.iid] = node
 		}
 	}
+
+	logx.Debugf("-------bind result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 }
 
 func (ec *EurekaCluster) onMthEurekaSync(ns gnet.NetSession, id int, msg proto.Message) {
@@ -213,16 +237,27 @@ func (ec *EurekaCluster) onMthEurekaSync(ns gnet.NetSession, id int, msg proto.M
 		pinfo := newEurekaServerNode(v.Iid, v.Token, v.Ip, int(v.Port))
 		ec.eurekaNodes[pinfo.iid] = pinfo
 
-		ec.waitConnections[pinfo] = setEmptyMemeber
+		if !ec.IsOnlineEurekaNode(pinfo.iid) {
+			ec.waitConnections[pinfo.iid] = pinfo
+		}
 	}
 
 	for _, v := range ack.Offline {
+		logx.Debugf("------ sync eureka offline:%d", v)
 		_, ok := ec.eurekaNodes[v]
 		if !ok {
 			continue
 		}
 
 		delete(ec.eurekaNodes, v)
+		delete(ec.waitConnections, v)
+		d, ok := ec.eurekaConnections[v]
+		if ok {
+			delete(ec.authsConnection, d)
+			delete(ec.eurekaConnections, v)
+			//force close
+			d.Close()
+		}
 	}
 }
 
@@ -265,7 +300,7 @@ func (ec *EurekaCluster) onMthServiceSubScribeAck(ns gnet.NetSession, id int, ms
 	}
 
 	// notify application
-	if ec.appProxy != nil && (len(newiid) > 0 || len(deliid) > 0) && ec.isRegisted() {
+	if ec.appProxy != nil && (len(newiid) > 0 || len(deliid) > 0) && ec.IsRegisted() {
 		ec.appProxy.OnServiceChanged(service.ServiceType(stype), newiid, deliid)
 	}
 

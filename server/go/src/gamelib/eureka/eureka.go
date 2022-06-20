@@ -98,9 +98,9 @@ type EurekaCluster struct {
 
 	eurekaVector      *arraylist.List
 	curEurekaIndex    int
-	eurekaConnections map[int64]*EurekaSession   //连接的session
-	waitConnections   map[*eurekaServerNode]void //等待连接的node
-	authsConnection   map[*EurekaSession]void    //存放等待完成认证的session
+	eurekaConnections map[int64]*EurekaSession    //连接的session
+	waitConnections   map[int64]*eurekaServerNode //等待连接的node
+	authsConnection   map[*EurekaSession]void     //存放等待完成认证的session
 
 	timerContainer *timerx.TimerContainer //软件定时器
 	ch             chan interface{}
@@ -138,7 +138,7 @@ func NewEurekaCluster(ts *netx.TCPServer, s service.ServiceType, ip string, port
 	ec.curEurekaIndex = 0
 
 	ec.eurekaConnections = make(map[int64]*EurekaSession)
-	ec.waitConnections = make(map[*eurekaServerNode]void)
+	ec.waitConnections = make(map[int64]*eurekaServerNode)
 	ec.authsConnection = make(map[*EurekaSession]void)
 
 	ec.timerContainer = timerx.NewTimerContainer(500)
@@ -151,8 +151,8 @@ func NewEurekaCluster(ts *netx.TCPServer, s service.ServiceType, ip string, port
 func (ec *EurekaCluster) Start(eip string, eport int) {
 
 	// 构建注册节点完成服务注册
-	nod := &eurekaServerNode{ip: eip, port: eport}
-	ec.waitConnections[nod] = setEmptyMemeber
+	nod := &eurekaServerNode{iid: 0, ip: eip, port: eport}
+	ec.waitConnections[nod.iid] = nod
 
 	ec.loopWG.Add(1)
 	go func() {
@@ -244,10 +244,20 @@ func (ec *EurekaCluster) getServiceNodesByType(t int) ServiceNodesType {
 	return n
 }
 
-func (ec *EurekaCluster) isRegisted() bool {
+func (ec *EurekaCluster) IsRegisted() bool {
 	return ec.curState == eurekaRegisted || ec.curState == eurekaReady
 }
 
 func (ec *EurekaCluster) IsReady() bool {
 	return ec.curState == eurekaReady
+}
+
+func (ec *EurekaCluster) IsExistEurekaNode(iid int64) bool {
+	_, ok := ec.eurekaNodes[iid]
+	return ok
+}
+
+func (ec *EurekaCluster) IsOnlineEurekaNode(iid int64) bool {
+	_, ok := ec.eurekaConnections[iid]
+	return ok
 }

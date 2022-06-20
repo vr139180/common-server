@@ -104,7 +104,9 @@ void EurekaSession::update(u64 tnow)
 		//must finish auth on the 15 seconds, if not, system will force cut conneciton
 		if (auth_timestamp_ + 1000 * 10 < tnow)
 		{
+#ifdef EUREKA_DEBUGINFO_ENABLE
 			logDebug(out_sys, "eureka session timeout......");
+#endif
 
 			state_ = SessionState_Closing;
 			SystemCommand<EurekaSession>* pcmd = new SystemCommand<EurekaSession>(

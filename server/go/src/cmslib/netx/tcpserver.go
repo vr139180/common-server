@@ -116,7 +116,7 @@ func (t *TCPServer) React(packet []byte, c gnet.Conn) (out []byte, action gnet.A
 		curlen := int(head >> 16)
 		id := uint16(head & 0x0000ffff)
 
-		if curlen > 0 {
+		if curlen >= 0 {
 			buf = buf[4:]
 			msg, err := t.Codec.Factory.IdToProto(id)
 			if err != nil {

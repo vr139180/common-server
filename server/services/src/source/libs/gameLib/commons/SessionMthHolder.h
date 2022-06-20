@@ -21,7 +21,7 @@ public:
 public:
 	T* get_sessionlink_by_session(boost::shared_ptr<NetSession> session);
 
-	NetAcceptorEvent::NetSessionPtr ask_refuse_netsession_mth();
+	//NetAcceptorEvent::NetSessionPtr ask_refuse_netsession_mth();
 	NetAcceptorEvent::NetSessionPtr ask_free_netsession_mth();
 	void ask_free_netsession_mth_confirm(T* pointer);
 
@@ -98,12 +98,14 @@ T* SessionMthHolder<T>::get_sessionlink_by_session(boost::shared_ptr<NetSession>
 	return 0;
 }
 
+/*
 template<typename T>
 NetAcceptorEvent::NetSessionPtr SessionMthHolder<T>::ask_refuse_netsession_mth()
 {
 	NetAcceptorEvent::NetSessionPtr new_session;
 	return new_session;
 }
+*/
 
 template<typename T>
 NetAcceptorEvent::NetSessionPtr SessionMthHolder<T>::ask_free_netsession_mth()

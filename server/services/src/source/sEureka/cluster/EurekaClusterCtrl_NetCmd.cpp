@@ -20,9 +20,9 @@ void EurekaClusterCtrl::on_eurekabind_req(BasicProtocol* pro, bool& autorelease,
 	EurekaSession* pes = reinterpret_cast<EurekaSession*>(session);
 	Erk_EurekaBind_req* req = reinterpret_cast<Erk_EurekaBind_req*>(pro);
 
-	if (is_eureka_exist(req->iid()))
+	if (is_eureka_exist(req->iid()) || (!is_boosted()))
 	{
-		//服务已经注册,或者不是有效的服务
+		//服务已经注册,或者eureka启动未完成
 		Erk_EurekaBind_ack *ack = new Erk_EurekaBind_ack();
 		ack->set_result(1);
 		pes->send_protocol(ack);

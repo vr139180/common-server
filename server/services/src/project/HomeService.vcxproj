@@ -84,7 +84,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;redis++_static_d.lib;hiredis_d.lib;mysqlcppconn-static_d.lib;libmysql.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;redis++_static_d.lib;hiredis_d.lib;mysqlcppconn-static_d.lib;libmysql.lib;libtcmalloc_minimal_d.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../sdk/lib64;../libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -92,8 +92,7 @@
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
       <LargeAddressAware>true</LargeAddressAware>
-      <ForceSymbolReferences>
-      </ForceSymbolReferences>
+      <ForceSymbolReferences>__tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
       <AdditionalOptions>/NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -119,7 +118,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;cmsLib.lib;gameLib.lib;libprotobuf.lib;redis++_static.lib;hiredis.lib;mysqlcppconn-static.lib;libmysql.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;cmsLib.lib;gameLib.lib;libprotobuf.lib;redis++_static.lib;hiredis.lib;mysqlcppconn-static.lib;libmysql.lib;libtcmalloc_minimal.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../sdk/lib64/opt;../libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -128,8 +127,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX64</TargetMachine>
       <LargeAddressAware>true</LargeAddressAware>
-      <ForceSymbolReferences>
-      </ForceSymbolReferences>
+      <ForceSymbolReferences>__tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
       <AdditionalOptions>/NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>

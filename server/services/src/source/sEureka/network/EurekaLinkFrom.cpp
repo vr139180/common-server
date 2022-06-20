@@ -53,9 +53,9 @@ void EurekaLinkFrom::registinfo_tolog( bool bregist)
 		return;
 
 	if( bregist)
-		logInfo( out_net, "sEureka[%d] regist to me(sEureka)", node_->iid);
+		logInfo( out_net, ">>>>>> sEureka[%d] regist to me(sEureka)", node_->iid);
 	else
-		logInfo(out_net, "sEureka[%d] disconnect from me(sEureka)", node_->iid);
+		logInfo(out_net, "<<<<<< sEureka[%d] disconnect from me(sEureka)", node_->iid);
 }
 
 void EurekaLinkFrom::heart_beat()

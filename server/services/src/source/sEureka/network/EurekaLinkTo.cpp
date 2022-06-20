@@ -34,8 +34,10 @@ void EurekaLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
+#ifdef EUREKA_DEBUGINFO_ENABLE
 	logInfo(out_net, "++++++me(sEureka) try to connect to sEureka(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
+#endif
 
 	connect_to(node_->ip.c_str(), node_->port);
 }
@@ -44,8 +46,10 @@ void EurekaLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
+#ifdef EUREKA_DEBUGINFO_ENABLE
 	logInfo(out_net, "------me(sEureka) cant connect to sEureka(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
+#endif
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
 		boost::bind(&EurekaLinkTo::on_connected, this, boost::placeholders::_1), false);
@@ -56,8 +60,10 @@ void EurekaLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
+#ifdef EUREKA_DEBUGINFO_ENABLE
 	logInfo(out_net, "++++++me(sEureka) connected to sEureka(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
+#endif
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
 		boost::bind(&EurekaLinkTo::on_connected, this, boost::placeholders::_1), true);
@@ -121,16 +127,17 @@ void EurekaLinkTo::on_authed( bool success)
 {
     if( success)
     {
-        logInfo( out_boot, "me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] success!!!!", 
+        logInfo( out_boot, ">>>>>> me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d]!!!!", 
 			node_->iid, node_->ip.c_str(), node_->port);
         this->set_authed( true);
-	
 		svrApp.get_eurekactrl()->on_authed_with_linkto(this);
 	}
     else
     {
-        logInfo( out_boot, "me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] failed!!!!", 
+#ifdef EUREKA_DEBUGINFO_ENABLE
+        logInfo( out_boot, "<<<<<< me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] failed!!!!", 
 			node_->iid, node_->ip.c_str(), node_->port);
+#endif
         
 		++fail_num_;
 		//先断开连接
@@ -147,12 +154,12 @@ void EurekaLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-        logInfo( out_boot, "me(sEureka)(authed) lost connection to sEureka[iid:%ld ip:%s port:%d]", 
+        logInfo( out_boot, "<<<<<< me(sEureka)(authed) lost connection to sEureka[iid:%ld ip:%s port:%d]", 
 			node_->iid, node_->ip.c_str(), node_->port);
     }
 	else
 	{
-		logInfo(out_boot, "me(sEureka)(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
+		logInfo(out_boot, "<<<<<< me(sEureka)(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
 			node_->iid, node_->ip.c_str(), node_->port);
 	}
 

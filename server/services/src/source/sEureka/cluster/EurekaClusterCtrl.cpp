@@ -113,6 +113,8 @@ void EurekaClusterCtrl::on_disconnected_with_linkto(EurekaLinkTo* plink)
 			wait_links_to_.erase(plink);
 		}
 
+		plink->force_close();
+
 #ifdef EUREKA_DEBUGINFO_ENABLE
 		logDebug(out_sys, "me(eureka) disconnect with linkto eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
 #endif

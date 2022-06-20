@@ -1,7 +1,6 @@
 package resservice
 
 import (
-	"cmslib/logx"
 	"gamelib/dtask"
 	"gamelib/redis"
 	"resservice/g"
@@ -16,7 +15,7 @@ func (l *ResService) OnUserSlotAuthsMaintnce(int64, int, int64) (finish bool) {
 	finish = false
 
 	//logic
-	logx.Debugf("ResService User Slot auth maintnce do")
+	//logx.Debugf("ResService User Slot auth maintnce do")
 	redisclient := g.GetRedis()
 
 	//4 second

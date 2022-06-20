@@ -1,0 +1,3 @@
+<res loopnum="500" service_thread_num="4" netprocessor="8">
+  <redis name="master" ip="127.0.0.1" port="6379" db="0" auth="123456" socket_timeout="100" />
+</res>

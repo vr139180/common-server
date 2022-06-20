@@ -9,7 +9,7 @@ import (
 )
 
 func (p *NetProcessor) DoUserSlotAuthMaintnce() {
-	logx.Debugf(".....to do , gate slot auth maintnce..............")
+	//logx.Debugf(".....to do , gate slot auth maintnce..............")
 
 	redisclient := g.GetRedis()
 	tnow := utilc.GetTimestamp() - 5000

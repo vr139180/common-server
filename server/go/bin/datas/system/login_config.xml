@@ -1,0 +1,4 @@
+<login loopnum="500" service_thread_num="4" vloop="6" rloop="1">
+  <redis name="master" ip="127.0.0.1" port="6379" db="0" auth="123456" socket_timeout="100" />
+  <db dns="root:123456@tcp(127.0.0.1:3306)/cms?charset=utf8&amp;parseTime=true" maxopenconns="10" maxidleconns="5" maxlivetime="0" showsql="true"/>
+</login>
