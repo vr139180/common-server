@@ -1,0 +1,4 @@
+<app ip="127.0.0.1" port="9001" loglevel="debug" logdir="" logfile="loginservice.log" confsrc="filesrc">
+	<filesrc datadir="../datas" />
+	<httpsrc url="http://127.0.0.1" />
+</app>
