@@ -20,7 +20,7 @@ EurekaLinkFrom::EurekaLinkFrom(EurekaNodeInfo* pnode) : NetLinkFromBase<EurekaSe
 
 void EurekaLinkFrom::reset()
 {
-	node_.reset(0);
+	node_.reset();
 	NetLinkFromBase<EurekaSession>::reset();
 }
 
@@ -38,7 +38,7 @@ void EurekaLinkFrom::on_connect_lost_netthread()
 
 void EurekaLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 
 	NETCMD_FUN_MAP2 fun = boost::bind(&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), 
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);

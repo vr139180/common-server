@@ -8,7 +8,7 @@
 #include <boost/asio/buffer.hpp>
 #include <boost/bind/bind.hpp>
 
-#include <google/protobuf/message_lite.h>
+#include <google/protobuf/message.h>
 
 #include <cmsLib/prolib/ProtocolFactory.h>
 #include <cmsLib/net/NetSessionBindEvent.h>

@@ -41,7 +41,7 @@ public:
 	void on_bind_result(bool success);
 
 protected:
-	std::auto_ptr<EurekaNodeInfo>	node_;
+	std::unique_ptr<EurekaNodeInfo>	node_;
 
 	//连接错误次数
 	int		fail_num_;

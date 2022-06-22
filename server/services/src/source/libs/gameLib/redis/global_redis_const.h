@@ -8,7 +8,7 @@
 
 #define USED_REDISKEY_GLOBAL_NS using namespace rdkey::global;
 
-#define REDIS_KEYDEFINED( KEY, VAL) static char* KEY = VAL
+#define REDIS_KEYDEFINED( KEY, VAL) static const char* KEY = VAL
 
 REDISKEY_GLOBAL_NS_BEGIN
 

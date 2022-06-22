@@ -111,7 +111,7 @@ bool ConfigHelper::load_globaloption()
 EurekaConfig* ConfigHelper::load_eureka_config()
 {
 	EurekaConfig* config = new EurekaConfig();
-	std::auto_ptr<EurekaConfig> xptr(config);
+	std::unique_ptr<EurekaConfig> xptr(config);
 
 	std::string fstr = "/system/eureka_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);

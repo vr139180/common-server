@@ -8,7 +8,7 @@
 
 #define USED_REDISKEY_USER_NS using namespace rdkey::user;
 
-#define REDIS_KEYDEFINEDX( KEY, VAL) static char* KEY = VAL
+#define REDIS_KEYDEFINEDX( KEY, VAL) static const char* KEY = VAL
 
 //--------------------------------------------------------------------------------
 REDISKEY_USER_NS_BEGIN

@@ -27,7 +27,7 @@ public:
 	virtual S_INT_64 get_token() { return node_->token; }
 
 protected:
-	std::auto_ptr<ServiceNodeInfo>	node_;
+	std::shared_ptr<ServiceNodeInfo>	node_;
 };
 
 #endif	//__SERVICELINKFROM_H__

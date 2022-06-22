@@ -36,7 +36,7 @@ public:
 	virtual void heart_beat();
 
 protected:
-	std::auto_ptr<EurekaNodeInfo>	node_;
+	std::shared_ptr<EurekaNodeInfo>	node_;
 };
 
 #endif	//__EUREKALINKFROM_H__

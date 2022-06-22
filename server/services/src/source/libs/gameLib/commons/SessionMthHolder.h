@@ -78,7 +78,7 @@ void SessionMthHolder<T>::release()
 template<typename T>
 void SessionMthHolder<T>::sessions_maintnce(u64 tnow)
 {
-	std::set<T*>::iterator iter = wait_sessions_.begin(), eiter = wait_sessions_.end();
+	typename std::set<T*>::iterator iter = wait_sessions_.begin(), eiter = wait_sessions_.end();
 	for (; iter != eiter; ++iter)
 	{
 		T* p = (*iter);
@@ -118,7 +118,7 @@ NetAcceptorEvent::NetSessionPtr SessionMthHolder<T>::ask_free_netsession_mth()
 	}
 	else
 	{
-		std::set<T*>::iterator iter = free_sessions_.begin();
+		typename std::set<T*>::iterator iter = free_sessions_.begin();
 		T* pointer = (*iter);
 		free_sessions_.erase(iter);
 		//wait_sessions_.insert(pointer);

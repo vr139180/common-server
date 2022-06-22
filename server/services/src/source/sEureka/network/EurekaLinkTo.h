@@ -44,7 +44,7 @@ public:
     void on_disconnected();
 
 protected:
-	std::auto_ptr<EurekaNodeInfo>	node_;
+	std::unique_ptr<EurekaNodeInfo>	node_;
 
 	//连接错误次数
 	int		fail_num_;

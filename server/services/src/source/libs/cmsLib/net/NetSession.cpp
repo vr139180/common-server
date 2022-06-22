@@ -346,7 +346,7 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 			send_queue_.pop_front();
 		}
 
-		std::auto_ptr<BasicProtocol> p_msg( msg);
+		std::unique_ptr<BasicProtocol> p_msg( msg);
 
 		if( msg == 0) continue;
 
@@ -467,7 +467,7 @@ void NetSession::handle_write( boost::system::error_code error, size_t bytes_tra
 
 void NetSession::send_protocol( BasicProtocol* message)
 {
-	std::auto_ptr<BasicProtocol> pMsg( message);
+	std::unique_ptr<BasicProtocol> pMsg( message);
 
 	if( !is_initialized)
 		return;

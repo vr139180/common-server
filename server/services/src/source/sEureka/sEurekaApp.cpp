@@ -157,7 +157,7 @@ void sEurekaApp::uninit_network()
 
 void sEurekaApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void sEurekaApp::register_timer()
@@ -195,7 +195,7 @@ void sEurekaApp::main_loop()
 
 		//主线程只处理syscommand命令
 		CommandBase *pCmd = svrApp.pop_sys_cmd();
-		std::auto_ptr<CommandBase> a_pcmd(pCmd);
+		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 
 		if (pCmd == 0)
 		{

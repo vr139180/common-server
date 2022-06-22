@@ -1,4 +1,7 @@
 #include "OSDriverWin32.h"
+
+#ifdef EW_PLATFORM_WINDOWS
+
 #include <Windows.h>
 #include <MMSystem.h>
 #include <conio.h>
@@ -119,3 +122,5 @@ ulong OSDriverWin32::GetProcessId()
 {
     return GetCurrentProcessId();
 }
+
+#endif //EW_PLATFORM_WINDOWS

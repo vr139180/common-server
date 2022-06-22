@@ -3,7 +3,7 @@
 
 #include <cmsLib/cmsLib.h>
 
-#if defined(_WIN32)
+#if defined(_WIN32) || defined(_WIN64)
 
 	#define EW_PLATFORM_WINDOWS 1
 
@@ -12,7 +12,6 @@
 	#endif
 
 #elif (defined(__linux__) )
-
 	#define EW_PLATFORM_LINUX 1
 
 #endif
@@ -124,19 +123,5 @@ typedef std::vector<s32>            vecInt_t;
 
 #elif defined(EW_PLATFORM_FREEBSD)
 #endif
-
-//Network
-#define EWWRAND       rand()
-
-#define EW_INVALID_ID       -1
-#define EW_UNIXTIME_MAX     0x7FFFFFFF
-
-#ifndef BIT
-#define BIT( num )      ( 1 << ( num ) )
-#endif
-
-#define NET_SECURITY_MASK			0xE3A5F186B1C7D968
-#define NET_SECURITY_MASK_ZERO_H	0x00000000FFFFFFFF
-#define NET_SECURITY_MASK_ZERO_L	0xFFFFFFFF00000000
 
 #endif // __GLOBALSETTINGS_H__

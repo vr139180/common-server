@@ -172,7 +172,7 @@ CommandBase* ServerAppBase::pop_sys_cmd()
 
 void ServerAppBase::regist_syscmd( CommandBase* p)
 {
-	std::auto_ptr<CommandBase> p_p( p);
+	std::unique_ptr<CommandBase> p_p( p);
 
 	if( will_quit_app_) return;
 
@@ -182,7 +182,7 @@ void ServerAppBase::regist_syscmd( CommandBase* p)
 
 void ServerAppBase::regist_netcmd( CommandBase *p)
 {
-	std::auto_ptr<CommandBase> p_p( p);
+	std::unique_ptr<CommandBase> p_p( p);
 
 	if( will_quit_app_) return;
 
@@ -193,7 +193,7 @@ void ServerAppBase::regist_netcmd( CommandBase *p)
 
 void ServerAppBase::regist_usercmd( CommandBase *p)
 {
-	std::auto_ptr<CommandBase> p_p( p);
+	std::unique_ptr<CommandBase> p_p( p);
 
 	if( will_quit_app_) return;
 

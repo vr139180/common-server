@@ -177,7 +177,7 @@ void JobSystem<TF>::do_mainthread()
 
 	JobMTBase* pcmd =pop_maincmd();
 
-	std::auto_ptr<JobMTBase> a_pcmd( pcmd);
+	std::unique_ptr<JobMTBase> a_pcmd( pcmd);
 
 	if( pcmd == 0)
 		return;

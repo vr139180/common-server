@@ -16,7 +16,7 @@ ServiceLinkFrom::ServiceLinkFrom():NetLinkFromBase<EurekaSession>()
 
 void ServiceLinkFrom::reset()
 {
-	node_.reset(0);
+	node_.reset();
 	NetLinkFromBase<EurekaSession>::reset();
 }
 
@@ -34,7 +34,7 @@ void ServiceLinkFrom::on_connect_lost_netthread()
 
 void ServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 
 	//需要主线程处理的，在这里明确定义处理函数
 	if (proiid == ERK_PROTYPE::ERK_SERVICEREGIST_CONFIRM)

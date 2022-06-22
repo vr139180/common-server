@@ -16,3 +16,7 @@ boost_1_78_0
 #window platform编译要求
 vs2017
 64bit,mt
+
+#centos7.9
+gcc-4.8.5
+cmake-3.22.2

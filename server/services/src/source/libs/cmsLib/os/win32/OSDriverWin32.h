@@ -1,8 +1,11 @@
 #ifndef OSDRIVERWIN32_H
 #define OSDRIVERWIN32_H
 
-#include <cmsLib/OSDriver.h>
 #include <cmsLib/GlobalSettings.h>
+
+#ifdef EW_PLATFORM_WINDOWS
+
+#include <cmsLib/OSDriver.h>
 
 class OSDriverWin32 : public OSDriver
 {
@@ -32,5 +35,7 @@ public:
 private:
     u64                     mNowTickTime;
 };
+
+#endif //EW_PLATFORM_WINDOWS
 
 #endif // OSDRIVERWIN32_H

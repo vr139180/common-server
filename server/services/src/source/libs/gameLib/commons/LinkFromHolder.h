@@ -27,7 +27,8 @@ public:
 	{
 		ThreadLockWrapper guard(lock_);
 
-		for (boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin(); iter != online_links_.end(); ++iter)
+		typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
+		for (; iter != online_links_.end(); ++iter)
 		{
 			M* msg = new M();
 			msg->CopyFrom(*pro);
@@ -70,7 +71,8 @@ void LinkFromHolder<T>::uninit_holder()
 	online_links_.clear();
 	free_links_.clear();
 
-	for (std::list<T*>::iterator iter = all_service_link_.begin(); iter != all_service_link_.end(); ++iter)
+	typename std::list<T*>::iterator iter = all_service_link_.begin();
+	for (; iter != all_service_link_.end(); ++iter)
 	{
 		delete (*iter);
 	}
@@ -90,7 +92,7 @@ T* LinkFromHolder<T>::ask_free_link()
 	}
 	else
 	{
-		std::set<T*>::iterator iter = free_links_.begin();
+		typename std::set<T*>::iterator iter = free_links_.begin();
 		ret = (*iter);
 		free_links_.erase(iter);
 	}
@@ -121,10 +123,10 @@ T* LinkFromHolder<T>::get_servicelink_byiid(S_INT_64 iid)
 {
 	ThreadLockWrapper guard(lock_);
 
-	boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
+	typename boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
 	if (fiter == online_links_.end())
 		return 0;
 	return fiter->second;
 }
 
-#endif /__LINKFROMHOLDER_H__
+#endif //__LINKFROMHOLDER_H__

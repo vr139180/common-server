@@ -64,7 +64,7 @@ void EurekaService::thread_worker()
 
 		//服务线程只处理 netcommand, usercommand.不处理systemcommand
 		CommandBase *pCmd = svrApp.pop_net_cmd();
-		std::auto_ptr<CommandBase> a_pcmd(pCmd);
+		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 
 		if (pCmd == 0)
 		{

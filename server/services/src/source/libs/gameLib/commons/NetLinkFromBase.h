@@ -1,6 +1,7 @@
 #ifndef __NETLINKFROMBASE_H__
 #define __NETLINKFROMBASE_H__
 
+#include <google/protobuf/map.h>
 #include <boost/unordered_map.hpp>
 #include <cmsLib/prolib/core_type.h>
 #include <cmsLib/prolib/BasicProtocol.h>
@@ -35,7 +36,7 @@ public:
 	std::string get_ext_bykey(const char* key);
 
 	void send_protocol( BasicProtocol* pro){
-		std::auto_ptr<BasicProtocol> p_msg( pro);
+		std::unique_ptr<BasicProtocol> p_msg( pro);
 		if( session_ == 0)
 			return;
 
@@ -86,9 +87,9 @@ void NetLinkFromBase<T>::set_linkbase_info(S_INT_64 id, S_INT_64 token,
 	this->iid_ = id;
 	this->token_ = token;
 
-	if (e.size() > 0)
+	if( !e.empty())
 	{
-		boost::unordered_map<std::string, std::string> ets( e.begin(), e.end());
+		boost::unordered_map<std::string, std::string> ets( e.cbegin(), e.cend());
 		this->set_exts(ets);
 	}
 }

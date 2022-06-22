@@ -74,7 +74,7 @@ protected:
 
 protected:
 	//network
-	std::auto_ptr<NetAcceptor>				acceptor_;
+	std::shared_ptr<NetAcceptor>			acceptor_;
 
 	SessionMthHolder<EurekaSession>			session_from_;
 

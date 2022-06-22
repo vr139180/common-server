@@ -318,7 +318,7 @@ bool RedisClient::set_hashobject(const char* hkey, const char* field,
 {
 	try
 	{
-		int cs = obj->ByteSize();
+		int cs = obj->ByteSizeLong();
 		if (!obj->SerializeToArray(cache->data(), cs))
 			return false;
 
@@ -380,7 +380,7 @@ bool RedisClient::add(const char* key, google::protobuf::Message* obj, RedisProt
 {
 	try
 	{
-		int cs = obj->ByteSize();
+		int cs = obj->ByteSizeLong();
 		if (!obj->SerializeToArray(cache->data(), cs))
 			return false;
 
