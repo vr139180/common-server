@@ -52,7 +52,7 @@ bool GameServiceApp::load_config()
 GameConfig* GameServiceApp::load_gameconfig()
 {
 	GameConfig* config = new GameConfig();
-	std::auto_ptr<GameConfig> xptr(config);
+	std::unique_ptr<GameConfig> xptr(config);
 
 	std::string fstr = "/system/game_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
@@ -146,7 +146,7 @@ void GameServiceApp::uninit_network()
 
 void GameServiceApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void GameServiceApp::register_timer()
@@ -185,7 +185,7 @@ void GameServiceApp::main_loop()
 		app_timer_.timer_tick();
 
 		CommandBase *pCmd =pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd( pCmd);
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
 
 		if( pCmd == 0)
 		{

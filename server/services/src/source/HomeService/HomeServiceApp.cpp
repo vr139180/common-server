@@ -56,7 +56,7 @@ bool HomeServiceApp::load_config()
 HomeConfig* HomeServiceApp::load_homeconfig()
 {
 	HomeConfig* config = new HomeConfig();
-	std::auto_ptr<HomeConfig> xptr(config);
+	std::unique_ptr<HomeConfig> xptr(config);
 
 	std::string fstr = "/system/home_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
@@ -190,7 +190,7 @@ void HomeServiceApp::uninit_network()
 
 void HomeServiceApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void HomeServiceApp::register_timer()
@@ -237,7 +237,7 @@ void HomeServiceApp::main_loop()
 		app_timer_.timer_tick();
 
 		CommandBase *pCmd =pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd( pCmd);
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
 
 		if( pCmd == 0)
 		{

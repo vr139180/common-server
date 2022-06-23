@@ -80,7 +80,7 @@ void RouterServiceLinkTo::on_connect_lost_netthread()
 
 void RouterServiceLinkTo::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	if (proiid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK)
 	{
 		PRO::Svr_ServiceBindService_ack *ack = dynamic_cast<PRO::Svr_ServiceBindService_ack*>(pro);

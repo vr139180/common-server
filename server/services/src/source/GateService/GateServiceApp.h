@@ -95,7 +95,7 @@ protected:
 	GateBindHomeStep	bind_home_step;
 
 	//network
-	std::auto_ptr<NetAcceptor>		acceptor_;
+	std::shared_ptr<NetAcceptor>	acceptor_;
 	SessionMthHolder<GateSession>	session_from_;
 
 	LinkToHolder<RouterServiceLinkTo>	router_link_mth_;

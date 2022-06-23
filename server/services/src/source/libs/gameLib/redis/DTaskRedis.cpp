@@ -1,6 +1,5 @@
 #include "gameLib/redis/DTaskRedis.h"
 
-#include <boost/json.hpp>
 #include <cmsLib/json/JSONUtil.h>
 #include <cmsLib/util/Random.h>
 #include <cmsLib/base/OSSystem.h>

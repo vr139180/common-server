@@ -11,7 +11,7 @@ USE_PROTOCOL_NAMESPACE
 
 void MailModule::process_mail_msg(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	if (proiid == MAIL_PROTYPE::MAIL_SYSTEMMAIL_REQ)
 	{
 		svrApp.send_protocal_to_mail_circle(p_msg.release());

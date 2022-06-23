@@ -1,5 +1,9 @@
 #include "cmsLib/json/JSONUtil.h"
 
+#if defined(EW_PLATFORM_LINUX)
+#include <boost/json/src.hpp>
+#endif
+
 S_INT_64 JSONUtil::get_int64(boost::json::object& obj, const char* name, S_INT_64 def)
 {
 	try {

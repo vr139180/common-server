@@ -37,7 +37,7 @@ protected:
 			return;
 
 		try {
-			std::auto_ptr<sql::ResultSet> rs;
+			std::unique_ptr<sql::ResultSet> rs;
 
 			while (ps->getMoreResults()) {
 				rs.reset(ps->getResultSet());

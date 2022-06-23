@@ -21,7 +21,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 {
 	bool bauto = p_connection->getAutoCommit();
 
-	std::auto_ptr< sql::PreparedStatement > prep_stmt;
+	std::unique_ptr< sql::PreparedStatement > prep_stmt;
 	try
 	{
 		p_connection->setAutoCommit(false);
@@ -60,7 +60,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 			"select ver_, role_iid,user_iid,nickname,from_unixtime(registime) from role_baseinfo where user_iid = ?;"));
 		prep_stmt->setInt64(1, user_iid_);
 
-		std::auto_ptr<sql::ResultSet> res(prep_stmt->executeQuery());
+		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery());
 		roles_data_.load_from_database(*res.get());
 
 		release_dboperator(prep_stmt.get());

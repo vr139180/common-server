@@ -20,7 +20,7 @@ void GamePlayer::on_connect_lost_netthread()
 
 void GamePlayer::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 
 	if (proiid == PRO::USER_ROLECREATE_REQ || proiid == PRO::USER_ROLESELECT_REQ)
 	{

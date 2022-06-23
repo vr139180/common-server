@@ -19,14 +19,14 @@ void LoadUserInfoCmd::reuse_cmd(S_INT_64 uid, S_INT_64 token)
 
 void LoadUserInfoCmd::run_in_db_thread(sql::Connection* p_connection)
 {
-	std::auto_ptr< sql::Statement > prep_stmt;
+	std::unique_ptr< sql::Statement > prep_stmt;
 	try
 	{
 		prep_stmt.reset(p_connection->createStatement());
 		std::stringstream sql;
 		sql << "CALL get_role_data(" << role_iid_ << ");";
 
-		std::auto_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
+		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
 		//role baseinfo
 		if (res.get() != 0)
 		{

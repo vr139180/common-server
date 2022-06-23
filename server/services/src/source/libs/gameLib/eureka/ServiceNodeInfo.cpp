@@ -1,6 +1,5 @@
 #include "gameLib/eureka/ServiceNodeInfo.h"
 
-#include <boost/json.hpp>
 #include <cmsLib/json/JSONUtil.h>
 
 ServiceNodeInfo::ServiceNodeInfo() :iid(0)

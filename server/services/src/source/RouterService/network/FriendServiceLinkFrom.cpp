@@ -27,7 +27,7 @@ void FriendServiceLinkFrom::on_connect_lost_netthread()
 
 void FriendServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	
 	if (proiid == PRO::FRIEND_PROTYPE::FRD_FRIENDCHANGEOTHER_NTF)
 	{

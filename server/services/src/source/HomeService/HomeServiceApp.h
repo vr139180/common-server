@@ -105,7 +105,7 @@ protected:
 	LinkToHolder<ResClusterLinkTo>		res_link_mth_;
 
 	//network
-	std::auto_ptr<NetAcceptor>			acceptor_;
+	std::shared_ptr<NetAcceptor>			acceptor_;
 	SessionMthHolder<HomeSession>		session_from_;
 
 	boost::thread_specific_ptr<RedisClient>	redis_inthread_;

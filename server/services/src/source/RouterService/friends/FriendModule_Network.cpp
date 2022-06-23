@@ -11,7 +11,7 @@ USE_PROTOCOL_NAMESPACE
 
 void FriendModule::process_friend_msg(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	S_INT_64 uid = 0;
 	ProtoUtil::get_useriid_from_token(pro, uid);
 

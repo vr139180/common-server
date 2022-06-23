@@ -20,3 +20,7 @@ vs2017
 #centos7.9
 gcc-4.8.5
 cmake-3.22.2
+
+yum install mysql-devel
+yum install openssl-devel
+yum install python3-devel

@@ -24,7 +24,7 @@ void ChatServiceLinkFrom::on_connect_lost_netthread()
 
 void ChatServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	if (proiid == PRO::CHAT_PROTYPE::CHAT_GLOBALMSG_NTF)
 	{
 		PRO::Chat_GlobalMsg_ntf *ntf = dynamic_cast<PRO::Chat_GlobalMsg_ntf*>(pro);

@@ -38,7 +38,7 @@ public:
     void on_disconnected();
 
 protected:
-	std::auto_ptr<ServiceNodeInfo>	node_;
+	std::shared_ptr<ServiceNodeInfo>	node_;
 
 	S_INT_64 bind_token_;
 };

@@ -55,7 +55,7 @@ bool GateServiceApp::load_config()
 GateConfig* GateServiceApp::load_gateconfig()
 {
 	GateConfig* config = new GateConfig();
-	std::auto_ptr<GateConfig> xptr(config);
+	std::unique_ptr<GateConfig> xptr(config);
 
 	std::string fstr = "/system/gate_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
@@ -160,7 +160,7 @@ void GateServiceApp::uninit_network()
 
 void GateServiceApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void GateServiceApp::register_timer()
@@ -204,7 +204,7 @@ void GateServiceApp::main_loop()
 		app_timer_.timer_tick();
 
 		CommandBase *pCmd =pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd( pCmd);
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
 
 		if( pCmd == 0)
 		{

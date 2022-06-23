@@ -11,7 +11,7 @@ USE_PROTOCOL_NAMESPACE
 
 void ChatModule::process_chat_msg(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	if (proiid == CHAT_PROTYPE::CHAT_CUSTOMCHANNELID_REQ)
 	{
 		Chat_CustomChannelId_req* req = dynamic_cast<Chat_CustomChannelId_req*>(pro);

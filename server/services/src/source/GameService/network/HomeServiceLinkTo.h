@@ -35,7 +35,7 @@ public:
     void on_disconnected();
 
 protected:
-	std::auto_ptr<ServiceNodeInfo>	node_;
+	std::shared_ptr<ServiceNodeInfo>	node_;
 };
 
 #endif	//__HOMESERVICELINKTO_H__

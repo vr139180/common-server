@@ -50,7 +50,7 @@ void RouterSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 	}
 	else
 	{
-		std::auto_ptr<BasicProtocol> p_msg(pro);
+		std::unique_ptr<BasicProtocol> p_msg(pro);
 		if (is_auth() && parent_)
 			parent_->on_recv_protocol_netthread(proiid, p_msg.release());
 	}

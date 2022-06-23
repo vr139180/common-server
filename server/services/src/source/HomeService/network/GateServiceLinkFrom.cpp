@@ -25,7 +25,7 @@ void GateServiceLinkFrom::on_connect_lost_netthread()
 
 void GateServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
 {
-	std::auto_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<BasicProtocol> p_msg(pro);
 	if (proiid == PRO::ERK_PROTYPE::SVR_GATEBINDHOME_CONFIRM)
 	{
 		NETCMD_FUN_MAP fun = boost::bind(

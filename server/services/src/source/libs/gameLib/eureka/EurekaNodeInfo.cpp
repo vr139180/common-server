@@ -1,6 +1,5 @@
 #include "gameLib/eureka/EurekaNodeInfo.h"
 
-#include <boost/json.hpp>
 #include <cmsLib/json/JSONUtil.h>
 
 EurekaNodeInfo::EurekaNodeInfo():iid( 0)

@@ -97,8 +97,8 @@ protected:
 	bool							is_ready_;
 
 	//network
-	std::auto_ptr<NetAcceptor>		acceptor_;
-	SessionMthHolder<RouterSession>	session_from_;
+	std::shared_ptr<NetAcceptor>		acceptor_;
+	SessionMthHolder<RouterSession>		session_from_;
 
 	LinkFromHolder<GateServiceLinkFrom>	gate_links_from_;
 

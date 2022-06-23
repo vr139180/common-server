@@ -13,7 +13,7 @@ LoadUserRolesCmd::LoadUserRolesCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p
 
 void LoadUserRolesCmd::run_in_db_thread(sql::Connection* p_connection)
 {
-	std::auto_ptr< sql::Statement > prep_stmt;
+	std::unique_ptr< sql::Statement > prep_stmt;
 	try
 	{
 		prep_stmt.reset(p_connection->createStatement());
@@ -21,7 +21,7 @@ void LoadUserRolesCmd::run_in_db_thread(sql::Connection* p_connection)
 		std::stringstream sql;
 		sql << "select ver_,role_iid,user_iid,nickname,from_unixtime(registime) from role_baseinfo where user_iid = " << user_iid_ << ";";
 
-		std::auto_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
+		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
 		//role list
 		if (res.get() != 0)
 		{

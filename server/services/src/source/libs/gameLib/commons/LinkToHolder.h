@@ -26,7 +26,7 @@ public:
 	{
 		ThreadLockWrapper guard(lock_);
 
-		for (std::vector<T*>::iterator iter = online_links_.begin(); iter != online_links_.end(); ++iter)
+		for( typename std::vector<T*>::iterator iter = online_links_.begin(); iter != online_links_.end(); ++iter)
 		{
 			M* msg = new M();
 			msg->CopyFrom(*pro);
@@ -89,7 +89,7 @@ void LinkToHolder<T>::release()
 	wait_links_.clear();
 	free_links_.clear();
 
-	for (std::list<T*>::iterator iter = links_cache_.begin(); iter != links_cache_.end(); ++iter)
+	for( typename std::list<T*>::iterator iter = links_cache_.begin(); iter != links_cache_.end(); ++iter)
 	{
 		delete (*iter);
 	}
@@ -116,7 +116,7 @@ void LinkToHolder<T>::connect_to()
 	if (wait_links_.size() == 0)
 		return;
 
-	for (std::set<T*>::iterator iter = wait_links_.begin(); iter != wait_links_.end(); ++iter)
+	for( typename std::set<T*>::iterator iter = wait_links_.begin(); iter != wait_links_.end(); ++iter)
 	{
 		T* pnode = (*iter);
 		pnode->connect();
@@ -166,7 +166,7 @@ void LinkToHolder<T>::on_linkto_disconnected(T* plink)
 	service_process_iid.erase(plink->get_iid());
 
 	{
-		std::vector<T*>::iterator fiter = std::find(online_links_.begin(), online_links_.end(), plink);
+		typename std::vector<T*>::iterator fiter = std::find(online_links_.begin(), online_links_.end(), plink);
 		if (fiter != online_links_.end())
 			online_links_.erase(fiter);
 	}
@@ -194,7 +194,7 @@ void LinkToHolder<T>::on_linkto_regist_result( T* plink)
 
 	service_process_iid.insert(plink->get_iid());
 
-	std::vector<T*>::iterator fiter = std::find(online_links_.begin(), online_links_.end(), plink);
+	typename std::vector<T*>::iterator fiter = std::find(online_links_.begin(), online_links_.end(), plink);
 	if (fiter == online_links_.end())
 		online_links_.push_back(plink);
 }
@@ -225,7 +225,7 @@ void LinkToHolder<T>::sync_eureka_services(std::list<ServiceNodeInfo*>& nodes, s
 			}
 			else
 			{
-				std::set<T*>::iterator fiter = free_links_.begin();
+				typename std::set<T*>::iterator fiter = free_links_.begin();
 				newnode = (*fiter);
 				free_links_.erase(fiter);
 

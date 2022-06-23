@@ -41,7 +41,7 @@ void GateServiceApp::on_mth_gatebindhome_ack(bool succ, ServiceNodeInfo* pnode, 
 {
 	if (succ)
 	{
-		std::auto_ptr<ServiceNodeInfo> ptr(pnode);
+		std::unique_ptr<ServiceNodeInfo> ptr(pnode);
 		if (gateid != EurekaClusterClient::instance().get_myiid() || bind_home_step != GateBindHomeStep::GateBindHome_AskBind)
 			return;
 

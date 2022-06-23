@@ -11,7 +11,7 @@
 		#define _WIN32_WINNT 0x0600
 	#endif
 
-#elif (defined(__linux__) )
+#else
 	#define EW_PLATFORM_LINUX 1
 
 #endif

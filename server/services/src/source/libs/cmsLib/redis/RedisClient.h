@@ -2,7 +2,8 @@
 #define __REDISCLIENT_H__
 
 #include <sw/redis++/redis++.h>
-#include <boost/json.hpp>
+
+#include <cmsLib/json/JSONUtil.h>
 #include <boost/unordered_map.hpp>
 #include <google/protobuf/message.h>
 

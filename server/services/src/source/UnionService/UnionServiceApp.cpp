@@ -52,7 +52,7 @@ bool UnionServiceApp::load_config()
 UnionConfig* UnionServiceApp::load_unionconfig()
 {
 	UnionConfig* config = new UnionConfig();
-	std::auto_ptr<UnionConfig> xptr(config);
+	std::unique_ptr<UnionConfig> xptr(config);
 
 	std::string fstr = "/system/union_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
@@ -150,7 +150,7 @@ void UnionServiceApp::uninit_network()
 
 void UnionServiceApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void UnionServiceApp::register_timer()
@@ -189,7 +189,7 @@ void UnionServiceApp::main_loop()
 		app_timer_.timer_tick();
 
 		CommandBase *pCmd =pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd( pCmd);
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
 
 		if( pCmd == 0)
 		{

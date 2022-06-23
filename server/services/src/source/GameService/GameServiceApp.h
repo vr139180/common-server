@@ -67,7 +67,7 @@ protected:
 protected:
 	bool	is_ready_;
 	//network
-	std::auto_ptr<NetAcceptor>		acceptor_;
+	std::shared_ptr<NetAcceptor>	acceptor_;
 	SessionMthHolder<GameSession>	session_from_;
 
 	boost::scoped_ptr<GameConfig>	conf_;

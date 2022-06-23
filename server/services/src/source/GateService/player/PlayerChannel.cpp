@@ -41,7 +41,7 @@ void PlayerChannel::thread_worker()
 		OSSystem::mOS->UpdateNowTick();
 
 		CommandBase *pCmd = pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd(pCmd);
+		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 
 		if (pCmd == 0)
 		{

@@ -18,9 +18,9 @@ public:
 	void finish();
 
 protected:
-	std::auto_ptr<sql::Connection>	p_mysql_connection_;
-	DBSCtrl*						parent_;
-	bool							finished_;
+	std::shared_ptr<sql::Connection>	p_mysql_connection_;
+	DBSCtrl*							parent_;
+	bool								finished_;
 };
 
 #endif //__DBTHREAD_H__

@@ -1,10 +1,14 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     6/1/2022 12:01:34 PM                         */
+/* Created on:     6/23/2022 10:14:25 AM                        */
 /*==============================================================*/
 
 
 drop procedure if exists get_role_data;
+
+drop table if exists friend_invites;
+
+drop table if exists friend_relationship;
 
 drop table if exists pet_system;
 
@@ -26,7 +30,60 @@ drop table if exists user_mailbox;
 
 drop table if exists user_pets;
 
+drop table if exists user_sysmail;
+
 drop table if exists user_unbind_item;
+
+/*==============================================================*/
+/* Table: friend_invites                                        */
+/*==============================================================*/
+create table friend_invites
+(
+   iid                  bigint not null auto_increment,
+   from_roleiid         bigint not null comment '邀请人',
+   to_roleiid           bigint not null comment '被邀请人',
+   invite_time          timestamp not null comment '邀请时间',
+   primary key (iid)
+)
+engine =  innodb;
+
+alter table friend_invites comment '用户好友邀请
+确认之后，无论同意或者拒绝，删除相关的邀请';
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create unique index index_2 on friend_invites
+(
+   from_roleiid,
+   to_roleiid
+);
+
+/*==============================================================*/
+/* Table: friend_relationship                                   */
+/*==============================================================*/
+create table friend_relationship
+(
+   iid                  bigint not null auto_increment,
+   myself_iid           bigint not null comment '本人',
+   friend_iid           bigint not null comment '好友',
+   createtime           timestamp not null comment '创建时间',
+   primary key (iid)
+)
+engine =  innodb;
+
+alter table friend_relationship comment '好友关系
+一对好友关系有2个记录
+a-b,b-a';
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create unique index index_2 on friend_relationship
+(
+   myself_iid,
+   friend_iid
+);
 
 /*==============================================================*/
 /* Table: pet_system                                            */
@@ -40,7 +97,7 @@ create table pet_system
    pet_name             varchar(32) not null,
    primary key (pet_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -62,7 +119,7 @@ create table role_baseinfo
    ver_                 int unsigned not null default 1,
    primary key (role_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -85,7 +142,7 @@ create table sys_mail
    createtime           timestamp not null default current_timestamp comment '创建时间',
    primary key (iid)
 )
-type = innodb;
+engine =  innodb;
 
 alter table sys_mail comment '存放系统邮件
 例如各类补偿邮件，用户需要主动的获取';
@@ -109,7 +166,7 @@ create table user_account
    state                smallint not null default 0 comment '0:normal 1:禁用 2::删除',
    primary key (user_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -125,15 +182,15 @@ create unique index index_1 on user_account
 create table user_bag_item
 (
    iid                  bigint not null,
-   role_iid             bigint not null,
    ver_                 int unsigned not null default 1,
+   role_iid             bigint not null,
    itype                int not null default 0 comment '物品类型',
    item_resiid          int not null default 0 comment '物品编号',
    item_num             int not null default 0 comment '物品数量',
    slot_num             int not null default 1 comment '占用格子数',
    primary key (iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -166,7 +223,7 @@ create table user_home
    ver_                 int unsigned not null default 1,
    primary key (role_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -190,7 +247,7 @@ create table user_home_structure
    ver_                 int unsigned not null default 1,
    primary key (building_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -206,6 +263,7 @@ create unique index index_1 on user_home_structure
 create table user_mail
 (
    iid                  bigint not null auto_increment,
+   ver_                 int unsigned not null default 1,
    stype                int not null comment '0系统邮件 1工会邮件',
    sender_iid           bigint not null default 0 comment '发送人 stype=1 工会id',
    receiver_iid         bigint not null comment '接收人',
@@ -217,7 +275,7 @@ create table user_mail
    readtime             timestamp comment '邮件读取时间,linux时间',
    primary key (iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -253,12 +311,9 @@ create table user_mailbox
    ver_                 int unsigned not null default 1,
    sysmail_sync         bigint not null default 0 comment '最后同步的系统邮件id',
    lastlist_mail        bigint not null default 0 comment '最后获取的邮件iid，用来计算新邮件通知',
-   offline_mail         bigint not null default 0 comment '最新的一个离线邮件id，如果用户未在线，通过这个计算新邮件',
-   unread_num           int not null default 0 comment '未读邮件数',
-   totle_num            int not null default 0 comment '总的邮件数',
    primary key (role_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -281,7 +336,7 @@ create table user_pets
    ver_                 int unsigned not null default 1,
    primary key (mypet_iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */
@@ -289,6 +344,29 @@ type = innodb;
 create unique index index_1 on user_pets
 (
    mypet_iid
+);
+
+/*==============================================================*/
+/* Table: user_sysmail                                          */
+/*==============================================================*/
+create table user_sysmail
+(
+   iid                  bigint not null auto_increment,
+   role_iid             bigint not null comment 'role_iid一致',
+   sys_mailiid          bigint not null default 0 comment 'system mail iid',
+   primary key (iid)
+)
+engine =  innodb;
+
+alter table user_sysmail comment '用户已获取的系统邮件';
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create unique index index_2 on user_sysmail
+(
+   role_iid,
+   sys_mailiid
 );
 
 /*==============================================================*/
@@ -306,7 +384,7 @@ create table user_unbind_item
    createtime           timestamp not null comment '创建时间',
    primary key (iid)
 )
-type = innodb;
+engine =  innodb;
 
 /*==============================================================*/
 /* Index: index_1                                               */

@@ -52,7 +52,7 @@ bool RouterServiceApp::load_config()
 RouterConfig* RouterServiceApp::load_routerconfig()
 {
 	RouterConfig* config = new RouterConfig();
-	std::auto_ptr<RouterConfig> xptr(config);
+	std::unique_ptr<RouterConfig> xptr(config);
 
 	std::string fstr = "/system/router_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
@@ -173,7 +173,7 @@ void RouterServiceApp::uninit_network()
 
 void RouterServiceApp::uninit()
 {
-	acceptor_.reset(0);
+	acceptor_.reset();
 }
 
 void RouterServiceApp::register_timer()
@@ -212,7 +212,7 @@ void RouterServiceApp::main_loop()
 		app_timer_.timer_tick();
 
 		CommandBase *pCmd =pop_one_cmd();
-		std::auto_ptr<CommandBase> a_pcmd( pCmd);
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
 
 		if( pCmd == 0)
 		{
