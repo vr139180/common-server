@@ -40,5 +40,6 @@ require (
 )
 
 replace cmslib => D:\workspace\common_server\server\go\src\cmslib
-
 replace gamelib => D:\workspace\common_server\server\go\src\gamelib
+//replace cmslib => /datas/go/src/cmslib
+//replace gamelib => /datas/go/src/gamelib

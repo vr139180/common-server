@@ -1,4 +1,5 @@
 #环境变量设置
+#####################################windows###################################
 
 GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn
@@ -30,3 +31,17 @@ GOPROXY=https://goproxy.cn,direct
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	
 githua token :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
+
+#build linux version
+SET CGO_ENABLED=0
+SET GOOS=linux
+SET GOARCH=amd64
+go build xxxx
+
+#####################################centos7 安装go1.17.6##########################################
+wget https://go.dev/dl/go1.17.6.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+export GO111MODULE=on
+export GOROOT=/usr/local/go
+export GOPATH=/home/gopath
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

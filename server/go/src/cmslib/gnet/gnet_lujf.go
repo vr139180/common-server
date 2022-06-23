@@ -2,50 +2,10 @@ package gnet
 
 import (
 	"cmslib/gnet/pkg/errors"
-	"fmt"
-	"net"
 	"strings"
-	"time"
 
 	"google.golang.org/protobuf/proto"
 )
-
-// SH:Lujf:SH
-// 连接到其他服务器的connect,为了公用eventloop处理机制
-func (s Server) ConnectTo(ip string, port int, ns NetSession) error {
-	address := fmt.Sprintf("%s:%d", ip, port)
-
-	c, err := net.Dial("tcp", address)
-	if err != nil {
-		return err
-	}
-
-	if _, ok := c.(*net.TCPConn); !ok {
-		return errors.ErrClientOnlySupportTCP
-	}
-
-	el := s.svr.lb.next(c.RemoteAddr())
-	conn := newTCPConn(c, el)
-	// bind each other
-	conn.SetContext(ns)
-	ns.SetConn(conn)
-
-	el.ch <- conn
-	go func() {
-		var buffer [0x10000]byte
-		for {
-			n, err := c.Read(buffer[:])
-			if err != nil {
-				_ = c.SetReadDeadline(time.Time{})
-				el.ch <- &stderr{conn, err}
-				return
-			}
-			el.ch <- packTCPConn(conn, buffer[:n])
-		}
-	}()
-
-	return nil
-}
 
 // gnet Conn Context绑定用，用来标识连接
 type NetSession interface {
@@ -148,5 +108,3 @@ func (s *BaseNetSession) OnClose() {
 
 func (s *BaseNetSession) OnRecvMessage(id int, pro proto.Message) {
 }
-
-// SH:Lujf:SH

@@ -19,6 +19,9 @@
 package gnet
 
 import (
+	"bytes"
+	"encoding/binary"
+	"errors"
 	"net"
 	"os"
 
@@ -32,6 +35,8 @@ import (
 	bsPool "cmslib/gnet/pkg/pool/byteslice"
 	rbPool "cmslib/gnet/pkg/pool/ringbuffer"
 	"cmslib/gnet/pkg/ringbuffer"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type conn struct {
@@ -228,6 +233,80 @@ func (c *conn) writev(bs [][]byte) (err error) {
 	return
 }
 
+// SH:Lujf:SH
+// eventloop 中写消息到tcp流
+func (c *conn) writeProtobuf(pro proto.Message) (int, error) {
+	pcode, ok := c.codec.(*ProtobufCodec)
+	if !ok {
+		return 0, errors.New("codec not support ProtobufCodec")
+	}
+
+	len2 := uint32(proto.Size(pro))
+
+	id, err := pcode.Factory.ProtoToId(pro)
+	if err != nil {
+		return 0, err
+	}
+
+	var sid uint32 = uint32(id)
+	slen := len2<<16 | sid
+
+	outFrame := bytes.NewBuffer([]byte{})
+	binary.Write(outFrame, binary.LittleEndian, slen)
+
+	data, err := proto.Marshal(pro)
+	if err != nil {
+		return 0, err
+	}
+
+	binary.Write(outFrame, binary.LittleEndian, data)
+
+	dats := outFrame.Bytes()
+
+	defer c.loop.eventHandler.AfterWrite(c, dats)
+
+	c.loop.eventHandler.PreWrite(c)
+
+	// If there is pending data in outbound buffer, the current data ought to be appended to the outbound buffer
+	// for maintaining the sequence of network packets.
+	n := 0
+	if !c.outboundBuffer.IsEmpty() {
+		n, err = c.outboundBuffer.Write(dats)
+		return n, err
+	}
+
+	if n, err = unix.Write(c.fd, dats); err != nil {
+		// A temporary error occurs, append the data to outbound buffer, writing it back to the peer in the next round.
+		if err == unix.EAGAIN {
+			n, _ = c.outboundBuffer.Write(dats)
+			err = c.loop.poller.ModReadWrite(c.pollAttachment)
+			return n, err
+		}
+
+		c.loop.closeConn(c, os.NewSyscallError("write", err))
+		return 0, err
+	}
+	// Failed to send all data back to the peer, buffer the leftover data for the next round.
+	if n < int(len(dats)) {
+		_, _ = c.outboundBuffer.Write(dats[n:])
+		err = c.loop.poller.ModReadWrite(c.pollAttachment)
+	}
+
+	return n, err
+}
+
+// SH:Lujf:SH
+func (c *conn) asyncWriteProtobuf(itf interface{}) error {
+	if !c.opened {
+		return nil
+	}
+
+	_, err := c.writeProtobuf(itf.(proto.Message))
+	return err
+}
+
+// SH
+
 func (c *conn) asyncWrite(itf interface{}) error {
 	if !c.opened {
 		return nil
@@ -328,6 +407,14 @@ func (c *conn) LocalAddr() net.Addr        { return c.localAddr }
 func (c *conn) RemoteAddr() net.Addr       { return c.remoteAddr }
 
 // ==================================== Concurrency-safe API's ====================================
+//+ SH:Lujf:SH
+// 发送protobuf协议，在发送时构造字节流
+func (c *conn) AsyncWriteProtobuf(pro proto.Message) error {
+	c.loop.poller.Trigger(c.asyncWriteProtobuf, pro)
+	return nil
+}
+
+//- SH:Lujf:SH
 
 func (c *conn) AsyncWrite(buf []byte) error {
 	return c.loop.poller.Trigger(c.asyncWrite, buf)

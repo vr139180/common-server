@@ -30,3 +30,4 @@ require (
 )
 
 replace cmslib => D:\workspace\common_server\server\go\src\cmslib
+//replace cmslib => /datas/go/src/cmslib
