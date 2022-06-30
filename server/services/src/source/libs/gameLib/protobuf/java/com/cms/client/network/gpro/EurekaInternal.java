@@ -176,37 +176,38 @@ public final class EurekaInternal {
       "\001 \001(\005\022\r\n\005exits\030\002 \003(\003\"m\n\030Erk_ServiceSubsc" +
       "ribe_ack\022\r\n\005myiid\030\001 \001(\003\022\020\n\010svr_type\030\002 \001(" +
       "\005\022\037\n\006online\030\003 \003(\0132\017.PRO.ServerNode\022\017\n\007of" +
-      "fline\030\004 \003(\003\"*\n\027Erk_ServiceShutdown_ntf\022\017" +
-      "\n\007service\030\001 \001(\003\"\022\n\020Svr_LiveTick_ntf\"\332\001\n\032" +
-      "Svr_ServiceBindService_req\022\020\n\010svr_type\030\001" +
-      " \001(\005\022\r\n\005myiid\030\002 \001(\003\022\017\n\007mytoken\030\003 \001(\003\022;\n\006" +
-      "myexts\030\004 \003(\0132+.PRO.Svr_ServiceBindServic" +
-      "e_req.MyextsEntry\022\r\n\005toiid\030\n \001(\003\022\017\n\007toto" +
-      "ken\030\013 \001(\003\032-\n\013MyextsEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\t:\0028\001\"^\n\032Svr_ServiceBindServi" +
-      "ce_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010svr_type\030\002 \001(\005" +
-      "\022\r\n\005toiid\030\003 \001(\003\022\017\n\007totoken\030\004 \001(\003\":\n\024Svr_" +
-      "GateBindHome_req\022\017\n\007gateiid\030\001 \001(\003\022\021\n\tgat" +
-      "etoken\030\002 \001(\003\"\372\001\n\024Svr_GateBindHome_ack\022\016\n" +
-      "\006result\030\001 \001(\005\022\024\n\007gateiid\030\002 \001(\003H\000\210\001\001\022\024\n\007h" +
-      "omeiid\030\003 \001(\003H\001\210\001\001\022\026\n\thometoken\030\004 \001(\003H\002\210\001" +
-      "\001\022\023\n\006homeip\030\005 \001(\tH\003\210\001\001\022\025\n\010homeport\030\006 \001(\005" +
-      "H\004\210\001\001\022\026\n\tbindtoken\030\007 \001(\003H\005\210\001\001B\n\n\010_gateii" +
-      "dB\n\n\010_homeiidB\014\n\n_hometokenB\t\n\007_homeipB\013" +
-      "\n\t_homeportB\014\n\n_bindtoken\"b\n\030Svr_GateBin" +
-      "dHome_confirm\022\017\n\007gateiid\030\001 \001(\003\022\017\n\007homeii" +
-      "d\030\002 \001(\003\022\021\n\thometoken\030\003 \001(\003\022\021\n\tbindtoken\030" +
-      "\004 \001(\003*\317\002\n\017ERK_SERVICETYPE\022\024\n\020ERK_SERVICE" +
-      "_NONE\020\000\022\026\n\022ERK_SERVICE_EUREKA\020\001\022\023\n\017ERK_S" +
-      "ERVICE_RES\020\002\022\024\n\020ERK_SERVICE_GATE\020\003\022\024\n\020ER" +
-      "K_SERVICE_HOME\020\004\022\025\n\021ERK_SERVICE_LOGIN\020\005\022" +
-      "\025\n\021ERK_SERVICE_UNION\020\006\022\024\n\020ERK_SERVICE_GA" +
-      "ME\020\007\022\030\n\024ERK_SERVICE_DATASYNC\020\010\022\026\n\022ERK_SE" +
-      "RVICE_ROUTER\020\t\022\024\n\020ERK_SERVICE_CHAT\020\n\022\024\n\020" +
-      "ERK_SERVICE_MAIL\020\013\022\026\n\022ERK_SERVICE_FRIEND" +
-      "\020\014\022\023\n\017ERK_SERVICE_MAX\020\rBT\n\033com.cms.clien" +
-      "t.network.gproP\001Z\025gamelib/protobuf/gpro\252" +
-      "\002\033com.cms.client.network.gprob\006proto3"
+      "fline\030\004 \003(\003\"<\n\027Erk_ServiceShutdown_ntf\022\020" +
+      "\n\010svr_type\030\001 \001(\005\022\017\n\007service\030\002 \001(\003\"\022\n\020Svr" +
+      "_LiveTick_ntf\"\332\001\n\032Svr_ServiceBindService" +
+      "_req\022\020\n\010svr_type\030\001 \001(\005\022\r\n\005myiid\030\002 \001(\003\022\017\n" +
+      "\007mytoken\030\003 \001(\003\022;\n\006myexts\030\004 \003(\0132+.PRO.Svr" +
+      "_ServiceBindService_req.MyextsEntry\022\r\n\005t" +
+      "oiid\030\n \001(\003\022\017\n\007totoken\030\013 \001(\003\032-\n\013MyextsEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"^\n\032Sv" +
+      "r_ServiceBindService_ack\022\016\n\006result\030\001 \001(\005" +
+      "\022\020\n\010svr_type\030\002 \001(\005\022\r\n\005toiid\030\003 \001(\003\022\017\n\007tot" +
+      "oken\030\004 \001(\003\":\n\024Svr_GateBindHome_req\022\017\n\007ga" +
+      "teiid\030\001 \001(\003\022\021\n\tgatetoken\030\002 \001(\003\"\372\001\n\024Svr_G" +
+      "ateBindHome_ack\022\016\n\006result\030\001 \001(\005\022\024\n\007gatei" +
+      "id\030\002 \001(\003H\000\210\001\001\022\024\n\007homeiid\030\003 \001(\003H\001\210\001\001\022\026\n\th" +
+      "ometoken\030\004 \001(\003H\002\210\001\001\022\023\n\006homeip\030\005 \001(\tH\003\210\001\001" +
+      "\022\025\n\010homeport\030\006 \001(\005H\004\210\001\001\022\026\n\tbindtoken\030\007 \001" +
+      "(\003H\005\210\001\001B\n\n\010_gateiidB\n\n\010_homeiidB\014\n\n_home" +
+      "tokenB\t\n\007_homeipB\013\n\t_homeportB\014\n\n_bindto" +
+      "ken\"b\n\030Svr_GateBindHome_confirm\022\017\n\007gatei" +
+      "id\030\001 \001(\003\022\017\n\007homeiid\030\002 \001(\003\022\021\n\thometoken\030\003" +
+      " \001(\003\022\021\n\tbindtoken\030\004 \001(\003*\317\002\n\017ERK_SERVICET" +
+      "YPE\022\024\n\020ERK_SERVICE_NONE\020\000\022\026\n\022ERK_SERVICE" +
+      "_EUREKA\020\001\022\023\n\017ERK_SERVICE_RES\020\002\022\024\n\020ERK_SE" +
+      "RVICE_GATE\020\003\022\024\n\020ERK_SERVICE_HOME\020\004\022\025\n\021ER" +
+      "K_SERVICE_LOGIN\020\005\022\025\n\021ERK_SERVICE_UNION\020\006" +
+      "\022\024\n\020ERK_SERVICE_GAME\020\007\022\030\n\024ERK_SERVICE_DA" +
+      "TASYNC\020\010\022\026\n\022ERK_SERVICE_ROUTER\020\t\022\024\n\020ERK_" +
+      "SERVICE_CHAT\020\n\022\024\n\020ERK_SERVICE_MAIL\020\013\022\026\n\022" +
+      "ERK_SERVICE_FRIEND\020\014\022\023\n\017ERK_SERVICE_MAX\020" +
+      "\rBT\n\033com.cms.client.network.gproP\001Z\025game" +
+      "lib/protobuf/gpro\252\002\033com.cms.client.netwo" +
+      "rk.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -313,7 +314,7 @@ public final class EurekaInternal {
     internal_static_PRO_Erk_ServiceShutdown_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Erk_ServiceShutdown_ntf_descriptor,
-        new java.lang.String[] { "Service", });
+        new java.lang.String[] { "SvrType", "Service", });
     internal_static_PRO_Svr_LiveTick_ntf_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_PRO_Svr_LiveTick_ntf_fieldAccessorTable = new

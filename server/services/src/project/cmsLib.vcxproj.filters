@@ -22,9 +22,6 @@
     <Filter Include="system">
       <UniqueIdentifier>{a968b048-3891-4c89-9d00-1ba66a8e59ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="condition">
-      <UniqueIdentifier>{0a2a400d-febd-4524-bdd5-56a21113f2d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="jobsystem">
       <UniqueIdentifier>{b500ffcb-930c-45c8-8d99-c66e8c3f084e}</UniqueIdentifier>
     </Filter>
@@ -128,18 +125,6 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\cmsLib\system\TimerContainer.cpp">
       <Filter>system</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionElement.cpp">
-      <Filter>condition</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionLeaf.cpp">
-      <Filter>condition</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionNode.cpp">
-      <Filter>condition</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionValue.cpp">
-      <Filter>condition</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\cmsLib\encryption\md5\md5.cpp">
       <Filter>util\encryption\md5</Filter>
@@ -386,24 +371,6 @@
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\system\TimerContainer.h">
       <Filter>system</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionContext.h">
-      <Filter>condition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionElement.h">
-      <Filter>condition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionLeaf.h">
-      <Filter>condition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionNode.h">
-      <Filter>condition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionValue.h">
-      <Filter>condition</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\condition\IPropertyOperator.h">
-      <Filter>condition</Filter>
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\encryption\md5\md5.h">
       <Filter>util\encryption\md5</Filter>

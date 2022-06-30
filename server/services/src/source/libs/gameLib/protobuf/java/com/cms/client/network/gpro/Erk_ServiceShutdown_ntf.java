@@ -54,6 +54,11 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
+            svrType_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
             service_ = input.readInt64();
             break;
           }
@@ -89,14 +94,25 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Erk_ServiceShutdown_ntf.class, com.cms.client.network.gpro.Erk_ServiceShutdown_ntf.Builder.class);
   }
 
-  public static final int SERVICE_FIELD_NUMBER = 1;
-  private long service_;
+  public static final int SVR_TYPE_FIELD_NUMBER = 1;
+  private int svrType_;
   /**
    * <pre>
    *下线的服务
    * </pre>
    *
-   * <code>int64 service = 1;</code>
+   * <code>int32 svr_type = 1;</code>
+   * @return The svrType.
+   */
+  @java.lang.Override
+  public int getSvrType() {
+    return svrType_;
+  }
+
+  public static final int SERVICE_FIELD_NUMBER = 2;
+  private long service_;
+  /**
+   * <code>int64 service = 2;</code>
    * @return The service.
    */
   @java.lang.Override
@@ -118,8 +134,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (svrType_ != 0) {
+      output.writeInt32(1, svrType_);
+    }
     if (service_ != 0L) {
-      output.writeInt64(1, service_);
+      output.writeInt64(2, service_);
     }
     unknownFields.writeTo(output);
   }
@@ -130,9 +149,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (svrType_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, svrType_);
+    }
     if (service_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, service_);
+        .computeInt64Size(2, service_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -149,6 +172,8 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Erk_ServiceShutdown_ntf other = (com.cms.client.network.gpro.Erk_ServiceShutdown_ntf) obj;
 
+    if (getSvrType()
+        != other.getSvrType()) return false;
     if (getService()
         != other.getService()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -162,6 +187,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + SVR_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getSvrType();
     hash = (37 * hash) + SERVICE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getService());
@@ -302,6 +329,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      svrType_ = 0;
+
       service_ = 0L;
 
       return this;
@@ -330,6 +359,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Erk_ServiceShutdown_ntf buildPartial() {
       com.cms.client.network.gpro.Erk_ServiceShutdown_ntf result = new com.cms.client.network.gpro.Erk_ServiceShutdown_ntf(this);
+      result.svrType_ = svrType_;
       result.service_ = service_;
       onBuilt();
       return result;
@@ -379,6 +409,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Erk_ServiceShutdown_ntf other) {
       if (other == com.cms.client.network.gpro.Erk_ServiceShutdown_ntf.getDefaultInstance()) return this;
+      if (other.getSvrType() != 0) {
+        setSvrType(other.getSvrType());
+      }
       if (other.getService() != 0L) {
         setService(other.getService());
       }
@@ -411,13 +444,52 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long service_ ;
+    private int svrType_ ;
     /**
      * <pre>
      *下线的服务
      * </pre>
      *
-     * <code>int64 service = 1;</code>
+     * <code>int32 svr_type = 1;</code>
+     * @return The svrType.
+     */
+    @java.lang.Override
+    public int getSvrType() {
+      return svrType_;
+    }
+    /**
+     * <pre>
+     *下线的服务
+     * </pre>
+     *
+     * <code>int32 svr_type = 1;</code>
+     * @param value The svrType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSvrType(int value) {
+      
+      svrType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *下线的服务
+     * </pre>
+     *
+     * <code>int32 svr_type = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSvrType() {
+      
+      svrType_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long service_ ;
+    /**
+     * <code>int64 service = 2;</code>
      * @return The service.
      */
     @java.lang.Override
@@ -425,11 +497,7 @@ private static final long serialVersionUID = 0L;
       return service_;
     }
     /**
-     * <pre>
-     *下线的服务
-     * </pre>
-     *
-     * <code>int64 service = 1;</code>
+     * <code>int64 service = 2;</code>
      * @param value The service to set.
      * @return This builder for chaining.
      */
@@ -440,11 +508,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     *下线的服务
-     * </pre>
-     *
-     * <code>int64 service = 1;</code>
+     * <code>int64 service = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearService() {

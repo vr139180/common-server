@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+enum TASK_TRIGGER_TYPE {
+  TT_BEGIN = 0;
+  //时间间隔
+  TT_TRIGGER_TIMER = 1;
+  //角色信息
+  TT_ROLEINFO_CHANGE = 2;
+  //背包变化
+  TT_BAG_CHANGE = 4;
+  //建筑变化
+  TT_BUILDING_CHANGE = 8;
+  TT_MAX = 9;
+}
+
+message Task_NewTasks_ntf {
+  optional UserToken utoken = 1;
+}

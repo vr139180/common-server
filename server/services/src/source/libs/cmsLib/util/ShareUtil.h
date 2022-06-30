@@ -40,6 +40,9 @@ public:
 	static int atoi( const char* str, int radix= 10);
 	static S_INT_64 atoi64(const char* str, int radix = 10);
 
+	static void to_lower(std::string& str);
+	static void to_upper(std::string& str);
+
 	/**
 	* 拆分字符串
 	* @param src

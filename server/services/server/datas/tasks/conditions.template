@@ -1,0 +1,58 @@
+<!--
+条件检测节点
+impl: 检测逻辑的实现方式。 cpp:c++编程实现 xml:通过xml配置实现 lua:通过lua脚本实现
+-->
+<conditions>
+	<!--
+	xml实现时包含
+	-->
+	<xml-check>
+		<!--
+		cond节点是条件节点，可以嵌套其他的cond节点。包含objective子节点的cond节点，不能再包含cond子节点.
+		relation: 子节点的关系。and->所有子节点都为true, or -> 子节点中一个为true, not -> 所有子节点先 and 然后取反
+		-->
+		<cond relation="and|or|not">
+			<cond relation="and|or|not">
+				<!--
+				objective节点是最终的逻辑计算节点,没有子节点。暂时只支持 get类型的函数
+				trigger: 资源触发类型
+				fun: 该类型下支持的get函数,函数返回值作为 oper比较符的左值。
+				funpm: fun函数的参数列表。用,分隔多个参数。目前参数只支持 int,int64,string三种类型
+				oper: 操作符，fun函数的返回值和operpm的比较符号。除了between配置的operpm为2个参数，其他都为1个参数
+					great: 大于
+					egreat: 大于等于
+					less: 小于
+					eless: 小于等于
+					equal: 等于
+					nequal: 不等于
+					between: 大于参数1，小于参数2.
+				operpm:比较值，根据oper来区分参数数量。作为oper比较符的右值
+				-->
+				<objective trigger="" fun="" funpm="1,2,3" oper="great|egreat|less|eless|equal|nequal|between" operpm="1"/>
+			</cond>
+		</cond>
+	</xml-check>
+	<xml-confirm>
+	</xml-confirm>
+	<!--
+	lua实现时包含
+	-->
+	<!--
+	lua-check 条件检测函数
+	一段lua脚本，包含2个输入参数，一个输出参数。
+	输入和输出参数均在c++中分配管理，通过LuaBridge绑定来实现逻辑
+	-->
+	<lua-check><![[
+	checkfun = function(env, userdata, nodedata) {
+		return true
+	}
+	]]>
+	</lua-check>
+	<!--
+	lua-confirm 条件成立后，可能的系统操作。可以为空
+	-->
+	<lua-confirm>
+	<![[
+	]]>
+	</lua-confirm>
+</conditions>

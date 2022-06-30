@@ -12,3 +12,5 @@ endif()
 add_subdirectory(cmsLib)
 
 add_subdirectory(gameLib)
+
+add_subdirectory(taskLib)

@@ -588,6 +588,266 @@ func (x *FriendUserInfo) GetToken() *UserToken {
 	return nil
 }
 
+//task info data ext
+type TaskItemDatas struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data map[string]int64 `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+}
+
+func (x *TaskItemDatas) Reset() {
+	*x = TaskItemDatas{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_global_internal_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TaskItemDatas) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TaskItemDatas) ProtoMessage() {}
+
+func (x *TaskItemDatas) ProtoReflect() protoreflect.Message {
+	mi := &file_global_internal_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TaskItemDatas.ProtoReflect.Descriptor instead.
+func (*TaskItemDatas) Descriptor() ([]byte, []int) {
+	return file_global_internal_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *TaskItemDatas) GetData() map[string]int64 {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+type TaskItemInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Iid     int64 `protobuf:"varint,1,opt,name=iid,proto3" json:"iid,omitempty"`
+	RoleIid int64 `protobuf:"varint,2,opt,name=role_iid,json=roleIid,proto3" json:"role_iid,omitempty"`
+}
+
+func (x *TaskItemInfo) Reset() {
+	*x = TaskItemInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_global_internal_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TaskItemInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TaskItemInfo) ProtoMessage() {}
+
+func (x *TaskItemInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_global_internal_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TaskItemInfo.ProtoReflect.Descriptor instead.
+func (*TaskItemInfo) Descriptor() ([]byte, []int) {
+	return file_global_internal_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *TaskItemInfo) GetIid() int64 {
+	if x != nil {
+		return x.Iid
+	}
+	return 0
+}
+
+func (x *TaskItemInfo) GetRoleIid() int64 {
+	if x != nil {
+		return x.RoleIid
+	}
+	return 0
+}
+
+type TaskItemList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Tasks []*TaskItemInfo `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
+}
+
+func (x *TaskItemList) Reset() {
+	*x = TaskItemList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_global_internal_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TaskItemList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TaskItemList) ProtoMessage() {}
+
+func (x *TaskItemList) ProtoReflect() protoreflect.Message {
+	mi := &file_global_internal_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TaskItemList.ProtoReflect.Descriptor instead.
+func (*TaskItemList) Descriptor() ([]byte, []int) {
+	return file_global_internal_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *TaskItemList) GetTasks() []*TaskItemInfo {
+	if x != nil {
+		return x.Tasks
+	}
+	return nil
+}
+
+type TaskGroupInfo struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Iid     int64          `protobuf:"varint,1,opt,name=iid,proto3" json:"iid,omitempty"`
+	RoleIid int64          `protobuf:"varint,2,opt,name=role_iid,json=roleIid,proto3" json:"role_iid,omitempty"`
+	Datas   *TaskItemDatas `protobuf:"bytes,20,opt,name=datas,proto3" json:"datas,omitempty"`
+}
+
+func (x *TaskGroupInfo) Reset() {
+	*x = TaskGroupInfo{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_global_internal_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TaskGroupInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TaskGroupInfo) ProtoMessage() {}
+
+func (x *TaskGroupInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_global_internal_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TaskGroupInfo.ProtoReflect.Descriptor instead.
+func (*TaskGroupInfo) Descriptor() ([]byte, []int) {
+	return file_global_internal_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *TaskGroupInfo) GetIid() int64 {
+	if x != nil {
+		return x.Iid
+	}
+	return 0
+}
+
+func (x *TaskGroupInfo) GetRoleIid() int64 {
+	if x != nil {
+		return x.RoleIid
+	}
+	return 0
+}
+
+func (x *TaskGroupInfo) GetDatas() *TaskItemDatas {
+	if x != nil {
+		return x.Datas
+	}
+	return nil
+}
+
+type TaskGroupList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Groups []*TaskGroupInfo `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
+}
+
+func (x *TaskGroupList) Reset() {
+	*x = TaskGroupList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_global_internal_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TaskGroupList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TaskGroupList) ProtoMessage() {}
+
+func (x *TaskGroupList) ProtoReflect() protoreflect.Message {
+	mi := &file_global_internal_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TaskGroupList.ProtoReflect.Descriptor instead.
+func (*TaskGroupList) Descriptor() ([]byte, []int) {
+	return file_global_internal_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *TaskGroupList) GetGroups() []*TaskGroupInfo {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
 var File_global_internal_proto protoreflect.FileDescriptor
 
 var file_global_internal_proto_rawDesc = []byte{
@@ -655,13 +915,38 @@ var file_global_internal_proto_rawDesc = []byte{
 	0x36, 0x0a, 0x0e, 0x46, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66,
 	0x6f, 0x12, 0x24, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
 	0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e,
-	0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x42, 0x54, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63,
-	0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72,
-	0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50, 0x01, 0x5a, 0x15, 0x67, 0x61, 0x6d, 0x65, 0x6c, 0x69,
-	0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x67, 0x70, 0x72, 0x6f, 0xaa,
-	0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
-	0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x7a, 0x0a, 0x0d, 0x54, 0x61, 0x73, 0x6b, 0x49,
+	0x74, 0x65, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x73, 0x12, 0x30, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x54, 0x61, 0x73,
+	0x6b, 0x49, 0x74, 0x65, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x73, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x45,
+	0x6e, 0x74, 0x72, 0x79, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x37, 0x0a, 0x09, 0x44, 0x61,
+	0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
+	0x02, 0x38, 0x01, 0x22, 0x3b, 0x0a, 0x0c, 0x54, 0x61, 0x73, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x49,
+	0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x69, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x03, 0x69, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x69,
+	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x69, 0x64,
+	0x22, 0x37, 0x0a, 0x0c, 0x54, 0x61, 0x73, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x27, 0x0a, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x11, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x49, 0x6e,
+	0x66, 0x6f, 0x52, 0x05, 0x74, 0x61, 0x73, 0x6b, 0x73, 0x22, 0x66, 0x0a, 0x0d, 0x54, 0x61, 0x73,
+	0x6b, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x69, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x69, 0x69, 0x64, 0x12, 0x19, 0x0a, 0x08,
+	0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07,
+	0x72, 0x6f, 0x6c, 0x65, 0x49, 0x69, 0x64, 0x12, 0x28, 0x0a, 0x05, 0x64, 0x61, 0x74, 0x61, 0x73,
+	0x18, 0x14, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x54, 0x61, 0x73,
+	0x6b, 0x49, 0x74, 0x65, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x73, 0x52, 0x05, 0x64, 0x61, 0x74, 0x61,
+	0x73, 0x22, 0x3b, 0x0a, 0x0d, 0x54, 0x61, 0x73, 0x6b, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x2a, 0x0a, 0x06, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x12, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x54, 0x61, 0x73, 0x6b, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x06, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x42, 0x54,
+	0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50, 0x01, 0x5a,
+	0x15, 0x67, 0x61, 0x6d, 0x65, 0x6c, 0x69, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
+	0x66, 0x2f, 0x67, 0x70, 0x72, 0x6f, 0xaa, 0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73,
+	0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e,
+	0x67, 0x70, 0x72, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -676,7 +961,7 @@ func file_global_internal_proto_rawDescGZIP() []byte {
 	return file_global_internal_proto_rawDescData
 }
 
-var file_global_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_global_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_global_internal_proto_goTypes = []interface{}{
 	(*UserToken)(nil),        // 0: PRO.UserToken
 	(*MailSystemItem)(nil),   // 1: PRO.MailSystemItem
@@ -686,16 +971,26 @@ var file_global_internal_proto_goTypes = []interface{}{
 	(*FriendInviteItem)(nil), // 5: PRO.FriendInviteItem
 	(*FriendRelation)(nil),   // 6: PRO.FriendRelation
 	(*FriendUserInfo)(nil),   // 7: PRO.FriendUserInfo
+	(*TaskItemDatas)(nil),    // 8: PRO.TaskItemDatas
+	(*TaskItemInfo)(nil),     // 9: PRO.TaskItemInfo
+	(*TaskItemList)(nil),     // 10: PRO.TaskItemList
+	(*TaskGroupInfo)(nil),    // 11: PRO.TaskGroupInfo
+	(*TaskGroupList)(nil),    // 12: PRO.TaskGroupList
+	nil,                      // 13: PRO.TaskItemDatas.DataEntry
 }
 var file_global_internal_proto_depIdxs = []int32{
-	1, // 0: PRO.MailSystemItems.mails:type_name -> PRO.MailSystemItem
-	3, // 1: PRO.MailNormalItems.mails:type_name -> PRO.MailNormalItem
-	0, // 2: PRO.FriendUserInfo.token:type_name -> PRO.UserToken
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1,  // 0: PRO.MailSystemItems.mails:type_name -> PRO.MailSystemItem
+	3,  // 1: PRO.MailNormalItems.mails:type_name -> PRO.MailNormalItem
+	0,  // 2: PRO.FriendUserInfo.token:type_name -> PRO.UserToken
+	13, // 3: PRO.TaskItemDatas.data:type_name -> PRO.TaskItemDatas.DataEntry
+	9,  // 4: PRO.TaskItemList.tasks:type_name -> PRO.TaskItemInfo
+	8,  // 5: PRO.TaskGroupInfo.datas:type_name -> PRO.TaskItemDatas
+	11, // 6: PRO.TaskGroupList.groups:type_name -> PRO.TaskGroupInfo
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_global_internal_proto_init() }
@@ -800,6 +1095,66 @@ func file_global_internal_proto_init() {
 				return nil
 			}
 		}
+		file_global_internal_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TaskItemDatas); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_global_internal_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TaskItemInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_global_internal_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TaskItemList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_global_internal_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TaskGroupInfo); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_global_internal_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TaskGroupList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -807,7 +1162,7 @@ func file_global_internal_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_global_internal_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

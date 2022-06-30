@@ -38,5 +38,5 @@ target_link_libraries(${PRJ_NAME} -Wl,--start-group libcurl.a libmysqlcppconn-st
  libboost_date_time.a libboost_exception.a libboost_filesystem.a libboost_iostreams.a libboost_log.a libboost_log_setup.a 
  libboost_program_options.a libboost_random.a libboost_regex.a libboost_serialization.a libboost_system.a libboost_thread.a 
  libboost_timer.a libboost_type_erasure.a libboost_wserialization.a 
- libcmsLib.a libgameLib.a -lpthread -ldl -lssl -lcrypto -lmysqlclient
+ libcmsLib.a libgameLib.a libtaskLib.a -lpthread -ldl -lssl -lcrypto -lmysqlclient
  -Wl,--end-group)

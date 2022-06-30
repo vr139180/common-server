@@ -13,136 +13,136 @@ package com.cms.client.network.gpro;
 public enum USER_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_3000 = 0;</code>
+   * <code>UNIVERSAL_1000 = 0;</code>
    */
-  UNIVERSAL_3000(0),
+  UNIVERSAL_1000(0),
   /**
-   * <code>ERK_USER_NUM = 3000;</code>
+   * <code>ERK_USER_NUM = 1000;</code>
    */
-  ERK_USER_NUM(3000),
+  ERK_USER_NUM(1000),
   /**
    * <pre>
    *用户协议
    * </pre>
    *
-   * <code>USER_LOGIN_REQ = 3001;</code>
+   * <code>USER_LOGIN_REQ = 1001;</code>
    */
-  USER_LOGIN_REQ(3001),
+  USER_LOGIN_REQ(1001),
   /**
-   * <code>USER_LOGIN_ACK = 3002;</code>
+   * <code>USER_LOGIN_ACK = 1002;</code>
    */
-  USER_LOGIN_ACK(3002),
+  USER_LOGIN_ACK(1002),
   /**
-   * <code>USER_PROXYLOGIN_REQ = 3003;</code>
+   * <code>USER_PROXYLOGIN_REQ = 1003;</code>
    */
-  USER_PROXYLOGIN_REQ(3003),
+  USER_PROXYLOGIN_REQ(1003),
   /**
-   * <code>USER_PROXYLOGIN_ACK = 3004;</code>
+   * <code>USER_PROXYLOGIN_ACK = 1004;</code>
    */
-  USER_PROXYLOGIN_ACK(3004),
+  USER_PROXYLOGIN_ACK(1004),
   /**
-   * <code>USER_LOGOUT_NTF = 3005;</code>
+   * <code>USER_LOGOUT_NTF = 1005;</code>
    */
-  USER_LOGOUT_NTF(3005),
+  USER_LOGOUT_NTF(1005),
   /**
-   * <code>USER_ROLELIST_ACK = 3007;</code>
+   * <code>USER_ROLELIST_ACK = 1007;</code>
    */
-  USER_ROLELIST_ACK(3007),
+  USER_ROLELIST_ACK(1007),
   /**
-   * <code>USER_ROLESELECT_REQ = 3008;</code>
+   * <code>USER_ROLESELECT_REQ = 1008;</code>
    */
-  USER_ROLESELECT_REQ(3008),
+  USER_ROLESELECT_REQ(1008),
   /**
-   * <code>USER_ROLESELECT_ACK = 3009;</code>
+   * <code>USER_ROLESELECT_ACK = 1009;</code>
    */
-  USER_ROLESELECT_ACK(3009),
+  USER_ROLESELECT_ACK(1009),
   /**
-   * <code>USER_ROLECREATE_REQ = 3010;</code>
+   * <code>USER_ROLECREATE_REQ = 1010;</code>
    */
-  USER_ROLECREATE_REQ(3010),
+  USER_ROLECREATE_REQ(1010),
   /**
-   * <code>USER_ROLECREATE_ACK = 3011;</code>
+   * <code>USER_ROLECREATE_ACK = 1011;</code>
    */
-  USER_ROLECREATE_ACK(3011),
+  USER_ROLECREATE_ACK(1011),
   /**
-   * <code>USER_ROLEDETAILA_NTF = 3012;</code>
+   * <code>USER_ROLEDETAILA_NTF = 1012;</code>
    */
-  USER_ROLEDETAILA_NTF(3012),
+  USER_ROLEDETAILA_NTF(1012),
   /**
-   * <code>USER_ROLEDETAILB_NTF = 3013;</code>
+   * <code>USER_ROLEDETAILB_NTF = 1013;</code>
    */
-  USER_ROLEDETAILB_NTF(3013),
+  USER_ROLEDETAILB_NTF(1013),
   /**
-   * <code>USER_ROLEDETAILEND_NTF = 3014;</code>
+   * <code>USER_ROLEDETAILEND_NTF = 1014;</code>
    */
-  USER_ROLEDETAILEND_NTF(3014),
+  USER_ROLEDETAILEND_NTF(1014),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_3000 = 0;</code>
+   * <code>UNIVERSAL_1000 = 0;</code>
    */
-  public static final int UNIVERSAL_3000_VALUE = 0;
+  public static final int UNIVERSAL_1000_VALUE = 0;
   /**
-   * <code>ERK_USER_NUM = 3000;</code>
+   * <code>ERK_USER_NUM = 1000;</code>
    */
-  public static final int ERK_USER_NUM_VALUE = 3000;
+  public static final int ERK_USER_NUM_VALUE = 1000;
   /**
    * <pre>
    *用户协议
    * </pre>
    *
-   * <code>USER_LOGIN_REQ = 3001;</code>
+   * <code>USER_LOGIN_REQ = 1001;</code>
    */
-  public static final int USER_LOGIN_REQ_VALUE = 3001;
+  public static final int USER_LOGIN_REQ_VALUE = 1001;
   /**
-   * <code>USER_LOGIN_ACK = 3002;</code>
+   * <code>USER_LOGIN_ACK = 1002;</code>
    */
-  public static final int USER_LOGIN_ACK_VALUE = 3002;
+  public static final int USER_LOGIN_ACK_VALUE = 1002;
   /**
-   * <code>USER_PROXYLOGIN_REQ = 3003;</code>
+   * <code>USER_PROXYLOGIN_REQ = 1003;</code>
    */
-  public static final int USER_PROXYLOGIN_REQ_VALUE = 3003;
+  public static final int USER_PROXYLOGIN_REQ_VALUE = 1003;
   /**
-   * <code>USER_PROXYLOGIN_ACK = 3004;</code>
+   * <code>USER_PROXYLOGIN_ACK = 1004;</code>
    */
-  public static final int USER_PROXYLOGIN_ACK_VALUE = 3004;
+  public static final int USER_PROXYLOGIN_ACK_VALUE = 1004;
   /**
-   * <code>USER_LOGOUT_NTF = 3005;</code>
+   * <code>USER_LOGOUT_NTF = 1005;</code>
    */
-  public static final int USER_LOGOUT_NTF_VALUE = 3005;
+  public static final int USER_LOGOUT_NTF_VALUE = 1005;
   /**
-   * <code>USER_ROLELIST_ACK = 3007;</code>
+   * <code>USER_ROLELIST_ACK = 1007;</code>
    */
-  public static final int USER_ROLELIST_ACK_VALUE = 3007;
+  public static final int USER_ROLELIST_ACK_VALUE = 1007;
   /**
-   * <code>USER_ROLESELECT_REQ = 3008;</code>
+   * <code>USER_ROLESELECT_REQ = 1008;</code>
    */
-  public static final int USER_ROLESELECT_REQ_VALUE = 3008;
+  public static final int USER_ROLESELECT_REQ_VALUE = 1008;
   /**
-   * <code>USER_ROLESELECT_ACK = 3009;</code>
+   * <code>USER_ROLESELECT_ACK = 1009;</code>
    */
-  public static final int USER_ROLESELECT_ACK_VALUE = 3009;
+  public static final int USER_ROLESELECT_ACK_VALUE = 1009;
   /**
-   * <code>USER_ROLECREATE_REQ = 3010;</code>
+   * <code>USER_ROLECREATE_REQ = 1010;</code>
    */
-  public static final int USER_ROLECREATE_REQ_VALUE = 3010;
+  public static final int USER_ROLECREATE_REQ_VALUE = 1010;
   /**
-   * <code>USER_ROLECREATE_ACK = 3011;</code>
+   * <code>USER_ROLECREATE_ACK = 1011;</code>
    */
-  public static final int USER_ROLECREATE_ACK_VALUE = 3011;
+  public static final int USER_ROLECREATE_ACK_VALUE = 1011;
   /**
-   * <code>USER_ROLEDETAILA_NTF = 3012;</code>
+   * <code>USER_ROLEDETAILA_NTF = 1012;</code>
    */
-  public static final int USER_ROLEDETAILA_NTF_VALUE = 3012;
+  public static final int USER_ROLEDETAILA_NTF_VALUE = 1012;
   /**
-   * <code>USER_ROLEDETAILB_NTF = 3013;</code>
+   * <code>USER_ROLEDETAILB_NTF = 1013;</code>
    */
-  public static final int USER_ROLEDETAILB_NTF_VALUE = 3013;
+  public static final int USER_ROLEDETAILB_NTF_VALUE = 1013;
   /**
-   * <code>USER_ROLEDETAILEND_NTF = 3014;</code>
+   * <code>USER_ROLEDETAILEND_NTF = 1014;</code>
    */
-  public static final int USER_ROLEDETAILEND_NTF_VALUE = 3014;
+  public static final int USER_ROLEDETAILEND_NTF_VALUE = 1014;
 
 
   public final int getNumber() {
@@ -169,21 +169,21 @@ public enum USER_PROTYPE
    */
   public static USER_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_3000;
-      case 3000: return ERK_USER_NUM;
-      case 3001: return USER_LOGIN_REQ;
-      case 3002: return USER_LOGIN_ACK;
-      case 3003: return USER_PROXYLOGIN_REQ;
-      case 3004: return USER_PROXYLOGIN_ACK;
-      case 3005: return USER_LOGOUT_NTF;
-      case 3007: return USER_ROLELIST_ACK;
-      case 3008: return USER_ROLESELECT_REQ;
-      case 3009: return USER_ROLESELECT_ACK;
-      case 3010: return USER_ROLECREATE_REQ;
-      case 3011: return USER_ROLECREATE_ACK;
-      case 3012: return USER_ROLEDETAILA_NTF;
-      case 3013: return USER_ROLEDETAILB_NTF;
-      case 3014: return USER_ROLEDETAILEND_NTF;
+      case 0: return UNIVERSAL_1000;
+      case 1000: return ERK_USER_NUM;
+      case 1001: return USER_LOGIN_REQ;
+      case 1002: return USER_LOGIN_ACK;
+      case 1003: return USER_PROXYLOGIN_REQ;
+      case 1004: return USER_PROXYLOGIN_ACK;
+      case 1005: return USER_LOGOUT_NTF;
+      case 1007: return USER_ROLELIST_ACK;
+      case 1008: return USER_ROLESELECT_REQ;
+      case 1009: return USER_ROLESELECT_ACK;
+      case 1010: return USER_ROLECREATE_REQ;
+      case 1011: return USER_ROLECREATE_ACK;
+      case 1012: return USER_ROLEDETAILA_NTF;
+      case 1013: return USER_ROLEDETAILB_NTF;
+      case 1014: return USER_ROLEDETAILEND_NTF;
       default: return null;
     }
   }

@@ -9,48 +9,48 @@ package com.cms.client.network.gpro;
 public enum BUILD_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_3500 = 0;</code>
+   * <code>UNIVERSAL_1250 = 0;</code>
    */
-  UNIVERSAL_3500(0),
+  UNIVERSAL_1250(0),
   /**
-   * <code>BUILD_ADDITEM_REQ = 3501;</code>
+   * <code>BUILD_ADDITEM_REQ = 1251;</code>
    */
-  BUILD_ADDITEM_REQ(3501),
+  BUILD_ADDITEM_REQ(1251),
   /**
-   * <code>BUILD_ADDITEM_ACK = 3502;</code>
+   * <code>BUILD_ADDITEM_ACK = 1252;</code>
    */
-  BUILD_ADDITEM_ACK(3502),
+  BUILD_ADDITEM_ACK(1252),
   /**
-   * <code>BUILD_DELITEM_REQ = 3503;</code>
+   * <code>BUILD_DELITEM_REQ = 1253;</code>
    */
-  BUILD_DELITEM_REQ(3503),
+  BUILD_DELITEM_REQ(1253),
   /**
-   * <code>BUILD_DELITEM_ACK = 3504;</code>
+   * <code>BUILD_DELITEM_ACK = 1254;</code>
    */
-  BUILD_DELITEM_ACK(3504),
+  BUILD_DELITEM_ACK(1254),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_3500 = 0;</code>
+   * <code>UNIVERSAL_1250 = 0;</code>
    */
-  public static final int UNIVERSAL_3500_VALUE = 0;
+  public static final int UNIVERSAL_1250_VALUE = 0;
   /**
-   * <code>BUILD_ADDITEM_REQ = 3501;</code>
+   * <code>BUILD_ADDITEM_REQ = 1251;</code>
    */
-  public static final int BUILD_ADDITEM_REQ_VALUE = 3501;
+  public static final int BUILD_ADDITEM_REQ_VALUE = 1251;
   /**
-   * <code>BUILD_ADDITEM_ACK = 3502;</code>
+   * <code>BUILD_ADDITEM_ACK = 1252;</code>
    */
-  public static final int BUILD_ADDITEM_ACK_VALUE = 3502;
+  public static final int BUILD_ADDITEM_ACK_VALUE = 1252;
   /**
-   * <code>BUILD_DELITEM_REQ = 3503;</code>
+   * <code>BUILD_DELITEM_REQ = 1253;</code>
    */
-  public static final int BUILD_DELITEM_REQ_VALUE = 3503;
+  public static final int BUILD_DELITEM_REQ_VALUE = 1253;
   /**
-   * <code>BUILD_DELITEM_ACK = 3504;</code>
+   * <code>BUILD_DELITEM_ACK = 1254;</code>
    */
-  public static final int BUILD_DELITEM_ACK_VALUE = 3504;
+  public static final int BUILD_DELITEM_ACK_VALUE = 1254;
 
 
   public final int getNumber() {
@@ -77,11 +77,11 @@ public enum BUILD_PROTYPE
    */
   public static BUILD_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_3500;
-      case 3501: return BUILD_ADDITEM_REQ;
-      case 3502: return BUILD_ADDITEM_ACK;
-      case 3503: return BUILD_DELITEM_REQ;
-      case 3504: return BUILD_DELITEM_ACK;
+      case 0: return UNIVERSAL_1250;
+      case 1251: return BUILD_ADDITEM_REQ;
+      case 1252: return BUILD_ADDITEM_ACK;
+      case 1253: return BUILD_DELITEM_REQ;
+      case 1254: return BUILD_DELITEM_ACK;
       default: return null;
     }
   }

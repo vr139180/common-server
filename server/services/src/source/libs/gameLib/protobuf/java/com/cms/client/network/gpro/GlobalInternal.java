@@ -54,6 +54,36 @@ public final class GlobalInternal {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_FriendUserInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskItemDatas_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskItemDatas_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskItemDatas_DataEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskItemDatas_DataEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskItemInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskItemInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskItemList_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskItemList_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskGroupInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskGroupInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_TaskGroupList_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_TaskGroupList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -81,10 +111,18 @@ public final class GlobalInternal {
       "\022\022\n\ninvitetime\030\004 \001(\005\"R\n\016FriendRelation\022\013" +
       "\n\003iid\030\001 \001(\003\022\021\n\tfriendiid\030\002 \001(\003\022\020\n\010nickna" +
       "me\030\003 \001(\t\022\016\n\006online\030\004 \001(\010\"/\n\016FriendUserIn" +
-      "fo\022\035\n\005token\030\001 \001(\0132\016.PRO.UserTokenBT\n\033com" +
-      ".cms.client.network.gproP\001Z\025gamelib/prot" +
-      "obuf/gpro\252\002\033com.cms.client.network.gprob" +
-      "\006proto3"
+      "fo\022\035\n\005token\030\001 \001(\0132\016.PRO.UserToken\"h\n\rTas" +
+      "kItemDatas\022*\n\004data\030\001 \003(\0132\034.PRO.TaskItemD" +
+      "atas.DataEntry\032+\n\tDataEntry\022\013\n\003key\030\001 \001(\t" +
+      "\022\r\n\005value\030\002 \001(\003:\0028\001\"-\n\014TaskItemInfo\022\013\n\003i" +
+      "id\030\001 \001(\003\022\020\n\010role_iid\030\002 \001(\003\"0\n\014TaskItemLi" +
+      "st\022 \n\005tasks\030\001 \003(\0132\021.PRO.TaskItemInfo\"Q\n\r" +
+      "TaskGroupInfo\022\013\n\003iid\030\001 \001(\003\022\020\n\010role_iid\030\002" +
+      " \001(\003\022!\n\005datas\030\024 \001(\0132\022.PRO.TaskItemDatas\"" +
+      "3\n\rTaskGroupList\022\"\n\006groups\030\001 \003(\0132\022.PRO.T" +
+      "askGroupInfoBT\n\033com.cms.client.network.g" +
+      "proP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.c" +
+      "lient.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -138,6 +176,42 @@ public final class GlobalInternal {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_FriendUserInfo_descriptor,
         new java.lang.String[] { "Token", });
+    internal_static_PRO_TaskItemDatas_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_PRO_TaskItemDatas_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskItemDatas_descriptor,
+        new java.lang.String[] { "Data", });
+    internal_static_PRO_TaskItemDatas_DataEntry_descriptor =
+      internal_static_PRO_TaskItemDatas_descriptor.getNestedTypes().get(0);
+    internal_static_PRO_TaskItemDatas_DataEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskItemDatas_DataEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_PRO_TaskItemInfo_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_PRO_TaskItemInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskItemInfo_descriptor,
+        new java.lang.String[] { "Iid", "RoleIid", });
+    internal_static_PRO_TaskItemList_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_PRO_TaskItemList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskItemList_descriptor,
+        new java.lang.String[] { "Tasks", });
+    internal_static_PRO_TaskGroupInfo_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_PRO_TaskGroupInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskGroupInfo_descriptor,
+        new java.lang.String[] { "Iid", "RoleIid", "Datas", });
+    internal_static_PRO_TaskGroupList_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_PRO_TaskGroupList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_TaskGroupList_descriptor,
+        new java.lang.String[] { "Groups", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

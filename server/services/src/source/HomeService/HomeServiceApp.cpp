@@ -11,6 +11,8 @@
 #include <gameLib/config/ConfigTool.h>
 #include <gameLib/global_const.h>
 
+#include <taskLib/TaskMetaHome.h>
+
 #include "dbs/DBSCtrl.h"
 
 USE_PROTOCOL_NAMESPACE
@@ -49,6 +51,12 @@ bool HomeServiceApp::load_config()
 	}
 
 	this->conf_.reset(cf);
+
+	if (!TaskMetaHome::instance().load_taskmetas())
+	{
+		logFatal(out_boot, "HomeService load task system config file failed");
+		return false;
+	}
 
 	return true;
 }

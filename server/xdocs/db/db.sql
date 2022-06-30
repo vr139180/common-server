@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     6/23/2022 10:14:25 AM                        */
+/* Created on:     6/27/2022 11:17:59 AM                        */
 /*==============================================================*/
 
 
@@ -31,6 +31,10 @@ drop table if exists user_mailbox;
 drop table if exists user_pets;
 
 drop table if exists user_sysmail;
+
+drop table if exists user_taskgroup;
+
+drop table if exists user_taskinfo;
 
 drop table if exists user_unbind_item;
 
@@ -367,6 +371,84 @@ create unique index index_2 on user_sysmail
 (
    role_iid,
    sys_mailiid
+);
+
+/*==============================================================*/
+/* Table: user_taskgroup                                        */
+/*==============================================================*/
+create table user_taskgroup
+(
+   iid                  bigint not null,
+   role_iid             bigint not null comment '所属角色',
+   task_group           int not null comment '获取的任务线',
+   gstate               smallint not null default 0 comment '0:accept  2:finish 3:give up',
+   trigg_level          int not null default 1 comment '触发时的等级',
+   createtime           timestamp not null default current_timestamp comment '任务创建时间',
+   endtime              timestamp comment '结束时间或者放弃时间',
+   primary key (iid)
+)
+engine =  innodb;
+
+alter table user_taskgroup comment '任务线';
+
+/*==============================================================*/
+/* Index: index_1                                               */
+/*==============================================================*/
+create index index_1 on user_taskgroup
+(
+   iid
+);
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create unique index index_2 on user_taskgroup
+(
+   role_iid,
+   task_group
+);
+
+/*==============================================================*/
+/* Table: user_taskinfo                                         */
+/*==============================================================*/
+create table user_taskinfo
+(
+   iid                  bigint not null,
+   role_iid             bigint not null comment '所属角色',
+   task_iid             int not null comment '任务配置id',
+   my_taskgroup         bigint not null comment '我触发的任务线iid',
+   task_group           int not null comment '所属任务线',
+   qstate               smallint not null default 0 comment '0:accept 1:reaccept 2:submit 3:failded 4:give up 5:finish
+            1:针对循环任务
+            2:任务完成但是未提取任务奖励
+            5:彻底完成',
+   accept_level         int not null default 1 comment '接收时的等级',
+   cycle_task           smallint not null default 0 comment '循环任务 1:yes 2:no',
+   cycle_num            int not null default 1 comment '接收次数，针对循环任务',
+   createtime           timestamp not null default current_timestamp comment '任务创建时间',
+   firstupdatetime      timestamp comment '第一次更新时间',
+   lastupdatetime       timestamp comment '最后更新时间',
+   task_datas           varchar(512) not null default '' comment '任务中间数据 protobuf 序列化的json数据',
+   source_iid           varchar(33) comment '任务奖励的批号，可用于对账',
+   primary key (iid)
+)
+engine =  innodb;
+
+/*==============================================================*/
+/* Index: index_1                                               */
+/*==============================================================*/
+create index index_1 on user_taskinfo
+(
+   iid
+);
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create unique index index_2 on user_taskinfo
+(
+   role_iid,
+   task_iid
 );
 
 /*==============================================================*/

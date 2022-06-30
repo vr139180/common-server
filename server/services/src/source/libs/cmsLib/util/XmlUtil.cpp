@@ -128,3 +128,16 @@ std::string XmlUtil::GetXmlText( tinyxml2::XMLElement* e, const char* defv)
 
 	return defv;
 }
+
+std::string XmlUtil::build_path(const char* fmt, ...)
+{
+	char buf[512] = { 0 };
+
+	va_list vaList;
+
+	va_start(vaList, fmt);
+	::vsnprintf(buf, 127, fmt, vaList);
+	va_end(vaList);
+
+	return buf;
+}

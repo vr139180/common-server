@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="metas">
+      <UniqueIdentifier>{4b546efa-bdfe-4abd-9914-c8ad933f1392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{5bc858f1-541c-4ad8-b31a-a749d88435e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\service\TaskCellBase.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\TaskMetaHome.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\TaskRuntimeContext.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\ConditionsMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlCondition.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlObjective.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\service\TaskCellBase.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\TaskMetaHome.h" />
+    <ClInclude Include="..\source\libs\taskLib\TaskRuntimeContext.h" />
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\ConditionsMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\task_const.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\ITaskEnv.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\service\ITaskResTrigger.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlCondition.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlObjective.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

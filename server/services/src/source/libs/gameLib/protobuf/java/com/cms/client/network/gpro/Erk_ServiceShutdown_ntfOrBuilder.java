@@ -12,7 +12,13 @@ public interface Erk_ServiceShutdown_ntfOrBuilder extends
    *下线的服务
    * </pre>
    *
-   * <code>int64 service = 1;</code>
+   * <code>int32 svr_type = 1;</code>
+   * @return The svrType.
+   */
+  int getSvrType();
+
+  /**
+   * <code>int64 service = 2;</code>
    * @return The service.
    */
   long getService();

@@ -174,10 +174,6 @@
     <ClCompile Include="..\source\libs\cmsLib\ServerAppWrapper.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\ThreadLock.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\system\TimerContainer.cpp" />
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionElement.cpp" />
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionLeaf.cpp" />
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionNode.cpp" />
-    <ClCompile Include="..\source\libs\cmsLib\condition\ConditionValue.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\encryption\md5\md5.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\serialization\base64\base64.cpp" />
   </ItemGroup>
@@ -246,12 +242,6 @@
     <ClInclude Include="..\source\libs\cmsLib\ServerAppWrapper.h" />
     <ClInclude Include="..\source\libs\cmsLib\ThreadLock.h" />
     <ClInclude Include="..\source\libs\cmsLib\system\TimerContainer.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionContext.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionElement.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionLeaf.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionNode.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\ConditionValue.h" />
-    <ClInclude Include="..\source\libs\cmsLib\condition\IPropertyOperator.h" />
     <ClInclude Include="..\source\libs\cmsLib\encryption\md5\md5.h" />
     <ClInclude Include="..\source\libs\cmsLib\serialization\base64\base64.h" />
     <ClInclude Include="..\source\libs\cmsLib\cmsLib.h" />

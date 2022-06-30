@@ -30,6 +30,9 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -46,7 +49,7 @@ struct TableStruct_global_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[14]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -75,6 +78,24 @@ extern MailSystemItemDefaultTypeInternal _MailSystemItem_default_instance_;
 class MailSystemItems;
 struct MailSystemItemsDefaultTypeInternal;
 extern MailSystemItemsDefaultTypeInternal _MailSystemItems_default_instance_;
+class TaskGroupInfo;
+struct TaskGroupInfoDefaultTypeInternal;
+extern TaskGroupInfoDefaultTypeInternal _TaskGroupInfo_default_instance_;
+class TaskGroupList;
+struct TaskGroupListDefaultTypeInternal;
+extern TaskGroupListDefaultTypeInternal _TaskGroupList_default_instance_;
+class TaskItemDatas;
+struct TaskItemDatasDefaultTypeInternal;
+extern TaskItemDatasDefaultTypeInternal _TaskItemDatas_default_instance_;
+class TaskItemDatas_DataEntry_DoNotUse;
+struct TaskItemDatas_DataEntry_DoNotUseDefaultTypeInternal;
+extern TaskItemDatas_DataEntry_DoNotUseDefaultTypeInternal _TaskItemDatas_DataEntry_DoNotUse_default_instance_;
+class TaskItemInfo;
+struct TaskItemInfoDefaultTypeInternal;
+extern TaskItemInfoDefaultTypeInternal _TaskItemInfo_default_instance_;
+class TaskItemList;
+struct TaskItemListDefaultTypeInternal;
+extern TaskItemListDefaultTypeInternal _TaskItemList_default_instance_;
 class UserToken;
 struct UserTokenDefaultTypeInternal;
 extern UserTokenDefaultTypeInternal _UserToken_default_instance_;
@@ -87,6 +108,12 @@ template<> ::PRO::MailNormalItem* Arena::CreateMaybeMessage<::PRO::MailNormalIte
 template<> ::PRO::MailNormalItems* Arena::CreateMaybeMessage<::PRO::MailNormalItems>(Arena*);
 template<> ::PRO::MailSystemItem* Arena::CreateMaybeMessage<::PRO::MailSystemItem>(Arena*);
 template<> ::PRO::MailSystemItems* Arena::CreateMaybeMessage<::PRO::MailSystemItems>(Arena*);
+template<> ::PRO::TaskGroupInfo* Arena::CreateMaybeMessage<::PRO::TaskGroupInfo>(Arena*);
+template<> ::PRO::TaskGroupList* Arena::CreateMaybeMessage<::PRO::TaskGroupList>(Arena*);
+template<> ::PRO::TaskItemDatas* Arena::CreateMaybeMessage<::PRO::TaskItemDatas>(Arena*);
+template<> ::PRO::TaskItemDatas_DataEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::TaskItemDatas_DataEntry_DoNotUse>(Arena*);
+template<> ::PRO::TaskItemInfo* Arena::CreateMaybeMessage<::PRO::TaskItemInfo>(Arena*);
+template<> ::PRO::TaskItemList* Arena::CreateMaybeMessage<::PRO::TaskItemList>(Arena*);
 template<> ::PRO::UserToken* Arena::CreateMaybeMessage<::PRO::UserToken>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PRO {
@@ -1568,6 +1595,834 @@ class FriendUserInfo final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_global_5finternal_2eproto;
 };
+// -------------------------------------------------------------------
+
+class TaskItemDatas_DataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<TaskItemDatas_DataEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<TaskItemDatas_DataEntry_DoNotUse, 
+    std::string, int64_t,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> SuperType;
+  TaskItemDatas_DataEntry_DoNotUse();
+  explicit constexpr TaskItemDatas_DataEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit TaskItemDatas_DataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const TaskItemDatas_DataEntry_DoNotUse& other);
+  static const TaskItemDatas_DataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const TaskItemDatas_DataEntry_DoNotUse*>(&_TaskItemDatas_DataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "PRO.TaskItemDatas.DataEntry.key");
+ }
+  static bool ValidateValue(void*) { return true; }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class TaskItemDatas final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskItemDatas) */ {
+ public:
+  inline TaskItemDatas() : TaskItemDatas(nullptr) {}
+  ~TaskItemDatas() override;
+  explicit constexpr TaskItemDatas(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskItemDatas(const TaskItemDatas& from);
+  TaskItemDatas(TaskItemDatas&& from) noexcept
+    : TaskItemDatas() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskItemDatas& operator=(const TaskItemDatas& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskItemDatas& operator=(TaskItemDatas&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskItemDatas& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskItemDatas* internal_default_instance() {
+    return reinterpret_cast<const TaskItemDatas*>(
+               &_TaskItemDatas_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(TaskItemDatas& a, TaskItemDatas& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskItemDatas* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskItemDatas* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskItemDatas* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskItemDatas>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskItemDatas& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskItemDatas& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskItemDatas* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskItemDatas";
+  }
+  protected:
+  explicit TaskItemDatas(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDataFieldNumber = 1,
+  };
+  // map<string, int64> data = 1;
+  int data_size() const;
+  private:
+  int _internal_data_size() const;
+  public:
+  void clear_data();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+      _internal_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+      _internal_mutable_data();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+      data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+      mutable_data();
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskItemDatas)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      TaskItemDatas_DataEntry_DoNotUse,
+      std::string, int64_t,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT64> data_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_global_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskItemInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskItemInfo) */ {
+ public:
+  inline TaskItemInfo() : TaskItemInfo(nullptr) {}
+  ~TaskItemInfo() override;
+  explicit constexpr TaskItemInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskItemInfo(const TaskItemInfo& from);
+  TaskItemInfo(TaskItemInfo&& from) noexcept
+    : TaskItemInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskItemInfo& operator=(const TaskItemInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskItemInfo& operator=(TaskItemInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskItemInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskItemInfo* internal_default_instance() {
+    return reinterpret_cast<const TaskItemInfo*>(
+               &_TaskItemInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(TaskItemInfo& a, TaskItemInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskItemInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskItemInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskItemInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskItemInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskItemInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskItemInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskItemInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskItemInfo";
+  }
+  protected:
+  explicit TaskItemInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIidFieldNumber = 1,
+    kRoleIidFieldNumber = 2,
+  };
+  // int64 iid = 1;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // int64 role_iid = 2;
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskItemInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t iid_;
+  int64_t role_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_global_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskItemList final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskItemList) */ {
+ public:
+  inline TaskItemList() : TaskItemList(nullptr) {}
+  ~TaskItemList() override;
+  explicit constexpr TaskItemList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskItemList(const TaskItemList& from);
+  TaskItemList(TaskItemList&& from) noexcept
+    : TaskItemList() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskItemList& operator=(const TaskItemList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskItemList& operator=(TaskItemList&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskItemList& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskItemList* internal_default_instance() {
+    return reinterpret_cast<const TaskItemList*>(
+               &_TaskItemList_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(TaskItemList& a, TaskItemList& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskItemList* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskItemList* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskItemList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskItemList>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskItemList& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskItemList& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskItemList* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskItemList";
+  }
+  protected:
+  explicit TaskItemList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTasksFieldNumber = 1,
+  };
+  // repeated .PRO.TaskItemInfo tasks = 1;
+  int tasks_size() const;
+  private:
+  int _internal_tasks_size() const;
+  public:
+  void clear_tasks();
+  ::PRO::TaskItemInfo* mutable_tasks(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskItemInfo >*
+      mutable_tasks();
+  private:
+  const ::PRO::TaskItemInfo& _internal_tasks(int index) const;
+  ::PRO::TaskItemInfo* _internal_add_tasks();
+  public:
+  const ::PRO::TaskItemInfo& tasks(int index) const;
+  ::PRO::TaskItemInfo* add_tasks();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskItemInfo >&
+      tasks() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskItemList)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskItemInfo > tasks_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_global_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskGroupInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskGroupInfo) */ {
+ public:
+  inline TaskGroupInfo() : TaskGroupInfo(nullptr) {}
+  ~TaskGroupInfo() override;
+  explicit constexpr TaskGroupInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskGroupInfo(const TaskGroupInfo& from);
+  TaskGroupInfo(TaskGroupInfo&& from) noexcept
+    : TaskGroupInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskGroupInfo& operator=(const TaskGroupInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskGroupInfo& operator=(TaskGroupInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskGroupInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskGroupInfo* internal_default_instance() {
+    return reinterpret_cast<const TaskGroupInfo*>(
+               &_TaskGroupInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  friend void swap(TaskGroupInfo& a, TaskGroupInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskGroupInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskGroupInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskGroupInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskGroupInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskGroupInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskGroupInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskGroupInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskGroupInfo";
+  }
+  protected:
+  explicit TaskGroupInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDatasFieldNumber = 20,
+    kIidFieldNumber = 1,
+    kRoleIidFieldNumber = 2,
+  };
+  // .PRO.TaskItemDatas datas = 20;
+  bool has_datas() const;
+  private:
+  bool _internal_has_datas() const;
+  public:
+  void clear_datas();
+  const ::PRO::TaskItemDatas& datas() const;
+  PROTOBUF_NODISCARD ::PRO::TaskItemDatas* release_datas();
+  ::PRO::TaskItemDatas* mutable_datas();
+  void set_allocated_datas(::PRO::TaskItemDatas* datas);
+  private:
+  const ::PRO::TaskItemDatas& _internal_datas() const;
+  ::PRO::TaskItemDatas* _internal_mutable_datas();
+  public:
+  void unsafe_arena_set_allocated_datas(
+      ::PRO::TaskItemDatas* datas);
+  ::PRO::TaskItemDatas* unsafe_arena_release_datas();
+
+  // int64 iid = 1;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // int64 role_iid = 2;
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskGroupInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PRO::TaskItemDatas* datas_;
+  int64_t iid_;
+  int64_t role_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_global_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskGroupList final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskGroupList) */ {
+ public:
+  inline TaskGroupList() : TaskGroupList(nullptr) {}
+  ~TaskGroupList() override;
+  explicit constexpr TaskGroupList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskGroupList(const TaskGroupList& from);
+  TaskGroupList(TaskGroupList&& from) noexcept
+    : TaskGroupList() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskGroupList& operator=(const TaskGroupList& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskGroupList& operator=(TaskGroupList&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskGroupList& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskGroupList* internal_default_instance() {
+    return reinterpret_cast<const TaskGroupList*>(
+               &_TaskGroupList_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(TaskGroupList& a, TaskGroupList& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskGroupList* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskGroupList* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskGroupList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskGroupList>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskGroupList& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskGroupList& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskGroupList* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskGroupList";
+  }
+  protected:
+  explicit TaskGroupList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kGroupsFieldNumber = 1,
+  };
+  // repeated .PRO.TaskGroupInfo groups = 1;
+  int groups_size() const;
+  private:
+  int _internal_groups_size() const;
+  public:
+  void clear_groups();
+  ::PRO::TaskGroupInfo* mutable_groups(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskGroupInfo >*
+      mutable_groups();
+  private:
+  const ::PRO::TaskGroupInfo& _internal_groups(int index) const;
+  ::PRO::TaskGroupInfo* _internal_add_groups();
+  public:
+  const ::PRO::TaskGroupInfo& groups(int index) const;
+  ::PRO::TaskGroupInfo* add_groups();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskGroupInfo >&
+      groups() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskGroupList)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskGroupInfo > groups_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_global_5finternal_2eproto;
+};
 // ===================================================================
 
 
@@ -2565,9 +3420,322 @@ inline void FriendUserInfo::set_allocated_token(::PRO::UserToken* token) {
   // @@protoc_insertion_point(field_set_allocated:PRO.FriendUserInfo.token)
 }
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// TaskItemDatas
+
+// map<string, int64> data = 1;
+inline int TaskItemDatas::_internal_data_size() const {
+  return data_.size();
+}
+inline int TaskItemDatas::data_size() const {
+  return _internal_data_size();
+}
+inline void TaskItemDatas::clear_data() {
+  data_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+TaskItemDatas::_internal_data() const {
+  return data_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >&
+TaskItemDatas::data() const {
+  // @@protoc_insertion_point(field_map:PRO.TaskItemDatas.data)
+  return _internal_data();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+TaskItemDatas::_internal_mutable_data() {
+  return data_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, int64_t >*
+TaskItemDatas::mutable_data() {
+  // @@protoc_insertion_point(field_mutable_map:PRO.TaskItemDatas.data)
+  return _internal_mutable_data();
+}
+
+// -------------------------------------------------------------------
+
+// TaskItemInfo
+
+// int64 iid = 1;
+inline void TaskItemInfo::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t TaskItemInfo::_internal_iid() const {
+  return iid_;
+}
+inline int64_t TaskItemInfo::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskItemInfo.iid)
+  return _internal_iid();
+}
+inline void TaskItemInfo::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void TaskItemInfo::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskItemInfo.iid)
+}
+
+// int64 role_iid = 2;
+inline void TaskItemInfo::clear_role_iid() {
+  role_iid_ = int64_t{0};
+}
+inline int64_t TaskItemInfo::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t TaskItemInfo::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskItemInfo.role_iid)
+  return _internal_role_iid();
+}
+inline void TaskItemInfo::_internal_set_role_iid(int64_t value) {
+  
+  role_iid_ = value;
+}
+inline void TaskItemInfo::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskItemInfo.role_iid)
+}
+
+// -------------------------------------------------------------------
+
+// TaskItemList
+
+// repeated .PRO.TaskItemInfo tasks = 1;
+inline int TaskItemList::_internal_tasks_size() const {
+  return tasks_.size();
+}
+inline int TaskItemList::tasks_size() const {
+  return _internal_tasks_size();
+}
+inline void TaskItemList::clear_tasks() {
+  tasks_.Clear();
+}
+inline ::PRO::TaskItemInfo* TaskItemList::mutable_tasks(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.TaskItemList.tasks)
+  return tasks_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskItemInfo >*
+TaskItemList::mutable_tasks() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.TaskItemList.tasks)
+  return &tasks_;
+}
+inline const ::PRO::TaskItemInfo& TaskItemList::_internal_tasks(int index) const {
+  return tasks_.Get(index);
+}
+inline const ::PRO::TaskItemInfo& TaskItemList::tasks(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.TaskItemList.tasks)
+  return _internal_tasks(index);
+}
+inline ::PRO::TaskItemInfo* TaskItemList::_internal_add_tasks() {
+  return tasks_.Add();
+}
+inline ::PRO::TaskItemInfo* TaskItemList::add_tasks() {
+  ::PRO::TaskItemInfo* _add = _internal_add_tasks();
+  // @@protoc_insertion_point(field_add:PRO.TaskItemList.tasks)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskItemInfo >&
+TaskItemList::tasks() const {
+  // @@protoc_insertion_point(field_list:PRO.TaskItemList.tasks)
+  return tasks_;
+}
+
+// -------------------------------------------------------------------
+
+// TaskGroupInfo
+
+// int64 iid = 1;
+inline void TaskGroupInfo::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t TaskGroupInfo::_internal_iid() const {
+  return iid_;
+}
+inline int64_t TaskGroupInfo::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskGroupInfo.iid)
+  return _internal_iid();
+}
+inline void TaskGroupInfo::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void TaskGroupInfo::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskGroupInfo.iid)
+}
+
+// int64 role_iid = 2;
+inline void TaskGroupInfo::clear_role_iid() {
+  role_iid_ = int64_t{0};
+}
+inline int64_t TaskGroupInfo::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t TaskGroupInfo::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskGroupInfo.role_iid)
+  return _internal_role_iid();
+}
+inline void TaskGroupInfo::_internal_set_role_iid(int64_t value) {
+  
+  role_iid_ = value;
+}
+inline void TaskGroupInfo::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskGroupInfo.role_iid)
+}
+
+// .PRO.TaskItemDatas datas = 20;
+inline bool TaskGroupInfo::_internal_has_datas() const {
+  return this != internal_default_instance() && datas_ != nullptr;
+}
+inline bool TaskGroupInfo::has_datas() const {
+  return _internal_has_datas();
+}
+inline void TaskGroupInfo::clear_datas() {
+  if (GetArenaForAllocation() == nullptr && datas_ != nullptr) {
+    delete datas_;
+  }
+  datas_ = nullptr;
+}
+inline const ::PRO::TaskItemDatas& TaskGroupInfo::_internal_datas() const {
+  const ::PRO::TaskItemDatas* p = datas_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::TaskItemDatas&>(
+      ::PRO::_TaskItemDatas_default_instance_);
+}
+inline const ::PRO::TaskItemDatas& TaskGroupInfo::datas() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskGroupInfo.datas)
+  return _internal_datas();
+}
+inline void TaskGroupInfo::unsafe_arena_set_allocated_datas(
+    ::PRO::TaskItemDatas* datas) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(datas_);
+  }
+  datas_ = datas;
+  if (datas) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.TaskGroupInfo.datas)
+}
+inline ::PRO::TaskItemDatas* TaskGroupInfo::release_datas() {
+  
+  ::PRO::TaskItemDatas* temp = datas_;
+  datas_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::TaskItemDatas* TaskGroupInfo::unsafe_arena_release_datas() {
+  // @@protoc_insertion_point(field_release:PRO.TaskGroupInfo.datas)
+  
+  ::PRO::TaskItemDatas* temp = datas_;
+  datas_ = nullptr;
+  return temp;
+}
+inline ::PRO::TaskItemDatas* TaskGroupInfo::_internal_mutable_datas() {
+  
+  if (datas_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::TaskItemDatas>(GetArenaForAllocation());
+    datas_ = p;
+  }
+  return datas_;
+}
+inline ::PRO::TaskItemDatas* TaskGroupInfo::mutable_datas() {
+  ::PRO::TaskItemDatas* _msg = _internal_mutable_datas();
+  // @@protoc_insertion_point(field_mutable:PRO.TaskGroupInfo.datas)
+  return _msg;
+}
+inline void TaskGroupInfo::set_allocated_datas(::PRO::TaskItemDatas* datas) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete datas_;
+  }
+  if (datas) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::TaskItemDatas>::GetOwningArena(datas);
+    if (message_arena != submessage_arena) {
+      datas = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, datas, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  datas_ = datas;
+  // @@protoc_insertion_point(field_set_allocated:PRO.TaskGroupInfo.datas)
+}
+
+// -------------------------------------------------------------------
+
+// TaskGroupList
+
+// repeated .PRO.TaskGroupInfo groups = 1;
+inline int TaskGroupList::_internal_groups_size() const {
+  return groups_.size();
+}
+inline int TaskGroupList::groups_size() const {
+  return _internal_groups_size();
+}
+inline void TaskGroupList::clear_groups() {
+  groups_.Clear();
+}
+inline ::PRO::TaskGroupInfo* TaskGroupList::mutable_groups(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.TaskGroupList.groups)
+  return groups_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskGroupInfo >*
+TaskGroupList::mutable_groups() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.TaskGroupList.groups)
+  return &groups_;
+}
+inline const ::PRO::TaskGroupInfo& TaskGroupList::_internal_groups(int index) const {
+  return groups_.Get(index);
+}
+inline const ::PRO::TaskGroupInfo& TaskGroupList::groups(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.TaskGroupList.groups)
+  return _internal_groups(index);
+}
+inline ::PRO::TaskGroupInfo* TaskGroupList::_internal_add_groups() {
+  return groups_.Add();
+}
+inline ::PRO::TaskGroupInfo* TaskGroupList::add_groups() {
+  ::PRO::TaskGroupInfo* _add = _internal_add_groups();
+  // @@protoc_insertion_point(field_add:PRO.TaskGroupList.groups)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskGroupInfo >&
+TaskGroupList::groups() const {
+  // @@protoc_insertion_point(field_list:PRO.TaskGroupList.groups)
+  return groups_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

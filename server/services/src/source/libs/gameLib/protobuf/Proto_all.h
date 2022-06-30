@@ -27,4 +27,6 @@
 
 #include <gameLib/protobuf/cpp/item_warehouse.pb.h>
 
+#include <gameLib/protobuf/cpp/task_system.pb.h>
+
 #endif //__PROTO_ALL_H__

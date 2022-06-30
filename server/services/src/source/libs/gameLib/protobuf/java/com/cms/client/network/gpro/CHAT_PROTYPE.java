@@ -9,80 +9,88 @@ package com.cms.client.network.gpro;
 public enum CHAT_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_4500 = 0;</code>
+   * <code>UNIVERSAL_1750 = 0;</code>
    */
-  UNIVERSAL_4500(0),
+  UNIVERSAL_1750(0),
   /**
-   * <code>CHAT_MSG_BEGIN = 4500;</code>
+   * <code>CHAT_MSG_BEGIN = 1750;</code>
    */
-  CHAT_MSG_BEGIN(4500),
+  CHAT_MSG_BEGIN(1750),
   /**
-   * <code>CHAT_GLOBALMSG_NTF = 4501;</code>
+   * <code>CHAT_USERCHANNELS_ACTIVE = 1751;</code>
    */
-  CHAT_GLOBALMSG_NTF(4501),
+  CHAT_USERCHANNELS_ACTIVE(1751),
   /**
-   * <code>CHAT_USERCHANNELS_ACTIVE = 4510;</code>
+   * <code>CHAT_CUSTOMCHANNELID_REQ = 1752;</code>
    */
-  CHAT_USERCHANNELS_ACTIVE(4510),
+  CHAT_CUSTOMCHANNELID_REQ(1752),
   /**
-   * <code>CHAT_CUSTOMCHANNELID_REQ = 4515;</code>
+   * <code>CHAT_CUSTOMCHANNELID_ACK = 1753;</code>
    */
-  CHAT_CUSTOMCHANNELID_REQ(4515),
+  CHAT_CUSTOMCHANNELID_ACK(1753),
   /**
-   * <code>CHAT_CUSTOMCHANNELID_ACK = 4516;</code>
+   * <code>CHAT_USERMSG_SAY = 1754;</code>
    */
-  CHAT_CUSTOMCHANNELID_ACK(4516),
+  CHAT_USERMSG_SAY(1754),
   /**
-   * <code>CHAT_USERMSG_SAY = 4520;</code>
+   * <code>CHAT_CHATMSG_NTF = 1755;</code>
    */
-  CHAT_USERMSG_SAY(4520),
+  CHAT_CHATMSG_NTF(1755),
   /**
-   * <code>CHAT_CHATMSG_NTF = 4521;</code>
+   * <code>CHAT_GLOBALMSG_NTF = 1949;</code>
    */
-  CHAT_CHATMSG_NTF(4521),
+  CHAT_GLOBALMSG_NTF(1949),
   /**
-   * <code>CHAT_MSG_END = 4800;</code>
+   * <code>CHAT_MSG_END = 1950;</code>
    */
-  CHAT_MSG_END(4800),
+  CHAT_MSG_END(1950),
+  /**
+   * <code>CHAT_MSGALL_END = 1999;</code>
+   */
+  CHAT_MSGALL_END(1999),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_4500 = 0;</code>
+   * <code>UNIVERSAL_1750 = 0;</code>
    */
-  public static final int UNIVERSAL_4500_VALUE = 0;
+  public static final int UNIVERSAL_1750_VALUE = 0;
   /**
-   * <code>CHAT_MSG_BEGIN = 4500;</code>
+   * <code>CHAT_MSG_BEGIN = 1750;</code>
    */
-  public static final int CHAT_MSG_BEGIN_VALUE = 4500;
+  public static final int CHAT_MSG_BEGIN_VALUE = 1750;
   /**
-   * <code>CHAT_GLOBALMSG_NTF = 4501;</code>
+   * <code>CHAT_USERCHANNELS_ACTIVE = 1751;</code>
    */
-  public static final int CHAT_GLOBALMSG_NTF_VALUE = 4501;
+  public static final int CHAT_USERCHANNELS_ACTIVE_VALUE = 1751;
   /**
-   * <code>CHAT_USERCHANNELS_ACTIVE = 4510;</code>
+   * <code>CHAT_CUSTOMCHANNELID_REQ = 1752;</code>
    */
-  public static final int CHAT_USERCHANNELS_ACTIVE_VALUE = 4510;
+  public static final int CHAT_CUSTOMCHANNELID_REQ_VALUE = 1752;
   /**
-   * <code>CHAT_CUSTOMCHANNELID_REQ = 4515;</code>
+   * <code>CHAT_CUSTOMCHANNELID_ACK = 1753;</code>
    */
-  public static final int CHAT_CUSTOMCHANNELID_REQ_VALUE = 4515;
+  public static final int CHAT_CUSTOMCHANNELID_ACK_VALUE = 1753;
   /**
-   * <code>CHAT_CUSTOMCHANNELID_ACK = 4516;</code>
+   * <code>CHAT_USERMSG_SAY = 1754;</code>
    */
-  public static final int CHAT_CUSTOMCHANNELID_ACK_VALUE = 4516;
+  public static final int CHAT_USERMSG_SAY_VALUE = 1754;
   /**
-   * <code>CHAT_USERMSG_SAY = 4520;</code>
+   * <code>CHAT_CHATMSG_NTF = 1755;</code>
    */
-  public static final int CHAT_USERMSG_SAY_VALUE = 4520;
+  public static final int CHAT_CHATMSG_NTF_VALUE = 1755;
   /**
-   * <code>CHAT_CHATMSG_NTF = 4521;</code>
+   * <code>CHAT_GLOBALMSG_NTF = 1949;</code>
    */
-  public static final int CHAT_CHATMSG_NTF_VALUE = 4521;
+  public static final int CHAT_GLOBALMSG_NTF_VALUE = 1949;
   /**
-   * <code>CHAT_MSG_END = 4800;</code>
+   * <code>CHAT_MSG_END = 1950;</code>
    */
-  public static final int CHAT_MSG_END_VALUE = 4800;
+  public static final int CHAT_MSG_END_VALUE = 1950;
+  /**
+   * <code>CHAT_MSGALL_END = 1999;</code>
+   */
+  public static final int CHAT_MSGALL_END_VALUE = 1999;
 
 
   public final int getNumber() {
@@ -109,15 +117,16 @@ public enum CHAT_PROTYPE
    */
   public static CHAT_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_4500;
-      case 4500: return CHAT_MSG_BEGIN;
-      case 4501: return CHAT_GLOBALMSG_NTF;
-      case 4510: return CHAT_USERCHANNELS_ACTIVE;
-      case 4515: return CHAT_CUSTOMCHANNELID_REQ;
-      case 4516: return CHAT_CUSTOMCHANNELID_ACK;
-      case 4520: return CHAT_USERMSG_SAY;
-      case 4521: return CHAT_CHATMSG_NTF;
-      case 4800: return CHAT_MSG_END;
+      case 0: return UNIVERSAL_1750;
+      case 1750: return CHAT_MSG_BEGIN;
+      case 1751: return CHAT_USERCHANNELS_ACTIVE;
+      case 1752: return CHAT_CUSTOMCHANNELID_REQ;
+      case 1753: return CHAT_CUSTOMCHANNELID_ACK;
+      case 1754: return CHAT_USERMSG_SAY;
+      case 1755: return CHAT_CHATMSG_NTF;
+      case 1949: return CHAT_GLOBALMSG_NTF;
+      case 1950: return CHAT_MSG_END;
+      case 1999: return CHAT_MSGALL_END;
       default: return null;
     }
   }

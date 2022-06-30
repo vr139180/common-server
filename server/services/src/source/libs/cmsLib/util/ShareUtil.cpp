@@ -1,5 +1,6 @@
 ﻿#include "cmsLib/util/ShareUtil.h"
 
+#include <algorithm>
 #include <stdlib.h>
 #include <cmsLib/base/OSSystem.h>
 
@@ -314,4 +315,14 @@ time_t ShareUtil::getLastRefreshTime( time_t checktime, int hour, int min /*= 0*
     lastRefreshTime.tm_min = min;
     lastRefreshTime.tm_sec = sec;
     return ShareUtil::time_gm( &lastRefreshTime );
+}
+
+void ShareUtil::to_lower(std::string& str)
+{
+	std::transform(str.cbegin(), str.cend(), str.begin(), ::tolower);
+}
+
+void ShareUtil::to_upper(std::string& str)
+{
+	std::transform(str.cbegin(), str.cend(), str.begin(), ::toupper);
 }

@@ -18,7 +18,7 @@
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
 }  // namespace PRO
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_2eproto[7];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_2eproto[8];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_proto_5fiid_2eproto = nullptr;
 const uint32_t TableStruct_proto_5fiid_2eproto::offsets[1] = {};
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
@@ -26,58 +26,60 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances
 
 const char descriptor_table_protodef_proto_5fiid_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\017proto_iid.proto\022\003PRO*\374\002\n\014USER_PROTYPE\022"
-  "\022\n\016UNIVERSAL_3000\020\000\022\021\n\014ERK_USER_NUM\020\270\027\022\023"
-  "\n\016USER_LOGIN_REQ\020\271\027\022\023\n\016USER_LOGIN_ACK\020\272\027"
-  "\022\030\n\023USER_PROXYLOGIN_REQ\020\273\027\022\030\n\023USER_PROXY"
-  "LOGIN_ACK\020\274\027\022\024\n\017USER_LOGOUT_NTF\020\275\027\022\026\n\021US"
-  "ER_ROLELIST_ACK\020\277\027\022\030\n\023USER_ROLESELECT_RE"
-  "Q\020\300\027\022\030\n\023USER_ROLESELECT_ACK\020\301\027\022\030\n\023USER_R"
-  "OLECREATE_REQ\020\302\027\022\030\n\023USER_ROLECREATE_ACK\020"
-  "\303\027\022\031\n\024USER_ROLEDETAILA_NTF\020\304\027\022\031\n\024USER_RO"
-  "LEDETAILB_NTF\020\305\027\022\033\n\026USER_ROLEDETAILEND_N"
-  "TF\020\306\027*\203\001\n\rBUILD_PROTYPE\022\022\n\016UNIVERSAL_350"
-  "0\020\000\022\026\n\021BUILD_ADDITEM_REQ\020\255\033\022\026\n\021BUILD_ADD"
-  "ITEM_ACK\020\256\033\022\026\n\021BUILD_DELITEM_REQ\020\257\033\022\026\n\021B"
-  "UILD_DELITEM_ACK\020\260\033*\201\001\n\013PET_PROTYPE\022\022\n\016U"
-  "NIVERSAL_4000\020\000\022\025\n\020PET_ADOPTONE_REQ\020\241\037\022\025"
-  "\n\020PET_ADOPTONE_ACK\020\242\037\022\027\n\022PET_RELEASEONE_"
-  "REQ\020\243\037\022\027\n\022PET_RELEASEONE_ACK\020\244\037*\356\001\n\014CHAT"
-  "_PROTYPE\022\022\n\016UNIVERSAL_4500\020\000\022\023\n\016CHAT_MSG"
-  "_BEGIN\020\224#\022\027\n\022CHAT_GLOBALMSG_NTF\020\225#\022\035\n\030CH"
-  "AT_USERCHANNELS_ACTIVE\020\236#\022\035\n\030CHAT_CUSTOM"
-  "CHANNELID_REQ\020\243#\022\035\n\030CHAT_CUSTOMCHANNELID"
-  "_ACK\020\244#\022\025\n\020CHAT_USERMSG_SAY\020\250#\022\025\n\020CHAT_C"
-  "HATMSG_NTF\020\251#\022\021\n\014CHAT_MSG_END\020\300%*\334\003\n\014MAI"
-  "L_PROTYPE\022\022\n\016UNIVERSAL_5000\020\000\022\023\n\016MAIL_MS"
-  "G_BEGIN\020\210\'\022\025\n\020MAIL_NEWMAIL_NTF\020\211\'\022\025\n\020MAI"
-  "L_MAILGET_REQ\020\212\'\022\025\n\020MAIL_MAILGET_ACK\020\213\'\022"
-  "\033\n\026MAIL_USERONLINE_ACTIVE\020\214\'\022\026\n\021MAIL_REA"
-  "DMAIL_REQ\020\215\'\022\026\n\021MAIL_READMAIL_ACK\020\216\'\022\030\n\023"
-  "MAIL_DELETEMAIL_REQ\020\217\'\022\030\n\023MAIL_DELETEMAI"
-  "L_ACK\020\220\'\022\033\n\026MAIL_UNBINDATTACHS_REQ\020\221\'\022\033\n"
-  "\026MAIL_UNBINDATTACHS_ACK\020\222\'\022\030\n\023MAIL_SYSTE"
-  "MMAIL_REQ\020\321(\022\030\n\023MAIL_SYSTEMMAIL_ACK\020\322(\022\030"
-  "\n\023MAIL_SYSTEMMAIL_NTF\020\323(\022\025\n\020MAIL_NEWMAIL"
-  "_REQ\020\324(\022\025\n\020MAIL_NEWMAIL_ACK\020\325(\022\021\n\014MAIL_M"
-  "SG_END\020\370(\022\024\n\017MAIL_MSGALL_END\020\201)*\336\002\n\016FRIE"
-  "ND_PROTYPE\022\022\n\016UNIVERSAL_5250\020\000\022\025\n\020FRIEND"
-  "_MSG_BEGIN\020\202)\022\027\n\022FRD_FRIENDLIST_REQ\020\203)\022\027"
-  "\n\022FRD_FRIENDLIST_ACK\020\204)\022\031\n\024FRD_FRIENDINV"
-  "ITE_REQ\020\205)\022\031\n\024FRD_FRIENDINVITE_ACK\020\206)\022\032\n"
-  "\025FRD_INVITECONFIRM_REQ\020\207)\022\032\n\025FRD_INVITEC"
-  "ONFIRM_ACK\020\210)\022\031\n\024FRD_FRIENDDELETE_REQ\020\211)"
-  "\022\031\n\024FRD_FRIENDDELETE_ACK\020\212)\022\023\n\016FRIEND_MS"
-  "G_END\020\230*\022\036\n\031FRD_FRIENDCHANGEOTHER_NTF\020\231*"
-  "\022\026\n\021FRIEND_MSGALL_END\020\311**]\n\rITEMS_PROTYP"
-  "E\022\022\n\016UNIVERSAL_5500\020\000\022\033\n\026ITEM_USERBINDIT"
-  "EMS_REQ\020\375*\022\033\n\026ITEM_USERBINDITEMS_ACK\020\376*B"
-  "T\n\033com.cms.client.network.gproP\001Z\025gameli"
-  "b/protobuf/gpro\252\002\033com.cms.client.network"
-  ".gprob\006proto3"
+  "\022\n\016UNIVERSAL_1000\020\000\022\021\n\014ERK_USER_NUM\020\350\007\022\023"
+  "\n\016USER_LOGIN_REQ\020\351\007\022\023\n\016USER_LOGIN_ACK\020\352\007"
+  "\022\030\n\023USER_PROXYLOGIN_REQ\020\353\007\022\030\n\023USER_PROXY"
+  "LOGIN_ACK\020\354\007\022\024\n\017USER_LOGOUT_NTF\020\355\007\022\026\n\021US"
+  "ER_ROLELIST_ACK\020\357\007\022\030\n\023USER_ROLESELECT_RE"
+  "Q\020\360\007\022\030\n\023USER_ROLESELECT_ACK\020\361\007\022\030\n\023USER_R"
+  "OLECREATE_REQ\020\362\007\022\030\n\023USER_ROLECREATE_ACK\020"
+  "\363\007\022\031\n\024USER_ROLEDETAILA_NTF\020\364\007\022\031\n\024USER_RO"
+  "LEDETAILB_NTF\020\365\007\022\033\n\026USER_ROLEDETAILEND_N"
+  "TF\020\366\007*\203\001\n\rBUILD_PROTYPE\022\022\n\016UNIVERSAL_125"
+  "0\020\000\022\026\n\021BUILD_ADDITEM_REQ\020\343\t\022\026\n\021BUILD_ADD"
+  "ITEM_ACK\020\344\t\022\026\n\021BUILD_DELITEM_REQ\020\345\t\022\026\n\021B"
+  "UILD_DELITEM_ACK\020\346\t*\201\001\n\013PET_PROTYPE\022\022\n\016U"
+  "NIVERSAL_1500\020\000\022\025\n\020PET_ADOPTONE_REQ\020\335\013\022\025"
+  "\n\020PET_ADOPTONE_ACK\020\336\013\022\027\n\022PET_RELEASEONE_"
+  "REQ\020\337\013\022\027\n\022PET_RELEASEONE_ACK\020\340\013*\204\002\n\014CHAT"
+  "_PROTYPE\022\022\n\016UNIVERSAL_1750\020\000\022\023\n\016CHAT_MSG"
+  "_BEGIN\020\326\r\022\035\n\030CHAT_USERCHANNELS_ACTIVE\020\327\r"
+  "\022\035\n\030CHAT_CUSTOMCHANNELID_REQ\020\330\r\022\035\n\030CHAT_"
+  "CUSTOMCHANNELID_ACK\020\331\r\022\025\n\020CHAT_USERMSG_S"
+  "AY\020\332\r\022\025\n\020CHAT_CHATMSG_NTF\020\333\r\022\027\n\022CHAT_GLO"
+  "BALMSG_NTF\020\235\017\022\021\n\014CHAT_MSG_END\020\236\017\022\024\n\017CHAT"
+  "_MSGALL_END\020\317\017*\334\003\n\014MAIL_PROTYPE\022\022\n\016UNIVE"
+  "RSAL_2000\020\000\022\023\n\016MAIL_MSG_BEGIN\020\320\017\022\025\n\020MAIL"
+  "_NEWMAIL_NTF\020\321\017\022\025\n\020MAIL_MAILGET_REQ\020\322\017\022\025"
+  "\n\020MAIL_MAILGET_ACK\020\323\017\022\033\n\026MAIL_USERONLINE"
+  "_ACTIVE\020\324\017\022\026\n\021MAIL_READMAIL_REQ\020\325\017\022\026\n\021MA"
+  "IL_READMAIL_ACK\020\326\017\022\030\n\023MAIL_DELETEMAIL_RE"
+  "Q\020\327\017\022\030\n\023MAIL_DELETEMAIL_ACK\020\330\017\022\033\n\026MAIL_U"
+  "NBINDATTACHS_REQ\020\331\017\022\033\n\026MAIL_UNBINDATTACH"
+  "S_ACK\020\332\017\022\030\n\023MAIL_SYSTEMMAIL_REQ\020\231\021\022\030\n\023MA"
+  "IL_SYSTEMMAIL_ACK\020\232\021\022\030\n\023MAIL_SYSTEMMAIL_"
+  "NTF\020\233\021\022\025\n\020MAIL_NEWMAIL_REQ\020\234\021\022\025\n\020MAIL_NE"
+  "WMAIL_ACK\020\235\021\022\021\n\014MAIL_MSG_END\020\300\021\022\024\n\017MAIL_"
+  "MSGALL_END\020\311\021*\336\002\n\016FRIEND_PROTYPE\022\022\n\016UNIV"
+  "ERSAL_2250\020\000\022\025\n\020FRIEND_MSG_BEGIN\020\312\021\022\027\n\022F"
+  "RD_FRIENDLIST_REQ\020\313\021\022\027\n\022FRD_FRIENDLIST_A"
+  "CK\020\314\021\022\031\n\024FRD_FRIENDINVITE_REQ\020\315\021\022\031\n\024FRD_"
+  "FRIENDINVITE_ACK\020\316\021\022\032\n\025FRD_INVITECONFIRM"
+  "_REQ\020\317\021\022\032\n\025FRD_INVITECONFIRM_ACK\020\320\021\022\031\n\024F"
+  "RD_FRIENDDELETE_REQ\020\321\021\022\031\n\024FRD_FRIENDDELE"
+  "TE_ACK\020\322\021\022\023\n\016FRIEND_MSG_END\020\222\023\022\036\n\031FRD_FR"
+  "IENDCHANGEOTHER_NTF\020\223\023\022\026\n\021FRIEND_MSGALL_"
+  "END\020\303\023*]\n\rITEMS_PROTYPE\022\022\n\016UNIVERSAL_250"
+  "0\020\000\022\033\n\026ITEM_USERBINDITEMS_REQ\020\305\023\022\033\n\026ITEM"
+  "_USERBINDITEMS_ACK\020\306\023*:\n\014TASK_PROTYPE\022\022\n"
+  "\016UNIVERSAL_2750\020\000\022\026\n\021TASK_NEWTASKS_NTF\020\277"
+  "\025BT\n\033com.cms.client.network.gproP\001Z\025game"
+  "lib/protobuf/gpro\252\002\033com.cms.client.netwo"
+  "rk.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_2eproto = {
-  false, false, 1933, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
+  false, false, 2015, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
   &descriptor_table_proto_5fiid_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_2eproto, file_level_service_descriptors_proto_5fiid_2eproto,
@@ -96,20 +98,20 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* USER_PROTYPE_descriptor() {
 bool USER_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 3000:
-    case 3001:
-    case 3002:
-    case 3003:
-    case 3004:
-    case 3005:
-    case 3007:
-    case 3008:
-    case 3009:
-    case 3010:
-    case 3011:
-    case 3012:
-    case 3013:
-    case 3014:
+    case 1000:
+    case 1001:
+    case 1002:
+    case 1003:
+    case 1004:
+    case 1005:
+    case 1007:
+    case 1008:
+    case 1009:
+    case 1010:
+    case 1011:
+    case 1012:
+    case 1013:
+    case 1014:
       return true;
     default:
       return false;
@@ -123,10 +125,10 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* BUILD_PROTYPE_descriptor() {
 bool BUILD_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 3501:
-    case 3502:
-    case 3503:
-    case 3504:
+    case 1251:
+    case 1252:
+    case 1253:
+    case 1254:
       return true;
     default:
       return false;
@@ -140,10 +142,10 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PET_PROTYPE_descriptor() {
 bool PET_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 4001:
-    case 4002:
-    case 4003:
-    case 4004:
+    case 1501:
+    case 1502:
+    case 1503:
+    case 1504:
       return true;
     default:
       return false;
@@ -157,14 +159,15 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CHAT_PROTYPE_descriptor() {
 bool CHAT_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 4500:
-    case 4501:
-    case 4510:
-    case 4515:
-    case 4516:
-    case 4520:
-    case 4521:
-    case 4800:
+    case 1750:
+    case 1751:
+    case 1752:
+    case 1753:
+    case 1754:
+    case 1755:
+    case 1949:
+    case 1950:
+    case 1999:
       return true;
     default:
       return false;
@@ -178,24 +181,24 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MAIL_PROTYPE_descriptor() {
 bool MAIL_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 5000:
-    case 5001:
-    case 5002:
-    case 5003:
-    case 5004:
-    case 5005:
-    case 5006:
-    case 5007:
-    case 5008:
-    case 5009:
-    case 5010:
-    case 5201:
-    case 5202:
-    case 5203:
-    case 5204:
-    case 5205:
-    case 5240:
-    case 5249:
+    case 2000:
+    case 2001:
+    case 2002:
+    case 2003:
+    case 2004:
+    case 2005:
+    case 2006:
+    case 2007:
+    case 2008:
+    case 2009:
+    case 2010:
+    case 2201:
+    case 2202:
+    case 2203:
+    case 2204:
+    case 2205:
+    case 2240:
+    case 2249:
       return true;
     default:
       return false;
@@ -209,18 +212,18 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* FRIEND_PROTYPE_descriptor() {
 bool FRIEND_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 5250:
-    case 5251:
-    case 5252:
-    case 5253:
-    case 5254:
-    case 5255:
-    case 5256:
-    case 5257:
-    case 5258:
-    case 5400:
-    case 5401:
-    case 5449:
+    case 2250:
+    case 2251:
+    case 2252:
+    case 2253:
+    case 2254:
+    case 2255:
+    case 2256:
+    case 2257:
+    case 2258:
+    case 2450:
+    case 2451:
+    case 2499:
       return true;
     default:
       return false;
@@ -234,8 +237,22 @@ const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ITEMS_PROTYPE_descriptor() {
 bool ITEMS_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
-    case 5501:
-    case 5502:
+    case 2501:
+    case 2502:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TASK_PROTYPE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_proto_5fiid_2eproto);
+  return file_level_enum_descriptors_proto_5fiid_2eproto[7];
+}
+bool TASK_PROTYPE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 2751:
       return true;
     default:
       return false;

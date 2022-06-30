@@ -2913,15 +2913,25 @@ class Erk_ServiceShutdown_ntf final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kServiceFieldNumber = 1,
+    kServiceFieldNumber = 2,
+    kSvrTypeFieldNumber = 1,
   };
-  // int64 service = 1;
+  // int64 service = 2;
   void clear_service();
   int64_t service() const;
   void set_service(int64_t value);
   private:
   int64_t _internal_service() const;
   void _internal_set_service(int64_t value);
+  public:
+
+  // int32 svr_type = 1;
+  void clear_svr_type();
+  int32_t svr_type() const;
+  void set_svr_type(int32_t value);
+  private:
+  int32_t _internal_svr_type() const;
+  void _internal_set_svr_type(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceShutdown_ntf)
@@ -2932,6 +2942,7 @@ class Erk_ServiceShutdown_ntf final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   int64_t service_;
+  int32_t svr_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -5395,7 +5406,27 @@ Erk_ServiceSubscribe_ack::mutable_offline() {
 
 // Erk_ServiceShutdown_ntf
 
-// int64 service = 1;
+// int32 svr_type = 1;
+inline void Erk_ServiceShutdown_ntf::clear_svr_type() {
+  svr_type_ = 0;
+}
+inline int32_t Erk_ServiceShutdown_ntf::_internal_svr_type() const {
+  return svr_type_;
+}
+inline int32_t Erk_ServiceShutdown_ntf::svr_type() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceShutdown_ntf.svr_type)
+  return _internal_svr_type();
+}
+inline void Erk_ServiceShutdown_ntf::_internal_set_svr_type(int32_t value) {
+  
+  svr_type_ = value;
+}
+inline void Erk_ServiceShutdown_ntf::set_svr_type(int32_t value) {
+  _internal_set_svr_type(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.svr_type)
+}
+
+// int64 service = 2;
 inline void Erk_ServiceShutdown_ntf::clear_service() {
   service_ = int64_t{0};
 }

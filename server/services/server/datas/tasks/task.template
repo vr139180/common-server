@@ -1,0 +1,83 @@
+<!--
+task 定义了任务信息，包括触发条件，任务奖励等.
+impl: 定义了任务系统支持的实现方式
+iscycle: 是否循环任务，缺省为 false
+cyclenum: 循环次数，缺省为1, -1表示永久循环
+allowgiveup: 是否允许放弃任务, 缺省 true
+-->
+<task iid="1" impl="cpp|xml|lua" iscycle="true|false" cyclenum="1" allowgiveup="true|false">
+	<!--
+	定义了会触发任务计算的系统消息
+	events在protobuf的enum TASK_TRIGGER_TYPE协议中定义
+	1:timer 时间间隔触发
+	2:roleinfo 角色变化
+	-->
+	<trigger events="1|2|4|8|16"/>
+	<!--
+	task-data 注册了需要保存的任务中间数据，暂时只支持int64和string两种类型
+	包含了kv节点列表
+	-->
+	<task-data>
+		<!--
+		kv 节点定义了存储的临时数据
+		k: key字段，小写字符串。整个task节点唯一.
+		def: 初始化的缺省value值
+		type: 存储的类型，暂时int64,string
+		-->
+		<kv k="" def="" type="int64|string">
+			<!--
+			xml-oper 只在impl=xml时配置
+			定义了如何更新数据内容
+			cpp或者lua在实现逻辑中编码实现
+			-->
+			<xml-oper fun="set|incr|decr" />
+		</kv>
+	</task-data>
+	<!--
+	cpp 如果impl=cpp 则包含该节点
+	name: 任务系统实现该任务的 class名称。需要实现 ITaskCpp接口
+	-->
+	<cpp name="xxxxx" />
+	<!--
+	imp=xml时包含的配置
+	-->
+	<xml>
+		<!--
+		get定义了，领取任务的条件
+		定义见 conditions.template
+		-->
+		<get>
+		</get>
+		<!--
+		submit定义了，提交任务的条件
+		定义见 conditions.template
+		-->
+		<submit>
+		</submit>
+	</xml>
+	<!--
+	imp=lua时包含的配置
+	-->
+	<lua>
+		<!--
+		get定义了，领取任务的条件
+		定义见 conditions.template
+		-->
+		<get><![[
+		]]>
+		</get>
+		<!--
+		submit定义了，提交任务的条件
+		定义见 conditions.template
+		-->
+		<submit>
+		<![[
+		]]>
+		</submit>
+	</lua>
+	<!--
+	任务奖励配置
+	-->
+	<rewards>
+	</rewards>
+</task>

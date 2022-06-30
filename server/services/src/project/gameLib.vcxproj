@@ -39,6 +39,7 @@
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\proto_iid.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\task_system.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_building.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_chat.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.cc" />
@@ -83,6 +84,7 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\proto_iid.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\task_system.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_building.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_chat.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.h" />

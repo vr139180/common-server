@@ -9,160 +9,160 @@ package com.cms.client.network.gpro;
 public enum MAIL_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_5000 = 0;</code>
+   * <code>UNIVERSAL_2000 = 0;</code>
    */
-  UNIVERSAL_5000(0),
+  UNIVERSAL_2000(0),
   /**
-   * <code>MAIL_MSG_BEGIN = 5000;</code>
+   * <code>MAIL_MSG_BEGIN = 2000;</code>
    */
-  MAIL_MSG_BEGIN(5000),
+  MAIL_MSG_BEGIN(2000),
   /**
-   * <code>MAIL_NEWMAIL_NTF = 5001;</code>
+   * <code>MAIL_NEWMAIL_NTF = 2001;</code>
    */
-  MAIL_NEWMAIL_NTF(5001),
+  MAIL_NEWMAIL_NTF(2001),
   /**
-   * <code>MAIL_MAILGET_REQ = 5002;</code>
+   * <code>MAIL_MAILGET_REQ = 2002;</code>
    */
-  MAIL_MAILGET_REQ(5002),
+  MAIL_MAILGET_REQ(2002),
   /**
-   * <code>MAIL_MAILGET_ACK = 5003;</code>
+   * <code>MAIL_MAILGET_ACK = 2003;</code>
    */
-  MAIL_MAILGET_ACK(5003),
+  MAIL_MAILGET_ACK(2003),
   /**
-   * <code>MAIL_USERONLINE_ACTIVE = 5004;</code>
+   * <code>MAIL_USERONLINE_ACTIVE = 2004;</code>
    */
-  MAIL_USERONLINE_ACTIVE(5004),
+  MAIL_USERONLINE_ACTIVE(2004),
   /**
-   * <code>MAIL_READMAIL_REQ = 5005;</code>
+   * <code>MAIL_READMAIL_REQ = 2005;</code>
    */
-  MAIL_READMAIL_REQ(5005),
+  MAIL_READMAIL_REQ(2005),
   /**
-   * <code>MAIL_READMAIL_ACK = 5006;</code>
+   * <code>MAIL_READMAIL_ACK = 2006;</code>
    */
-  MAIL_READMAIL_ACK(5006),
+  MAIL_READMAIL_ACK(2006),
   /**
-   * <code>MAIL_DELETEMAIL_REQ = 5007;</code>
+   * <code>MAIL_DELETEMAIL_REQ = 2007;</code>
    */
-  MAIL_DELETEMAIL_REQ(5007),
+  MAIL_DELETEMAIL_REQ(2007),
   /**
-   * <code>MAIL_DELETEMAIL_ACK = 5008;</code>
+   * <code>MAIL_DELETEMAIL_ACK = 2008;</code>
    */
-  MAIL_DELETEMAIL_ACK(5008),
+  MAIL_DELETEMAIL_ACK(2008),
   /**
-   * <code>MAIL_UNBINDATTACHS_REQ = 5009;</code>
+   * <code>MAIL_UNBINDATTACHS_REQ = 2009;</code>
    */
-  MAIL_UNBINDATTACHS_REQ(5009),
+  MAIL_UNBINDATTACHS_REQ(2009),
   /**
-   * <code>MAIL_UNBINDATTACHS_ACK = 5010;</code>
+   * <code>MAIL_UNBINDATTACHS_ACK = 2010;</code>
    */
-  MAIL_UNBINDATTACHS_ACK(5010),
+  MAIL_UNBINDATTACHS_ACK(2010),
   /**
-   * <code>MAIL_SYSTEMMAIL_REQ = 5201;</code>
+   * <code>MAIL_SYSTEMMAIL_REQ = 2201;</code>
    */
-  MAIL_SYSTEMMAIL_REQ(5201),
+  MAIL_SYSTEMMAIL_REQ(2201),
   /**
-   * <code>MAIL_SYSTEMMAIL_ACK = 5202;</code>
+   * <code>MAIL_SYSTEMMAIL_ACK = 2202;</code>
    */
-  MAIL_SYSTEMMAIL_ACK(5202),
+  MAIL_SYSTEMMAIL_ACK(2202),
   /**
-   * <code>MAIL_SYSTEMMAIL_NTF = 5203;</code>
+   * <code>MAIL_SYSTEMMAIL_NTF = 2203;</code>
    */
-  MAIL_SYSTEMMAIL_NTF(5203),
+  MAIL_SYSTEMMAIL_NTF(2203),
   /**
-   * <code>MAIL_NEWMAIL_REQ = 5204;</code>
+   * <code>MAIL_NEWMAIL_REQ = 2204;</code>
    */
-  MAIL_NEWMAIL_REQ(5204),
+  MAIL_NEWMAIL_REQ(2204),
   /**
-   * <code>MAIL_NEWMAIL_ACK = 5205;</code>
+   * <code>MAIL_NEWMAIL_ACK = 2205;</code>
    */
-  MAIL_NEWMAIL_ACK(5205),
+  MAIL_NEWMAIL_ACK(2205),
   /**
-   * <code>MAIL_MSG_END = 5240;</code>
+   * <code>MAIL_MSG_END = 2240;</code>
    */
-  MAIL_MSG_END(5240),
+  MAIL_MSG_END(2240),
   /**
-   * <code>MAIL_MSGALL_END = 5249;</code>
+   * <code>MAIL_MSGALL_END = 2249;</code>
    */
-  MAIL_MSGALL_END(5249),
+  MAIL_MSGALL_END(2249),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_5000 = 0;</code>
+   * <code>UNIVERSAL_2000 = 0;</code>
    */
-  public static final int UNIVERSAL_5000_VALUE = 0;
+  public static final int UNIVERSAL_2000_VALUE = 0;
   /**
-   * <code>MAIL_MSG_BEGIN = 5000;</code>
+   * <code>MAIL_MSG_BEGIN = 2000;</code>
    */
-  public static final int MAIL_MSG_BEGIN_VALUE = 5000;
+  public static final int MAIL_MSG_BEGIN_VALUE = 2000;
   /**
-   * <code>MAIL_NEWMAIL_NTF = 5001;</code>
+   * <code>MAIL_NEWMAIL_NTF = 2001;</code>
    */
-  public static final int MAIL_NEWMAIL_NTF_VALUE = 5001;
+  public static final int MAIL_NEWMAIL_NTF_VALUE = 2001;
   /**
-   * <code>MAIL_MAILGET_REQ = 5002;</code>
+   * <code>MAIL_MAILGET_REQ = 2002;</code>
    */
-  public static final int MAIL_MAILGET_REQ_VALUE = 5002;
+  public static final int MAIL_MAILGET_REQ_VALUE = 2002;
   /**
-   * <code>MAIL_MAILGET_ACK = 5003;</code>
+   * <code>MAIL_MAILGET_ACK = 2003;</code>
    */
-  public static final int MAIL_MAILGET_ACK_VALUE = 5003;
+  public static final int MAIL_MAILGET_ACK_VALUE = 2003;
   /**
-   * <code>MAIL_USERONLINE_ACTIVE = 5004;</code>
+   * <code>MAIL_USERONLINE_ACTIVE = 2004;</code>
    */
-  public static final int MAIL_USERONLINE_ACTIVE_VALUE = 5004;
+  public static final int MAIL_USERONLINE_ACTIVE_VALUE = 2004;
   /**
-   * <code>MAIL_READMAIL_REQ = 5005;</code>
+   * <code>MAIL_READMAIL_REQ = 2005;</code>
    */
-  public static final int MAIL_READMAIL_REQ_VALUE = 5005;
+  public static final int MAIL_READMAIL_REQ_VALUE = 2005;
   /**
-   * <code>MAIL_READMAIL_ACK = 5006;</code>
+   * <code>MAIL_READMAIL_ACK = 2006;</code>
    */
-  public static final int MAIL_READMAIL_ACK_VALUE = 5006;
+  public static final int MAIL_READMAIL_ACK_VALUE = 2006;
   /**
-   * <code>MAIL_DELETEMAIL_REQ = 5007;</code>
+   * <code>MAIL_DELETEMAIL_REQ = 2007;</code>
    */
-  public static final int MAIL_DELETEMAIL_REQ_VALUE = 5007;
+  public static final int MAIL_DELETEMAIL_REQ_VALUE = 2007;
   /**
-   * <code>MAIL_DELETEMAIL_ACK = 5008;</code>
+   * <code>MAIL_DELETEMAIL_ACK = 2008;</code>
    */
-  public static final int MAIL_DELETEMAIL_ACK_VALUE = 5008;
+  public static final int MAIL_DELETEMAIL_ACK_VALUE = 2008;
   /**
-   * <code>MAIL_UNBINDATTACHS_REQ = 5009;</code>
+   * <code>MAIL_UNBINDATTACHS_REQ = 2009;</code>
    */
-  public static final int MAIL_UNBINDATTACHS_REQ_VALUE = 5009;
+  public static final int MAIL_UNBINDATTACHS_REQ_VALUE = 2009;
   /**
-   * <code>MAIL_UNBINDATTACHS_ACK = 5010;</code>
+   * <code>MAIL_UNBINDATTACHS_ACK = 2010;</code>
    */
-  public static final int MAIL_UNBINDATTACHS_ACK_VALUE = 5010;
+  public static final int MAIL_UNBINDATTACHS_ACK_VALUE = 2010;
   /**
-   * <code>MAIL_SYSTEMMAIL_REQ = 5201;</code>
+   * <code>MAIL_SYSTEMMAIL_REQ = 2201;</code>
    */
-  public static final int MAIL_SYSTEMMAIL_REQ_VALUE = 5201;
+  public static final int MAIL_SYSTEMMAIL_REQ_VALUE = 2201;
   /**
-   * <code>MAIL_SYSTEMMAIL_ACK = 5202;</code>
+   * <code>MAIL_SYSTEMMAIL_ACK = 2202;</code>
    */
-  public static final int MAIL_SYSTEMMAIL_ACK_VALUE = 5202;
+  public static final int MAIL_SYSTEMMAIL_ACK_VALUE = 2202;
   /**
-   * <code>MAIL_SYSTEMMAIL_NTF = 5203;</code>
+   * <code>MAIL_SYSTEMMAIL_NTF = 2203;</code>
    */
-  public static final int MAIL_SYSTEMMAIL_NTF_VALUE = 5203;
+  public static final int MAIL_SYSTEMMAIL_NTF_VALUE = 2203;
   /**
-   * <code>MAIL_NEWMAIL_REQ = 5204;</code>
+   * <code>MAIL_NEWMAIL_REQ = 2204;</code>
    */
-  public static final int MAIL_NEWMAIL_REQ_VALUE = 5204;
+  public static final int MAIL_NEWMAIL_REQ_VALUE = 2204;
   /**
-   * <code>MAIL_NEWMAIL_ACK = 5205;</code>
+   * <code>MAIL_NEWMAIL_ACK = 2205;</code>
    */
-  public static final int MAIL_NEWMAIL_ACK_VALUE = 5205;
+  public static final int MAIL_NEWMAIL_ACK_VALUE = 2205;
   /**
-   * <code>MAIL_MSG_END = 5240;</code>
+   * <code>MAIL_MSG_END = 2240;</code>
    */
-  public static final int MAIL_MSG_END_VALUE = 5240;
+  public static final int MAIL_MSG_END_VALUE = 2240;
   /**
-   * <code>MAIL_MSGALL_END = 5249;</code>
+   * <code>MAIL_MSGALL_END = 2249;</code>
    */
-  public static final int MAIL_MSGALL_END_VALUE = 5249;
+  public static final int MAIL_MSGALL_END_VALUE = 2249;
 
 
   public final int getNumber() {
@@ -189,25 +189,25 @@ public enum MAIL_PROTYPE
    */
   public static MAIL_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_5000;
-      case 5000: return MAIL_MSG_BEGIN;
-      case 5001: return MAIL_NEWMAIL_NTF;
-      case 5002: return MAIL_MAILGET_REQ;
-      case 5003: return MAIL_MAILGET_ACK;
-      case 5004: return MAIL_USERONLINE_ACTIVE;
-      case 5005: return MAIL_READMAIL_REQ;
-      case 5006: return MAIL_READMAIL_ACK;
-      case 5007: return MAIL_DELETEMAIL_REQ;
-      case 5008: return MAIL_DELETEMAIL_ACK;
-      case 5009: return MAIL_UNBINDATTACHS_REQ;
-      case 5010: return MAIL_UNBINDATTACHS_ACK;
-      case 5201: return MAIL_SYSTEMMAIL_REQ;
-      case 5202: return MAIL_SYSTEMMAIL_ACK;
-      case 5203: return MAIL_SYSTEMMAIL_NTF;
-      case 5204: return MAIL_NEWMAIL_REQ;
-      case 5205: return MAIL_NEWMAIL_ACK;
-      case 5240: return MAIL_MSG_END;
-      case 5249: return MAIL_MSGALL_END;
+      case 0: return UNIVERSAL_2000;
+      case 2000: return MAIL_MSG_BEGIN;
+      case 2001: return MAIL_NEWMAIL_NTF;
+      case 2002: return MAIL_MAILGET_REQ;
+      case 2003: return MAIL_MAILGET_ACK;
+      case 2004: return MAIL_USERONLINE_ACTIVE;
+      case 2005: return MAIL_READMAIL_REQ;
+      case 2006: return MAIL_READMAIL_ACK;
+      case 2007: return MAIL_DELETEMAIL_REQ;
+      case 2008: return MAIL_DELETEMAIL_ACK;
+      case 2009: return MAIL_UNBINDATTACHS_REQ;
+      case 2010: return MAIL_UNBINDATTACHS_ACK;
+      case 2201: return MAIL_SYSTEMMAIL_REQ;
+      case 2202: return MAIL_SYSTEMMAIL_ACK;
+      case 2203: return MAIL_SYSTEMMAIL_NTF;
+      case 2204: return MAIL_NEWMAIL_REQ;
+      case 2205: return MAIL_NEWMAIL_ACK;
+      case 2240: return MAIL_MSG_END;
+      case 2249: return MAIL_MSGALL_END;
       default: return null;
     }
   }

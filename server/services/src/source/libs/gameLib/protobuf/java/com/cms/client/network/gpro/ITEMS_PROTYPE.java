@@ -9,32 +9,32 @@ package com.cms.client.network.gpro;
 public enum ITEMS_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_5500 = 0;</code>
+   * <code>UNIVERSAL_2500 = 0;</code>
    */
-  UNIVERSAL_5500(0),
+  UNIVERSAL_2500(0),
   /**
-   * <code>ITEM_USERBINDITEMS_REQ = 5501;</code>
+   * <code>ITEM_USERBINDITEMS_REQ = 2501;</code>
    */
-  ITEM_USERBINDITEMS_REQ(5501),
+  ITEM_USERBINDITEMS_REQ(2501),
   /**
-   * <code>ITEM_USERBINDITEMS_ACK = 5502;</code>
+   * <code>ITEM_USERBINDITEMS_ACK = 2502;</code>
    */
-  ITEM_USERBINDITEMS_ACK(5502),
+  ITEM_USERBINDITEMS_ACK(2502),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_5500 = 0;</code>
+   * <code>UNIVERSAL_2500 = 0;</code>
    */
-  public static final int UNIVERSAL_5500_VALUE = 0;
+  public static final int UNIVERSAL_2500_VALUE = 0;
   /**
-   * <code>ITEM_USERBINDITEMS_REQ = 5501;</code>
+   * <code>ITEM_USERBINDITEMS_REQ = 2501;</code>
    */
-  public static final int ITEM_USERBINDITEMS_REQ_VALUE = 5501;
+  public static final int ITEM_USERBINDITEMS_REQ_VALUE = 2501;
   /**
-   * <code>ITEM_USERBINDITEMS_ACK = 5502;</code>
+   * <code>ITEM_USERBINDITEMS_ACK = 2502;</code>
    */
-  public static final int ITEM_USERBINDITEMS_ACK_VALUE = 5502;
+  public static final int ITEM_USERBINDITEMS_ACK_VALUE = 2502;
 
 
   public final int getNumber() {
@@ -61,9 +61,9 @@ public enum ITEMS_PROTYPE
    */
   public static ITEMS_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_5500;
-      case 5501: return ITEM_USERBINDITEMS_REQ;
-      case 5502: return ITEM_USERBINDITEMS_ACK;
+      case 0: return UNIVERSAL_2500;
+      case 2501: return ITEM_USERBINDITEMS_REQ;
+      case 2502: return ITEM_USERBINDITEMS_ACK;
       default: return null;
     }
   }

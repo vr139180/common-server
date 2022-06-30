@@ -45,6 +45,8 @@ public:
 	static bool GetXmlAttrBoolFromInt( tinyxml2::XMLElement* e, const char* attr, bool defv=false, int ntruev =0);
 
 	static std::string GetXmlText( tinyxml2::XMLElement* e, const char* defv="");
+
+	static std::string build_path(const char* fmt, ...);
 };
 
 #endif	//__XMLUTIL__H__

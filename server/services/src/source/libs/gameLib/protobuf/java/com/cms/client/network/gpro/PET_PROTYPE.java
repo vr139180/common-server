@@ -9,48 +9,48 @@ package com.cms.client.network.gpro;
 public enum PET_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_4000 = 0;</code>
+   * <code>UNIVERSAL_1500 = 0;</code>
    */
-  UNIVERSAL_4000(0),
+  UNIVERSAL_1500(0),
   /**
-   * <code>PET_ADOPTONE_REQ = 4001;</code>
+   * <code>PET_ADOPTONE_REQ = 1501;</code>
    */
-  PET_ADOPTONE_REQ(4001),
+  PET_ADOPTONE_REQ(1501),
   /**
-   * <code>PET_ADOPTONE_ACK = 4002;</code>
+   * <code>PET_ADOPTONE_ACK = 1502;</code>
    */
-  PET_ADOPTONE_ACK(4002),
+  PET_ADOPTONE_ACK(1502),
   /**
-   * <code>PET_RELEASEONE_REQ = 4003;</code>
+   * <code>PET_RELEASEONE_REQ = 1503;</code>
    */
-  PET_RELEASEONE_REQ(4003),
+  PET_RELEASEONE_REQ(1503),
   /**
-   * <code>PET_RELEASEONE_ACK = 4004;</code>
+   * <code>PET_RELEASEONE_ACK = 1504;</code>
    */
-  PET_RELEASEONE_ACK(4004),
+  PET_RELEASEONE_ACK(1504),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_4000 = 0;</code>
+   * <code>UNIVERSAL_1500 = 0;</code>
    */
-  public static final int UNIVERSAL_4000_VALUE = 0;
+  public static final int UNIVERSAL_1500_VALUE = 0;
   /**
-   * <code>PET_ADOPTONE_REQ = 4001;</code>
+   * <code>PET_ADOPTONE_REQ = 1501;</code>
    */
-  public static final int PET_ADOPTONE_REQ_VALUE = 4001;
+  public static final int PET_ADOPTONE_REQ_VALUE = 1501;
   /**
-   * <code>PET_ADOPTONE_ACK = 4002;</code>
+   * <code>PET_ADOPTONE_ACK = 1502;</code>
    */
-  public static final int PET_ADOPTONE_ACK_VALUE = 4002;
+  public static final int PET_ADOPTONE_ACK_VALUE = 1502;
   /**
-   * <code>PET_RELEASEONE_REQ = 4003;</code>
+   * <code>PET_RELEASEONE_REQ = 1503;</code>
    */
-  public static final int PET_RELEASEONE_REQ_VALUE = 4003;
+  public static final int PET_RELEASEONE_REQ_VALUE = 1503;
   /**
-   * <code>PET_RELEASEONE_ACK = 4004;</code>
+   * <code>PET_RELEASEONE_ACK = 1504;</code>
    */
-  public static final int PET_RELEASEONE_ACK_VALUE = 4004;
+  public static final int PET_RELEASEONE_ACK_VALUE = 1504;
 
 
   public final int getNumber() {
@@ -77,11 +77,11 @@ public enum PET_PROTYPE
    */
   public static PET_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_4000;
-      case 4001: return PET_ADOPTONE_REQ;
-      case 4002: return PET_ADOPTONE_ACK;
-      case 4003: return PET_RELEASEONE_REQ;
-      case 4004: return PET_RELEASEONE_ACK;
+      case 0: return UNIVERSAL_1500;
+      case 1501: return PET_ADOPTONE_REQ;
+      case 1502: return PET_ADOPTONE_ACK;
+      case 1503: return PET_RELEASEONE_REQ;
+      case 1504: return PET_RELEASEONE_ACK;
       default: return null;
     }
   }

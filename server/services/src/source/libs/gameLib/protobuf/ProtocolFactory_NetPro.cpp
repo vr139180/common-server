@@ -114,4 +114,7 @@ void ProtocolFactory::init_factory()
 	//item warehouse
 	regist_protocal<Item_UserBindItems_req>(ITEMS_PROTYPE::ITEM_USERBINDITEMS_REQ);
 	regist_protocal<Item_UserBindItems_ack>(ITEMS_PROTYPE::ITEM_USERBINDITEMS_ACK);
+
+	//task system
+	regist_protocal<Task_NewTasks_ntf>(TASK_PROTYPE::TASK_NEWTASKS_NTF);
 }

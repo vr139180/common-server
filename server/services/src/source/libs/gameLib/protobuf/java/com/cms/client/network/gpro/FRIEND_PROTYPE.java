@@ -9,112 +9,112 @@ package com.cms.client.network.gpro;
 public enum FRIEND_PROTYPE
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNIVERSAL_5250 = 0;</code>
+   * <code>UNIVERSAL_2250 = 0;</code>
    */
-  UNIVERSAL_5250(0),
+  UNIVERSAL_2250(0),
   /**
-   * <code>FRIEND_MSG_BEGIN = 5250;</code>
+   * <code>FRIEND_MSG_BEGIN = 2250;</code>
    */
-  FRIEND_MSG_BEGIN(5250),
+  FRIEND_MSG_BEGIN(2250),
   /**
-   * <code>FRD_FRIENDLIST_REQ = 5251;</code>
+   * <code>FRD_FRIENDLIST_REQ = 2251;</code>
    */
-  FRD_FRIENDLIST_REQ(5251),
+  FRD_FRIENDLIST_REQ(2251),
   /**
-   * <code>FRD_FRIENDLIST_ACK = 5252;</code>
+   * <code>FRD_FRIENDLIST_ACK = 2252;</code>
    */
-  FRD_FRIENDLIST_ACK(5252),
+  FRD_FRIENDLIST_ACK(2252),
   /**
-   * <code>FRD_FRIENDINVITE_REQ = 5253;</code>
+   * <code>FRD_FRIENDINVITE_REQ = 2253;</code>
    */
-  FRD_FRIENDINVITE_REQ(5253),
+  FRD_FRIENDINVITE_REQ(2253),
   /**
-   * <code>FRD_FRIENDINVITE_ACK = 5254;</code>
+   * <code>FRD_FRIENDINVITE_ACK = 2254;</code>
    */
-  FRD_FRIENDINVITE_ACK(5254),
+  FRD_FRIENDINVITE_ACK(2254),
   /**
-   * <code>FRD_INVITECONFIRM_REQ = 5255;</code>
+   * <code>FRD_INVITECONFIRM_REQ = 2255;</code>
    */
-  FRD_INVITECONFIRM_REQ(5255),
+  FRD_INVITECONFIRM_REQ(2255),
   /**
-   * <code>FRD_INVITECONFIRM_ACK = 5256;</code>
+   * <code>FRD_INVITECONFIRM_ACK = 2256;</code>
    */
-  FRD_INVITECONFIRM_ACK(5256),
+  FRD_INVITECONFIRM_ACK(2256),
   /**
-   * <code>FRD_FRIENDDELETE_REQ = 5257;</code>
+   * <code>FRD_FRIENDDELETE_REQ = 2257;</code>
    */
-  FRD_FRIENDDELETE_REQ(5257),
+  FRD_FRIENDDELETE_REQ(2257),
   /**
-   * <code>FRD_FRIENDDELETE_ACK = 5258;</code>
+   * <code>FRD_FRIENDDELETE_ACK = 2258;</code>
    */
-  FRD_FRIENDDELETE_ACK(5258),
+  FRD_FRIENDDELETE_ACK(2258),
   /**
-   * <code>FRIEND_MSG_END = 5400;</code>
+   * <code>FRIEND_MSG_END = 2450;</code>
    */
-  FRIEND_MSG_END(5400),
+  FRIEND_MSG_END(2450),
   /**
-   * <code>FRD_FRIENDCHANGEOTHER_NTF = 5401;</code>
+   * <code>FRD_FRIENDCHANGEOTHER_NTF = 2451;</code>
    */
-  FRD_FRIENDCHANGEOTHER_NTF(5401),
+  FRD_FRIENDCHANGEOTHER_NTF(2451),
   /**
-   * <code>FRIEND_MSGALL_END = 5449;</code>
+   * <code>FRIEND_MSGALL_END = 2499;</code>
    */
-  FRIEND_MSGALL_END(5449),
+  FRIEND_MSGALL_END(2499),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNIVERSAL_5250 = 0;</code>
+   * <code>UNIVERSAL_2250 = 0;</code>
    */
-  public static final int UNIVERSAL_5250_VALUE = 0;
+  public static final int UNIVERSAL_2250_VALUE = 0;
   /**
-   * <code>FRIEND_MSG_BEGIN = 5250;</code>
+   * <code>FRIEND_MSG_BEGIN = 2250;</code>
    */
-  public static final int FRIEND_MSG_BEGIN_VALUE = 5250;
+  public static final int FRIEND_MSG_BEGIN_VALUE = 2250;
   /**
-   * <code>FRD_FRIENDLIST_REQ = 5251;</code>
+   * <code>FRD_FRIENDLIST_REQ = 2251;</code>
    */
-  public static final int FRD_FRIENDLIST_REQ_VALUE = 5251;
+  public static final int FRD_FRIENDLIST_REQ_VALUE = 2251;
   /**
-   * <code>FRD_FRIENDLIST_ACK = 5252;</code>
+   * <code>FRD_FRIENDLIST_ACK = 2252;</code>
    */
-  public static final int FRD_FRIENDLIST_ACK_VALUE = 5252;
+  public static final int FRD_FRIENDLIST_ACK_VALUE = 2252;
   /**
-   * <code>FRD_FRIENDINVITE_REQ = 5253;</code>
+   * <code>FRD_FRIENDINVITE_REQ = 2253;</code>
    */
-  public static final int FRD_FRIENDINVITE_REQ_VALUE = 5253;
+  public static final int FRD_FRIENDINVITE_REQ_VALUE = 2253;
   /**
-   * <code>FRD_FRIENDINVITE_ACK = 5254;</code>
+   * <code>FRD_FRIENDINVITE_ACK = 2254;</code>
    */
-  public static final int FRD_FRIENDINVITE_ACK_VALUE = 5254;
+  public static final int FRD_FRIENDINVITE_ACK_VALUE = 2254;
   /**
-   * <code>FRD_INVITECONFIRM_REQ = 5255;</code>
+   * <code>FRD_INVITECONFIRM_REQ = 2255;</code>
    */
-  public static final int FRD_INVITECONFIRM_REQ_VALUE = 5255;
+  public static final int FRD_INVITECONFIRM_REQ_VALUE = 2255;
   /**
-   * <code>FRD_INVITECONFIRM_ACK = 5256;</code>
+   * <code>FRD_INVITECONFIRM_ACK = 2256;</code>
    */
-  public static final int FRD_INVITECONFIRM_ACK_VALUE = 5256;
+  public static final int FRD_INVITECONFIRM_ACK_VALUE = 2256;
   /**
-   * <code>FRD_FRIENDDELETE_REQ = 5257;</code>
+   * <code>FRD_FRIENDDELETE_REQ = 2257;</code>
    */
-  public static final int FRD_FRIENDDELETE_REQ_VALUE = 5257;
+  public static final int FRD_FRIENDDELETE_REQ_VALUE = 2257;
   /**
-   * <code>FRD_FRIENDDELETE_ACK = 5258;</code>
+   * <code>FRD_FRIENDDELETE_ACK = 2258;</code>
    */
-  public static final int FRD_FRIENDDELETE_ACK_VALUE = 5258;
+  public static final int FRD_FRIENDDELETE_ACK_VALUE = 2258;
   /**
-   * <code>FRIEND_MSG_END = 5400;</code>
+   * <code>FRIEND_MSG_END = 2450;</code>
    */
-  public static final int FRIEND_MSG_END_VALUE = 5400;
+  public static final int FRIEND_MSG_END_VALUE = 2450;
   /**
-   * <code>FRD_FRIENDCHANGEOTHER_NTF = 5401;</code>
+   * <code>FRD_FRIENDCHANGEOTHER_NTF = 2451;</code>
    */
-  public static final int FRD_FRIENDCHANGEOTHER_NTF_VALUE = 5401;
+  public static final int FRD_FRIENDCHANGEOTHER_NTF_VALUE = 2451;
   /**
-   * <code>FRIEND_MSGALL_END = 5449;</code>
+   * <code>FRIEND_MSGALL_END = 2499;</code>
    */
-  public static final int FRIEND_MSGALL_END_VALUE = 5449;
+  public static final int FRIEND_MSGALL_END_VALUE = 2499;
 
 
   public final int getNumber() {
@@ -141,19 +141,19 @@ public enum FRIEND_PROTYPE
    */
   public static FRIEND_PROTYPE forNumber(int value) {
     switch (value) {
-      case 0: return UNIVERSAL_5250;
-      case 5250: return FRIEND_MSG_BEGIN;
-      case 5251: return FRD_FRIENDLIST_REQ;
-      case 5252: return FRD_FRIENDLIST_ACK;
-      case 5253: return FRD_FRIENDINVITE_REQ;
-      case 5254: return FRD_FRIENDINVITE_ACK;
-      case 5255: return FRD_INVITECONFIRM_REQ;
-      case 5256: return FRD_INVITECONFIRM_ACK;
-      case 5257: return FRD_FRIENDDELETE_REQ;
-      case 5258: return FRD_FRIENDDELETE_ACK;
-      case 5400: return FRIEND_MSG_END;
-      case 5401: return FRD_FRIENDCHANGEOTHER_NTF;
-      case 5449: return FRIEND_MSGALL_END;
+      case 0: return UNIVERSAL_2250;
+      case 2250: return FRIEND_MSG_BEGIN;
+      case 2251: return FRD_FRIENDLIST_REQ;
+      case 2252: return FRD_FRIENDLIST_ACK;
+      case 2253: return FRD_FRIENDINVITE_REQ;
+      case 2254: return FRD_FRIENDINVITE_ACK;
+      case 2255: return FRD_INVITECONFIRM_REQ;
+      case 2256: return FRD_INVITECONFIRM_ACK;
+      case 2257: return FRD_FRIENDDELETE_REQ;
+      case 2258: return FRD_FRIENDDELETE_ACK;
+      case 2450: return FRIEND_MSG_END;
+      case 2451: return FRD_FRIENDCHANGEOTHER_NTF;
+      case 2499: return FRIEND_MSGALL_END;
       default: return null;
     }
   }

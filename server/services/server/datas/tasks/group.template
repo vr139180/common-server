@@ -1,0 +1,36 @@
+<!--
+node: main|branch. main表示主线任务 branch表示支线任务
+iid: task_groupiid任务线编号，全系统唯一
+sc: 任务线开始节点编号
+ec: 任务线结束节点编号
+last_celliid: 最后使用的cell iid。针对任务线的修改不能使用使用过的celliid,该字段用来记录最后的iid，作为种子。
+version: 版本号
+-->
+<main iid="1" sc="1" ec="2" last_celliid="1" version="1.0">
+	<!--
+	cell: 任务线节点配置信息
+	iid: 节点编号，当前任务线唯一
+	-->
+	<cell iid="1">
+		<!--
+		tasks:节点定义了这个cell支持的并发任务。所有任务完成之后才能流转进入下一个节点
+		-->
+		<tasks>
+			<task iid="1" />
+		</tasks>
+		<next default="2">
+			<!--
+			见conditions.template的配置说明
+			使用限制：只能使用实时访问的功能函数
+			next: 条件成立，next指明了下一个cell的节点
+			-->
+			<conditions next="2">
+			</conditions>
+		</next>
+	</cell>
+	<cell iid="2">
+		<tasks>
+			<task iid="2" />
+		</tasks>
+	</cell>
+</main>
