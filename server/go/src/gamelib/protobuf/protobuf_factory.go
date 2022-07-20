@@ -162,4 +162,18 @@ func (pb *ProtobufFactory) initFactory() {
 	//item warehouse
 	pb.registMessage(&gpro.Item_UserBindItemsReq{}, int(gpro.ITEMS_PROTYPE_ITEM_USERBINDITEMS_REQ))
 	pb.registMessage(&gpro.Item_UserBindItemsAck{}, int(gpro.ITEMS_PROTYPE_ITEM_USERBINDITEMS_ACK))
+
+	//task
+	pb.registMessage(&gpro.Task_WaitListReq{}, int(gpro.TASK_PROTYPE_TASK_WAITLIST_REQ))
+	pb.registMessage(&gpro.Task_WaitListAck{}, int(gpro.TASK_PROTYPE_TASK_WAITLIST_ACK))
+	pb.registMessage(&gpro.Task_MyTaskListReq{}, int(gpro.TASK_PROTYPE_TASK_MYTASKLIST_REQ))
+	pb.registMessage(&gpro.Task_MyTaskListAck{}, int(gpro.TASK_PROTYPE_TASK_MYTASKLIST_ACK))
+	pb.registMessage(&gpro.Task_GetTaskReq{}, int(gpro.TASK_PROTYPE_TASK_GETTASK_REQ))
+	pb.registMessage(&gpro.Task_GetTaskAck{}, int(gpro.TASK_PROTYPE_TASK_GETTASK_ACK))
+	pb.registMessage(&gpro.Task_SubmitTaskReq{}, int(gpro.TASK_PROTYPE_TASK_SUBMITTASK_REQ))
+	pb.registMessage(&gpro.Task_SubmitTaskAck{}, int(gpro.TASK_PROTYPE_TASK_SUBMITTASK_ACK))
+	pb.registMessage(&gpro.Task_ObtainRewardReq{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_REQ))
+	pb.registMessage(&gpro.Task_ObtainRewardAck{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_ACK))
+	pb.registMessage(&gpro.Task_GiveupTaskReq{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_REQ))
+	pb.registMessage(&gpro.Task_GiveupTaskAck{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_ACK))
 }

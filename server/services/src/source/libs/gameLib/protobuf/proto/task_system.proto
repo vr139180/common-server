@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "global_internal.proto";
+import "db_internal.proto";
 
 package PRO;
 
@@ -23,6 +24,93 @@ enum TASK_TRIGGER_TYPE {
   TT_MAX = 9;
 }
 
-message Task_NewTasks_ntf {
+enum TASK_GROUP_STATE {
+  TASKGROUP_ACCEPT = 0;
+  TASKGROUP_FINISH = 1;
+  TASKGROUP_GIVEUP = 2;
+}
+
+enum TASK_STATE {
+  TASKSTATE_ACCEPT = 0;
+  TASKSTATE_WAIT = -1;
+  TASKSTATE_REACCEPT = 1;
+  TASKSTATE_SUBMIT = 2;
+  TASKSTATE_FAILED = 3;
+  TASKSTATE_GIVEUP = 4;
+  TASKSTATE_FINISH = 5;
+}
+
+message Task_WaitList_req {
   optional UserToken utoken = 1;
+}
+
+message Task_WaitList_ack {
+  optional UserToken utoken = 1;
+  repeated int32 task_iids = 2;
+}
+
+message Task_MyTaskList_req {
+  optional UserToken utoken = 1;
+}
+
+message Task_MyTaskList_ack {
+  optional UserToken utoken = 1;
+  DBUserTaskGroups groups = 2;
+  DBUserTasks tasks = 3;
+}
+
+message Task_GetTask_req {
+  optional UserToken utoken = 1;
+  //任务iid
+  int32 task_iid = 2;
+}
+
+message Task_GetTask_ack {
+  optional UserToken utoken = 1;
+  int32 task_iid = 2;
+  //0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+  int32 result = 3;
+  //result = 0,包含任务信息
+  optional DBUserTaskItem task = 4;
+}
+
+message Task_SubmitTask_req {
+  optional UserToken utoken = 1;
+  //任务iid
+  int32 task_iid = 2;
+}
+
+message Task_SubmitTask_ack {
+  optional UserToken utoken = 1;
+  int32 task_iid = 2;
+  //0:success 
+  int32 result = 3;
+}
+
+message Task_ObtainReward_req {
+  optional UserToken utoken = 1;
+  //任务iid
+  int32 task_iid = 2;
+}
+
+message Task_ObtainReward_ack {
+  optional UserToken utoken = 1;
+  int32 task_iid = 2;
+  //0:success 
+  int32 result = 3;
+}
+
+message Task_GiveupTask_req {
+  optional UserToken utoken = 1;
+  //放弃的任务iid
+  int32 task_iid = 2;
+}
+
+message Task_GiveupTask_ack {
+  optional UserToken utoken = 1;
+  int32 task_iid = 2;
+  //0:success 
+  int32 result = 3;
+  //result = 0,包含任务信息
+  optional DBUserTaskItem task = 4;
 }

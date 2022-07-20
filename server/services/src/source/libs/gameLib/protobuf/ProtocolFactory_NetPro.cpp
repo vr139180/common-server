@@ -116,5 +116,16 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Item_UserBindItems_ack>(ITEMS_PROTYPE::ITEM_USERBINDITEMS_ACK);
 
 	//task system
-	regist_protocal<Task_NewTasks_ntf>(TASK_PROTYPE::TASK_NEWTASKS_NTF);
+	regist_protocal<Task_WaitList_req>(TASK_PROTYPE::TASK_WAITLIST_REQ);
+	regist_protocal<Task_WaitList_ack>(TASK_PROTYPE::TASK_WAITLIST_ACK);
+	regist_protocal<Task_MyTaskList_req>(TASK_PROTYPE::TASK_MYTASKLIST_REQ);
+	regist_protocal<Task_MyTaskList_ack>(TASK_PROTYPE::TASK_MYTASKLIST_ACK);
+	regist_protocal<Task_GetTask_req>(TASK_PROTYPE::TASK_GETTASK_REQ);
+	regist_protocal<Task_GetTask_ack>(TASK_PROTYPE::TASK_GETTASK_ACK);
+	regist_protocal<Task_SubmitTask_req>(TASK_PROTYPE::TASK_SUBMITTASK_REQ);
+	regist_protocal<Task_SubmitTask_ack>(TASK_PROTYPE::TASK_SUBMITTASK_ACK);
+	regist_protocal<Task_ObtainReward_req>(TASK_PROTYPE::TASK_OBTAINREWARD_REQ);
+	regist_protocal<Task_ObtainReward_ack>(TASK_PROTYPE::TASK_OBTAINREWARD_ACK);
+	regist_protocal<Task_GiveupTask_req>(TASK_PROTYPE::TASK_GIVEUPTASK_REQ);
+	regist_protocal<Task_GiveupTask_ack>(TASK_PROTYPE::TASK_GIVEUPTASK_ACK);
 }

@@ -69,6 +69,11 @@ public:
 	static XmlObjectvie* build_objective(tinyxml2::XMLElement* e);
 	virtual ~XmlObjectvie();
 
+	const std::string& get_funname() { return fun_name_; }
+	XmlObjectiveParams* get_params() { return fun_params_; }
+
+	bool check_result(S_INT_64 retval);
+
 private:
 	eTriggerType			trigger_;
 	std::string				fun_name_;

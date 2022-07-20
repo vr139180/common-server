@@ -3,10 +3,11 @@ node: main|branch. main表示主线任务 branch表示支线任务
 iid: task_groupiid任务线编号，全系统唯一
 sc: 任务线开始节点编号
 ec: 任务线结束节点编号
+boost: true 自动触发 false 由其他的任务线触发
 last_celliid: 最后使用的cell iid。针对任务线的修改不能使用使用过的celliid,该字段用来记录最后的iid，作为种子。
 version: 版本号
 -->
-<main iid="1" sc="1" ec="2" last_celliid="1" version="1.0">
+<main iid="1" sc="1" ec="2" boost="true|false" last_celliid="1" version="1.0">
 	<!--
 	cell: 任务线节点配置信息
 	iid: 节点编号，当前任务线唯一
@@ -14,10 +15,25 @@ version: 版本号
 	<cell iid="1">
 		<!--
 		tasks:节点定义了这个cell支持的并发任务。所有任务完成之后才能流转进入下一个节点
+		下属的task节点iid不能重复
 		-->
 		<tasks>
+			<!--
+			task节点定义了触发的具体任务
+			iid:是任务iid,全局唯一
+			-->
 			<task iid="1" />
 		</tasks>
+		<!--
+		groups:་节点定义了可以触发的支线或者主线任务
+		-->
+		<groups>
+			<!--
+			group节点定义了触发的任务线
+			iid:是任务线id,全局唯一
+			-->
+			<group iid="1"/>
+		</groups>
 		<next default="2">
 			<!--
 			见conditions.template的配置说明

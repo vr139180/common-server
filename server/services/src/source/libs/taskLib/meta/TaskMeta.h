@@ -26,6 +26,10 @@ public:
 public:
 	int get_iid() { return task_iid_; }
 
+	bool is_cycle_task() { return is_cycle_task_; }
+	int cycle_num() { return cycle_num_; }
+	bool is_allow_giveup() { return allow_giveup_; }
+
 private:
 	int task_iid_;
 	//是否循环任务

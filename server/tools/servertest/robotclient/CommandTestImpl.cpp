@@ -27,6 +27,9 @@ thread_step_( 0)
 	data_->init_factory();
 	context_.init_scriptcontext();
 
+	lua_State* l = context_.get_luastate();
+	this->InitScriptBind(l);
+
 	context_.regist_2_context<CommandTestImpl>( "cmd", this);
 
 	//init

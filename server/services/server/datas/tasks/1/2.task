@@ -1,0 +1,29 @@
+<task iid="2" impl="lua" iscycle="false" cyclenum="1" allowgiveup="true">
+	<trigger events="31"/>
+	<lua>
+		<get>
+			<lua-check><![[
+			checkfun = function(env, userdata, nodedata) {
+				return true
+			}
+			]]>
+			</lua-check>
+			<lua-confirm><![[
+			]]>
+			</lua-confirm>
+		</get>
+		<submit>
+			<lua-check><![[
+			checkfun = function(env, userdata, nodedata) {
+				return true
+			}
+			]]>
+			</lua-check>
+			<lua-confirm><![[
+			]]>
+			</lua-confirm>
+		</submit>
+	</lua>
+	<rewards>
+	</rewards>
+</task>

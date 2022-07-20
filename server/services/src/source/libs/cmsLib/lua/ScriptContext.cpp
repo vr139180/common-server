@@ -48,9 +48,6 @@ bool ScriptContext::init_scriptcontext()
 
 	luaL_openlibs( lua_state_);
 
-	if( !regist_bindclass())
-		return false;
-
 	return true;
 }
 

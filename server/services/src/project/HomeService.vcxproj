@@ -71,7 +71,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../source/HomeService;../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../source/HomeService;../sdk/include/protobuf/include;../sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;CURL_STATICLIB;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -82,6 +82,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4200;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;taskLib_d.lib;libprotobufd.lib;redis++_static_d.lib;hiredis_d.lib;mysqlcppconn-static_d.lib;libmysql.lib;libtcmalloc_minimal_d.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -106,7 +107,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../source/HomeService;../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../source/HomeService;../sdk/include/protobuf/include;../sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;CURL_STATICLIB;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -141,20 +142,26 @@
     <ClCompile Include="..\source\HomeService\HomeServiceApp.cpp" />
     <ClCompile Include="..\source\HomeService\HomeServiceApp_NetCmd.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyService.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\LobbyService_Lua.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyService_Network.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\LobbyService_Task.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyUser.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Database.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Lua.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Network.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Redis.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Task.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserBase.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserBuildings.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData_Build.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData_Pet.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData_Task.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserHome.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserOperate.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserPets.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserRoles.cpp" />
+    <ClCompile Include="..\source\HomeService\lobby\user\UserTasks.cpp" />
     <ClCompile Include="..\source\HomeService\network\GateServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\HomeService\network\HomeSession.cpp" />
     <ClCompile Include="..\source\HomeService\network\ResClusterLinkTo.cpp" />
@@ -179,6 +186,7 @@
     <ClInclude Include="..\source\HomeService\lobby\user\UserOperate.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserPets.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserRoles.h" />
+    <ClInclude Include="..\source\HomeService\lobby\user\UserTasks.h" />
     <ClInclude Include="..\source\HomeService\network\GateServiceLinkFrom.h" />
     <ClInclude Include="..\source\HomeService\network\HomeSession.h" />
     <ClInclude Include="..\source\HomeService\network\ResClusterLinkTo.h" />

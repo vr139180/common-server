@@ -54,6 +54,19 @@ void LoadUserInfoCmd::run_in_db_thread(sql::Connection* p_connection)
 			pet_data_.load_from_database(*res.get());
 		}
 
+		//tasks
+		if (prep_stmt->getMoreResults())
+		{
+			res.reset(prep_stmt->getResultSet());
+			task_data_.load_from_database1(*res.get());
+		}
+
+		if (prep_stmt->getMoreResults())
+		{
+			res.reset(prep_stmt->getResultSet());
+			task_data_.load_from_database2(*res.get());
+		}
+
 		success_ = true;
 	}
 	catch (sql::SQLException& err)
@@ -71,6 +84,6 @@ void LoadUserInfoCmd::run()
 	LobbyUser* puser = lobby_->get_userofsame_from_x(user_iid_, protoken_);
 	if (puser == 0) return;
 
-	puser->on_db_roledata_sync1( base_data_, home_data_, building_data_, pet_data_);
+	puser->on_db_roledata_sync1( base_data_, home_data_, building_data_, pet_data_, task_data_);
 	puser->role_selected_done();
 }

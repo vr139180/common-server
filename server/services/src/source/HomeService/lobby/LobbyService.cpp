@@ -12,6 +12,7 @@ LobbyService::LobbyService():base(),piece_index_(-1)
 
 LobbyService::~LobbyService()
 {
+	uninit_luacontext();
 	users_.clear();
 }
 
@@ -23,6 +24,7 @@ void LobbyService::thread_worker()
 	//bind to thread
 	svrApp.get_redisclient_thread().reset(&redis_);
 	svrApp.get_rpcache_thread().reset(&redisproto_cache_);
+	svrApp.get_luacontext_thread().reset(&lua_context_);
 
 	int sleepstep = 0;
 	while (1)
@@ -53,6 +55,7 @@ void LobbyService::thread_worker()
 
 	svrApp.get_redisclient_thread().release();
 	svrApp.get_rpcache_thread().release();
+	svrApp.get_luacontext_thread().release();
 }
 
 void LobbyService::init_lobby(int pindex, int nums, std::vector<LobbyUser*>& lus)
@@ -65,7 +68,7 @@ void LobbyService::init_lobby(int pindex, int nums, std::vector<LobbyUser*>& lus
 	
 	for (int ii = 0; ii < lus.size(); ++ii)
 	{
-		lus[ii]->set_owner(this);
+		lus[ii]->set_context(this);
 		users_.push_back(lus[ii]);
 	}
 
@@ -75,6 +78,8 @@ void LobbyService::init_lobby(int pindex, int nums, std::vector<LobbyUser*>& lus
 	HomeConfig *conf_ = svrApp.get_config();
 	redis_.init_redis(conf_->redis_.ip_, conf_->redis_.port_, conf_->redis_.auth_,
 		conf_->redis_.db_, conf_->redis_.socket_timeout_);
+
+	init_luacontext();
 }
 
 void LobbyService::reset_lobby( void*)

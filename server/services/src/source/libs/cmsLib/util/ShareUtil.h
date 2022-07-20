@@ -54,6 +54,8 @@ public:
 
 	static void SplitString( const char* cmd, stringSet_t& strSet, const char splitor, bool IgnoreSpace = false );
 
+	static std::string str_format(const char* fmt, ...);
+
 	static void encrypt_mask( c8* buf, int len, S_UINT_64 mask);
 	static void decrypt_mask( c8* buf, int len, S_UINT_64 mask);
 

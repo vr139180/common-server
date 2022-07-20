@@ -48,3 +48,115 @@ void CommandTestImpl::on_chat_chatmsg_ntf(BasicProtocol* pro, CString* pRetMsg)
 	}
 
 }
+
+void CommandTestImpl::task_waitlist()
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_WaitList_req *req = new Task_WaitList_req();
+	send_to_gts( req);
+}
+
+void CommandTestImpl::on_task_waitlist_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_WaitList_ack* ack = dynamic_cast<Task_WaitList_ack*>(pro);
+}
+
+void CommandTestImpl::task_mytasks()
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_MyTaskList_req *req = new Task_MyTaskList_req();
+	send_to_gts(req);
+}
+
+void CommandTestImpl::on_task_mytasks_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_MyTaskList_ack* ack = dynamic_cast<Task_MyTaskList_ack*>(pro);
+}
+
+void CommandTestImpl::task_get(S_INT_32 taskiid)
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_GetTask_req *req = new Task_GetTask_req();
+	req->set_task_iid(taskiid);
+	send_to_gts(req);
+}
+
+void CommandTestImpl::on_task_get_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_GetTask_ack* ack = dynamic_cast<Task_GetTask_ack*>(pro);
+}
+
+void CommandTestImpl::task_submit(S_INT_32 taskiid)
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_SubmitTask_req *req = new Task_SubmitTask_req();
+	req->set_task_iid(taskiid);
+	send_to_gts(req);
+}
+
+void CommandTestImpl::on_task_submit_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_SubmitTask_ack* ack = dynamic_cast<Task_SubmitTask_ack*>(pro);
+}
+
+void CommandTestImpl::task_obtainreward(S_INT_32 taskiid)
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_ObtainReward_req *req = new Task_ObtainReward_req();
+	req->set_task_iid(taskiid);
+	send_to_gts(req);
+}
+
+void CommandTestImpl::on_task_obtainreward_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_ObtainReward_ack* ack = dynamic_cast<Task_ObtainReward_ack*>(pro);
+}
+
+void CommandTestImpl::task_giveup(S_INT_32 taskiid)
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Task_GiveupTask_req *req = new Task_GiveupTask_req();
+	req->set_task_iid(taskiid);
+	send_to_gts(req);
+}
+
+void CommandTestImpl::on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Task_GiveupTask_ack* ack = dynamic_cast<Task_GiveupTask_ack*>(pro);
+}

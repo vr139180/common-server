@@ -21,9 +21,10 @@
     <ClCompile Include="..\source\libs\taskLib\meta\TaskMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlCondition.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlObjective.cpp" />
-    <ClCompile Include="..\source\libs\taskLib\service\TaskCellBase.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\service\TaskCellRT.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\service\TaskGroupCellRT.cpp" />
     <ClCompile Include="..\source\libs\taskLib\TaskMetaHome.cpp" />
-    <ClCompile Include="..\source\libs\taskLib\TaskRuntimeContext.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\UserTasksResolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\libs\taskLib\meta\ConditionsMeta.h" />
@@ -34,10 +35,12 @@
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlObjective.h" />
     <ClInclude Include="..\source\libs\taskLib\service\ITaskEnv.h" />
     <ClInclude Include="..\source\libs\taskLib\service\ITaskResTrigger.h" />
-    <ClInclude Include="..\source\libs\taskLib\service\TaskCellBase.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\TaskCellRT.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\TaskGroupCellRT.h" />
+    <ClInclude Include="..\source\libs\taskLib\TaskFunc_Defined.h" />
     <ClInclude Include="..\source\libs\taskLib\TaskMetaHome.h" />
-    <ClInclude Include="..\source\libs\taskLib\TaskRuntimeContext.h" />
     <ClInclude Include="..\source\libs\taskLib\task_const.h" />
+    <ClInclude Include="..\source\libs\taskLib\UserTasksResolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -76,7 +79,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include;../sdk/include/lua</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -93,7 +96,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../sdk/include;../source/libs;../sdk/include/protobuf/include;../sdk/include/lua</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NDEBUG;_RELEASE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>

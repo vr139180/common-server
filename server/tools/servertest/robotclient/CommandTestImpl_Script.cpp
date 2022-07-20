@@ -4,12 +4,6 @@
 #include "LuaBridge/LuaBridge.h"
 #include "ScriptDlg.h"
 
-bool ScriptContext::regist_bindclass()
-{
-	CommandTestImpl::InitScriptBind( lua_state_);
-	return true;
-}
-
 #define CMDMESSAGE( msgid, fun )    \
 	case msgid: \
 	fun( recv, pstr); \
@@ -148,6 +142,14 @@ void CommandTestImpl::gts_linkdo()
 	CMDMESSAGE(FRIEND_PROTYPE::FRD_FRIENDDELETE_ACK, on_friend_delete_ack);
 	CMDMESSAGE(FRIEND_PROTYPE::FRD_FRIENDLIST_ACK, on_friend_get_ack);
 
+	//task
+	CMDMESSAGE(TASK_PROTYPE::TASK_WAITLIST_ACK, on_task_waitlist_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_MYTASKLIST_ACK, on_task_mytasks_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_GETTASK_ACK, on_task_get_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_SUBMITTASK_ACK, on_task_submit_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_OBTAINREWARD_ACK, on_task_obtainreward_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_GIVEUPTASK_ACK, on_task_giveup_ack);
+
 	default:
 		if (proiid != 0)
 		{
@@ -197,6 +199,14 @@ void ScriptDlg::regist()
 	add_function("friend_inviteconfirm(1,true)", "确认添加好友请求");
 	add_function("friend_delete(1)", "删除好友");
 	add_function("friend_get(0,0)", "获取好友列表");
+
+	//task
+	add_function("task_waitlist()", "获取可以接的任务列表");
+	add_function("task_mytasks()", "我的的任务列表");
+	add_function("task_get(1)", "接指定的任务");
+	add_function("task_submit(1)", "提交指定的任务");
+	add_function("task_obtainreward(1)", "获取任务奖励");
+	add_function("task_giveup(1)", "放弃指定的任务");
 }
 
 void CommandTestImpl::InitScriptBind(lua_State* l)
@@ -228,6 +238,12 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("friend_inviteconfirm", (void (CommandTestImpl::*)(S_INT_64,bool))&CommandTestImpl::friend_inviteconfirm)
 		.addFunction("friend_delete", (void (CommandTestImpl::*)(S_INT_64))&CommandTestImpl::friend_delete)
 		.addFunction("friend_get", (void (CommandTestImpl::*)(S_INT_64,S_INT_32))&CommandTestImpl::friend_get)
+		.addFunction("task_waitlist", (void (CommandTestImpl::*)(void))&CommandTestImpl::task_waitlist)
+		.addFunction("task_mytasks", (void (CommandTestImpl::*)(void))&CommandTestImpl::task_mytasks)
+		.addFunction("task_get", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_get)
+		.addFunction("task_submit", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_submit)
+		.addFunction("task_obtainreward", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_obtainreward)
+		.addFunction("task_giveup", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_giveup)
 		.endClass()
 		.endNamespace();
 }

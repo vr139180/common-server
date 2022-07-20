@@ -61,6 +61,14 @@ void GamePlayer::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro
 			svrApp.send_protocol_to_router(p_msg.release());
 			return;
 		}
+		else if (proiid > PRO::TASK_PROTYPE::TASK_MSG_BEGIN && proiid < PRO::TASK_PROTYPE::TASK_MSG_END)
+		{
+			//设置用户协议头
+			set_usertoken(pro);
+
+			svrApp.send_to_homeservice(p_msg.release());
+			return;
+		}
 		else
 		{
 			if (set_usertoken(pro))

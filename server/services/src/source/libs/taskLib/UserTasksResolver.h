@@ -1,0 +1,58 @@
+#ifndef __USERTASKSRESOLVER_H__
+#define __USERTASKSRESOLVER_H__
+
+#include <boost/unordered_map.hpp>
+#include <cmsLib/lua/ScriptContext.h>
+#include <gameLib/protobuf/Proto_all.h>
+
+#include <taskLib/service/ITaskEnv.h>
+#include <taskLib/service/ITaskResTrigger.h>
+#include <taskLib/service/TaskCellRT.h>
+#include <taskLib/service/TaskGroupCellRT.h>
+
+//任务系统的外接模块
+class UserTasksResolver : public ITaskResTrigger, public ITaskContext
+{
+	typedef boost::unordered_map<S_INT_32, TaskCellRT*>			TASKCELLRT_MAP;
+	typedef boost::unordered_map<S_INT_32, TaskGroupCellRT*>	TASKGROUPCELLRT_MAP;
+public:
+	UserTasksResolver();
+	~UserTasksResolver();
+	void init_env(IGlobalDataEnv* genv, IUserDataEnv* uenv, ITaskDataUpdateCB* cb);
+
+	//初始化用户任务系统
+	void init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DBUserTasks& tasks);
+
+	TaskGroupCellRT* get_taskgroup_byiid(S_INT_32 iid);
+
+protected:
+	void release();
+
+	//触发新的任务线
+	void trigger_new_taskgroup(TaskGroupMeta* pGroup);
+	void forward_taskgroup(TaskGroupCellRT* rt);
+
+public:
+	//--------------------------ITaskResTrigger---------------------
+	virtual void on_roleinfo_change();
+	virtual void on_bag_change();
+	virtual void on_building_change();
+
+	//--------------------------ITaskContext------------------------
+	virtual IGlobalDataEnv* get_globalevn() { return global_dataenv_; }
+	virtual IUserDataEnv* get_userenv() { return user_dataenv_; }
+
+protected:
+	//任务信息
+	TASKCELLRT_MAP	processing_tasks_;
+	TASKCELLRT_MAP	wait_accept_tasks_;
+
+	TASKGROUPCELLRT_MAP	procssing_groups_;
+
+private:
+	IGlobalDataEnv*		global_dataenv_;
+	IUserDataEnv*		user_dataenv_;
+	ITaskDataUpdateCB*	data_cb_;
+};
+
+#endif //__USERTASKSRESOLVER_H__

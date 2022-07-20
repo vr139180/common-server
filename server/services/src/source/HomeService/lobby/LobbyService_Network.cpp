@@ -22,6 +22,13 @@ void LobbyService::InitNetMessage()
 
 	REGISTERMSG(PET_PROTYPE::PET_ADOPTONE_REQ, &LobbyService::on_lb_pet_adoptone_req, this);
 	REGISTERMSG(PET_PROTYPE::PET_RELEASEONE_REQ, &LobbyService::on_lb_pet_releaseone_req, this);
+
+	REGISTERMSG(TASK_PROTYPE::TASK_WAITLIST_REQ, &LobbyService::on_lb_task_waitlist_req, this);
+	REGISTERMSG(TASK_PROTYPE::TASK_MYTASKLIST_REQ, &LobbyService::on_lb_task_mytasks_req, this);
+	REGISTERMSG(TASK_PROTYPE::TASK_GETTASK_REQ, &LobbyService::on_lb_task_get_req, this);
+	REGISTERMSG(TASK_PROTYPE::TASK_SUBMITTASK_REQ, &LobbyService::on_lb_task_submit_req, this);
+	REGISTERMSG(TASK_PROTYPE::TASK_OBTAINREWARD_REQ, &LobbyService::on_lb_task_obtainreward_req, this);
+	REGISTERMSG(TASK_PROTYPE::TASK_GIVEUPTASK_REQ, &LobbyService::on_lb_task_giveup_req, this);
 }
 
 void LobbyService::on_lb_ghuserinit_req(BasicProtocol* pro, bool& autorelease)
@@ -143,4 +150,46 @@ void LobbyService::on_lb_pet_releaseone_req(BasicProtocol* pro, bool& autoreleas
 	ack->set_result(ret);
 
 	svrApp.send_protocol_to_gate(ack);
+}
+
+void LobbyService::on_lb_task_waitlist_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_WaitList_req* req = dynamic_cast<Task_WaitList_req*>(pro);
+}
+
+void LobbyService::on_lb_task_mytasks_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_MyTaskList_req* req = dynamic_cast<Task_MyTaskList_req*>(pro);
+}
+
+void LobbyService::on_lb_task_get_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_GetTask_req* req = dynamic_cast<Task_GetTask_req*>(pro);
+}
+
+void LobbyService::on_lb_task_submit_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_SubmitTask_req* req = dynamic_cast<Task_SubmitTask_req*>(pro);
+}
+
+void LobbyService::on_lb_task_obtainreward_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_ObtainReward_req* req = dynamic_cast<Task_ObtainReward_req*>(pro);
+}
+
+void LobbyService::on_lb_task_giveup_req(BasicProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+	Task_GiveupTask_req* req = dynamic_cast<Task_GiveupTask_req*>(pro);
 }

@@ -41,7 +41,7 @@ public:
 	bool islogon();
 	bool isplayersel();
 
-	static void InitScriptBind( lua_State* l);
+	void InitScriptBind( lua_State* l);
 
 public:
 	//×´Ì¬ÐÅÏ¢
@@ -163,4 +163,23 @@ public:
 
 	void friend_get(S_INT_64 invite, S_INT_32 find);
 	void on_friend_get_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	//--------------------------task--------------------------
+	void task_waitlist();
+	void on_task_waitlist_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	void task_mytasks();
+	void on_task_mytasks_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	void task_get(S_INT_32 taskiid);
+	void on_task_get_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	void task_submit(S_INT_32 taskiid);
+	void on_task_submit_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	void task_obtainreward(S_INT_32 taskiid);
+	void on_task_obtainreward_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	void task_giveup(S_INT_32 taskiid);
+	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);
 };

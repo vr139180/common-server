@@ -171,3 +171,45 @@ XmlObjectvie* XmlObjectvie::build_objective(tinyxml2::XMLElement* e)
 
 	return ptr.release();
 }
+
+bool XmlObjectvie::check_result(S_INT_64 retval)
+{
+	S_INT_64 val1;
+	if (!oper_params_->int64val_param(1, val1))
+		return false;
+
+	if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_Great)
+	{
+		return retval > val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_GreatE)
+	{
+		return retval >= val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_Less)
+	{
+		return retval < val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_LessE)
+	{
+		return retval <= val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_Equal)
+	{
+		return retval == val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_NotEqual)
+	{
+		return retval != val1;
+	}
+	else if (oper_ == XmlObjectiveOperType::XmlObjectiveOperType_Between)
+	{
+		S_INT_64 val2;
+		if (!oper_params_->int64val_param(1, val2))
+			return false;
+
+		return retval > val1 && retval < val2;
+	}
+
+	return false;
+}

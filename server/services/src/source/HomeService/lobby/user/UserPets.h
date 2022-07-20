@@ -21,6 +21,7 @@ public:
 	virtual google::protobuf::Message* get_data() { return &pets_data_; }
 	virtual google::protobuf::Message* get_data_dels() { return &dels_; }
 
+	virtual bool is_modify() { return pets_data_update_ || dels_update_; }
 	virtual void mark_data_dels_updated() { dels_update_ = true; }
 
 	void data_copyall(UserPets& from);

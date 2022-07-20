@@ -17,17 +17,15 @@ TaskMetaHome::~TaskMetaHome()
 
 void TaskMetaHome::release()
 {
-	for (TASKGROUP_MAP::iterator iter = main_tasks_.begin(); iter != main_tasks_.end(); ++iter)
-	{
-		delete iter->second;
-	}
+	boost_groups_.clear();
 	main_tasks_.clear();
+	branch_tasks_.clear();
 
-	for (TASKGROUP_MAP::iterator iter = branch_tasks_.begin(); iter != branch_tasks_.end(); ++iter)
+	for (TASKGROUP_MAP::iterator iter = all_groups_.begin(); iter != all_groups_.end(); ++iter)
 	{
 		delete iter->second;
 	}
-	branch_tasks_.clear();
+	all_groups_.clear();
 }
 
 bool TaskMetaHome::load_taskmetas()
@@ -47,6 +45,10 @@ bool TaskMetaHome::load_taskmetas()
 			}
 
 			main_tasks_[pmeta->get_iid()] = pmeta;
+			all_groups_[pmeta->get_iid()] = pmeta;
+
+			if (pmeta->is_boost())
+				boost_groups_.push_back(pmeta);
 		}
 	}
 
@@ -65,8 +67,18 @@ bool TaskMetaHome::load_taskmetas()
 			}
 
 			branch_tasks_[pmeta->get_iid()] = pmeta;
+			all_groups_[pmeta->get_iid()] = pmeta;
 		}
 	}
 
 	return true;
+}
+
+TaskGroupMeta* TaskMetaHome::get_taskgroup_by_iid(int gid)
+{
+	TASKGROUP_MAP::iterator fiter = all_groups_.find(gid);
+	if (fiter == all_groups_.end())
+		return 0;
+
+	return fiter->second;
 }

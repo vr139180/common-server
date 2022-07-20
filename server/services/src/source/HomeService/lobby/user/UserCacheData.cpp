@@ -24,23 +24,29 @@ void UserCacheData::reset_usercache()
 	home_data_.reset_data();
 	building_data_.reset_data();
 	pet_data_.reset_data();
+	task_data_.reset_data();
 }
 
 /*
 * 从数据构建初始版本控制信息，
 * 或者从数据库同步数据再次构建增量控制信息
 */
-void UserCacheData::on_db_roledata_sync1( UserBase& ubase, UserHome& uhome, UserBuildings& ubuilds, UserPets& upets)
+void UserCacheData::on_db_roledata_sync1( UserBase& ubase, UserHome& uhome, 
+	UserBuildings& ubuilds, UserPets& upets, UserTasks& utasks)
 {
 	base_data_.reset_data();
 	home_data_.reset_data();
 	building_data_.reset_data();
 	pet_data_.reset_data();
+	task_data_.reset_data();
 
 	this->base_data_.data_copyall(ubase);
 	this->home_data_.data_copyall(uhome);
 	this->building_data_.data_copyall(ubuilds);
 	this->pet_data_.data_copyall(upets);
+	
+	this->task_data_.data_copyall(utasks);
+	this->task_data_loaded();
 
 	//初始版本信息
 	this->db_ver_ = base_data_.data().ver_();
@@ -63,6 +69,8 @@ bool UserCacheData::sync_all()
 	home_data_.load_from_redis(role_iid_, rdv);
 	building_data_.load_from_redis(role_iid_, rdv);
 	pet_data_.load_from_redis(role_iid_, rdv);
+	task_data_.load_from_redis(role_iid_, rdv);
+	this->task_data_loaded();
 
 	db_ver_ = get_dbver_from_redis(rdv);
 	cache_ver_ = get_cachever_from_redis(rdv);
@@ -101,6 +109,8 @@ void UserCacheData::save_all(bool force, RedisClient* rdv)
 			bmodify = true;
 		else if (pet_data_.is_modify())
 			bmodify = true;
+		else if (task_data_.is_modify())
+			bmodify = true;
 	}
 
 	base_data_.update_redis_cache( role_iid_, rdv, force);
@@ -108,6 +118,7 @@ void UserCacheData::save_all(bool force, RedisClient* rdv)
 	home_data_.update_redis_cache(role_iid_, rdv, force);
 	building_data_.update_redis_cache(role_iid_, rdv, force);
 	pet_data_.update_redis_cache(role_iid_, rdv, force);
+	task_data_.update_redis_cache(role_iid_, rdv, force);
 
 	if (bmodify)
 		mark_datasync(rdv);

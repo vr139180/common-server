@@ -9,10 +9,13 @@
 #include <cmsLib/system/VirtualMainThread.h>
 #include <cmsLib/redis/RedisClient.h>
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
+#include <cmsLib/lua/ScriptContext.h>
+
+#include <taskLib/service/ITaskEnv.h>
 
 #include "lobby/LobbyUser.h"
 
-class LobbyService : public VirtualMainThread , public MessageProcess
+class LobbyService : public VirtualMainThread , public MessageProcess, public IGlobalDataEnv
 {
 	typedef VirtualMainThread base;
 public:
@@ -29,6 +32,10 @@ public:
 	LobbyUser* get_userofsame_from_x(S_INT_64 uid, S_INT_64 token);
 
 protected:
+	void init_luacontext();
+	void uninit_luacontext();
+
+protected:
 	void reset_lobby( void*);
 	//---------------------------VirtualMainThread virtual function----------------------
 	virtual void thread_worker();
@@ -37,6 +44,12 @@ public:
 	//---------------------------MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
 	virtual void ProcessMessage(BasicProtocol* message, bool& autorelease, int msgid) {}
+
+public:
+	//---------------------------IGlobalDataEnv interface -------------------------------
+	virtual ScriptContext* get_lua_context();
+	virtual S_INT_64 new_taskgroup_iid();
+	virtual S_INT_64 new_task_iid();
 
 protected:
 	void on_lb_ghuserinit_req(BasicProtocol* pro, bool& autorelease);
@@ -53,6 +66,13 @@ protected:
 	void on_lb_pet_adoptone_req(BasicProtocol* pro, bool& autorelease);
 	void on_lb_pet_releaseone_req(BasicProtocol* pro, bool& autorelease);
 
+	void on_lb_task_waitlist_req(BasicProtocol* pro, bool& autorelease);
+	void on_lb_task_mytasks_req(BasicProtocol* pro, bool& autorelease);
+	void on_lb_task_get_req(BasicProtocol* pro, bool& autorelease);
+	void on_lb_task_submit_req(BasicProtocol* pro, bool& autorelease);
+	void on_lb_task_obtainreward_req(BasicProtocol* pro, bool& autorelease);
+	void on_lb_task_giveup_req(BasicProtocol* pro, bool& autorelease);
+
 private:
 	//users
 	std::vector<LobbyUser*>		users_;
@@ -62,6 +82,8 @@ private:
 
 	RedisClient					redis_;
 	RedisProtoBufThreadCache	redisproto_cache_;
+
+	ScriptContext				lua_context_;
 };
 
 #endif //__LOBBYSERVICE_H__

@@ -79,6 +79,24 @@
     <ClCompile Include="..\source\HomeService\network\UnionClusterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Task.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Lua.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\LobbyService_Lua.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\user\UserTasks.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData_Task.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\lobby\LobbyService_Task.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\HomeService\HomeServiceApp.h" />
@@ -141,6 +159,9 @@
     </ClInclude>
     <ClInclude Include="..\source\HomeService\network\UnionClusterLinkTo.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\HomeService\lobby\user\UserTasks.h">
+      <Filter>lobby\user</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

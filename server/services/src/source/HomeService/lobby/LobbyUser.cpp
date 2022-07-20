@@ -23,6 +23,12 @@ LobbyUser::~LobbyUser()
 {
 }
 
+void LobbyUser::set_context(LobbyService* p)
+{
+	this->owner_ = p;
+	task_resolver_.init_env(this->owner_, this, this);
+}
+
 void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
 {
 	this->rest_user();

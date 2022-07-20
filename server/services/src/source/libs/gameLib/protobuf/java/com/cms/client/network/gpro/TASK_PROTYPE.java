@@ -13,9 +13,65 @@ public enum TASK_PROTYPE
    */
   UNIVERSAL_2750(0),
   /**
-   * <code>TASK_NEWTASKS_NTF = 2751;</code>
+   * <code>TASK_MSG_BEGIN = 2750;</code>
    */
-  TASK_NEWTASKS_NTF(2751),
+  TASK_MSG_BEGIN(2750),
+  /**
+   * <code>TASK_WAITLIST_REQ = 2751;</code>
+   */
+  TASK_WAITLIST_REQ(2751),
+  /**
+   * <code>TASK_WAITLIST_ACK = 2752;</code>
+   */
+  TASK_WAITLIST_ACK(2752),
+  /**
+   * <code>TASK_MYTASKLIST_REQ = 2753;</code>
+   */
+  TASK_MYTASKLIST_REQ(2753),
+  /**
+   * <code>TASK_MYTASKLIST_ACK = 2754;</code>
+   */
+  TASK_MYTASKLIST_ACK(2754),
+  /**
+   * <code>TASK_GETTASK_REQ = 2755;</code>
+   */
+  TASK_GETTASK_REQ(2755),
+  /**
+   * <code>TASK_GETTASK_ACK = 2756;</code>
+   */
+  TASK_GETTASK_ACK(2756),
+  /**
+   * <code>TASK_SUBMITTASK_REQ = 2757;</code>
+   */
+  TASK_SUBMITTASK_REQ(2757),
+  /**
+   * <code>TASK_SUBMITTASK_ACK = 2758;</code>
+   */
+  TASK_SUBMITTASK_ACK(2758),
+  /**
+   * <code>TASK_OBTAINREWARD_REQ = 2759;</code>
+   */
+  TASK_OBTAINREWARD_REQ(2759),
+  /**
+   * <code>TASK_OBTAINREWARD_ACK = 2760;</code>
+   */
+  TASK_OBTAINREWARD_ACK(2760),
+  /**
+   * <code>TASK_GIVEUPTASK_REQ = 2761;</code>
+   */
+  TASK_GIVEUPTASK_REQ(2761),
+  /**
+   * <code>TASK_GIVEUPTASK_ACK = 2762;</code>
+   */
+  TASK_GIVEUPTASK_ACK(2762),
+  /**
+   * <code>TASK_MSG_END = 2950;</code>
+   */
+  TASK_MSG_END(2950),
+  /**
+   * <code>TASK_MSGALL_END = 2999;</code>
+   */
+  TASK_MSGALL_END(2999),
   UNRECOGNIZED(-1),
   ;
 
@@ -24,9 +80,65 @@ public enum TASK_PROTYPE
    */
   public static final int UNIVERSAL_2750_VALUE = 0;
   /**
-   * <code>TASK_NEWTASKS_NTF = 2751;</code>
+   * <code>TASK_MSG_BEGIN = 2750;</code>
    */
-  public static final int TASK_NEWTASKS_NTF_VALUE = 2751;
+  public static final int TASK_MSG_BEGIN_VALUE = 2750;
+  /**
+   * <code>TASK_WAITLIST_REQ = 2751;</code>
+   */
+  public static final int TASK_WAITLIST_REQ_VALUE = 2751;
+  /**
+   * <code>TASK_WAITLIST_ACK = 2752;</code>
+   */
+  public static final int TASK_WAITLIST_ACK_VALUE = 2752;
+  /**
+   * <code>TASK_MYTASKLIST_REQ = 2753;</code>
+   */
+  public static final int TASK_MYTASKLIST_REQ_VALUE = 2753;
+  /**
+   * <code>TASK_MYTASKLIST_ACK = 2754;</code>
+   */
+  public static final int TASK_MYTASKLIST_ACK_VALUE = 2754;
+  /**
+   * <code>TASK_GETTASK_REQ = 2755;</code>
+   */
+  public static final int TASK_GETTASK_REQ_VALUE = 2755;
+  /**
+   * <code>TASK_GETTASK_ACK = 2756;</code>
+   */
+  public static final int TASK_GETTASK_ACK_VALUE = 2756;
+  /**
+   * <code>TASK_SUBMITTASK_REQ = 2757;</code>
+   */
+  public static final int TASK_SUBMITTASK_REQ_VALUE = 2757;
+  /**
+   * <code>TASK_SUBMITTASK_ACK = 2758;</code>
+   */
+  public static final int TASK_SUBMITTASK_ACK_VALUE = 2758;
+  /**
+   * <code>TASK_OBTAINREWARD_REQ = 2759;</code>
+   */
+  public static final int TASK_OBTAINREWARD_REQ_VALUE = 2759;
+  /**
+   * <code>TASK_OBTAINREWARD_ACK = 2760;</code>
+   */
+  public static final int TASK_OBTAINREWARD_ACK_VALUE = 2760;
+  /**
+   * <code>TASK_GIVEUPTASK_REQ = 2761;</code>
+   */
+  public static final int TASK_GIVEUPTASK_REQ_VALUE = 2761;
+  /**
+   * <code>TASK_GIVEUPTASK_ACK = 2762;</code>
+   */
+  public static final int TASK_GIVEUPTASK_ACK_VALUE = 2762;
+  /**
+   * <code>TASK_MSG_END = 2950;</code>
+   */
+  public static final int TASK_MSG_END_VALUE = 2950;
+  /**
+   * <code>TASK_MSGALL_END = 2999;</code>
+   */
+  public static final int TASK_MSGALL_END_VALUE = 2999;
 
 
   public final int getNumber() {
@@ -54,7 +166,21 @@ public enum TASK_PROTYPE
   public static TASK_PROTYPE forNumber(int value) {
     switch (value) {
       case 0: return UNIVERSAL_2750;
-      case 2751: return TASK_NEWTASKS_NTF;
+      case 2750: return TASK_MSG_BEGIN;
+      case 2751: return TASK_WAITLIST_REQ;
+      case 2752: return TASK_WAITLIST_ACK;
+      case 2753: return TASK_MYTASKLIST_REQ;
+      case 2754: return TASK_MYTASKLIST_ACK;
+      case 2755: return TASK_GETTASK_REQ;
+      case 2756: return TASK_GETTASK_ACK;
+      case 2757: return TASK_SUBMITTASK_REQ;
+      case 2758: return TASK_SUBMITTASK_ACK;
+      case 2759: return TASK_OBTAINREWARD_REQ;
+      case 2760: return TASK_OBTAINREWARD_ACK;
+      case 2761: return TASK_GIVEUPTASK_REQ;
+      case 2762: return TASK_GIVEUPTASK_ACK;
+      case 2950: return TASK_MSG_END;
+      case 2999: return TASK_MSGALL_END;
       default: return null;
     }
   }

@@ -13,7 +13,6 @@
 	int main( s32 argc, char* argv[] )
 #endif
 	{
-
 #if EW_PLATFORM_WINDOWS
 		SetUnhandledExceptionFilter(HandleCrash);
 #endif

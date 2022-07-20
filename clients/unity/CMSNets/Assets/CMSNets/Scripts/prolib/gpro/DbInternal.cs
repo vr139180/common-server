@@ -44,10 +44,29 @@ namespace com.cms.client.network.gpro {
             "bmFtZRgGIAEoCSJ2Cg1EQlVzZXJQZXRJdGVtEgwKBHZlcl8YASABKA0SEQoJ",
             "bXlwZXRfaWlkGAIgASgDEhAKCHJvbGVfaWlkGAMgASgDEg8KB3BldF9paWQY",
             "BCABKAMSDwoHcGV0X2FnZRgFIAEoBRIQCghiaXJ0aGRheRgGIAEoBSIuCgpE",
-            "QlVzZXJQZXRzEiAKBHBldHMYASADKAsyEi5QUk8uREJVc2VyUGV0SXRlbUJU",
-            "Chtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90",
-            "b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90",
-            "bzM="));
+            "QlVzZXJQZXRzEiAKBHBldHMYASADKAsyEi5QUk8uREJVc2VyUGV0SXRlbSJt",
+            "Cg5EQlRhc2tBdHRyRGF0YRItCgVkYXRhcxgBIAMoCzIeLlBSTy5EQlRhc2tB",
+            "dHRyRGF0YS5EYXRhc0VudHJ5GiwKCkRhdGFzRW50cnkSCwoDa2V5GAEgASgJ",
+            "Eg0KBXZhbHVlGAIgASgDOgI4ASLIAgoOREJVc2VyVGFza0l0ZW0SDAoEdmVy",
+            "XxgBIAEoDRILCgNpaWQYAiABKAMSEAoIcm9sZV9paWQYAyABKAMSEAoIdGFz",
+            "a19paWQYBCABKAUSFAoMbXlfdGFza2dyb3VwGAUgASgDEhIKCnRhc2tfZ3Jv",
+            "dXAYBiABKAUSDgoGcXN0YXRlGAcgASgFEhQKDGFjY2VwdF9sZXZlbBgIIAEo",
+            "BRISCgpjeWNsZV90YXNrGAkgASgIEhEKCWN5Y2xlX251bRgKIAEoBRISCgpj",
+            "cmVhdGV0aW1lGAsgASgFEhcKD2ZpcnN0dXBkYXRldGltZRgMIAEoBRIWCg5s",
+            "YXN0dXBkYXRldGltZRgNIAEoBRInCgp0YXNrX2RhdGFzGA4gASgLMhMuUFJP",
+            "LkRCVGFza0F0dHJEYXRhEhIKCnNvdXJjZV9paWQYDyABKAkiMQoLREJVc2Vy",
+            "VGFza3MSIgoFaXRlbXMYASADKAsyEy5QUk8uREJVc2VyVGFza0l0ZW0ibwoP",
+            "REJUYXNrR0F0dHJEYXRhEi4KBWRhdGFzGAEgAygLMh8uUFJPLkRCVGFza0dB",
+            "dHRyRGF0YS5EYXRhc0VudHJ5GiwKCkRhdGFzRW50cnkSCwoDa2V5GAEgASgF",
+            "Eg0KBXZhbHVlGAIgASgFOgI4ASLZAQoPREJVc2VyVGFza0dyb3VwEgwKBHZl",
+            "cl8YASABKA0SCwoDaWlkGAIgASgDEhAKCHJvbGVfaWlkGAMgASgDEhIKCnRh",
+            "c2tfZ3JvdXAYBCABKAUSEgoKZ3JvdXBfY2VsbBgFIAEoBRInCgljZWxsX2Rh",
+            "dGEYBiABKAsyFC5QUk8uREJUYXNrR0F0dHJEYXRhEg4KBmdzdGF0ZRgHIAEo",
+            "BRITCgt0cmlnZ19sZXZlbBgIIAEoBRISCgpjcmVhdGV0aW1lGAkgASgFEg8K",
+            "B2VuZHRpbWUYCiABKAUiOAoQREJVc2VyVGFza0dyb3VwcxIkCgZncm91cHMY",
+            "ASADKAsyFC5QUk8uREJVc2VyVGFza0dyb3VwQlQKG2NvbS5jbXMuY2xpZW50",
+            "Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3Byb3RvYnVmL2dwcm+qAhtjb20u",
+            "Y21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -60,7 +79,13 @@ namespace com.cms.client.network.gpro {
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserHomeStructure), global::com.cms.client.network.gpro.DBUserHomeStructure.Parser, new[]{ "Items" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBPetCategory), global::com.cms.client.network.gpro.DBPetCategory.Parser, new[]{ "PetIid", "PetType", "PetResid", "PetSex", "PetName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserPetItem), global::com.cms.client.network.gpro.DBUserPetItem.Parser, new[]{ "Ver", "MypetIid", "RoleIid", "PetIid", "PetAge", "Birthday" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserPets), global::com.cms.client.network.gpro.DBUserPets.Parser, new[]{ "Pets" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserPets), global::com.cms.client.network.gpro.DBUserPets.Parser, new[]{ "Pets" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBTaskAttrData), global::com.cms.client.network.gpro.DBTaskAttrData.Parser, new[]{ "Datas" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserTaskItem), global::com.cms.client.network.gpro.DBUserTaskItem.Parser, new[]{ "Ver", "Iid", "RoleIid", "TaskIid", "MyTaskgroup", "TaskGroup", "Qstate", "AcceptLevel", "CycleTask", "CycleNum", "Createtime", "Firstupdatetime", "Lastupdatetime", "TaskDatas", "SourceIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserTasks), global::com.cms.client.network.gpro.DBUserTasks.Parser, new[]{ "Items" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBTaskGAttrData), global::com.cms.client.network.gpro.DBTaskGAttrData.Parser, new[]{ "Datas" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserTaskGroup), global::com.cms.client.network.gpro.DBUserTaskGroup.Parser, new[]{ "Ver", "Iid", "RoleIid", "TaskGroup", "GroupCell", "CellData", "Gstate", "TriggLevel", "Createtime", "Endtime" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.DBUserTaskGroups), global::com.cms.client.network.gpro.DBUserTaskGroups.Parser, new[]{ "Groups" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2903,6 +2928,1971 @@ namespace com.cms.client.network.gpro {
             break;
           case 10: {
             pets_.AddEntriesFrom(ref input, _repeated_pets_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBTaskAttrData : pb::IMessage<DBTaskAttrData>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBTaskAttrData> _parser = new pb::MessageParser<DBTaskAttrData>(() => new DBTaskAttrData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBTaskAttrData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskAttrData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskAttrData(DBTaskAttrData other) : this() {
+      datas_ = other.datas_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskAttrData Clone() {
+      return new DBTaskAttrData(this);
+    }
+
+    /// <summary>Field number for the "datas" field.</summary>
+    public const int DatasFieldNumber = 1;
+    private static readonly pbc::MapField<string, long>.Codec _map_datas_codec
+        = new pbc::MapField<string, long>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt64(16, 0L), 10);
+    private readonly pbc::MapField<string, long> datas_ = new pbc::MapField<string, long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, long> Datas {
+      get { return datas_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBTaskAttrData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBTaskAttrData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Datas.Equals(other.Datas)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Datas.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      datas_.WriteTo(output, _map_datas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      datas_.WriteTo(ref output, _map_datas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += datas_.CalculateSize(_map_datas_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBTaskAttrData other) {
+      if (other == null) {
+        return;
+      }
+      datas_.Add(other.datas_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            datas_.AddEntriesFrom(input, _map_datas_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            datas_.AddEntriesFrom(ref input, _map_datas_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBUserTaskItem : pb::IMessage<DBUserTaskItem>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBUserTaskItem> _parser = new pb::MessageParser<DBUserTaskItem>(() => new DBUserTaskItem());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBUserTaskItem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskItem(DBUserTaskItem other) : this() {
+      ver_ = other.ver_;
+      iid_ = other.iid_;
+      roleIid_ = other.roleIid_;
+      taskIid_ = other.taskIid_;
+      myTaskgroup_ = other.myTaskgroup_;
+      taskGroup_ = other.taskGroup_;
+      qstate_ = other.qstate_;
+      acceptLevel_ = other.acceptLevel_;
+      cycleTask_ = other.cycleTask_;
+      cycleNum_ = other.cycleNum_;
+      createtime_ = other.createtime_;
+      firstupdatetime_ = other.firstupdatetime_;
+      lastupdatetime_ = other.lastupdatetime_;
+      taskDatas_ = other.taskDatas_ != null ? other.taskDatas_.Clone() : null;
+      sourceIid_ = other.sourceIid_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskItem Clone() {
+      return new DBUserTaskItem(this);
+    }
+
+    /// <summary>Field number for the "ver_" field.</summary>
+    public const int VerFieldNumber = 1;
+    private uint ver_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Ver {
+      get { return ver_; }
+      set {
+        ver_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "iid" field.</summary>
+    public const int IidFieldNumber = 2;
+    private long iid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Iid {
+      get { return iid_; }
+      set {
+        iid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "role_iid" field.</summary>
+    public const int RoleIidFieldNumber = 3;
+    private long roleIid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RoleIid {
+      get { return roleIid_; }
+      set {
+        roleIid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "task_iid" field.</summary>
+    public const int TaskIidFieldNumber = 4;
+    private int taskIid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TaskIid {
+      get { return taskIid_; }
+      set {
+        taskIid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "my_taskgroup" field.</summary>
+    public const int MyTaskgroupFieldNumber = 5;
+    private long myTaskgroup_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long MyTaskgroup {
+      get { return myTaskgroup_; }
+      set {
+        myTaskgroup_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "task_group" field.</summary>
+    public const int TaskGroupFieldNumber = 6;
+    private int taskGroup_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TaskGroup {
+      get { return taskGroup_; }
+      set {
+        taskGroup_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "qstate" field.</summary>
+    public const int QstateFieldNumber = 7;
+    private int qstate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Qstate {
+      get { return qstate_; }
+      set {
+        qstate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "accept_level" field.</summary>
+    public const int AcceptLevelFieldNumber = 8;
+    private int acceptLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int AcceptLevel {
+      get { return acceptLevel_; }
+      set {
+        acceptLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cycle_task" field.</summary>
+    public const int CycleTaskFieldNumber = 9;
+    private bool cycleTask_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool CycleTask {
+      get { return cycleTask_; }
+      set {
+        cycleTask_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cycle_num" field.</summary>
+    public const int CycleNumFieldNumber = 10;
+    private int cycleNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CycleNum {
+      get { return cycleNum_; }
+      set {
+        cycleNum_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "createtime" field.</summary>
+    public const int CreatetimeFieldNumber = 11;
+    private int createtime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Createtime {
+      get { return createtime_; }
+      set {
+        createtime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "firstupdatetime" field.</summary>
+    public const int FirstupdatetimeFieldNumber = 12;
+    private int firstupdatetime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Firstupdatetime {
+      get { return firstupdatetime_; }
+      set {
+        firstupdatetime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "lastupdatetime" field.</summary>
+    public const int LastupdatetimeFieldNumber = 13;
+    private int lastupdatetime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Lastupdatetime {
+      get { return lastupdatetime_; }
+      set {
+        lastupdatetime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "task_datas" field.</summary>
+    public const int TaskDatasFieldNumber = 14;
+    private global::com.cms.client.network.gpro.DBTaskAttrData taskDatas_;
+    /// <summary>
+    ///string task_datas = 14;
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::com.cms.client.network.gpro.DBTaskAttrData TaskDatas {
+      get { return taskDatas_; }
+      set {
+        taskDatas_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "source_iid" field.</summary>
+    public const int SourceIidFieldNumber = 15;
+    private string sourceIid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string SourceIid {
+      get { return sourceIid_; }
+      set {
+        sourceIid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBUserTaskItem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBUserTaskItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Ver != other.Ver) return false;
+      if (Iid != other.Iid) return false;
+      if (RoleIid != other.RoleIid) return false;
+      if (TaskIid != other.TaskIid) return false;
+      if (MyTaskgroup != other.MyTaskgroup) return false;
+      if (TaskGroup != other.TaskGroup) return false;
+      if (Qstate != other.Qstate) return false;
+      if (AcceptLevel != other.AcceptLevel) return false;
+      if (CycleTask != other.CycleTask) return false;
+      if (CycleNum != other.CycleNum) return false;
+      if (Createtime != other.Createtime) return false;
+      if (Firstupdatetime != other.Firstupdatetime) return false;
+      if (Lastupdatetime != other.Lastupdatetime) return false;
+      if (!object.Equals(TaskDatas, other.TaskDatas)) return false;
+      if (SourceIid != other.SourceIid) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Ver != 0) hash ^= Ver.GetHashCode();
+      if (Iid != 0L) hash ^= Iid.GetHashCode();
+      if (RoleIid != 0L) hash ^= RoleIid.GetHashCode();
+      if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
+      if (MyTaskgroup != 0L) hash ^= MyTaskgroup.GetHashCode();
+      if (TaskGroup != 0) hash ^= TaskGroup.GetHashCode();
+      if (Qstate != 0) hash ^= Qstate.GetHashCode();
+      if (AcceptLevel != 0) hash ^= AcceptLevel.GetHashCode();
+      if (CycleTask != false) hash ^= CycleTask.GetHashCode();
+      if (CycleNum != 0) hash ^= CycleNum.GetHashCode();
+      if (Createtime != 0) hash ^= Createtime.GetHashCode();
+      if (Firstupdatetime != 0) hash ^= Firstupdatetime.GetHashCode();
+      if (Lastupdatetime != 0) hash ^= Lastupdatetime.GetHashCode();
+      if (taskDatas_ != null) hash ^= TaskDatas.GetHashCode();
+      if (SourceIid.Length != 0) hash ^= SourceIid.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Ver != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Ver);
+      }
+      if (Iid != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Iid);
+      }
+      if (RoleIid != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(RoleIid);
+      }
+      if (TaskIid != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TaskIid);
+      }
+      if (MyTaskgroup != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(MyTaskgroup);
+      }
+      if (TaskGroup != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(TaskGroup);
+      }
+      if (Qstate != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Qstate);
+      }
+      if (AcceptLevel != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(AcceptLevel);
+      }
+      if (CycleTask != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(CycleTask);
+      }
+      if (CycleNum != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(CycleNum);
+      }
+      if (Createtime != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Createtime);
+      }
+      if (Firstupdatetime != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(Firstupdatetime);
+      }
+      if (Lastupdatetime != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(Lastupdatetime);
+      }
+      if (taskDatas_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(TaskDatas);
+      }
+      if (SourceIid.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(SourceIid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Ver != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Ver);
+      }
+      if (Iid != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Iid);
+      }
+      if (RoleIid != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(RoleIid);
+      }
+      if (TaskIid != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TaskIid);
+      }
+      if (MyTaskgroup != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(MyTaskgroup);
+      }
+      if (TaskGroup != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(TaskGroup);
+      }
+      if (Qstate != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Qstate);
+      }
+      if (AcceptLevel != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(AcceptLevel);
+      }
+      if (CycleTask != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(CycleTask);
+      }
+      if (CycleNum != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(CycleNum);
+      }
+      if (Createtime != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Createtime);
+      }
+      if (Firstupdatetime != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(Firstupdatetime);
+      }
+      if (Lastupdatetime != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(Lastupdatetime);
+      }
+      if (taskDatas_ != null) {
+        output.WriteRawTag(114);
+        output.WriteMessage(TaskDatas);
+      }
+      if (SourceIid.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteString(SourceIid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Ver != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Ver);
+      }
+      if (Iid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Iid);
+      }
+      if (RoleIid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoleIid);
+      }
+      if (TaskIid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
+      }
+      if (MyTaskgroup != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MyTaskgroup);
+      }
+      if (TaskGroup != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskGroup);
+      }
+      if (Qstate != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Qstate);
+      }
+      if (AcceptLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AcceptLevel);
+      }
+      if (CycleTask != false) {
+        size += 1 + 1;
+      }
+      if (CycleNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CycleNum);
+      }
+      if (Createtime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Createtime);
+      }
+      if (Firstupdatetime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Firstupdatetime);
+      }
+      if (Lastupdatetime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Lastupdatetime);
+      }
+      if (taskDatas_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(TaskDatas);
+      }
+      if (SourceIid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SourceIid);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBUserTaskItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Ver != 0) {
+        Ver = other.Ver;
+      }
+      if (other.Iid != 0L) {
+        Iid = other.Iid;
+      }
+      if (other.RoleIid != 0L) {
+        RoleIid = other.RoleIid;
+      }
+      if (other.TaskIid != 0) {
+        TaskIid = other.TaskIid;
+      }
+      if (other.MyTaskgroup != 0L) {
+        MyTaskgroup = other.MyTaskgroup;
+      }
+      if (other.TaskGroup != 0) {
+        TaskGroup = other.TaskGroup;
+      }
+      if (other.Qstate != 0) {
+        Qstate = other.Qstate;
+      }
+      if (other.AcceptLevel != 0) {
+        AcceptLevel = other.AcceptLevel;
+      }
+      if (other.CycleTask != false) {
+        CycleTask = other.CycleTask;
+      }
+      if (other.CycleNum != 0) {
+        CycleNum = other.CycleNum;
+      }
+      if (other.Createtime != 0) {
+        Createtime = other.Createtime;
+      }
+      if (other.Firstupdatetime != 0) {
+        Firstupdatetime = other.Firstupdatetime;
+      }
+      if (other.Lastupdatetime != 0) {
+        Lastupdatetime = other.Lastupdatetime;
+      }
+      if (other.taskDatas_ != null) {
+        if (taskDatas_ == null) {
+          TaskDatas = new global::com.cms.client.network.gpro.DBTaskAttrData();
+        }
+        TaskDatas.MergeFrom(other.TaskDatas);
+      }
+      if (other.SourceIid.Length != 0) {
+        SourceIid = other.SourceIid;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Ver = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Iid = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            RoleIid = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            TaskIid = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            MyTaskgroup = input.ReadInt64();
+            break;
+          }
+          case 48: {
+            TaskGroup = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            Qstate = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            AcceptLevel = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            CycleTask = input.ReadBool();
+            break;
+          }
+          case 80: {
+            CycleNum = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Createtime = input.ReadInt32();
+            break;
+          }
+          case 96: {
+            Firstupdatetime = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            Lastupdatetime = input.ReadInt32();
+            break;
+          }
+          case 114: {
+            if (taskDatas_ == null) {
+              TaskDatas = new global::com.cms.client.network.gpro.DBTaskAttrData();
+            }
+            input.ReadMessage(TaskDatas);
+            break;
+          }
+          case 122: {
+            SourceIid = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Ver = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Iid = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            RoleIid = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            TaskIid = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            MyTaskgroup = input.ReadInt64();
+            break;
+          }
+          case 48: {
+            TaskGroup = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            Qstate = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            AcceptLevel = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            CycleTask = input.ReadBool();
+            break;
+          }
+          case 80: {
+            CycleNum = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Createtime = input.ReadInt32();
+            break;
+          }
+          case 96: {
+            Firstupdatetime = input.ReadInt32();
+            break;
+          }
+          case 104: {
+            Lastupdatetime = input.ReadInt32();
+            break;
+          }
+          case 114: {
+            if (taskDatas_ == null) {
+              TaskDatas = new global::com.cms.client.network.gpro.DBTaskAttrData();
+            }
+            input.ReadMessage(TaskDatas);
+            break;
+          }
+          case 122: {
+            SourceIid = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBUserTasks : pb::IMessage<DBUserTasks>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBUserTasks> _parser = new pb::MessageParser<DBUserTasks>(() => new DBUserTasks());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBUserTasks> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTasks() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTasks(DBUserTasks other) : this() {
+      items_ = other.items_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTasks Clone() {
+      return new DBUserTasks(this);
+    }
+
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.DBUserTaskItem> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(10, global::com.cms.client.network.gpro.DBUserTaskItem.Parser);
+    private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskItem> items_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskItem> Items {
+      get { return items_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBUserTasks);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBUserTasks other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!items_.Equals(other.items_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= items_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      items_.WriteTo(output, _repeated_items_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      items_.WriteTo(ref output, _repeated_items_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_repeated_items_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBUserTasks other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            items_.AddEntriesFrom(ref input, _repeated_items_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBTaskGAttrData : pb::IMessage<DBTaskGAttrData>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBTaskGAttrData> _parser = new pb::MessageParser<DBTaskGAttrData>(() => new DBTaskGAttrData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBTaskGAttrData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskGAttrData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskGAttrData(DBTaskGAttrData other) : this() {
+      datas_ = other.datas_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBTaskGAttrData Clone() {
+      return new DBTaskGAttrData(this);
+    }
+
+    /// <summary>Field number for the "datas" field.</summary>
+    public const int DatasFieldNumber = 1;
+    private static readonly pbc::MapField<int, int>.Codec _map_datas_codec
+        = new pbc::MapField<int, int>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForInt32(16, 0), 10);
+    private readonly pbc::MapField<int, int> datas_ = new pbc::MapField<int, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<int, int> Datas {
+      get { return datas_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBTaskGAttrData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBTaskGAttrData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!Datas.Equals(other.Datas)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= Datas.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      datas_.WriteTo(output, _map_datas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      datas_.WriteTo(ref output, _map_datas_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += datas_.CalculateSize(_map_datas_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBTaskGAttrData other) {
+      if (other == null) {
+        return;
+      }
+      datas_.Add(other.datas_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            datas_.AddEntriesFrom(input, _map_datas_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            datas_.AddEntriesFrom(ref input, _map_datas_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBUserTaskGroup : pb::IMessage<DBUserTaskGroup>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBUserTaskGroup> _parser = new pb::MessageParser<DBUserTaskGroup>(() => new DBUserTaskGroup());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBUserTaskGroup> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroup() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroup(DBUserTaskGroup other) : this() {
+      ver_ = other.ver_;
+      iid_ = other.iid_;
+      roleIid_ = other.roleIid_;
+      taskGroup_ = other.taskGroup_;
+      groupCell_ = other.groupCell_;
+      cellData_ = other.cellData_ != null ? other.cellData_.Clone() : null;
+      gstate_ = other.gstate_;
+      triggLevel_ = other.triggLevel_;
+      createtime_ = other.createtime_;
+      endtime_ = other.endtime_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroup Clone() {
+      return new DBUserTaskGroup(this);
+    }
+
+    /// <summary>Field number for the "ver_" field.</summary>
+    public const int VerFieldNumber = 1;
+    private uint ver_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Ver {
+      get { return ver_; }
+      set {
+        ver_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "iid" field.</summary>
+    public const int IidFieldNumber = 2;
+    private long iid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Iid {
+      get { return iid_; }
+      set {
+        iid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "role_iid" field.</summary>
+    public const int RoleIidFieldNumber = 3;
+    private long roleIid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long RoleIid {
+      get { return roleIid_; }
+      set {
+        roleIid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "task_group" field.</summary>
+    public const int TaskGroupFieldNumber = 4;
+    private int taskGroup_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TaskGroup {
+      get { return taskGroup_; }
+      set {
+        taskGroup_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "group_cell" field.</summary>
+    public const int GroupCellFieldNumber = 5;
+    private int groupCell_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int GroupCell {
+      get { return groupCell_; }
+      set {
+        groupCell_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cell_data" field.</summary>
+    public const int CellDataFieldNumber = 6;
+    private global::com.cms.client.network.gpro.DBTaskGAttrData cellData_;
+    /// <summary>
+    ///taskid,state
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::com.cms.client.network.gpro.DBTaskGAttrData CellData {
+      get { return cellData_; }
+      set {
+        cellData_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "gstate" field.</summary>
+    public const int GstateFieldNumber = 7;
+    private int gstate_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Gstate {
+      get { return gstate_; }
+      set {
+        gstate_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "trigg_level" field.</summary>
+    public const int TriggLevelFieldNumber = 8;
+    private int triggLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int TriggLevel {
+      get { return triggLevel_; }
+      set {
+        triggLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "createtime" field.</summary>
+    public const int CreatetimeFieldNumber = 9;
+    private int createtime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Createtime {
+      get { return createtime_; }
+      set {
+        createtime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "endtime" field.</summary>
+    public const int EndtimeFieldNumber = 10;
+    private int endtime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Endtime {
+      get { return endtime_; }
+      set {
+        endtime_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBUserTaskGroup);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBUserTaskGroup other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Ver != other.Ver) return false;
+      if (Iid != other.Iid) return false;
+      if (RoleIid != other.RoleIid) return false;
+      if (TaskGroup != other.TaskGroup) return false;
+      if (GroupCell != other.GroupCell) return false;
+      if (!object.Equals(CellData, other.CellData)) return false;
+      if (Gstate != other.Gstate) return false;
+      if (TriggLevel != other.TriggLevel) return false;
+      if (Createtime != other.Createtime) return false;
+      if (Endtime != other.Endtime) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Ver != 0) hash ^= Ver.GetHashCode();
+      if (Iid != 0L) hash ^= Iid.GetHashCode();
+      if (RoleIid != 0L) hash ^= RoleIid.GetHashCode();
+      if (TaskGroup != 0) hash ^= TaskGroup.GetHashCode();
+      if (GroupCell != 0) hash ^= GroupCell.GetHashCode();
+      if (cellData_ != null) hash ^= CellData.GetHashCode();
+      if (Gstate != 0) hash ^= Gstate.GetHashCode();
+      if (TriggLevel != 0) hash ^= TriggLevel.GetHashCode();
+      if (Createtime != 0) hash ^= Createtime.GetHashCode();
+      if (Endtime != 0) hash ^= Endtime.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Ver != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Ver);
+      }
+      if (Iid != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Iid);
+      }
+      if (RoleIid != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(RoleIid);
+      }
+      if (TaskGroup != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TaskGroup);
+      }
+      if (GroupCell != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(GroupCell);
+      }
+      if (cellData_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CellData);
+      }
+      if (Gstate != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Gstate);
+      }
+      if (TriggLevel != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(TriggLevel);
+      }
+      if (Createtime != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(Createtime);
+      }
+      if (Endtime != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(Endtime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Ver != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Ver);
+      }
+      if (Iid != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Iid);
+      }
+      if (RoleIid != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(RoleIid);
+      }
+      if (TaskGroup != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(TaskGroup);
+      }
+      if (GroupCell != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(GroupCell);
+      }
+      if (cellData_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(CellData);
+      }
+      if (Gstate != 0) {
+        output.WriteRawTag(56);
+        output.WriteInt32(Gstate);
+      }
+      if (TriggLevel != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(TriggLevel);
+      }
+      if (Createtime != 0) {
+        output.WriteRawTag(72);
+        output.WriteInt32(Createtime);
+      }
+      if (Endtime != 0) {
+        output.WriteRawTag(80);
+        output.WriteInt32(Endtime);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Ver != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Ver);
+      }
+      if (Iid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Iid);
+      }
+      if (RoleIid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RoleIid);
+      }
+      if (TaskGroup != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskGroup);
+      }
+      if (GroupCell != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(GroupCell);
+      }
+      if (cellData_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CellData);
+      }
+      if (Gstate != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Gstate);
+      }
+      if (TriggLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TriggLevel);
+      }
+      if (Createtime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Createtime);
+      }
+      if (Endtime != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Endtime);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBUserTaskGroup other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Ver != 0) {
+        Ver = other.Ver;
+      }
+      if (other.Iid != 0L) {
+        Iid = other.Iid;
+      }
+      if (other.RoleIid != 0L) {
+        RoleIid = other.RoleIid;
+      }
+      if (other.TaskGroup != 0) {
+        TaskGroup = other.TaskGroup;
+      }
+      if (other.GroupCell != 0) {
+        GroupCell = other.GroupCell;
+      }
+      if (other.cellData_ != null) {
+        if (cellData_ == null) {
+          CellData = new global::com.cms.client.network.gpro.DBTaskGAttrData();
+        }
+        CellData.MergeFrom(other.CellData);
+      }
+      if (other.Gstate != 0) {
+        Gstate = other.Gstate;
+      }
+      if (other.TriggLevel != 0) {
+        TriggLevel = other.TriggLevel;
+      }
+      if (other.Createtime != 0) {
+        Createtime = other.Createtime;
+      }
+      if (other.Endtime != 0) {
+        Endtime = other.Endtime;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Ver = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Iid = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            RoleIid = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            TaskGroup = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            GroupCell = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            if (cellData_ == null) {
+              CellData = new global::com.cms.client.network.gpro.DBTaskGAttrData();
+            }
+            input.ReadMessage(CellData);
+            break;
+          }
+          case 56: {
+            Gstate = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            TriggLevel = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            Createtime = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            Endtime = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Ver = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Iid = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            RoleIid = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            TaskGroup = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            GroupCell = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            if (cellData_ == null) {
+              CellData = new global::com.cms.client.network.gpro.DBTaskGAttrData();
+            }
+            input.ReadMessage(CellData);
+            break;
+          }
+          case 56: {
+            Gstate = input.ReadInt32();
+            break;
+          }
+          case 64: {
+            TriggLevel = input.ReadInt32();
+            break;
+          }
+          case 72: {
+            Createtime = input.ReadInt32();
+            break;
+          }
+          case 80: {
+            Endtime = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class DBUserTaskGroups : pb::IMessage<DBUserTaskGroups>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<DBUserTaskGroups> _parser = new pb::MessageParser<DBUserTaskGroups>(() => new DBUserTaskGroups());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<DBUserTaskGroups> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.DbInternalReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroups() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroups(DBUserTaskGroups other) : this() {
+      groups_ = other.groups_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public DBUserTaskGroups Clone() {
+      return new DBUserTaskGroups(this);
+    }
+
+    /// <summary>Field number for the "groups" field.</summary>
+    public const int GroupsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.DBUserTaskGroup> _repeated_groups_codec
+        = pb::FieldCodec.ForMessage(10, global::com.cms.client.network.gpro.DBUserTaskGroup.Parser);
+    private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskGroup> groups_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskGroup>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::com.cms.client.network.gpro.DBUserTaskGroup> Groups {
+      get { return groups_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as DBUserTaskGroups);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(DBUserTaskGroups other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!groups_.Equals(other.groups_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= groups_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      groups_.WriteTo(output, _repeated_groups_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      groups_.WriteTo(ref output, _repeated_groups_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += groups_.CalculateSize(_repeated_groups_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(DBUserTaskGroups other) {
+      if (other == null) {
+        return;
+      }
+      groups_.Add(other.groups_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            groups_.AddEntriesFrom(input, _repeated_groups_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            groups_.AddEntriesFrom(ref input, _repeated_groups_codec);
             break;
           }
         }

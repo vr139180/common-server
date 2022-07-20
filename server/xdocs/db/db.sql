@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     6/27/2022 11:17:59 AM                        */
+/* Created on:     7/10/2022 7:51:22 PM                         */
 /*==============================================================*/
 
 
@@ -378,6 +378,7 @@ create unique index index_2 on user_sysmail
 /*==============================================================*/
 create table user_taskgroup
 (
+   ver_                 int unsigned not null default 1,
    iid                  bigint not null,
    role_iid             bigint not null comment '所属角色',
    task_group           int not null comment '获取的任务线',
@@ -413,6 +414,7 @@ create unique index index_2 on user_taskgroup
 /*==============================================================*/
 create table user_taskinfo
 (
+   ver_                 int unsigned not null default 1,
    iid                  bigint not null,
    role_iid             bigint not null comment '所属角色',
    task_iid             int not null comment '任务配置id',
@@ -503,6 +505,12 @@ begin
     select ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,from_unixtime(last_residedate) from user_home where role_iid=uid;
     select ver_,building_iid,home_iid,parent_building,building_resid,look_at,building_pos from user_home_structure where home_iid=uid;
     select ver_,mypet_iid,role_iid,pet_iid,pet_age,from_unixtime(birthday) from user_pets where role_iid=uid;
+    select ver_,iid,role_iid,task_group,gstate,trigg_level,from_unixtime(createtime),from_unixtime(endtime) from user_taskgroup where role_iid=uid and gstate = 0;
+    select ver_,iid,role_iid,task_iid,my_taskgroup,task_group,qstate,accept_level,cycle_task,cycle_num,
+        from_unixtime(createtime),from_unixtime(firstupdatetime),from_unixtime(lastupdatetime),task_datas,source_iid 
+        from user_taskinfo where role_iid=uid and qstate < 3 and my_taskgroup in (
+            select iid from user_taskgroup where role_iid=uid and gstate = 0
+        );
 end
 //
 

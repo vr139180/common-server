@@ -65,10 +65,18 @@ namespace com.cms.client.network.gpro {
             "Eh4KGUZSRF9GUklFTkRDSEFOR0VPVEhFUl9OVEYQkxMSFgoRRlJJRU5EX01T",
             "R0FMTF9FTkQQwxMqXQoNSVRFTVNfUFJPVFlQRRISCg5VTklWRVJTQUxfMjUw",
             "MBAAEhsKFklURU1fVVNFUkJJTkRJVEVNU19SRVEQxRMSGwoWSVRFTV9VU0VS",
-            "QklORElURU1TX0FDSxDGEyo6CgxUQVNLX1BST1RZUEUSEgoOVU5JVkVSU0FM",
-            "XzI3NTAQABIWChFUQVNLX05FV1RBU0tTX05URhC/FUJUChtjb20uY21zLmNs",
-            "aWVudC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIb",
-            "Y29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90bzM="));
+            "QklORElURU1TX0FDSxDGEyqSAwoMVEFTS19QUk9UWVBFEhIKDlVOSVZFUlNB",
+            "TF8yNzUwEAASEwoOVEFTS19NU0dfQkVHSU4QvhUSFgoRVEFTS19XQUlUTElT",
+            "VF9SRVEQvxUSFgoRVEFTS19XQUlUTElTVF9BQ0sQwBUSGAoTVEFTS19NWVRB",
+            "U0tMSVNUX1JFURDBFRIYChNUQVNLX01ZVEFTS0xJU1RfQUNLEMIVEhUKEFRB",
+            "U0tfR0VUVEFTS19SRVEQwxUSFQoQVEFTS19HRVRUQVNLX0FDSxDEFRIYChNU",
+            "QVNLX1NVQk1JVFRBU0tfUkVREMUVEhgKE1RBU0tfU1VCTUlUVEFTS19BQ0sQ",
+            "xhUSGgoVVEFTS19PQlRBSU5SRVdBUkRfUkVREMcVEhoKFVRBU0tfT0JUQUlO",
+            "UkVXQVJEX0FDSxDIFRIYChNUQVNLX0dJVkVVUFRBU0tfUkVREMkVEhgKE1RB",
+            "U0tfR0lWRVVQVEFTS19BQ0sQyhUSEQoMVEFTS19NU0dfRU5EEIYXEhQKD1RB",
+            "U0tfTVNHQUxMX0VORBC3F0JUChtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdw",
+            "cm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQu",
+            "bmV0d29yay5ncHJvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.USER_PROTYPE), typeof(global::com.cms.client.network.gpro.BUILD_PROTYPE), typeof(global::com.cms.client.network.gpro.PET_PROTYPE), typeof(global::com.cms.client.network.gpro.CHAT_PROTYPE), typeof(global::com.cms.client.network.gpro.MAIL_PROTYPE), typeof(global::com.cms.client.network.gpro.FRIEND_PROTYPE), typeof(global::com.cms.client.network.gpro.ITEMS_PROTYPE), typeof(global::com.cms.client.network.gpro.TASK_PROTYPE), }, null, null));
@@ -176,7 +184,21 @@ namespace com.cms.client.network.gpro {
 
   public enum TASK_PROTYPE {
     [pbr::OriginalName("UNIVERSAL_2750")] Universal2750 = 0,
-    [pbr::OriginalName("TASK_NEWTASKS_NTF")] TaskNewtasksNtf = 2751,
+    [pbr::OriginalName("TASK_MSG_BEGIN")] TaskMsgBegin = 2750,
+    [pbr::OriginalName("TASK_WAITLIST_REQ")] TaskWaitlistReq = 2751,
+    [pbr::OriginalName("TASK_WAITLIST_ACK")] TaskWaitlistAck = 2752,
+    [pbr::OriginalName("TASK_MYTASKLIST_REQ")] TaskMytasklistReq = 2753,
+    [pbr::OriginalName("TASK_MYTASKLIST_ACK")] TaskMytasklistAck = 2754,
+    [pbr::OriginalName("TASK_GETTASK_REQ")] TaskGettaskReq = 2755,
+    [pbr::OriginalName("TASK_GETTASK_ACK")] TaskGettaskAck = 2756,
+    [pbr::OriginalName("TASK_SUBMITTASK_REQ")] TaskSubmittaskReq = 2757,
+    [pbr::OriginalName("TASK_SUBMITTASK_ACK")] TaskSubmittaskAck = 2758,
+    [pbr::OriginalName("TASK_OBTAINREWARD_REQ")] TaskObtainrewardReq = 2759,
+    [pbr::OriginalName("TASK_OBTAINREWARD_ACK")] TaskObtainrewardAck = 2760,
+    [pbr::OriginalName("TASK_GIVEUPTASK_REQ")] TaskGiveuptaskReq = 2761,
+    [pbr::OriginalName("TASK_GIVEUPTASK_ACK")] TaskGiveuptaskAck = 2762,
+    [pbr::OriginalName("TASK_MSG_END")] TaskMsgEnd = 2950,
+    [pbr::OriginalName("TASK_MSGALL_END")] TaskMsgallEnd = 2999,
   }
 
   #endregion

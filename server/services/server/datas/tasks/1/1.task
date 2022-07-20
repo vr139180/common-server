@@ -1,0 +1,17 @@
+<task iid="1" impl="xml" iscycle="false" cyclenum="1" allowgiveup="true">
+	<trigger events="1"/>
+	<xml>
+		<get>
+			<xml-check relation="and">
+				<objective trigger="1" fun="get_role_level" funpm="" oper="great" operpm="0"/>
+			</xml-check>
+		</get>
+		<submit>
+			<xml-check relation="and">
+				<objective trigger="1" fun="get_role_level" funpm="" oper="great" operpm="0"/>
+			</xml-check>
+		</submit>
+	</xml>
+	<rewards>
+	</rewards>
+</task>

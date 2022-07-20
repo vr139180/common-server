@@ -9,6 +9,7 @@
 #include <cmsLib/net/NetAcceptor.h>
 #include <cmsLib/net/NetAcceptorEvent.h>
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
+#include <cmsLib/lua/ScriptContext.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/SessionMthHolder.h>
@@ -48,6 +49,9 @@ public:
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }
 	boost::thread_specific_ptr<RedisProtoBufThreadCache>& get_rpcache_thread() { return this->rpcache_inthread_; }
 	RedisProtoBufThreadCache* get_redisprotocache() { return rpcache_inthread_.get(); }
+
+	boost::thread_specific_ptr<ScriptContext>& get_luacontext_thread() { return this->lua_inthread_; }
+	ScriptContext* get_luacontext() { return lua_inthread_.get(); }
 
 	LobbyService* get_lobbysvr_by_slot(int slot);
 	void post_syscmd_2_lobbyservice(S_INT_64 token, CommandBase* pcmd);
@@ -110,6 +114,8 @@ protected:
 
 	boost::thread_specific_ptr<RedisClient>	redis_inthread_;
 	boost::thread_specific_ptr<RedisProtoBufThreadCache> rpcache_inthread_;
+
+	boost::thread_specific_ptr<ScriptContext>	lua_inthread_;
 
 	boost::scoped_ptr<HomeConfig>		conf_;
 

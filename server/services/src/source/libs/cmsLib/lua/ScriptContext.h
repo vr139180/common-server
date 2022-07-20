@@ -38,9 +38,6 @@ public:
 
 	int get_luamemsize();
 
-protected:
-	bool regist_bindclass();
-
 private:
 	lua_State*	lua_state_;
 };

@@ -146,7 +146,7 @@ bool TaskMetaXml::load_from_xml(tinyxml2::XMLElement* e)
 	tinyxml2::XMLElement* g = xml->FirstChildElement("get");
 	if (g != 0)
 	{
-		IConditionsMeta* pmeta = IConditionsMeta::build_from_xml(g, "lua");
+		IConditionsMeta* pmeta = IConditionsMeta::build_from_xml(g, "xml");
 		if (pmeta != 0)
 			get_cond_.reset(pmeta);
 	}
@@ -154,7 +154,7 @@ bool TaskMetaXml::load_from_xml(tinyxml2::XMLElement* e)
 	tinyxml2::XMLElement* s = xml->FirstChildElement("submit");
 	if (s != 0)
 	{
-		IConditionsMeta* pmeta = IConditionsMeta::build_from_xml(s, "lua");
+		IConditionsMeta* pmeta = IConditionsMeta::build_from_xml(s, "xml");
 		if (pmeta != 0)
 			submit_cond_.reset(pmeta);
 	}

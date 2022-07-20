@@ -19,6 +19,8 @@ int TaskGroupCellMeta::get_taskgroup_iid()
 
 void TaskGroupCellMeta::release()
 {
+	trigger_taskgroups_.clear();
+
 	for (TASKS_MAP::iterator iter = tasks_.begin(); iter != tasks_.end(); ++iter)
 	{
 		delete iter->second;
@@ -60,6 +62,19 @@ TaskGroupCellMeta* TaskGroupCellMeta::load_groupcell(tinyxml2::XMLElement* e, Ta
 		}
 	}
 
+	tinyxml2::XMLElement* taskgroup = e->FirstChildElement("groups");
+	if (taskgroup != 0)
+	{
+		for (tinyxml2::XMLElement* t = taskgroup->FirstChildElement("group"); t != 0; t = t->NextSiblingElement("group"))
+		{
+			int gid = XmlUtil::GetXmlAttrInt(t, "iid", -1);
+			if (gid == -1)
+				return 0;
+
+			pCell->trigger_taskgroups_.push_back(gid);
+		}
+	}
+
 	tinyxml2::XMLElement* next = e->FirstChildElement("next");
 	if (next != 0)
 	{
@@ -88,4 +103,12 @@ TaskGroupCellMeta* TaskGroupCellMeta::load_groupcell(tinyxml2::XMLElement* e, Ta
 	}
 
 	return ptr.release();
+}
+
+TaskMetaBase* TaskGroupCellMeta::get_task_byiid(int iid)
+{
+	TASKS_MAP::iterator fiter = tasks_.find(iid);
+	if (fiter == tasks_.end())
+		return 0;
+	return fiter->second;
 }

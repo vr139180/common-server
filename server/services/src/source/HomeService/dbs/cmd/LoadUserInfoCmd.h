@@ -8,6 +8,7 @@
 #include "lobby/user/UserPets.h"
 #include "lobby/user/UserBase.h"
 #include "lobby/user/UserHome.h"
+#include "lobby/user/UserTasks.h"
 
 #include "dbs/cmd/BaseDBCmd.h"
 
@@ -30,6 +31,7 @@ protected:
 	UserHome		home_data_;
 	UserBuildings	building_data_;
 	UserPets		pet_data_;
+	UserTasks		task_data_;
 
 	S_INT_64		role_iid_;
 

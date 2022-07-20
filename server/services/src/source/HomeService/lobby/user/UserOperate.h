@@ -25,10 +25,21 @@ public:
 
 	template<typename T> T* clone_data();
 	template<typename T> T* clone_datadels();
+	template<typename T> T* clone_data(T* src);
 
 	template<typename T> void data_copy_from(T* from);
 	template<typename T> void datadels_copy_from(T* from);
+	template<typename T> void data_copy_from(T* from, T* to);
 };
+
+template<typename T>
+T* UserOperate::clone_data(T* src)
+{
+	T* ret = new T();
+	ret->CopyFrom(*src);
+
+	return ret;
+}
 
 template<typename T>
 T* UserOperate::clone_data()
@@ -48,6 +59,12 @@ T* UserOperate::clone_datadels()
 	ret->CopyFrom(*from);
 
 	return ret;
+}
+
+template<typename T>
+void UserOperate::data_copy_from(T* from, T* to)
+{
+	to->CopyFrom(*from);
 }
 
 template<typename T> 

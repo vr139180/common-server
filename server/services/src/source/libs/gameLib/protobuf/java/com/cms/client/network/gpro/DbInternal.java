@@ -64,6 +64,46 @@ public final class DbInternal {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_DBUserPets_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBTaskAttrData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBTaskAttrData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBTaskAttrData_DatasEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBTaskAttrData_DatasEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserTaskItem_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserTaskItem_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserTasks_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserTasks_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBTaskGAttrData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBTaskGAttrData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBTaskGAttrData_DatasEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBTaskGAttrData_DatasEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserTaskGroup_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserTaskGroup_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserTaskGroups_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserTaskGroups_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -96,9 +136,32 @@ public final class DbInternal {
       "\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010role_iid\030\003 " +
       "\001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030\005 \001(\005\022\020\n" +
       "\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n\004pets\030\001 " +
-      "\003(\0132\022.PRO.DBUserPetItemBT\n\033com.cms.clien" +
-      "t.network.gproP\001Z\025gamelib/protobuf/gpro\252" +
-      "\002\033com.cms.client.network.gprob\006proto3"
+      "\003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTaskAttrDat" +
+      "a\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAttrData.Da" +
+      "tasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
+      "alue\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskItem\022\014\n\004ver" +
+      "_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\020" +
+      "\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup\030\005 \001(\003\022\022" +
+      "\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001(\005\022\024\n\014ac" +
+      "cept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t \001(\010\022\021\n\t" +
+      "cycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 \001(\005\022\027\n\017f" +
+      "irstupdatetime\030\014 \001(\005\022\026\n\016lastupdatetime\030\r" +
+      " \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.DBTaskAtt" +
+      "rData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBUserTasks" +
+      "\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTaskItem\"o\n\017" +
+      "DBTaskGAttrData\022.\n\005datas\030\001 \003(\0132\037.PRO.DBT" +
+      "askGAttrData.DatasEntry\032,\n\nDatasEntry\022\013\n" +
+      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"\331\001\n\017DBUser" +
+      "TaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010" +
+      "role_iid\030\003 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\022\n\ngr" +
+      "oup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006 \001(\0132\024.PRO." +
+      "DBTaskGAttrData\022\016\n\006gstate\030\007 \001(\005\022\023\n\013trigg" +
+      "_level\030\010 \001(\005\022\022\n\ncreatetime\030\t \001(\005\022\017\n\007endt" +
+      "ime\030\n \001(\005\"8\n\020DBUserTaskGroups\022$\n\006groups\030" +
+      "\001 \003(\0132\024.PRO.DBUserTaskGroupBT\n\033com.cms.c" +
+      "lient.network.gproP\001Z\025gamelib/protobuf/g" +
+      "pro\252\002\033com.cms.client.network.gprob\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -164,6 +227,54 @@ public final class DbInternal {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_DBUserPets_descriptor,
         new java.lang.String[] { "Pets", });
+    internal_static_PRO_DBTaskAttrData_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_PRO_DBTaskAttrData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBTaskAttrData_descriptor,
+        new java.lang.String[] { "Datas", });
+    internal_static_PRO_DBTaskAttrData_DatasEntry_descriptor =
+      internal_static_PRO_DBTaskAttrData_descriptor.getNestedTypes().get(0);
+    internal_static_PRO_DBTaskAttrData_DatasEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBTaskAttrData_DatasEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_PRO_DBUserTaskItem_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_PRO_DBUserTaskItem_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserTaskItem_descriptor,
+        new java.lang.String[] { "Ver", "Iid", "RoleIid", "TaskIid", "MyTaskgroup", "TaskGroup", "Qstate", "AcceptLevel", "CycleTask", "CycleNum", "Createtime", "Firstupdatetime", "Lastupdatetime", "TaskDatas", "SourceIid", });
+    internal_static_PRO_DBUserTasks_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_PRO_DBUserTasks_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserTasks_descriptor,
+        new java.lang.String[] { "Items", });
+    internal_static_PRO_DBTaskGAttrData_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_PRO_DBTaskGAttrData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBTaskGAttrData_descriptor,
+        new java.lang.String[] { "Datas", });
+    internal_static_PRO_DBTaskGAttrData_DatasEntry_descriptor =
+      internal_static_PRO_DBTaskGAttrData_descriptor.getNestedTypes().get(0);
+    internal_static_PRO_DBTaskGAttrData_DatasEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBTaskGAttrData_DatasEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_PRO_DBUserTaskGroup_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_PRO_DBUserTaskGroup_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserTaskGroup_descriptor,
+        new java.lang.String[] { "Ver", "Iid", "RoleIid", "TaskGroup", "GroupCell", "CellData", "Gstate", "TriggLevel", "Createtime", "Endtime", });
+    internal_static_PRO_DBUserTaskGroups_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_PRO_DBUserTaskGroups_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserTaskGroups_descriptor,
+        new java.lang.String[] { "Groups", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

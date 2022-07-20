@@ -17,59 +17,391 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
-constexpr Task_NewTasks_ntf::Task_NewTasks_ntf(
+constexpr Task_WaitList_req::Task_WaitList_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : utoken_(nullptr){}
-struct Task_NewTasks_ntfDefaultTypeInternal {
-  constexpr Task_NewTasks_ntfDefaultTypeInternal()
+struct Task_WaitList_reqDefaultTypeInternal {
+  constexpr Task_WaitList_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~Task_NewTasks_ntfDefaultTypeInternal() {}
+  ~Task_WaitList_reqDefaultTypeInternal() {}
   union {
-    Task_NewTasks_ntf _instance;
+    Task_WaitList_req _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_NewTasks_ntfDefaultTypeInternal _Task_NewTasks_ntf_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_WaitList_reqDefaultTypeInternal _Task_WaitList_req_default_instance_;
+constexpr Task_WaitList_ack::Task_WaitList_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : task_iids_()
+  , _task_iids_cached_byte_size_(0)
+  , utoken_(nullptr){}
+struct Task_WaitList_ackDefaultTypeInternal {
+  constexpr Task_WaitList_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_WaitList_ackDefaultTypeInternal() {}
+  union {
+    Task_WaitList_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_WaitList_ackDefaultTypeInternal _Task_WaitList_ack_default_instance_;
+constexpr Task_MyTaskList_req::Task_MyTaskList_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr){}
+struct Task_MyTaskList_reqDefaultTypeInternal {
+  constexpr Task_MyTaskList_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_MyTaskList_reqDefaultTypeInternal() {}
+  union {
+    Task_MyTaskList_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_MyTaskList_reqDefaultTypeInternal _Task_MyTaskList_req_default_instance_;
+constexpr Task_MyTaskList_ack::Task_MyTaskList_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , groups_(nullptr)
+  , tasks_(nullptr){}
+struct Task_MyTaskList_ackDefaultTypeInternal {
+  constexpr Task_MyTaskList_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_MyTaskList_ackDefaultTypeInternal() {}
+  union {
+    Task_MyTaskList_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_MyTaskList_ackDefaultTypeInternal _Task_MyTaskList_ack_default_instance_;
+constexpr Task_GetTask_req::Task_GetTask_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0){}
+struct Task_GetTask_reqDefaultTypeInternal {
+  constexpr Task_GetTask_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_GetTask_reqDefaultTypeInternal() {}
+  union {
+    Task_GetTask_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_GetTask_reqDefaultTypeInternal _Task_GetTask_req_default_instance_;
+constexpr Task_GetTask_ack::Task_GetTask_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_(nullptr)
+  , task_iid_(0)
+  , result_(0){}
+struct Task_GetTask_ackDefaultTypeInternal {
+  constexpr Task_GetTask_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_GetTask_ackDefaultTypeInternal() {}
+  union {
+    Task_GetTask_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_GetTask_ackDefaultTypeInternal _Task_GetTask_ack_default_instance_;
+constexpr Task_SubmitTask_req::Task_SubmitTask_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0){}
+struct Task_SubmitTask_reqDefaultTypeInternal {
+  constexpr Task_SubmitTask_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_SubmitTask_reqDefaultTypeInternal() {}
+  union {
+    Task_SubmitTask_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_SubmitTask_reqDefaultTypeInternal _Task_SubmitTask_req_default_instance_;
+constexpr Task_SubmitTask_ack::Task_SubmitTask_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0)
+  , result_(0){}
+struct Task_SubmitTask_ackDefaultTypeInternal {
+  constexpr Task_SubmitTask_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_SubmitTask_ackDefaultTypeInternal() {}
+  union {
+    Task_SubmitTask_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_SubmitTask_ackDefaultTypeInternal _Task_SubmitTask_ack_default_instance_;
+constexpr Task_ObtainReward_req::Task_ObtainReward_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0){}
+struct Task_ObtainReward_reqDefaultTypeInternal {
+  constexpr Task_ObtainReward_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_ObtainReward_reqDefaultTypeInternal() {}
+  union {
+    Task_ObtainReward_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_ObtainReward_reqDefaultTypeInternal _Task_ObtainReward_req_default_instance_;
+constexpr Task_ObtainReward_ack::Task_ObtainReward_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0)
+  , result_(0){}
+struct Task_ObtainReward_ackDefaultTypeInternal {
+  constexpr Task_ObtainReward_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_ObtainReward_ackDefaultTypeInternal() {}
+  union {
+    Task_ObtainReward_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_ObtainReward_ackDefaultTypeInternal _Task_ObtainReward_ack_default_instance_;
+constexpr Task_GiveupTask_req::Task_GiveupTask_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_iid_(0){}
+struct Task_GiveupTask_reqDefaultTypeInternal {
+  constexpr Task_GiveupTask_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_GiveupTask_reqDefaultTypeInternal() {}
+  union {
+    Task_GiveupTask_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_GiveupTask_reqDefaultTypeInternal _Task_GiveupTask_req_default_instance_;
+constexpr Task_GiveupTask_ack::Task_GiveupTask_ack(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : utoken_(nullptr)
+  , task_(nullptr)
+  , task_iid_(0)
+  , result_(0){}
+struct Task_GiveupTask_ackDefaultTypeInternal {
+  constexpr Task_GiveupTask_ackDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Task_GiveupTask_ackDefaultTypeInternal() {}
+  union {
+    Task_GiveupTask_ack _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_GiveupTask_ackDefaultTypeInternal _Task_GiveupTask_ack_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_task_5fsystem_2eproto[1];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_task_5fsystem_2eproto[1];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_task_5fsystem_2eproto[12];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_task_5fsystem_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_task_5fsystem_2eproto = nullptr;
 
 const uint32_t TableStruct_task_5fsystem_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_NewTasks_ntf, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_NewTasks_ntf, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_NewTasks_ntf, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_req, utoken_),
   0,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_WaitList_ack, task_iids_),
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_req, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_req, utoken_),
+  0,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_ack, groups_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_MyTaskList_ack, tasks_),
+  0,
+  ~0u,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_req, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_req, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_req, task_iid_),
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, task_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, result_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GetTask_ack, task_),
+  0,
+  ~0u,
+  ~0u,
+  1,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_req, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_req, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_req, task_iid_),
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_ack, task_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_SubmitTask_ack, result_),
+  0,
+  ~0u,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, task_iid_),
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, task_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, result_),
+  0,
+  ~0u,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, task_iid_),
+  0,
+  ~0u,
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, task_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, result_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_ack, task_),
+  0,
+  ~0u,
+  ~0u,
+  1,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 7, -1, sizeof(::PRO::Task_NewTasks_ntf)},
+  { 0, 7, -1, sizeof(::PRO::Task_WaitList_req)},
+  { 8, 16, -1, sizeof(::PRO::Task_WaitList_ack)},
+  { 18, 25, -1, sizeof(::PRO::Task_MyTaskList_req)},
+  { 26, 35, -1, sizeof(::PRO::Task_MyTaskList_ack)},
+  { 38, 46, -1, sizeof(::PRO::Task_GetTask_req)},
+  { 48, 58, -1, sizeof(::PRO::Task_GetTask_ack)},
+  { 62, 70, -1, sizeof(::PRO::Task_SubmitTask_req)},
+  { 72, 81, -1, sizeof(::PRO::Task_SubmitTask_ack)},
+  { 84, 92, -1, sizeof(::PRO::Task_ObtainReward_req)},
+  { 94, 103, -1, sizeof(::PRO::Task_ObtainReward_ack)},
+  { 106, 114, -1, sizeof(::PRO::Task_GiveupTask_req)},
+  { 116, 126, -1, sizeof(::PRO::Task_GiveupTask_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_NewTasks_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_WaitList_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_WaitList_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_MyTaskList_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_MyTaskList_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GetTask_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GetTask_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_SubmitTask_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_SubmitTask_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_ObtainReward_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_ObtainReward_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GiveupTask_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GiveupTask_ack_default_instance_),
 };
 
 const char descriptor_table_protodef_task_5fsystem_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021task_system.proto\022\003PRO\032\025global_interna"
-  "l.proto\"C\n\021Task_NewTasks_ntf\022#\n\006utoken\030\001"
-  " \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n\007_utoken*\206\001\n"
-  "\021TASK_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020\000\022\024\n\020TT_T"
-  "RIGGER_TIMER\020\001\022\026\n\022TT_ROLEINFO_CHANGE\020\002\022\021"
-  "\n\rTT_BAG_CHANGE\020\004\022\026\n\022TT_BUILDING_CHANGE\020"
-  "\010\022\n\n\006TT_MAX\020\tBT\n\033com.cms.client.network."
-  "gproP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms."
-  "client.network.gprob\006proto3"
+  "l.proto\032\021db_internal.proto\"C\n\021Task_WaitL"
+  "ist_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH"
+  "\000\210\001\001B\t\n\007_utoken\"V\n\021Task_WaitList_ack\022#\n\006"
+  "utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\021\n\ttas"
+  "k_iids\030\002 \003(\005B\t\n\007_utoken\"E\n\023Task_MyTaskLi"
+  "st_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000"
+  "\210\001\001B\t\n\007_utoken\"\215\001\n\023Task_MyTaskList_ack\022#"
+  "\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022%\n\006g"
+  "roups\030\002 \001(\0132\025.PRO.DBUserTaskGroups\022\037\n\005ta"
+  "sks\030\003 \001(\0132\020.PRO.DBUserTasksB\t\n\007_utoken\"T"
+  "\n\020Task_GetTask_req\022#\n\006utoken\030\001 \001(\0132\016.PRO"
+  ".UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_ut"
+  "oken\"\225\001\n\020Task_GetTask_ack\022#\n\006utoken\030\001 \001("
+  "\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005"
+  "\022\016\n\006result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132\023.PRO.DBU"
+  "serTaskItemH\001\210\001\001B\t\n\007_utokenB\007\n\005_task\"W\n\023"
+  "Task_SubmitTask_req\022#\n\006utoken\030\001 \001(\0132\016.PR"
+  "O.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_u"
+  "token\"g\n\023Task_SubmitTask_ack\022#\n\006utoken\030\001"
+  " \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 "
+  "\001(\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"Y\n\025Task_O"
+  "btainReward_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us"
+  "erTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoke"
+  "n\"i\n\025Task_ObtainReward_ack\022#\n\006utoken\030\001 \001"
+  "(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001("
+  "\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"W\n\023Task_Giv"
+  "eupTask_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTo"
+  "kenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoken\"\230\001"
+  "\n\023Task_GiveupTask_ack\022#\n\006utoken\030\001 \001(\0132\016."
+  "PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005\022\016\n\006"
+  "result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132\023.PRO.DBUserT"
+  "askItemH\001\210\001\001B\t\n\007_utokenB\007\n\005_task*\206\001\n\021TAS"
+  "K_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020\000\022\024\n\020TT_TRIGG"
+  "ER_TIMER\020\001\022\026\n\022TT_ROLEINFO_CHANGE\020\002\022\021\n\rTT"
+  "_BAG_CHANGE\020\004\022\026\n\022TT_BUILDING_CHANGE\020\010\022\n\n"
+  "\006TT_MAX\020\t*T\n\020TASK_GROUP_STATE\022\024\n\020TASKGRO"
+  "UP_ACCEPT\020\000\022\024\n\020TASKGROUP_FINISH\020\001\022\024\n\020TAS"
+  "KGROUP_GIVEUP\020\002*\257\001\n\nTASK_STATE\022\024\n\020TASKST"
+  "ATE_ACCEPT\020\000\022\033\n\016TASKSTATE_WAIT\020\377\377\377\377\377\377\377\377\377"
+  "\001\022\026\n\022TASKSTATE_REACCEPT\020\001\022\024\n\020TASKSTATE_S"
+  "UBMIT\020\002\022\024\n\020TASKSTATE_FAILED\020\003\022\024\n\020TASKSTA"
+  "TE_GIVEUP\020\004\022\024\n\020TASKSTATE_FINISH\020\005BT\n\033com"
+  ".cms.client.network.gproP\001Z\025gamelib/prot"
+  "obuf/gpro\252\002\033com.cms.client.network.gprob"
+  "\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_task_5fsystem_2eproto_deps[1] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_task_5fsystem_2eproto_deps[2] = {
+  &::descriptor_table_db_5finternal_2eproto,
   &::descriptor_table_global_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_task_5fsystem_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_task_5fsystem_2eproto = {
-  false, false, 347, descriptor_table_protodef_task_5fsystem_2eproto, "task_system.proto", 
-  &descriptor_table_task_5fsystem_2eproto_once, descriptor_table_task_5fsystem_2eproto_deps, 1, 1,
+  false, false, 1807, descriptor_table_protodef_task_5fsystem_2eproto, "task_system.proto", 
+  &descriptor_table_task_5fsystem_2eproto_once, descriptor_table_task_5fsystem_2eproto_deps, 2, 12,
   schemas, file_default_instances, TableStruct_task_5fsystem_2eproto::offsets,
   file_level_metadata_task_5fsystem_2eproto, file_level_enum_descriptors_task_5fsystem_2eproto, file_level_service_descriptors_task_5fsystem_2eproto,
 };
@@ -98,36 +430,70 @@ bool TASK_TRIGGER_TYPE_IsValid(int value) {
   }
 }
 
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TASK_GROUP_STATE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_task_5fsystem_2eproto);
+  return file_level_enum_descriptors_task_5fsystem_2eproto[1];
+}
+bool TASK_GROUP_STATE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TASK_STATE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_task_5fsystem_2eproto);
+  return file_level_enum_descriptors_task_5fsystem_2eproto[2];
+}
+bool TASK_STATE_IsValid(int value) {
+  switch (value) {
+    case -1:
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      return true;
+    default:
+      return false;
+  }
+}
+
 
 // ===================================================================
 
-class Task_NewTasks_ntf::_Internal {
+class Task_WaitList_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Task_NewTasks_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Task_NewTasks_ntf* msg);
+  using HasBits = decltype(std::declval<Task_WaitList_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_WaitList_req* msg);
   static void set_has_utoken(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
 const ::PRO::UserToken&
-Task_NewTasks_ntf::_Internal::utoken(const Task_NewTasks_ntf* msg) {
+Task_WaitList_req::_Internal::utoken(const Task_WaitList_req* msg) {
   return *msg->utoken_;
 }
-void Task_NewTasks_ntf::clear_utoken() {
+void Task_WaitList_req::clear_utoken() {
   if (utoken_ != nullptr) utoken_->Clear();
   _has_bits_[0] &= ~0x00000001u;
 }
-Task_NewTasks_ntf::Task_NewTasks_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+Task_WaitList_req::Task_WaitList_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:PRO.Task_NewTasks_ntf)
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_WaitList_req)
 }
-Task_NewTasks_ntf::Task_NewTasks_ntf(const Task_NewTasks_ntf& from)
+Task_WaitList_req::Task_WaitList_req(const Task_WaitList_req& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -136,37 +502,37 @@ Task_NewTasks_ntf::Task_NewTasks_ntf(const Task_NewTasks_ntf& from)
   } else {
     utoken_ = nullptr;
   }
-  // @@protoc_insertion_point(copy_constructor:PRO.Task_NewTasks_ntf)
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_WaitList_req)
 }
 
-inline void Task_NewTasks_ntf::SharedCtor() {
+inline void Task_WaitList_req::SharedCtor() {
 utoken_ = nullptr;
 }
 
-Task_NewTasks_ntf::~Task_NewTasks_ntf() {
-  // @@protoc_insertion_point(destructor:PRO.Task_NewTasks_ntf)
+Task_WaitList_req::~Task_WaitList_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_WaitList_req)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void Task_NewTasks_ntf::SharedDtor() {
+inline void Task_WaitList_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete utoken_;
 }
 
-void Task_NewTasks_ntf::ArenaDtor(void* object) {
-  Task_NewTasks_ntf* _this = reinterpret_cast< Task_NewTasks_ntf* >(object);
+void Task_WaitList_req::ArenaDtor(void* object) {
+  Task_WaitList_req* _this = reinterpret_cast< Task_WaitList_req* >(object);
   (void)_this;
 }
-void Task_NewTasks_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void Task_WaitList_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void Task_NewTasks_ntf::SetCachedSize(int size) const {
+void Task_WaitList_req::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void Task_NewTasks_ntf::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Task_NewTasks_ntf)
+void Task_WaitList_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_WaitList_req)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -180,7 +546,7 @@ void Task_NewTasks_ntf::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Task_NewTasks_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Task_WaitList_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -219,9 +585,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* Task_NewTasks_ntf::_InternalSerialize(
+uint8_t* Task_WaitList_req::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_NewTasks_ntf)
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_WaitList_req)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -237,12 +603,12 @@ uint8_t* Task_NewTasks_ntf::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_NewTasks_ntf)
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_WaitList_req)
   return target;
 }
 
-size_t Task_NewTasks_ntf::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Task_NewTasks_ntf)
+size_t Task_WaitList_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_WaitList_req)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -260,21 +626,21 @@ size_t Task_NewTasks_ntf::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_NewTasks_ntf::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_WaitList_req::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Task_NewTasks_ntf::MergeImpl
+    Task_WaitList_req::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_NewTasks_ntf::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_WaitList_req::GetClassData() const { return &_class_data_; }
 
-void Task_NewTasks_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void Task_WaitList_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Task_NewTasks_ntf *>(to)->MergeFrom(
-      static_cast<const Task_NewTasks_ntf &>(from));
+  static_cast<Task_WaitList_req *>(to)->MergeFrom(
+      static_cast<const Task_WaitList_req &>(from));
 }
 
 
-void Task_NewTasks_ntf::MergeFrom(const Task_NewTasks_ntf& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_NewTasks_ntf)
+void Task_WaitList_req::MergeFrom(const Task_WaitList_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_WaitList_req)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -285,35 +651,2990 @@ void Task_NewTasks_ntf::MergeFrom(const Task_NewTasks_ntf& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void Task_NewTasks_ntf::CopyFrom(const Task_NewTasks_ntf& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_NewTasks_ntf)
+void Task_WaitList_req::CopyFrom(const Task_WaitList_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_WaitList_req)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Task_NewTasks_ntf::IsInitialized() const {
+bool Task_WaitList_req::IsInitialized() const {
   return true;
 }
 
-void Task_NewTasks_ntf::InternalSwap(Task_NewTasks_ntf* other) {
+void Task_WaitList_req::InternalSwap(Task_WaitList_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   swap(utoken_, other->utoken_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Task_NewTasks_ntf::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Task_WaitList_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
       file_level_metadata_task_5fsystem_2eproto[0]);
 }
 
+// ===================================================================
+
+class Task_WaitList_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_WaitList_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_WaitList_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_WaitList_ack::_Internal::utoken(const Task_WaitList_ack* msg) {
+  return *msg->utoken_;
+}
+void Task_WaitList_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_WaitList_ack::Task_WaitList_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  task_iids_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_WaitList_ack)
+}
+Task_WaitList_ack::Task_WaitList_ack(const Task_WaitList_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_),
+      task_iids_(from.task_iids_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_WaitList_ack)
+}
+
+inline void Task_WaitList_ack::SharedCtor() {
+utoken_ = nullptr;
+}
+
+Task_WaitList_ack::~Task_WaitList_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_WaitList_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_WaitList_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_WaitList_ack::ArenaDtor(void* object) {
+  Task_WaitList_ack* _this = reinterpret_cast< Task_WaitList_ack* >(object);
+  (void)_this;
+}
+void Task_WaitList_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_WaitList_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_WaitList_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_WaitList_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  task_iids_.Clear();
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_WaitList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated int32 task_iids = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_task_iids(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 16) {
+          _internal_add_task_iids(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_WaitList_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_WaitList_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // repeated int32 task_iids = 2;
+  {
+    int byte_size = _task_iids_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          2, _internal_task_iids(), byte_size, target);
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_WaitList_ack)
+  return target;
+}
+
+size_t Task_WaitList_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_WaitList_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated int32 task_iids = 2;
+  {
+    size_t data_size = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      Int32Size(this->task_iids_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+            static_cast<int32_t>(data_size));
+    }
+    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
+    _task_iids_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_WaitList_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_WaitList_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_WaitList_ack::GetClassData() const { return &_class_data_; }
+
+void Task_WaitList_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_WaitList_ack *>(to)->MergeFrom(
+      static_cast<const Task_WaitList_ack &>(from));
+}
+
+
+void Task_WaitList_ack::MergeFrom(const Task_WaitList_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_WaitList_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  task_iids_.MergeFrom(from.task_iids_);
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_WaitList_ack::CopyFrom(const Task_WaitList_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_WaitList_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_WaitList_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_WaitList_ack::InternalSwap(Task_WaitList_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  task_iids_.InternalSwap(&other->task_iids_);
+  swap(utoken_, other->utoken_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_WaitList_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[1]);
+}
+
+// ===================================================================
+
+class Task_MyTaskList_req::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_MyTaskList_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_MyTaskList_req* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_MyTaskList_req::_Internal::utoken(const Task_MyTaskList_req* msg) {
+  return *msg->utoken_;
+}
+void Task_MyTaskList_req::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_MyTaskList_req::Task_MyTaskList_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_MyTaskList_req)
+}
+Task_MyTaskList_req::Task_MyTaskList_req(const Task_MyTaskList_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_MyTaskList_req)
+}
+
+inline void Task_MyTaskList_req::SharedCtor() {
+utoken_ = nullptr;
+}
+
+Task_MyTaskList_req::~Task_MyTaskList_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_MyTaskList_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_MyTaskList_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_MyTaskList_req::ArenaDtor(void* object) {
+  Task_MyTaskList_req* _this = reinterpret_cast< Task_MyTaskList_req* >(object);
+  (void)_this;
+}
+void Task_MyTaskList_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_MyTaskList_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_MyTaskList_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_MyTaskList_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_MyTaskList_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_MyTaskList_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_MyTaskList_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_MyTaskList_req)
+  return target;
+}
+
+size_t Task_MyTaskList_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_MyTaskList_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_MyTaskList_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_MyTaskList_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_MyTaskList_req::GetClassData() const { return &_class_data_; }
+
+void Task_MyTaskList_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_MyTaskList_req *>(to)->MergeFrom(
+      static_cast<const Task_MyTaskList_req &>(from));
+}
+
+
+void Task_MyTaskList_req::MergeFrom(const Task_MyTaskList_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_MyTaskList_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_MyTaskList_req::CopyFrom(const Task_MyTaskList_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_MyTaskList_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_MyTaskList_req::IsInitialized() const {
+  return true;
+}
+
+void Task_MyTaskList_req::InternalSwap(Task_MyTaskList_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(utoken_, other->utoken_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_MyTaskList_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[2]);
+}
+
+// ===================================================================
+
+class Task_MyTaskList_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_MyTaskList_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_MyTaskList_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::PRO::DBUserTaskGroups& groups(const Task_MyTaskList_ack* msg);
+  static const ::PRO::DBUserTasks& tasks(const Task_MyTaskList_ack* msg);
+};
+
+const ::PRO::UserToken&
+Task_MyTaskList_ack::_Internal::utoken(const Task_MyTaskList_ack* msg) {
+  return *msg->utoken_;
+}
+const ::PRO::DBUserTaskGroups&
+Task_MyTaskList_ack::_Internal::groups(const Task_MyTaskList_ack* msg) {
+  return *msg->groups_;
+}
+const ::PRO::DBUserTasks&
+Task_MyTaskList_ack::_Internal::tasks(const Task_MyTaskList_ack* msg) {
+  return *msg->tasks_;
+}
+void Task_MyTaskList_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+void Task_MyTaskList_ack::clear_groups() {
+  if (GetArenaForAllocation() == nullptr && groups_ != nullptr) {
+    delete groups_;
+  }
+  groups_ = nullptr;
+}
+void Task_MyTaskList_ack::clear_tasks() {
+  if (GetArenaForAllocation() == nullptr && tasks_ != nullptr) {
+    delete tasks_;
+  }
+  tasks_ = nullptr;
+}
+Task_MyTaskList_ack::Task_MyTaskList_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_MyTaskList_ack)
+}
+Task_MyTaskList_ack::Task_MyTaskList_ack(const Task_MyTaskList_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  if (from._internal_has_groups()) {
+    groups_ = new ::PRO::DBUserTaskGroups(*from.groups_);
+  } else {
+    groups_ = nullptr;
+  }
+  if (from._internal_has_tasks()) {
+    tasks_ = new ::PRO::DBUserTasks(*from.tasks_);
+  } else {
+    tasks_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_MyTaskList_ack)
+}
+
+inline void Task_MyTaskList_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&tasks_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(tasks_));
+}
+
+Task_MyTaskList_ack::~Task_MyTaskList_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_MyTaskList_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_MyTaskList_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+  if (this != internal_default_instance()) delete groups_;
+  if (this != internal_default_instance()) delete tasks_;
+}
+
+void Task_MyTaskList_ack::ArenaDtor(void* object) {
+  Task_MyTaskList_ack* _this = reinterpret_cast< Task_MyTaskList_ack* >(object);
+  (void)_this;
+}
+void Task_MyTaskList_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_MyTaskList_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_MyTaskList_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_MyTaskList_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  if (GetArenaForAllocation() == nullptr && groups_ != nullptr) {
+    delete groups_;
+  }
+  groups_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && tasks_ != nullptr) {
+    delete tasks_;
+  }
+  tasks_ = nullptr;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_MyTaskList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .PRO.DBUserTaskGroups groups = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_groups(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .PRO.DBUserTasks tasks = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_tasks(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_MyTaskList_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_MyTaskList_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // .PRO.DBUserTaskGroups groups = 2;
+  if (this->_internal_has_groups()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::groups(this), target, stream);
+  }
+
+  // .PRO.DBUserTasks tasks = 3;
+  if (this->_internal_has_tasks()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::tasks(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_MyTaskList_ack)
+  return target;
+}
+
+size_t Task_MyTaskList_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_MyTaskList_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // .PRO.DBUserTaskGroups groups = 2;
+  if (this->_internal_has_groups()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *groups_);
+  }
+
+  // .PRO.DBUserTasks tasks = 3;
+  if (this->_internal_has_tasks()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *tasks_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_MyTaskList_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_MyTaskList_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_MyTaskList_ack::GetClassData() const { return &_class_data_; }
+
+void Task_MyTaskList_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_MyTaskList_ack *>(to)->MergeFrom(
+      static_cast<const Task_MyTaskList_ack &>(from));
+}
+
+
+void Task_MyTaskList_ack::MergeFrom(const Task_MyTaskList_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_MyTaskList_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_has_groups()) {
+    _internal_mutable_groups()->::PRO::DBUserTaskGroups::MergeFrom(from._internal_groups());
+  }
+  if (from._internal_has_tasks()) {
+    _internal_mutable_tasks()->::PRO::DBUserTasks::MergeFrom(from._internal_tasks());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_MyTaskList_ack::CopyFrom(const Task_MyTaskList_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_MyTaskList_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_MyTaskList_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_MyTaskList_ack::InternalSwap(Task_MyTaskList_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_MyTaskList_ack, tasks_)
+      + sizeof(Task_MyTaskList_ack::tasks_)
+      - PROTOBUF_FIELD_OFFSET(Task_MyTaskList_ack, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_MyTaskList_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[3]);
+}
+
+// ===================================================================
+
+class Task_GetTask_req::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_GetTask_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_GetTask_req* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_GetTask_req::_Internal::utoken(const Task_GetTask_req* msg) {
+  return *msg->utoken_;
+}
+void Task_GetTask_req::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_GetTask_req::Task_GetTask_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_GetTask_req)
+}
+Task_GetTask_req::Task_GetTask_req(const Task_GetTask_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  task_iid_ = from.task_iid_;
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_GetTask_req)
+}
+
+inline void Task_GetTask_req::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&task_iid_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(task_iid_));
+}
+
+Task_GetTask_req::~Task_GetTask_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_GetTask_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_GetTask_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_GetTask_req::ArenaDtor(void* object) {
+  Task_GetTask_req* _this = reinterpret_cast< Task_GetTask_req* >(object);
+  (void)_this;
+}
+void Task_GetTask_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_GetTask_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_GetTask_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_GetTask_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  task_iid_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_GetTask_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_GetTask_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_GetTask_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_GetTask_req)
+  return target;
+}
+
+size_t Task_GetTask_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_GetTask_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_GetTask_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_GetTask_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_GetTask_req::GetClassData() const { return &_class_data_; }
+
+void Task_GetTask_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_GetTask_req *>(to)->MergeFrom(
+      static_cast<const Task_GetTask_req &>(from));
+}
+
+
+void Task_GetTask_req::MergeFrom(const Task_GetTask_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_GetTask_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_GetTask_req::CopyFrom(const Task_GetTask_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_GetTask_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_GetTask_req::IsInitialized() const {
+  return true;
+}
+
+void Task_GetTask_req::InternalSwap(Task_GetTask_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_GetTask_req, task_iid_)
+      + sizeof(Task_GetTask_req::task_iid_)
+      - PROTOBUF_FIELD_OFFSET(Task_GetTask_req, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_GetTask_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[4]);
+}
+
+// ===================================================================
+
+class Task_GetTask_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_GetTask_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_GetTask_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::PRO::DBUserTaskItem& task(const Task_GetTask_ack* msg);
+  static void set_has_task(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_GetTask_ack::_Internal::utoken(const Task_GetTask_ack* msg) {
+  return *msg->utoken_;
+}
+const ::PRO::DBUserTaskItem&
+Task_GetTask_ack::_Internal::task(const Task_GetTask_ack* msg) {
+  return *msg->task_;
+}
+void Task_GetTask_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+void Task_GetTask_ack::clear_task() {
+  if (task_ != nullptr) task_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+Task_GetTask_ack::Task_GetTask_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_GetTask_ack)
+}
+Task_GetTask_ack::Task_GetTask_ack(const Task_GetTask_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  if (from._internal_has_task()) {
+    task_ = new ::PRO::DBUserTaskItem(*from.task_);
+  } else {
+    task_ = nullptr;
+  }
+  ::memcpy(&task_iid_, &from.task_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_GetTask_ack)
+}
+
+inline void Task_GetTask_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+}
+
+Task_GetTask_ack::~Task_GetTask_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_GetTask_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_GetTask_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+  if (this != internal_default_instance()) delete task_;
+}
+
+void Task_GetTask_ack::ArenaDtor(void* object) {
+  Task_GetTask_ack* _this = reinterpret_cast< Task_GetTask_ack* >(object);
+  (void)_this;
+}
+void Task_GetTask_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_GetTask_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_GetTask_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_GetTask_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(utoken_ != nullptr);
+      utoken_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(task_ != nullptr);
+      task_->Clear();
+    }
+  }
+  ::memset(&task_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_GetTask_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 result = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .PRO.DBUserTaskItem task = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_task(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_GetTask_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_GetTask_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+  }
+
+  // optional .PRO.DBUserTaskItem task = 4;
+  if (_internal_has_task()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::task(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_GetTask_ack)
+  return target;
+}
+
+size_t Task_GetTask_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_GetTask_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional .PRO.UserToken utoken = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *utoken_);
+    }
+
+    // optional .PRO.DBUserTaskItem task = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *task_);
+    }
+
+  }
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_GetTask_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_GetTask_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_GetTask_ack::GetClassData() const { return &_class_data_; }
+
+void Task_GetTask_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_GetTask_ack *>(to)->MergeFrom(
+      static_cast<const Task_GetTask_ack &>(from));
+}
+
+
+void Task_GetTask_ack::MergeFrom(const Task_GetTask_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_GetTask_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _internal_mutable_task()->::PRO::DBUserTaskItem::MergeFrom(from._internal_task());
+    }
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  if (from._internal_result() != 0) {
+    _internal_set_result(from._internal_result());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_GetTask_ack::CopyFrom(const Task_GetTask_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_GetTask_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_GetTask_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_GetTask_ack::InternalSwap(Task_GetTask_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_GetTask_ack, result_)
+      + sizeof(Task_GetTask_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(Task_GetTask_ack, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_GetTask_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[5]);
+}
+
+// ===================================================================
+
+class Task_SubmitTask_req::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_SubmitTask_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_SubmitTask_req* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_SubmitTask_req::_Internal::utoken(const Task_SubmitTask_req* msg) {
+  return *msg->utoken_;
+}
+void Task_SubmitTask_req::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_SubmitTask_req::Task_SubmitTask_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_SubmitTask_req)
+}
+Task_SubmitTask_req::Task_SubmitTask_req(const Task_SubmitTask_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  task_iid_ = from.task_iid_;
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_SubmitTask_req)
+}
+
+inline void Task_SubmitTask_req::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&task_iid_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(task_iid_));
+}
+
+Task_SubmitTask_req::~Task_SubmitTask_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_SubmitTask_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_SubmitTask_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_SubmitTask_req::ArenaDtor(void* object) {
+  Task_SubmitTask_req* _this = reinterpret_cast< Task_SubmitTask_req* >(object);
+  (void)_this;
+}
+void Task_SubmitTask_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_SubmitTask_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_SubmitTask_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_SubmitTask_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  task_iid_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_SubmitTask_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_SubmitTask_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_SubmitTask_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_SubmitTask_req)
+  return target;
+}
+
+size_t Task_SubmitTask_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_SubmitTask_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_SubmitTask_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_SubmitTask_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_SubmitTask_req::GetClassData() const { return &_class_data_; }
+
+void Task_SubmitTask_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_SubmitTask_req *>(to)->MergeFrom(
+      static_cast<const Task_SubmitTask_req &>(from));
+}
+
+
+void Task_SubmitTask_req::MergeFrom(const Task_SubmitTask_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_SubmitTask_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_SubmitTask_req::CopyFrom(const Task_SubmitTask_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_SubmitTask_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_SubmitTask_req::IsInitialized() const {
+  return true;
+}
+
+void Task_SubmitTask_req::InternalSwap(Task_SubmitTask_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_SubmitTask_req, task_iid_)
+      + sizeof(Task_SubmitTask_req::task_iid_)
+      - PROTOBUF_FIELD_OFFSET(Task_SubmitTask_req, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_SubmitTask_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[6]);
+}
+
+// ===================================================================
+
+class Task_SubmitTask_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_SubmitTask_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_SubmitTask_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_SubmitTask_ack::_Internal::utoken(const Task_SubmitTask_ack* msg) {
+  return *msg->utoken_;
+}
+void Task_SubmitTask_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_SubmitTask_ack::Task_SubmitTask_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_SubmitTask_ack)
+}
+Task_SubmitTask_ack::Task_SubmitTask_ack(const Task_SubmitTask_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  ::memcpy(&task_iid_, &from.task_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_SubmitTask_ack)
+}
+
+inline void Task_SubmitTask_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+}
+
+Task_SubmitTask_ack::~Task_SubmitTask_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_SubmitTask_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_SubmitTask_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_SubmitTask_ack::ArenaDtor(void* object) {
+  Task_SubmitTask_ack* _this = reinterpret_cast< Task_SubmitTask_ack* >(object);
+  (void)_this;
+}
+void Task_SubmitTask_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_SubmitTask_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_SubmitTask_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_SubmitTask_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  ::memset(&task_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_SubmitTask_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 result = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_SubmitTask_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_SubmitTask_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_SubmitTask_ack)
+  return target;
+}
+
+size_t Task_SubmitTask_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_SubmitTask_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_SubmitTask_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_SubmitTask_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_SubmitTask_ack::GetClassData() const { return &_class_data_; }
+
+void Task_SubmitTask_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_SubmitTask_ack *>(to)->MergeFrom(
+      static_cast<const Task_SubmitTask_ack &>(from));
+}
+
+
+void Task_SubmitTask_ack::MergeFrom(const Task_SubmitTask_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_SubmitTask_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  if (from._internal_result() != 0) {
+    _internal_set_result(from._internal_result());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_SubmitTask_ack::CopyFrom(const Task_SubmitTask_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_SubmitTask_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_SubmitTask_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_SubmitTask_ack::InternalSwap(Task_SubmitTask_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_SubmitTask_ack, result_)
+      + sizeof(Task_SubmitTask_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(Task_SubmitTask_ack, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_SubmitTask_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[7]);
+}
+
+// ===================================================================
+
+class Task_ObtainReward_req::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_ObtainReward_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_ObtainReward_req* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_ObtainReward_req::_Internal::utoken(const Task_ObtainReward_req* msg) {
+  return *msg->utoken_;
+}
+void Task_ObtainReward_req::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_ObtainReward_req::Task_ObtainReward_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_ObtainReward_req)
+}
+Task_ObtainReward_req::Task_ObtainReward_req(const Task_ObtainReward_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  task_iid_ = from.task_iid_;
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_ObtainReward_req)
+}
+
+inline void Task_ObtainReward_req::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&task_iid_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(task_iid_));
+}
+
+Task_ObtainReward_req::~Task_ObtainReward_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_ObtainReward_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_ObtainReward_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_ObtainReward_req::ArenaDtor(void* object) {
+  Task_ObtainReward_req* _this = reinterpret_cast< Task_ObtainReward_req* >(object);
+  (void)_this;
+}
+void Task_ObtainReward_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_ObtainReward_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_ObtainReward_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_ObtainReward_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  task_iid_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_ObtainReward_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_ObtainReward_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_ObtainReward_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_ObtainReward_req)
+  return target;
+}
+
+size_t Task_ObtainReward_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_ObtainReward_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_ObtainReward_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_ObtainReward_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_ObtainReward_req::GetClassData() const { return &_class_data_; }
+
+void Task_ObtainReward_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_ObtainReward_req *>(to)->MergeFrom(
+      static_cast<const Task_ObtainReward_req &>(from));
+}
+
+
+void Task_ObtainReward_req::MergeFrom(const Task_ObtainReward_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_ObtainReward_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_ObtainReward_req::CopyFrom(const Task_ObtainReward_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_ObtainReward_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_ObtainReward_req::IsInitialized() const {
+  return true;
+}
+
+void Task_ObtainReward_req::InternalSwap(Task_ObtainReward_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_ObtainReward_req, task_iid_)
+      + sizeof(Task_ObtainReward_req::task_iid_)
+      - PROTOBUF_FIELD_OFFSET(Task_ObtainReward_req, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_ObtainReward_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[8]);
+}
+
+// ===================================================================
+
+class Task_ObtainReward_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_ObtainReward_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_ObtainReward_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_ObtainReward_ack::_Internal::utoken(const Task_ObtainReward_ack* msg) {
+  return *msg->utoken_;
+}
+void Task_ObtainReward_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_ObtainReward_ack::Task_ObtainReward_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_ObtainReward_ack)
+}
+Task_ObtainReward_ack::Task_ObtainReward_ack(const Task_ObtainReward_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  ::memcpy(&task_iid_, &from.task_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_ObtainReward_ack)
+}
+
+inline void Task_ObtainReward_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+}
+
+Task_ObtainReward_ack::~Task_ObtainReward_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_ObtainReward_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_ObtainReward_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_ObtainReward_ack::ArenaDtor(void* object) {
+  Task_ObtainReward_ack* _this = reinterpret_cast< Task_ObtainReward_ack* >(object);
+  (void)_this;
+}
+void Task_ObtainReward_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_ObtainReward_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_ObtainReward_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_ObtainReward_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  ::memset(&task_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_ObtainReward_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 result = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_ObtainReward_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_ObtainReward_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_ObtainReward_ack)
+  return target;
+}
+
+size_t Task_ObtainReward_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_ObtainReward_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_ObtainReward_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_ObtainReward_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_ObtainReward_ack::GetClassData() const { return &_class_data_; }
+
+void Task_ObtainReward_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_ObtainReward_ack *>(to)->MergeFrom(
+      static_cast<const Task_ObtainReward_ack &>(from));
+}
+
+
+void Task_ObtainReward_ack::MergeFrom(const Task_ObtainReward_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_ObtainReward_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  if (from._internal_result() != 0) {
+    _internal_set_result(from._internal_result());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_ObtainReward_ack::CopyFrom(const Task_ObtainReward_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_ObtainReward_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_ObtainReward_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_ObtainReward_ack::InternalSwap(Task_ObtainReward_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ack, result_)
+      + sizeof(Task_ObtainReward_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ack, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_ObtainReward_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[9]);
+}
+
+// ===================================================================
+
+class Task_GiveupTask_req::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_GiveupTask_req>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_GiveupTask_req* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_GiveupTask_req::_Internal::utoken(const Task_GiveupTask_req* msg) {
+  return *msg->utoken_;
+}
+void Task_GiveupTask_req::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+Task_GiveupTask_req::Task_GiveupTask_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_GiveupTask_req)
+}
+Task_GiveupTask_req::Task_GiveupTask_req(const Task_GiveupTask_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  task_iid_ = from.task_iid_;
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_GiveupTask_req)
+}
+
+inline void Task_GiveupTask_req::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&task_iid_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(task_iid_));
+}
+
+Task_GiveupTask_req::~Task_GiveupTask_req() {
+  // @@protoc_insertion_point(destructor:PRO.Task_GiveupTask_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_GiveupTask_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+}
+
+void Task_GiveupTask_req::ArenaDtor(void* object) {
+  Task_GiveupTask_req* _this = reinterpret_cast< Task_GiveupTask_req* >(object);
+  (void)_this;
+}
+void Task_GiveupTask_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_GiveupTask_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_GiveupTask_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_GiveupTask_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(utoken_ != nullptr);
+    utoken_->Clear();
+  }
+  task_iid_ = 0;
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_GiveupTask_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_GiveupTask_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_GiveupTask_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_GiveupTask_req)
+  return target;
+}
+
+size_t Task_GiveupTask_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_GiveupTask_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *utoken_);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_GiveupTask_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_GiveupTask_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_GiveupTask_req::GetClassData() const { return &_class_data_; }
+
+void Task_GiveupTask_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_GiveupTask_req *>(to)->MergeFrom(
+      static_cast<const Task_GiveupTask_req &>(from));
+}
+
+
+void Task_GiveupTask_req::MergeFrom(const Task_GiveupTask_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_GiveupTask_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_utoken()) {
+    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_GiveupTask_req::CopyFrom(const Task_GiveupTask_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_GiveupTask_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_GiveupTask_req::IsInitialized() const {
+  return true;
+}
+
+void Task_GiveupTask_req::InternalSwap(Task_GiveupTask_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_GiveupTask_req, task_iid_)
+      + sizeof(Task_GiveupTask_req::task_iid_)
+      - PROTOBUF_FIELD_OFFSET(Task_GiveupTask_req, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_GiveupTask_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[10]);
+}
+
+// ===================================================================
+
+class Task_GiveupTask_ack::_Internal {
+ public:
+  using HasBits = decltype(std::declval<Task_GiveupTask_ack>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_GiveupTask_ack* msg);
+  static void set_has_utoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::PRO::DBUserTaskItem& task(const Task_GiveupTask_ack* msg);
+  static void set_has_task(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+const ::PRO::UserToken&
+Task_GiveupTask_ack::_Internal::utoken(const Task_GiveupTask_ack* msg) {
+  return *msg->utoken_;
+}
+const ::PRO::DBUserTaskItem&
+Task_GiveupTask_ack::_Internal::task(const Task_GiveupTask_ack* msg) {
+  return *msg->task_;
+}
+void Task_GiveupTask_ack::clear_utoken() {
+  if (utoken_ != nullptr) utoken_->Clear();
+  _has_bits_[0] &= ~0x00000001u;
+}
+void Task_GiveupTask_ack::clear_task() {
+  if (task_ != nullptr) task_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+Task_GiveupTask_ack::Task_GiveupTask_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_GiveupTask_ack)
+}
+Task_GiveupTask_ack::Task_GiveupTask_ack(const Task_GiveupTask_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_utoken()) {
+    utoken_ = new ::PRO::UserToken(*from.utoken_);
+  } else {
+    utoken_ = nullptr;
+  }
+  if (from._internal_has_task()) {
+    task_ = new ::PRO::DBUserTaskItem(*from.task_);
+  } else {
+    task_ = nullptr;
+  }
+  ::memcpy(&task_iid_, &from.task_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_GiveupTask_ack)
+}
+
+inline void Task_GiveupTask_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+}
+
+Task_GiveupTask_ack::~Task_GiveupTask_ack() {
+  // @@protoc_insertion_point(destructor:PRO.Task_GiveupTask_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Task_GiveupTask_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete utoken_;
+  if (this != internal_default_instance()) delete task_;
+}
+
+void Task_GiveupTask_ack::ArenaDtor(void* object) {
+  Task_GiveupTask_ack* _this = reinterpret_cast< Task_GiveupTask_ack* >(object);
+  (void)_this;
+}
+void Task_GiveupTask_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Task_GiveupTask_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Task_GiveupTask_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_GiveupTask_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      GOOGLE_DCHECK(utoken_ != nullptr);
+      utoken_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(task_ != nullptr);
+      task_->Clear();
+    }
+  }
+  ::memset(&task_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Task_GiveupTask_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional .PRO.UserToken utoken = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 result = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .PRO.DBUserTaskItem task = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_task(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Task_GiveupTask_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_GiveupTask_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional .PRO.UserToken utoken = 1;
+  if (_internal_has_utoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::utoken(this), target, stream);
+  }
+
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+  }
+
+  // optional .PRO.DBUserTaskItem task = 4;
+  if (_internal_has_task()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::task(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_GiveupTask_ack)
+  return target;
+}
+
+size_t Task_GiveupTask_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_GiveupTask_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional .PRO.UserToken utoken = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *utoken_);
+    }
+
+    // optional .PRO.DBUserTaskItem task = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *task_);
+    }
+
+  }
+  // int32 task_iid = 2;
+  if (this->_internal_task_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
+  }
+
+  // int32 result = 3;
+  if (this->_internal_result() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_GiveupTask_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Task_GiveupTask_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_GiveupTask_ack::GetClassData() const { return &_class_data_; }
+
+void Task_GiveupTask_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Task_GiveupTask_ack *>(to)->MergeFrom(
+      static_cast<const Task_GiveupTask_ack &>(from));
+}
+
+
+void Task_GiveupTask_ack::MergeFrom(const Task_GiveupTask_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_GiveupTask_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _internal_mutable_task()->::PRO::DBUserTaskItem::MergeFrom(from._internal_task());
+    }
+  }
+  if (from._internal_task_iid() != 0) {
+    _internal_set_task_iid(from._internal_task_iid());
+  }
+  if (from._internal_result() != 0) {
+    _internal_set_result(from._internal_result());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Task_GiveupTask_ack::CopyFrom(const Task_GiveupTask_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_GiveupTask_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Task_GiveupTask_ack::IsInitialized() const {
+  return true;
+}
+
+void Task_GiveupTask_ack::InternalSwap(Task_GiveupTask_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Task_GiveupTask_ack, result_)
+      + sizeof(Task_GiveupTask_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(Task_GiveupTask_ack, utoken_)>(
+          reinterpret_cast<char*>(&utoken_),
+          reinterpret_cast<char*>(&other->utoken_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Task_GiveupTask_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
+      file_level_metadata_task_5fsystem_2eproto[11]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::PRO::Task_NewTasks_ntf* Arena::CreateMaybeMessage< ::PRO::Task_NewTasks_ntf >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::Task_NewTasks_ntf >(arena);
+template<> PROTOBUF_NOINLINE ::PRO::Task_WaitList_req* Arena::CreateMaybeMessage< ::PRO::Task_WaitList_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_WaitList_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_WaitList_ack* Arena::CreateMaybeMessage< ::PRO::Task_WaitList_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_WaitList_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_MyTaskList_req* Arena::CreateMaybeMessage< ::PRO::Task_MyTaskList_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_MyTaskList_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_MyTaskList_ack* Arena::CreateMaybeMessage< ::PRO::Task_MyTaskList_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_MyTaskList_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_GetTask_req* Arena::CreateMaybeMessage< ::PRO::Task_GetTask_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_GetTask_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_GetTask_ack* Arena::CreateMaybeMessage< ::PRO::Task_GetTask_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_GetTask_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_SubmitTask_req* Arena::CreateMaybeMessage< ::PRO::Task_SubmitTask_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_SubmitTask_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_SubmitTask_ack* Arena::CreateMaybeMessage< ::PRO::Task_SubmitTask_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_SubmitTask_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_ObtainReward_req* Arena::CreateMaybeMessage< ::PRO::Task_ObtainReward_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_ObtainReward_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_ObtainReward_ack* Arena::CreateMaybeMessage< ::PRO::Task_ObtainReward_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_ObtainReward_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_GiveupTask_req* Arena::CreateMaybeMessage< ::PRO::Task_GiveupTask_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_GiveupTask_req >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Task_GiveupTask_ack* Arena::CreateMaybeMessage< ::PRO::Task_GiveupTask_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_GiveupTask_ack >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

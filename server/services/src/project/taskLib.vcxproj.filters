@@ -12,11 +12,7 @@
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupMeta.cpp">
       <Filter>metas</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\libs\taskLib\service\TaskCellBase.cpp">
-      <Filter>services</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\libs\taskLib\TaskMetaHome.cpp" />
-    <ClCompile Include="..\source\libs\taskLib\TaskRuntimeContext.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskMeta.cpp">
       <Filter>metas</Filter>
     </ClCompile>
@@ -32,16 +28,19 @@
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlObjective.cpp">
       <Filter>metas</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\UserTasksResolver.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\service\TaskCellRT.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\service\TaskGroupCellRT.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupMeta.h">
       <Filter>metas</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\libs\taskLib\service\TaskCellBase.h">
-      <Filter>services</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\libs\taskLib\TaskMetaHome.h" />
-    <ClInclude Include="..\source\libs\taskLib\TaskRuntimeContext.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskMeta.h">
       <Filter>metas</Filter>
     </ClInclude>
@@ -64,5 +63,13 @@
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlObjective.h">
       <Filter>metas</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\UserTasksResolver.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\TaskCellRT.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\service\TaskGroupCellRT.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\TaskFunc_Defined.h" />
   </ItemGroup>
 </Project>

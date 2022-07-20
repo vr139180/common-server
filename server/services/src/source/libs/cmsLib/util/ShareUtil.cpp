@@ -326,3 +326,16 @@ void ShareUtil::to_upper(std::string& str)
 {
 	std::transform(str.cbegin(), str.cend(), str.begin(), ::toupper);
 }
+
+std::string ShareUtil::str_format(const char* fmt, ...)
+{
+	char buf[128] = {0};
+
+	va_list vaList;
+
+	va_start(vaList, fmt);
+	::vsnprintf(buf, sizeof(buf) - 1, fmt, vaList);
+	va_end(vaList);
+
+	return buf;
+}

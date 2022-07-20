@@ -77,27 +77,3 @@ message FriendRelation {
 message FriendUserInfo {
   UserToken token = 1;
 }
-
-//task info data ext
-message TaskItemDatas {
-  map<string,int64> data = 1;
-}
-
-message TaskItemInfo {
-  int64 iid = 1;
-  int64 role_iid = 2;
-}
-
-message TaskItemList {
-  repeated TaskItemInfo tasks=1;
-}
-
-message TaskGroupInfo {
-  int64 iid = 1;
-  int64 role_iid = 2;
-  TaskItemDatas datas = 20;
-}
-
-message TaskGroupList {
-  repeated TaskGroupInfo groups = 1;
-}

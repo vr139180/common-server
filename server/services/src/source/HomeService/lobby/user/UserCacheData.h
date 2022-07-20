@@ -7,10 +7,14 @@
 #include <cmsLib/prolib/core_type.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
 
+#include <taskLib/service/TaskGroupCellRT.h>
+#include <taskLib/service/TaskCellRT.h>
+
 #include "lobby/user/UserBuildings.h"
 #include "lobby/user/UserPets.h"
 #include "lobby/user/UserBase.h"
 #include "lobby/user/UserHome.h"
+#include "lobby/user/UserTasks.h"
 
 class LobbyUser;
 
@@ -55,8 +59,15 @@ public:
 	S_INT_32 pet_releaseone(S_INT_64 mypetiid);
 
 public:
+	//tasks
+	virtual void task_data_loaded() {}
+
+	void task_new_group(TaskGroupCellRT* gcrt);
+
+public:
 	//同步数据
-	void on_db_roledata_sync1( UserBase& ubase, UserHome& uhome, UserBuildings& ubuilds, UserPets& upets);
+	void on_db_roledata_sync1( UserBase& ubase, UserHome& uhome, 
+		UserBuildings& ubuilds, UserPets& upets, UserTasks& utasks);
 
 protected:
 	//sync first
@@ -74,6 +85,7 @@ protected:
 	UserHome		home_data_;
 	UserBuildings	building_data_;
 	UserPets		pet_data_;
+	UserTasks		task_data_;
 
 protected:
 	//当前role iid

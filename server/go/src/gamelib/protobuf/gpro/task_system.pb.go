@@ -20,7 +20,179 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Task_NewTasksNtf struct {
+type TASK_TRIGGER_TYPE int32
+
+const (
+	TASK_TRIGGER_TYPE_TT_BEGIN TASK_TRIGGER_TYPE = 0
+	//时间间隔
+	TASK_TRIGGER_TYPE_TT_TRIGGER_TIMER TASK_TRIGGER_TYPE = 1
+	//角色信息
+	TASK_TRIGGER_TYPE_TT_ROLEINFO_CHANGE TASK_TRIGGER_TYPE = 2
+	//背包变化
+	TASK_TRIGGER_TYPE_TT_BAG_CHANGE TASK_TRIGGER_TYPE = 4
+	//建筑变化
+	TASK_TRIGGER_TYPE_TT_BUILDING_CHANGE TASK_TRIGGER_TYPE = 8
+	TASK_TRIGGER_TYPE_TT_MAX             TASK_TRIGGER_TYPE = 9
+)
+
+// Enum value maps for TASK_TRIGGER_TYPE.
+var (
+	TASK_TRIGGER_TYPE_name = map[int32]string{
+		0: "TT_BEGIN",
+		1: "TT_TRIGGER_TIMER",
+		2: "TT_ROLEINFO_CHANGE",
+		4: "TT_BAG_CHANGE",
+		8: "TT_BUILDING_CHANGE",
+		9: "TT_MAX",
+	}
+	TASK_TRIGGER_TYPE_value = map[string]int32{
+		"TT_BEGIN":           0,
+		"TT_TRIGGER_TIMER":   1,
+		"TT_ROLEINFO_CHANGE": 2,
+		"TT_BAG_CHANGE":      4,
+		"TT_BUILDING_CHANGE": 8,
+		"TT_MAX":             9,
+	}
+)
+
+func (x TASK_TRIGGER_TYPE) Enum() *TASK_TRIGGER_TYPE {
+	p := new(TASK_TRIGGER_TYPE)
+	*p = x
+	return p
+}
+
+func (x TASK_TRIGGER_TYPE) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TASK_TRIGGER_TYPE) Descriptor() protoreflect.EnumDescriptor {
+	return file_task_system_proto_enumTypes[0].Descriptor()
+}
+
+func (TASK_TRIGGER_TYPE) Type() protoreflect.EnumType {
+	return &file_task_system_proto_enumTypes[0]
+}
+
+func (x TASK_TRIGGER_TYPE) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TASK_TRIGGER_TYPE.Descriptor instead.
+func (TASK_TRIGGER_TYPE) EnumDescriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{0}
+}
+
+type TASK_GROUP_STATE int32
+
+const (
+	TASK_GROUP_STATE_TASKGROUP_ACCEPT TASK_GROUP_STATE = 0
+	TASK_GROUP_STATE_TASKGROUP_FINISH TASK_GROUP_STATE = 1
+	TASK_GROUP_STATE_TASKGROUP_GIVEUP TASK_GROUP_STATE = 2
+)
+
+// Enum value maps for TASK_GROUP_STATE.
+var (
+	TASK_GROUP_STATE_name = map[int32]string{
+		0: "TASKGROUP_ACCEPT",
+		1: "TASKGROUP_FINISH",
+		2: "TASKGROUP_GIVEUP",
+	}
+	TASK_GROUP_STATE_value = map[string]int32{
+		"TASKGROUP_ACCEPT": 0,
+		"TASKGROUP_FINISH": 1,
+		"TASKGROUP_GIVEUP": 2,
+	}
+)
+
+func (x TASK_GROUP_STATE) Enum() *TASK_GROUP_STATE {
+	p := new(TASK_GROUP_STATE)
+	*p = x
+	return p
+}
+
+func (x TASK_GROUP_STATE) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TASK_GROUP_STATE) Descriptor() protoreflect.EnumDescriptor {
+	return file_task_system_proto_enumTypes[1].Descriptor()
+}
+
+func (TASK_GROUP_STATE) Type() protoreflect.EnumType {
+	return &file_task_system_proto_enumTypes[1]
+}
+
+func (x TASK_GROUP_STATE) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TASK_GROUP_STATE.Descriptor instead.
+func (TASK_GROUP_STATE) EnumDescriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{1}
+}
+
+type TASK_STATE int32
+
+const (
+	TASK_STATE_TASKSTATE_ACCEPT   TASK_STATE = 0
+	TASK_STATE_TASKSTATE_WAIT     TASK_STATE = -1
+	TASK_STATE_TASKSTATE_REACCEPT TASK_STATE = 1
+	TASK_STATE_TASKSTATE_SUBMIT   TASK_STATE = 2
+	TASK_STATE_TASKSTATE_FAILED   TASK_STATE = 3
+	TASK_STATE_TASKSTATE_GIVEUP   TASK_STATE = 4
+	TASK_STATE_TASKSTATE_FINISH   TASK_STATE = 5
+)
+
+// Enum value maps for TASK_STATE.
+var (
+	TASK_STATE_name = map[int32]string{
+		0:  "TASKSTATE_ACCEPT",
+		-1: "TASKSTATE_WAIT",
+		1:  "TASKSTATE_REACCEPT",
+		2:  "TASKSTATE_SUBMIT",
+		3:  "TASKSTATE_FAILED",
+		4:  "TASKSTATE_GIVEUP",
+		5:  "TASKSTATE_FINISH",
+	}
+	TASK_STATE_value = map[string]int32{
+		"TASKSTATE_ACCEPT":   0,
+		"TASKSTATE_WAIT":     -1,
+		"TASKSTATE_REACCEPT": 1,
+		"TASKSTATE_SUBMIT":   2,
+		"TASKSTATE_FAILED":   3,
+		"TASKSTATE_GIVEUP":   4,
+		"TASKSTATE_FINISH":   5,
+	}
+)
+
+func (x TASK_STATE) Enum() *TASK_STATE {
+	p := new(TASK_STATE)
+	*p = x
+	return p
+}
+
+func (x TASK_STATE) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TASK_STATE) Descriptor() protoreflect.EnumDescriptor {
+	return file_task_system_proto_enumTypes[2].Descriptor()
+}
+
+func (TASK_STATE) Type() protoreflect.EnumType {
+	return &file_task_system_proto_enumTypes[2]
+}
+
+func (x TASK_STATE) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TASK_STATE.Descriptor instead.
+func (TASK_STATE) EnumDescriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{2}
+}
+
+type Task_WaitListReq struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -28,8 +200,8 @@ type Task_NewTasksNtf struct {
 	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
 }
 
-func (x *Task_NewTasksNtf) Reset() {
-	*x = Task_NewTasksNtf{}
+func (x *Task_WaitListReq) Reset() {
+	*x = Task_WaitListReq{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_task_system_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -37,13 +209,13 @@ func (x *Task_NewTasksNtf) Reset() {
 	}
 }
 
-func (x *Task_NewTasksNtf) String() string {
+func (x *Task_WaitListReq) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Task_NewTasksNtf) ProtoMessage() {}
+func (*Task_WaitListReq) ProtoMessage() {}
 
-func (x *Task_NewTasksNtf) ProtoReflect() protoreflect.Message {
+func (x *Task_WaitListReq) ProtoReflect() protoreflect.Message {
 	mi := &file_task_system_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,14 +227,677 @@ func (x *Task_NewTasksNtf) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Task_NewTasksNtf.ProtoReflect.Descriptor instead.
-func (*Task_NewTasksNtf) Descriptor() ([]byte, []int) {
+// Deprecated: Use Task_WaitListReq.ProtoReflect.Descriptor instead.
+func (*Task_WaitListReq) Descriptor() ([]byte, []int) {
 	return file_task_system_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Task_NewTasksNtf) GetUtoken() *UserToken {
+func (x *Task_WaitListReq) GetUtoken() *UserToken {
 	if x != nil {
 		return x.Utoken
+	}
+	return nil
+}
+
+type Task_WaitListAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken   *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	TaskIids []int32    `protobuf:"varint,2,rep,packed,name=task_iids,json=taskIids,proto3" json:"task_iids,omitempty"`
+}
+
+func (x *Task_WaitListAck) Reset() {
+	*x = Task_WaitListAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_WaitListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_WaitListAck) ProtoMessage() {}
+
+func (x *Task_WaitListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_WaitListAck.ProtoReflect.Descriptor instead.
+func (*Task_WaitListAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Task_WaitListAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_WaitListAck) GetTaskIids() []int32 {
+	if x != nil {
+		return x.TaskIids
+	}
+	return nil
+}
+
+type Task_MyTaskListReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+}
+
+func (x *Task_MyTaskListReq) Reset() {
+	*x = Task_MyTaskListReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_MyTaskListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_MyTaskListReq) ProtoMessage() {}
+
+func (x *Task_MyTaskListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_MyTaskListReq.ProtoReflect.Descriptor instead.
+func (*Task_MyTaskListReq) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Task_MyTaskListReq) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+type Task_MyTaskListAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken        `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	Groups *DBUserTaskGroups `protobuf:"bytes,2,opt,name=groups,proto3" json:"groups,omitempty"`
+	Tasks  *DBUserTasks      `protobuf:"bytes,3,opt,name=tasks,proto3" json:"tasks,omitempty"`
+}
+
+func (x *Task_MyTaskListAck) Reset() {
+	*x = Task_MyTaskListAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_MyTaskListAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_MyTaskListAck) ProtoMessage() {}
+
+func (x *Task_MyTaskListAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_MyTaskListAck.ProtoReflect.Descriptor instead.
+func (*Task_MyTaskListAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Task_MyTaskListAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_MyTaskListAck) GetGroups() *DBUserTaskGroups {
+	if x != nil {
+		return x.Groups
+	}
+	return nil
+}
+
+func (x *Task_MyTaskListAck) GetTasks() *DBUserTasks {
+	if x != nil {
+		return x.Tasks
+	}
+	return nil
+}
+
+type Task_GetTaskReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	//任务iid
+	TaskIid int32 `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+}
+
+func (x *Task_GetTaskReq) Reset() {
+	*x = Task_GetTaskReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_GetTaskReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_GetTaskReq) ProtoMessage() {}
+
+func (x *Task_GetTaskReq) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_GetTaskReq.ProtoReflect.Descriptor instead.
+func (*Task_GetTaskReq) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Task_GetTaskReq) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_GetTaskReq) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+type Task_GetTaskAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken  *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	TaskIid int32      `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+	//0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+	Result int32 `protobuf:"varint,3,opt,name=result,proto3" json:"result,omitempty"`
+	//result = 0,包含任务信息
+	Task *DBUserTaskItem `protobuf:"bytes,4,opt,name=task,proto3,oneof" json:"task,omitempty"`
+}
+
+func (x *Task_GetTaskAck) Reset() {
+	*x = Task_GetTaskAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_GetTaskAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_GetTaskAck) ProtoMessage() {}
+
+func (x *Task_GetTaskAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_GetTaskAck.ProtoReflect.Descriptor instead.
+func (*Task_GetTaskAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *Task_GetTaskAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_GetTaskAck) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+func (x *Task_GetTaskAck) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+func (x *Task_GetTaskAck) GetTask() *DBUserTaskItem {
+	if x != nil {
+		return x.Task
+	}
+	return nil
+}
+
+type Task_SubmitTaskReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	//任务iid
+	TaskIid int32 `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+}
+
+func (x *Task_SubmitTaskReq) Reset() {
+	*x = Task_SubmitTaskReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_SubmitTaskReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_SubmitTaskReq) ProtoMessage() {}
+
+func (x *Task_SubmitTaskReq) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_SubmitTaskReq.ProtoReflect.Descriptor instead.
+func (*Task_SubmitTaskReq) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *Task_SubmitTaskReq) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_SubmitTaskReq) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+type Task_SubmitTaskAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken  *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	TaskIid int32      `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+	//0:success
+	Result int32 `protobuf:"varint,3,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *Task_SubmitTaskAck) Reset() {
+	*x = Task_SubmitTaskAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_SubmitTaskAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_SubmitTaskAck) ProtoMessage() {}
+
+func (x *Task_SubmitTaskAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_SubmitTaskAck.ProtoReflect.Descriptor instead.
+func (*Task_SubmitTaskAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Task_SubmitTaskAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_SubmitTaskAck) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+func (x *Task_SubmitTaskAck) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type Task_ObtainRewardReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	//任务iid
+	TaskIid int32 `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+}
+
+func (x *Task_ObtainRewardReq) Reset() {
+	*x = Task_ObtainRewardReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[8]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_ObtainRewardReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_ObtainRewardReq) ProtoMessage() {}
+
+func (x *Task_ObtainRewardReq) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[8]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_ObtainRewardReq.ProtoReflect.Descriptor instead.
+func (*Task_ObtainRewardReq) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *Task_ObtainRewardReq) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_ObtainRewardReq) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+type Task_ObtainRewardAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken  *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	TaskIid int32      `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+	//0:success
+	Result int32 `protobuf:"varint,3,opt,name=result,proto3" json:"result,omitempty"`
+}
+
+func (x *Task_ObtainRewardAck) Reset() {
+	*x = Task_ObtainRewardAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_ObtainRewardAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_ObtainRewardAck) ProtoMessage() {}
+
+func (x *Task_ObtainRewardAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_ObtainRewardAck.ProtoReflect.Descriptor instead.
+func (*Task_ObtainRewardAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *Task_ObtainRewardAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_ObtainRewardAck) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+func (x *Task_ObtainRewardAck) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+type Task_GiveupTaskReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	//放弃的任务iid
+	TaskIid int32 `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+}
+
+func (x *Task_GiveupTaskReq) Reset() {
+	*x = Task_GiveupTaskReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_GiveupTaskReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_GiveupTaskReq) ProtoMessage() {}
+
+func (x *Task_GiveupTaskReq) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_GiveupTaskReq.ProtoReflect.Descriptor instead.
+func (*Task_GiveupTaskReq) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Task_GiveupTaskReq) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_GiveupTaskReq) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+type Task_GiveupTaskAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Utoken  *UserToken `protobuf:"bytes,1,opt,name=utoken,proto3,oneof" json:"utoken,omitempty"`
+	TaskIid int32      `protobuf:"varint,2,opt,name=task_iid,json=taskIid,proto3" json:"task_iid,omitempty"`
+	//0:success
+	Result int32 `protobuf:"varint,3,opt,name=result,proto3" json:"result,omitempty"`
+	//result = 0,包含任务信息
+	Task *DBUserTaskItem `protobuf:"bytes,4,opt,name=task,proto3,oneof" json:"task,omitempty"`
+}
+
+func (x *Task_GiveupTaskAck) Reset() {
+	*x = Task_GiveupTaskAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_task_system_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Task_GiveupTaskAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Task_GiveupTaskAck) ProtoMessage() {}
+
+func (x *Task_GiveupTaskAck) ProtoReflect() protoreflect.Message {
+	mi := &file_task_system_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Task_GiveupTaskAck.ProtoReflect.Descriptor instead.
+func (*Task_GiveupTaskAck) Descriptor() ([]byte, []int) {
+	return file_task_system_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *Task_GiveupTaskAck) GetUtoken() *UserToken {
+	if x != nil {
+		return x.Utoken
+	}
+	return nil
+}
+
+func (x *Task_GiveupTaskAck) GetTaskIid() int32 {
+	if x != nil {
+		return x.TaskIid
+	}
+	return 0
+}
+
+func (x *Task_GiveupTaskAck) GetResult() int32 {
+	if x != nil {
+		return x.Result
+	}
+	return 0
+}
+
+func (x *Task_GiveupTaskAck) GetTask() *DBUserTaskItem {
+	if x != nil {
+		return x.Task
 	}
 	return nil
 }
@@ -72,18 +907,132 @@ var File_task_system_proto protoreflect.FileDescriptor
 var file_task_system_proto_rawDesc = []byte{
 	0x0a, 0x11, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x12, 0x03, 0x50, 0x52, 0x4f, 0x1a, 0x15, 0x67, 0x6c, 0x6f, 0x62, 0x61, 0x6c,
-	0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22,
-	0x4b, 0x0a, 0x11, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x4e, 0x65, 0x77, 0x54, 0x61, 0x73, 0x6b, 0x73,
-	0x5f, 0x6e, 0x74, 0x66, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01,
+	0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a,
+	0x11, 0x64, 0x62, 0x5f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x22, 0x4b, 0x0a, 0x11, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x57, 0x61, 0x69, 0x74, 0x4c,
+	0x69, 0x73, 0x74, 0x5f, 0x72, 0x65, 0x71, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73,
+	0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x88, 0x01, 0x01, 0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22,
+	0x68, 0x0a, 0x11, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x57, 0x61, 0x69, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x5f, 0x61, 0x63, 0x6b, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54,
 	0x6f, 0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01,
-	0x01, 0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x42, 0x54, 0x0a, 0x1b,
-	0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e,
-	0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50, 0x01, 0x5a, 0x15, 0x67,
-	0x61, 0x6d, 0x65, 0x6c, 0x69, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f,
-	0x67, 0x70, 0x72, 0x6f, 0xaa, 0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70,
-	0x72, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x01, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x73, 0x18, 0x02,
+	0x20, 0x03, 0x28, 0x05, 0x52, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x73, 0x42, 0x09,
+	0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x4d, 0x0a, 0x13, 0x54, 0x61, 0x73,
+	0x6b, 0x5f, 0x4d, 0x79, 0x54, 0x61, 0x73, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x5f, 0x72, 0x65, 0x71,
+	0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e,
+	0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x42, 0x09, 0x0a,
+	0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0xa4, 0x01, 0x0a, 0x13, 0x54, 0x61, 0x73,
+	0x6b, 0x5f, 0x4d, 0x79, 0x54, 0x61, 0x73, 0x6b, 0x4c, 0x69, 0x73, 0x74, 0x5f, 0x61, 0x63, 0x6b,
+	0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e,
+	0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x2d, 0x0a,
+	0x06, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e,
+	0x50, 0x52, 0x4f, 0x2e, 0x44, 0x42, 0x55, 0x73, 0x65, 0x72, 0x54, 0x61, 0x73, 0x6b, 0x47, 0x72,
+	0x6f, 0x75, 0x70, 0x73, 0x52, 0x06, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x12, 0x26, 0x0a, 0x05,
+	0x74, 0x61, 0x73, 0x6b, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x50, 0x52,
+	0x4f, 0x2e, 0x44, 0x42, 0x55, 0x73, 0x65, 0x72, 0x54, 0x61, 0x73, 0x6b, 0x73, 0x52, 0x05, 0x74,
+	0x61, 0x73, 0x6b, 0x73, 0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22,
+	0x65, 0x0a, 0x10, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x47, 0x65, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x5f,
+	0x72, 0x65, 0x71, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01,
+	0x12, 0x19, 0x0a, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x07, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x42, 0x09, 0x0a, 0x07, 0x5f,
+	0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0xb4, 0x01, 0x0a, 0x10, 0x54, 0x61, 0x73, 0x6b, 0x5f,
+	0x47, 0x65, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x61, 0x63, 0x6b, 0x12, 0x2b, 0x0a, 0x06, 0x75,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52,
+	0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x61, 0x73, 0x6b,
+	0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x61, 0x73, 0x6b,
+	0x49, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x2c, 0x0a, 0x04, 0x74,
+	0x61, 0x73, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x50, 0x52, 0x4f, 0x2e,
+	0x44, 0x42, 0x55, 0x73, 0x65, 0x72, 0x54, 0x61, 0x73, 0x6b, 0x49, 0x74, 0x65, 0x6d, 0x48, 0x01,
+	0x52, 0x04, 0x74, 0x61, 0x73, 0x6b, 0x88, 0x01, 0x01, 0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74,
+	0x6f, 0x6b, 0x65, 0x6e, 0x42, 0x07, 0x0a, 0x05, 0x5f, 0x74, 0x61, 0x73, 0x6b, 0x22, 0x68, 0x0a,
+	0x13, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x54, 0x61, 0x73, 0x6b,
+	0x5f, 0x72, 0x65, 0x71, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54,
+	0x6f, 0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01,
+	0x01, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x42, 0x09, 0x0a, 0x07,
+	0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x80, 0x01, 0x0a, 0x13, 0x54, 0x61, 0x73, 0x6b,
+	0x5f, 0x53, 0x75, 0x62, 0x6d, 0x69, 0x74, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x61, 0x63, 0x6b, 0x12,
+	0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x48,
+	0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x19, 0x0a, 0x08,
+	0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07,
+	0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c,
+	0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x42,
+	0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x6a, 0x0a, 0x15, 0x54, 0x61,
+	0x73, 0x6b, 0x5f, 0x4f, 0x62, 0x74, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f,
+	0x72, 0x65, 0x71, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f,
+	0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01,
+	0x12, 0x19, 0x0a, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x05, 0x52, 0x07, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x42, 0x09, 0x0a, 0x07, 0x5f,
+	0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x82, 0x01, 0x0a, 0x15, 0x54, 0x61, 0x73, 0x6b, 0x5f,
+	0x4f, 0x62, 0x74, 0x61, 0x69, 0x6e, 0x52, 0x65, 0x77, 0x61, 0x72, 0x64, 0x5f, 0x61, 0x63, 0x6b,
+	0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e,
+	0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x19, 0x0a,
+	0x08, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x07, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75,
+	0x6c, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74,
+	0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0x68, 0x0a, 0x13, 0x54,
+	0x61, 0x73, 0x6b, 0x5f, 0x47, 0x69, 0x76, 0x65, 0x75, 0x70, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x72,
+	0x65, 0x71, 0x12, 0x2b, 0x0a, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b,
+	0x65, 0x6e, 0x48, 0x00, 0x52, 0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12,
+	0x19, 0x0a, 0x08, 0x74, 0x61, 0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x05, 0x52, 0x07, 0x74, 0x61, 0x73, 0x6b, 0x49, 0x69, 0x64, 0x42, 0x09, 0x0a, 0x07, 0x5f, 0x75,
+	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x22, 0xb7, 0x01, 0x0a, 0x13, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x47,
+	0x69, 0x76, 0x65, 0x75, 0x70, 0x54, 0x61, 0x73, 0x6b, 0x5f, 0x61, 0x63, 0x6b, 0x12, 0x2b, 0x0a,
+	0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e,
+	0x50, 0x52, 0x4f, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x48, 0x00, 0x52,
+	0x06, 0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x61,
+	0x73, 0x6b, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x07, 0x74, 0x61,
+	0x73, 0x6b, 0x49, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x2c, 0x0a,
+	0x04, 0x74, 0x61, 0x73, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x50, 0x52,
+	0x4f, 0x2e, 0x44, 0x42, 0x55, 0x73, 0x65, 0x72, 0x54, 0x61, 0x73, 0x6b, 0x49, 0x74, 0x65, 0x6d,
+	0x48, 0x01, 0x52, 0x04, 0x74, 0x61, 0x73, 0x6b, 0x88, 0x01, 0x01, 0x42, 0x09, 0x0a, 0x07, 0x5f,
+	0x75, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x42, 0x07, 0x0a, 0x05, 0x5f, 0x74, 0x61, 0x73, 0x6b, 0x2a,
+	0x86, 0x01, 0x0a, 0x11, 0x54, 0x41, 0x53, 0x4b, 0x5f, 0x54, 0x52, 0x49, 0x47, 0x47, 0x45, 0x52,
+	0x5f, 0x54, 0x59, 0x50, 0x45, 0x12, 0x0c, 0x0a, 0x08, 0x54, 0x54, 0x5f, 0x42, 0x45, 0x47, 0x49,
+	0x4e, 0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x54, 0x5f, 0x54, 0x52, 0x49, 0x47, 0x47, 0x45,
+	0x52, 0x5f, 0x54, 0x49, 0x4d, 0x45, 0x52, 0x10, 0x01, 0x12, 0x16, 0x0a, 0x12, 0x54, 0x54, 0x5f,
+	0x52, 0x4f, 0x4c, 0x45, 0x49, 0x4e, 0x46, 0x4f, 0x5f, 0x43, 0x48, 0x41, 0x4e, 0x47, 0x45, 0x10,
+	0x02, 0x12, 0x11, 0x0a, 0x0d, 0x54, 0x54, 0x5f, 0x42, 0x41, 0x47, 0x5f, 0x43, 0x48, 0x41, 0x4e,
+	0x47, 0x45, 0x10, 0x04, 0x12, 0x16, 0x0a, 0x12, 0x54, 0x54, 0x5f, 0x42, 0x55, 0x49, 0x4c, 0x44,
+	0x49, 0x4e, 0x47, 0x5f, 0x43, 0x48, 0x41, 0x4e, 0x47, 0x45, 0x10, 0x08, 0x12, 0x0a, 0x0a, 0x06,
+	0x54, 0x54, 0x5f, 0x4d, 0x41, 0x58, 0x10, 0x09, 0x2a, 0x54, 0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b,
+	0x5f, 0x47, 0x52, 0x4f, 0x55, 0x50, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x12, 0x14, 0x0a, 0x10,
+	0x54, 0x41, 0x53, 0x4b, 0x47, 0x52, 0x4f, 0x55, 0x50, 0x5f, 0x41, 0x43, 0x43, 0x45, 0x50, 0x54,
+	0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b, 0x47, 0x52, 0x4f, 0x55, 0x50, 0x5f,
+	0x46, 0x49, 0x4e, 0x49, 0x53, 0x48, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b,
+	0x47, 0x52, 0x4f, 0x55, 0x50, 0x5f, 0x47, 0x49, 0x56, 0x45, 0x55, 0x50, 0x10, 0x02, 0x2a, 0xaf,
+	0x01, 0x0a, 0x0a, 0x54, 0x41, 0x53, 0x4b, 0x5f, 0x53, 0x54, 0x41, 0x54, 0x45, 0x12, 0x14, 0x0a,
+	0x10, 0x54, 0x41, 0x53, 0x4b, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x41, 0x43, 0x43, 0x45, 0x50,
+	0x54, 0x10, 0x00, 0x12, 0x1b, 0x0a, 0x0e, 0x54, 0x41, 0x53, 0x4b, 0x53, 0x54, 0x41, 0x54, 0x45,
+	0x5f, 0x57, 0x41, 0x49, 0x54, 0x10, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x01,
+	0x12, 0x16, 0x0a, 0x12, 0x54, 0x41, 0x53, 0x4b, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x52, 0x45,
+	0x41, 0x43, 0x43, 0x45, 0x50, 0x54, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b,
+	0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x53, 0x55, 0x42, 0x4d, 0x49, 0x54, 0x10, 0x02, 0x12, 0x14,
+	0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x46, 0x41, 0x49, 0x4c,
+	0x45, 0x44, 0x10, 0x03, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x41, 0x53, 0x4b, 0x53, 0x54, 0x41, 0x54,
+	0x45, 0x5f, 0x47, 0x49, 0x56, 0x45, 0x55, 0x50, 0x10, 0x04, 0x12, 0x14, 0x0a, 0x10, 0x54, 0x41,
+	0x53, 0x4b, 0x53, 0x54, 0x41, 0x54, 0x45, 0x5f, 0x46, 0x49, 0x4e, 0x49, 0x53, 0x48, 0x10, 0x05,
+	0x42, 0x54, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50,
+	0x01, 0x5a, 0x15, 0x67, 0x61, 0x6d, 0x65, 0x6c, 0x69, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2f, 0x67, 0x70, 0x72, 0x6f, 0xaa, 0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63,
+	0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72,
+	0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -98,18 +1047,51 @@ func file_task_system_proto_rawDescGZIP() []byte {
 	return file_task_system_proto_rawDescData
 }
 
-var file_task_system_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_task_system_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_task_system_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_task_system_proto_goTypes = []interface{}{
-	(*Task_NewTasksNtf)(nil), // 0: PRO.Task_NewTasks_ntf
-	(*UserToken)(nil),        // 1: PRO.UserToken
+	(TASK_TRIGGER_TYPE)(0),       // 0: PRO.TASK_TRIGGER_TYPE
+	(TASK_GROUP_STATE)(0),        // 1: PRO.TASK_GROUP_STATE
+	(TASK_STATE)(0),              // 2: PRO.TASK_STATE
+	(*Task_WaitListReq)(nil),     // 3: PRO.Task_WaitList_req
+	(*Task_WaitListAck)(nil),     // 4: PRO.Task_WaitList_ack
+	(*Task_MyTaskListReq)(nil),   // 5: PRO.Task_MyTaskList_req
+	(*Task_MyTaskListAck)(nil),   // 6: PRO.Task_MyTaskList_ack
+	(*Task_GetTaskReq)(nil),      // 7: PRO.Task_GetTask_req
+	(*Task_GetTaskAck)(nil),      // 8: PRO.Task_GetTask_ack
+	(*Task_SubmitTaskReq)(nil),   // 9: PRO.Task_SubmitTask_req
+	(*Task_SubmitTaskAck)(nil),   // 10: PRO.Task_SubmitTask_ack
+	(*Task_ObtainRewardReq)(nil), // 11: PRO.Task_ObtainReward_req
+	(*Task_ObtainRewardAck)(nil), // 12: PRO.Task_ObtainReward_ack
+	(*Task_GiveupTaskReq)(nil),   // 13: PRO.Task_GiveupTask_req
+	(*Task_GiveupTaskAck)(nil),   // 14: PRO.Task_GiveupTask_ack
+	(*UserToken)(nil),            // 15: PRO.UserToken
+	(*DBUserTaskGroups)(nil),     // 16: PRO.DBUserTaskGroups
+	(*DBUserTasks)(nil),          // 17: PRO.DBUserTasks
+	(*DBUserTaskItem)(nil),       // 18: PRO.DBUserTaskItem
 }
 var file_task_system_proto_depIdxs = []int32{
-	1, // 0: PRO.Task_NewTasks_ntf.utoken:type_name -> PRO.UserToken
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	15, // 0: PRO.Task_WaitList_req.utoken:type_name -> PRO.UserToken
+	15, // 1: PRO.Task_WaitList_ack.utoken:type_name -> PRO.UserToken
+	15, // 2: PRO.Task_MyTaskList_req.utoken:type_name -> PRO.UserToken
+	15, // 3: PRO.Task_MyTaskList_ack.utoken:type_name -> PRO.UserToken
+	16, // 4: PRO.Task_MyTaskList_ack.groups:type_name -> PRO.DBUserTaskGroups
+	17, // 5: PRO.Task_MyTaskList_ack.tasks:type_name -> PRO.DBUserTasks
+	15, // 6: PRO.Task_GetTask_req.utoken:type_name -> PRO.UserToken
+	15, // 7: PRO.Task_GetTask_ack.utoken:type_name -> PRO.UserToken
+	18, // 8: PRO.Task_GetTask_ack.task:type_name -> PRO.DBUserTaskItem
+	15, // 9: PRO.Task_SubmitTask_req.utoken:type_name -> PRO.UserToken
+	15, // 10: PRO.Task_SubmitTask_ack.utoken:type_name -> PRO.UserToken
+	15, // 11: PRO.Task_ObtainReward_req.utoken:type_name -> PRO.UserToken
+	15, // 12: PRO.Task_ObtainReward_ack.utoken:type_name -> PRO.UserToken
+	15, // 13: PRO.Task_GiveupTask_req.utoken:type_name -> PRO.UserToken
+	15, // 14: PRO.Task_GiveupTask_ack.utoken:type_name -> PRO.UserToken
+	18, // 15: PRO.Task_GiveupTask_ack.task:type_name -> PRO.DBUserTaskItem
+	16, // [16:16] is the sub-list for method output_type
+	16, // [16:16] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_task_system_proto_init() }
@@ -118,9 +1100,142 @@ func file_task_system_proto_init() {
 		return
 	}
 	file_global_internal_proto_init()
+	file_db_internal_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_task_system_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Task_NewTasksNtf); i {
+			switch v := v.(*Task_WaitListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_WaitListAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_MyTaskListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_MyTaskListAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_GetTaskReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_GetTaskAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_SubmitTaskReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_SubmitTaskAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_ObtainRewardReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_ObtainRewardAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_GiveupTaskReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_task_system_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Task_GiveupTaskAck); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -133,18 +1248,30 @@ func file_task_system_proto_init() {
 		}
 	}
 	file_task_system_proto_msgTypes[0].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[1].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[2].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[3].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[4].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[5].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[6].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[7].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[8].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[9].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[10].OneofWrappers = []interface{}{}
+	file_task_system_proto_msgTypes[11].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_task_system_proto_rawDesc,
-			NumEnums:      0,
-			NumMessages:   1,
+			NumEnums:      3,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_task_system_proto_goTypes,
 		DependencyIndexes: file_task_system_proto_depIdxs,
+		EnumInfos:         file_task_system_proto_enumTypes,
 		MessageInfos:      file_task_system_proto_msgTypes,
 	}.Build()
 	File_task_system_proto = out.File

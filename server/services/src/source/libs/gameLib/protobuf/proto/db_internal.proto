@@ -75,3 +75,51 @@ message DBUserPets{
   repeated DBUserPetItem pets = 1;
 }
 
+message DBTaskAttrData{
+  map<string,int64> datas = 1;
+}
+
+message DBUserTaskItem{
+  uint32 ver_ = 1;
+  int64 iid = 2;
+  int64 role_iid = 3;
+  int32 task_iid = 4;
+  int64 my_taskgroup = 5;
+  int32 task_group = 6;
+  int32 qstate = 7;
+  int32 accept_level = 8;
+  bool  cycle_task = 9;
+  int32 cycle_num = 10;
+  int32 createtime = 11;
+  int32 firstupdatetime = 12;
+  int32 lastupdatetime = 13;
+  //string task_datas = 14;
+  DBTaskAttrData task_datas = 14;
+  string source_iid = 15;
+}
+
+message DBUserTasks{
+  repeated DBUserTaskItem items = 1;
+}
+
+message DBTaskGAttrData{
+  map<int32,int32> datas = 1;
+}
+
+message DBUserTaskGroup{
+  uint32 ver_ = 1;
+  int64 iid = 2;
+  int64 role_iid = 3;
+  int32 task_group = 4;
+  int32 group_cell = 5;
+  //taskid,state
+  DBTaskGAttrData cell_data = 6;
+  int32 gstate = 7;
+  int32 trigg_level = 8;
+  int32 createtime = 9;
+  int32 endtime = 10;
+}
+
+message DBUserTaskGroups{
+  repeated DBUserTaskGroup groups = 1;
+}

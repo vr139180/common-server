@@ -3,7 +3,12 @@
 
 #include <cmsLib/prolib/core_type.h>
 #include <cmsLib/redis/RedisClient.h>
+#include <cmsLib/lua/ScriptContext.h>
+
 #include <gameLib/gatehome/ProtoTokenUtil.h>
+
+#include <taskLib/service/ITaskEnv.h>
+#include <taskLib/UserTasksResolver.h>
 
 #include "lobby/user/UserCacheData.h"
 #include "lobby/user/UserRoles.h"
@@ -21,11 +26,14 @@ typedef enum tagUserState {
 	UserState_Ready,
 }UserState;
 
-class LobbyUser : public UserCacheData
+class LobbyUser : public UserCacheData, public IUserDataEnv, public ITaskDataUpdateCB
 {
 public:
 	LobbyUser();
 	virtual ~LobbyUser();
+
+	LobbyService* get_owner() { return owner_; }
+	void set_context(LobbyService* p);
 
 	void init_user(S_INT_64 giduid, S_INT_64 slottoken);
 	void rest_user();
@@ -35,8 +43,6 @@ public:
 
 	void set_userslot(int slot) { slot_ = slot; }
 	int get_userslot() { return slot_; }
-	void set_owner(LobbyService* p) { owner_ = p; };
-	LobbyService* get_owner() { return owner_; }
 
 	UserState get_userstate() { return cur_state_; }
 	bool is_user_ready() { return cur_state_ == UserState::UserState_Ready; }
@@ -55,6 +61,28 @@ public:
 	//true:init false update
 	void on_db_rolelist_update(bool initorupdate, UserRoles& from);
 	void notify_roledetail_to_user();
+
+public:
+	virtual void task_data_loaded();
+
+	static void bind_luacontext(lua_State* l);
+	//-------------------------implement IUserDataEnv-------------------------------
+	//run_xmlobjective函数在LobbyUser_Lua.cpp中实现
+	//目的是为了保持函数名称和实现的一致
+	virtual bool run_xmlobjective(const std::string& fn, XmlObjectiveParams* params, S_INT_64& ret);
+
+	virtual int get_role_level();
+	virtual int get_bag_itemnum(S_INT_64 itemiid);
+
+	virtual bool is_end_of_taskgroup(S_INT_32 gid);
+	virtual std::string get_luaojb_name();
+
+	//-------------------------implement ITaskDataUpdateCB -------------------------
+	virtual void notify_new_taskgroup( TaskGroupCellRT* gcrt);
+	virtual void notify_forward_nextcell_taskgroup(TaskGroupCellRT* gcrt);
+
+protected:
+	UserTasksResolver	task_resolver_;
 
 protected:
 	bool sync_rolelist();

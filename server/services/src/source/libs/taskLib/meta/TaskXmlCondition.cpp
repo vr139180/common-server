@@ -76,3 +76,44 @@ TaskXmlCondition* TaskXmlCondition::build_taskcondition(tinyxml2::XMLElement* e,
 
 	return ptr.release();
 }
+
+bool TaskXmlCondition::check_results(std::vector<bool>& rets)
+{
+	if (node_relation_ == CondRelationType::CondRelationType_And)
+	{
+		for (size_t ii = 0; ii < rets.size(); ++ii)
+		{
+			if (!rets[ii])
+				return false;
+		}
+
+		return true;
+	}
+	else if (node_relation_ == CondRelationType::CondRelationType_Or)
+	{
+		for (size_t ii = 0; ii < rets.size(); ++ii)
+		{
+			if (rets[ii])
+				return true;
+		}
+
+		return false;
+	}
+	else if (node_relation_ == CondRelationType::CondRelationType_Not)
+	{
+		//first all and, then not
+		bool br = true;
+		for (size_t ii = 0; ii < rets.size(); ++ii)
+		{
+			if (!rets[ii])
+			{
+				br = false;
+				break;
+			}
+		}
+
+		return !br;
+	}
+
+	return false;
+}
