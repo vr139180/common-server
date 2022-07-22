@@ -68,7 +68,7 @@ message Task_GetTask_req {
 message Task_GetTask_ack {
   optional UserToken utoken = 1;
   int32 task_iid = 2;
-  //0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+  //0:success 1:failed
   int32 result = 3;
   //result = 0,包含任务信息
   optional DBUserTaskItem task = 4;
@@ -83,21 +83,13 @@ message Task_SubmitTask_req {
 message Task_SubmitTask_ack {
   optional UserToken utoken = 1;
   int32 task_iid = 2;
-  //0:success 
+  //0:success 1:task not exist 2:system error
   int32 result = 3;
 }
 
-message Task_ObtainReward_req {
-  optional UserToken utoken = 1;
-  //任务iid
-  int32 task_iid = 2;
-}
-
-message Task_ObtainReward_ack {
+message Task_ObtainReward_ntf {
   optional UserToken utoken = 1;
   int32 task_iid = 2;
-  //0:success 
-  int32 result = 3;
 }
 
 message Task_GiveupTask_req {

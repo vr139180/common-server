@@ -102,6 +102,18 @@ message DBUserTasks{
   repeated DBUserTaskItem items = 1;
 }
 
+message DBUserTaskEndItem{
+  uint32 ver_ = 1;
+  int64 iid = 2;
+  int32 task_iid = 4;
+  int32 qstate = 7;
+  int32 lastupdatetime = 13;
+}
+
+message DBUserTaskEnds{
+  repeated DBUserTaskEndItem items = 1;
+}
+
 message DBTaskGAttrData{
   map<int32,int32> datas = 1;
 }
@@ -122,4 +134,16 @@ message DBUserTaskGroup{
 
 message DBUserTaskGroups{
   repeated DBUserTaskGroup groups = 1;
+}
+
+message DBUserTaskGroupEnd{
+  uint32 ver_ = 1;
+  int64 iid = 2;
+  int32 task_group = 4;
+  int32 gstate = 7;
+  int32 endtime = 10;
+}
+
+message DBUserTaskGroupEnds{
+  repeated DBUserTaskGroupEnd groups = 1;
 }

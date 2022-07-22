@@ -7,8 +7,10 @@
 #include <cmsLib/prolib/core_type.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
 
+#include <taskLib/service/ITaskEnv.h>
 #include <taskLib/service/TaskGroupCellRT.h>
 #include <taskLib/service/TaskCellRT.h>
+#include <taskLib/UserTasksResolver.h>
 
 #include "lobby/user/UserBuildings.h"
 #include "lobby/user/UserPets.h"
@@ -18,7 +20,7 @@
 
 class LobbyUser;
 
-class UserCacheData
+class UserCacheData : public ITaskDataUpdateCB
 {
 	friend class LobbyUser;
 
@@ -59,10 +61,27 @@ public:
 	S_INT_32 pet_releaseone(S_INT_64 mypetiid);
 
 public:
+	//-------------------------implement ITaskDataUpdateCB -------------------------
+	virtual void notify_new_taskgroup(TaskGroupCellRT* gcrt);
+	virtual void notify_forward_nextcell_taskgroup(TaskGroupCellRT* gcrt);
+	virtual void notify_taskgroup_end(TaskGroupCellRT* gcrt);
+	virtual void notify_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+	virtual void notify_end_task(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+
 	//tasks
 	virtual void task_data_loaded() {}
 
 	void task_new_group(TaskGroupCellRT* gcrt);
+	void task_group_nextcell(TaskGroupCellRT* gcrt);
+	void task_group_end(TaskGroupCellRT* gcrt);
+	void task_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+	void task_user_submittask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+
+	BasicProtocol* task_get_waitlist();
+	BasicProtocol* task_get_mytasks();
+	BasicProtocol* task_get_from_waitlist(S_INT_32 taskid);
+	BasicProtocol* task_submit_one(S_INT_32 taskid);
+	BasicProtocol* task_giveup_task(S_INT_32 taskid);
 
 public:
 	//同步数据
@@ -86,6 +105,9 @@ protected:
 	UserBuildings	building_data_;
 	UserPets		pet_data_;
 	UserTasks		task_data_;
+
+protected:
+	UserTasksResolver	task_resolver_;
 
 protected:
 	//当前role iid

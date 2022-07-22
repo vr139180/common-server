@@ -30,7 +30,7 @@ public interface Task_SubmitTask_ackOrBuilder extends
 
   /**
    * <pre>
-   *0:success 
+   *0:success 1:task not exist
    * </pre>
    *
    * <code>int32 result = 3;</code>

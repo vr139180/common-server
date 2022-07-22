@@ -48,3 +48,21 @@ TaskCellRT* TaskCellRT::new_task_rt(TaskMetaBase* pmeta, TaskGroupCellRT* p)
 
 	return ptr.release();
 }
+
+bool TaskCellRT::can_get_task(ITaskContext* tc)
+{
+	return false;
+}
+
+void TaskCellRT::user_gettask(S_INT_64 iid)
+{
+	this->iid_ = iid;
+	this->qstate_ = PRO::TASKSTATE_ACCEPT;
+	++this->cycle_num_;
+}
+
+S_INT_32 TaskCellRT::submit_task(ITaskContext* tc)
+{
+
+	return 0;
+}

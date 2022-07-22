@@ -55,15 +55,10 @@ public final class TaskSystem {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_Task_SubmitTask_ack_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Task_ObtainReward_req_descriptor;
+    internal_static_PRO_Task_ObtainReward_ntf_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Task_ObtainReward_req_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Task_ObtainReward_ack_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Task_ObtainReward_ack_fieldAccessorTable;
+      internal_static_PRO_Task_ObtainReward_ntf_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PRO_Task_GiveupTask_req_descriptor;
   static final 
@@ -105,30 +100,27 @@ public final class TaskSystem {
       "token\"g\n\023Task_SubmitTask_ack\022#\n\006utoken\030\001" +
       " \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 " +
       "\001(\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"Y\n\025Task_O" +
-      "btainReward_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us" +
+      "btainReward_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us" +
       "erTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoke" +
-      "n\"i\n\025Task_ObtainReward_ack\022#\n\006utoken\030\001 \001" +
-      "(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(" +
-      "\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"W\n\023Task_Giv" +
-      "eupTask_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTo" +
-      "kenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoken\"\230\001" +
-      "\n\023Task_GiveupTask_ack\022#\n\006utoken\030\001 \001(\0132\016." +
-      "PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005\022\016\n\006" +
-      "result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132\023.PRO.DBUserT" +
-      "askItemH\001\210\001\001B\t\n\007_utokenB\007\n\005_task*\206\001\n\021TAS" +
-      "K_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020\000\022\024\n\020TT_TRIGG" +
-      "ER_TIMER\020\001\022\026\n\022TT_ROLEINFO_CHANGE\020\002\022\021\n\rTT" +
-      "_BAG_CHANGE\020\004\022\026\n\022TT_BUILDING_CHANGE\020\010\022\n\n" +
-      "\006TT_MAX\020\t*T\n\020TASK_GROUP_STATE\022\024\n\020TASKGRO" +
-      "UP_ACCEPT\020\000\022\024\n\020TASKGROUP_FINISH\020\001\022\024\n\020TAS" +
-      "KGROUP_GIVEUP\020\002*\257\001\n\nTASK_STATE\022\024\n\020TASKST" +
-      "ATE_ACCEPT\020\000\022\033\n\016TASKSTATE_WAIT\020\377\377\377\377\377\377\377\377\377" +
-      "\001\022\026\n\022TASKSTATE_REACCEPT\020\001\022\024\n\020TASKSTATE_S" +
-      "UBMIT\020\002\022\024\n\020TASKSTATE_FAILED\020\003\022\024\n\020TASKSTA" +
-      "TE_GIVEUP\020\004\022\024\n\020TASKSTATE_FINISH\020\005BT\n\033com" +
-      ".cms.client.network.gproP\001Z\025gamelib/prot" +
-      "obuf/gpro\252\002\033com.cms.client.network.gprob" +
-      "\006proto3"
+      "n\"W\n\023Task_GiveupTask_req\022#\n\006utoken\030\001 \001(\013" +
+      "2\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B" +
+      "\t\n\007_utoken\"\230\001\n\023Task_GiveupTask_ack\022#\n\006ut" +
+      "oken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_" +
+      "iid\030\002 \001(\005\022\016\n\006result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132" +
+      "\023.PRO.DBUserTaskItemH\001\210\001\001B\t\n\007_utokenB\007\n\005" +
+      "_task*\206\001\n\021TASK_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020" +
+      "\000\022\024\n\020TT_TRIGGER_TIMER\020\001\022\026\n\022TT_ROLEINFO_C" +
+      "HANGE\020\002\022\021\n\rTT_BAG_CHANGE\020\004\022\026\n\022TT_BUILDIN" +
+      "G_CHANGE\020\010\022\n\n\006TT_MAX\020\t*T\n\020TASK_GROUP_STA" +
+      "TE\022\024\n\020TASKGROUP_ACCEPT\020\000\022\024\n\020TASKGROUP_FI" +
+      "NISH\020\001\022\024\n\020TASKGROUP_GIVEUP\020\002*\257\001\n\nTASK_ST" +
+      "ATE\022\024\n\020TASKSTATE_ACCEPT\020\000\022\033\n\016TASKSTATE_W" +
+      "AIT\020\377\377\377\377\377\377\377\377\377\001\022\026\n\022TASKSTATE_REACCEPT\020\001\022\024" +
+      "\n\020TASKSTATE_SUBMIT\020\002\022\024\n\020TASKSTATE_FAILED" +
+      "\020\003\022\024\n\020TASKSTATE_GIVEUP\020\004\022\024\n\020TASKSTATE_FI" +
+      "NISH\020\005BT\n\033com.cms.client.network.gproP\001Z" +
+      "\025gamelib/protobuf/gpro\252\002\033com.cms.client." +
+      "network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -184,26 +176,20 @@ public final class TaskSystem {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Task_SubmitTask_ack_descriptor,
         new java.lang.String[] { "Utoken", "TaskIid", "Result", "Utoken", });
-    internal_static_PRO_Task_ObtainReward_req_descriptor =
+    internal_static_PRO_Task_ObtainReward_ntf_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_PRO_Task_ObtainReward_req_fieldAccessorTable = new
+    internal_static_PRO_Task_ObtainReward_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Task_ObtainReward_req_descriptor,
+        internal_static_PRO_Task_ObtainReward_ntf_descriptor,
         new java.lang.String[] { "Utoken", "TaskIid", "Utoken", });
-    internal_static_PRO_Task_ObtainReward_ack_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_PRO_Task_ObtainReward_ack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Task_ObtainReward_ack_descriptor,
-        new java.lang.String[] { "Utoken", "TaskIid", "Result", "Utoken", });
     internal_static_PRO_Task_GiveupTask_req_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_PRO_Task_GiveupTask_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Task_GiveupTask_req_descriptor,
         new java.lang.String[] { "Utoken", "TaskIid", "Utoken", });
     internal_static_PRO_Task_GiveupTask_ack_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_PRO_Task_GiveupTask_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Task_GiveupTask_ack_descriptor,

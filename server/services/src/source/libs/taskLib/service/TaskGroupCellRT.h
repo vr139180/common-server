@@ -30,6 +30,8 @@ public:
 
 	TaskCellRT* get_task_byiid(S_INT_32 iid);
 
+public:
+
 	//推进当前group cell, return true:进入下个节点， false:维持当前节点
 	bool forward_groupcell();
 	//进入下一个group cell，只触发一次
@@ -38,11 +40,19 @@ public:
 	//任务线是否结束
 	bool is_groupend();
 
+	//获取任务
+	TaskCellRT* user_gettask(S_INT_32 taskid);
+	//提交任务
+	S_INT_32 user_submittask(TaskCellRT* tc, ITaskContext* context);
+
 protected:
 	void release();
 
 	//计算转移条件
 	bool check_conditions(ITaskContext* tc, TaskXmlCondition* pcond);
+
+	//释放当前cell关联的任务对象
+	void release_groupcell_tasks();
 
 protected:
 	S_INT_64				giid_;

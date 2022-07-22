@@ -172,8 +172,8 @@ func (pb *ProtobufFactory) initFactory() {
 	pb.registMessage(&gpro.Task_GetTaskAck{}, int(gpro.TASK_PROTYPE_TASK_GETTASK_ACK))
 	pb.registMessage(&gpro.Task_SubmitTaskReq{}, int(gpro.TASK_PROTYPE_TASK_SUBMITTASK_REQ))
 	pb.registMessage(&gpro.Task_SubmitTaskAck{}, int(gpro.TASK_PROTYPE_TASK_SUBMITTASK_ACK))
-	pb.registMessage(&gpro.Task_ObtainRewardReq{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_REQ))
-	pb.registMessage(&gpro.Task_ObtainRewardAck{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_ACK))
+	//pb.registMessage(&gpro.Task_ObtainRewardReq{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_REQ))
+	pb.registMessage(&gpro.Task_ObtainRewardNtf{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_NTF))
 	pb.registMessage(&gpro.Task_GiveupTaskReq{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_REQ))
 	pb.registMessage(&gpro.Task_GiveupTaskAck{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_ACK))
 }

@@ -7,9 +7,6 @@
 
 #include <gameLib/gatehome/ProtoTokenUtil.h>
 
-#include <taskLib/service/ITaskEnv.h>
-#include <taskLib/UserTasksResolver.h>
-
 #include "lobby/user/UserCacheData.h"
 #include "lobby/user/UserRoles.h"
 
@@ -26,7 +23,7 @@ typedef enum tagUserState {
 	UserState_Ready,
 }UserState;
 
-class LobbyUser : public UserCacheData, public IUserDataEnv, public ITaskDataUpdateCB
+class LobbyUser : public UserCacheData, public IUserDataEnv
 {
 public:
 	LobbyUser();
@@ -76,13 +73,6 @@ public:
 
 	virtual bool is_end_of_taskgroup(S_INT_32 gid);
 	virtual std::string get_luaojb_name();
-
-	//-------------------------implement ITaskDataUpdateCB -------------------------
-	virtual void notify_new_taskgroup( TaskGroupCellRT* gcrt);
-	virtual void notify_forward_nextcell_taskgroup(TaskGroupCellRT* gcrt);
-
-protected:
-	UserTasksResolver	task_resolver_;
 
 protected:
 	bool sync_rolelist();

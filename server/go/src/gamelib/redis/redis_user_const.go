@@ -15,6 +15,10 @@ const USER_DETAIL_BUILDING = "build:items"
 const USER_DETAIL_BUILDING_DEL = "build:dels"
 const USER_DETAIL_PET = "pet:items"
 const USER_DETAIL_PET_DEL = "pet:dels"
+const USER_DETAIL_TASKS = "tsk:tsks"
+const USER_DETAIL_TASKS_END = "tsk:tsks_end"
+const USER_DETAIL_TASKGROUPS = "tsk:groups"
+const USER_DETAIL_TASKGROUPS_END = "tsk:groups_end"
 
 //数据版本控制项
 //redis上的版本号

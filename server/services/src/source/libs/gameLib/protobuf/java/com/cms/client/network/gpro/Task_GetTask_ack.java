@@ -159,7 +159,7 @@ private static final long serialVersionUID = 0L;
   private int result_;
   /**
    * <pre>
-   *0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+   *0:success 1:failed
    * </pre>
    *
    * <code>int32 result = 3;</code>
@@ -753,7 +753,7 @@ private static final long serialVersionUID = 0L;
     private int result_ ;
     /**
      * <pre>
-     *0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+     *0:success 1:failed
      * </pre>
      *
      * <code>int32 result = 3;</code>
@@ -765,7 +765,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+     *0:success 1:failed
      * </pre>
      *
      * <code>int32 result = 3;</code>
@@ -780,7 +780,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+     *0:success 1:failed
      * </pre>
      *
      * <code>int32 result = 3;</code>

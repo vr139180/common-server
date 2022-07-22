@@ -22,13 +22,6 @@ public:
 	virtual S_INT_64 new_task_iid() = 0;
 };
 
-//eTriggerType::TT_ROLEINFO_CHANGE
-//xml定义中支持的函数类型
-//xml只支持实时的get类型的条件判断
-//对于如需要存储临时数据等稍复杂的用lua脚本实现
-typedef int(*tsxml_check_count_p0)(void);
-typedef int(*tsxml_check_count_p1)(S_INT_64 id);
-
 //用户数据环境
 //需要用户模块实现该结构，如果支持lua环境，需要绑定对应的函数到lua
 class IUserDataEnv
@@ -53,6 +46,7 @@ public:
 };
 
 class TaskGroupCellRT;
+class TaskCellRT;
 
 //任务数据变更回调
 class ITaskDataUpdateCB
@@ -62,6 +56,13 @@ public:
 	virtual void notify_new_taskgroup( TaskGroupCellRT* gcrt) = 0;
 	//任务线进入下个节点
 	virtual void notify_forward_nextcell_taskgroup(TaskGroupCellRT* gcrt) = 0;
+	//任务线结束
+	virtual void notify_taskgroup_end(TaskGroupCellRT* gcrt) = 0;
+
+	//用户获取一个新任务
+	virtual void notify_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc) = 0;
+	//完成一个任务
+	virtual void notify_end_task(TaskGroupCellRT* gcrt, TaskCellRT* tc) = 0;
 };
 
 //整合了 IGlobalDataEnv,IUserDataEnv

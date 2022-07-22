@@ -146,7 +146,7 @@ private static final long serialVersionUID = 0L;
   private int result_;
   /**
    * <pre>
-   *0:success 
+   *0:success 1:task not exist
    * </pre>
    *
    * <code>int32 result = 3;</code>
@@ -668,7 +668,7 @@ private static final long serialVersionUID = 0L;
     private int result_ ;
     /**
      * <pre>
-     *0:success 
+     *0:success 1:task not exist
      * </pre>
      *
      * <code>int32 result = 3;</code>
@@ -680,7 +680,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:success 
+     *0:success 1:task not exist
      * </pre>
      *
      * <code>int32 result = 3;</code>
@@ -695,7 +695,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:success 
+     *0:success 1:task not exist
      * </pre>
      *
      * <code>int32 result = 3;</code>

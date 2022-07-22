@@ -70,7 +70,6 @@ protected:
 	void on_lb_task_mytasks_req(BasicProtocol* pro, bool& autorelease);
 	void on_lb_task_get_req(BasicProtocol* pro, bool& autorelease);
 	void on_lb_task_submit_req(BasicProtocol* pro, bool& autorelease);
-	void on_lb_task_obtainreward_req(BasicProtocol* pro, bool& autorelease);
 	void on_lb_task_giveup_req(BasicProtocol* pro, bool& autorelease);
 
 private:

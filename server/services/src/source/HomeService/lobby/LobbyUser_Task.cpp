@@ -15,27 +15,15 @@ void LobbyUser::task_data_loaded()
 
 bool LobbyUser::is_end_of_taskgroup(S_INT_32 gid)
 {
-	//TODO:
-	return false;
+	return task_data_.is_taskgroup_end( gid);
 }
 
 int LobbyUser::get_role_level()
 {
-	return 0;
+	return 1;
 }
 
 int LobbyUser::get_bag_itemnum(S_INT_64 itemiid)
 {
-	return 0;
-}
-
-//-----------------------------------------------------------------------------------------
-void LobbyUser::notify_new_taskgroup( TaskGroupCellRT* gcrt)
-{
-	this->task_new_group(gcrt);
-}
-
-void LobbyUser::notify_forward_nextcell_taskgroup(TaskGroupCellRT* gcrt)
-{
-
+	return 1;
 }

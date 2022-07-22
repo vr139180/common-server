@@ -89,8 +89,8 @@ namespace com.cms.client.network.proto
             regist_one((UInt16)gpro.TASK_PROTYPE.TaskGettaskAck, new gpro.Task_GetTask_ack());
             regist_one((UInt16)gpro.TASK_PROTYPE.TaskSubmittaskReq, new gpro.Task_SubmitTask_req());
             regist_one((UInt16)gpro.TASK_PROTYPE.TaskSubmittaskAck, new gpro.Task_SubmitTask_ack());
-            regist_one((UInt16)gpro.TASK_PROTYPE.TaskObtainrewardReq, new gpro.Task_ObtainReward_req());
-            regist_one((UInt16)gpro.TASK_PROTYPE.TaskObtainrewardAck, new gpro.Task_ObtainReward_ack());
+            //regist_one((UInt16)gpro.TASK_PROTYPE.TaskObtainrewardReq, new gpro.Task_ObtainReward_req());
+            regist_one((UInt16)gpro.TASK_PROTYPE.TaskObtainrewardNtf, new gpro.Task_ObtainReward_ntf());
             regist_one((UInt16)gpro.TASK_PROTYPE.TaskGiveuptaskReq, new gpro.Task_GiveupTask_req());
             regist_one((UInt16)gpro.TASK_PROTYPE.TaskGiveuptaskAck, new gpro.Task_GiveupTask_ack());
         }

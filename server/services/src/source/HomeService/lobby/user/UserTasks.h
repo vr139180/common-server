@@ -3,6 +3,7 @@
 
 #include <cmsLib/redis/RedisClient.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
+#include <gameLib/protobuf/cpp/task_system.pb.h>
 
 #include "lobby/user/UserOperate.h"
 
@@ -11,8 +12,10 @@ class LobbyUser;
 class UserTasks : public UserOperate
 {
 	friend class LobbyUser;
+
 public:
 	UserTasks();
+	virtual ~UserTasks() {}
 
 	virtual void reset_data();
 
@@ -30,17 +33,35 @@ public:
 
 	virtual bool is_modify() { return taskgroups_data_update_ || tasks_update_; }
 
+	const PRO::DBUserTaskGroups& get_taskgroups() { return task_groups_data_; }
+	const PRO::DBUserTasks& get_tasks() { return tasks_data_; }
+
+	bool is_taskgroup_end(S_INT_32 gid);
+
 public:
+
 	PRO::DBUserTaskGroup* new_taskgroup();
-	const PRO::DBUserTaskGroup* get_taskgroup_for_update(S_INT_32 groupiid);
+	PRO::DBUserTaskGroup* get_taskgroup_for_update(S_INT_32 groupiid);
+	PRO::DBUserTaskGroupEnd* end_taskgroup(S_INT_32 groupid, PRO::TASK_GROUP_STATE gstate);
 
 	PRO::DBUserTaskItem* new_taskitem();
+	PRO::DBUserTaskItem* get_taskitem_for_update(S_INT_32 taskid);
+	PRO::DBUserTaskItem* get_taskitem(S_INT_32 taskid);
+	PRO::DBUserTaskEndItem* end_taskitem(S_INT_32 taskid, PRO::TASK_STATE qstate);
 
 protected:
 	PRO::DBUserTaskGroups	task_groups_data_;
 	bool					taskgroups_data_update_;
+
+	PRO::DBUserTaskGroupEnds	task_group_ends_data_;
+	bool						task_group_ends_data_update_;
+
 	PRO::DBUserTasks		tasks_data_;
 	bool					tasks_update_;
+
+	PRO::DBUserTaskEnds		task_ends_data_;
+	bool					task_ends_data_update_;
+
 };
 
 #endif //__USERTASKS_H__

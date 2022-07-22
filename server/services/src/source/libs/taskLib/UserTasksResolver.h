@@ -11,7 +11,7 @@
 #include <taskLib/service/TaskGroupCellRT.h>
 
 //任务系统的外接模块
-class UserTasksResolver : public ITaskResTrigger, public ITaskContext
+class UserTasksResolver : public ITaskContext
 {
 	typedef boost::unordered_map<S_INT_32, TaskCellRT*>			TASKCELLRT_MAP;
 	typedef boost::unordered_map<S_INT_32, TaskGroupCellRT*>	TASKGROUPCELLRT_MAP;
@@ -24,6 +24,13 @@ public:
 	void init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DBUserTasks& tasks);
 
 	TaskGroupCellRT* get_taskgroup_byiid(S_INT_32 iid);
+	const TASKCELLRT_MAP& get_waittask_list() { return wait_accept_tasks_; }
+
+public:
+	//获取可执行的任务
+	bool get_task_from_waitlist(S_INT_32 taskid);
+	S_INT_32 submit_task(S_INT_32 taskid);
+	S_INT_32 giveup_task(S_INT_32 taskid);
 
 protected:
 	void release();
@@ -32,20 +39,17 @@ protected:
 	void trigger_new_taskgroup(TaskGroupMeta* pGroup);
 	void forward_taskgroup(TaskGroupCellRT* rt);
 
-public:
-	//--------------------------ITaskResTrigger---------------------
-	virtual void on_roleinfo_change();
-	virtual void on_bag_change();
-	virtual void on_building_change();
+	void taskgroup_end(TaskGroupCellRT* pGroup);
 
+public:
 	//--------------------------ITaskContext------------------------
 	virtual IGlobalDataEnv* get_globalevn() { return global_dataenv_; }
 	virtual IUserDataEnv* get_userenv() { return user_dataenv_; }
 
 protected:
 	//任务信息
-	TASKCELLRT_MAP	processing_tasks_;
 	TASKCELLRT_MAP	wait_accept_tasks_;
+	TASKCELLRT_MAP	processing_tasks_;
 
 	TASKGROUPCELLRT_MAP	procssing_groups_;
 

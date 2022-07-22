@@ -11,6 +11,9 @@
 class UserOperate
 {
 public:
+	virtual ~UserOperate(){}
+
+public:
 	//load from database
 	virtual void load_from_database(sql::ResultSet& row) {}
 	virtual google::protobuf::Message* get_data() { return 0; }

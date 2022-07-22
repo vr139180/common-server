@@ -3,8 +3,8 @@
 
 package com.cms.client.network.gpro;
 
-public interface Task_ObtainReward_reqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:PRO.Task_ObtainReward_req)
+public interface Task_ObtainReward_ntfOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:PRO.Task_ObtainReward_ntf)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -23,10 +23,6 @@ public interface Task_ObtainReward_reqOrBuilder extends
   com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
 
   /**
-   * <pre>
-   *任务iid
-   * </pre>
-   *
    * <code>int32 task_iid = 2;</code>
    * @return The taskIid.
    */

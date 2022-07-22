@@ -15,8 +15,10 @@ type UserData struct {
 	home_data     userHome
 	building_data userBuildings
 	pets_data     userPets
-	cache_ver     uint32
-	db_ver        uint32
+	task_data     userTasks
+
+	cache_ver uint32
+	db_ver    uint32
 
 	all_datas []IUserDataModule
 
@@ -42,6 +44,7 @@ func (u *UserData) dataModuls() {
 	u.registOneModule(&u.home_data)
 	u.registOneModule(&u.building_data)
 	u.registOneModule(&u.pets_data)
+	u.registOneModule(&u.task_data)
 }
 
 func (u *UserData) GetCacheVer() uint32 {

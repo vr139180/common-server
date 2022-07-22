@@ -124,8 +124,8 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Task_GetTask_ack>(TASK_PROTYPE::TASK_GETTASK_ACK);
 	regist_protocal<Task_SubmitTask_req>(TASK_PROTYPE::TASK_SUBMITTASK_REQ);
 	regist_protocal<Task_SubmitTask_ack>(TASK_PROTYPE::TASK_SUBMITTASK_ACK);
-	regist_protocal<Task_ObtainReward_req>(TASK_PROTYPE::TASK_OBTAINREWARD_REQ);
-	regist_protocal<Task_ObtainReward_ack>(TASK_PROTYPE::TASK_OBTAINREWARD_ACK);
+	//regist_protocal<Task_ObtainReward_req>(TASK_PROTYPE::TASK_OBTAINREWARD_REQ);
+	regist_protocal<Task_ObtainReward_ntf>(TASK_PROTYPE::TASK_OBTAINREWARD_NTF);
 	regist_protocal<Task_GiveupTask_req>(TASK_PROTYPE::TASK_GIVEUPTASK_REQ);
 	regist_protocal<Task_GiveupTask_ack>(TASK_PROTYPE::TASK_GIVEUPTASK_ACK);
 }

@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
+	"unsafe"
 
 	uuid "github.com/satori/go.uuid"
 	"google.golang.org/protobuf/proto"
@@ -118,6 +119,16 @@ func ProtoToBytes(msg proto.Message) []byte {
 	}
 
 	return dat
+}
+
+func ProtoToString(msg proto.Message) string {
+	dat, err := proto.Marshal(msg)
+	if err != nil {
+		logx.Errorf("********************protobuff Marshal failed:%s", err.Error())
+		return ""
+	}
+
+	return *(*string)(unsafe.Pointer(&dat))
 }
 
 func BytesToProto(d []byte, msg proto.Message) error {

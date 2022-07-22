@@ -4,25 +4,25 @@
 package com.cms.client.network.gpro;
 
 /**
- * Protobuf type {@code PRO.Task_ObtainReward_ack}
+ * Protobuf type {@code PRO.Task_ObtainReward_ntf}
  */
-public final class Task_ObtainReward_ack extends
+public final class Task_ObtainReward_ntf extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:PRO.Task_ObtainReward_ack)
-    Task_ObtainReward_ackOrBuilder {
+    // @@protoc_insertion_point(message_implements:PRO.Task_ObtainReward_ntf)
+    Task_ObtainReward_ntfOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Task_ObtainReward_ack.newBuilder() to construct.
-  private Task_ObtainReward_ack(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Task_ObtainReward_ntf.newBuilder() to construct.
+  private Task_ObtainReward_ntf(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Task_ObtainReward_ack() {
+  private Task_ObtainReward_ntf() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new Task_ObtainReward_ack();
+    return new Task_ObtainReward_ntf();
   }
 
   @java.lang.Override
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Task_ObtainReward_ack(
+  private Task_ObtainReward_ntf(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -67,11 +67,6 @@ private static final long serialVersionUID = 0L;
             taskIid_ = input.readInt32();
             break;
           }
-          case 24: {
-
-            result_ = input.readInt32();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -93,15 +88,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ack_descriptor;
+    return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ntf_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ack_fieldAccessorTable
+    return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ntf_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.cms.client.network.gpro.Task_ObtainReward_ack.class, com.cms.client.network.gpro.Task_ObtainReward_ack.Builder.class);
+            com.cms.client.network.gpro.Task_ObtainReward_ntf.class, com.cms.client.network.gpro.Task_ObtainReward_ntf.Builder.class);
   }
 
   private int bitField0_;
@@ -142,21 +137,6 @@ private static final long serialVersionUID = 0L;
     return taskIid_;
   }
 
-  public static final int RESULT_FIELD_NUMBER = 3;
-  private int result_;
-  /**
-   * <pre>
-   *0:success 
-   * </pre>
-   *
-   * <code>int32 result = 3;</code>
-   * @return The result.
-   */
-  @java.lang.Override
-  public int getResult() {
-    return result_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -177,9 +157,6 @@ private static final long serialVersionUID = 0L;
     if (taskIid_ != 0) {
       output.writeInt32(2, taskIid_);
     }
-    if (result_ != 0) {
-      output.writeInt32(3, result_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -197,10 +174,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, taskIid_);
     }
-    if (result_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, result_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -211,10 +184,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.cms.client.network.gpro.Task_ObtainReward_ack)) {
+    if (!(obj instanceof com.cms.client.network.gpro.Task_ObtainReward_ntf)) {
       return super.equals(obj);
     }
-    com.cms.client.network.gpro.Task_ObtainReward_ack other = (com.cms.client.network.gpro.Task_ObtainReward_ack) obj;
+    com.cms.client.network.gpro.Task_ObtainReward_ntf other = (com.cms.client.network.gpro.Task_ObtainReward_ntf) obj;
 
     if (hasUtoken() != other.hasUtoken()) return false;
     if (hasUtoken()) {
@@ -223,8 +196,6 @@ private static final long serialVersionUID = 0L;
     }
     if (getTaskIid()
         != other.getTaskIid()) return false;
-    if (getResult()
-        != other.getResult()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -242,76 +213,74 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + TASK_IID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskIid();
-    hash = (37 * hash) + RESULT_FIELD_NUMBER;
-    hash = (53 * hash) + getResult();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(byte[] data)
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(java.io.InputStream input)
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseDelimitedFrom(java.io.InputStream input)
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseDelimitedFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack parseFrom(
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -324,7 +293,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.cms.client.network.gpro.Task_ObtainReward_ack prototype) {
+  public static Builder newBuilder(com.cms.client.network.gpro.Task_ObtainReward_ntf prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -340,26 +309,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code PRO.Task_ObtainReward_ack}
+   * Protobuf type {@code PRO.Task_ObtainReward_ntf}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:PRO.Task_ObtainReward_ack)
-      com.cms.client.network.gpro.Task_ObtainReward_ackOrBuilder {
+      // @@protoc_insertion_point(builder_implements:PRO.Task_ObtainReward_ntf)
+      com.cms.client.network.gpro.Task_ObtainReward_ntfOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ack_descriptor;
+      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ntf_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ack_fieldAccessorTable
+      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ntf_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.cms.client.network.gpro.Task_ObtainReward_ack.class, com.cms.client.network.gpro.Task_ObtainReward_ack.Builder.class);
+              com.cms.client.network.gpro.Task_ObtainReward_ntf.class, com.cms.client.network.gpro.Task_ObtainReward_ntf.Builder.class);
     }
 
-    // Construct using com.cms.client.network.gpro.Task_ObtainReward_ack.newBuilder()
+    // Construct using com.cms.client.network.gpro.Task_ObtainReward_ntf.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -386,25 +355,23 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       taskIid_ = 0;
 
-      result_ = 0;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ack_descriptor;
+      return com.cms.client.network.gpro.TaskSystem.internal_static_PRO_Task_ObtainReward_ntf_descriptor;
     }
 
     @java.lang.Override
-    public com.cms.client.network.gpro.Task_ObtainReward_ack getDefaultInstanceForType() {
-      return com.cms.client.network.gpro.Task_ObtainReward_ack.getDefaultInstance();
+    public com.cms.client.network.gpro.Task_ObtainReward_ntf getDefaultInstanceForType() {
+      return com.cms.client.network.gpro.Task_ObtainReward_ntf.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.cms.client.network.gpro.Task_ObtainReward_ack build() {
-      com.cms.client.network.gpro.Task_ObtainReward_ack result = buildPartial();
+    public com.cms.client.network.gpro.Task_ObtainReward_ntf build() {
+      com.cms.client.network.gpro.Task_ObtainReward_ntf result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -412,8 +379,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.cms.client.network.gpro.Task_ObtainReward_ack buildPartial() {
-      com.cms.client.network.gpro.Task_ObtainReward_ack result = new com.cms.client.network.gpro.Task_ObtainReward_ack(this);
+    public com.cms.client.network.gpro.Task_ObtainReward_ntf buildPartial() {
+      com.cms.client.network.gpro.Task_ObtainReward_ntf result = new com.cms.client.network.gpro.Task_ObtainReward_ntf(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -425,7 +392,6 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000001;
       }
       result.taskIid_ = taskIid_;
-      result.result_ = result_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -465,24 +431,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.cms.client.network.gpro.Task_ObtainReward_ack) {
-        return mergeFrom((com.cms.client.network.gpro.Task_ObtainReward_ack)other);
+      if (other instanceof com.cms.client.network.gpro.Task_ObtainReward_ntf) {
+        return mergeFrom((com.cms.client.network.gpro.Task_ObtainReward_ntf)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.cms.client.network.gpro.Task_ObtainReward_ack other) {
-      if (other == com.cms.client.network.gpro.Task_ObtainReward_ack.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.cms.client.network.gpro.Task_ObtainReward_ntf other) {
+      if (other == com.cms.client.network.gpro.Task_ObtainReward_ntf.getDefaultInstance()) return this;
       if (other.hasUtoken()) {
         mergeUtoken(other.getUtoken());
       }
       if (other.getTaskIid() != 0) {
         setTaskIid(other.getTaskIid());
-      }
-      if (other.getResult() != 0) {
-        setResult(other.getResult());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -499,11 +462,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.cms.client.network.gpro.Task_ObtainReward_ack parsedMessage = null;
+      com.cms.client.network.gpro.Task_ObtainReward_ntf parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.cms.client.network.gpro.Task_ObtainReward_ack) e.getUnfinishedMessage();
+        parsedMessage = (com.cms.client.network.gpro.Task_ObtainReward_ntf) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -664,49 +627,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private int result_ ;
-    /**
-     * <pre>
-     *0:success 
-     * </pre>
-     *
-     * <code>int32 result = 3;</code>
-     * @return The result.
-     */
-    @java.lang.Override
-    public int getResult() {
-      return result_;
-    }
-    /**
-     * <pre>
-     *0:success 
-     * </pre>
-     *
-     * <code>int32 result = 3;</code>
-     * @param value The result to set.
-     * @return This builder for chaining.
-     */
-    public Builder setResult(int value) {
-      
-      result_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *0:success 
-     * </pre>
-     *
-     * <code>int32 result = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearResult() {
-      
-      result_ = 0;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -720,41 +640,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:PRO.Task_ObtainReward_ack)
+    // @@protoc_insertion_point(builder_scope:PRO.Task_ObtainReward_ntf)
   }
 
-  // @@protoc_insertion_point(class_scope:PRO.Task_ObtainReward_ack)
-  private static final com.cms.client.network.gpro.Task_ObtainReward_ack DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:PRO.Task_ObtainReward_ntf)
+  private static final com.cms.client.network.gpro.Task_ObtainReward_ntf DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.cms.client.network.gpro.Task_ObtainReward_ack();
+    DEFAULT_INSTANCE = new com.cms.client.network.gpro.Task_ObtainReward_ntf();
   }
 
-  public static com.cms.client.network.gpro.Task_ObtainReward_ack getDefaultInstance() {
+  public static com.cms.client.network.gpro.Task_ObtainReward_ntf getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Task_ObtainReward_ack>
-      PARSER = new com.google.protobuf.AbstractParser<Task_ObtainReward_ack>() {
+  private static final com.google.protobuf.Parser<Task_ObtainReward_ntf>
+      PARSER = new com.google.protobuf.AbstractParser<Task_ObtainReward_ntf>() {
     @java.lang.Override
-    public Task_ObtainReward_ack parsePartialFrom(
+    public Task_ObtainReward_ntf parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Task_ObtainReward_ack(input, extensionRegistry);
+      return new Task_ObtainReward_ntf(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Task_ObtainReward_ack> parser() {
+  public static com.google.protobuf.Parser<Task_ObtainReward_ntf> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Task_ObtainReward_ack> getParserForType() {
+  public com.google.protobuf.Parser<Task_ObtainReward_ntf> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.cms.client.network.gpro.Task_ObtainReward_ack getDefaultInstanceForType() {
+  public com.cms.client.network.gpro.Task_ObtainReward_ntf getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -126,6 +126,7 @@ void UserTasksResolver::init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DB
 void UserTasksResolver::trigger_new_taskgroup(TaskGroupMeta* pGroup)
 {
 	S_INT_64 giid = global_dataenv_->new_taskgroup_iid();
+
 	TaskGroupCellRT *rt = TaskGroupCellRT::new_taskgroup_rt( giid, pGroup);
 	this->procssing_groups_[rt->get_groupiid()] = rt;
 
@@ -153,6 +154,8 @@ void UserTasksResolver::trigger_new_taskgroup(TaskGroupMeta* pGroup)
 
 		trigger_new_taskgroup(pGroup);
 	}
+
+	this->forward_taskgroup(rt);
 }
 
 void UserTasksResolver::forward_taskgroup(TaskGroupCellRT* rt)
@@ -164,6 +167,12 @@ void UserTasksResolver::forward_taskgroup(TaskGroupCellRT* rt)
 	std::vector<int> gs;
 	if (!rt->goto_nextgroupcell(this, ts, gs, false))
 		return;
+
+	if (rt->is_groupend())
+	{
+		this->taskgroup_end(rt);
+		return;
+	}
 
 	//通知数据修改
 	data_cb_->notify_forward_nextcell_taskgroup(rt);
@@ -185,19 +194,73 @@ void UserTasksResolver::forward_taskgroup(TaskGroupCellRT* rt)
 
 		trigger_new_taskgroup(pGroup);
 	}
+
+	//loop forward
+	this->forward_taskgroup(rt);
 }
 
-void UserTasksResolver::on_roleinfo_change()
+void UserTasksResolver::taskgroup_end(TaskGroupCellRT* pGroup)
 {
+	data_cb_->notify_taskgroup_end(pGroup);
 
+	//destroy taskgroup object
+	TASKGROUPCELLRT_MAP::iterator fiter = procssing_groups_.find(pGroup->get_groupiid());
+	if (fiter != procssing_groups_.end())
+	{
+		delete fiter->second;
+		procssing_groups_.erase(fiter);
+	}
 }
 
-void UserTasksResolver::on_bag_change()
+bool UserTasksResolver::get_task_from_waitlist(S_INT_32 taskid)
 {
+	TASKCELLRT_MAP::iterator fiter = wait_accept_tasks_.find(taskid);
+	if (fiter == wait_accept_tasks_.end())
+		return false;
 
+	TaskCellRT* tc = fiter->second;
+	if (!tc->can_get_task(this))
+		return false;
+
+	S_INT_64 tid = global_dataenv_->new_task_iid();
+	tc->user_gettask(tid);
+
+	wait_accept_tasks_.erase(fiter);
+	processing_tasks_[tc->get_taskiid()] = tc;
+
+	TaskGroupCellRT* tgroup = tc->owner_taskgroup();
+	tgroup->user_gettask(taskid);
+
+	data_cb_->notify_user_gettask(tgroup, tc);
+
+	return true;
 }
 
-void UserTasksResolver::on_building_change()
+S_INT_32 UserTasksResolver::submit_task(S_INT_32 taskid)
 {
+	TASKCELLRT_MAP::iterator fiter = processing_tasks_.find(taskid);
+	if (fiter == processing_tasks_.end())
+		return 1;	//task not exist
 
+	TaskCellRT* tc = fiter->second;
+	TaskGroupCellRT* pGroup = tc->owner_taskgroup();
+	S_INT_32 ret = pGroup->user_submittask(tc, this);
+
+	//success
+	if (ret == 0)
+	{
+		processing_tasks_.erase(fiter);
+
+		data_cb_->notify_end_task(pGroup, tc);
+
+		//推进节点
+		this->forward_taskgroup(pGroup);
+	}
+
+	return ret;
+}
+
+S_INT_32 UserTasksResolver::giveup_task(S_INT_32 taskid)
+{
+	return 1;
 }

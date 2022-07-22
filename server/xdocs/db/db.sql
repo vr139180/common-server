@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     7/10/2022 7:51:22 PM                         */
+/* Created on:     7/22/2022 12:14:01 PM                        */
 /*==============================================================*/
 
 
@@ -382,7 +382,9 @@ create table user_taskgroup
    iid                  bigint not null,
    role_iid             bigint not null comment '所属角色',
    task_group           int not null comment '获取的任务线',
-   gstate               smallint not null default 0 comment '0:accept  2:finish 3:give up',
+   group_cell           int not null comment '当前所在节点',
+   cell_data            varchar(256) not null default '',
+   gstate               smallint not null default 0 comment '0:accept  1:finish 2:give up',
    trigg_level          int not null default 1 comment '触发时的等级',
    createtime           timestamp not null default current_timestamp comment '任务创建时间',
    endtime              timestamp comment '结束时间或者放弃时间',
@@ -430,7 +432,7 @@ create table user_taskinfo
    createtime           timestamp not null default current_timestamp comment '任务创建时间',
    firstupdatetime      timestamp comment '第一次更新时间',
    lastupdatetime       timestamp comment '最后更新时间',
-   task_datas           varchar(512) not null default '' comment '任务中间数据 protobuf 序列化的json数据',
+   task_datas           varchar(256) not null default '' comment '任务中间数据 protobuf 序列化的json数据',
    source_iid           varchar(33) comment '任务奖励的批号，可用于对账',
    primary key (iid)
 )
@@ -505,12 +507,11 @@ begin
     select ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,from_unixtime(last_residedate) from user_home where role_iid=uid;
     select ver_,building_iid,home_iid,parent_building,building_resid,look_at,building_pos from user_home_structure where home_iid=uid;
     select ver_,mypet_iid,role_iid,pet_iid,pet_age,from_unixtime(birthday) from user_pets where role_iid=uid;
-    select ver_,iid,role_iid,task_group,gstate,trigg_level,from_unixtime(createtime),from_unixtime(endtime) from user_taskgroup where role_iid=uid and gstate = 0;
-    select ver_,iid,role_iid,task_iid,my_taskgroup,task_group,qstate,accept_level,cycle_task,cycle_num,
-        from_unixtime(createtime),from_unixtime(firstupdatetime),from_unixtime(lastupdatetime),task_datas,source_iid 
-        from user_taskinfo where role_iid=uid and qstate < 3 and my_taskgroup in (
-            select iid from user_taskgroup where role_iid=uid and gstate = 0
-        );
+    select gstate,ver_,iid,role_iid,task_group,group_cell,cell_data,trigg_level,from_unixtime(createtime),from_unixtime(endtime) 
+        from user_taskgroup where role_iid=uid order by gstate asc, iid desc;
+    select qstate,ver_,iid,role_iid,task_iid,my_taskgroup,task_group,accept_level,cycle_task,cycle_num,
+        from_unixtime(createtime),from_unixtime(firstupdatetime),from_unixtime(lastupdatetime),task_datas,source_iid
+        from user_taskinfo where role_iid = uid order by qstate asc, iid desc;
 end
 //
 

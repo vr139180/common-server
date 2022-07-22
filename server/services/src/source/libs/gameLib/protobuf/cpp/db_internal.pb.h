@@ -49,7 +49,7 @@ struct TableStruct_db_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[18]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[22]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -99,9 +99,21 @@ extern DBUserPetsDefaultTypeInternal _DBUserPets_default_instance_;
 class DBUserRoles;
 struct DBUserRolesDefaultTypeInternal;
 extern DBUserRolesDefaultTypeInternal _DBUserRoles_default_instance_;
+class DBUserTaskEndItem;
+struct DBUserTaskEndItemDefaultTypeInternal;
+extern DBUserTaskEndItemDefaultTypeInternal _DBUserTaskEndItem_default_instance_;
+class DBUserTaskEnds;
+struct DBUserTaskEndsDefaultTypeInternal;
+extern DBUserTaskEndsDefaultTypeInternal _DBUserTaskEnds_default_instance_;
 class DBUserTaskGroup;
 struct DBUserTaskGroupDefaultTypeInternal;
 extern DBUserTaskGroupDefaultTypeInternal _DBUserTaskGroup_default_instance_;
+class DBUserTaskGroupEnd;
+struct DBUserTaskGroupEndDefaultTypeInternal;
+extern DBUserTaskGroupEndDefaultTypeInternal _DBUserTaskGroupEnd_default_instance_;
+class DBUserTaskGroupEnds;
+struct DBUserTaskGroupEndsDefaultTypeInternal;
+extern DBUserTaskGroupEndsDefaultTypeInternal _DBUserTaskGroupEnds_default_instance_;
 class DBUserTaskGroups;
 struct DBUserTaskGroupsDefaultTypeInternal;
 extern DBUserTaskGroupsDefaultTypeInternal _DBUserTaskGroups_default_instance_;
@@ -127,7 +139,11 @@ template<> ::PRO::DBUserHomeStructureItem* Arena::CreateMaybeMessage<::PRO::DBUs
 template<> ::PRO::DBUserPetItem* Arena::CreateMaybeMessage<::PRO::DBUserPetItem>(Arena*);
 template<> ::PRO::DBUserPets* Arena::CreateMaybeMessage<::PRO::DBUserPets>(Arena*);
 template<> ::PRO::DBUserRoles* Arena::CreateMaybeMessage<::PRO::DBUserRoles>(Arena*);
+template<> ::PRO::DBUserTaskEndItem* Arena::CreateMaybeMessage<::PRO::DBUserTaskEndItem>(Arena*);
+template<> ::PRO::DBUserTaskEnds* Arena::CreateMaybeMessage<::PRO::DBUserTaskEnds>(Arena*);
 template<> ::PRO::DBUserTaskGroup* Arena::CreateMaybeMessage<::PRO::DBUserTaskGroup>(Arena*);
+template<> ::PRO::DBUserTaskGroupEnd* Arena::CreateMaybeMessage<::PRO::DBUserTaskGroupEnd>(Arena*);
+template<> ::PRO::DBUserTaskGroupEnds* Arena::CreateMaybeMessage<::PRO::DBUserTaskGroupEnds>(Arena*);
 template<> ::PRO::DBUserTaskGroups* Arena::CreateMaybeMessage<::PRO::DBUserTaskGroups>(Arena*);
 template<> ::PRO::DBUserTaskItem* Arena::CreateMaybeMessage<::PRO::DBUserTaskItem>(Arena*);
 template<> ::PRO::DBUserTasks* Arena::CreateMaybeMessage<::PRO::DBUserTasks>(Arena*);
@@ -2617,6 +2633,351 @@ class DBUserTasks final :
 };
 // -------------------------------------------------------------------
 
+class DBUserTaskEndItem final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserTaskEndItem) */ {
+ public:
+  inline DBUserTaskEndItem() : DBUserTaskEndItem(nullptr) {}
+  ~DBUserTaskEndItem() override;
+  explicit constexpr DBUserTaskEndItem(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserTaskEndItem(const DBUserTaskEndItem& from);
+  DBUserTaskEndItem(DBUserTaskEndItem&& from) noexcept
+    : DBUserTaskEndItem() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserTaskEndItem& operator=(const DBUserTaskEndItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserTaskEndItem& operator=(DBUserTaskEndItem&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserTaskEndItem& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserTaskEndItem* internal_default_instance() {
+    return reinterpret_cast<const DBUserTaskEndItem*>(
+               &_DBUserTaskEndItem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(DBUserTaskEndItem& a, DBUserTaskEndItem& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserTaskEndItem* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserTaskEndItem* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserTaskEndItem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserTaskEndItem>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserTaskEndItem& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserTaskEndItem& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserTaskEndItem* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserTaskEndItem";
+  }
+  protected:
+  explicit DBUserTaskEndItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIidFieldNumber = 2,
+    kVerFieldNumber = 1,
+    kTaskIidFieldNumber = 4,
+    kQstateFieldNumber = 7,
+    kLastupdatetimeFieldNumber = 13,
+  };
+  // int64 iid = 2;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // uint32 ver_ = 1;
+  void clear_ver_();
+  uint32_t ver_() const;
+  void set_ver_(uint32_t value);
+  private:
+  uint32_t _internal_ver_() const;
+  void _internal_set_ver_(uint32_t value);
+  public:
+
+  // int32 task_iid = 4;
+  void clear_task_iid();
+  int32_t task_iid() const;
+  void set_task_iid(int32_t value);
+  private:
+  int32_t _internal_task_iid() const;
+  void _internal_set_task_iid(int32_t value);
+  public:
+
+  // int32 qstate = 7;
+  void clear_qstate();
+  int32_t qstate() const;
+  void set_qstate(int32_t value);
+  private:
+  int32_t _internal_qstate() const;
+  void _internal_set_qstate(int32_t value);
+  public:
+
+  // int32 lastupdatetime = 13;
+  void clear_lastupdatetime();
+  int32_t lastupdatetime() const;
+  void set_lastupdatetime(int32_t value);
+  private:
+  int32_t _internal_lastupdatetime() const;
+  void _internal_set_lastupdatetime(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserTaskEndItem)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t iid_;
+  uint32_t ver__;
+  int32_t task_iid_;
+  int32_t qstate_;
+  int32_t lastupdatetime_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DBUserTaskEnds final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserTaskEnds) */ {
+ public:
+  inline DBUserTaskEnds() : DBUserTaskEnds(nullptr) {}
+  ~DBUserTaskEnds() override;
+  explicit constexpr DBUserTaskEnds(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserTaskEnds(const DBUserTaskEnds& from);
+  DBUserTaskEnds(DBUserTaskEnds&& from) noexcept
+    : DBUserTaskEnds() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserTaskEnds& operator=(const DBUserTaskEnds& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserTaskEnds& operator=(DBUserTaskEnds&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserTaskEnds& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserTaskEnds* internal_default_instance() {
+    return reinterpret_cast<const DBUserTaskEnds*>(
+               &_DBUserTaskEnds_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  friend void swap(DBUserTaskEnds& a, DBUserTaskEnds& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserTaskEnds* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserTaskEnds* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserTaskEnds* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserTaskEnds>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserTaskEnds& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserTaskEnds& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserTaskEnds* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserTaskEnds";
+  }
+  protected:
+  explicit DBUserTaskEnds(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 1,
+  };
+  // repeated .PRO.DBUserTaskEndItem items = 1;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  ::PRO::DBUserTaskEndItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskEndItem >*
+      mutable_items();
+  private:
+  const ::PRO::DBUserTaskEndItem& _internal_items(int index) const;
+  ::PRO::DBUserTaskEndItem* _internal_add_items();
+  public:
+  const ::PRO::DBUserTaskEndItem& items(int index) const;
+  ::PRO::DBUserTaskEndItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskEndItem >&
+      items() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserTaskEnds)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskEndItem > items_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
 class DBTaskGAttrData_DatasEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<DBTaskGAttrData_DatasEntry_DoNotUse, 
     int32_t, int32_t,
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_INT32,
@@ -2688,7 +3049,7 @@ class DBTaskGAttrData final :
                &_DBTaskGAttrData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    17;
 
   friend void swap(DBTaskGAttrData& a, DBTaskGAttrData& b) {
     a.Swap(&b);
@@ -2847,7 +3208,7 @@ class DBUserTaskGroup final :
                &_DBUserTaskGroup_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    18;
 
   friend void swap(DBUserTaskGroup& a, DBUserTaskGroup& b) {
     a.Swap(&b);
@@ -3101,7 +3462,7 @@ class DBUserTaskGroups final :
                &_DBUserTaskGroups_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    19;
 
   friend void swap(DBUserTaskGroups& a, DBUserTaskGroups& b) {
     a.Swap(&b);
@@ -3203,6 +3564,351 @@ class DBUserTaskGroups final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroup > groups_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DBUserTaskGroupEnd final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserTaskGroupEnd) */ {
+ public:
+  inline DBUserTaskGroupEnd() : DBUserTaskGroupEnd(nullptr) {}
+  ~DBUserTaskGroupEnd() override;
+  explicit constexpr DBUserTaskGroupEnd(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserTaskGroupEnd(const DBUserTaskGroupEnd& from);
+  DBUserTaskGroupEnd(DBUserTaskGroupEnd&& from) noexcept
+    : DBUserTaskGroupEnd() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserTaskGroupEnd& operator=(const DBUserTaskGroupEnd& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserTaskGroupEnd& operator=(DBUserTaskGroupEnd&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserTaskGroupEnd& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserTaskGroupEnd* internal_default_instance() {
+    return reinterpret_cast<const DBUserTaskGroupEnd*>(
+               &_DBUserTaskGroupEnd_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(DBUserTaskGroupEnd& a, DBUserTaskGroupEnd& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserTaskGroupEnd* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserTaskGroupEnd* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserTaskGroupEnd* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserTaskGroupEnd>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserTaskGroupEnd& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserTaskGroupEnd& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserTaskGroupEnd* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserTaskGroupEnd";
+  }
+  protected:
+  explicit DBUserTaskGroupEnd(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIidFieldNumber = 2,
+    kVerFieldNumber = 1,
+    kTaskGroupFieldNumber = 4,
+    kGstateFieldNumber = 7,
+    kEndtimeFieldNumber = 10,
+  };
+  // int64 iid = 2;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // uint32 ver_ = 1;
+  void clear_ver_();
+  uint32_t ver_() const;
+  void set_ver_(uint32_t value);
+  private:
+  uint32_t _internal_ver_() const;
+  void _internal_set_ver_(uint32_t value);
+  public:
+
+  // int32 task_group = 4;
+  void clear_task_group();
+  int32_t task_group() const;
+  void set_task_group(int32_t value);
+  private:
+  int32_t _internal_task_group() const;
+  void _internal_set_task_group(int32_t value);
+  public:
+
+  // int32 gstate = 7;
+  void clear_gstate();
+  int32_t gstate() const;
+  void set_gstate(int32_t value);
+  private:
+  int32_t _internal_gstate() const;
+  void _internal_set_gstate(int32_t value);
+  public:
+
+  // int32 endtime = 10;
+  void clear_endtime();
+  int32_t endtime() const;
+  void set_endtime(int32_t value);
+  private:
+  int32_t _internal_endtime() const;
+  void _internal_set_endtime(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserTaskGroupEnd)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t iid_;
+  uint32_t ver__;
+  int32_t task_group_;
+  int32_t gstate_;
+  int32_t endtime_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DBUserTaskGroupEnds final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserTaskGroupEnds) */ {
+ public:
+  inline DBUserTaskGroupEnds() : DBUserTaskGroupEnds(nullptr) {}
+  ~DBUserTaskGroupEnds() override;
+  explicit constexpr DBUserTaskGroupEnds(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserTaskGroupEnds(const DBUserTaskGroupEnds& from);
+  DBUserTaskGroupEnds(DBUserTaskGroupEnds&& from) noexcept
+    : DBUserTaskGroupEnds() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserTaskGroupEnds& operator=(const DBUserTaskGroupEnds& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserTaskGroupEnds& operator=(DBUserTaskGroupEnds&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserTaskGroupEnds& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserTaskGroupEnds* internal_default_instance() {
+    return reinterpret_cast<const DBUserTaskGroupEnds*>(
+               &_DBUserTaskGroupEnds_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    21;
+
+  friend void swap(DBUserTaskGroupEnds& a, DBUserTaskGroupEnds& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserTaskGroupEnds* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserTaskGroupEnds* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserTaskGroupEnds* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserTaskGroupEnds>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserTaskGroupEnds& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserTaskGroupEnds& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserTaskGroupEnds* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserTaskGroupEnds";
+  }
+  protected:
+  explicit DBUserTaskGroupEnds(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kGroupsFieldNumber = 1,
+  };
+  // repeated .PRO.DBUserTaskGroupEnd groups = 1;
+  int groups_size() const;
+  private:
+  int _internal_groups_size() const;
+  public:
+  void clear_groups();
+  ::PRO::DBUserTaskGroupEnd* mutable_groups(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroupEnd >*
+      mutable_groups();
+  private:
+  const ::PRO::DBUserTaskGroupEnd& _internal_groups(int index) const;
+  ::PRO::DBUserTaskGroupEnd* _internal_add_groups();
+  public:
+  const ::PRO::DBUserTaskGroupEnd& groups(int index) const;
+  ::PRO::DBUserTaskGroupEnd* add_groups();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroupEnd >&
+      groups() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserTaskGroupEnds)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroupEnd > groups_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_db_5finternal_2eproto;
 };
@@ -4776,6 +5482,154 @@ DBUserTasks::items() const {
 
 // -------------------------------------------------------------------
 
+// DBUserTaskEndItem
+
+// uint32 ver_ = 1;
+inline void DBUserTaskEndItem::clear_ver_() {
+  ver__ = 0u;
+}
+inline uint32_t DBUserTaskEndItem::_internal_ver_() const {
+  return ver__;
+}
+inline uint32_t DBUserTaskEndItem::ver_() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEndItem.ver_)
+  return _internal_ver_();
+}
+inline void DBUserTaskEndItem::_internal_set_ver_(uint32_t value) {
+  
+  ver__ = value;
+}
+inline void DBUserTaskEndItem::set_ver_(uint32_t value) {
+  _internal_set_ver_(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskEndItem.ver_)
+}
+
+// int64 iid = 2;
+inline void DBUserTaskEndItem::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t DBUserTaskEndItem::_internal_iid() const {
+  return iid_;
+}
+inline int64_t DBUserTaskEndItem::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEndItem.iid)
+  return _internal_iid();
+}
+inline void DBUserTaskEndItem::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void DBUserTaskEndItem::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskEndItem.iid)
+}
+
+// int32 task_iid = 4;
+inline void DBUserTaskEndItem::clear_task_iid() {
+  task_iid_ = 0;
+}
+inline int32_t DBUserTaskEndItem::_internal_task_iid() const {
+  return task_iid_;
+}
+inline int32_t DBUserTaskEndItem::task_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEndItem.task_iid)
+  return _internal_task_iid();
+}
+inline void DBUserTaskEndItem::_internal_set_task_iid(int32_t value) {
+  
+  task_iid_ = value;
+}
+inline void DBUserTaskEndItem::set_task_iid(int32_t value) {
+  _internal_set_task_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskEndItem.task_iid)
+}
+
+// int32 qstate = 7;
+inline void DBUserTaskEndItem::clear_qstate() {
+  qstate_ = 0;
+}
+inline int32_t DBUserTaskEndItem::_internal_qstate() const {
+  return qstate_;
+}
+inline int32_t DBUserTaskEndItem::qstate() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEndItem.qstate)
+  return _internal_qstate();
+}
+inline void DBUserTaskEndItem::_internal_set_qstate(int32_t value) {
+  
+  qstate_ = value;
+}
+inline void DBUserTaskEndItem::set_qstate(int32_t value) {
+  _internal_set_qstate(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskEndItem.qstate)
+}
+
+// int32 lastupdatetime = 13;
+inline void DBUserTaskEndItem::clear_lastupdatetime() {
+  lastupdatetime_ = 0;
+}
+inline int32_t DBUserTaskEndItem::_internal_lastupdatetime() const {
+  return lastupdatetime_;
+}
+inline int32_t DBUserTaskEndItem::lastupdatetime() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEndItem.lastupdatetime)
+  return _internal_lastupdatetime();
+}
+inline void DBUserTaskEndItem::_internal_set_lastupdatetime(int32_t value) {
+  
+  lastupdatetime_ = value;
+}
+inline void DBUserTaskEndItem::set_lastupdatetime(int32_t value) {
+  _internal_set_lastupdatetime(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskEndItem.lastupdatetime)
+}
+
+// -------------------------------------------------------------------
+
+// DBUserTaskEnds
+
+// repeated .PRO.DBUserTaskEndItem items = 1;
+inline int DBUserTaskEnds::_internal_items_size() const {
+  return items_.size();
+}
+inline int DBUserTaskEnds::items_size() const {
+  return _internal_items_size();
+}
+inline void DBUserTaskEnds::clear_items() {
+  items_.Clear();
+}
+inline ::PRO::DBUserTaskEndItem* DBUserTaskEnds::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.DBUserTaskEnds.items)
+  return items_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskEndItem >*
+DBUserTaskEnds::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.DBUserTaskEnds.items)
+  return &items_;
+}
+inline const ::PRO::DBUserTaskEndItem& DBUserTaskEnds::_internal_items(int index) const {
+  return items_.Get(index);
+}
+inline const ::PRO::DBUserTaskEndItem& DBUserTaskEnds::items(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskEnds.items)
+  return _internal_items(index);
+}
+inline ::PRO::DBUserTaskEndItem* DBUserTaskEnds::_internal_add_items() {
+  return items_.Add();
+}
+inline ::PRO::DBUserTaskEndItem* DBUserTaskEnds::add_items() {
+  ::PRO::DBUserTaskEndItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:PRO.DBUserTaskEnds.items)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskEndItem >&
+DBUserTaskEnds::items() const {
+  // @@protoc_insertion_point(field_list:PRO.DBUserTaskEnds.items)
+  return items_;
+}
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // DBTaskGAttrData
@@ -5127,9 +5981,165 @@ DBUserTaskGroups::groups() const {
   return groups_;
 }
 
+// -------------------------------------------------------------------
+
+// DBUserTaskGroupEnd
+
+// uint32 ver_ = 1;
+inline void DBUserTaskGroupEnd::clear_ver_() {
+  ver__ = 0u;
+}
+inline uint32_t DBUserTaskGroupEnd::_internal_ver_() const {
+  return ver__;
+}
+inline uint32_t DBUserTaskGroupEnd::ver_() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnd.ver_)
+  return _internal_ver_();
+}
+inline void DBUserTaskGroupEnd::_internal_set_ver_(uint32_t value) {
+  
+  ver__ = value;
+}
+inline void DBUserTaskGroupEnd::set_ver_(uint32_t value) {
+  _internal_set_ver_(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskGroupEnd.ver_)
+}
+
+// int64 iid = 2;
+inline void DBUserTaskGroupEnd::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t DBUserTaskGroupEnd::_internal_iid() const {
+  return iid_;
+}
+inline int64_t DBUserTaskGroupEnd::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnd.iid)
+  return _internal_iid();
+}
+inline void DBUserTaskGroupEnd::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void DBUserTaskGroupEnd::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskGroupEnd.iid)
+}
+
+// int32 task_group = 4;
+inline void DBUserTaskGroupEnd::clear_task_group() {
+  task_group_ = 0;
+}
+inline int32_t DBUserTaskGroupEnd::_internal_task_group() const {
+  return task_group_;
+}
+inline int32_t DBUserTaskGroupEnd::task_group() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnd.task_group)
+  return _internal_task_group();
+}
+inline void DBUserTaskGroupEnd::_internal_set_task_group(int32_t value) {
+  
+  task_group_ = value;
+}
+inline void DBUserTaskGroupEnd::set_task_group(int32_t value) {
+  _internal_set_task_group(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskGroupEnd.task_group)
+}
+
+// int32 gstate = 7;
+inline void DBUserTaskGroupEnd::clear_gstate() {
+  gstate_ = 0;
+}
+inline int32_t DBUserTaskGroupEnd::_internal_gstate() const {
+  return gstate_;
+}
+inline int32_t DBUserTaskGroupEnd::gstate() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnd.gstate)
+  return _internal_gstate();
+}
+inline void DBUserTaskGroupEnd::_internal_set_gstate(int32_t value) {
+  
+  gstate_ = value;
+}
+inline void DBUserTaskGroupEnd::set_gstate(int32_t value) {
+  _internal_set_gstate(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskGroupEnd.gstate)
+}
+
+// int32 endtime = 10;
+inline void DBUserTaskGroupEnd::clear_endtime() {
+  endtime_ = 0;
+}
+inline int32_t DBUserTaskGroupEnd::_internal_endtime() const {
+  return endtime_;
+}
+inline int32_t DBUserTaskGroupEnd::endtime() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnd.endtime)
+  return _internal_endtime();
+}
+inline void DBUserTaskGroupEnd::_internal_set_endtime(int32_t value) {
+  
+  endtime_ = value;
+}
+inline void DBUserTaskGroupEnd::set_endtime(int32_t value) {
+  _internal_set_endtime(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserTaskGroupEnd.endtime)
+}
+
+// -------------------------------------------------------------------
+
+// DBUserTaskGroupEnds
+
+// repeated .PRO.DBUserTaskGroupEnd groups = 1;
+inline int DBUserTaskGroupEnds::_internal_groups_size() const {
+  return groups_.size();
+}
+inline int DBUserTaskGroupEnds::groups_size() const {
+  return _internal_groups_size();
+}
+inline void DBUserTaskGroupEnds::clear_groups() {
+  groups_.Clear();
+}
+inline ::PRO::DBUserTaskGroupEnd* DBUserTaskGroupEnds::mutable_groups(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.DBUserTaskGroupEnds.groups)
+  return groups_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroupEnd >*
+DBUserTaskGroupEnds::mutable_groups() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.DBUserTaskGroupEnds.groups)
+  return &groups_;
+}
+inline const ::PRO::DBUserTaskGroupEnd& DBUserTaskGroupEnds::_internal_groups(int index) const {
+  return groups_.Get(index);
+}
+inline const ::PRO::DBUserTaskGroupEnd& DBUserTaskGroupEnds::groups(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserTaskGroupEnds.groups)
+  return _internal_groups(index);
+}
+inline ::PRO::DBUserTaskGroupEnd* DBUserTaskGroupEnds::_internal_add_groups() {
+  return groups_.Add();
+}
+inline ::PRO::DBUserTaskGroupEnd* DBUserTaskGroupEnds::add_groups() {
+  ::PRO::DBUserTaskGroupEnd* _add = _internal_add_groups();
+  // @@protoc_insertion_point(field_add:PRO.DBUserTaskGroupEnds.groups)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserTaskGroupEnd >&
+DBUserTaskGroupEnds::groups() const {
+  // @@protoc_insertion_point(field_list:PRO.DBUserTaskGroupEnds.groups)
+  return groups_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

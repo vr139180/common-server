@@ -147,7 +147,7 @@ void CommandTestImpl::gts_linkdo()
 	CMDMESSAGE(TASK_PROTYPE::TASK_MYTASKLIST_ACK, on_task_mytasks_ack);
 	CMDMESSAGE(TASK_PROTYPE::TASK_GETTASK_ACK, on_task_get_ack);
 	CMDMESSAGE(TASK_PROTYPE::TASK_SUBMITTASK_ACK, on_task_submit_ack);
-	CMDMESSAGE(TASK_PROTYPE::TASK_OBTAINREWARD_ACK, on_task_obtainreward_ack);
+	CMDMESSAGE(TASK_PROTYPE::TASK_OBTAINREWARD_NTF, on_task_obtainreward_ntf);
 	CMDMESSAGE(TASK_PROTYPE::TASK_GIVEUPTASK_ACK, on_task_giveup_ack);
 
 	default:
@@ -205,7 +205,6 @@ void ScriptDlg::regist()
 	add_function("task_mytasks()", "我的的任务列表");
 	add_function("task_get(1)", "接指定的任务");
 	add_function("task_submit(1)", "提交指定的任务");
-	add_function("task_obtainreward(1)", "获取任务奖励");
 	add_function("task_giveup(1)", "放弃指定的任务");
 }
 
@@ -242,7 +241,6 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("task_mytasks", (void (CommandTestImpl::*)(void))&CommandTestImpl::task_mytasks)
 		.addFunction("task_get", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_get)
 		.addFunction("task_submit", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_submit)
-		.addFunction("task_obtainreward", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_obtainreward)
 		.addFunction("task_giveup", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_giveup)
 		.endClass()
 		.endNamespace();

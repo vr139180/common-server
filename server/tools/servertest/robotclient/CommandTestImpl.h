@@ -177,8 +177,7 @@ public:
 	void task_submit(S_INT_32 taskiid);
 	void on_task_submit_ack(BasicProtocol* pro, CString* pRetMsg);
 
-	void task_obtainreward(S_INT_32 taskiid);
-	void on_task_obtainreward_ack(BasicProtocol* pro, CString* pRetMsg);
+	void on_task_obtainreward_ntf(BasicProtocol* pro, CString* pRetMsg);
 
 	void task_giveup(S_INT_32 taskiid);
 	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);

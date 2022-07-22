@@ -65,6 +65,15 @@ void CommandTestImpl::task_waitlist()
 void CommandTestImpl::on_task_waitlist_ack(BasicProtocol* pro, CString* pRetMsg)
 {
 	Task_WaitList_ack* ack = dynamic_cast<Task_WaitList_ack*>(pro);
+
+	CString str1;
+	str1.Format("可获取任务数 size:%d\r\n", ack->task_iids_size());
+	*pRetMsg += str1;
+	for (int ii = 0; ii < ack->task_iids_size(); ++ii)
+	{
+		str1.Format("\t task iid:%d \r\n", ack->task_iids(ii));
+		*pRetMsg += str1;
+	}
 }
 
 void CommandTestImpl::task_mytasks()
@@ -83,6 +92,22 @@ void CommandTestImpl::task_mytasks()
 void CommandTestImpl::on_task_mytasks_ack(BasicProtocol* pro, CString* pRetMsg)
 {
 	Task_MyTaskList_ack* ack = dynamic_cast<Task_MyTaskList_ack*>(pro);
+
+	CString str1;
+	str1.Format("我的任务信息 group:%d task:%d\r\n", ack->groups().groups_size(), ack->tasks().items_size());
+	*pRetMsg += str1;
+	const PRO::DBUserTaskGroups& gs = ack->groups();
+	for (int ii = 0; ii < gs.groups_size(); ++ii)
+	{
+		str1.Format("\t task group iid:%d \r\n", gs.groups(ii));
+		*pRetMsg += str1;
+	}
+	const PRO::DBUserTasks& ts = ack->tasks();
+	for (int ii = 0; ii < ts.items_size(); ++ii)
+	{
+		str1.Format("\t task iid:%d \r\n", ts.items(ii));
+		*pRetMsg += str1;
+	}
 }
 
 void CommandTestImpl::task_get(S_INT_32 taskiid)
@@ -102,6 +127,10 @@ void CommandTestImpl::task_get(S_INT_32 taskiid)
 void CommandTestImpl::on_task_get_ack(BasicProtocol* pro, CString* pRetMsg)
 {
 	Task_GetTask_ack* ack = dynamic_cast<Task_GetTask_ack*>(pro);
+
+	CString str1;
+	str1.Format("获取任务 taskid:%d result:%d\r\n", ack->task_iid(), ack->result());
+	*pRetMsg += str1;
 }
 
 void CommandTestImpl::task_submit(S_INT_32 taskiid)
@@ -121,25 +150,15 @@ void CommandTestImpl::task_submit(S_INT_32 taskiid)
 void CommandTestImpl::on_task_submit_ack(BasicProtocol* pro, CString* pRetMsg)
 {
 	Task_SubmitTask_ack* ack = dynamic_cast<Task_SubmitTask_ack*>(pro);
+
+	CString str1;
+	str1.Format("提交任务 taskid:%d result:%d\r\n", ack->task_iid(), ack->result());
+	*pRetMsg += str1;
 }
 
-void CommandTestImpl::task_obtainreward(S_INT_32 taskiid)
+void CommandTestImpl::on_task_obtainreward_ntf(BasicProtocol* pro, CString* pRetMsg)
 {
-	ret_desc_ = "";
-	if (!islogon())
-	{
-		ret_desc_ = "用户未登陆\r\n";
-		return;
-	}
-
-	Task_ObtainReward_req *req = new Task_ObtainReward_req();
-	req->set_task_iid(taskiid);
-	send_to_gts(req);
-}
-
-void CommandTestImpl::on_task_obtainreward_ack(BasicProtocol* pro, CString* pRetMsg)
-{
-	Task_ObtainReward_ack* ack = dynamic_cast<Task_ObtainReward_ack*>(pro);
+	Task_ObtainReward_ntf* ack = dynamic_cast<Task_ObtainReward_ntf*>(pro);
 }
 
 void CommandTestImpl::task_giveup(S_INT_32 taskiid)

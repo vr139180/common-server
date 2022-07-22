@@ -30,7 +30,7 @@ public interface Task_GetTask_ackOrBuilder extends
 
   /**
    * <pre>
-   *0:success 1:system error 2:任务已经获取 3:任务已经完成 4:任务已经取消
+   *0:success 1:failed
    * </pre>
    *
    * <code>int32 result = 3;</code>

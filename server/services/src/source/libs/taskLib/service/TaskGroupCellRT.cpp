@@ -120,8 +120,23 @@ void TaskGroupCellRT::init_wait_tasks(std::list<TaskCellRT*>& tcs)
 	}
 }
 
+void TaskGroupCellRT::release_groupcell_tasks()
+{
+	processing_tasks_.clear();
+	wait_tasks_.clear();
+
+	for (TASK_RT::iterator iter = all_tasks_.begin(); iter != all_tasks_.end(); ++iter)
+	{
+		delete iter->second;
+	}
+	all_tasks_.clear();
+}
+
 bool TaskGroupCellRT::forward_groupcell()
 {
+	if (this->is_groupend())
+		return false;
+
 	//检测是否所有的任务都完成了
 	for (CELL_DATA::iterator iter = datas_.begin(); iter != datas_.end(); ++iter)
 	{
@@ -129,6 +144,9 @@ bool TaskGroupCellRT::forward_groupcell()
 		if (ts < PRO::TASKSTATE_FAILED)
 			return false;
 	}
+
+	if (processing_tasks_.size() > 0 || wait_tasks_.size() > 0)
+		return false;
 	
 	return true;
 }
@@ -172,6 +190,9 @@ bool TaskGroupCellRT::goto_nextgroupcell(ITaskContext* tc, std::list<TaskCellRT*
 			datas_[citer->first] = PRO::TASKSTATE_WAIT;
 		}
 	}
+
+	//释放上一个节点创建的任务
+	release_groupcell_tasks();
 
 	//初始化可接的任务
 	this->init_wait_tasks(waits);
@@ -228,4 +249,44 @@ bool TaskGroupCellRT::check_conditions(ITaskContext* tc, TaskXmlCondition* pcond
 	}
 
 	return false;
+}
+
+TaskCellRT* TaskGroupCellRT::user_gettask(S_INT_32 taskid)
+{
+	TASK_RT::iterator fiter = wait_tasks_.find(taskid);
+	if (fiter == wait_tasks_.end())
+		return 0;
+
+	TaskCellRT* tc = fiter->second;
+
+	//切换队列
+	wait_tasks_.erase(fiter);
+	processing_tasks_[tc->get_taskiid()] = tc;
+
+	//修改cell_data状态
+	datas_[tc->get_taskiid()] = PRO::TASKSTATE_ACCEPT;
+
+	return tc;
+}
+
+//submit成功之后，并不会马上销毁对应的task,在taskgroup转向下一个cell节点时会统一销毁
+S_INT_32 TaskGroupCellRT::user_submittask(TaskCellRT* tc, ITaskContext* context)
+{
+	TASK_RT::iterator fiter = processing_tasks_.find(tc->get_taskiid());
+	if (fiter == processing_tasks_.end())
+		return 1; //task not exist
+
+	if (fiter->second != tc)
+		return 2;  //system error
+
+	S_INT_32 sret = tc->submit_task(context);
+	if (sret != 0)
+		return sret;
+
+	//remove from list, but dont destroy
+	processing_tasks_.erase(fiter);
+
+	datas_[tc->get_taskiid()] = PRO::TASKSTATE_FINISH;
+
+	return 0;
 }

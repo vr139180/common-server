@@ -39,7 +39,7 @@ public:
 	bool int64val_param(int index, S_INT_64& val);
 	bool strval_param(int index, std::string& val);
 
-	int size() { return params_.size(); }
+	int size() { return (int)params_.size(); }
 
 protected:
 	XmlParamValue* get_param(int index);

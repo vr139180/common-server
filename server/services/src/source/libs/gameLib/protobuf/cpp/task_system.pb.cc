@@ -124,33 +124,19 @@ struct Task_SubmitTask_ackDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_SubmitTask_ackDefaultTypeInternal _Task_SubmitTask_ack_default_instance_;
-constexpr Task_ObtainReward_req::Task_ObtainReward_req(
+constexpr Task_ObtainReward_ntf::Task_ObtainReward_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : utoken_(nullptr)
   , task_iid_(0){}
-struct Task_ObtainReward_reqDefaultTypeInternal {
-  constexpr Task_ObtainReward_reqDefaultTypeInternal()
+struct Task_ObtainReward_ntfDefaultTypeInternal {
+  constexpr Task_ObtainReward_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~Task_ObtainReward_reqDefaultTypeInternal() {}
+  ~Task_ObtainReward_ntfDefaultTypeInternal() {}
   union {
-    Task_ObtainReward_req _instance;
+    Task_ObtainReward_ntf _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_ObtainReward_reqDefaultTypeInternal _Task_ObtainReward_req_default_instance_;
-constexpr Task_ObtainReward_ack::Task_ObtainReward_ack(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , task_iid_(0)
-  , result_(0){}
-struct Task_ObtainReward_ackDefaultTypeInternal {
-  constexpr Task_ObtainReward_ackDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~Task_ObtainReward_ackDefaultTypeInternal() {}
-  union {
-    Task_ObtainReward_ack _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_ObtainReward_ackDefaultTypeInternal _Task_ObtainReward_ack_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_ObtainReward_ntfDefaultTypeInternal _Task_ObtainReward_ntf_default_instance_;
 constexpr Task_GiveupTask_req::Task_GiveupTask_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : utoken_(nullptr)
@@ -180,7 +166,7 @@ struct Task_GiveupTask_ackDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Task_GiveupTask_ackDefaultTypeInternal _Task_GiveupTask_ack_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_task_5fsystem_2eproto[12];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_task_5fsystem_2eproto[11];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_task_5fsystem_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_task_5fsystem_2eproto = nullptr;
 
@@ -269,27 +255,15 @@ const uint32_t TableStruct_task_5fsystem_2eproto::offsets[] PROTOBUF_SECTION_VAR
   0,
   ~0u,
   ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ntf, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, utoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_req, task_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ntf, utoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ntf, task_iid_),
   0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, utoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, task_iid_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Task_ObtainReward_ack, result_),
-  0,
-  ~0u,
   ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Task_GiveupTask_req, _internal_metadata_),
@@ -325,10 +299,9 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 48, 58, -1, sizeof(::PRO::Task_GetTask_ack)},
   { 62, 70, -1, sizeof(::PRO::Task_SubmitTask_req)},
   { 72, 81, -1, sizeof(::PRO::Task_SubmitTask_ack)},
-  { 84, 92, -1, sizeof(::PRO::Task_ObtainReward_req)},
-  { 94, 103, -1, sizeof(::PRO::Task_ObtainReward_ack)},
-  { 106, 114, -1, sizeof(::PRO::Task_GiveupTask_req)},
-  { 116, 126, -1, sizeof(::PRO::Task_GiveupTask_ack)},
+  { 84, 92, -1, sizeof(::PRO::Task_ObtainReward_ntf)},
+  { 94, 102, -1, sizeof(::PRO::Task_GiveupTask_req)},
+  { 104, 114, -1, sizeof(::PRO::Task_GiveupTask_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -340,8 +313,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GetTask_ack_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_SubmitTask_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_SubmitTask_ack_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_ObtainReward_req_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_ObtainReward_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_ObtainReward_ntf_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GiveupTask_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Task_GiveupTask_ack_default_instance_),
 };
@@ -369,30 +341,27 @@ const char descriptor_table_protodef_task_5fsystem_2eproto[] PROTOBUF_SECTION_VA
   "token\"g\n\023Task_SubmitTask_ack\022#\n\006utoken\030\001"
   " \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 "
   "\001(\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"Y\n\025Task_O"
-  "btainReward_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us"
+  "btainReward_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us"
   "erTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoke"
-  "n\"i\n\025Task_ObtainReward_ack\022#\n\006utoken\030\001 \001"
-  "(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001("
-  "\005\022\016\n\006result\030\003 \001(\005B\t\n\007_utoken\"W\n\023Task_Giv"
-  "eupTask_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTo"
-  "kenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B\t\n\007_utoken\"\230\001"
-  "\n\023Task_GiveupTask_ack\022#\n\006utoken\030\001 \001(\0132\016."
-  "PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005\022\016\n\006"
-  "result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132\023.PRO.DBUserT"
-  "askItemH\001\210\001\001B\t\n\007_utokenB\007\n\005_task*\206\001\n\021TAS"
-  "K_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020\000\022\024\n\020TT_TRIGG"
-  "ER_TIMER\020\001\022\026\n\022TT_ROLEINFO_CHANGE\020\002\022\021\n\rTT"
-  "_BAG_CHANGE\020\004\022\026\n\022TT_BUILDING_CHANGE\020\010\022\n\n"
-  "\006TT_MAX\020\t*T\n\020TASK_GROUP_STATE\022\024\n\020TASKGRO"
-  "UP_ACCEPT\020\000\022\024\n\020TASKGROUP_FINISH\020\001\022\024\n\020TAS"
-  "KGROUP_GIVEUP\020\002*\257\001\n\nTASK_STATE\022\024\n\020TASKST"
-  "ATE_ACCEPT\020\000\022\033\n\016TASKSTATE_WAIT\020\377\377\377\377\377\377\377\377\377"
-  "\001\022\026\n\022TASKSTATE_REACCEPT\020\001\022\024\n\020TASKSTATE_S"
-  "UBMIT\020\002\022\024\n\020TASKSTATE_FAILED\020\003\022\024\n\020TASKSTA"
-  "TE_GIVEUP\020\004\022\024\n\020TASKSTATE_FINISH\020\005BT\n\033com"
-  ".cms.client.network.gproP\001Z\025gamelib/prot"
-  "obuf/gpro\252\002\033com.cms.client.network.gprob"
-  "\006proto3"
+  "n\"W\n\023Task_GiveupTask_req\022#\n\006utoken\030\001 \001(\013"
+  "2\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_iid\030\002 \001(\005B"
+  "\t\n\007_utoken\"\230\001\n\023Task_GiveupTask_ack\022#\n\006ut"
+  "oken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010task_"
+  "iid\030\002 \001(\005\022\016\n\006result\030\003 \001(\005\022&\n\004task\030\004 \001(\0132"
+  "\023.PRO.DBUserTaskItemH\001\210\001\001B\t\n\007_utokenB\007\n\005"
+  "_task*\206\001\n\021TASK_TRIGGER_TYPE\022\014\n\010TT_BEGIN\020"
+  "\000\022\024\n\020TT_TRIGGER_TIMER\020\001\022\026\n\022TT_ROLEINFO_C"
+  "HANGE\020\002\022\021\n\rTT_BAG_CHANGE\020\004\022\026\n\022TT_BUILDIN"
+  "G_CHANGE\020\010\022\n\n\006TT_MAX\020\t*T\n\020TASK_GROUP_STA"
+  "TE\022\024\n\020TASKGROUP_ACCEPT\020\000\022\024\n\020TASKGROUP_FI"
+  "NISH\020\001\022\024\n\020TASKGROUP_GIVEUP\020\002*\257\001\n\nTASK_ST"
+  "ATE\022\024\n\020TASKSTATE_ACCEPT\020\000\022\033\n\016TASKSTATE_W"
+  "AIT\020\377\377\377\377\377\377\377\377\377\001\022\026\n\022TASKSTATE_REACCEPT\020\001\022\024"
+  "\n\020TASKSTATE_SUBMIT\020\002\022\024\n\020TASKSTATE_FAILED"
+  "\020\003\022\024\n\020TASKSTATE_GIVEUP\020\004\022\024\n\020TASKSTATE_FI"
+  "NISH\020\005BT\n\033com.cms.client.network.gproP\001Z"
+  "\025gamelib/protobuf/gpro\252\002\033com.cms.client."
+  "network.gprob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_task_5fsystem_2eproto_deps[2] = {
   &::descriptor_table_db_5finternal_2eproto,
@@ -400,8 +369,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_task_5fsystem_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_task_5fsystem_2eproto = {
-  false, false, 1807, descriptor_table_protodef_task_5fsystem_2eproto, "task_system.proto", 
-  &descriptor_table_task_5fsystem_2eproto_once, descriptor_table_task_5fsystem_2eproto_deps, 2, 12,
+  false, false, 1700, descriptor_table_protodef_task_5fsystem_2eproto, "task_system.proto", 
+  &descriptor_table_task_5fsystem_2eproto_once, descriptor_table_task_5fsystem_2eproto_deps, 2, 11,
   schemas, file_default_instances, TableStruct_task_5fsystem_2eproto::offsets,
   file_level_metadata_task_5fsystem_2eproto, file_level_enum_descriptors_task_5fsystem_2eproto, file_level_service_descriptors_task_5fsystem_2eproto,
 };
@@ -2524,33 +2493,33 @@ void Task_SubmitTask_ack::InternalSwap(Task_SubmitTask_ack* other) {
 
 // ===================================================================
 
-class Task_ObtainReward_req::_Internal {
+class Task_ObtainReward_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<Task_ObtainReward_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Task_ObtainReward_req* msg);
+  using HasBits = decltype(std::declval<Task_ObtainReward_ntf>()._has_bits_);
+  static const ::PRO::UserToken& utoken(const Task_ObtainReward_ntf* msg);
   static void set_has_utoken(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
 
 const ::PRO::UserToken&
-Task_ObtainReward_req::_Internal::utoken(const Task_ObtainReward_req* msg) {
+Task_ObtainReward_ntf::_Internal::utoken(const Task_ObtainReward_ntf* msg) {
   return *msg->utoken_;
 }
-void Task_ObtainReward_req::clear_utoken() {
+void Task_ObtainReward_ntf::clear_utoken() {
   if (utoken_ != nullptr) utoken_->Clear();
   _has_bits_[0] &= ~0x00000001u;
 }
-Task_ObtainReward_req::Task_ObtainReward_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+Task_ObtainReward_ntf::Task_ObtainReward_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:PRO.Task_ObtainReward_req)
+  // @@protoc_insertion_point(arena_constructor:PRO.Task_ObtainReward_ntf)
 }
-Task_ObtainReward_req::Task_ObtainReward_req(const Task_ObtainReward_req& from)
+Task_ObtainReward_ntf::Task_ObtainReward_ntf(const Task_ObtainReward_ntf& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2560,40 +2529,40 @@ Task_ObtainReward_req::Task_ObtainReward_req(const Task_ObtainReward_req& from)
     utoken_ = nullptr;
   }
   task_iid_ = from.task_iid_;
-  // @@protoc_insertion_point(copy_constructor:PRO.Task_ObtainReward_req)
+  // @@protoc_insertion_point(copy_constructor:PRO.Task_ObtainReward_ntf)
 }
 
-inline void Task_ObtainReward_req::SharedCtor() {
+inline void Task_ObtainReward_ntf::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&task_iid_) -
     reinterpret_cast<char*>(&utoken_)) + sizeof(task_iid_));
 }
 
-Task_ObtainReward_req::~Task_ObtainReward_req() {
-  // @@protoc_insertion_point(destructor:PRO.Task_ObtainReward_req)
+Task_ObtainReward_ntf::~Task_ObtainReward_ntf() {
+  // @@protoc_insertion_point(destructor:PRO.Task_ObtainReward_ntf)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void Task_ObtainReward_req::SharedDtor() {
+inline void Task_ObtainReward_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete utoken_;
 }
 
-void Task_ObtainReward_req::ArenaDtor(void* object) {
-  Task_ObtainReward_req* _this = reinterpret_cast< Task_ObtainReward_req* >(object);
+void Task_ObtainReward_ntf::ArenaDtor(void* object) {
+  Task_ObtainReward_ntf* _this = reinterpret_cast< Task_ObtainReward_ntf* >(object);
   (void)_this;
 }
-void Task_ObtainReward_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void Task_ObtainReward_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void Task_ObtainReward_req::SetCachedSize(int size) const {
+void Task_ObtainReward_ntf::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void Task_ObtainReward_req::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Task_ObtainReward_req)
+void Task_ObtainReward_ntf::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Task_ObtainReward_ntf)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2608,7 +2577,7 @@ void Task_ObtainReward_req::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* Task_ObtainReward_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* Task_ObtainReward_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -2655,9 +2624,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* Task_ObtainReward_req::_InternalSerialize(
+uint8_t* Task_ObtainReward_ntf::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_ObtainReward_req)
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_ObtainReward_ntf)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -2679,12 +2648,12 @@ uint8_t* Task_ObtainReward_req::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_ObtainReward_req)
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_ObtainReward_ntf)
   return target;
 }
 
-size_t Task_ObtainReward_req::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Task_ObtainReward_req)
+size_t Task_ObtainReward_ntf::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Task_ObtainReward_ntf)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -2707,21 +2676,21 @@ size_t Task_ObtainReward_req::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_ObtainReward_req::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_ObtainReward_ntf::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Task_ObtainReward_req::MergeImpl
+    Task_ObtainReward_ntf::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_ObtainReward_req::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_ObtainReward_ntf::GetClassData() const { return &_class_data_; }
 
-void Task_ObtainReward_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void Task_ObtainReward_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Task_ObtainReward_req *>(to)->MergeFrom(
-      static_cast<const Task_ObtainReward_req &>(from));
+  static_cast<Task_ObtainReward_ntf *>(to)->MergeFrom(
+      static_cast<const Task_ObtainReward_ntf &>(from));
 }
 
 
-void Task_ObtainReward_req::MergeFrom(const Task_ObtainReward_req& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_ObtainReward_req)
+void Task_ObtainReward_ntf::MergeFrom(const Task_ObtainReward_ntf& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_ObtainReward_ntf)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -2735,301 +2704,33 @@ void Task_ObtainReward_req::MergeFrom(const Task_ObtainReward_req& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void Task_ObtainReward_req::CopyFrom(const Task_ObtainReward_req& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_ObtainReward_req)
+void Task_ObtainReward_ntf::CopyFrom(const Task_ObtainReward_ntf& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_ObtainReward_ntf)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Task_ObtainReward_req::IsInitialized() const {
+bool Task_ObtainReward_ntf::IsInitialized() const {
   return true;
 }
 
-void Task_ObtainReward_req::InternalSwap(Task_ObtainReward_req* other) {
+void Task_ObtainReward_ntf::InternalSwap(Task_ObtainReward_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Task_ObtainReward_req, task_iid_)
-      + sizeof(Task_ObtainReward_req::task_iid_)
-      - PROTOBUF_FIELD_OFFSET(Task_ObtainReward_req, utoken_)>(
+      PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ntf, task_iid_)
+      + sizeof(Task_ObtainReward_ntf::task_iid_)
+      - PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ntf, utoken_)>(
           reinterpret_cast<char*>(&utoken_),
           reinterpret_cast<char*>(&other->utoken_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Task_ObtainReward_req::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata Task_ObtainReward_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
       file_level_metadata_task_5fsystem_2eproto[8]);
-}
-
-// ===================================================================
-
-class Task_ObtainReward_ack::_Internal {
- public:
-  using HasBits = decltype(std::declval<Task_ObtainReward_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Task_ObtainReward_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-};
-
-const ::PRO::UserToken&
-Task_ObtainReward_ack::_Internal::utoken(const Task_ObtainReward_ack* msg) {
-  return *msg->utoken_;
-}
-void Task_ObtainReward_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
-Task_ObtainReward_ack::Task_ObtainReward_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:PRO.Task_ObtainReward_ack)
-}
-Task_ObtainReward_ack::Task_ObtainReward_ack(const Task_ObtainReward_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
-  ::memcpy(&task_iid_, &from.task_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
-  // @@protoc_insertion_point(copy_constructor:PRO.Task_ObtainReward_ack)
-}
-
-inline void Task_ObtainReward_ack::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
-}
-
-Task_ObtainReward_ack::~Task_ObtainReward_ack() {
-  // @@protoc_insertion_point(destructor:PRO.Task_ObtainReward_ack)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void Task_ObtainReward_ack::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
-
-void Task_ObtainReward_ack::ArenaDtor(void* object) {
-  Task_ObtainReward_ack* _this = reinterpret_cast< Task_ObtainReward_ack* >(object);
-  (void)_this;
-}
-void Task_ObtainReward_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void Task_ObtainReward_ack::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void Task_ObtainReward_ack::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Task_ObtainReward_ack)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  ::memset(&task_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&result_) -
-      reinterpret_cast<char*>(&task_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* Task_ObtainReward_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 task_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          task_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* Task_ObtainReward_ack::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Task_ObtainReward_ack)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 task_iid = 2;
-  if (this->_internal_task_iid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_iid(), target);
-  }
-
-  // int32 result = 3;
-  if (this->_internal_result() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Task_ObtainReward_ack)
-  return target;
-}
-
-size_t Task_ObtainReward_ack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Task_ObtainReward_ack)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int32 task_iid = 2;
-  if (this->_internal_task_iid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_task_iid());
-  }
-
-  // int32 result = 3;
-  if (this->_internal_result() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Task_ObtainReward_ack::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Task_ObtainReward_ack::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Task_ObtainReward_ack::GetClassData() const { return &_class_data_; }
-
-void Task_ObtainReward_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Task_ObtainReward_ack *>(to)->MergeFrom(
-      static_cast<const Task_ObtainReward_ack &>(from));
-}
-
-
-void Task_ObtainReward_ack::MergeFrom(const Task_ObtainReward_ack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Task_ObtainReward_ack)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  if (from._internal_task_iid() != 0) {
-    _internal_set_task_iid(from._internal_task_iid());
-  }
-  if (from._internal_result() != 0) {
-    _internal_set_result(from._internal_result());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Task_ObtainReward_ack::CopyFrom(const Task_ObtainReward_ack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Task_ObtainReward_ack)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Task_ObtainReward_ack::IsInitialized() const {
-  return true;
-}
-
-void Task_ObtainReward_ack::InternalSwap(Task_ObtainReward_ack* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ack, result_)
-      + sizeof(Task_ObtainReward_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Task_ObtainReward_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata Task_ObtainReward_ack::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
-      file_level_metadata_task_5fsystem_2eproto[9]);
 }
 
 // ===================================================================
@@ -3271,7 +2972,7 @@ void Task_GiveupTask_req::InternalSwap(Task_GiveupTask_req* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Task_GiveupTask_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
-      file_level_metadata_task_5fsystem_2eproto[10]);
+      file_level_metadata_task_5fsystem_2eproto[9]);
 }
 
 // ===================================================================
@@ -3594,7 +3295,7 @@ void Task_GiveupTask_ack::InternalSwap(Task_GiveupTask_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Task_GiveupTask_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_task_5fsystem_2eproto_getter, &descriptor_table_task_5fsystem_2eproto_once,
-      file_level_metadata_task_5fsystem_2eproto[11]);
+      file_level_metadata_task_5fsystem_2eproto[10]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3624,11 +3325,8 @@ template<> PROTOBUF_NOINLINE ::PRO::Task_SubmitTask_req* Arena::CreateMaybeMessa
 template<> PROTOBUF_NOINLINE ::PRO::Task_SubmitTask_ack* Arena::CreateMaybeMessage< ::PRO::Task_SubmitTask_ack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::Task_SubmitTask_ack >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PRO::Task_ObtainReward_req* Arena::CreateMaybeMessage< ::PRO::Task_ObtainReward_req >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::Task_ObtainReward_req >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PRO::Task_ObtainReward_ack* Arena::CreateMaybeMessage< ::PRO::Task_ObtainReward_ack >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::Task_ObtainReward_ack >(arena);
+template<> PROTOBUF_NOINLINE ::PRO::Task_ObtainReward_ntf* Arena::CreateMaybeMessage< ::PRO::Task_ObtainReward_ntf >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Task_ObtainReward_ntf >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PRO::Task_GiveupTask_req* Arena::CreateMaybeMessage< ::PRO::Task_GiveupTask_req >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::Task_GiveupTask_req >(arena);

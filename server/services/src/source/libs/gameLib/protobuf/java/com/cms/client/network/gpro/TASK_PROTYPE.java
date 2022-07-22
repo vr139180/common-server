@@ -49,13 +49,9 @@ public enum TASK_PROTYPE
    */
   TASK_SUBMITTASK_ACK(2758),
   /**
-   * <code>TASK_OBTAINREWARD_REQ = 2759;</code>
+   * <code>TASK_OBTAINREWARD_NTF = 2760;</code>
    */
-  TASK_OBTAINREWARD_REQ(2759),
-  /**
-   * <code>TASK_OBTAINREWARD_ACK = 2760;</code>
-   */
-  TASK_OBTAINREWARD_ACK(2760),
+  TASK_OBTAINREWARD_NTF(2760),
   /**
    * <code>TASK_GIVEUPTASK_REQ = 2761;</code>
    */
@@ -116,13 +112,9 @@ public enum TASK_PROTYPE
    */
   public static final int TASK_SUBMITTASK_ACK_VALUE = 2758;
   /**
-   * <code>TASK_OBTAINREWARD_REQ = 2759;</code>
+   * <code>TASK_OBTAINREWARD_NTF = 2760;</code>
    */
-  public static final int TASK_OBTAINREWARD_REQ_VALUE = 2759;
-  /**
-   * <code>TASK_OBTAINREWARD_ACK = 2760;</code>
-   */
-  public static final int TASK_OBTAINREWARD_ACK_VALUE = 2760;
+  public static final int TASK_OBTAINREWARD_NTF_VALUE = 2760;
   /**
    * <code>TASK_GIVEUPTASK_REQ = 2761;</code>
    */
@@ -175,8 +167,7 @@ public enum TASK_PROTYPE
       case 2756: return TASK_GETTASK_ACK;
       case 2757: return TASK_SUBMITTASK_REQ;
       case 2758: return TASK_SUBMITTASK_ACK;
-      case 2759: return TASK_OBTAINREWARD_REQ;
-      case 2760: return TASK_OBTAINREWARD_ACK;
+      case 2760: return TASK_OBTAINREWARD_NTF;
       case 2761: return TASK_GIVEUPTASK_REQ;
       case 2762: return TASK_GIVEUPTASK_ACK;
       case 2950: return TASK_MSG_END;
