@@ -6,6 +6,8 @@
 #include <taskLib/task_const.h>
 #include <taskLib/meta/ConditionsMeta.h>
 
+class IUserDataEnv;
+
 /************************************************************************/
 /* 定义了外部环境的资源接口                                                                     */
 /************************************************************************/
@@ -20,6 +22,10 @@ public:
 	//获取taskgroup task的唯一iid
 	virtual S_INT_64 new_taskgroup_iid() = 0;
 	virtual S_INT_64 new_task_iid() = 0;
+
+	//任务系统lua环境准备
+	virtual void task_luacontext_begin(IGlobalDataEnv* genv, IUserDataEnv* uenv) = 0;
+	virtual void task_luacontext_end() = 0;
 };
 
 //用户数据环境
@@ -74,6 +80,10 @@ public:
 
 	bool run_xmlobjective(const std::string& fn, XmlObjectiveParams* params, S_INT_64& ret) {
 		return get_userenv()->run_xmlobjective(fn, params, ret);
+	}
+
+	ScriptContext* get_lua_context() {
+		return get_globalevn()->get_lua_context();
 	}
 };
 

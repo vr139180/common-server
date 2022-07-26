@@ -190,53 +190,88 @@ void UserTasks::load_from_redis(S_INT_64 roleid, RedisClient* rdv)
 	rdv->get_hashobject(key.c_str(), USER_DETAIL_TASKS_END, &task_ends_data_);
 }
 
-bool UserTasks::update_redis_datacache(S_INT_64 roleid, RedisClient* rdv, bool force)
+bool UserTasks::update_redis_groupcache(S_INT_64 roleid, RedisClient* rdv, bool force)
 {
 	if (!force)
 	{
-		if (!(taskgroups_data_update_ || task_group_ends_data_update_
-			|| tasks_update_ || task_ends_data_update_))
+		if (!taskgroups_data_update_)
 			return true;
 	}
 
 	std::string key = rdv->build_rediskey(USER_DETAIL, roleid);
 
-	if (taskgroups_data_update_)
+	if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKGROUPS, &task_groups_data_, svrApp.get_redisprotocache()))
 	{
-		if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKGROUPS, &task_groups_data_, svrApp.get_redisprotocache()))
-		{
-			taskgroups_data_update_ = false;
-		}
-	}
-	if (task_group_ends_data_update_)
-	{
-		if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKGROUPS_END, &task_group_ends_data_, svrApp.get_redisprotocache()))
-		{
-			task_group_ends_data_update_ = false;
-		}
+		taskgroups_data_update_ = false;
+		return true;
 	}
 
-	if (tasks_update_)
+	return false;
+}
+
+bool UserTasks::update_redis_groupendcache(S_INT_64 roleid, RedisClient* rdv, bool force)
+{
+	if (!force)
 	{
-		if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKS, &tasks_data_, svrApp.get_redisprotocache()))
-		{
-			tasks_update_ = false;
-		}
-	}
-	if (task_ends_data_update_)
-	{
-		if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKS_END, &task_ends_data_, svrApp.get_redisprotocache()))
-		{
-			task_ends_data_update_ = false;
-		}
+		if (!task_group_ends_data_update_)
+			return true;
 	}
 
-	return true;
+	std::string key = rdv->build_rediskey(USER_DETAIL, roleid);
+
+	if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKGROUPS_END, &task_group_ends_data_, svrApp.get_redisprotocache()))
+	{
+		task_group_ends_data_update_ = false;
+		return true;
+	}
+
+	return false;
+}
+
+bool UserTasks::update_redis_taskcache(S_INT_64 roleid, RedisClient* rdv, bool force)
+{
+	if (!force)
+	{
+		if (!tasks_update_)
+			return true;
+	}
+
+	std::string key = rdv->build_rediskey(USER_DETAIL, roleid);
+
+	if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKS, &tasks_data_, svrApp.get_redisprotocache()))
+	{
+		tasks_update_ = false;
+		return true;
+	}
+
+	return false;
+}
+
+bool UserTasks::update_redis_taskendcache(S_INT_64 roleid, RedisClient* rdv, bool force)
+{
+	if (!force)
+	{
+		if (!task_ends_data_update_)
+			return true;
+	}
+
+	std::string key = rdv->build_rediskey(USER_DETAIL, roleid);
+
+	if (rdv->set_hashobject(key.c_str(), USER_DETAIL_TASKS_END, &task_ends_data_, svrApp.get_redisprotocache()))
+	{
+		task_ends_data_update_ = false;
+		return true;
+	}
+
+	return false;
 }
 
 bool UserTasks::update_redis_cache(S_INT_64 roleid, RedisClient* rdv, bool force)
 {
-	update_redis_datacache(roleid, rdv, force);
+	update_redis_groupcache(roleid, rdv, force);
+	update_redis_groupendcache(roleid, rdv, force);
+	update_redis_taskcache(roleid, rdv, force);
+	update_redis_taskendcache(roleid, rdv, force);
 
 	return true;
 }

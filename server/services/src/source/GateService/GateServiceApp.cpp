@@ -25,6 +25,7 @@ GateServiceApp::GateServiceApp(): ServerAppBase()
 ,acceptor_( 0)
 ,conf_( 0)
 ,bind_home_step(GateBindHome_Waiting)
+, home_linkto_(0)
 {
 }
 
@@ -75,6 +76,8 @@ GateConfig* GateServiceApp::load_gateconfig()
 bool GateServiceApp::pre_init()
 {
 	this->session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
+
+	home_linkto_.reset(new HomeServiceLinkTo());
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -150,12 +153,15 @@ void GateServiceApp::uninit_network()
 
 	if (acceptor_.get())
 		acceptor_->end_listen();
-	NetDriverX::getInstance().uninitNetDriver();
 
 	session_from_.unint_sessions();
+	router_link_mth_.free_all();
+	home_linkto_.reset();
 
 	EurekaClusterClient::instance().uninit();
 	GamePlayerCtrl::instance().uninit_gameplayerctrl();
+
+	NetDriverX::getInstance().uninitNetDriver();
 }
 
 void GateServiceApp::uninit()

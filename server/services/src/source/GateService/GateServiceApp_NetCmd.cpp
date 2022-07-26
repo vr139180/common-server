@@ -48,8 +48,8 @@ void GateServiceApp::on_mth_gatebindhome_ack(bool succ, ServiceNodeInfo* pnode, 
 		//准备确认
 		bind_home_step = GateBindHomeStep::GateBindHome_Confirm;
 
-		home_linkto_.reset(ptr.release(), bindtoken);
-		home_linkto_.connect();
+		home_linkto_->reset(ptr.release(), bindtoken);
+		home_linkto_->connect();
 	}
 	else
 	{

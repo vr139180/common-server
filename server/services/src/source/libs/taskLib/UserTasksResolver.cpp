@@ -37,6 +37,11 @@ void UserTasksResolver::init_env(IGlobalDataEnv* genv, IUserDataEnv* uenv, ITask
 	this->data_cb_ = cb;
 }
 
+void UserTasksResolver::reset_resolver()
+{
+	release();
+}
+
 TaskGroupCellRT* UserTasksResolver::get_taskgroup_byiid(S_INT_32 iid)
 {
 	TASKGROUPCELLRT_MAP::iterator fiter = procssing_groups_.find(iid);
@@ -223,7 +228,7 @@ bool UserTasksResolver::get_task_from_waitlist(S_INT_32 taskid)
 		return false;
 
 	S_INT_64 tid = global_dataenv_->new_task_iid();
-	tc->user_gettask(tid);
+	tc->user_gettask(tid, this);
 
 	wait_accept_tasks_.erase(fiter);
 	processing_tasks_[tc->get_taskiid()] = tc;

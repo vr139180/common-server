@@ -45,6 +45,7 @@ void GamePlayerCtrl::init_gameplayerctrl( int maxplayers)
 void GamePlayerCtrl::uninit_gameplayerctrl()
 {
 	all_channels_.reset(0);
+	GHUsersSeparate<GamePlayer>::uninit();
 }
 
 void GamePlayerCtrl::start()

@@ -30,6 +30,17 @@ func (u *userOperator) stringToMessage(md map[string]string, key string, msg pro
 	return proto.Unmarshal(d1, msg) == nil
 }
 
+func (u *userOperator) stringToMessageIgnore(md map[string]string, key string, msg proto.Message) bool {
+	bd, ok := md[key]
+	if !ok {
+		return true
+	}
+
+	d1 := []byte(bd)
+
+	return proto.Unmarshal(d1, msg) == nil
+}
+
 func (u *userOperator) LoadFromRedis(mdata map[string]string, r *redisutil.RedisUtil) bool {
 	return false
 }

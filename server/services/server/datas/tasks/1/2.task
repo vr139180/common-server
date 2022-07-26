@@ -3,23 +3,21 @@
 	<lua>
 		<get>
 			<lua-check><![[
-			checkfun = function(env, userdata, nodedata) {
-				return true
-			}
+			return
 			]]>
 			</lua-check>
 			<lua-confirm><![[
+			return
 			]]>
 			</lua-confirm>
 		</get>
 		<submit>
 			<lua-check><![[
-			checkfun = function(env, userdata, nodedata) {
-				return true
-			}
+			return
 			]]>
 			</lua-check>
 			<lua-confirm><![[
+			return
 			]]>
 			</lua-confirm>
 		</submit>

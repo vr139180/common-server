@@ -99,13 +99,13 @@ void CommandTestImpl::on_task_mytasks_ack(BasicProtocol* pro, CString* pRetMsg)
 	const PRO::DBUserTaskGroups& gs = ack->groups();
 	for (int ii = 0; ii < gs.groups_size(); ++ii)
 	{
-		str1.Format("\t task group iid:%d \r\n", gs.groups(ii));
+		str1.Format("\t task group iid:%d \r\n", gs.groups(ii).task_group());
 		*pRetMsg += str1;
 	}
 	const PRO::DBUserTasks& ts = ack->tasks();
 	for (int ii = 0; ii < ts.items_size(); ++ii)
 	{
-		str1.Format("\t task iid:%d \r\n", ts.items(ii));
+		str1.Format("\t task iid:%d \r\n", ts.items(ii).task_iid());
 		*pRetMsg += str1;
 	}
 }

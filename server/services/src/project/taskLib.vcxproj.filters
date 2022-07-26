@@ -7,6 +7,9 @@
     <Filter Include="services">
       <UniqueIdentifier>{5bc858f1-541c-4ad8-b31a-a749d88435e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cpptasks">
+      <UniqueIdentifier>{28688617-9544-42bd-abbd-3af7cbf0e8eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupMeta.cpp">
@@ -34,6 +37,15 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\taskLib\service\TaskGroupCellRT.cpp">
       <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\service\TaskResultLua.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\service\ITaskImplCpp.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.cpp">
+      <Filter>cpptasks</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,5 +83,14 @@
       <Filter>services</Filter>
     </ClInclude>
     <ClInclude Include="..\source\libs\taskLib\TaskFunc_Defined.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\TaskResultLua.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\service\ITaskImplCpp.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.h">
+      <Filter>cpptasks</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

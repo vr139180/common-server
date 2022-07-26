@@ -15,6 +15,8 @@ public:
 	LinkToHolder();
 	virtual ~LinkToHolder();
 
+	void free_all();
+
 	void connect_to();
 
 	//和eureka同步服务
@@ -94,6 +96,12 @@ void LinkToHolder<T>::release()
 		delete (*iter);
 	}
 	links_cache_.clear();
+}
+
+template<typename T>
+void LinkToHolder<T>::free_all()
+{
+	release();
 }
 
 template<typename T>

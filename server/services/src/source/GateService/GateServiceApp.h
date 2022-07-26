@@ -44,8 +44,8 @@ public:
 	virtual void main_loop();
 
 public:
-	HomeServiceLinkTo* get_homeholder() { return &home_linkto_; }
-	void send_to_homeservice(BasicProtocol* msg) { home_linkto_.send_protocol(msg); }
+	HomeServiceLinkTo* get_homeholder() { return home_linkto_.get(); }
+	void send_to_homeservice(BasicProtocol* msg) { home_linkto_->send_protocol(msg); }
 
 	bool is_bindhome() { return bind_home_step == GateBindHomeStep::GateBindHome_Done; }
 
@@ -91,7 +91,7 @@ protected:
 
 protected:
 	//link to home
-	HomeServiceLinkTo	home_linkto_;
+	std::shared_ptr<HomeServiceLinkTo>	home_linkto_;
 	GateBindHomeStep	bind_home_step;
 
 	//network

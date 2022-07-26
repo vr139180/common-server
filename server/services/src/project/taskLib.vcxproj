@@ -15,18 +15,22 @@
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\ConditionsMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlCondition.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlObjective.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\service\ITaskImplCpp.cpp" />
     <ClCompile Include="..\source\libs\taskLib\service\TaskCellRT.cpp" />
     <ClCompile Include="..\source\libs\taskLib\service\TaskGroupCellRT.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\service\TaskResultLua.cpp" />
     <ClCompile Include="..\source\libs\taskLib\TaskMetaHome.cpp" />
     <ClCompile Include="..\source\libs\taskLib\UserTasksResolver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\ConditionsMeta.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupMeta.h" />
@@ -34,9 +38,11 @@
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlCondition.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlObjective.h" />
     <ClInclude Include="..\source\libs\taskLib\service\ITaskEnv.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\ITaskImplCpp.h" />
     <ClInclude Include="..\source\libs\taskLib\service\ITaskResTrigger.h" />
     <ClInclude Include="..\source\libs\taskLib\service\TaskCellRT.h" />
     <ClInclude Include="..\source\libs\taskLib\service\TaskGroupCellRT.h" />
+    <ClInclude Include="..\source\libs\taskLib\service\TaskResultLua.h" />
     <ClInclude Include="..\source\libs\taskLib\TaskFunc_Defined.h" />
     <ClInclude Include="..\source\libs\taskLib\TaskMetaHome.h" />
     <ClInclude Include="..\source\libs\taskLib\task_const.h" />

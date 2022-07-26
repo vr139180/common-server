@@ -6,6 +6,7 @@
 
 #include <taskLib/meta/TaskMeta.h>
 #include <taskLib/service/ITaskEnv.h>
+#include <taskLib/service/ITaskImplCpp.h>
 
 class TaskGroupCellRT;
 
@@ -29,6 +30,8 @@ public:
 	bool is_cycle_task() { return b_cycle_task_; }
 	S_INT_32 get_cycle_num() { return cycle_num_; }
 
+	bool is_task_cpp_valide() { return task_cpp_.get() != 0; }
+
 	const TASK_DATA& get_taskdatas() { return task_datas_; }
 
 	TaskGroupCellRT* owner_taskgroup() { return parent_; }
@@ -36,15 +39,21 @@ public:
 public:
 	//是否能取得这个任务
 	bool can_get_task(ITaskContext* tc);
-	void user_gettask(S_INT_64 iid);
+	void user_gettask(S_INT_64 iid, ITaskContext* tc);
 
 	S_INT_32 submit_task(ITaskContext* tc);
+
+protected:
+	//检测xml配置条件
+	bool check_xml_conditions(ITaskContext* tc, TaskXmlCondition* pcond);
 
 protected:
 	S_INT_64	iid_;
 
 	S_INT_32		task_iid_;
 	TaskMetaBase	*task_meta_;
+
+	std::shared_ptr<ITaskImplCpp>	task_cpp_;
 
 	TASK_DATA		task_datas_;
 	PRO::TASK_STATE	qstate_;

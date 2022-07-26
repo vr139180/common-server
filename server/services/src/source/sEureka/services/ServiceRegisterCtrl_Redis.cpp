@@ -39,6 +39,9 @@ void ServiceRegisterCtrl::redis_update_mth_serviemeta()
 			for (std::set<S_INT_64>::iterator iter = delsvrs.begin(); iter != delsvrs.end(); ++iter)
 			{
 				S_INT_64 iid = (*iter);
+#ifdef EUREKA_DEBUGINFO_ENABLE
+				logError(out_sys, "--------------force close lost service------");
+#endif
 				//force close
 				ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(iid);
 				if (plink != 0)

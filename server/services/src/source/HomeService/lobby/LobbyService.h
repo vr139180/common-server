@@ -47,9 +47,14 @@ public:
 
 public:
 	//---------------------------IGlobalDataEnv interface -------------------------------
+	static void bind_luacontext(lua_State* l);
+
 	virtual ScriptContext* get_lua_context();
 	virtual S_INT_64 new_taskgroup_iid();
 	virtual S_INT_64 new_task_iid();
+
+	virtual void task_luacontext_begin(IGlobalDataEnv* genv, IUserDataEnv* uenv);
+	virtual void task_luacontext_end();
 
 protected:
 	void on_lb_ghuserinit_req(BasicProtocol* pro, bool& autorelease);

@@ -24,3 +24,15 @@ S_INT_64 LobbyService::new_task_iid()
 	S_INT_64 iid = dbsStore->gen_dbid(DBID_USER_TASKINFO, rdv);
 	return iid;
 }
+
+void LobbyService::task_luacontext_begin(IGlobalDataEnv* genv, IUserDataEnv* uenv)
+{
+	lua_context_.regist_2_context<LobbyService>("genv_", dynamic_cast<LobbyService*>(genv));
+	lua_context_.regist_2_context<LobbyUser>("mydata_", dynamic_cast<LobbyUser*>(uenv));
+}
+
+void LobbyService::task_luacontext_end()
+{
+	lua_context_.remove_4_context("genv_");
+	lua_context_.remove_4_context("mydata_");
+}

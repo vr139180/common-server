@@ -57,7 +57,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
-			"select ver_, role_iid,user_iid,nickname,from_unixtime(registime) from role_baseinfo where user_iid = ?;"));
+			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime) from role_baseinfo where user_iid = ?;"));
 		prep_stmt->setInt64(1, user_iid_);
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery());

@@ -10,6 +10,10 @@
 
 class TaskGroupCellMeta;
 
+#define TASKIMPL_LUA "lua"
+#define TASKIMPL_XML "xml"
+#define TASKIMPL_CPP "cpp"
+
 class TaskMetaBase
 {
 protected:
@@ -52,8 +56,10 @@ private:
 
 public:
 
-	virtual std::string get_impl() { return "cpp"; }
+	virtual std::string get_impl() { return TASKIMPL_CPP; }
 	virtual bool load_from_xml(tinyxml2::XMLElement* e);
+
+	const char* get_implcpp() { return impl_name_.c_str(); }
 
 private:
 	std::string impl_name_;
@@ -67,8 +73,19 @@ private:
 
 public:
 
-	virtual std::string get_impl() { return "lua"; }
+	virtual std::string get_impl() { return TASKIMPL_LUA; }
 	virtual bool load_from_xml(tinyxml2::XMLElement* e);
+
+	ConditionMetaLua* get_getcondition() {
+		if (get_cond_->is_luacondition())
+			return dynamic_cast<ConditionMetaLua*>(get_cond_.get());
+		return 0;
+	}
+	ConditionMetaLua* get_submitcondition() {
+		if (get_cond_->is_luacondition())
+			return dynamic_cast<ConditionMetaLua*>(submit_cond_.get());
+		return 0;
+	}
 
 private:
 	std::shared_ptr<IConditionsMeta>	get_cond_;
@@ -82,8 +99,20 @@ private:
 	TaskMetaXml();
 
 public:
-	virtual std::string get_impl() { return "xml"; }
+	virtual std::string get_impl() { return TASKIMPL_XML; }
 	virtual bool load_from_xml(tinyxml2::XMLElement* e);
+
+	ConditionsMetaXml* get_getcondition() {
+		if (get_cond_->is_xmlcondition())
+			return dynamic_cast<ConditionsMetaXml*>(get_cond_.get());
+		return 0;
+	}
+
+	ConditionsMetaXml* get_submitcondition() {
+		if (get_cond_->is_xmlcondition())
+			return dynamic_cast<ConditionsMetaXml*>(submit_cond_.get());
+		return 0;
+	}
 
 private:
 	std::shared_ptr<IConditionsMeta>	get_cond_;

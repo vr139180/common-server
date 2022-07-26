@@ -35,6 +35,8 @@ bool IConditionsMeta::load_from_xml(tinyxml2::XMLElement* e)
 //--------------------------------ConditionMetaLua------------------------------
 ConditionMetaLua::ConditionMetaLua() :IConditionsMeta()
 {
+	check_fun_ = "";
+	confirm_fun_ = "";
 }
 
 bool ConditionMetaLua::load_from_xml(tinyxml2::XMLElement* e)
@@ -44,13 +46,30 @@ bool ConditionMetaLua::load_from_xml(tinyxml2::XMLElement* e)
 
 	tinyxml2::XMLElement* c = e->FirstChildElement("lua-check");
 	if (c != 0)
+	{
 		check_fun_ = XmlUtil::GetXmlText(c);
+		create_luacall(check_fun_);
+	}
 
 	tinyxml2::XMLElement* s = e->FirstChildElement("lua-confirm");
 	if (s != 0)
-		submit_fun_ = XmlUtil::GetXmlText(s);
+	{
+		confirm_fun_ = XmlUtil::GetXmlText(s);
+		create_luacall(confirm_fun_);
+	}
 
 	return true;
+}
+
+void ConditionMetaLua::create_luacall(std::string& funs)
+{
+	std::stringstream ostr;
+	ostr << "function _tsfun_()" << "\r\n";
+	ostr << funs.c_str() << "\r\n";
+	ostr << "end" << "\r\n";
+	ostr << "_tsfun_()" << std::endl;
+
+	funs = ostr.str().c_str();
 }
 
 //--------------------------------ConditionsMetaXml------------------------------

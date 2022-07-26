@@ -48,9 +48,17 @@ public:
 
 	virtual bool is_luacondition() { return true; }
 
+	const char* get_checkfun() { return check_fun_.c_str(); }
+	bool need_check() { return check_fun_.size() > 0; }
+	const char* get_confirmfun() { return confirm_fun_.c_str(); }
+	bool need_confirm() { return confirm_fun_.size() > 0; }
+
+protected:
+	void create_luacall(std::string& funs);
+
 private:
 	std::string check_fun_;
-	std::string submit_fun_;
+	std::string confirm_fun_;
 };
 
 #endif //__CONDITIONSMETA_H__

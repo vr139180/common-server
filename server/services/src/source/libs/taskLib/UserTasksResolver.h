@@ -20,6 +20,8 @@ public:
 	~UserTasksResolver();
 	void init_env(IGlobalDataEnv* genv, IUserDataEnv* uenv, ITaskDataUpdateCB* cb);
 
+	void reset_resolver();
+
 	//初始化用户任务系统
 	void init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DBUserTasks& tasks);
 

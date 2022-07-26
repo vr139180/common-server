@@ -83,7 +83,7 @@ message Task_SubmitTask_req {
 message Task_SubmitTask_ack {
   optional UserToken utoken = 1;
   int32 task_iid = 2;
-  //0:success 1:task not exist 2:system error
+  //0:success 1:task not exist 2:system error 3:condition error
   int32 result = 3;
 }
 

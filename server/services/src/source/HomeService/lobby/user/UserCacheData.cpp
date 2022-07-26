@@ -24,6 +24,8 @@ void UserCacheData::reset_usercache()
 	home_data_.reset_data();
 	building_data_.reset_data();
 	pet_data_.reset_data();
+
+	task_resolver_.reset_resolver();
 	task_data_.reset_data();
 }
 

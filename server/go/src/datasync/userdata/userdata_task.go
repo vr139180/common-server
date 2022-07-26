@@ -28,14 +28,14 @@ func (u *userTasks) LoadFromRedis(mdata map[string]string, r *redisutil.RedisUti
 	if !u.stringToMessage(mdata, redis.USER_DETAIL_TASKGROUPS, &u.taskgroup_data) {
 		return false
 	}
-	if !u.stringToMessage(mdata, redis.USER_DETAIL_TASKGROUPS_END, &u.taskgroup_end_data) {
+	if !u.stringToMessageIgnore(mdata, redis.USER_DETAIL_TASKGROUPS_END, &u.taskgroup_end_data) {
 		return false
 	}
 
 	if !u.stringToMessage(mdata, redis.USER_DETAIL_TASKS, &u.task_data) {
 		return false
 	}
-	if !u.stringToMessage(mdata, redis.USER_DETAIL_TASKS_END, &u.task_end_data) {
+	if !u.stringToMessageIgnore(mdata, redis.USER_DETAIL_TASKS_END, &u.task_end_data) {
 		return false
 	}
 

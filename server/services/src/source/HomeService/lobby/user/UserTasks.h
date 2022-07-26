@@ -26,7 +26,11 @@ public:
 
 	void data_copyall(UserTasks& from);
 
-	bool update_redis_datacache(S_INT_64 uid, RedisClient* rdv, bool force = false);
+	bool update_redis_groupcache(S_INT_64 uid, RedisClient* rdv, bool force = false);
+	bool update_redis_groupendcache(S_INT_64 uid, RedisClient* rdv, bool force = false);
+	bool update_redis_taskcache(S_INT_64 uid, RedisClient* rdv, bool force = false);
+	bool update_redis_taskendcache(S_INT_64 uid, RedisClient* rdv, bool force = false);
+
 	bool update_redis_cache(S_INT_64 roleid, RedisClient* rdv, bool force = false);
 
 	void load_from_redis(S_INT_64 roleid, RedisClient* rdv);
