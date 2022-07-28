@@ -67,6 +67,7 @@ public:
 	virtual void notify_taskgroup_end(TaskGroupCellRT* gcrt);
 	virtual void notify_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
 	virtual void notify_end_task(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+	virtual void notify_get_taskreward(TaskCellRT* tc, TaskRewardMeta* reward);
 
 	//tasks
 	virtual void task_data_loaded() {}
@@ -76,6 +77,7 @@ public:
 	void task_group_end(TaskGroupCellRT* gcrt);
 	void task_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
 	void task_user_submittask(TaskGroupCellRT* gcrt, TaskCellRT* tc);
+	void task_user_getrewards(TaskCellRT* tc, TaskRewardMeta* reward);
 
 	BasicProtocol* task_get_waitlist();
 	BasicProtocol* task_get_mytasks();

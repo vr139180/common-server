@@ -27,4 +27,19 @@ public interface Task_ObtainReward_ntfOrBuilder extends
    * @return The taskIid.
    */
   int getTaskIid();
+
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * @return Whether the reward field is set.
+   */
+  boolean hasReward();
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * @return The reward.
+   */
+  com.cms.client.network.gpro.TaskRewardItems getReward();
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   */
+  com.cms.client.network.gpro.TaskRewardItemsOrBuilder getRewardOrBuilder();
 }

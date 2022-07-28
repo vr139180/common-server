@@ -12,7 +12,7 @@ public:
 	TaskResultLua();
 
 	bool		is_failed() { return ret_ < 0; }
-	S_INT_32	get_result() { return ret_; }
+	S_INT_32	get_result() const { return ret_; }
 	void		set_result(S_INT_32 v) { ret_ = v; }
 
 private:

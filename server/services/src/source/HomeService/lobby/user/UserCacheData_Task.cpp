@@ -38,6 +38,11 @@ void UserCacheData::notify_end_task(TaskGroupCellRT* gcrt, TaskCellRT* tc)
 	this->task_user_submittask(gcrt, tc);
 }
 
+void UserCacheData::notify_get_taskreward(TaskCellRT* tc, TaskRewardMeta* reward)
+{
+	this->task_user_getrewards(tc, reward);
+}
+
 void UserCacheData::task_new_group(TaskGroupCellRT* gcrt)
 {
 	RedisClient* rdv = svrApp.get_redisclient();
@@ -180,6 +185,11 @@ void UserCacheData::task_user_submittask(TaskGroupCellRT* gcrt, TaskCellRT* tc)
 	}
 
 	this->save_all(false, rdv);
+}
+
+void UserCacheData::task_user_getrewards(TaskCellRT* tc, TaskRewardMeta* reward)
+{
+
 }
 
 BasicProtocol* UserCacheData::task_get_waitlist()

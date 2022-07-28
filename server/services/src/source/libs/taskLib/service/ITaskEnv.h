@@ -5,6 +5,7 @@
 #include <cmsLib/lua/ScriptContext.h>
 #include <taskLib/task_const.h>
 #include <taskLib/meta/ConditionsMeta.h>
+#include <taskLib/meta/TaskRewardMeta.h>
 
 class IUserDataEnv;
 
@@ -69,6 +70,8 @@ public:
 	virtual void notify_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc) = 0;
 	//完成一个任务
 	virtual void notify_end_task(TaskGroupCellRT* gcrt, TaskCellRT* tc) = 0;
+	//获取任务奖励
+	virtual void notify_get_taskreward(TaskCellRT* tc, TaskRewardMeta* reward) = 0;
 };
 
 //整合了 IGlobalDataEnv,IUserDataEnv

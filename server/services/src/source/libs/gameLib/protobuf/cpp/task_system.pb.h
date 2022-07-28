@@ -49,7 +49,7 @@ struct TableStruct_task_5fsystem_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -57,6 +57,12 @@ struct TableStruct_task_5fsystem_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_task_5fsystem_2eproto;
 namespace PRO {
+class TaskRewardItem;
+struct TaskRewardItemDefaultTypeInternal;
+extern TaskRewardItemDefaultTypeInternal _TaskRewardItem_default_instance_;
+class TaskRewardItems;
+struct TaskRewardItemsDefaultTypeInternal;
+extern TaskRewardItemsDefaultTypeInternal _TaskRewardItems_default_instance_;
 class Task_GetTask_ack;
 struct Task_GetTask_ackDefaultTypeInternal;
 extern Task_GetTask_ackDefaultTypeInternal _Task_GetTask_ack_default_instance_;
@@ -92,6 +98,8 @@ struct Task_WaitList_reqDefaultTypeInternal;
 extern Task_WaitList_reqDefaultTypeInternal _Task_WaitList_req_default_instance_;
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
+template<> ::PRO::TaskRewardItem* Arena::CreateMaybeMessage<::PRO::TaskRewardItem>(Arena*);
+template<> ::PRO::TaskRewardItems* Arena::CreateMaybeMessage<::PRO::TaskRewardItems>(Arena*);
 template<> ::PRO::Task_GetTask_ack* Arena::CreateMaybeMessage<::PRO::Task_GetTask_ack>(Arena*);
 template<> ::PRO::Task_GetTask_req* Arena::CreateMaybeMessage<::PRO::Task_GetTask_req>(Arena*);
 template<> ::PRO::Task_GiveupTask_ack* Arena::CreateMaybeMessage<::PRO::Task_GiveupTask_ack>(Arena*);
@@ -191,7 +199,355 @@ inline bool TASK_STATE_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<TASK_STATE>(
     TASK_STATE_descriptor(), name, value);
 }
+enum TASKREWARD_TYPE : int {
+  TASKREWARDT_BAGITEM = 0,
+  TASKREWARDT_EXP = -1,
+  TASKREWARD_TYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  TASKREWARD_TYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool TASKREWARD_TYPE_IsValid(int value);
+constexpr TASKREWARD_TYPE TASKREWARD_TYPE_MIN = TASKREWARDT_EXP;
+constexpr TASKREWARD_TYPE TASKREWARD_TYPE_MAX = TASKREWARDT_BAGITEM;
+constexpr int TASKREWARD_TYPE_ARRAYSIZE = TASKREWARD_TYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TASKREWARD_TYPE_descriptor();
+template<typename T>
+inline const std::string& TASKREWARD_TYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, TASKREWARD_TYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function TASKREWARD_TYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    TASKREWARD_TYPE_descriptor(), enum_t_value);
+}
+inline bool TASKREWARD_TYPE_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, TASKREWARD_TYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<TASKREWARD_TYPE>(
+    TASKREWARD_TYPE_descriptor(), name, value);
+}
 // ===================================================================
+
+class TaskRewardItem final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskRewardItem) */ {
+ public:
+  inline TaskRewardItem() : TaskRewardItem(nullptr) {}
+  ~TaskRewardItem() override;
+  explicit constexpr TaskRewardItem(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskRewardItem(const TaskRewardItem& from);
+  TaskRewardItem(TaskRewardItem&& from) noexcept
+    : TaskRewardItem() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskRewardItem& operator=(const TaskRewardItem& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskRewardItem& operator=(TaskRewardItem&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskRewardItem& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskRewardItem* internal_default_instance() {
+    return reinterpret_cast<const TaskRewardItem*>(
+               &_TaskRewardItem_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TaskRewardItem& a, TaskRewardItem& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskRewardItem* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskRewardItem* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskRewardItem* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskRewardItem>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskRewardItem& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskRewardItem& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskRewardItem* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskRewardItem";
+  }
+  protected:
+  explicit TaskRewardItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTypeFieldNumber = 1,
+    kItemIidFieldNumber = 2,
+    kNumsFieldNumber = 3,
+  };
+  // .PRO.TASKREWARD_TYPE type = 1;
+  void clear_type();
+  ::PRO::TASKREWARD_TYPE type() const;
+  void set_type(::PRO::TASKREWARD_TYPE value);
+  private:
+  ::PRO::TASKREWARD_TYPE _internal_type() const;
+  void _internal_set_type(::PRO::TASKREWARD_TYPE value);
+  public:
+
+  // int32 item_iid = 2;
+  void clear_item_iid();
+  int32_t item_iid() const;
+  void set_item_iid(int32_t value);
+  private:
+  int32_t _internal_item_iid() const;
+  void _internal_set_item_iid(int32_t value);
+  public:
+
+  // int32 nums = 3;
+  void clear_nums();
+  int32_t nums() const;
+  void set_nums(int32_t value);
+  private:
+  int32_t _internal_nums() const;
+  void _internal_set_nums(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskRewardItem)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int type_;
+  int32_t item_iid_;
+  int32_t nums_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_task_5fsystem_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TaskRewardItems final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.TaskRewardItems) */ {
+ public:
+  inline TaskRewardItems() : TaskRewardItems(nullptr) {}
+  ~TaskRewardItems() override;
+  explicit constexpr TaskRewardItems(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TaskRewardItems(const TaskRewardItems& from);
+  TaskRewardItems(TaskRewardItems&& from) noexcept
+    : TaskRewardItems() {
+    *this = ::std::move(from);
+  }
+
+  inline TaskRewardItems& operator=(const TaskRewardItems& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TaskRewardItems& operator=(TaskRewardItems&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TaskRewardItems& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TaskRewardItems* internal_default_instance() {
+    return reinterpret_cast<const TaskRewardItems*>(
+               &_TaskRewardItems_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TaskRewardItems& a, TaskRewardItems& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TaskRewardItems* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TaskRewardItems* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TaskRewardItems* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TaskRewardItems>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TaskRewardItems& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TaskRewardItems& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TaskRewardItems* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.TaskRewardItems";
+  }
+  protected:
+  explicit TaskRewardItems(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRewardsFieldNumber = 1,
+  };
+  // repeated .PRO.TaskRewardItem rewards = 1;
+  int rewards_size() const;
+  private:
+  int _internal_rewards_size() const;
+  public:
+  void clear_rewards();
+  ::PRO::TaskRewardItem* mutable_rewards(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskRewardItem >*
+      mutable_rewards();
+  private:
+  const ::PRO::TaskRewardItem& _internal_rewards(int index) const;
+  ::PRO::TaskRewardItem* _internal_add_rewards();
+  public:
+  const ::PRO::TaskRewardItem& rewards(int index) const;
+  ::PRO::TaskRewardItem* add_rewards();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskRewardItem >&
+      rewards() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.TaskRewardItems)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskRewardItem > rewards_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_task_5fsystem_2eproto;
+};
+// -------------------------------------------------------------------
 
 class Task_WaitList_req final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Task_WaitList_req) */ {
@@ -241,7 +597,7 @@ class Task_WaitList_req final :
                &_Task_WaitList_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(Task_WaitList_req& a, Task_WaitList_req& b) {
     a.Swap(&b);
@@ -397,7 +753,7 @@ class Task_WaitList_ack final :
                &_Task_WaitList_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(Task_WaitList_ack& a, Task_WaitList_ack& b) {
     a.Swap(&b);
@@ -578,7 +934,7 @@ class Task_MyTaskList_req final :
                &_Task_MyTaskList_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(Task_MyTaskList_req& a, Task_MyTaskList_req& b) {
     a.Swap(&b);
@@ -734,7 +1090,7 @@ class Task_MyTaskList_ack final :
                &_Task_MyTaskList_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(Task_MyTaskList_ack& a, Task_MyTaskList_ack& b) {
     a.Swap(&b);
@@ -930,7 +1286,7 @@ class Task_GetTask_req final :
                &_Task_GetTask_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(Task_GetTask_req& a, Task_GetTask_req& b) {
     a.Swap(&b);
@@ -1097,7 +1453,7 @@ class Task_GetTask_ack final :
                &_Task_GetTask_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(Task_GetTask_ack& a, Task_GetTask_ack& b) {
     a.Swap(&b);
@@ -1295,7 +1651,7 @@ class Task_SubmitTask_req final :
                &_Task_SubmitTask_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(Task_SubmitTask_req& a, Task_SubmitTask_req& b) {
     a.Swap(&b);
@@ -1462,7 +1818,7 @@ class Task_SubmitTask_ack final :
                &_Task_SubmitTask_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(Task_SubmitTask_ack& a, Task_SubmitTask_ack& b) {
     a.Swap(&b);
@@ -1640,7 +1996,7 @@ class Task_ObtainReward_ntf final :
                &_Task_ObtainReward_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(Task_ObtainReward_ntf& a, Task_ObtainReward_ntf& b) {
     a.Swap(&b);
@@ -1715,6 +2071,7 @@ class Task_ObtainReward_ntf final :
 
   enum : int {
     kUtokenFieldNumber = 1,
+    kRewardFieldNumber = 3,
     kTaskIidFieldNumber = 2,
   };
   // optional .PRO.UserToken utoken = 1;
@@ -1735,6 +2092,24 @@ class Task_ObtainReward_ntf final :
       ::PRO::UserToken* utoken);
   ::PRO::UserToken* unsafe_arena_release_utoken();
 
+  // .PRO.TaskRewardItems reward = 3;
+  bool has_reward() const;
+  private:
+  bool _internal_has_reward() const;
+  public:
+  void clear_reward();
+  const ::PRO::TaskRewardItems& reward() const;
+  PROTOBUF_NODISCARD ::PRO::TaskRewardItems* release_reward();
+  ::PRO::TaskRewardItems* mutable_reward();
+  void set_allocated_reward(::PRO::TaskRewardItems* reward);
+  private:
+  const ::PRO::TaskRewardItems& _internal_reward() const;
+  ::PRO::TaskRewardItems* _internal_mutable_reward();
+  public:
+  void unsafe_arena_set_allocated_reward(
+      ::PRO::TaskRewardItems* reward);
+  ::PRO::TaskRewardItems* unsafe_arena_release_reward();
+
   // int32 task_iid = 2;
   void clear_task_iid();
   int32_t task_iid() const;
@@ -1754,6 +2129,7 @@ class Task_ObtainReward_ntf final :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PRO::UserToken* utoken_;
+  ::PRO::TaskRewardItems* reward_;
   int32_t task_iid_;
   friend struct ::TableStruct_task_5fsystem_2eproto;
 };
@@ -1807,7 +2183,7 @@ class Task_GiveupTask_req final :
                &_Task_GiveupTask_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(Task_GiveupTask_req& a, Task_GiveupTask_req& b) {
     a.Swap(&b);
@@ -1974,7 +2350,7 @@ class Task_GiveupTask_ack final :
                &_Task_GiveupTask_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(Task_GiveupTask_ack& a, Task_GiveupTask_ack& b) {
     a.Swap(&b);
@@ -2131,6 +2507,114 @@ class Task_GiveupTask_ack final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TaskRewardItem
+
+// .PRO.TASKREWARD_TYPE type = 1;
+inline void TaskRewardItem::clear_type() {
+  type_ = 0;
+}
+inline ::PRO::TASKREWARD_TYPE TaskRewardItem::_internal_type() const {
+  return static_cast< ::PRO::TASKREWARD_TYPE >(type_);
+}
+inline ::PRO::TASKREWARD_TYPE TaskRewardItem::type() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskRewardItem.type)
+  return _internal_type();
+}
+inline void TaskRewardItem::_internal_set_type(::PRO::TASKREWARD_TYPE value) {
+  
+  type_ = value;
+}
+inline void TaskRewardItem::set_type(::PRO::TASKREWARD_TYPE value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskRewardItem.type)
+}
+
+// int32 item_iid = 2;
+inline void TaskRewardItem::clear_item_iid() {
+  item_iid_ = 0;
+}
+inline int32_t TaskRewardItem::_internal_item_iid() const {
+  return item_iid_;
+}
+inline int32_t TaskRewardItem::item_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskRewardItem.item_iid)
+  return _internal_item_iid();
+}
+inline void TaskRewardItem::_internal_set_item_iid(int32_t value) {
+  
+  item_iid_ = value;
+}
+inline void TaskRewardItem::set_item_iid(int32_t value) {
+  _internal_set_item_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskRewardItem.item_iid)
+}
+
+// int32 nums = 3;
+inline void TaskRewardItem::clear_nums() {
+  nums_ = 0;
+}
+inline int32_t TaskRewardItem::_internal_nums() const {
+  return nums_;
+}
+inline int32_t TaskRewardItem::nums() const {
+  // @@protoc_insertion_point(field_get:PRO.TaskRewardItem.nums)
+  return _internal_nums();
+}
+inline void TaskRewardItem::_internal_set_nums(int32_t value) {
+  
+  nums_ = value;
+}
+inline void TaskRewardItem::set_nums(int32_t value) {
+  _internal_set_nums(value);
+  // @@protoc_insertion_point(field_set:PRO.TaskRewardItem.nums)
+}
+
+// -------------------------------------------------------------------
+
+// TaskRewardItems
+
+// repeated .PRO.TaskRewardItem rewards = 1;
+inline int TaskRewardItems::_internal_rewards_size() const {
+  return rewards_.size();
+}
+inline int TaskRewardItems::rewards_size() const {
+  return _internal_rewards_size();
+}
+inline void TaskRewardItems::clear_rewards() {
+  rewards_.Clear();
+}
+inline ::PRO::TaskRewardItem* TaskRewardItems::mutable_rewards(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.TaskRewardItems.rewards)
+  return rewards_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskRewardItem >*
+TaskRewardItems::mutable_rewards() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.TaskRewardItems.rewards)
+  return &rewards_;
+}
+inline const ::PRO::TaskRewardItem& TaskRewardItems::_internal_rewards(int index) const {
+  return rewards_.Get(index);
+}
+inline const ::PRO::TaskRewardItem& TaskRewardItems::rewards(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.TaskRewardItems.rewards)
+  return _internal_rewards(index);
+}
+inline ::PRO::TaskRewardItem* TaskRewardItems::_internal_add_rewards() {
+  return rewards_.Add();
+}
+inline ::PRO::TaskRewardItem* TaskRewardItems::add_rewards() {
+  ::PRO::TaskRewardItem* _add = _internal_add_rewards();
+  // @@protoc_insertion_point(field_add:PRO.TaskRewardItems.rewards)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::TaskRewardItem >&
+TaskRewardItems::rewards() const {
+  // @@protoc_insertion_point(field_list:PRO.TaskRewardItems.rewards)
+  return rewards_;
+}
+
+// -------------------------------------------------------------------
+
 // Task_WaitList_req
 
 // optional .PRO.UserToken utoken = 1;
@@ -3404,6 +3888,96 @@ inline void Task_ObtainReward_ntf::set_task_iid(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Task_ObtainReward_ntf.task_iid)
 }
 
+// .PRO.TaskRewardItems reward = 3;
+inline bool Task_ObtainReward_ntf::_internal_has_reward() const {
+  return this != internal_default_instance() && reward_ != nullptr;
+}
+inline bool Task_ObtainReward_ntf::has_reward() const {
+  return _internal_has_reward();
+}
+inline void Task_ObtainReward_ntf::clear_reward() {
+  if (GetArenaForAllocation() == nullptr && reward_ != nullptr) {
+    delete reward_;
+  }
+  reward_ = nullptr;
+}
+inline const ::PRO::TaskRewardItems& Task_ObtainReward_ntf::_internal_reward() const {
+  const ::PRO::TaskRewardItems* p = reward_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::TaskRewardItems&>(
+      ::PRO::_TaskRewardItems_default_instance_);
+}
+inline const ::PRO::TaskRewardItems& Task_ObtainReward_ntf::reward() const {
+  // @@protoc_insertion_point(field_get:PRO.Task_ObtainReward_ntf.reward)
+  return _internal_reward();
+}
+inline void Task_ObtainReward_ntf::unsafe_arena_set_allocated_reward(
+    ::PRO::TaskRewardItems* reward) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(reward_);
+  }
+  reward_ = reward;
+  if (reward) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Task_ObtainReward_ntf.reward)
+}
+inline ::PRO::TaskRewardItems* Task_ObtainReward_ntf::release_reward() {
+  
+  ::PRO::TaskRewardItems* temp = reward_;
+  reward_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::TaskRewardItems* Task_ObtainReward_ntf::unsafe_arena_release_reward() {
+  // @@protoc_insertion_point(field_release:PRO.Task_ObtainReward_ntf.reward)
+  
+  ::PRO::TaskRewardItems* temp = reward_;
+  reward_ = nullptr;
+  return temp;
+}
+inline ::PRO::TaskRewardItems* Task_ObtainReward_ntf::_internal_mutable_reward() {
+  
+  if (reward_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::TaskRewardItems>(GetArenaForAllocation());
+    reward_ = p;
+  }
+  return reward_;
+}
+inline ::PRO::TaskRewardItems* Task_ObtainReward_ntf::mutable_reward() {
+  ::PRO::TaskRewardItems* _msg = _internal_mutable_reward();
+  // @@protoc_insertion_point(field_mutable:PRO.Task_ObtainReward_ntf.reward)
+  return _msg;
+}
+inline void Task_ObtainReward_ntf::set_allocated_reward(::PRO::TaskRewardItems* reward) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reward_;
+  }
+  if (reward) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::TaskRewardItems>::GetOwningArena(reward);
+    if (message_arena != submessage_arena) {
+      reward = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, reward, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  reward_ = reward;
+  // @@protoc_insertion_point(field_set_allocated:PRO.Task_ObtainReward_ntf.reward)
+}
+
 // -------------------------------------------------------------------
 
 // Task_GiveupTask_req
@@ -3759,6 +4333,10 @@ inline void Task_GiveupTask_ack::set_allocated_task(::PRO::DBUserTaskItem* task)
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -3780,6 +4358,11 @@ template <> struct is_proto_enum< ::PRO::TASK_STATE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::PRO::TASK_STATE>() {
   return ::PRO::TASK_STATE_descriptor();
+}
+template <> struct is_proto_enum< ::PRO::TASKREWARD_TYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::PRO::TASKREWARD_TYPE>() {
+  return ::PRO::TASKREWARD_TYPE_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

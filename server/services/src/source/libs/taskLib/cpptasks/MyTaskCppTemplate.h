@@ -10,9 +10,9 @@ public:
 	MyTaskCppTemplate();
 	virtual ~MyTaskCppTemplate() {}
 
-	virtual bool can_gettask_check(ITaskContext* tc);
-	virtual S_INT_32 gettask_confirm(ITaskContext* tc);
-	virtual S_INT_32 submit_task(ITaskContext* tc);
+	virtual bool can_gettask_check(ITaskContext* tc, CPPObjectiveParams* params);
+	virtual S_INT_32 gettask_confirm(ITaskContext* tc, CPPObjectiveParams* params);
+	virtual S_INT_32 submit_task(ITaskContext* tc, CPPObjectiveParams* params);
 };
 
 #endif //__MYTASKCPPTEMPLATE_H__

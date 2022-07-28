@@ -102,7 +102,10 @@ bool TaskCellRT::can_get_task(ITaskContext* tc)
 		if (!is_task_cpp_valide())
 			return false;
 
-		return task_cpp_->can_gettask_check(tc);
+		TaskMetaCpp* pcpp = dynamic_cast<TaskMetaCpp*>(task_meta_);
+		CPPObjectiveParams* params = pcpp->get_getparams();
+
+		return task_cpp_->can_gettask_check(tc, params);
 	}
 
 	return false;
@@ -184,7 +187,10 @@ void TaskCellRT::user_gettask(S_INT_64 iid, ITaskContext* tc)
 		if (!is_task_cpp_valide())
 			return;
 
-		task_cpp_->gettask_confirm(tc);
+		TaskMetaCpp* pcpp = dynamic_cast<TaskMetaCpp*>(task_meta_);
+		CPPObjectiveParams* params = pcpp->get_getparams();
+
+		task_cpp_->gettask_confirm(tc, params);
 	}
 }
 
@@ -231,7 +237,10 @@ S_INT_32 TaskCellRT::submit_task(ITaskContext* tc)
 		if (!is_task_cpp_valide())
 			return 2; //system error
 
-		return task_cpp_->submit_task(tc);
+		TaskMetaCpp* pcpp = dynamic_cast<TaskMetaCpp*>(task_meta_);
+		CPPObjectiveParams* params = pcpp->get_submitparams();
+
+		return task_cpp_->submit_task(tc, params);
 	}
 
 	return 0;

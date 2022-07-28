@@ -13,5 +13,6 @@
 		</submit>
 	</xml>
 	<rewards>
+		<reward type="-1" item="1" nums="1000"/>
 	</rewards>
 </task>

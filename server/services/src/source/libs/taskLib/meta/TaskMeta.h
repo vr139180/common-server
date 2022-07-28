@@ -3,10 +3,14 @@
 
 #include <vector>
 #include <boost/unordered_map.hpp>
+
 #include <cmsLib/util/XmlUtil.h>
 #include <gameLib/protobuf/Proto_all.h>
+
 #include <taskLib/task_const.h>
 #include <taskLib/meta/ConditionsMeta.h>
+#include <taskLib/meta/TaskCppObjective.h>
+#include <taskLib/meta/TaskRewardMeta.h>
 
 class TaskGroupCellMeta;
 
@@ -34,6 +38,8 @@ public:
 	int cycle_num() { return cycle_num_; }
 	bool is_allow_giveup() { return allow_giveup_; }
 
+	TaskRewardMeta* get_rewards() { return rewards_.get(); }
+
 private:
 	int task_iid_;
 	//是否循环任务
@@ -44,6 +50,9 @@ private:
 	bool allow_giveup_;
 	//触发器类型
 	std::vector<eTriggerType> trigger_events_;
+
+	//奖励
+	std::shared_ptr<TaskRewardMeta>	rewards_;
 
 	TaskGroupCellMeta*	parent_;
 };
@@ -60,9 +69,14 @@ public:
 	virtual bool load_from_xml(tinyxml2::XMLElement* e);
 
 	const char* get_implcpp() { return impl_name_.c_str(); }
+	CPPObjectiveParams* get_getparams() { return get_params_.get(); }
+	CPPObjectiveParams* get_submitparams() { return submit_params_.get(); }
 
 private:
 	std::string impl_name_;
+
+	std::shared_ptr<CPPObjectiveParams>	get_params_;
+	std::shared_ptr<CPPObjectiveParams> submit_params_;
 };
 
 class TaskMetaLua : public TaskMetaBase

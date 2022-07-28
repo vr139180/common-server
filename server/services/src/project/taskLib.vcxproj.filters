@@ -47,6 +47,12 @@
     <ClCompile Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.cpp">
       <Filter>cpptasks</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskCppObjective.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskRewardMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupMeta.h">
@@ -91,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.h">
       <Filter>cpptasks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskCppObjective.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskRewardMeta.h">
+      <Filter>metas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

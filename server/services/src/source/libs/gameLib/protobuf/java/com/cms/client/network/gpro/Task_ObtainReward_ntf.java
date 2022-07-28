@@ -67,6 +67,19 @@ private static final long serialVersionUID = 0L;
             taskIid_ = input.readInt32();
             break;
           }
+          case 26: {
+            com.cms.client.network.gpro.TaskRewardItems.Builder subBuilder = null;
+            if (reward_ != null) {
+              subBuilder = reward_.toBuilder();
+            }
+            reward_ = input.readMessage(com.cms.client.network.gpro.TaskRewardItems.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(reward_);
+              reward_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -137,6 +150,32 @@ private static final long serialVersionUID = 0L;
     return taskIid_;
   }
 
+  public static final int REWARD_FIELD_NUMBER = 3;
+  private com.cms.client.network.gpro.TaskRewardItems reward_;
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * @return Whether the reward field is set.
+   */
+  @java.lang.Override
+  public boolean hasReward() {
+    return reward_ != null;
+  }
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * @return The reward.
+   */
+  @java.lang.Override
+  public com.cms.client.network.gpro.TaskRewardItems getReward() {
+    return reward_ == null ? com.cms.client.network.gpro.TaskRewardItems.getDefaultInstance() : reward_;
+  }
+  /**
+   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   */
+  @java.lang.Override
+  public com.cms.client.network.gpro.TaskRewardItemsOrBuilder getRewardOrBuilder() {
+    return getReward();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -157,6 +196,9 @@ private static final long serialVersionUID = 0L;
     if (taskIid_ != 0) {
       output.writeInt32(2, taskIid_);
     }
+    if (reward_ != null) {
+      output.writeMessage(3, getReward());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -173,6 +215,10 @@ private static final long serialVersionUID = 0L;
     if (taskIid_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, taskIid_);
+    }
+    if (reward_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getReward());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -196,6 +242,11 @@ private static final long serialVersionUID = 0L;
     }
     if (getTaskIid()
         != other.getTaskIid()) return false;
+    if (hasReward() != other.hasReward()) return false;
+    if (hasReward()) {
+      if (!getReward()
+          .equals(other.getReward())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -213,6 +264,10 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + TASK_IID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskIid();
+    if (hasReward()) {
+      hash = (37 * hash) + REWARD_FIELD_NUMBER;
+      hash = (53 * hash) + getReward().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -355,6 +410,12 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       taskIid_ = 0;
 
+      if (rewardBuilder_ == null) {
+        reward_ = null;
+      } else {
+        reward_ = null;
+        rewardBuilder_ = null;
+      }
       return this;
     }
 
@@ -392,6 +453,11 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000001;
       }
       result.taskIid_ = taskIid_;
+      if (rewardBuilder_ == null) {
+        result.reward_ = reward_;
+      } else {
+        result.reward_ = rewardBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -446,6 +512,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getTaskIid() != 0) {
         setTaskIid(other.getTaskIid());
+      }
+      if (other.hasReward()) {
+        mergeReward(other.getReward());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -626,6 +695,125 @@ private static final long serialVersionUID = 0L;
       taskIid_ = 0;
       onChanged();
       return this;
+    }
+
+    private com.cms.client.network.gpro.TaskRewardItems reward_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.cms.client.network.gpro.TaskRewardItems, com.cms.client.network.gpro.TaskRewardItems.Builder, com.cms.client.network.gpro.TaskRewardItemsOrBuilder> rewardBuilder_;
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     * @return Whether the reward field is set.
+     */
+    public boolean hasReward() {
+      return rewardBuilder_ != null || reward_ != null;
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     * @return The reward.
+     */
+    public com.cms.client.network.gpro.TaskRewardItems getReward() {
+      if (rewardBuilder_ == null) {
+        return reward_ == null ? com.cms.client.network.gpro.TaskRewardItems.getDefaultInstance() : reward_;
+      } else {
+        return rewardBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public Builder setReward(com.cms.client.network.gpro.TaskRewardItems value) {
+      if (rewardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        reward_ = value;
+        onChanged();
+      } else {
+        rewardBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public Builder setReward(
+        com.cms.client.network.gpro.TaskRewardItems.Builder builderForValue) {
+      if (rewardBuilder_ == null) {
+        reward_ = builderForValue.build();
+        onChanged();
+      } else {
+        rewardBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public Builder mergeReward(com.cms.client.network.gpro.TaskRewardItems value) {
+      if (rewardBuilder_ == null) {
+        if (reward_ != null) {
+          reward_ =
+            com.cms.client.network.gpro.TaskRewardItems.newBuilder(reward_).mergeFrom(value).buildPartial();
+        } else {
+          reward_ = value;
+        }
+        onChanged();
+      } else {
+        rewardBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public Builder clearReward() {
+      if (rewardBuilder_ == null) {
+        reward_ = null;
+        onChanged();
+      } else {
+        reward_ = null;
+        rewardBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public com.cms.client.network.gpro.TaskRewardItems.Builder getRewardBuilder() {
+      
+      onChanged();
+      return getRewardFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    public com.cms.client.network.gpro.TaskRewardItemsOrBuilder getRewardOrBuilder() {
+      if (rewardBuilder_ != null) {
+        return rewardBuilder_.getMessageOrBuilder();
+      } else {
+        return reward_ == null ?
+            com.cms.client.network.gpro.TaskRewardItems.getDefaultInstance() : reward_;
+      }
+    }
+    /**
+     * <code>.PRO.TaskRewardItems reward = 3;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.cms.client.network.gpro.TaskRewardItems, com.cms.client.network.gpro.TaskRewardItems.Builder, com.cms.client.network.gpro.TaskRewardItemsOrBuilder> 
+        getRewardFieldBuilder() {
+      if (rewardBuilder_ == null) {
+        rewardBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.cms.client.network.gpro.TaskRewardItems, com.cms.client.network.gpro.TaskRewardItems.Builder, com.cms.client.network.gpro.TaskRewardItemsOrBuilder>(
+                getReward(),
+                getParentForChildren(),
+                isClean());
+        reward_ = null;
+      }
+      return rewardBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -3,23 +3,19 @@
 	<lua>
 		<get>
 			<lua-check><![[
-			return
+			cret.result = 0
 			]]>
 			</lua-check>
 			<lua-confirm><![[
-			return
+			cret.result = 0
 			]]>
 			</lua-confirm>
 		</get>
 		<submit>
 			<lua-check><![[
-			return
+			cret.result = 0
 			]]>
 			</lua-check>
-			<lua-confirm><![[
-			return
-			]]>
-			</lua-confirm>
 		</submit>
 	</lua>
 	<rewards>

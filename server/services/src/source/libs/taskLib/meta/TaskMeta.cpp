@@ -58,6 +58,9 @@ bool TaskMetaBase::load_from_xml(tinyxml2::XMLElement* e)
 	cycle_num_ = XmlUtil::GetXmlAttrInt(e, "cyclenum", 0);
 	allow_giveup_ = XmlUtil::GetXmlAttrBool(e, "allowgiveup", true);
 
+	tinyxml2::XMLElement* rewards = e->FirstChildElement("rewards");
+	rewards_.reset( TaskRewardMeta::build_from_xml( rewards));
+
 	tinyxml2::XMLElement* trg = e->FirstChildElement("trigger");
 	if (trg == 0)
 	{
@@ -91,6 +94,26 @@ bool TaskMetaCpp::load_from_xml(tinyxml2::XMLElement* e)
 
 	impl_name_ = XmlUtil::GetXmlAttrStr(cpp, "name");
 	ShareUtil::to_lower(impl_name_);
+
+	tinyxml2::XMLElement* get = cpp->FirstChildElement("get");
+	if (get != 0)
+	{
+		tinyxml2::XMLElement* params = get->FirstChildElement("params");
+		get_params_.reset(CPPObjectiveParams::build_cppparams(params));
+	}
+	else {
+		get_params_.reset( CPPObjectiveParams::build_empty());
+	}
+
+	tinyxml2::XMLElement* submit = cpp->FirstChildElement("submit");
+	if (submit != 0)
+	{
+		tinyxml2::XMLElement* params = submit->FirstChildElement("params");
+		submit_params_.reset(CPPObjectiveParams::build_cppparams(params));
+	}
+	else {
+		submit_params_.reset(CPPObjectiveParams::build_empty());
+	}
 
 	return true;
 }

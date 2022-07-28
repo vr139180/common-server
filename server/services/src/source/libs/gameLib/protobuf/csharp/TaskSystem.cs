@@ -25,46 +25,54 @@ namespace com.cms.client.network.gpro {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChF0YXNrX3N5c3RlbS5wcm90bxIDUFJPGhVnbG9iYWxfaW50ZXJuYWwucHJv",
-            "dG8aEWRiX2ludGVybmFsLnByb3RvIkMKEVRhc2tfV2FpdExpc3RfcmVxEiMK",
-            "BnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBAUIJCgdfdXRva2Vu",
-            "IlYKEVRhc2tfV2FpdExpc3RfYWNrEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5V",
-            "c2VyVG9rZW5IAIgBARIRCgl0YXNrX2lpZHMYAiADKAVCCQoHX3V0b2tlbiJF",
-            "ChNUYXNrX015VGFza0xpc3RfcmVxEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5V",
-            "c2VyVG9rZW5IAIgBAUIJCgdfdXRva2VuIo0BChNUYXNrX015VGFza0xpc3Rf",
-            "YWNrEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIlCgZn",
-            "cm91cHMYAiABKAsyFS5QUk8uREJVc2VyVGFza0dyb3VwcxIfCgV0YXNrcxgD",
-            "IAEoCzIQLlBSTy5EQlVzZXJUYXNrc0IJCgdfdXRva2VuIlQKEFRhc2tfR2V0",
-            "VGFza19yZXESIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEB",
-            "EhAKCHRhc2tfaWlkGAIgASgFQgkKB191dG9rZW4ilQEKEFRhc2tfR2V0VGFz",
-            "a19hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEhAK",
-            "CHRhc2tfaWlkGAIgASgFEg4KBnJlc3VsdBgDIAEoBRImCgR0YXNrGAQgASgL",
-            "MhMuUFJPLkRCVXNlclRhc2tJdGVtSAGIAQFCCQoHX3V0b2tlbkIHCgVfdGFz",
-            "ayJXChNUYXNrX1N1Ym1pdFRhc2tfcmVxEiMKBnV0b2tlbhgBIAEoCzIOLlBS",
-            "Ty5Vc2VyVG9rZW5IAIgBARIQCgh0YXNrX2lpZBgCIAEoBUIJCgdfdXRva2Vu",
-            "ImcKE1Rhc2tfU3VibWl0VGFza19hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJP",
-            "LlVzZXJUb2tlbkgAiAEBEhAKCHRhc2tfaWlkGAIgASgFEg4KBnJlc3VsdBgD",
-            "IAEoBUIJCgdfdXRva2VuIlkKFVRhc2tfT2J0YWluUmV3YXJkX250ZhIjCgZ1",
+            "dG8aEWRiX2ludGVybmFsLnByb3RvIlQKDlRhc2tSZXdhcmRJdGVtEiIKBHR5",
+            "cGUYASABKA4yFC5QUk8uVEFTS1JFV0FSRF9UWVBFEhAKCGl0ZW1faWlkGAIg",
+            "ASgFEgwKBG51bXMYAyABKAUiNwoPVGFza1Jld2FyZEl0ZW1zEiQKB3Jld2Fy",
+            "ZHMYASADKAsyEy5QUk8uVGFza1Jld2FyZEl0ZW0iQwoRVGFza19XYWl0TGlz",
+            "dF9yZXESIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBQgkK",
+            "B191dG9rZW4iVgoRVGFza19XYWl0TGlzdF9hY2sSIwoGdXRva2VuGAEgASgL",
+            "Mg4uUFJPLlVzZXJUb2tlbkgAiAEBEhEKCXRhc2tfaWlkcxgCIAMoBUIJCgdf",
+            "dXRva2VuIkUKE1Rhc2tfTXlUYXNrTGlzdF9yZXESIwoGdXRva2VuGAEgASgL",
+            "Mg4uUFJPLlVzZXJUb2tlbkgAiAEBQgkKB191dG9rZW4ijQEKE1Rhc2tfTXlU",
+            "YXNrTGlzdF9hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgA",
+            "iAEBEiUKBmdyb3VwcxgCIAEoCzIVLlBSTy5EQlVzZXJUYXNrR3JvdXBzEh8K",
+            "BXRhc2tzGAMgASgLMhAuUFJPLkRCVXNlclRhc2tzQgkKB191dG9rZW4iVAoQ",
+            "VGFza19HZXRUYXNrX3JlcRIjCgZ1dG9rZW4YASABKAsyDi5QUk8uVXNlclRv",
+            "a2VuSACIAQESEAoIdGFza19paWQYAiABKAVCCQoHX3V0b2tlbiKVAQoQVGFz",
+            "a19HZXRUYXNrX2FjaxIjCgZ1dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2Vu",
+            "SACIAQESEAoIdGFza19paWQYAiABKAUSDgoGcmVzdWx0GAMgASgFEiYKBHRh",
+            "c2sYBCABKAsyEy5QUk8uREJVc2VyVGFza0l0ZW1IAYgBAUIJCgdfdXRva2Vu",
+            "QgcKBV90YXNrIlcKE1Rhc2tfU3VibWl0VGFza19yZXESIwoGdXRva2VuGAEg",
+            "ASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEhAKCHRhc2tfaWlkGAIgASgFQgkK",
+            "B191dG9rZW4iZwoTVGFza19TdWJtaXRUYXNrX2FjaxIjCgZ1dG9rZW4YASAB",
+            "KAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQYAiABKAUSDgoG",
+            "cmVzdWx0GAMgASgFQgkKB191dG9rZW4ifwoVVGFza19PYnRhaW5SZXdhcmRf",
+            "bnRmEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCgh0",
+            "YXNrX2lpZBgCIAEoBRIkCgZyZXdhcmQYAyABKAsyFC5QUk8uVGFza1Jld2Fy",
+            "ZEl0ZW1zQgkKB191dG9rZW4iVwoTVGFza19HaXZldXBUYXNrX3JlcRIjCgZ1",
             "dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQY",
-            "AiABKAVCCQoHX3V0b2tlbiJXChNUYXNrX0dpdmV1cFRhc2tfcmVxEiMKBnV0",
-            "b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCgh0YXNrX2lpZBgC",
-            "IAEoBUIJCgdfdXRva2VuIpgBChNUYXNrX0dpdmV1cFRhc2tfYWNrEiMKBnV0",
-            "b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCgh0YXNrX2lpZBgC",
-            "IAEoBRIOCgZyZXN1bHQYAyABKAUSJgoEdGFzaxgEIAEoCzITLlBSTy5EQlVz",
-            "ZXJUYXNrSXRlbUgBiAEBQgkKB191dG9rZW5CBwoFX3Rhc2sqhgEKEVRBU0tf",
-            "VFJJR0dFUl9UWVBFEgwKCFRUX0JFR0lOEAASFAoQVFRfVFJJR0dFUl9USU1F",
-            "UhABEhYKElRUX1JPTEVJTkZPX0NIQU5HRRACEhEKDVRUX0JBR19DSEFOR0UQ",
-            "BBIWChJUVF9CVUlMRElOR19DSEFOR0UQCBIKCgZUVF9NQVgQCSpUChBUQVNL",
-            "X0dST1VQX1NUQVRFEhQKEFRBU0tHUk9VUF9BQ0NFUFQQABIUChBUQVNLR1JP",
-            "VVBfRklOSVNIEAESFAoQVEFTS0dST1VQX0dJVkVVUBACKq8BCgpUQVNLX1NU",
-            "QVRFEhQKEFRBU0tTVEFURV9BQ0NFUFQQABIbCg5UQVNLU1RBVEVfV0FJVBD/",
-            "//////////8BEhYKElRBU0tTVEFURV9SRUFDQ0VQVBABEhQKEFRBU0tTVEFU",
-            "RV9TVUJNSVQQAhIUChBUQVNLU1RBVEVfRkFJTEVEEAMSFAoQVEFTS1NUQVRF",
-            "X0dJVkVVUBAEEhQKEFRBU0tTVEFURV9GSU5JU0gQBUJUChtjb20uY21zLmNs",
-            "aWVudC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIb",
-            "Y29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90bzM="));
+            "AiABKAVCCQoHX3V0b2tlbiKYAQoTVGFza19HaXZldXBUYXNrX2FjaxIjCgZ1",
+            "dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQY",
+            "AiABKAUSDgoGcmVzdWx0GAMgASgFEiYKBHRhc2sYBCABKAsyEy5QUk8uREJV",
+            "c2VyVGFza0l0ZW1IAYgBAUIJCgdfdXRva2VuQgcKBV90YXNrKoYBChFUQVNL",
+            "X1RSSUdHRVJfVFlQRRIMCghUVF9CRUdJThAAEhQKEFRUX1RSSUdHRVJfVElN",
+            "RVIQARIWChJUVF9ST0xFSU5GT19DSEFOR0UQAhIRCg1UVF9CQUdfQ0hBTkdF",
+            "EAQSFgoSVFRfQlVJTERJTkdfQ0hBTkdFEAgSCgoGVFRfTUFYEAkqVAoQVEFT",
+            "S19HUk9VUF9TVEFURRIUChBUQVNLR1JPVVBfQUNDRVBUEAASFAoQVEFTS0dS",
+            "T1VQX0ZJTklTSBABEhQKEFRBU0tHUk9VUF9HSVZFVVAQAiqvAQoKVEFTS19T",
+            "VEFURRIUChBUQVNLU1RBVEVfQUNDRVBUEAASGwoOVEFTS1NUQVRFX1dBSVQQ",
+            "////////////ARIWChJUQVNLU1RBVEVfUkVBQ0NFUFQQARIUChBUQVNLU1RB",
+            "VEVfU1VCTUlUEAISFAoQVEFTS1NUQVRFX0ZBSUxFRBADEhQKEFRBU0tTVEFU",
+            "RV9HSVZFVVAQBBIUChBUQVNLU1RBVEVfRklOSVNIEAUqSAoPVEFTS1JFV0FS",
+            "RF9UWVBFEhcKE1RBU0tSRVdBUkRUX0JBR0lURU0QABIcCg9UQVNLUkVXQVJE",
+            "VF9FWFAQ////////////AUJUChtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdw",
+            "cm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQu",
+            "bmV0d29yay5ncHJvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.TASK_TRIGGER_TYPE), typeof(global::com.cms.client.network.gpro.TASK_GROUP_STATE), typeof(global::com.cms.client.network.gpro.TASK_STATE), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.TASK_TRIGGER_TYPE), typeof(global::com.cms.client.network.gpro.TASK_GROUP_STATE), typeof(global::com.cms.client.network.gpro.TASK_STATE), typeof(global::com.cms.client.network.gpro.TASKREWARD_TYPE), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.TaskRewardItem), global::com.cms.client.network.gpro.TaskRewardItem.Parser, new[]{ "Type", "ItemIid", "Nums" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.TaskRewardItems), global::com.cms.client.network.gpro.TaskRewardItems.Parser, new[]{ "Rewards" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_req), global::com.cms.client.network.gpro.Task_WaitList_req.Parser, new[]{ "Utoken" }, new[]{ "Utoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_ack), global::com.cms.client.network.gpro.Task_WaitList_ack.Parser, new[]{ "Utoken", "TaskIids" }, new[]{ "Utoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_MyTaskList_req), global::com.cms.client.network.gpro.Task_MyTaskList_req.Parser, new[]{ "Utoken" }, new[]{ "Utoken" }, null, null, null),
@@ -73,7 +81,7 @@ namespace com.cms.client.network.gpro {
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GetTask_ack), global::com.cms.client.network.gpro.Task_GetTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result", "Task" }, new[]{ "Utoken", "Task" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_req), global::com.cms.client.network.gpro.Task_SubmitTask_req.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_ack), global::com.cms.client.network.gpro.Task_SubmitTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_ObtainReward_ntf), global::com.cms.client.network.gpro.Task_ObtainReward_ntf.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_ObtainReward_ntf), global::com.cms.client.network.gpro.Task_ObtainReward_ntf.Parser, new[]{ "Utoken", "TaskIid", "Reward" }, new[]{ "Utoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_req), global::com.cms.client.network.gpro.Task_GiveupTask_req.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_ack), global::com.cms.client.network.gpro.Task_GiveupTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result", "Task" }, new[]{ "Utoken", "Task" }, null, null, null)
           }));
@@ -119,9 +127,458 @@ namespace com.cms.client.network.gpro {
     [pbr::OriginalName("TASKSTATE_FINISH")] Finish = 5,
   }
 
+  /// <summary>
+  ///任务奖励类型
+  /// </summary>
+  public enum TASKREWARD_TYPE {
+    [pbr::OriginalName("TASKREWARDT_BAGITEM")] TaskrewardtBagitem = 0,
+    [pbr::OriginalName("TASKREWARDT_EXP")] TaskrewardtExp = -1,
+  }
+
   #endregion
 
   #region Messages
+  public sealed partial class TaskRewardItem : pb::IMessage<TaskRewardItem>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<TaskRewardItem> _parser = new pb::MessageParser<TaskRewardItem>(() => new TaskRewardItem());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TaskRewardItem> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItem() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItem(TaskRewardItem other) : this() {
+      type_ = other.type_;
+      itemIid_ = other.itemIid_;
+      nums_ = other.nums_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItem Clone() {
+      return new TaskRewardItem(this);
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 1;
+    private global::com.cms.client.network.gpro.TASKREWARD_TYPE type_ = global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::com.cms.client.network.gpro.TASKREWARD_TYPE Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "item_iid" field.</summary>
+    public const int ItemIidFieldNumber = 2;
+    private int itemIid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int ItemIid {
+      get { return itemIid_; }
+      set {
+        itemIid_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "nums" field.</summary>
+    public const int NumsFieldNumber = 3;
+    private int nums_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Nums {
+      get { return nums_; }
+      set {
+        nums_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as TaskRewardItem);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TaskRewardItem other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Type != other.Type) return false;
+      if (ItemIid != other.ItemIid) return false;
+      if (Nums != other.Nums) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Type != global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem) hash ^= Type.GetHashCode();
+      if (ItemIid != 0) hash ^= ItemIid.GetHashCode();
+      if (Nums != 0) hash ^= Nums.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Type != global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Type);
+      }
+      if (ItemIid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ItemIid);
+      }
+      if (Nums != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Nums);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Type != global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Type);
+      }
+      if (ItemIid != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ItemIid);
+      }
+      if (Nums != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Nums);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Type != global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Type);
+      }
+      if (ItemIid != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ItemIid);
+      }
+      if (Nums != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Nums);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TaskRewardItem other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Type != global::com.cms.client.network.gpro.TASKREWARD_TYPE.TaskrewardtBagitem) {
+        Type = other.Type;
+      }
+      if (other.ItemIid != 0) {
+        ItemIid = other.ItemIid;
+      }
+      if (other.Nums != 0) {
+        Nums = other.Nums;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Type = (global::com.cms.client.network.gpro.TASKREWARD_TYPE) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            ItemIid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Nums = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Type = (global::com.cms.client.network.gpro.TASKREWARD_TYPE) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            ItemIid = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Nums = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class TaskRewardItems : pb::IMessage<TaskRewardItems>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<TaskRewardItems> _parser = new pb::MessageParser<TaskRewardItems>(() => new TaskRewardItems());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TaskRewardItems> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItems() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItems(TaskRewardItems other) : this() {
+      rewards_ = other.rewards_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TaskRewardItems Clone() {
+      return new TaskRewardItems(this);
+    }
+
+    /// <summary>Field number for the "rewards" field.</summary>
+    public const int RewardsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.TaskRewardItem> _repeated_rewards_codec
+        = pb::FieldCodec.ForMessage(10, global::com.cms.client.network.gpro.TaskRewardItem.Parser);
+    private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.TaskRewardItem> rewards_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.TaskRewardItem>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::com.cms.client.network.gpro.TaskRewardItem> Rewards {
+      get { return rewards_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as TaskRewardItems);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TaskRewardItems other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!rewards_.Equals(other.rewards_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= rewards_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      rewards_.WriteTo(output, _repeated_rewards_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      rewards_.WriteTo(ref output, _repeated_rewards_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += rewards_.CalculateSize(_repeated_rewards_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TaskRewardItems other) {
+      if (other == null) {
+        return;
+      }
+      rewards_.Add(other.rewards_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            rewards_.AddEntriesFrom(input, _repeated_rewards_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            rewards_.AddEntriesFrom(ref input, _repeated_rewards_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class Task_WaitList_req : pb::IMessage<Task_WaitList_req>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -136,7 +593,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[0]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -334,7 +791,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[1]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -560,7 +1017,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[2]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -758,7 +1215,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[3]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1048,7 +1505,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[4]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1286,7 +1743,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[5]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1610,7 +2067,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[6]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1848,7 +2305,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[7]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1908,7 +2365,7 @@ namespace com.cms.client.network.gpro {
     public const int ResultFieldNumber = 3;
     private int result_;
     /// <summary>
-    ///0:success 1:task not exist
+    ///0:success 1:task not exist 2:system error 3:condition error
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2123,7 +2580,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[8]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2145,6 +2602,7 @@ namespace com.cms.client.network.gpro {
     public Task_ObtainReward_ntf(Task_ObtainReward_ntf other) : this() {
       utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
+      reward_ = other.reward_ != null ? other.reward_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2178,6 +2636,18 @@ namespace com.cms.client.network.gpro {
       }
     }
 
+    /// <summary>Field number for the "reward" field.</summary>
+    public const int RewardFieldNumber = 3;
+    private global::com.cms.client.network.gpro.TaskRewardItems reward_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::com.cms.client.network.gpro.TaskRewardItems Reward {
+      get { return reward_; }
+      set {
+        reward_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2195,6 +2665,7 @@ namespace com.cms.client.network.gpro {
       }
       if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
+      if (!object.Equals(Reward, other.Reward)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2204,6 +2675,7 @@ namespace com.cms.client.network.gpro {
       int hash = 1;
       if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
+      if (reward_ != null) hash ^= Reward.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2230,6 +2702,10 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(16);
         output.WriteInt32(TaskIid);
       }
+      if (reward_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Reward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2248,6 +2724,10 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(16);
         output.WriteInt32(TaskIid);
       }
+      if (reward_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Reward);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2263,6 +2743,9 @@ namespace com.cms.client.network.gpro {
       }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
+      }
+      if (reward_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Reward);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2284,6 +2767,12 @@ namespace com.cms.client.network.gpro {
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
+      }
+      if (other.reward_ != null) {
+        if (reward_ == null) {
+          Reward = new global::com.cms.client.network.gpro.TaskRewardItems();
+        }
+        Reward.MergeFrom(other.Reward);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2309,6 +2798,13 @@ namespace com.cms.client.network.gpro {
           }
           case 16: {
             TaskIid = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            if (reward_ == null) {
+              Reward = new global::com.cms.client.network.gpro.TaskRewardItems();
+            }
+            input.ReadMessage(Reward);
             break;
           }
         }
@@ -2337,6 +2833,13 @@ namespace com.cms.client.network.gpro {
             TaskIid = input.ReadInt32();
             break;
           }
+          case 26: {
+            if (reward_ == null) {
+              Reward = new global::com.cms.client.network.gpro.TaskRewardItems();
+            }
+            input.ReadMessage(Reward);
+            break;
+          }
         }
       }
     }
@@ -2358,7 +2861,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[9]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2596,7 +3099,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[10]; }
+      get { return global::com.cms.client.network.gpro.TaskSystemReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

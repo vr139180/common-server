@@ -258,6 +258,12 @@ S_INT_32 UserTasksResolver::submit_task(S_INT_32 taskid)
 
 		data_cb_->notify_end_task(pGroup, tc);
 
+		TaskRewardMeta* rewardMeta = tc->get_rewards();
+		if (rewardMeta != 0 && rewardMeta->have_rewards())
+		{
+			data_cb_->notify_get_taskreward(tc, rewardMeta);
+		}
+
 		//推进节点
 		this->forward_taskgroup(pGroup);
 	}

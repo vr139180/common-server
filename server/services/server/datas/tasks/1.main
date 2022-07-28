@@ -1,4 +1,4 @@
-<main iid="1" sc="1" ec="2" boost="true" last_celliid="1" version="1.0">
+<main iid="1" sc="1" ec="3" boost="true" last_celliid="3" version="1.0">
 	<cell iid="1">
 		<tasks>
 			<task iid="1" />
@@ -9,6 +9,13 @@
 	<cell iid="2">
 		<tasks>
 			<task iid="2" />
+		</tasks>
+		<next default="3">
+		</next>
+	</cell>
+	<cell iid="3">
+		<tasks>
+			<task iid="3" />
 		</tasks>
 	</cell>
 </main>

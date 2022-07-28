@@ -36,9 +36,24 @@ allowgiveup: 是否允许放弃任务, 缺省 true
 	</task-data>
 	<!--
 	cpp 如果impl=cpp 则包含该节点
-	name: 任务系统实现该任务的 class名称。需要实现 ITaskCpp接口
+	name: 任务系统实现该任务的 class名称。需要实现 ITaskImplCpp接口
 	-->
-	<cpp name="xxxxx" />
+	<cpp name="xxxxx">
+		<get>
+			<!--
+			params 节点定义了用到的参数
+			-->
+			<params>
+				<!--
+				key 参数名
+				value 参数值
+				-->
+				<pm key="" value=""/>
+			</params>
+		</get>
+		<submit>
+		</submit>
+	</cpp>
 	<!--
 	imp=xml时包含的配置
 	-->
@@ -46,12 +61,14 @@ allowgiveup: 是否允许放弃任务, 缺省 true
 		<!--
 		get定义了，领取任务的条件
 		定义见 conditions.template
+		只包含xml-check节点
 		-->
 		<get>
 		</get>
 		<!--
 		submit定义了，提交任务的条件
 		定义见 conditions.template
+		只包含xml-check节点
 		-->
 		<submit>
 		</submit>
@@ -63,6 +80,9 @@ allowgiveup: 是否允许放弃任务, 缺省 true
 		<!--
 		get定义了，领取任务的条件
 		定义见 conditions.template
+		包含lua-check节点和lua-submit节点
+		lua脚本可以引用的对象 genv_ IGlobalEnv*, mydata_ IDataEnv*, cret_ TaskResultLua*
+		cret_.result属性返回调用结果 =0 表示成功 其他根据协议定义设置
 		-->
 		<get><![[
 		]]>
@@ -70,6 +90,7 @@ allowgiveup: 是否允许放弃任务, 缺省 true
 		<!--
 		submit定义了，提交任务的条件
 		定义见 conditions.template
+		只包含lua-check节点
 		-->
 		<submit>
 		<![[
@@ -80,5 +101,11 @@ allowgiveup: 是否允许放弃任务, 缺省 true
 	任务奖励配置
 	-->
 	<rewards>
+		<!--
+		type 参见协议定义 TASKREWARD_TYPE
+		item 对应type的物品编号
+		nums 奖励的数量
+		-->
+		<reward type="-1" item="1" nums="100" />
 	</rewards>
 </task>

@@ -17,9 +17,11 @@
   <ItemGroup>
     <ClCompile Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\ConditionsMeta.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskCppObjective.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskGroupMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskMeta.cpp" />
+    <ClCompile Include="..\source\libs\taskLib\meta\TaskRewardMeta.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlCondition.cpp" />
     <ClCompile Include="..\source\libs\taskLib\meta\TaskXmlObjective.cpp" />
     <ClCompile Include="..\source\libs\taskLib\service\ITaskImplCpp.cpp" />
@@ -32,9 +34,11 @@
   <ItemGroup>
     <ClInclude Include="..\source\libs\taskLib\cpptasks\MyTaskCppTemplate.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\ConditionsMeta.h" />
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskCppObjective.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupCellMeta.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskGroupMeta.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskMeta.h" />
+    <ClInclude Include="..\source\libs\taskLib\meta\TaskRewardMeta.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlCondition.h" />
     <ClInclude Include="..\source\libs\taskLib\meta\TaskXmlObjective.h" />
     <ClInclude Include="..\source\libs\taskLib\service\ITaskEnv.h" />

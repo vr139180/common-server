@@ -29,6 +29,7 @@ public:
 	PRO::TASK_STATE get_qstate() { return qstate_; }
 	bool is_cycle_task() { return b_cycle_task_; }
 	S_INT_32 get_cycle_num() { return cycle_num_; }
+	TaskRewardMeta* get_rewards() { return task_meta_->get_rewards(); }
 
 	bool is_task_cpp_valide() { return task_cpp_.get() != 0; }
 

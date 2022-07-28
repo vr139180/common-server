@@ -8,7 +8,7 @@ void TaskResultLua::bind_luacontext(lua_State* l)
 		.beginNamespace("tasks")
 		.beginClass <TaskResultLua>("TaskReultLua")
 		.addConstructor <void(*) (void)>()
-		.addFunction("result", (void (TaskResultLua::*)(S_INT_32))&TaskResultLua::set_result)
+		.addProperty("result", &TaskResultLua::get_result, &TaskResultLua::set_result)
 		.endClass()
 		.endNamespace();
 }

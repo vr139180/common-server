@@ -40,6 +40,22 @@ enum TASK_STATE {
   TASKSTATE_FINISH = 5;
 }
 
+//任务奖励类型
+enum TASKREWARD_TYPE{
+  TASKREWARDT_BAGITEM = 0;
+  TASKREWARDT_EXP = -1;
+}
+
+message TaskRewardItem{
+  TASKREWARD_TYPE type = 1;
+  int32 item_iid = 2;
+  int32 nums = 3;
+}
+
+message TaskRewardItems{
+  repeated TaskRewardItem rewards = 1;
+}
+
 message Task_WaitList_req {
   optional UserToken utoken = 1;
 }
@@ -90,6 +106,7 @@ message Task_SubmitTask_ack {
 message Task_ObtainReward_ntf {
   optional UserToken utoken = 1;
   int32 task_iid = 2;
+  TaskRewardItems reward = 3;
 }
 
 message Task_GiveupTask_req {

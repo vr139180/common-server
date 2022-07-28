@@ -1,0 +1,14 @@
+<task iid="3" impl="cpp" iscycle="false" cyclenum="1" allowgiveup="false">
+	<trigger events="31"/>
+	<cpp name="template">
+		<get>
+			<params>
+				<pm key="lv" val="0"/>
+			</params>
+		</get>
+		<submit>
+		</submit>
+	</cpp>
+	<rewards>
+	</rewards>
+</task>
