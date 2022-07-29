@@ -105,7 +105,7 @@ void EurekaSession::update(u64 tnow)
 		if (auth_timestamp_ + 1000 * 10 < tnow)
 		{
 #ifdef EUREKA_DEBUGINFO_ENABLE
-			logDebug(out_sys, "eureka session timeout......");
+			logDebug(out_runtime, "eureka session timeout......");
 #endif
 
 			state_ = SessionState_Closing;

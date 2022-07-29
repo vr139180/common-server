@@ -38,13 +38,13 @@ void GateServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 	{
 		PRO::Res_ProxyUserSlot_ack* ack = dynamic_cast<PRO::Res_ProxyUserSlot_ack*>(pro);
 
-		logDebug(out_net, "recv gate service userproxy slot response userid:%lld token:%s and route to res service", 
+		logDebug(out_runtime, "recv gate service userproxy slot response userid:%lld token:%s and route to res service", 
 			ack->user_iid(), ack->proxytoken().c_str());
 		svrApp.send_protocol_to_res(p_msg.release());
 	}
 	else if (proiid == PRO::ERK_PROTYPE::RES_SYNCGATESLOT_NTF)
 	{
-		logDebug(out_net, "recv gate service sync gate slot ntf, and route to res service");
+		logDebug(out_runtime, "recv gate service sync gate slot ntf, and route to res service");
 		svrApp.send_protocol_to_res(p_msg.release());
 	}
 	else
@@ -75,7 +75,7 @@ void GateServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void GateServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "GateService[%d] regist to me(HomeService)", get_iid());
+		logInfo( out_runtime, "GateService[%d] regist to me(HomeService)", get_iid());
 	else
-		logInfo( out_boot, "GateService[%d] disconnect from me(HomeService)", get_iid());
+		logInfo( out_runtime, "GateService[%d] disconnect from me(HomeService)", get_iid());
 }

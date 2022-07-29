@@ -71,7 +71,7 @@ void LoadUserInfoCmd::run_in_db_thread(sql::Connection* p_connection)
 	}
 	catch (sql::SQLException& err)
 	{
-		logError(out_sys, "database LoadUserInfoCmd -> call get_role_data produce error:%s", err.what());
+		logError(out_runtime, "database LoadUserInfoCmd -> call get_role_data produce error:%s", err.what());
 	}
 
 	release_dboperator(prep_stmt.get());

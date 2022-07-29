@@ -39,14 +39,14 @@ bool HomeServiceApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_HOME))
 	{
-		logFatal(out_boot, "HomeService load svr config file failed");
+		logFatal(out_runtime, "HomeService load svr config file failed");
 		return false;
 	}
 
 	HomeConfig* cf = load_homeconfig();
 	if (cf == 0)
 	{
-		logFatal(out_boot, "HomeService load config file failed");
+		logFatal(out_runtime, "HomeService load config file failed");
 		return false;
 	}
 
@@ -54,7 +54,7 @@ bool HomeServiceApp::load_config()
 
 	if (!TaskMetaHome::instance().load_taskmetas())
 	{
-		logFatal(out_boot, "HomeService load task system config file failed");
+		logFatal(out_runtime, "HomeService load task system config file failed");
 		return false;
 	}
 
@@ -133,13 +133,13 @@ bool HomeServiceApp::init_network()
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
 	{
-		logFatal( out_boot, ("HomeService init network failed"));
+		logFatal( out_runtime, ("HomeService init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_boot, ("HomeService init network failed"));
+		logFatal( out_runtime, ("HomeService init network failed"));
 		return false;
 	}
 
@@ -154,11 +154,11 @@ bool HomeServiceApp::init_finish()
 
     if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
     {
-		logInfo( out_boot, ("HomeService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo( out_runtime, ("HomeService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
     }
     else
     {
-		logFatal( out_boot, ("HomeService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal( out_runtime, ("HomeService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
     }
 
@@ -284,14 +284,14 @@ void HomeServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_boot, "me(HomeService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(HomeService) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_net, "me(HomeService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(HomeService) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -316,7 +316,7 @@ void HomeServiceApp::on_connection_timeout(HomeSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_boot, "HomeService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "HomeService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void HomeServiceApp::on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session)

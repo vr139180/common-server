@@ -137,7 +137,7 @@ void RouterServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
 
 void RouterServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_sys, "router service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "router service[%lld] registed to eureka, success............", sid);
 	this->is_ready_ = true;
 
 	//sid作为custom channel id的种子
@@ -150,6 +150,6 @@ void RouterServiceApp::mth_eureka_losted()
 {
 	this->is_ready_ = false;
 
-	logError(out_sys, "router service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
+	logError(out_runtime, "router service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }

@@ -37,7 +37,7 @@ TaskXmlCondition* TaskXmlCondition::build_taskcondition(tinyxml2::XMLElement* e,
 		txc->node_relation_ = CondRelationType::CondRelationType_Not;
 	else
 	{
-		logError(out_sys, "load condition failed....");
+		logError(out_runtime, "load condition failed....");
 		return 0;
 	}
 
@@ -47,7 +47,7 @@ TaskXmlCondition* TaskXmlCondition::build_taskcondition(tinyxml2::XMLElement* e,
 		TaskXmlCondition* pchild = TaskXmlCondition::build_taskcondition(cc, txc);
 		if (pchild == 0)
 		{
-			logError(out_sys, "load condition failed....");
+			logError(out_runtime, "load condition failed....");
 			return 0;
 		}
 
@@ -59,7 +59,7 @@ TaskXmlCondition* TaskXmlCondition::build_taskcondition(tinyxml2::XMLElement* e,
 		XmlObjectvie* xobj = XmlObjectvie::build_objective(cc);
 		if (xobj == 0)
 		{
-			logError(out_sys, "load xmlobject failed....");
+			logError(out_runtime, "load xmlobject failed....");
 			return 0;
 		}
 		
@@ -68,7 +68,7 @@ TaskXmlCondition* TaskXmlCondition::build_taskcondition(tinyxml2::XMLElement* e,
 
 	if (txc->childen_conds_.size() > 0 && txc->objectives_.size() > 0)
 	{
-		logError(out_sys, "cond child node > 0 and objective node > 0, load condition failed....");
+		logError(out_runtime, "cond child node > 0 and objective node > 0, load condition failed....");
 		return 0;
 	}
 

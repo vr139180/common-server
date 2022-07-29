@@ -72,7 +72,7 @@ sql::Connection* DBSCtrl::get_new_connection()
 	}
 	catch (const sql::SQLException& err)
 	{
-		logError(out_boot, "mysql database error:%s", err.what());
+		logError(out_runtime, "mysql database error:%s", err.what());
 		return 0;
 	}
 

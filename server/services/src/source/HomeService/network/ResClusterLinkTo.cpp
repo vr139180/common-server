@@ -37,7 +37,7 @@ void ResClusterLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo( out_boot, "me(HomeService) try to connect to ResService(iid:%ld ip:%s port:%d)", 
+	logInfo( out_runtime, "me(HomeService) try to connect to ResService(iid:%ld ip:%s port:%d)", 
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -47,7 +47,7 @@ void ResClusterLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_net, "------me(GateService) cant connect to Res Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GateService) cant connect to Res Service(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -59,7 +59,7 @@ void ResClusterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_net, "++++++me(GateService) connected to Res Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to Res Service(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -112,7 +112,7 @@ void ResClusterLinkTo::on_connected( bool success)
     }
     else
     {
-        logError( out_boot, "me(HomeService) can't connect to ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+        logError( out_runtime, "me(HomeService) can't connect to ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		svrApp.on_disconnected_with_resservice(this);
     }
 }
@@ -121,14 +121,14 @@ void ResClusterLinkTo::on_authed( bool success)
 {
     if( success)
     {
-        logInfo( out_boot, "me(HomeService) connected to ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+        logInfo( out_runtime, "me(HomeService) connected to ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
         this->set_authed( true);
 
 		svrApp.on_resservice_regist_result(this);
 	}
     else
     {
-        logInfo( out_boot, "me(HomeService) connect to ResService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+        logInfo( out_runtime, "me(HomeService) connect to ResService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 
 }
@@ -138,7 +138,7 @@ void ResClusterLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-        logInfo( out_boot, "me(HomeService) disconnect from ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+        logInfo( out_runtime, "me(HomeService) disconnect from ResService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
 	svrApp.on_disconnected_with_resservice(this);

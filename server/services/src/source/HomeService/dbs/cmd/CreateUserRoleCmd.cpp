@@ -73,7 +73,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 		release_dboperator(prep_stmt.get());
 		p_connection->rollback();
 
-		logError(out_sys, "database CreateUserRoleCmd -> call insert role_baseinfo error:%s", err.what());
+		logError(out_runtime, "database CreateUserRoleCmd -> call insert role_baseinfo error:%s", err.what());
 	}
 
 	p_connection->setAutoCommit(bauto);

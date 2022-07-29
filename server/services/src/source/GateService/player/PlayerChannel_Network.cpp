@@ -43,7 +43,7 @@ void PlayerChannel::on_cth_freeslot_req(BasicProtocol* msg, bool& autorelease, i
 
 	svrApp.send_to_homeservice(ack);
 
-	logDebug(out_net, "recv home service userproxy slot request userid:%lld slot:%d utoken:%lld to home service", 
+	logDebug(out_runtime, "recv home service userproxy slot request userid:%lld slot:%d utoken:%lld to home service", 
 		req->user_iid(), pPlayer->get_userslot(), pPlayer->get_slottoken());
 }
 
@@ -98,7 +98,7 @@ void PlayerChannel::on_cth_userproxylogin_req(BasicProtocol* message, bool& auto
 
 	svrApp.send_to_homeservice(nreq);
 
-	logDebug(out_net, "user:%lld login success", req->user_iid());
+	logDebug(out_runtime, "user:%lld login success", req->user_iid());
 }
 
 void PlayerChannel::on_pc_userlogout_ntf(BasicProtocol* pro, bool& autorelease)

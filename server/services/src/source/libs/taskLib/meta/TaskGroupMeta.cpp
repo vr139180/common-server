@@ -66,7 +66,7 @@ bool TaskGroupMeta::load_from_xml( tinyxml2::XMLElement* e)
 
 	if (start_cell_ == 0 || end_cell_ == 0)
 	{
-		logError(out_boot, "task system- load task meta:%d failed, must set startcell and endcell", group_iid_);
+		logError(out_runtime, "task system- load task meta:%d failed, must set startcell and endcell", group_iid_);
 		return false;
 	}
 

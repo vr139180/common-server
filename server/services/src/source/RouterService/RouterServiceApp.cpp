@@ -33,14 +33,14 @@ bool RouterServiceApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_ROUTER))
 	{
-		logFatal(out_boot, "RouterService load svr config file failed");
+		logFatal(out_runtime, "RouterService load svr config file failed");
 		return false;
 	}
 
 	RouterConfig* cf = load_routerconfig();
 	if (cf == 0)
 	{
-		logFatal(out_boot, "RouterService load config file failed");
+		logFatal(out_runtime, "RouterService load config file failed");
 		return false;
 	}
 
@@ -117,13 +117,13 @@ bool RouterServiceApp::init_network()
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
 	{
-		logFatal( out_boot, ("RouterService init network failed"));
+		logFatal( out_runtime, ("RouterService init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_boot, ("RouterService init network failed"));
+		logFatal( out_runtime, ("RouterService init network failed"));
 		return false;
 	}
 
@@ -138,11 +138,11 @@ bool RouterServiceApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_boot, ("RouterService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("RouterService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_boot, ("RouterService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("RouterService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
@@ -245,14 +245,14 @@ void RouterServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr sessio
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_boot, "me(RouterService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(RouterService) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_net, "me(RouterService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(RouterService) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -275,7 +275,7 @@ void RouterServiceApp::on_connection_timeout(RouterSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_boot, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void RouterServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)

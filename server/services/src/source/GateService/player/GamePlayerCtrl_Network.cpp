@@ -16,7 +16,7 @@ void GamePlayerCtrl::on_res_proxyuserslot_req(BasicProtocol* message, bool& auto
 
 	Res_ProxyUserSlot_req* req = dynamic_cast<Res_ProxyUserSlot_req*>(message);
 
-	logDebug(out_net, "recv home service userproxy slot request token:%s", req->proxytoken().c_str());
+	logDebug(out_runtime, "recv home service userproxy slot request token:%s", req->proxytoken().c_str());
 
 	if (req->gateiid() != EurekaClusterClient::instance().get_myiid())
 	{

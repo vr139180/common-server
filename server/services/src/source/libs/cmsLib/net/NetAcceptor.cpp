@@ -104,7 +104,7 @@ void NetAcceptor::try_accept()
 
 void NetAcceptor::handle_refuse( const boost::system::error_code& error)
 {
-	logError(out_net, "net acceptor, refuse client connect err:%d....", error.value());
+	logError(out_runtime, "net acceptor, refuse client connect err:%d....", error.value());
 
 	boost::system::error_code err;
 	refuse_socket_->close( err);

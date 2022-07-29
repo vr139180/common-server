@@ -15,14 +15,14 @@ void GateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 {
 	if (type == NETSERVICE_TYPE::ERK_SERVICE_ROUTER)
 	{
-		//logDebug(out_net, "eureka subscrite service change, type:%d, new:%d, del:%d", type, nodes.size(), deliids.size());
+		//logDebug(out_runtime, "eureka subscrite service change, type:%d, new:%d, del:%d", type, nodes.size(), deliids.size());
 		router_link_mth_.sync_eureka_services(nodes, deliids);
 	}
 }
 
 void GateServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_sys, "gate service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "gate service[%lld] registed to eureka, success............", sid);
 
 	//第一次同步成功之后，发起home绑定请求
 	if (bind_home_step == GateBindHomeStep::GateBindHome_Waiting)
@@ -33,7 +33,7 @@ void GateServiceApp::mth_service_registed(S_INT_64 sid)
 
 void GateServiceApp::mth_eureka_losted()
 {
-	logError(out_sys, "gate service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
+	logError(out_runtime, "gate service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }
 

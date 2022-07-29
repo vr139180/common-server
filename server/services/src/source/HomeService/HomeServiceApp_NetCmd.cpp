@@ -19,7 +19,7 @@ void HomeServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 
 void HomeServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_sys, "home service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "home service[%lld] registed to eureka, success............", sid);
 	this->is_ready_ = true;
 }
 
@@ -27,7 +27,7 @@ void HomeServiceApp::mth_eureka_losted()
 {
 	this->is_ready_ = false;
 
-	logError(out_sys, "home service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
+	logError(out_runtime, "home service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }
 
@@ -46,7 +46,7 @@ void HomeServiceApp::on_mth_userproxyslot_req(BasicProtocol* message, bool& auto
 {
 	Res_ProxyUserSlot_req* req = dynamic_cast<Res_ProxyUserSlot_req*>(message);
 
-	logDebug(out_net, "recv res service userproxy slot request userid:%lld token:%s", req->user_iid(), req->proxytoken().c_str());
+	logDebug(out_runtime, "recv res service userproxy slot request userid:%lld token:%s", req->user_iid(), req->proxytoken().c_str());
 
 	EurekaClusterClient& ec = EurekaClusterClient::instance();
 	if (req->homeiid() != ec.get_myiid())
@@ -65,7 +65,7 @@ void HomeServiceApp::on_mth_userproxyslot_req(BasicProtocol* message, bool& auto
 		return;
 	}
 
-	logDebug(out_net, "recv res service userproxy slot request userid:%lld token:%s and route to gate service", 
+	logDebug(out_runtime, "recv res service userproxy slot request userid:%lld token:%s and route to gate service", 
 		req->user_iid(), req->proxytoken().c_str());
 
 	autorelease = false;

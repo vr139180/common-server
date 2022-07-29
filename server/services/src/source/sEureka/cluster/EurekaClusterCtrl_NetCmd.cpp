@@ -30,7 +30,7 @@ void EurekaClusterCtrl::on_eurekabind_req(BasicProtocol* pro, bool& autorelease,
 		//Ç¿ÖÆ¹Ò¶Ï
 		pes->force_close();
 
-		logError(out_sys, "one eureka:%lld bind request failed. already binded.", req->iid());
+		logError(out_runtime, "one eureka:%lld bind request failed. already binded.", req->iid());
 		return;
 	}
 	

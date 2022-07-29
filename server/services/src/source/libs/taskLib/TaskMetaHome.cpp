@@ -40,7 +40,7 @@ bool TaskMetaHome::load_taskmetas()
 			TaskGroupMeta* pmeta = TaskGroupMeta::load_taskgroup(f.c_str());
 			if (pmeta == 0)
 			{
-				logError(out_sys, "task system- load main task group:%s failed", f.c_str());
+				logError(out_runtime, "task system- load main task group:%s failed", f.c_str());
 				continue;
 			}
 
@@ -62,7 +62,7 @@ bool TaskMetaHome::load_taskmetas()
 			TaskGroupMeta* pmeta = TaskGroupMeta::load_taskgroup(f.c_str());
 			if (pmeta == 0)
 			{
-				logError(out_sys, "task system- load branch task group:%s failed", f.c_str());
+				logError(out_runtime, "task system- load branch task group:%s failed", f.c_str());
 				continue;
 			}
 

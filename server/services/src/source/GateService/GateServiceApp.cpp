@@ -37,14 +37,14 @@ bool GateServiceApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_GATE))
 	{
-		logFatal(out_boot, "GateService load svr config file failed");
+		logFatal(out_runtime, "GateService load svr config file failed");
 		return false;
 	}
 
 	GateConfig* cf = load_gateconfig();
 	if (cf == 0)
 	{
-		logFatal(out_boot, "GateService load config file failed");
+		logFatal(out_runtime, "GateService load config file failed");
 		return false;
 	}
 
@@ -106,13 +106,13 @@ bool GateServiceApp::init_network()
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
 	{
-		logFatal( out_boot, ("GateService init network failed"));
+		logFatal( out_runtime, ("GateService init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_boot, ("GateService init network failed"));
+		logFatal( out_runtime, ("GateService init network failed"));
 		return false;
 	}
 
@@ -128,11 +128,11 @@ bool GateServiceApp::init_finish()
 	int maxsvr = cf.get_globaloption().svrnum_min;
     if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), maxsvr))
     {
-		logInfo( out_boot, ("GateService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo( out_runtime, ("GateService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
     }
     else
     {
-		logFatal( out_boot, ("GateService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal( out_runtime, ("GateService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
     }
 
@@ -231,7 +231,7 @@ NetAcceptorEvent::NetSessionPtr GateServiceApp::ask_free_netsession()
 	}
 	*/
 
-	//logDebug(out_net, "gate service listen a client connection request.....");
+	//logDebug(out_runtime, "gate service listen a client connection request.....");
 
 	ThreadLockWrapper guard(lock_);
 	return session_from_.ask_free_netsession_mth();
@@ -251,14 +251,14 @@ void GateServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_boot, "me(GateService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(GateService) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_net, "me(GateService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(GateService) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -281,7 +281,7 @@ void GateServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& 
 
 		bind_home_step = GateBindHomeStep::GateBindHome_AskBind;
 
-		logDebug(out_net, "send gate bind home request.........");
+		logDebug(out_runtime, "send gate bind home request.........");
 	}
 
 	//connect to router
@@ -305,7 +305,7 @@ void GateServiceApp::on_connection_timeout(GateSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_boot, "GateService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "GateService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void GateServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)

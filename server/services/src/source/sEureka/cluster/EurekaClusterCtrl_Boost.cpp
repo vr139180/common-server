@@ -31,7 +31,7 @@ bool EurekaClusterCtrl::init_ctrl()
 	//***eureka节点永远只在启动的时候设置一次连接请求
 	update_redis_eurekas();
 
-	logInfo(out_sys, "<<<<<<<<<<<< eureka node:%lld online >>>>>>>>>>>>", myself_.iid);
+	logInfo(out_runtime, "<<<<<<<<<<<< eureka node:%lld online >>>>>>>>>>>>", myself_.iid);
 
 	//系统初始化时，可能存在上次遗留的同机器的服务，需要判断ip+port是否是本机
 	for (boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator iter = redis_nodes.begin(); iter != redis_nodes.end(); ++iter)

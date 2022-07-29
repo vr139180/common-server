@@ -41,7 +41,7 @@ void HomeServiceLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_boot, "me(GateService) try to connect to HomeService(iid:%ld ip:%s port:%d bindtoken:%lld)",
+	logInfo(out_runtime, "me(GateService) try to connect to HomeService(iid:%ld ip:%s port:%d bindtoken:%lld)",
 		node_->iid, node_->ip.c_str(), node_->port, bind_token_);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -52,7 +52,7 @@ void HomeServiceLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_net, "------me(GateService) cant connect to Home Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GateService) cant connect to Home Service(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -64,7 +64,7 @@ void HomeServiceLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_net, "++++++me(GateService) connected to Home Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to Home Service(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -123,11 +123,11 @@ void HomeServiceLinkTo::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtoc
 			GamePlayerCtrl::instance().route_msg_to_player(p_msg.release(), slot);
 			if (proiid == PRO::USER_PROTYPE::USER_ROLELIST_ACK)
 			{
-				logDebug(out_service, "gate recv rolelist_ack message");
+				logDebug(out_runtime, "gate recv rolelist_ack message");
 			}
 			else
 			{
-				logDebug(out_service, "gate recv message:%d route to user", proiid);
+				logDebug(out_runtime, "gate recv message:%d route to user", proiid);
 			}
 		}
 	}
@@ -149,7 +149,7 @@ void HomeServiceLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_boot, "me(GateService) can't connect to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(GateService) can't connect to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		svrApp.on_disconnected_with_homeservice(this);
     }
 }
@@ -158,7 +158,7 @@ void HomeServiceLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_boot, "me(GateService) connected to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connected to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		this->set_authed( true);
 
 		//sync your regist service
@@ -166,7 +166,7 @@ void HomeServiceLinkTo::on_authed( bool success)
 	}
     else
     {
-		logInfo(out_boot, "me(GateService) connect to HomeService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connect to HomeService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 }
 
@@ -175,7 +175,7 @@ void HomeServiceLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_boot, "me(GateService) disconnect from HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) disconnect from HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
     this->force_close();

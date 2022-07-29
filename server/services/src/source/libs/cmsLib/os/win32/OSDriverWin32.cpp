@@ -106,7 +106,7 @@ const char*  OSDriverWin32::ProcessName()
 
     if ( GetModuleFileName( NULL, processName, MAX_PATH ) == 0 )
     {
-        logError( out_sys, "Can not get current process name, error no %u\n", GetLastError() );
+        logError(out_runtime, "Can not get current process name, error no %u\n", GetLastError() );
         processName[0] = '\0';
     }
 

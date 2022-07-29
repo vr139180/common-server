@@ -35,7 +35,7 @@ void RedisClient::init_redis(std::string ip, int port, std::string pwd, int db,
 		redis_->ping();
 	}
 	catch (...) {
-		logError(out_sys, "######## redis connected failed.......");
+		logError(out_runtime, "######## redis connected failed.......");
 	}
 }
 
@@ -308,7 +308,7 @@ bool RedisClient::evalStrs(const char* sc, std::initializer_list<StringView> key
 		return true;
 	}
 	catch (const Error &err) {
-		logError(out_sys, "redis eval error:%s", err.what());
+		logError(out_runtime, "redis eval error:%s", err.what());
 		return false;
 	}
 }
@@ -346,7 +346,7 @@ bool RedisClient::get_hashobject(const char* hkey, const char*field, google::pro
 	}
 	catch (...)
 	{
-		logError(out_sys, "redis get hashobject failed. key:%s field:%s", hkey, field);
+		logError(out_runtime, "redis get hashobject failed. key:%s field:%s", hkey, field);
 		return false;
 	}
 }

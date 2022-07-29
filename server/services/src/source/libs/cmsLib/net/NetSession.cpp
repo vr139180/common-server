@@ -356,12 +356,12 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 		if (proiid == 0)
 		{
 			//protocal not found
-			logError(out_net, "NetSession::fill_writebuffer_nomutex pro_factory_->proto_to_iid failed, protocol not found or too long");
+			logError(out_runtime, "NetSession::fill_writebuffer_nomutex pro_factory_->proto_to_iid failed, protocol not found or too long");
 			break;
 		}
 
 		if (len2 > (NET_SINGLE_PACKAGE_SIZE_MAX - sizeof(S_UINT_32))) {
-			logError(out_net, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) failed, maxsize=%d prosize=%d", len, len2);
+			logError(out_runtime, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) failed, maxsize=%d prosize=%d", len, len2);
 		}
 
 		if (len < len2)
@@ -386,7 +386,7 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 		}
 		catch (...)
 		{
-			logError( out_net, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) exception, maxsize=%d prosize=%d", 
+			logError(out_runtime, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) exception, maxsize=%d prosize=%d",
 				len, len2);
 
 			{

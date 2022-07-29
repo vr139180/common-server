@@ -37,13 +37,13 @@ void EurekaClusterCtrl::update_redis_eurekas()
 	if (missself) {
 		//程序退出
 		//WARNING
-		logWarn(out_sys, "!!!!!!!!!maintnce eureka node, self%lld(eureka) be removed from redis. will quit service....", myself_.iid);
+		logWarn(out_runtime, "!!!!!!!!!maintnce eureka node, self%lld(eureka) be removed from redis. will quit service....", myself_.iid);
 		svrApp.quit_app();
 		return;
 	}
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-	logDebug(out_sys, "updata redis eureka nodes size:%d", redis_nodes.size());
+	logDebug(out_runtime, "updata redis eureka nodes size:%d", redis_nodes.size());
 #endif
 
 }
@@ -68,7 +68,7 @@ void EurekaClusterCtrl::maintnce_eurekanode_allcheck(S_TIMESTAMP tnow)
 		redis->del_hashmember(EUREKA_CLUSTER_ALLS, skey.c_str());
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logWarn(out_sys, "sEureka[%ld] maintnce eurekanode check, find one Eureka node[%s] invalid. so remove all informations from redis.",
+		logWarn(out_runtime, "sEureka[%ld] maintnce eurekanode check, find one Eureka node[%s] invalid. so remove all informations from redis.",
 			myself_.iid, skey.c_str());
 #endif
 	}
@@ -99,7 +99,7 @@ void EurekaClusterCtrl::maintnce_sync_alleureka()
 	{
 		IEurekaNodeLink* pnode = (*iter);
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logInfo(out_sys, "maintnce check find eureka service%lld=%lld need to be removed...", pnode->get_iid(), myself_.iid);
+		logInfo(out_runtime, "maintnce check find eureka service%lld=%lld need to be removed...", pnode->get_iid(), myself_.iid);
 #endif
 
 		//强制关闭连接

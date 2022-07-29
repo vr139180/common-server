@@ -29,8 +29,8 @@ void ServerAppWrapper::run()
 	signal( SIGBREAK, ServerAppWrapper::signal_handler);
 #endif
 
-	logInfo( out_boot, "System OS: %s\n", OSSystem::mOSType.c_str());
-	logInfo( out_boot, "Process Id: %d\n", OSSystem::mOS->GetProcessId());
+	logInfo( out_runtime, "System OS: %s\n", OSSystem::mOSType.c_str());
+	logInfo( out_runtime, "Process Id: %d\n", OSSystem::mOS->GetProcessId());
 
 	OSSystem::mOS->UpdateNowTick();
 

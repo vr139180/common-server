@@ -61,7 +61,7 @@ void GateSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pr
 void GateSession::user_login(BasicProtocol* msg)
 {
 	PRO::User_ProxyLogin_req* req = dynamic_cast<PRO::User_ProxyLogin_req*>(msg);
-	logDebug(out_net, "user login request slot:%d utoken:%lld", req->slot(),req->proxytoken());
+	logDebug(out_runtime, "user login request slot:%d utoken:%lld", req->slot(),req->proxytoken());
 
 	if (req->slot() < 0 || req->slot() >= GATEHOME_GROUP_NUM)
 	{

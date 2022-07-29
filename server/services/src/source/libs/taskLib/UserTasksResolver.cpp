@@ -58,14 +58,14 @@ void UserTasksResolver::init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DB
 		TaskGroupMeta* pGroup = TaskMetaHome::instance().get_taskgroup_by_iid( tg.task_group());
 		if (pGroup == 0)
 		{
-			logError(out_sys, "task-system role:%lld task group:%d not finded", tg.role_iid(), tg.task_group());
+			logError(out_runtime, "task-system role:%lld task group:%d not finded", tg.role_iid(), tg.task_group());
 			continue;
 		}
 
 		TaskGroupCellRT *rt = TaskGroupCellRT::build_taskgroup_rt(tg, pGroup);
 		if (rt == 0)
 		{
-			logError(out_sys, "task-system role:%lld task group:%d build failed", tg.role_iid(), tg.task_group());
+			logError(out_runtime, "task-system role:%lld task group:%d build failed", tg.role_iid(), tg.task_group());
 			continue;
 		}
 
@@ -79,14 +79,14 @@ void UserTasksResolver::init_taskresolver(PRO::DBUserTaskGroups& tgroup, PRO::DB
 		TaskGroupCellRT *rt = get_taskgroup_byiid(ti.task_group());
 		if (rt == 0)
 		{
-			logError(out_sys, "task-system role:%lld task item:%lid build failed", ti.role_iid(), ti.iid());
+			logError(out_runtime, "task-system role:%lld task item:%lid build failed", ti.role_iid(), ti.iid());
 			continue;
 		}
 
 		TaskCellRT* tc = rt->init_processing_task(ti);
 		if (tc == 0)
 		{
-			logError(out_sys, "task-system role:%lld task item:%lid build failed", ti.role_iid(), ti.iid());
+			logError(out_runtime, "task-system role:%lld task item:%lid build failed", ti.role_iid(), ti.iid());
 			continue;
 		}
 
@@ -153,7 +153,7 @@ void UserTasksResolver::trigger_new_taskgroup(TaskGroupMeta* pGroup)
 		TaskGroupMeta* pGroup = TaskMetaHome::instance().get_taskgroup_by_iid(gs[ii]);
 		if (pGroup == 0)
 		{
-			logError(out_sys, "task-system task group:%d not finded", gs[ii]);
+			logError(out_runtime, "task-system task group:%d not finded", gs[ii]);
 			continue;
 		}
 
@@ -193,7 +193,7 @@ void UserTasksResolver::forward_taskgroup(TaskGroupCellRT* rt)
 		TaskGroupMeta* pGroup = TaskMetaHome::instance().get_taskgroup_by_iid(gs[ii]);
 		if (pGroup == 0)
 		{
-			logError(out_sys, "task-system task group:%d not finded", gs[ii]);
+			logError(out_runtime, "task-system task group:%d not finded", gs[ii]);
 			continue;
 		}
 

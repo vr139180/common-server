@@ -45,7 +45,7 @@ void GateServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void GateServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "GateService[%d] regist to me(RouterSession)", get_iid());
+		logInfo( out_runtime, "GateService[%d] regist to me(RouterSession)", get_iid());
 	else
-		logInfo( out_boot, "GateService[%d] disconnect from me(RouterSession)", get_iid());
+		logInfo( out_runtime, "GateService[%d] disconnect from me(RouterSession)", get_iid());
 }

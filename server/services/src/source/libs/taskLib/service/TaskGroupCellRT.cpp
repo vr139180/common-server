@@ -109,7 +109,7 @@ void TaskGroupCellRT::init_wait_tasks(std::list<TaskCellRT*>& tcs)
 		TaskMetaBase* pMeta = group_cell_meta_->get_task_byiid(iter->first);
 		if (pMeta == 0)
 		{
-			logError(out_sys, "task system - ");
+			logError(out_runtime, "task system - ");
 			continue;
 		}
 

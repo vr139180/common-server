@@ -27,7 +27,7 @@ bool OSSystem::init()
 {
 	if( mOS)
 	{
-		logError( out_sys, "%s : Init failed\n", EW_FUNC );
+		logError(out_runtime, "%s : Init failed\n", EW_FUNC );
 		return false;
 	}
 
@@ -43,7 +43,7 @@ bool OSSystem::init()
 
 	if( !mOS)
 	{
-		logError( out_sys, "%s : Alloc OSDriver failed\n", EW_FUNC );
+		logError(out_runtime, "%s : Alloc OSDriver failed\n", EW_FUNC );
 		return false;
 	}
 

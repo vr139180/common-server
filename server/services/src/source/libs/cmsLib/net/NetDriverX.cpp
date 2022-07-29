@@ -74,6 +74,6 @@ void NetDriverX::start_netthreads()
 		boost::shared_ptr<boost::thread> thread( 
 			new boost::thread( boost::bind( &boost::asio::io_service::run, io_services_[i])));
 		threads_.push_back(thread);
-		//logDebug(out_sys, "netdriver- netthread id:0x%x", thread->get_id());
+		//logDebug(out_runtime, "netdriver- netthread id:0x%x", thread->get_id());
 	}
 }

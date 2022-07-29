@@ -31,14 +31,14 @@ bool sEurekaApp::load_config()
 {
 	if( !ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_EUREKA))
     {
-		logFatal( out_boot, "Eureka load svr config file failed");
+		logFatal(out_runtime, "Eureka load svr config file failed");
         return false;
     }
 
 	EurekaConfig* cf = ConfigHelper::instance().load_eureka_config();
     if( cf == 0)
     {
-		logFatal( out_boot, "Eureka load config file failed");
+		logFatal(out_runtime, "Eureka load config file failed");
         return false;
     }
 	this->conf_.reset(cf);
@@ -83,13 +83,13 @@ bool sEurekaApp::init_network()
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
 	{
-		logFatal( out_boot, ("sEureka init network failed"));
+		logFatal(out_runtime, ("sEureka init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_boot, ("sEureka init network failed"));
+		logFatal(out_runtime, ("sEureka init network failed"));
 		return false;
 	}
 
@@ -118,11 +118,11 @@ bool sEurekaApp::init_finish()
 
     if( acceptor_->begin_listen( cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
     {
-		logInfo( out_boot, ("<<<<<<<<<<<<sEureka listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<sEureka listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
     }
     else
     {
-		logFatal( out_boot, ("<<<<<<<<<<<<sEureka listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<sEureka listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
     }
 
@@ -276,14 +276,14 @@ void sEurekaApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, boo
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_boot, "me(sEureka) listen a connected request, but refused by system");
+		logError(out_runtime, "me(sEureka) listen a connected request, but refused by system");
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logInfo(out_net, "me(sEureka) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(sEureka) listen a connected request, and create a connection successfully");
 #endif
 	}
 }
@@ -296,7 +296,7 @@ void sEurekaApp::on_connection_timeout(EurekaSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_net, "<<<<<< connection auth timeout, system cut connection by self");
+	logError(out_runtime, "<<<<<< connection auth timeout, system cut connection by self");
 }
 
 void sEurekaApp::init_eureka_timer(u64 tnow, int interval, u64 iid, bool& finish)

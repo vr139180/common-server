@@ -301,10 +301,10 @@ void ServiceRegisterCtrl::on_mth_gatebindhome_req(BasicProtocol* pro, bool& auto
 	Svr_GateBindHome_req* req = dynamic_cast<Svr_GateBindHome_req*>(pro);
 	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->gateiid());
 
-	logDebug(out_net, "recevie gate bind home request....");
+	logDebug(out_runtime, "recevie gate bind home request....");
 
 	if (plink == 0 || plink->get_token() != req->gatetoken()) {
-		logWarn(out_service, "gate service[%ld:%ld] not exist", req->gateiid(), req->gatetoken());
+		logWarn(out_runtime, "gate service[%ld:%ld] not exist", req->gateiid(), req->gatetoken());
 		return;
 	}
 

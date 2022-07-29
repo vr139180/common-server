@@ -41,7 +41,7 @@ void LobbyService::on_lb_ghuserinit_req(BasicProtocol* pro, bool& autorelease)
 
 	puser->init_user(ut.giduid(), ut.slottoken());
 
-	logDebug(out_net, "recv user:%lld init request", puser->get_user_iid());
+	logDebug(out_runtime, "recv user:%lld init request", puser->get_user_iid());
 }
 
 void LobbyService::on_lb_ghuserlogout_ntf(BasicProtocol* pro, bool& autorelease)
@@ -49,7 +49,7 @@ void LobbyService::on_lb_ghuserlogout_ntf(BasicProtocol* pro, bool& autorelease)
 	LobbyUser *puser = get_userofsame_from_msg(pro);
 	if (puser == 0) return;
 
-	logDebug(out_net, "recv user:%lld logount request", puser->get_user_iid());
+	logDebug(out_runtime, "recv user:%lld logount request", puser->get_user_iid());
 	puser->rest_user();
 }
 

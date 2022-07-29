@@ -82,7 +82,7 @@ bool TaskCellRT::can_get_task(ITaskContext* tc)
 		luactx->remove_4_context( "cret_");
 		tc->get_globalevn()->task_luacontext_end();
 
-		logDebug(out_script, "task system- call task lua script result:%d", luaret.get_result());
+		logDebug(out_runtime, "task system- call task lua script result:%d", luaret.get_result());
 
 		if (luaret.is_failed())
 			return false;

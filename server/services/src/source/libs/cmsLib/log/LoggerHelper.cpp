@@ -8,12 +8,17 @@
 
 #include <boost/log/trivial.hpp>
 #include <boost/log/sinks.hpp>
+#include <boost/log/core.hpp>
+#include <boost/log/attributes/scoped_attribute.hpp>
 #include <boost/log/utility/setup/from_stream.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 
 namespace logging = boost::log;
 namespace sinks = logging::sinks;
 namespace expr = logging::expressions;
+
+//model分类功能日志
+BOOST_LOG_ATTRIBUTE_KEYWORD( model_attr, "Model", std::string)
 
 #define LOGMSG_LENGTH	512
 
@@ -31,7 +36,6 @@ void LoggerHelper::InitLogger( const char* filename)
 	logging::init_from_stream(file);
 
 	logging::add_common_attributes();
-	
 }
 
 void LoggerHelper::Shutdown()
@@ -40,6 +44,8 @@ void LoggerHelper::Shutdown()
 
 void LoggerHelper::Debug( const char* model, const char* msg, ...)
 {
+	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
+
 	char buf[LOGMSG_LENGTH] ={0};
 
 	va_list vaList;
@@ -53,6 +59,8 @@ void LoggerHelper::Debug( const char* model, const char* msg, ...)
 
 void LoggerHelper::Info( const char* model, const char* msg,...)
 {
+	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
+
 	char buf[LOGMSG_LENGTH] ={0};
 
 	va_list vaList;
@@ -66,6 +74,8 @@ void LoggerHelper::Info( const char* model, const char* msg,...)
 
 void LoggerHelper::Warn( const char* model, const char* msg,...)
 {
+	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
+
 	char buf[LOGMSG_LENGTH] ={0,};
 
 	va_list vaList;
@@ -79,6 +89,8 @@ void LoggerHelper::Warn( const char* model, const char* msg,...)
 
 void LoggerHelper::Error( const char* model, const char* msg,...)
 {
+	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
+
 	char buf[LOGMSG_LENGTH] ={0,};
 
 	va_list vaList;
@@ -92,6 +104,8 @@ void LoggerHelper::Error( const char* model, const char* msg,...)
 
 void LoggerHelper::Fatal( const char* model, const char* msg,...)
 {
+	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
+
 	char buf[LOGMSG_LENGTH] ={0,};
 
 	va_list vaList;

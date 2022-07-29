@@ -142,13 +142,13 @@ XmlObjectvie* XmlObjectvie::build_objective(tinyxml2::XMLElement* e)
 		obj->oper_ = XmlObjectiveOperType::XmlObjectiveOperType_Between;
 	else
 	{
-		logError(out_sys, "load xml objective oper type:%s error", oper.c_str());
+		logError(out_runtime, "load xml objective oper type:%s error", oper.c_str());
 		return 0;
 	}
 
 	if (obj->oper_ == 0)
 	{
-		logError(out_sys, "load xml objective , not set operpm");
+		logError(out_runtime, "load xml objective , not set operpm");
 		return 0;
 	}
 
@@ -156,7 +156,7 @@ XmlObjectvie* XmlObjectvie::build_objective(tinyxml2::XMLElement* e)
 	{
 		if (obj->oper_params_->size() != 2)
 		{
-			logError(out_sys, "load xml objective operpm must 2 parameters");
+			logError(out_runtime, "load xml objective operpm must 2 parameters");
 			return 0;
 		}
 	}
@@ -164,7 +164,7 @@ XmlObjectvie* XmlObjectvie::build_objective(tinyxml2::XMLElement* e)
 	{
 		if (obj->oper_params_->size() != 1)
 		{
-			logError(out_sys, "load xml objective operpm must 1 parameters");
+			logError(out_runtime, "load xml objective operpm must 1 parameters");
 			return 0;
 		}
 	}

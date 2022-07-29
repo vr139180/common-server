@@ -80,12 +80,12 @@ void ServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if (bregist)
 	{
-		logInfo(out_net, ">>>>>> Service[iid:%ld type:%d ip:%s port:%d] regist to me(sEureka)",
+		logInfo(out_runtime, ">>>>>> Service[iid:%ld type:%d ip:%s port:%d] regist to me(sEureka)",
 			node_->iid, node_->type, node_->ip.c_str(), node_->port);
 	}
 	else 
 	{
-		logInfo(out_net, "<<<<<< Service[iid:%ld type:%d ip:%s port:%d] disconnect from me(sEureka)",
+		logInfo(out_runtime, "<<<<<< Service[iid:%ld type:%d ip:%s port:%d] disconnect from me(sEureka)",
 			node_->iid, node_->type, node_->ip.c_str(), node_->port);
 	}
 }

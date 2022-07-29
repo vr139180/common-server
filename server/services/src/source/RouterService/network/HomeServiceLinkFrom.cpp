@@ -27,7 +27,7 @@ void HomeServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void HomeServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "HomeService[%d] regist to me(RouterService)", sn_);
+		logInfo( out_runtime, "HomeService[%d] regist to me(RouterService)", sn_);
 	else
-		logInfo( out_boot, "HomeService[%d] disconnect from me(RouterService)", sn_);
+		logInfo( out_runtime, "HomeService[%d] disconnect from me(RouterService)", sn_);
 }

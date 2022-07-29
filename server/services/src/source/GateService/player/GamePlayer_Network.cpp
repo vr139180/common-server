@@ -99,12 +99,12 @@ void GamePlayer::registinfo_tolog(bool bregist)
 {
 	if (bregist)
 	{
-		logInfo(out_boot, "Player[%d] regist to me(GateService)", get_iid());
+		logInfo(out_runtime, "Player[%d] regist to me(GateService)", get_iid());
 
 		//set login flag
 		cur_state_ = PlayerState::PlayerState_Login;
 	}
 	else
-		logInfo(out_boot, "Player[%d] disconnect from me(GateService)", get_iid());
+		logInfo(out_runtime, "Player[%d] disconnect from me(GateService)", get_iid());
 }
 

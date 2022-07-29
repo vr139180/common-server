@@ -32,7 +32,7 @@ void GameServiceLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_boot, "me(GateService) try to connect to GameService(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(GateService) try to connect to GameService(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -42,7 +42,7 @@ void GameServiceLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_net, "------me(GateService) cant connect to Game Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GateService) cant connect to Game Service(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -54,7 +54,7 @@ void GameServiceLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_net, "++++++me(GateService) connected to Game Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to Game Service(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -89,7 +89,7 @@ void GameServiceLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_boot, "me(GateService) can't connect to GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(GateService) can't connect to GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		svrApp.on_disconnected_with_gameservice(this);
     }
 }
@@ -98,7 +98,7 @@ void GameServiceLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_boot, "me(GateService) connected to GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connected to GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
         this->set_authed( true);
 
 		//sync your regist service
@@ -106,7 +106,7 @@ void GameServiceLinkTo::on_authed( bool success)
     }
     else
     {
-		logInfo(out_boot, "me(GateService) connect to GameService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connect to GameService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 }
 
@@ -115,7 +115,7 @@ void GameServiceLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_boot, "me(GateService) disconnect from GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) disconnect from GameService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
 	svrApp.on_disconnected_with_gameservice(this);

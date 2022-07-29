@@ -35,7 +35,7 @@ void EurekaClusterLink::connect()
 	if (is_connected() || is_connecting())
 		return;
 
-	logDebug(out_net, "++++++++me try to connect to sEureka(iid:%ld ip:%s port:%d)++++++++",
+	logDebug(out_runtime, "++++++++me try to connect to sEureka(iid:%ld ip:%s port:%d)++++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -45,7 +45,7 @@ void EurekaClusterLink::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logDebug(out_net, "---------me cant connect to sEureka(iid:%ld ip:%s port:%d)---------",
+	logDebug(out_runtime, "---------me cant connect to sEureka(iid:%ld ip:%s port:%d)---------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -58,7 +58,7 @@ void EurekaClusterLink::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logDebug(out_net, "++++++++me connected to sEureka(iid:%ld ip:%s port:%d)++++++++",
+	logDebug(out_runtime, "++++++++me connected to sEureka(iid:%ld ip:%s port:%d)++++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -156,12 +156,12 @@ void EurekaClusterLink::on_disconnected()
 	//need notify server, connection error
 	if (this->is_authed())
 	{
-		logInfo(out_net, "me(auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
+		logInfo(out_runtime, "me(auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
 			node_->iid, node_->ip.c_str(), node_->port);
 	}
 	else
 	{
-		logInfo(out_net, "me(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
+		logInfo(out_runtime, "me(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
 			node_->iid, node_->ip.c_str(), node_->port);
 	}
 
@@ -175,7 +175,7 @@ void EurekaClusterLink::on_regist_result(BasicProtocol* message, bool& autorelea
 
 	if( success)
 	{
-		logInfo(out_net, "me regist to sEureka[iid:%ld ip:%s port:%d] success",
+		logInfo(out_runtime, "me regist to sEureka[iid:%ld ip:%s port:%d] success",
 			node_->iid, node_->ip.c_str(), node_->port);
 
 		this->set_authed(true);
@@ -191,7 +191,7 @@ void EurekaClusterLink::on_regist_result(BasicProtocol* message, bool& autorelea
 	}
 	else
 	{
-		logInfo(out_boot, "me to sEureka[iid:%ld ip:%s port:%d] regist failed",
+		logInfo(out_runtime, "me to sEureka[iid:%ld ip:%s port:%d] regist failed",
 			node_->iid, node_->ip.c_str(), node_->port);
 
 		++fail_num_;
@@ -204,7 +204,7 @@ void EurekaClusterLink::on_bind_result(bool success)
 {
 	if (success)
 	{
-		logInfo(out_boot, "me bind to sEureka[iid:%ld ip:%s port:%d] success",
+		logInfo(out_runtime, "me bind to sEureka[iid:%ld ip:%s port:%d] success",
 			node_->iid, node_->ip.c_str(), node_->port);
 		this->set_authed(true);
 
@@ -212,7 +212,7 @@ void EurekaClusterLink::on_bind_result(bool success)
 	}
 	else
 	{
-		logInfo(out_boot, "me bind to sEureka[iid:%ld ip:%s port:%d] failed",
+		logInfo(out_runtime, "me bind to sEureka[iid:%ld ip:%s port:%d] failed",
 			node_->iid, node_->ip.c_str(), node_->port);
 
 		//eureka服务器会主动断开连接

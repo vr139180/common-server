@@ -34,5 +34,5 @@ void LobbyUser::on_db_rolelist_update(bool initorupdate, UserRoles& from)
 
 	svrApp.send_protocol_to_gate(ack);
 
-	logDebug(out_service, "send rolelist:%d to user....", roles_data_.roles_data_.roles_size());
+	logDebug(out_runtime, "send rolelist:%d to user....", roles_data_.roles_data_.roles_size());
 }

@@ -51,9 +51,9 @@ void MailServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void MailServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "MailService[%d] regist to me(RouterService)", get_iid());
+		logInfo( out_runtime, "MailService[%d] regist to me(RouterService)", get_iid());
 	else
-		logInfo( out_boot, "MailService[%d] disconnect from me(RouterService)", get_iid());
+		logInfo( out_runtime, "MailService[%d] disconnect from me(RouterService)", get_iid());
 }
 
 int MailServiceLinkFrom::get_mailhash()

@@ -15,15 +15,8 @@
 #define logFatal( cat, fmt, ...)	LoggerHelper::Fatal( cat, fmt, ##__VA_ARGS__)
 
 //log category
-
-#define out_boot		"boot"
-#define out_sys			"system"
-#define out_net			"network"
-#define out_monitor		"monitor"
-#define out_profile		"profile"
-#define out_script		"script"
-#define out_service		"service"
-#define out_opmt		"opmt"
-#define out_pt			"pt"
+#define out_runtime		"rt"	//runtime
+#define out_gamedata	"gd"	//game data
+#define out_monitor		"mt"	//service monitor
 
 #endif // __LOG_H__

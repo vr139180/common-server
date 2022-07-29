@@ -40,7 +40,7 @@ std::string FileUtil::get_filecontent( const char* file)
 
 	if( !boost::filesystem::exists( p))
 	{
-		logError( out_boot, "file:%s don't exist", file);
+		logError(out_runtime, "file:%s don't exist", file);
 		return "";
 	}
 

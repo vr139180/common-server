@@ -35,7 +35,7 @@ void EurekaLinkTo::connect()
         return;
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-	logInfo(out_net, "++++++me(sEureka) try to connect to sEureka(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(sEureka) try to connect to sEureka(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 #endif
 
@@ -47,7 +47,7 @@ void EurekaLinkTo::on_cant_connectedto()
 	LinkToBase::on_cant_connectedto();
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-	logInfo(out_net, "------me(sEureka) cant connect to sEureka(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(sEureka) cant connect to sEureka(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 #endif
 
@@ -61,7 +61,7 @@ void EurekaLinkTo::on_connectedto_done()
 	LinkToBase::on_connectedto_done();
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-	logInfo(out_net, "++++++me(sEureka) connected to sEureka(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(sEureka) connected to sEureka(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 #endif
 
@@ -127,7 +127,7 @@ void EurekaLinkTo::on_authed( bool success)
 {
     if( success)
     {
-        logInfo( out_boot, ">>>>>> me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d]!!!!", 
+        logInfo(out_runtime, ">>>>>> me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d]!!!!",
 			node_->iid, node_->ip.c_str(), node_->port);
         this->set_authed( true);
 		svrApp.get_eurekactrl()->on_authed_with_linkto(this);
@@ -135,7 +135,7 @@ void EurekaLinkTo::on_authed( bool success)
     else
     {
 #ifdef EUREKA_DEBUGINFO_ENABLE
-        logInfo( out_boot, "<<<<<< me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] failed!!!!", 
+        logInfo( out_runtime, "<<<<<< me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] failed!!!!", 
 			node_->iid, node_->ip.c_str(), node_->port);
 #endif
         
@@ -154,12 +154,12 @@ void EurekaLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-        logInfo( out_boot, "<<<<<< me(sEureka)(authed) lost connection to sEureka[iid:%ld ip:%s port:%d]", 
+        logInfo(out_runtime, "<<<<<< me(sEureka)(authed) lost connection to sEureka[iid:%ld ip:%s port:%d]",
 			node_->iid, node_->ip.c_str(), node_->port);
     }
 	else
 	{
-		logInfo(out_boot, "<<<<<< me(sEureka)(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
+		logInfo(out_runtime, "<<<<<< me(sEureka)(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
 			node_->iid, node_->ip.c_str(), node_->port);
 	}
 

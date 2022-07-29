@@ -81,7 +81,7 @@ TaskGroupCellMeta* TaskGroupCellMeta::load_groupcell(tinyxml2::XMLElement* e, Ta
 		pCell->next_default_celliid_ = XmlUtil::GetXmlAttrInt(next, "default", -1);
 		if (pCell->next_default_celliid_ == -1)
 		{
-			logError(out_sys, "task system - load taskgroup:%d cell:%d not set [next default celliid]", p->get_iid(), pCell->get_iid());
+			logError(out_runtime, "task system - load taskgroup:%d cell:%d not set [next default celliid]", p->get_iid(), pCell->get_iid());
 			return 0;
 		}
 
@@ -90,7 +90,7 @@ TaskGroupCellMeta* TaskGroupCellMeta::load_groupcell(tinyxml2::XMLElement* e, Ta
 			int cid = XmlUtil::GetXmlAttrInt(nc, "next", -1);
 			if (cid == -1)
 			{
-				logError(out_sys, "task system - load taskgroup:%d cell:%d set condition next celliid error", p->get_iid(), pCell->get_iid());
+				logError(out_runtime, "task system - load taskgroup:%d cell:%d set condition next celliid error", p->get_iid(), pCell->get_iid());
 				return 0;
 			}
 

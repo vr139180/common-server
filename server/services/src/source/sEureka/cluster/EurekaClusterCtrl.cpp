@@ -84,7 +84,7 @@ void EurekaClusterCtrl::on_cantconnect_with_linkto(EurekaLinkTo* plink)
 		plink->force_close();
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_sys, "me(eureka) cant connect to eureka node. online nodes:%d", link_nodes_.size());
+		logDebug(out_runtime, "me(eureka) cant connect to eureka node. online nodes:%d", link_nodes_.size());
 #endif
 	}
 
@@ -116,7 +116,7 @@ void EurekaClusterCtrl::on_disconnected_with_linkto(EurekaLinkTo* plink)
 		plink->force_close();
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_sys, "me(eureka) disconnect with linkto eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
+		logDebug(out_runtime, "me(eureka) disconnect with linkto eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
 #endif
 
 	}
@@ -152,7 +152,7 @@ void EurekaClusterCtrl::on_disconnected_with_linkfrom(EurekaLinkFrom* plink)
 		link_nodes_.erase(plink->get_iid());
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_sys, "me(eureka) disconnect with linkfrom eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
+		logDebug(out_runtime, "me(eureka) disconnect with linkfrom eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
 #endif
 
 		plink->reset();

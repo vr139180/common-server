@@ -150,7 +150,7 @@ void GamePlayerCtrl::post_slot_cmd(CommandBase* cmd, int slot)
 	{
 		delete cmd;
 
-		logError(out_sys, "gate service user slot[%d] is error", slot);
+		logError(out_runtime, "gate service user slot[%d] is error", slot);
 		return;
 	}
 

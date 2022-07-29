@@ -50,7 +50,7 @@ void ServiceRegisterCtrl::maintnce_service(u64 tnow)
 				redis_gatebindhome_maintnce(ShareUtil::atoi64(skey.c_str()), (NETSERVICE_TYPE)ii);
 			}
 
-			logWarn(out_sys, "sEureka[%ld] maintnce service node check, find one Service node[%s] invalid. so remove all informations from redis.",
+			logWarn(out_runtime, "sEureka[%ld] maintnce service node check, find one Service node[%s] invalid. so remove all informations from redis.",
 				svrApp.get_eurekactrl()->get_myself().iid, skey.c_str());
 		}
 	}
@@ -83,7 +83,7 @@ void ServiceRegisterCtrl::redis_gatebindhome_maintnce(S_INT_64 sid, NETSERVICE_T
 	std::vector<std::string> rets;
 	if (redis->evalStrs(HomeGateConst::gatebindhome_maintnce.c_str(), keys, vals, rets))
 	{
-		//logDebug(out_script, "gatebindhome maintnce, redis eval result:%s", rets[0].c_str());
+		//logDebug(out_runtime, "gatebindhome maintnce, redis eval result:%s", rets[0].c_str());
 		int ret = ShareUtil::atoi(rets[0].c_str());
 		if (ret == 0 && rets.size() == 3)
 		{
@@ -97,7 +97,7 @@ void ServiceRegisterCtrl::redis_gatebindhome_maintnce(S_INT_64 sid, NETSERVICE_T
 
 void ServiceRegisterCtrl::maintnce_gatebindhome_authtimeout(u64 tnow)
 {
-	//logDebug(out_script, "gate bind home auth timeout check");
+	//logDebug(out_runtime, "gate bind home auth timeout check");
 	RedisClient* redis = svrApp.get_redisclient();
 
 	std::string hqueue = redis->build_rediskey(SERVICE_MAINTNCE,
@@ -124,7 +124,7 @@ void ServiceRegisterCtrl::maintnce_gatebindhome_authtimeout(u64 tnow)
 		ShareUtil::splitstr2int64( skey.c_str(), "#", iids);
 		if (iids.size() != 2)
 		{
-			logError(out_service, "XXXXXXXXXX  HOMEGATE_AUTHING queue have an error data:%s", skey.c_str());
+			logError(out_runtime, "XXXXXXXXXX  HOMEGATE_AUTHING queue have an error data:%s", skey.c_str());
 			continue;
 		}
 
@@ -141,10 +141,10 @@ void ServiceRegisterCtrl::maintnce_gatebindhome_authtimeout(u64 tnow)
 		std::vector<std::string> rets;
 		if (redis->evalStrs(HomeGateConst::gatebindhome_authtimeout.c_str(), keys, vals, rets))
 		{
-			//logDebug(out_script, "gate bind home auth:%s timeout check result:%s", skey.c_str(), rets[0].c_str());
+			//logDebug(out_runtime, "gate bind home auth:%s timeout check result:%s", skey.c_str(), rets[0].c_str());
 		}
 		else {
-			logError(out_script, "gate bind home auth timeout check failed");
+			logError(out_runtime, "gate bind home auth timeout check failed");
 		}
 	}
 }

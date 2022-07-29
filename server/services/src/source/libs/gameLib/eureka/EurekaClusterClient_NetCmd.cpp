@@ -56,7 +56,7 @@ void EurekaClusterClient::on_eurekaupdate_ntf(BasicProtocol* message, bool& auto
 		}
 
 		wait_links_.insert(pconn);
-		logDebug(out_net, "recv a new eureka node:%lld wait to connecting", pconn->get_iid());
+		logDebug(out_runtime, "recv a new eureka node:%lld wait to connecting", pconn->get_iid());
 	}
 
 	//删除下线的服务，但是不直接断开连接。通过错误重连时来自动维护
@@ -150,7 +150,7 @@ void EurekaClusterClient::on_service_subscribe_ack(BasicProtocol* message, bool&
 
 void EurekaClusterClient::on_gatebindhome_ack(BasicProtocol* message, bool& autorelease)
 {
-	logDebug(out_net, "recv gate bind home response.........");
+	logDebug(out_runtime, "recv gate bind home response.........");
 	if (app_proxy_ == 0)
 		return;
 

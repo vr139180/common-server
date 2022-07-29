@@ -40,7 +40,7 @@ void ServiceRegisterCtrl::redis_update_mth_serviemeta()
 			{
 				S_INT_64 iid = (*iter);
 #ifdef EUREKA_DEBUGINFO_ENABLE
-				logError(out_sys, "--------------force close lost service------");
+				logError(out_runtime, "--------------force close lost service------");
 #endif
 				//force close
 				ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(iid);
@@ -59,7 +59,7 @@ void ServiceRegisterCtrl::redis_serviceregist_do2(S_INT_64 sid)
 	std::string skey = redis->build_rediskey(SERVICE_DETAIL_INFO, sid);
 	if (!redis->persist(skey.c_str()))
 	{
-		logError(out_sys, "!!!!!!!service regist step 2, data of the service on the redis is timeout!!!!!!");
+		logError(out_runtime, "!!!!!!!service regist step 2, data of the service on the redis is timeout!!!!!!");
 		return;
 	}
 
@@ -168,7 +168,7 @@ int ServiceRegisterCtrl::redis_gatebindhome_do(S_INT_64 gateid, S_INT_64 gatetok
 
 void ServiceRegisterCtrl::redis_gatebindhome_confirm(S_INT_64 gateid, S_INT_64 homeid, S_INT_64 bindtoken)
 {
-	logDebug(out_script, "gate bind home confirm gateid:%ld homeid:%ld bindtoken:%lld", gateid, homeid, bindtoken);
+	logDebug(out_runtime, "gate bind home confirm gateid:%ld homeid:%ld bindtoken:%lld", gateid, homeid, bindtoken);
 	RedisClient* redis = svrApp.get_redisclient();
 
 	std::string hqueue = redis->build_rediskey(SERVICE_MAINTNCE, 
@@ -197,11 +197,11 @@ void ServiceRegisterCtrl::redis_gatebindhome_confirm(S_INT_64 gateid, S_INT_64 h
 	std::vector<std::string> rets;
 	if (redis->evalStrs(HomeGateConst::gatebindhome_confirm.c_str(), keys, vals, rets))
 	{
-		logDebug(out_script, "redis eval result:%s", rets[0].c_str());
+		logDebug(out_runtime, "redis eval result:%s", rets[0].c_str());
 		int ret = ShareUtil::atoi(rets[0].c_str());
 		if (ret == 0)
 		{
-			logDebug(out_script, "@@@@@@gate bind home success: %lld#%lld", homeid, gateid);
+			logDebug(out_runtime, "@@@@@@gate bind home success: %lld#%lld", homeid, gateid);
 		}
 	}
 }

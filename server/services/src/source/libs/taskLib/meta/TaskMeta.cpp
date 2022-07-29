@@ -64,7 +64,7 @@ bool TaskMetaBase::load_from_xml(tinyxml2::XMLElement* e)
 	tinyxml2::XMLElement* trg = e->FirstChildElement("trigger");
 	if (trg == 0)
 	{
-		logError(out_sys, "task system - taskgroup:%d task:%d not set trigger node", parent_->get_taskgroup_iid(), task_iid_);
+		logError(out_runtime, "task system - taskgroup:%d task:%d not set trigger node", parent_->get_taskgroup_iid(), task_iid_);
 		return false;
 	}
 

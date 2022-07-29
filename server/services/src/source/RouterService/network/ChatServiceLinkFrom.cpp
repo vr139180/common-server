@@ -42,9 +42,9 @@ void ChatServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void ChatServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "ChatService[%d] regist to me(RouterService)", get_iid());
+		logInfo( out_runtime, "ChatService[%d] regist to me(RouterService)", get_iid());
 	else
-		logInfo( out_boot, "ChatService[%d] disconnect from me(RouterService)", get_iid());
+		logInfo( out_runtime, "ChatService[%d] disconnect from me(RouterService)", get_iid());
 }
 
 int ChatServiceLinkFrom::get_chathash()

@@ -49,7 +49,7 @@ void FileConfigSourceImpl::get_filelist( const char* path, const char* ext, std:
 
 	if( !FileUtil::is_direxist( p.c_str()))
 	{
-		logError( out_boot, "direction:%s don't exist", path);
+		logError(out_runtime, "direction:%s don't exist", path);
 		return;
 	}
 

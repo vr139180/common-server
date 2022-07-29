@@ -32,7 +32,7 @@ void HomeServiceLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_boot, "me(GameService) try to connect to HomeService(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(GameService) try to connect to HomeService(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -42,7 +42,7 @@ void HomeServiceLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_net, "------me(GameService) cant connect to Home Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GameService) cant connect to Home Service(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -54,7 +54,7 @@ void HomeServiceLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_net, "++++++me(GameService) connected to Home Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GameService) connected to Home Service(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -90,7 +90,7 @@ void HomeServiceLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_boot, "me(GameService) can't connect to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(GameService) can't connect to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		svrApp.on_disconnected_with_homeservice(this);
     }
 }
@@ -99,7 +99,7 @@ void HomeServiceLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_boot, "me(GameService) connected to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GameService) connected to HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
         this->set_authed( true);
 
 		//sync your regist service
@@ -107,7 +107,7 @@ void HomeServiceLinkTo::on_authed( bool success)
     }
     else
     {
-		logInfo(out_boot, "me(GameService) connect to HomeService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GameService) connect to HomeService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 }
 
@@ -116,7 +116,7 @@ void HomeServiceLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_boot, "me(GameService) disconnect from HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GameService) disconnect from HomeService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 
     }
 

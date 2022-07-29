@@ -112,7 +112,7 @@ NetAcceptorEvent::NetSessionPtr SessionMthHolder<T>::ask_free_netsession_mth()
 {
 	if (free_sessions_.size() == 0)
 	{
-		logError(out_net, "+++++++++++++++ask free session[0] failed+++++++++++++++");
+		logError(out_runtime, "+++++++++++++++ask free session[0] failed+++++++++++++++");
 		NetAcceptorEvent::NetSessionPtr new_session;
 		return new_session;
 	}
@@ -125,7 +125,7 @@ NetAcceptorEvent::NetSessionPtr SessionMthHolder<T>::ask_free_netsession_mth()
 
 		pointer->prepare();
 
-		logError(out_net, "+++++++++++++++ask free session free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
+		logError(out_runtime, "+++++++++++++++ask free session free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
 
 		return pointer->get_session();
 	}
@@ -135,7 +135,7 @@ template<typename T>
 void SessionMthHolder<T>::ask_free_netsession_mth_confirm(T* pointer)
 {
 	wait_sessions_.insert(pointer);
-	logError(out_net, "+++++++++++++++ask free session confirm free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
+	logError(out_runtime, "+++++++++++++++ask free session confirm free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
 }
 
 template<typename T>
@@ -144,7 +144,7 @@ void SessionMthHolder<T>::free_from_wait_mth(T* pointer)
 	wait_sessions_.erase(pointer);
 	free_sessions_.insert(pointer);
 
-	logError(out_net, "+++++++++++++++free_from_wait_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
+	logError(out_runtime, "+++++++++++++++free_from_wait_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
 }
 
 template<typename T>
@@ -152,7 +152,7 @@ void SessionMthHolder<T>::remove_waitsession_mth(T* psession)
 {
 	wait_sessions_.erase(psession);
 
-	logError(out_net, "+++++++++++++++remove_waitsession_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
+	logError(out_runtime, "+++++++++++++++remove_waitsession_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
 }
 
 template<typename T>
@@ -160,7 +160,7 @@ void SessionMthHolder<T>::return_freesession_mth(T* psession)
 {
 	free_sessions_.insert(psession);
 
-	logError(out_net, "+++++++++++++++return_freesession_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
+	logError(out_runtime, "+++++++++++++++return_freesession_mth free:%d wait:%d+++++++++++++++", free_sessions_.size(), wait_sessions_.size());
 }
 
 

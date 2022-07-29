@@ -33,14 +33,14 @@ bool UnionServiceApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_UNION))
 	{
-		logFatal(out_boot, "UnionService load svr config file failed");
+		logFatal(out_runtime, "UnionService load svr config file failed");
 		return false;
 	}
 
 	UnionConfig* cf = load_unionconfig();
 	if (cf == 0)
 	{
-		logFatal(out_boot, "UnionService load config file failed");
+		logFatal(out_runtime, "UnionService load config file failed");
 		return false;
 	}
 
@@ -99,13 +99,13 @@ bool UnionServiceApp::init_network()
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
 	{
-		logFatal( out_boot, ("UnionService init network failed"));
+		logFatal( out_runtime, ("UnionService init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_boot, ("UnionService init network failed"));
+		logFatal( out_runtime, ("UnionService init network failed"));
 		return false;
 	}
 
@@ -120,11 +120,11 @@ bool UnionServiceApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_boot, ("UnionService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("UnionService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_boot, ("UnionService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("UnionService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
@@ -222,14 +222,14 @@ void UnionServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_boot, "me(UnionService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(UnionService) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_net, "me(UnionService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(UnionService) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -252,7 +252,7 @@ void UnionServiceApp::on_connection_timeout(UnionSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_boot, "UnionService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "UnionService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void UnionServiceApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)

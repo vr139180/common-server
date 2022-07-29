@@ -27,7 +27,7 @@ void GameServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProt
 void GameServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_boot, "GameService[%d] regist to me(UnionService)", sn_);
+		logInfo( out_runtime, "GameService[%d] regist to me(UnionService)", sn_);
 	else
-		logInfo( out_boot, "GameService[%d] disconnect from me(UnionService)", sn_);
+		logInfo( out_runtime, "GameService[%d] disconnect from me(UnionService)", sn_);
 }

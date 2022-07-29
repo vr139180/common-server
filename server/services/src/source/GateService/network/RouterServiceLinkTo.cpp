@@ -41,7 +41,7 @@ void RouterServiceLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_boot, "me(GateService) try to connect to RouterService(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(GateService) try to connect to RouterService(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -51,7 +51,7 @@ void RouterServiceLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_net, "------me(GateService) cant connect to Router Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GateService) cant connect to Router Service(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -63,7 +63,7 @@ void RouterServiceLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_net, "++++++me(GateService) connected to Router Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to Router Service(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -121,7 +121,7 @@ void RouterServiceLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_boot, "me(GateService) can't connect to RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(GateService) can't connect to RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 
 		svrApp.on_disconnected_with_routerservice(this);
     }
@@ -131,7 +131,7 @@ void RouterServiceLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_boot, "me(GateService) connected to RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connected to RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		this->set_authed( true);
 
 		//sync your regist service
@@ -139,7 +139,7 @@ void RouterServiceLinkTo::on_authed( bool success)
 	}
     else
     {
-		logInfo(out_boot, "me(GateService) connect to RouterService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connect to RouterService[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 
 }
@@ -149,7 +149,7 @@ void RouterServiceLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_boot, "me(GateService) disconnect from RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) disconnect from RouterService[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
 	svrApp.on_disconnected_with_routerservice(this);
