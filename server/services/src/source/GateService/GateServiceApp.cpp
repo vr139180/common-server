@@ -153,6 +153,7 @@ void GateServiceApp::uninit_network()
 
 	if (acceptor_.get())
 		acceptor_->end_listen();
+	NetDriverX::getInstance().uninitNetDriver();
 
 	session_from_.unint_sessions();
 	router_link_mth_.free_all();
@@ -160,8 +161,6 @@ void GateServiceApp::uninit_network()
 
 	EurekaClusterClient::instance().uninit();
 	GamePlayerCtrl::instance().uninit_gameplayerctrl();
-
-	NetDriverX::getInstance().uninitNetDriver();
 }
 
 void GateServiceApp::uninit()

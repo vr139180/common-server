@@ -1,33 +1,57 @@
 #boost
 
-.\b2 install cxxflags="--std=c++11" --prefix=./stages --build-type=complete --no-cmake-config --without-python --without-wave --without-graph --without-graph_parallel --without-nowide --without-test toolset=msvc link=static threading=multi runtime-link=static address-model=64 debug release
+bootstrap.bat
 
-.\b2 install --prefix=./stages --build-type=complete --no-cmake-config --without-python --without-wave --without-graph --without-test --show-libraries toolset=msvc link=static threading=multi runtime-link=shared address-model=64 debug releasemd
+.\b2 install cxxflags="--std=c++11" --prefix=./stages --build-type=complete --no-cmake-config --without-python --without-wave --without-graph --without-graph_parallel --without-nowide --without-test toolset=msvc link=static threading=multi runtime-link=shared address-model=64 debug release
 
 #openssl
-perl Configure VC-WIN64A no-asm -static --prefix=D:\workspace\common_server\server\sdk-src\openssl-OpenSSL_1_1_1-stable/stages
+perl Configure debug-VC-WIN64A no-asm threads -static --prefix=D:\workspace\common_server\server\sdk-src\openssl-OpenSSL_1_1_1-stable/stages
+
+perl Configure VC-WIN64A no-asm threads -static --prefix=D:\workspace\common_server\server\sdk-src\openssl-OpenSSL_1_1_1-stable/stages
 nmake
 nmake install
 
 #mysql-connector-cpp
-cmake -DCMAKE_BUILD_TYPE=Debug/Release -DCMAKE_INSTALL_PREFIX=./stages -G "Visual Studio 15" -A x64 -DBUILD_STATIC=ON -DWITH_JDBC=OFF -DWITH_SSL=D:\workspace\common_server\server\sdk-src\openssl-OpenSSL_1_1_1-stable\stages -DSTATIC_MSVCRT=ON ./
-
-cmake --build . --target install --config Debug/Release
-
 
 cmake -DBOOST_ROOT=D:\workspace\common_server\server\sdk-src\boost_1_78_0\stages\include\boost-1_78 -DCMAKE_INSTALL_PREFIX=./stages -DMYSQLCLIENT_STATIC_LINKING=ON ./
-cmake --build . --target install --config Debug/Release
+vs2017 open MYSQLCPPCONN.sln
+编译 mysqlcppconn-static 项目 /MD
 
 #hiredis
 
 cmake -DDISABLE_TESTS=ON -DCMAKE_INSTALL_PREFIX=./stages -G "Visual Studio 15" -A x64 ./
-cmake --build . --target install --config Debug/Release
+vs2017 打开 hiredis.sln 修改成lib静态库
 
 #redis-plus-plus
 
 cmake -DCMAKE_PREFIX_PATH=D:\workspace\common_server\server\sdk-src\hiredis-1.0.2\stages\include -DCMAKE_INSTALL_PREFIX=./stages -DREDIS_PLUS_PLUS_CXX_STANDARD=11 -DREDIS_PLUS_PLUS_BUILD_TEST=OFF -DREDIS_PLUS_PLUS_BUILD_SHARED=OFF -DREDIS_PLUS_PLUS_BUILD_STATIC_WITH_PIC=OFF -G "Visual Studio 15" -A x64 ./
 
-cmake --build . --target install --config Debug/Release
+vs2017 open redis++.sln
+添加 D:\workspace\common_server\server\services\src\sdk\include include路径
+
+#curl
+projects\generate.bat
+注销ldap
+curl_setup.h 212 line
+#  ifndef CURL_DISABLE_LDAPS
+#    define CURL_DISABLE_LDAPS
+#  endif
+
+vs2017 open projects\Windows\VC15\lib\libcurl.sln
+build LibDebug LibRelease
+
+#zlib
+vs2017 open contrib\vstudio\vc14\zlibvc.sln
+修改zconf.h 文件，注释掉 //#define Z_HAVE_UNISTD_H
+build zlibstat
+
+#protobuff
+下载并安装CMake（Window版本）， 官方网站 cmake.org
+
+执行安装好的CMake,选择protobuf源代码目录，选择编译输出的目录，
+然后点击【Configure】按钮，生成工具选择VC++ 2017,
+再点击【Generate】按钮，CMake会生成VS项目文件
+如果没有错误，那么【Open Project】按钮可用，点击按钮则会调用VS 2017打开Cmake生成的Protobuf工程,
 
 ----------------------------------------------------------------linux-----------------------------------------------
 ar/nm 

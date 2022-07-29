@@ -25,7 +25,7 @@ std::string FileUtil::get_filecontent( const char* path, const char* file)
 	while( !ff.eof())
 	{
 		ff.read( &buf[0], 1024*100 -1);
-		int cnt =ff.gcount();
+		std::streamsize cnt =ff.gcount();
 		buf[cnt] ='\0';
 
 		ret += buf;
@@ -53,7 +53,7 @@ std::string FileUtil::get_filecontent( const char* file)
 	while( !ff.eof())
 	{
 		ff.read( &buf[0], 1024*100 -1);
-		int cnt =ff.gcount();
+		std::streamsize cnt =ff.gcount();
 		buf[cnt] ='\0';
 
 		ret += buf;
