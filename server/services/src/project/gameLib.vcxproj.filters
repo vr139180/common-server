@@ -131,6 +131,15 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\task_system.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\logstash\LogRecordBase.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\logstash\AppMonitorLog.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\logstash\GameDataLog.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -153,6 +162,9 @@
     </Filter>
     <Filter Include="gatehome">
       <UniqueIdentifier>{101247c1-e827-4a29-b647-b73c483070a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logstash">
+      <UniqueIdentifier>{937fc109-ce7b-4bbd-8df1-4fabaa82fb21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +263,15 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\task_system.pb.cc">
       <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\logstash\LogRecordBase.cpp">
+      <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\logstash\AppMonitorLog.cpp">
+      <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\logstash\GameDataLog.cpp">
+      <Filter>logstash</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

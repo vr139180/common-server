@@ -130,6 +130,8 @@ bool GameServiceApp::init_finish()
 
 	OSSystem::mOS->SetAppTitle(app_title_);
 
+	logDebug(out_gamedata, "xxxxxxx");
+
 	return true;
 }
 

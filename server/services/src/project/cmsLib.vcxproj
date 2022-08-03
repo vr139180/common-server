@@ -115,7 +115,9 @@
     <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpUrl.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpUtilities.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\json\JSONUtil.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\log\default_webservice_sink_factory.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\log\LoggerHelper.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\log\WSSinkBackend.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\lua\ScriptContext.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\lua_src\lapi.c" />
     <ClCompile Include="..\source\libs\cmsLib\lua_src\lauxlib.c" />
@@ -207,6 +209,7 @@
     <ClInclude Include="..\source\libs\cmsLib\jobsystem\ThreadContextPool.h" />
     <ClInclude Include="..\source\libs\cmsLib\json\JSONUtil.h" />
     <ClInclude Include="..\source\libs\cmsLib\log\LoggerHelper.h" />
+    <ClInclude Include="..\source\libs\cmsLib\log\WSSinkBackend.h" />
     <ClInclude Include="..\source\libs\cmsLib\lua\ScriptContext.h" />
     <ClInclude Include="..\source\libs\cmsLib\net\LinkToBase.h" />
     <ClInclude Include="..\source\libs\cmsLib\OSDriver.h" />

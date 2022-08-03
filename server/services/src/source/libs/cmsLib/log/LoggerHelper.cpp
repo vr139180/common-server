@@ -9,13 +9,14 @@
 #include <boost/log/trivial.hpp>
 #include <boost/log/sinks.hpp>
 #include <boost/log/core.hpp>
-#include <boost/log/attributes/scoped_attribute.hpp>
 #include <boost/log/utility/setup/from_stream.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/log/attributes/scoped_attribute.hpp>
 
 namespace logging = boost::log;
 namespace sinks = logging::sinks;
 namespace expr = logging::expressions;
+namespace attrs = boost::log::attributes;
 
 //model分类功能日志
 BOOST_LOG_ATTRIBUTE_KEYWORD( model_attr, "Model", std::string)
@@ -32,6 +33,8 @@ LoggerHelper::~LoggerHelper()
 
 void LoggerHelper::InitLogger( const char* filename)
 {
+	regist_custom_sink();
+	
 	std::ifstream file( filename, std::ifstream::in);
 	logging::init_from_stream(file);
 
@@ -40,10 +43,12 @@ void LoggerHelper::InitLogger( const char* filename)
 
 void LoggerHelper::Shutdown()
 {
+	logging::core::get()->flush();
 }
 
 void LoggerHelper::Debug( const char* model, const char* msg, ...)
 {
+	//BOOST_LOG_NAMED_SCOPE("xxx");
 	BOOST_LOG_SCOPED_THREAD_TAG("Model", model);
 
 	char buf[LOGMSG_LENGTH] ={0};

@@ -283,6 +283,12 @@
     <ClCompile Include="..\source\libs\cmsLib\net\LinkToBase.cpp">
       <Filter>net</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\log\default_webservice_sink_factory.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\log\WSSinkBackend.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\libs\cmsLib\base\HashTable.h">
@@ -483,6 +489,9 @@
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\net\LinkToBase.h">
       <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\log\WSSinkBackend.h">
+      <Filter>log</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

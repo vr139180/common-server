@@ -17,7 +17,7 @@ public:
 	static void Fatal( const char* model, const char* msg,...);
 
 private:
-
+	static void regist_custom_sink();
 };
 
 #endif //__LOGGERHELPER__HEADER__H__

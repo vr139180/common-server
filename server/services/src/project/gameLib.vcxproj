@@ -27,6 +27,9 @@
     <ClCompile Include="..\source\libs\gameLib\eureka\EurekaNodeInfo.cpp" />
     <ClCompile Include="..\source\libs\gameLib\eureka\ServiceNodeInfo.cpp" />
     <ClCompile Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\logstash\AppMonitorLog.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\logstash\GameDataLog.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\logstash\LogRecordBase.cpp" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\db_internal.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.cc" />
@@ -72,6 +75,9 @@
     <ClInclude Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.h" />
     <ClInclude Include="..\source\libs\gameLib\global_const.h" />
     <ClInclude Include="..\source\libs\gameLib\LogExt.h" />
+    <ClInclude Include="..\source\libs\gameLib\logstash\AppMonitorLog.h" />
+    <ClInclude Include="..\source\libs\gameLib\logstash\GameDataLog.h" />
+    <ClInclude Include="..\source\libs\gameLib\logstash\LogRecordBase.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\db_internal.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.h" />
