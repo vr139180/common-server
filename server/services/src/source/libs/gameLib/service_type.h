@@ -47,6 +47,12 @@ public:
 		case NETSERVICE_TYPE::ERK_SERVICE_FRIEND:
 			ret = "friend";
 			break;
+		case NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER:
+			ret = "ftrouter";
+			break;
+		case NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING:
+			ret = "matchmaking";
+			break;
 		}
 
 		return ret;

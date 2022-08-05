@@ -23,6 +23,7 @@ message DBRoleBaseInfo{
   int64 user_iid = 3;
   string nickname = 4;
   int32 registime = 5;
+  int32 levels = 6;
 }
 
 message DBUserRoles{
@@ -38,6 +39,7 @@ message DBUserHome{
   string geo_pos = 6;
   int32 reside_time = 7;
   int32 last_residedate = 8;
+  int32 levels = 9;
 }
 
 message DBUserHomeStructureItem{
@@ -48,6 +50,7 @@ message DBUserHomeStructureItem{
   int64 building_resid = 5;
   string look_at = 6;
   string building_pos = 7;
+  int32 levels = 8;
 }
 
 message DBUserHomeStructure{
@@ -146,4 +149,18 @@ message DBUserTaskGroupEnd{
 
 message DBUserTaskGroupEnds{
   repeated DBUserTaskGroupEnd groups = 1;
+}
+
+message DBUserBattleInfo{
+  uint32 ver_ = 1;
+  int64 iid = 2;
+  int64 role_iid = 3;
+  int32 levels = 4;
+  int32 victory = 5;
+  int32 defeat = 6;
+  int32 draw = 7;
+}
+
+message DBUserBattles{
+  repeated DBUserBattleInfo infos = 1;
 }

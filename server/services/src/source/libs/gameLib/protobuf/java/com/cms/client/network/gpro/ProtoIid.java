@@ -78,10 +78,13 @@ public final class ProtoIid {
       "TASK_REQ\020\305\025\022\030\n\023TASK_SUBMITTASK_ACK\020\306\025\022\032\n" +
       "\025TASK_OBTAINREWARD_NTF\020\310\025\022\030\n\023TASK_GIVEUP" +
       "TASK_REQ\020\311\025\022\030\n\023TASK_GIVEUPTASK_ACK\020\312\025\022\021\n" +
-      "\014TASK_MSG_END\020\206\027\022\024\n\017TASK_MSGALL_END\020\267\027BT" +
-      "\n\033com.cms.client.network.gproP\001Z\025gamelib" +
-      "/protobuf/gpro\252\002\033com.cms.client.network." +
-      "gprob\006proto3"
+      "\014TASK_MSG_END\020\206\027\022\024\n\017TASK_MSGALL_END\020\267\027*\220" +
+      "\001\n\013MMS_PROTYPE\022\022\n\016UNIVERSAL_3000\020\000\022\022\n\rMM" +
+      "S_MSG_BEGIN\020\270\027\022\030\n\023MMS_MATCHMAKING_REQ\020\271\027" +
+      "\022\030\n\023MMS_MATCHMAKING_ACK\020\272\027\022\020\n\013MMS_MSG_EN" +
+      "D\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031BT\n\033com.cms.cli" +
+      "ent.network.gproP\001Z\025gamelib/protobuf/gpr" +
+      "o\252\002\033com.cms.client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -48,6 +48,7 @@ func (u *userBase) redisBean2DbBean() (b *entity.RoleBaseInfo) {
 	b.UserIid = u.base_data.GetUserIid()
 	b.Nickname = u.base_data.GetNickname()
 	b.Registime = utilc.SecondToTime(u.base_data.GetRegistime())
+	b.Levels = u.base_data.GetLevels()
 
 	return b
 }
@@ -96,6 +97,7 @@ func (u *userHome) redisBean2DbBean() (b *entity.UserHome) {
 	b.GeoPos = u.home_data.GetGeoPos()
 	b.ResideTime = u.home_data.GetResideTime()
 	b.LastResideDate = utilc.SecondToTime(u.home_data.GetLastResidedate())
+	b.Levels = u.home_data.GetLevels()
 
 	return b
 }

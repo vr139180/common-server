@@ -29,7 +29,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 		int column = 0;
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
-			"insert into role_baseinfo(ver_,role_iid,user_iid,nickname,registime) values(?,?,?,?,from_unixtime(?));"));
+			"insert into role_baseinfo(ver_,role_iid,user_iid,nickname,registime,levels) values(?,?,?,?,from_unixtime(?),1);"));
 		column = 1;
 		prep_stmt->setUInt(column++, base_data_.data().ver_());
 
@@ -41,7 +41,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 		prep_stmt->execute();
 
 		prep_stmt.reset(p_connection->prepareStatement(
-			"insert into user_home(ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,last_residedate) values(?,?,?,?,?,?,?,from_unixtime(?) );"));
+			"insert into user_home(ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,last_residedate,levels) values(?,?,?,?,?,?,?,from_unixtime(?),1);"));
 		column = 1;
 		prep_stmt->setUInt(column++, home_data_.data().ver_());
 
@@ -57,7 +57,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
-			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime) from role_baseinfo where user_iid = ?;"));
+			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = ?;"));
 		prep_stmt->setInt64(1, user_iid_);
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery());

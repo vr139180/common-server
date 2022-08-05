@@ -48,7 +48,8 @@ constexpr DBRoleBaseInfo::DBRoleBaseInfo(
   , role_iid_(int64_t{0})
   , user_iid_(int64_t{0})
   , ver__(0u)
-  , registime_(0){}
+  , registime_(0)
+  , levels_(0){}
 struct DBRoleBaseInfoDefaultTypeInternal {
   constexpr DBRoleBaseInfoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -79,7 +80,8 @@ constexpr DBUserHome::DBUserHome(
   , ground_resid_(int64_t{0})
   , ver__(0u)
   , reside_time_(0)
-  , last_residedate_(0){}
+  , last_residedate_(0)
+  , levels_(0){}
 struct DBUserHomeDefaultTypeInternal {
   constexpr DBUserHomeDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -96,8 +98,9 @@ constexpr DBUserHomeStructureItem::DBUserHomeStructureItem(
   , building_iid_(int64_t{0})
   , home_iid_(int64_t{0})
   , parent_building_(int64_t{0})
-  , building_resid_(int64_t{0})
-  , ver__(0u){}
+  , ver__(0u)
+  , levels_(0)
+  , building_resid_(int64_t{0}){}
 struct DBUserHomeStructureItemDefaultTypeInternal {
   constexpr DBUserHomeStructureItemDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -337,8 +340,38 @@ struct DBUserTaskGroupEndsDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DBUserTaskGroupEndsDefaultTypeInternal _DBUserTaskGroupEnds_default_instance_;
+constexpr DBUserBattleInfo::DBUserBattleInfo(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : iid_(int64_t{0})
+  , ver__(0u)
+  , levels_(0)
+  , role_iid_(int64_t{0})
+  , victory_(0)
+  , defeat_(0)
+  , draw_(0){}
+struct DBUserBattleInfoDefaultTypeInternal {
+  constexpr DBUserBattleInfoDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DBUserBattleInfoDefaultTypeInternal() {}
+  union {
+    DBUserBattleInfo _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DBUserBattleInfoDefaultTypeInternal _DBUserBattleInfo_default_instance_;
+constexpr DBUserBattles::DBUserBattles(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : infos_(){}
+struct DBUserBattlesDefaultTypeInternal {
+  constexpr DBUserBattlesDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DBUserBattlesDefaultTypeInternal() {}
+  union {
+    DBUserBattles _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DBUserBattlesDefaultTypeInternal _DBUserBattles_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_db_5finternal_2eproto[22];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_db_5finternal_2eproto[24];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_db_5finternal_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_db_5finternal_2eproto = nullptr;
 
@@ -369,6 +402,7 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, user_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, nickname_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, registime_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, levels_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserRoles, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -390,6 +424,7 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHome, geo_pos_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHome, reside_time_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHome, last_residedate_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserHome, levels_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructureItem, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -403,6 +438,7 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructureItem, building_resid_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructureItem, look_at_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructureItem, building_pos_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructureItem, levels_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserHomeStructure, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -561,30 +597,52 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserTaskGroupEnds, groups_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, ver__),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, role_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, levels_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, victory_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, defeat_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattleInfo, draw_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattles, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattles, infos_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::PRO::DBRowDel)},
   { 8, -1, -1, sizeof(::PRO::DBRowDeletes)},
   { 15, -1, -1, sizeof(::PRO::DBRoleBaseInfo)},
-  { 26, -1, -1, sizeof(::PRO::DBUserRoles)},
-  { 33, -1, -1, sizeof(::PRO::DBUserHome)},
-  { 47, -1, -1, sizeof(::PRO::DBUserHomeStructureItem)},
-  { 60, -1, -1, sizeof(::PRO::DBUserHomeStructure)},
-  { 67, -1, -1, sizeof(::PRO::DBPetCategory)},
-  { 78, -1, -1, sizeof(::PRO::DBUserPetItem)},
-  { 90, -1, -1, sizeof(::PRO::DBUserPets)},
-  { 97, 105, -1, sizeof(::PRO::DBTaskAttrData_DatasEntry_DoNotUse)},
-  { 107, -1, -1, sizeof(::PRO::DBTaskAttrData)},
-  { 114, -1, -1, sizeof(::PRO::DBUserTaskItem)},
-  { 135, -1, -1, sizeof(::PRO::DBUserTasks)},
-  { 142, -1, -1, sizeof(::PRO::DBUserTaskEndItem)},
-  { 153, -1, -1, sizeof(::PRO::DBUserTaskEnds)},
-  { 160, 168, -1, sizeof(::PRO::DBTaskGAttrData_DatasEntry_DoNotUse)},
-  { 170, -1, -1, sizeof(::PRO::DBTaskGAttrData)},
-  { 177, -1, -1, sizeof(::PRO::DBUserTaskGroup)},
-  { 193, -1, -1, sizeof(::PRO::DBUserTaskGroups)},
-  { 200, -1, -1, sizeof(::PRO::DBUserTaskGroupEnd)},
-  { 211, -1, -1, sizeof(::PRO::DBUserTaskGroupEnds)},
+  { 27, -1, -1, sizeof(::PRO::DBUserRoles)},
+  { 34, -1, -1, sizeof(::PRO::DBUserHome)},
+  { 49, -1, -1, sizeof(::PRO::DBUserHomeStructureItem)},
+  { 63, -1, -1, sizeof(::PRO::DBUserHomeStructure)},
+  { 70, -1, -1, sizeof(::PRO::DBPetCategory)},
+  { 81, -1, -1, sizeof(::PRO::DBUserPetItem)},
+  { 93, -1, -1, sizeof(::PRO::DBUserPets)},
+  { 100, 108, -1, sizeof(::PRO::DBTaskAttrData_DatasEntry_DoNotUse)},
+  { 110, -1, -1, sizeof(::PRO::DBTaskAttrData)},
+  { 117, -1, -1, sizeof(::PRO::DBUserTaskItem)},
+  { 138, -1, -1, sizeof(::PRO::DBUserTasks)},
+  { 145, -1, -1, sizeof(::PRO::DBUserTaskEndItem)},
+  { 156, -1, -1, sizeof(::PRO::DBUserTaskEnds)},
+  { 163, 171, -1, sizeof(::PRO::DBTaskGAttrData_DatasEntry_DoNotUse)},
+  { 173, -1, -1, sizeof(::PRO::DBTaskGAttrData)},
+  { 180, -1, -1, sizeof(::PRO::DBUserTaskGroup)},
+  { 196, -1, -1, sizeof(::PRO::DBUserTaskGroups)},
+  { 203, -1, -1, sizeof(::PRO::DBUserTaskGroupEnd)},
+  { 214, -1, -1, sizeof(::PRO::DBUserTaskGroupEnds)},
+  { 221, -1, -1, sizeof(::PRO::DBUserBattleInfo)},
+  { 234, -1, -1, sizeof(::PRO::DBUserBattles)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -610,71 +668,79 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBUserTaskGroups_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBUserTaskGroupEnd_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBUserTaskGroupEnds_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBUserBattleInfo_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBUserBattles_default_instance_),
 };
 
 const char descriptor_table_protodef_db_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021db_internal.proto\022\003PRO\"$\n\010DBRowDel\022\014\n\004"
   "ver_\030\001 \001(\r\022\n\n\002id\030\002 \001(\003\"+\n\014DBRowDeletes\022\033"
-  "\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"g\n\016DBRoleBas"
+  "\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"w\n\016DBRoleBas"
   "eInfo\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002 \001(\003\022\020\n"
   "\010user_iid\030\003 \001(\003\022\020\n\010nickname\030\004 \001(\t\022\021\n\treg"
-  "istime\030\005 \001(\005\"1\n\013DBUserRoles\022\"\n\005roles\030\001 \003"
-  "(\0132\023.PRO.DBRoleBaseInfo\"\245\001\n\nDBUserHome\022\014"
-  "\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002 \001(\003\022\021\n\thome_n"
-  "ame\030\003 \001(\t\022\024\n\014ground_resid\030\004 \001(\003\022\017\n\007look_"
-  "at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001(\t\022\023\n\013reside_time"
-  "\030\007 \001(\005\022\027\n\017last_residedate\030\010 \001(\005\"\247\001\n\027DBUs"
-  "erHomeStructureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014bui"
-  "lding_iid\030\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017par"
-  "ent_building\030\004 \001(\003\022\026\n\016building_resid\030\005 \001"
-  "(\003\022\017\n\007look_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001("
-  "\t\"B\n\023DBUserHomeStructure\022+\n\005items\030\001 \003(\0132"
-  "\034.PRO.DBUserHomeStructureItem\"h\n\rDBPetCa"
-  "tegory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_type\030\003 \001("
-  "\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030\005 \001(\005\022\020\n"
-  "\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem\022\014\n\004ver_"
-  "\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010role_iid\030\003 "
-  "\001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030\005 \001(\005\022\020\n"
-  "\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n\004pets\030\001 "
-  "\003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTaskAttrDat"
-  "a\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAttrData.Da"
-  "tasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
-  "alue\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskItem\022\014\n\004ver"
-  "_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\020"
-  "\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup\030\005 \001(\003\022\022"
-  "\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001(\005\022\024\n\014ac"
-  "cept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t \001(\010\022\021\n\t"
-  "cycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 \001(\005\022\027\n\017f"
-  "irstupdatetime\030\014 \001(\005\022\026\n\016lastupdatetime\030\r"
-  " \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.DBTaskAtt"
-  "rData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBUserTasks"
-  "\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTaskItem\"h\n\021"
-  "DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002"
-  " \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate\030\007 \001(\005\022\026"
-  "\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUserTaskEnds"
-  "\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTaskEndItem\""
-  "o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003(\0132\037.PRO."
-  "DBTaskGAttrData.DatasEntry\032,\n\nDatasEntry"
-  "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"\331\001\n\017DBU"
-  "serTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022"
-  "\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\022\n"
-  "\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006 \001(\0132\024.P"
-  "RO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001(\005\022\023\n\013tr"
-  "igg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t \001(\005\022\017\n\007e"
-  "ndtime\030\n \001(\005\"8\n\020DBUserTaskGroups\022$\n\006grou"
-  "ps\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d\n\022DBUser"
-  "TaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022"
-  "\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 \001(\005\022\017\n\007e"
-  "ndtime\030\n \001(\005\">\n\023DBUserTaskGroupEnds\022\'\n\006g"
-  "roups\030\001 \003(\0132\027.PRO.DBUserTaskGroupEndBT\n\033"
-  "com.cms.client.network.gproP\001Z\025gamelib/p"
-  "rotobuf/gpro\252\002\033com.cms.client.network.gp"
-  "rob\006proto3"
+  "istime\030\005 \001(\005\022\016\n\006levels\030\006 \001(\005\"1\n\013DBUserRo"
+  "les\022\"\n\005roles\030\001 \003(\0132\023.PRO.DBRoleBaseInfo\""
+  "\265\001\n\nDBUserHome\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid"
+  "\030\002 \001(\003\022\021\n\thome_name\030\003 \001(\t\022\024\n\014ground_resi"
+  "d\030\004 \001(\003\022\017\n\007look_at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001("
+  "\t\022\023\n\013reside_time\030\007 \001(\005\022\027\n\017last_residedat"
+  "e\030\010 \001(\005\022\016\n\006levels\030\t \001(\005\"\267\001\n\027DBUserHomeSt"
+  "ructureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014building_ii"
+  "d\030\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017parent_buil"
+  "ding\030\004 \001(\003\022\026\n\016building_resid\030\005 \001(\003\022\017\n\007lo"
+  "ok_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001(\t\022\016\n\006lev"
+  "els\030\010 \001(\005\"B\n\023DBUserHomeStructure\022+\n\005item"
+  "s\030\001 \003(\0132\034.PRO.DBUserHomeStructureItem\"h\n"
+  "\rDBPetCategory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_t"
+  "ype\030\003 \001(\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030"
+  "\005 \001(\005\022\020\n\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem"
+  "\022\014\n\004ver_\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010rol"
+  "e_iid\030\003 \001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030"
+  "\005 \001(\005\022\020\n\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n"
+  "\004pets\030\001 \003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTas"
+  "kAttrData\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAtt"
+  "rData.DatasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 "
+  "\001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskIte"
+  "m\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid"
+  "\030\003 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup"
+  "\030\005 \001(\003\022\022\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001"
+  "(\005\022\024\n\014accept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t"
+  " \001(\010\022\021\n\tcycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 "
+  "\001(\005\022\027\n\017firstupdatetime\030\014 \001(\005\022\026\n\016lastupda"
+  "tetime\030\r \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.D"
+  "BTaskAttrData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBU"
+  "serTasks\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTask"
+  "Item\"h\n\021DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022"
+  "\013\n\003iid\030\002 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate"
+  "\030\007 \001(\005\022\026\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUser"
+  "TaskEnds\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTask"
+  "EndItem\"o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003("
+  "\0132\037.PRO.DBTaskGAttrData.DatasEntry\032,\n\nDa"
+  "tasEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001"
+  "\"\331\001\n\017DBUserTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii"
+  "d\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030"
+  "\004 \001(\005\022\022\n\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006"
+  " \001(\0132\024.PRO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001"
+  "(\005\022\023\n\013trigg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t "
+  "\001(\005\022\017\n\007endtime\030\n \001(\005\"8\n\020DBUserTaskGroups"
+  "\022$\n\006groups\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d"
+  "\n\022DBUserTaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii"
+  "d\030\002 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 "
+  "\001(\005\022\017\n\007endtime\030\n \001(\005\">\n\023DBUserTaskGroupE"
+  "nds\022\'\n\006groups\030\001 \003(\0132\027.PRO.DBUserTaskGrou"
+  "pEnd\"~\n\020DBUserBattleInfo\022\014\n\004ver_\030\001 \001(\r\022\013"
+  "\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\016\n\006levels\030"
+  "\004 \001(\005\022\017\n\007victory\030\005 \001(\005\022\016\n\006defeat\030\006 \001(\005\022\014"
+  "\n\004draw\030\007 \001(\005\"5\n\rDBUserBattles\022$\n\005infos\030\001"
+  " \003(\0132\025.PRO.DBUserBattleInfoBT\n\033com.cms.c"
+  "lient.network.gproP\001Z\025gamelib/protobuf/g"
+  "pro\252\002\033com.cms.client.network.gprob\006proto"
+  "3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_db_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_db_5finternal_2eproto = {
-  false, false, 2250, descriptor_table_protodef_db_5finternal_2eproto, "db_internal.proto", 
-  &descriptor_table_db_5finternal_2eproto_once, nullptr, 0, 22,
+  false, false, 2481, descriptor_table_protodef_db_5finternal_2eproto, "db_internal.proto", 
+  &descriptor_table_db_5finternal_2eproto_once, nullptr, 0, 24,
   schemas, file_default_instances, TableStruct_db_5finternal_2eproto::offsets,
   file_level_metadata_db_5finternal_2eproto, file_level_enum_descriptors_db_5finternal_2eproto, file_level_service_descriptors_db_5finternal_2eproto,
 };
@@ -1110,8 +1176,8 @@ DBRoleBaseInfo::DBRoleBaseInfo(const DBRoleBaseInfo& from)
       GetArenaForAllocation());
   }
   ::memcpy(&role_iid_, &from.role_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&registime_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(registime_));
+    static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
   // @@protoc_insertion_point(copy_constructor:PRO.DBRoleBaseInfo)
 }
 
@@ -1122,8 +1188,8 @@ nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&role_iid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&registime_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(registime_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
 }
 
 DBRoleBaseInfo::~DBRoleBaseInfo() {
@@ -1156,8 +1222,8 @@ void DBRoleBaseInfo::Clear() {
 
   nickname_.ClearToEmpty();
   ::memset(&role_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&registime_) -
-      reinterpret_cast<char*>(&role_iid_)) + sizeof(registime_));
+      reinterpret_cast<char*>(&levels_) -
+      reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1205,6 +1271,14 @@ const char* DBRoleBaseInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           registime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 levels = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          levels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1272,6 +1346,12 @@ uint8_t* DBRoleBaseInfo::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_registime(), target);
   }
 
+  // int32 levels = 6;
+  if (this->_internal_levels() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_levels(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1315,6 +1395,11 @@ size_t DBRoleBaseInfo::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_registime());
   }
 
+  // int32 levels = 6;
+  if (this->_internal_levels() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_levels());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1352,6 +1437,9 @@ void DBRoleBaseInfo::MergeFrom(const DBRoleBaseInfo& from) {
   if (from._internal_registime() != 0) {
     _internal_set_registime(from._internal_registime());
   }
+  if (from._internal_levels() != 0) {
+    _internal_set_levels(from._internal_levels());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1377,8 +1465,8 @@ void DBRoleBaseInfo::InternalSwap(DBRoleBaseInfo* other) {
       &other->nickname_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, registime_)
-      + sizeof(DBRoleBaseInfo::registime_)
+      PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, levels_)
+      + sizeof(DBRoleBaseInfo::levels_)
       - PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, role_iid_)>(
           reinterpret_cast<char*>(&role_iid_),
           reinterpret_cast<char*>(&other->role_iid_));
@@ -1618,8 +1706,8 @@ DBUserHome::DBUserHome(const DBUserHome& from)
       GetArenaForAllocation());
   }
   ::memcpy(&role_iid_, &from.role_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&last_residedate_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(last_residedate_));
+    static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
   // @@protoc_insertion_point(copy_constructor:PRO.DBUserHome)
 }
 
@@ -1638,8 +1726,8 @@ geo_pos_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&role_iid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&last_residedate_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(last_residedate_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
 }
 
 DBUserHome::~DBUserHome() {
@@ -1676,8 +1764,8 @@ void DBUserHome::Clear() {
   look_at_.ClearToEmpty();
   geo_pos_.ClearToEmpty();
   ::memset(&role_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&last_residedate_) -
-      reinterpret_cast<char*>(&role_iid_)) + sizeof(last_residedate_));
+      reinterpret_cast<char*>(&levels_) -
+      reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1753,6 +1841,14 @@ const char* DBUserHome::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
           last_residedate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 levels = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          levels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1846,6 +1942,12 @@ uint8_t* DBUserHome::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_last_residedate(), target);
   }
 
+  // int32 levels = 9;
+  if (this->_internal_levels() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->_internal_levels(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1908,6 +2010,11 @@ size_t DBUserHome::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_last_residedate());
   }
 
+  // int32 levels = 9;
+  if (this->_internal_levels() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_levels());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1954,6 +2061,9 @@ void DBUserHome::MergeFrom(const DBUserHome& from) {
   if (from._internal_last_residedate() != 0) {
     _internal_set_last_residedate(from._internal_last_residedate());
   }
+  if (from._internal_levels() != 0) {
+    _internal_set_levels(from._internal_levels());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1989,8 +2099,8 @@ void DBUserHome::InternalSwap(DBUserHome* other) {
       &other->geo_pos_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DBUserHome, last_residedate_)
-      + sizeof(DBUserHome::last_residedate_)
+      PROTOBUF_FIELD_OFFSET(DBUserHome, levels_)
+      + sizeof(DBUserHome::levels_)
       - PROTOBUF_FIELD_OFFSET(DBUserHome, role_iid_)>(
           reinterpret_cast<char*>(&role_iid_),
           reinterpret_cast<char*>(&other->role_iid_));
@@ -2037,8 +2147,8 @@ DBUserHomeStructureItem::DBUserHomeStructureItem(const DBUserHomeStructureItem& 
       GetArenaForAllocation());
   }
   ::memcpy(&building_iid_, &from.building_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&ver__) -
-    reinterpret_cast<char*>(&building_iid_)) + sizeof(ver__));
+    static_cast<size_t>(reinterpret_cast<char*>(&building_resid_) -
+    reinterpret_cast<char*>(&building_iid_)) + sizeof(building_resid_));
   // @@protoc_insertion_point(copy_constructor:PRO.DBUserHomeStructureItem)
 }
 
@@ -2053,8 +2163,8 @@ building_pos_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStrin
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&building_iid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&ver__) -
-    reinterpret_cast<char*>(&building_iid_)) + sizeof(ver__));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&building_resid_) -
+    reinterpret_cast<char*>(&building_iid_)) + sizeof(building_resid_));
 }
 
 DBUserHomeStructureItem::~DBUserHomeStructureItem() {
@@ -2089,8 +2199,8 @@ void DBUserHomeStructureItem::Clear() {
   look_at_.ClearToEmpty();
   building_pos_.ClearToEmpty();
   ::memset(&building_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&ver__) -
-      reinterpret_cast<char*>(&building_iid_)) + sizeof(ver__));
+      reinterpret_cast<char*>(&building_resid_) -
+      reinterpret_cast<char*>(&building_iid_)) + sizeof(building_resid_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2156,6 +2266,14 @@ const char* DBUserHomeStructureItem::_InternalParse(const char* ptr, ::PROTOBUF_
           auto str = _internal_mutable_building_pos();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.DBUserHomeStructureItem.building_pos"));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 levels = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          levels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2239,6 +2357,12 @@ uint8_t* DBUserHomeStructureItem::_InternalSerialize(
         7, this->_internal_building_pos(), target);
   }
 
+  // int32 levels = 8;
+  if (this->_internal_levels() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_levels(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2284,14 +2408,19 @@ size_t DBUserHomeStructureItem::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_parent_building());
   }
 
-  // int64 building_resid = 5;
-  if (this->_internal_building_resid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_building_resid());
-  }
-
   // uint32 ver_ = 1;
   if (this->_internal_ver_() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_ver_());
+  }
+
+  // int32 levels = 8;
+  if (this->_internal_levels() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_levels());
+  }
+
+  // int64 building_resid = 5;
+  if (this->_internal_building_resid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_building_resid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2331,11 +2460,14 @@ void DBUserHomeStructureItem::MergeFrom(const DBUserHomeStructureItem& from) {
   if (from._internal_parent_building() != 0) {
     _internal_set_parent_building(from._internal_parent_building());
   }
-  if (from._internal_building_resid() != 0) {
-    _internal_set_building_resid(from._internal_building_resid());
-  }
   if (from._internal_ver_() != 0) {
     _internal_set_ver_(from._internal_ver_());
+  }
+  if (from._internal_levels() != 0) {
+    _internal_set_levels(from._internal_levels());
+  }
+  if (from._internal_building_resid() != 0) {
+    _internal_set_building_resid(from._internal_building_resid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2367,8 +2499,8 @@ void DBUserHomeStructureItem::InternalSwap(DBUserHomeStructureItem* other) {
       &other->building_pos_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DBUserHomeStructureItem, ver__)
-      + sizeof(DBUserHomeStructureItem::ver__)
+      PROTOBUF_FIELD_OFFSET(DBUserHomeStructureItem, building_resid_)
+      + sizeof(DBUserHomeStructureItem::building_resid_)
       - PROTOBUF_FIELD_OFFSET(DBUserHomeStructureItem, building_iid_)>(
           reinterpret_cast<char*>(&building_iid_),
           reinterpret_cast<char*>(&other->building_iid_));
@@ -6073,6 +6205,513 @@ void DBUserTaskGroupEnds::InternalSwap(DBUserTaskGroupEnds* other) {
       file_level_metadata_db_5finternal_2eproto[21]);
 }
 
+// ===================================================================
+
+class DBUserBattleInfo::_Internal {
+ public:
+};
+
+DBUserBattleInfo::DBUserBattleInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.DBUserBattleInfo)
+}
+DBUserBattleInfo::DBUserBattleInfo(const DBUserBattleInfo& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&iid_, &from.iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&draw_) -
+    reinterpret_cast<char*>(&iid_)) + sizeof(draw_));
+  // @@protoc_insertion_point(copy_constructor:PRO.DBUserBattleInfo)
+}
+
+inline void DBUserBattleInfo::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&iid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&draw_) -
+    reinterpret_cast<char*>(&iid_)) + sizeof(draw_));
+}
+
+DBUserBattleInfo::~DBUserBattleInfo() {
+  // @@protoc_insertion_point(destructor:PRO.DBUserBattleInfo)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void DBUserBattleInfo::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void DBUserBattleInfo::ArenaDtor(void* object) {
+  DBUserBattleInfo* _this = reinterpret_cast< DBUserBattleInfo* >(object);
+  (void)_this;
+}
+void DBUserBattleInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DBUserBattleInfo::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DBUserBattleInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.DBUserBattleInfo)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&draw_) -
+      reinterpret_cast<char*>(&iid_)) + sizeof(draw_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DBUserBattleInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 ver_ = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          ver__ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 role_iid = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 levels = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          levels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 victory = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          victory_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 defeat = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          defeat_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 draw = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          draw_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DBUserBattleInfo::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.DBUserBattleInfo)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 ver_ = 1;
+  if (this->_internal_ver_() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_ver_(), target);
+  }
+
+  // int64 iid = 2;
+  if (this->_internal_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_iid(), target);
+  }
+
+  // int64 role_iid = 3;
+  if (this->_internal_role_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_role_iid(), target);
+  }
+
+  // int32 levels = 4;
+  if (this->_internal_levels() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_levels(), target);
+  }
+
+  // int32 victory = 5;
+  if (this->_internal_victory() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_victory(), target);
+  }
+
+  // int32 defeat = 6;
+  if (this->_internal_defeat() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_defeat(), target);
+  }
+
+  // int32 draw = 7;
+  if (this->_internal_draw() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_draw(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.DBUserBattleInfo)
+  return target;
+}
+
+size_t DBUserBattleInfo::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.DBUserBattleInfo)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 iid = 2;
+  if (this->_internal_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_iid());
+  }
+
+  // uint32 ver_ = 1;
+  if (this->_internal_ver_() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32SizePlusOne(this->_internal_ver_());
+  }
+
+  // int32 levels = 4;
+  if (this->_internal_levels() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_levels());
+  }
+
+  // int64 role_iid = 3;
+  if (this->_internal_role_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
+  }
+
+  // int32 victory = 5;
+  if (this->_internal_victory() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_victory());
+  }
+
+  // int32 defeat = 6;
+  if (this->_internal_defeat() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_defeat());
+  }
+
+  // int32 draw = 7;
+  if (this->_internal_draw() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_draw());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DBUserBattleInfo::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    DBUserBattleInfo::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DBUserBattleInfo::GetClassData() const { return &_class_data_; }
+
+void DBUserBattleInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<DBUserBattleInfo *>(to)->MergeFrom(
+      static_cast<const DBUserBattleInfo &>(from));
+}
+
+
+void DBUserBattleInfo::MergeFrom(const DBUserBattleInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.DBUserBattleInfo)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_iid() != 0) {
+    _internal_set_iid(from._internal_iid());
+  }
+  if (from._internal_ver_() != 0) {
+    _internal_set_ver_(from._internal_ver_());
+  }
+  if (from._internal_levels() != 0) {
+    _internal_set_levels(from._internal_levels());
+  }
+  if (from._internal_role_iid() != 0) {
+    _internal_set_role_iid(from._internal_role_iid());
+  }
+  if (from._internal_victory() != 0) {
+    _internal_set_victory(from._internal_victory());
+  }
+  if (from._internal_defeat() != 0) {
+    _internal_set_defeat(from._internal_defeat());
+  }
+  if (from._internal_draw() != 0) {
+    _internal_set_draw(from._internal_draw());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DBUserBattleInfo::CopyFrom(const DBUserBattleInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.DBUserBattleInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DBUserBattleInfo::IsInitialized() const {
+  return true;
+}
+
+void DBUserBattleInfo::InternalSwap(DBUserBattleInfo* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DBUserBattleInfo, draw_)
+      + sizeof(DBUserBattleInfo::draw_)
+      - PROTOBUF_FIELD_OFFSET(DBUserBattleInfo, iid_)>(
+          reinterpret_cast<char*>(&iid_),
+          reinterpret_cast<char*>(&other->iid_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DBUserBattleInfo::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
+      file_level_metadata_db_5finternal_2eproto[22]);
+}
+
+// ===================================================================
+
+class DBUserBattles::_Internal {
+ public:
+};
+
+DBUserBattles::DBUserBattles(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  infos_(arena) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.DBUserBattles)
+}
+DBUserBattles::DBUserBattles(const DBUserBattles& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      infos_(from.infos_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:PRO.DBUserBattles)
+}
+
+inline void DBUserBattles::SharedCtor() {
+}
+
+DBUserBattles::~DBUserBattles() {
+  // @@protoc_insertion_point(destructor:PRO.DBUserBattles)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void DBUserBattles::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void DBUserBattles::ArenaDtor(void* object) {
+  DBUserBattles* _this = reinterpret_cast< DBUserBattles* >(object);
+  (void)_this;
+}
+void DBUserBattles::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DBUserBattles::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DBUserBattles::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.DBUserBattles)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  infos_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DBUserBattles::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .PRO.DBUserBattleInfo infos = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_infos(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DBUserBattles::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.DBUserBattles)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .PRO.DBUserBattleInfo infos = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_infos_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_infos(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.DBUserBattles)
+  return target;
+}
+
+size_t DBUserBattles::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.DBUserBattles)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .PRO.DBUserBattleInfo infos = 1;
+  total_size += 1UL * this->_internal_infos_size();
+  for (const auto& msg : this->infos_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DBUserBattles::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    DBUserBattles::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DBUserBattles::GetClassData() const { return &_class_data_; }
+
+void DBUserBattles::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<DBUserBattles *>(to)->MergeFrom(
+      static_cast<const DBUserBattles &>(from));
+}
+
+
+void DBUserBattles::MergeFrom(const DBUserBattles& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.DBUserBattles)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  infos_.MergeFrom(from.infos_);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DBUserBattles::CopyFrom(const DBUserBattles& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.DBUserBattles)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DBUserBattles::IsInitialized() const {
+  return true;
+}
+
+void DBUserBattles::InternalSwap(DBUserBattles* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  infos_.InternalSwap(&other->infos_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DBUserBattles::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
+      file_level_metadata_db_5finternal_2eproto[23]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
@@ -6141,6 +6780,12 @@ template<> PROTOBUF_NOINLINE ::PRO::DBUserTaskGroupEnd* Arena::CreateMaybeMessag
 }
 template<> PROTOBUF_NOINLINE ::PRO::DBUserTaskGroupEnds* Arena::CreateMaybeMessage< ::PRO::DBUserTaskGroupEnds >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::DBUserTaskGroupEnds >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::DBUserBattleInfo* Arena::CreateMaybeMessage< ::PRO::DBUserBattleInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::DBUserBattleInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::DBUserBattles* Arena::CreateMaybeMessage< ::PRO::DBUserBattles >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::DBUserBattles >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

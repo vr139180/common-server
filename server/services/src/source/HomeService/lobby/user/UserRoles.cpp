@@ -50,6 +50,7 @@ void UserRoles::load_from_database(sql::ResultSet& row)
 		prinfo->set_user_iid(row.getInt64(column++));
 		prinfo->set_nickname(row.getString(column++).c_str());
 		prinfo->set_registime(row.getInt(column++));
+		prinfo->set_levels(row.getInt(column++));
 	}
 }
 

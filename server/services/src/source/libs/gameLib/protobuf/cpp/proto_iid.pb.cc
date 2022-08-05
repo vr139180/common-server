@@ -18,7 +18,7 @@
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
 }  // namespace PRO
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_2eproto[8];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_2eproto[9];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_proto_5fiid_2eproto = nullptr;
 const uint32_t TableStruct_proto_5fiid_2eproto::offsets[1] = {};
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
@@ -80,14 +80,17 @@ const char descriptor_table_protodef_proto_5fiid_2eproto[] PROTOBUF_SECTION_VARI
   "TASK_REQ\020\305\025\022\030\n\023TASK_SUBMITTASK_ACK\020\306\025\022\032\n"
   "\025TASK_OBTAINREWARD_NTF\020\310\025\022\030\n\023TASK_GIVEUP"
   "TASK_REQ\020\311\025\022\030\n\023TASK_GIVEUPTASK_ACK\020\312\025\022\021\n"
-  "\014TASK_MSG_END\020\206\027\022\024\n\017TASK_MSGALL_END\020\267\027BT"
-  "\n\033com.cms.client.network.gproP\001Z\025gamelib"
-  "/protobuf/gpro\252\002\033com.cms.client.network."
-  "gprob\006proto3"
+  "\014TASK_MSG_END\020\206\027\022\024\n\017TASK_MSGALL_END\020\267\027*\220"
+  "\001\n\013MMS_PROTYPE\022\022\n\016UNIVERSAL_3000\020\000\022\022\n\rMM"
+  "S_MSG_BEGIN\020\270\027\022\030\n\023MMS_MATCHMAKING_REQ\020\271\027"
+  "\022\030\n\023MMS_MATCHMAKING_ACK\020\272\027\022\020\n\013MMS_MSG_EN"
+  "D\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031BT\n\033com.cms.cli"
+  "ent.network.gproP\001Z\025gamelib/protobuf/gpr"
+  "o\252\002\033com.cms.client.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_2eproto = {
-  false, false, 2332, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
+  false, false, 2479, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
   &descriptor_table_proto_5fiid_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_2eproto, file_level_service_descriptors_proto_5fiid_2eproto,
@@ -274,6 +277,24 @@ bool TASK_PROTYPE_IsValid(int value) {
     case 2762:
     case 2950:
     case 2999:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MMS_PROTYPE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_proto_5fiid_2eproto);
+  return file_level_enum_descriptors_proto_5fiid_2eproto[8];
+}
+bool MMS_PROTYPE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 3000:
+    case 3001:
+    case 3002:
+    case 3240:
+    case 3249:
       return true;
     default:
       return false;

@@ -9,6 +9,7 @@ type RoleBaseInfo struct {
 	UserIid   int64     `xorm:"'user_iid'"`
 	Nickname  string    `xorm:"'nickname'"`
 	Registime time.Time `xorm:"'registime'"`
+	Levels    int32     `xorm:"'levels'"`
 }
 
 func (r RoleBaseInfo) TableName() string {

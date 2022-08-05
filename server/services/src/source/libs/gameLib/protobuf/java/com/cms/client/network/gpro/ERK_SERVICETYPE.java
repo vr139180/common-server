@@ -106,9 +106,25 @@ public enum ERK_SERVICETYPE
    */
   ERK_SERVICE_FRIEND(12),
   /**
-   * <code>ERK_SERVICE_MAX = 13;</code>
+   * <pre>
+   *fightrouter
+   * </pre>
+   *
+   * <code>ERK_SERVICE_FIGHTROUTER = 13;</code>
    */
-  ERK_SERVICE_MAX(13),
+  ERK_SERVICE_FIGHTROUTER(13),
+  /**
+   * <pre>
+   *matchmaking
+   * </pre>
+   *
+   * <code>ERK_SERVICE_MATCHMAKING = 14;</code>
+   */
+  ERK_SERVICE_MATCHMAKING(14),
+  /**
+   * <code>ERK_SERVICE_MAX = 15;</code>
+   */
+  ERK_SERVICE_MAX(15),
   UNRECOGNIZED(-1),
   ;
 
@@ -206,9 +222,25 @@ public enum ERK_SERVICETYPE
    */
   public static final int ERK_SERVICE_FRIEND_VALUE = 12;
   /**
-   * <code>ERK_SERVICE_MAX = 13;</code>
+   * <pre>
+   *fightrouter
+   * </pre>
+   *
+   * <code>ERK_SERVICE_FIGHTROUTER = 13;</code>
    */
-  public static final int ERK_SERVICE_MAX_VALUE = 13;
+  public static final int ERK_SERVICE_FIGHTROUTER_VALUE = 13;
+  /**
+   * <pre>
+   *matchmaking
+   * </pre>
+   *
+   * <code>ERK_SERVICE_MATCHMAKING = 14;</code>
+   */
+  public static final int ERK_SERVICE_MATCHMAKING_VALUE = 14;
+  /**
+   * <code>ERK_SERVICE_MAX = 15;</code>
+   */
+  public static final int ERK_SERVICE_MAX_VALUE = 15;
 
 
   public final int getNumber() {
@@ -248,7 +280,9 @@ public enum ERK_SERVICETYPE
       case 10: return ERK_SERVICE_CHAT;
       case 11: return ERK_SERVICE_MAIL;
       case 12: return ERK_SERVICE_FRIEND;
-      case 13: return ERK_SERVICE_MAX;
+      case 13: return ERK_SERVICE_FIGHTROUTER;
+      case 14: return ERK_SERVICE_MATCHMAKING;
+      case 15: return ERK_SERVICE_MAX;
       default: return null;
     }
   }

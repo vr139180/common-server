@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "global_internal.proto";
+import "db_internal.proto";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message MMS_MatchMaking_req{
+  optional UserToken utoken = 1;
+  DBUserBattles battles = 2;
+}
+
+message MMS_MatchMaking_ack{
+  optional UserToken utoken = 1;
+}

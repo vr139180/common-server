@@ -94,6 +94,11 @@ private static final long serialVersionUID = 0L;
             lastResidedate_ = input.readInt32();
             break;
           }
+          case 72: {
+
+            levels_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -295,6 +300,17 @@ private static final long serialVersionUID = 0L;
     return lastResidedate_;
   }
 
+  public static final int LEVELS_FIELD_NUMBER = 9;
+  private int levels_;
+  /**
+   * <code>int32 levels = 9;</code>
+   * @return The levels.
+   */
+  @java.lang.Override
+  public int getLevels() {
+    return levels_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -332,6 +348,9 @@ private static final long serialVersionUID = 0L;
     }
     if (lastResidedate_ != 0) {
       output.writeInt32(8, lastResidedate_);
+    }
+    if (levels_ != 0) {
+      output.writeInt32(9, levels_);
     }
     unknownFields.writeTo(output);
   }
@@ -371,6 +390,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(8, lastResidedate_);
     }
+    if (levels_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(9, levels_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -402,6 +425,8 @@ private static final long serialVersionUID = 0L;
         != other.getResideTime()) return false;
     if (getLastResidedate()
         != other.getLastResidedate()) return false;
+    if (getLevels()
+        != other.getLevels()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -431,6 +456,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getResideTime();
     hash = (37 * hash) + LAST_RESIDEDATE_FIELD_NUMBER;
     hash = (53 * hash) + getLastResidedate();
+    hash = (37 * hash) + LEVELS_FIELD_NUMBER;
+    hash = (53 * hash) + getLevels();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -580,6 +607,8 @@ private static final long serialVersionUID = 0L;
 
       lastResidedate_ = 0;
 
+      levels_ = 0;
+
       return this;
     }
 
@@ -614,6 +643,7 @@ private static final long serialVersionUID = 0L;
       result.geoPos_ = geoPos_;
       result.resideTime_ = resideTime_;
       result.lastResidedate_ = lastResidedate_;
+      result.levels_ = levels_;
       onBuilt();
       return result;
     }
@@ -688,6 +718,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLastResidedate() != 0) {
         setLastResidedate(other.getLastResidedate());
+      }
+      if (other.getLevels() != 0) {
+        setLevels(other.getLevels());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1097,6 +1130,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearLastResidedate() {
       
       lastResidedate_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int levels_ ;
+    /**
+     * <code>int32 levels = 9;</code>
+     * @return The levels.
+     */
+    @java.lang.Override
+    public int getLevels() {
+      return levels_;
+    }
+    /**
+     * <code>int32 levels = 9;</code>
+     * @param value The levels to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLevels(int value) {
+      
+      levels_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 levels = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLevels() {
+      
+      levels_ = 0;
       onChanged();
       return this;
     }

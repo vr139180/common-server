@@ -1,5 +1,5 @@
 ========================================================================
-    CONSOLE APPLICATION : sEureka Project Overview
+    CONSOLE APPLICATION : HomeService Project Overview
 ========================================================================
 
 AppWizard has created this HomeService application for you.

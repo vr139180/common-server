@@ -128,4 +128,8 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Task_ObtainReward_ntf>(TASK_PROTYPE::TASK_OBTAINREWARD_NTF);
 	regist_protocal<Task_GiveupTask_req>(TASK_PROTYPE::TASK_GIVEUPTASK_REQ);
 	regist_protocal<Task_GiveupTask_ack>(TASK_PROTYPE::TASK_GIVEUPTASK_ACK);
+
+	//matchmaking system
+	regist_protocal<MMS_MatchMaking_req>(MMS_PROTYPE::MMS_MATCHMAKING_REQ);
+	regist_protocal<MMS_MatchMaking_ack>(MMS_PROTYPE::MMS_MATCHMAKING_ACK);
 }

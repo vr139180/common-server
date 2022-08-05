@@ -37,6 +37,7 @@ void UserHome::load_from_database(sql::ResultSet& row)
 		home_data_.set_geo_pos(row.getString(column++).c_str());
 		home_data_.set_reside_time(row.getInt(column++));
 		home_data_.set_last_residedate(row.getInt(column++));
+		home_data_.set_levels(row.getInt(column++));
 	}
 }
 
@@ -78,6 +79,7 @@ void UserHome::new_userhome(S_UINT_32 ver, S_INT_64 roleid, const char* homename
 	home_data_.set_geo_pos("{0,0,0}");
 	home_data_.set_reside_time(1);
 	home_data_.set_last_residedate(OSSystem::mOS->GetUnixTimestamp());
+	home_data_.set_levels(1);
 
 	home_data_update_ = true;
 }

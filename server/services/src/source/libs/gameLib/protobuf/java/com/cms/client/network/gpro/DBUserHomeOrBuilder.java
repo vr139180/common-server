@@ -72,4 +72,10 @@ public interface DBUserHomeOrBuilder extends
    * @return The lastResidedate.
    */
   int getLastResidedate();
+
+  /**
+   * <code>int32 levels = 9;</code>
+   * @return The levels.
+   */
+  int getLevels();
 }

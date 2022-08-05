@@ -87,6 +87,11 @@ private static final long serialVersionUID = 0L;
             buildingPos_ = s;
             break;
           }
+          case 64: {
+
+            levels_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -250,6 +255,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int LEVELS_FIELD_NUMBER = 8;
+  private int levels_;
+  /**
+   * <code>int32 levels = 8;</code>
+   * @return The levels.
+   */
+  @java.lang.Override
+  public int getLevels() {
+    return levels_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -284,6 +300,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(buildingPos_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, buildingPos_);
+    }
+    if (levels_ != 0) {
+      output.writeInt32(8, levels_);
     }
     unknownFields.writeTo(output);
   }
@@ -320,6 +339,10 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(buildingPos_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, buildingPos_);
     }
+    if (levels_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, levels_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -349,6 +372,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getLookAt())) return false;
     if (!getBuildingPos()
         .equals(other.getBuildingPos())) return false;
+    if (getLevels()
+        != other.getLevels()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -378,6 +403,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLookAt().hashCode();
     hash = (37 * hash) + BUILDING_POS_FIELD_NUMBER;
     hash = (53 * hash) + getBuildingPos().hashCode();
+    hash = (37 * hash) + LEVELS_FIELD_NUMBER;
+    hash = (53 * hash) + getLevels();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -525,6 +552,8 @@ private static final long serialVersionUID = 0L;
 
       buildingPos_ = "";
 
+      levels_ = 0;
+
       return this;
     }
 
@@ -558,6 +587,7 @@ private static final long serialVersionUID = 0L;
       result.buildingResid_ = buildingResid_;
       result.lookAt_ = lookAt_;
       result.buildingPos_ = buildingPos_;
+      result.levels_ = levels_;
       onBuilt();
       return result;
     }
@@ -628,6 +658,9 @@ private static final long serialVersionUID = 0L;
       if (!other.getBuildingPos().isEmpty()) {
         buildingPos_ = other.buildingPos_;
         onChanged();
+      }
+      if (other.getLevels() != 0) {
+        setLevels(other.getLevels());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -961,6 +994,37 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       buildingPos_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int levels_ ;
+    /**
+     * <code>int32 levels = 8;</code>
+     * @return The levels.
+     */
+    @java.lang.Override
+    public int getLevels() {
+      return levels_;
+    }
+    /**
+     * <code>int32 levels = 8;</code>
+     * @param value The levels to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLevels(int value) {
+      
+      levels_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 levels = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLevels() {
+      
+      levels_ = 0;
       onChanged();
       return this;
     }

@@ -20,7 +20,7 @@ bool LobbyUser::is_end_of_taskgroup(S_INT_32 gid)
 
 int LobbyUser::get_role_level()
 {
-	return 1;
+	return base_data_.get_levels();
 }
 
 int LobbyUser::get_bag_itemnum(S_INT_64 itemiid)

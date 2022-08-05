@@ -29,4 +29,6 @@
 
 #include <gameLib/protobuf/cpp/task_system.pb.h>
 
+#include <gameLib/protobuf/cpp/matchmaking_system.pb.h>
+
 #endif //__PROTO_ALL_H__

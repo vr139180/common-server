@@ -29,6 +29,7 @@ PRO::DBUserHomeStructureItem* UserCacheData::build_additem(S_INT_64 parent, S_IN
 	pitem->set_building_resid(resid);
 	pitem->set_look_at(lookat);
 	pitem->set_building_pos(pos);
+	pitem->set_levels(1);
 
 	this->save_all(false, rdv);
 

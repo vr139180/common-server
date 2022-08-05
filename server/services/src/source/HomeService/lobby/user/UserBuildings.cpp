@@ -50,6 +50,7 @@ void UserBuildings::load_from_database(sql::ResultSet& row)
 		pitem->set_building_resid(row.getInt64(column++));
 		pitem->set_look_at(row.getString(column++).c_str());
 		pitem->set_building_pos(row.getString(column++).c_str());
+		pitem->set_levels(row.getInt(column++));
 	}
 }
 

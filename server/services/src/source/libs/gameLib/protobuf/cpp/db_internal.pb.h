@@ -49,7 +49,7 @@ struct TableStruct_db_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[22]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[24]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -81,6 +81,12 @@ extern DBTaskGAttrDataDefaultTypeInternal _DBTaskGAttrData_default_instance_;
 class DBTaskGAttrData_DatasEntry_DoNotUse;
 struct DBTaskGAttrData_DatasEntry_DoNotUseDefaultTypeInternal;
 extern DBTaskGAttrData_DatasEntry_DoNotUseDefaultTypeInternal _DBTaskGAttrData_DatasEntry_DoNotUse_default_instance_;
+class DBUserBattleInfo;
+struct DBUserBattleInfoDefaultTypeInternal;
+extern DBUserBattleInfoDefaultTypeInternal _DBUserBattleInfo_default_instance_;
+class DBUserBattles;
+struct DBUserBattlesDefaultTypeInternal;
+extern DBUserBattlesDefaultTypeInternal _DBUserBattles_default_instance_;
 class DBUserHome;
 struct DBUserHomeDefaultTypeInternal;
 extern DBUserHomeDefaultTypeInternal _DBUserHome_default_instance_;
@@ -133,6 +139,8 @@ template<> ::PRO::DBTaskAttrData* Arena::CreateMaybeMessage<::PRO::DBTaskAttrDat
 template<> ::PRO::DBTaskAttrData_DatasEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::DBTaskAttrData_DatasEntry_DoNotUse>(Arena*);
 template<> ::PRO::DBTaskGAttrData* Arena::CreateMaybeMessage<::PRO::DBTaskGAttrData>(Arena*);
 template<> ::PRO::DBTaskGAttrData_DatasEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::DBTaskGAttrData_DatasEntry_DoNotUse>(Arena*);
+template<> ::PRO::DBUserBattleInfo* Arena::CreateMaybeMessage<::PRO::DBUserBattleInfo>(Arena*);
+template<> ::PRO::DBUserBattles* Arena::CreateMaybeMessage<::PRO::DBUserBattles>(Arena*);
 template<> ::PRO::DBUserHome* Arena::CreateMaybeMessage<::PRO::DBUserHome>(Arena*);
 template<> ::PRO::DBUserHomeStructure* Arena::CreateMaybeMessage<::PRO::DBUserHomeStructure>(Arena*);
 template<> ::PRO::DBUserHomeStructureItem* Arena::CreateMaybeMessage<::PRO::DBUserHomeStructureItem>(Arena*);
@@ -591,6 +599,7 @@ class DBRoleBaseInfo final :
     kUserIidFieldNumber = 3,
     kVerFieldNumber = 1,
     kRegistimeFieldNumber = 5,
+    kLevelsFieldNumber = 6,
   };
   // string nickname = 4;
   void clear_nickname();
@@ -642,6 +651,15 @@ class DBRoleBaseInfo final :
   void _internal_set_registime(int32_t value);
   public:
 
+  // int32 levels = 6;
+  void clear_levels();
+  int32_t levels() const;
+  void set_levels(int32_t value);
+  private:
+  int32_t _internal_levels() const;
+  void _internal_set_levels(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.DBRoleBaseInfo)
  private:
   class _Internal;
@@ -654,6 +672,7 @@ class DBRoleBaseInfo final :
   int64_t user_iid_;
   uint32_t ver__;
   int32_t registime_;
+  int32_t levels_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_db_5finternal_2eproto;
 };
@@ -944,6 +963,7 @@ class DBUserHome final :
     kVerFieldNumber = 1,
     kResideTimeFieldNumber = 7,
     kLastResidedateFieldNumber = 8,
+    kLevelsFieldNumber = 9,
   };
   // string home_name = 3;
   void clear_home_name();
@@ -1032,6 +1052,15 @@ class DBUserHome final :
   void _internal_set_last_residedate(int32_t value);
   public:
 
+  // int32 levels = 9;
+  void clear_levels();
+  int32_t levels() const;
+  void set_levels(int32_t value);
+  private:
+  int32_t _internal_levels() const;
+  void _internal_set_levels(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.DBUserHome)
  private:
   class _Internal;
@@ -1047,6 +1076,7 @@ class DBUserHome final :
   uint32_t ver__;
   int32_t reside_time_;
   int32_t last_residedate_;
+  int32_t levels_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_db_5finternal_2eproto;
 };
@@ -1179,8 +1209,9 @@ class DBUserHomeStructureItem final :
     kBuildingIidFieldNumber = 2,
     kHomeIidFieldNumber = 3,
     kParentBuildingFieldNumber = 4,
-    kBuildingResidFieldNumber = 5,
     kVerFieldNumber = 1,
+    kLevelsFieldNumber = 8,
+    kBuildingResidFieldNumber = 5,
   };
   // string look_at = 6;
   void clear_look_at();
@@ -1237,15 +1268,6 @@ class DBUserHomeStructureItem final :
   void _internal_set_parent_building(int64_t value);
   public:
 
-  // int64 building_resid = 5;
-  void clear_building_resid();
-  int64_t building_resid() const;
-  void set_building_resid(int64_t value);
-  private:
-  int64_t _internal_building_resid() const;
-  void _internal_set_building_resid(int64_t value);
-  public:
-
   // uint32 ver_ = 1;
   void clear_ver_();
   uint32_t ver_() const;
@@ -1253,6 +1275,24 @@ class DBUserHomeStructureItem final :
   private:
   uint32_t _internal_ver_() const;
   void _internal_set_ver_(uint32_t value);
+  public:
+
+  // int32 levels = 8;
+  void clear_levels();
+  int32_t levels() const;
+  void set_levels(int32_t value);
+  private:
+  int32_t _internal_levels() const;
+  void _internal_set_levels(int32_t value);
+  public:
+
+  // int64 building_resid = 5;
+  void clear_building_resid();
+  int64_t building_resid() const;
+  void set_building_resid(int64_t value);
+  private:
+  int64_t _internal_building_resid() const;
+  void _internal_set_building_resid(int64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:PRO.DBUserHomeStructureItem)
@@ -1267,8 +1307,9 @@ class DBUserHomeStructureItem final :
   int64_t building_iid_;
   int64_t home_iid_;
   int64_t parent_building_;
-  int64_t building_resid_;
   uint32_t ver__;
+  int32_t levels_;
+  int64_t building_resid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_db_5finternal_2eproto;
 };
@@ -3912,6 +3953,373 @@ class DBUserTaskGroupEnds final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_db_5finternal_2eproto;
 };
+// -------------------------------------------------------------------
+
+class DBUserBattleInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserBattleInfo) */ {
+ public:
+  inline DBUserBattleInfo() : DBUserBattleInfo(nullptr) {}
+  ~DBUserBattleInfo() override;
+  explicit constexpr DBUserBattleInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserBattleInfo(const DBUserBattleInfo& from);
+  DBUserBattleInfo(DBUserBattleInfo&& from) noexcept
+    : DBUserBattleInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserBattleInfo& operator=(const DBUserBattleInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserBattleInfo& operator=(DBUserBattleInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserBattleInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserBattleInfo* internal_default_instance() {
+    return reinterpret_cast<const DBUserBattleInfo*>(
+               &_DBUserBattleInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    22;
+
+  friend void swap(DBUserBattleInfo& a, DBUserBattleInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserBattleInfo* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserBattleInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserBattleInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserBattleInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserBattleInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserBattleInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserBattleInfo* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserBattleInfo";
+  }
+  protected:
+  explicit DBUserBattleInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIidFieldNumber = 2,
+    kVerFieldNumber = 1,
+    kLevelsFieldNumber = 4,
+    kRoleIidFieldNumber = 3,
+    kVictoryFieldNumber = 5,
+    kDefeatFieldNumber = 6,
+    kDrawFieldNumber = 7,
+  };
+  // int64 iid = 2;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // uint32 ver_ = 1;
+  void clear_ver_();
+  uint32_t ver_() const;
+  void set_ver_(uint32_t value);
+  private:
+  uint32_t _internal_ver_() const;
+  void _internal_set_ver_(uint32_t value);
+  public:
+
+  // int32 levels = 4;
+  void clear_levels();
+  int32_t levels() const;
+  void set_levels(int32_t value);
+  private:
+  int32_t _internal_levels() const;
+  void _internal_set_levels(int32_t value);
+  public:
+
+  // int64 role_iid = 3;
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
+  // int32 victory = 5;
+  void clear_victory();
+  int32_t victory() const;
+  void set_victory(int32_t value);
+  private:
+  int32_t _internal_victory() const;
+  void _internal_set_victory(int32_t value);
+  public:
+
+  // int32 defeat = 6;
+  void clear_defeat();
+  int32_t defeat() const;
+  void set_defeat(int32_t value);
+  private:
+  int32_t _internal_defeat() const;
+  void _internal_set_defeat(int32_t value);
+  public:
+
+  // int32 draw = 7;
+  void clear_draw();
+  int32_t draw() const;
+  void set_draw(int32_t value);
+  private:
+  int32_t _internal_draw() const;
+  void _internal_set_draw(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserBattleInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t iid_;
+  uint32_t ver__;
+  int32_t levels_;
+  int64_t role_iid_;
+  int32_t victory_;
+  int32_t defeat_;
+  int32_t draw_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class DBUserBattles final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBUserBattles) */ {
+ public:
+  inline DBUserBattles() : DBUserBattles(nullptr) {}
+  ~DBUserBattles() override;
+  explicit constexpr DBUserBattles(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DBUserBattles(const DBUserBattles& from);
+  DBUserBattles(DBUserBattles&& from) noexcept
+    : DBUserBattles() {
+    *this = ::std::move(from);
+  }
+
+  inline DBUserBattles& operator=(const DBUserBattles& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DBUserBattles& operator=(DBUserBattles&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DBUserBattles& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DBUserBattles* internal_default_instance() {
+    return reinterpret_cast<const DBUserBattles*>(
+               &_DBUserBattles_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(DBUserBattles& a, DBUserBattles& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DBUserBattles* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DBUserBattles* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DBUserBattles* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DBUserBattles>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DBUserBattles& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const DBUserBattles& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DBUserBattles* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.DBUserBattles";
+  }
+  protected:
+  explicit DBUserBattles(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kInfosFieldNumber = 1,
+  };
+  // repeated .PRO.DBUserBattleInfo infos = 1;
+  int infos_size() const;
+  private:
+  int _internal_infos_size() const;
+  public:
+  void clear_infos();
+  ::PRO::DBUserBattleInfo* mutable_infos(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserBattleInfo >*
+      mutable_infos();
+  private:
+  const ::PRO::DBUserBattleInfo& _internal_infos(int index) const;
+  ::PRO::DBUserBattleInfo* _internal_add_infos();
+  public:
+  const ::PRO::DBUserBattleInfo& infos(int index) const;
+  ::PRO::DBUserBattleInfo* add_infos();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserBattleInfo >&
+      infos() const;
+
+  // @@protoc_insertion_point(class_scope:PRO.DBUserBattles)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserBattleInfo > infos_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
 // ===================================================================
 
 
@@ -4140,6 +4548,26 @@ inline void DBRoleBaseInfo::_internal_set_registime(int32_t value) {
 inline void DBRoleBaseInfo::set_registime(int32_t value) {
   _internal_set_registime(value);
   // @@protoc_insertion_point(field_set:PRO.DBRoleBaseInfo.registime)
+}
+
+// int32 levels = 6;
+inline void DBRoleBaseInfo::clear_levels() {
+  levels_ = 0;
+}
+inline int32_t DBRoleBaseInfo::_internal_levels() const {
+  return levels_;
+}
+inline int32_t DBRoleBaseInfo::levels() const {
+  // @@protoc_insertion_point(field_get:PRO.DBRoleBaseInfo.levels)
+  return _internal_levels();
+}
+inline void DBRoleBaseInfo::_internal_set_levels(int32_t value) {
+  
+  levels_ = value;
+}
+inline void DBRoleBaseInfo::set_levels(int32_t value) {
+  _internal_set_levels(value);
+  // @@protoc_insertion_point(field_set:PRO.DBRoleBaseInfo.levels)
 }
 
 // -------------------------------------------------------------------
@@ -4443,6 +4871,26 @@ inline void DBUserHome::set_last_residedate(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.DBUserHome.last_residedate)
 }
 
+// int32 levels = 9;
+inline void DBUserHome::clear_levels() {
+  levels_ = 0;
+}
+inline int32_t DBUserHome::_internal_levels() const {
+  return levels_;
+}
+inline int32_t DBUserHome::levels() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserHome.levels)
+  return _internal_levels();
+}
+inline void DBUserHome::_internal_set_levels(int32_t value) {
+  
+  levels_ = value;
+}
+inline void DBUserHome::set_levels(int32_t value) {
+  _internal_set_levels(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserHome.levels)
+}
+
 // -------------------------------------------------------------------
 
 // DBUserHomeStructureItem
@@ -4647,6 +5095,26 @@ inline void DBUserHomeStructureItem::set_allocated_building_pos(std::string* bui
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:PRO.DBUserHomeStructureItem.building_pos)
+}
+
+// int32 levels = 8;
+inline void DBUserHomeStructureItem::clear_levels() {
+  levels_ = 0;
+}
+inline int32_t DBUserHomeStructureItem::_internal_levels() const {
+  return levels_;
+}
+inline int32_t DBUserHomeStructureItem::levels() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserHomeStructureItem.levels)
+  return _internal_levels();
+}
+inline void DBUserHomeStructureItem::_internal_set_levels(int32_t value) {
+  
+  levels_ = value;
+}
+inline void DBUserHomeStructureItem::set_levels(int32_t value) {
+  _internal_set_levels(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserHomeStructureItem.levels)
 }
 
 // -------------------------------------------------------------------
@@ -6129,9 +6597,201 @@ DBUserTaskGroupEnds::groups() const {
   return groups_;
 }
 
+// -------------------------------------------------------------------
+
+// DBUserBattleInfo
+
+// uint32 ver_ = 1;
+inline void DBUserBattleInfo::clear_ver_() {
+  ver__ = 0u;
+}
+inline uint32_t DBUserBattleInfo::_internal_ver_() const {
+  return ver__;
+}
+inline uint32_t DBUserBattleInfo::ver_() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.ver_)
+  return _internal_ver_();
+}
+inline void DBUserBattleInfo::_internal_set_ver_(uint32_t value) {
+  
+  ver__ = value;
+}
+inline void DBUserBattleInfo::set_ver_(uint32_t value) {
+  _internal_set_ver_(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.ver_)
+}
+
+// int64 iid = 2;
+inline void DBUserBattleInfo::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t DBUserBattleInfo::_internal_iid() const {
+  return iid_;
+}
+inline int64_t DBUserBattleInfo::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.iid)
+  return _internal_iid();
+}
+inline void DBUserBattleInfo::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void DBUserBattleInfo::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.iid)
+}
+
+// int64 role_iid = 3;
+inline void DBUserBattleInfo::clear_role_iid() {
+  role_iid_ = int64_t{0};
+}
+inline int64_t DBUserBattleInfo::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t DBUserBattleInfo::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.role_iid)
+  return _internal_role_iid();
+}
+inline void DBUserBattleInfo::_internal_set_role_iid(int64_t value) {
+  
+  role_iid_ = value;
+}
+inline void DBUserBattleInfo::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.role_iid)
+}
+
+// int32 levels = 4;
+inline void DBUserBattleInfo::clear_levels() {
+  levels_ = 0;
+}
+inline int32_t DBUserBattleInfo::_internal_levels() const {
+  return levels_;
+}
+inline int32_t DBUserBattleInfo::levels() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.levels)
+  return _internal_levels();
+}
+inline void DBUserBattleInfo::_internal_set_levels(int32_t value) {
+  
+  levels_ = value;
+}
+inline void DBUserBattleInfo::set_levels(int32_t value) {
+  _internal_set_levels(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.levels)
+}
+
+// int32 victory = 5;
+inline void DBUserBattleInfo::clear_victory() {
+  victory_ = 0;
+}
+inline int32_t DBUserBattleInfo::_internal_victory() const {
+  return victory_;
+}
+inline int32_t DBUserBattleInfo::victory() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.victory)
+  return _internal_victory();
+}
+inline void DBUserBattleInfo::_internal_set_victory(int32_t value) {
+  
+  victory_ = value;
+}
+inline void DBUserBattleInfo::set_victory(int32_t value) {
+  _internal_set_victory(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.victory)
+}
+
+// int32 defeat = 6;
+inline void DBUserBattleInfo::clear_defeat() {
+  defeat_ = 0;
+}
+inline int32_t DBUserBattleInfo::_internal_defeat() const {
+  return defeat_;
+}
+inline int32_t DBUserBattleInfo::defeat() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.defeat)
+  return _internal_defeat();
+}
+inline void DBUserBattleInfo::_internal_set_defeat(int32_t value) {
+  
+  defeat_ = value;
+}
+inline void DBUserBattleInfo::set_defeat(int32_t value) {
+  _internal_set_defeat(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.defeat)
+}
+
+// int32 draw = 7;
+inline void DBUserBattleInfo::clear_draw() {
+  draw_ = 0;
+}
+inline int32_t DBUserBattleInfo::_internal_draw() const {
+  return draw_;
+}
+inline int32_t DBUserBattleInfo::draw() const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattleInfo.draw)
+  return _internal_draw();
+}
+inline void DBUserBattleInfo::_internal_set_draw(int32_t value) {
+  
+  draw_ = value;
+}
+inline void DBUserBattleInfo::set_draw(int32_t value) {
+  _internal_set_draw(value);
+  // @@protoc_insertion_point(field_set:PRO.DBUserBattleInfo.draw)
+}
+
+// -------------------------------------------------------------------
+
+// DBUserBattles
+
+// repeated .PRO.DBUserBattleInfo infos = 1;
+inline int DBUserBattles::_internal_infos_size() const {
+  return infos_.size();
+}
+inline int DBUserBattles::infos_size() const {
+  return _internal_infos_size();
+}
+inline void DBUserBattles::clear_infos() {
+  infos_.Clear();
+}
+inline ::PRO::DBUserBattleInfo* DBUserBattles::mutable_infos(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.DBUserBattles.infos)
+  return infos_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserBattleInfo >*
+DBUserBattles::mutable_infos() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.DBUserBattles.infos)
+  return &infos_;
+}
+inline const ::PRO::DBUserBattleInfo& DBUserBattles::_internal_infos(int index) const {
+  return infos_.Get(index);
+}
+inline const ::PRO::DBUserBattleInfo& DBUserBattles::infos(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.DBUserBattles.infos)
+  return _internal_infos(index);
+}
+inline ::PRO::DBUserBattleInfo* DBUserBattles::_internal_add_infos() {
+  return infos_.Add();
+}
+inline ::PRO::DBUserBattleInfo* DBUserBattles::add_infos() {
+  ::PRO::DBUserBattleInfo* _add = _internal_add_infos();
+  // @@protoc_insertion_point(field_add:PRO.DBUserBattles.infos)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::DBUserBattleInfo >&
+DBUserBattles::infos() const {
+  // @@protoc_insertion_point(field_list:PRO.DBUserBattles.infos)
+  return infos_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

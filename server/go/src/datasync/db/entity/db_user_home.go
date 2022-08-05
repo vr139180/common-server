@@ -12,6 +12,7 @@ type UserHome struct {
 	GeoPos         string    `xorm:"'geo_pos'"`
 	ResideTime     int32     `xorm:"'reside_time'"`
 	LastResideDate time.Time `xorm:"'last_residedate'"`
+	Levels         int32     `xorm:"'levels'"`
 }
 
 func (u UserHome) TableName() string {
@@ -28,6 +29,7 @@ type UserHomeStructure struct {
 	BuildingResId  int64  `xorm:"'building_resid'"`
 	LookAt         string `xorm:"'look_at'"`
 	BuildingPos    string `xorm:"'building_pos'"`
+	Levels         int32  `xorm:"'levels'"`
 }
 
 func (h UserHomeStructure) TableName() string {

@@ -34,7 +34,11 @@ enum ERK_SERVICETYPE{
 	ERK_SERVICE_MAIL = 11;
 	//friend
 	ERK_SERVICE_FRIEND = 12;
-	ERK_SERVICE_MAX = 13;
+	//fightrouter
+	ERK_SERVICE_FIGHTROUTER = 13;
+	//matchmaking
+	ERK_SERVICE_MATCHMAKING = 14;
+	ERK_SERVICE_MAX = 15;
 }
 
 //eureka server node info

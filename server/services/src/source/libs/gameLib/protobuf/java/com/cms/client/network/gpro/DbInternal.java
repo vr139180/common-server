@@ -124,6 +124,16 @@ public final class DbInternal {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_DBUserTaskGroupEnds_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserBattleInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserBattleInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_DBUserBattles_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_DBUserBattles_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -135,61 +145,67 @@ public final class DbInternal {
     java.lang.String[] descriptorData = {
       "\n\021db_internal.proto\022\003PRO\"$\n\010DBRowDel\022\014\n\004" +
       "ver_\030\001 \001(\r\022\n\n\002id\030\002 \001(\003\"+\n\014DBRowDeletes\022\033" +
-      "\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"g\n\016DBRoleBas" +
+      "\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"w\n\016DBRoleBas" +
       "eInfo\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002 \001(\003\022\020\n" +
       "\010user_iid\030\003 \001(\003\022\020\n\010nickname\030\004 \001(\t\022\021\n\treg" +
-      "istime\030\005 \001(\005\"1\n\013DBUserRoles\022\"\n\005roles\030\001 \003" +
-      "(\0132\023.PRO.DBRoleBaseInfo\"\245\001\n\nDBUserHome\022\014" +
-      "\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002 \001(\003\022\021\n\thome_n" +
-      "ame\030\003 \001(\t\022\024\n\014ground_resid\030\004 \001(\003\022\017\n\007look_" +
-      "at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001(\t\022\023\n\013reside_time" +
-      "\030\007 \001(\005\022\027\n\017last_residedate\030\010 \001(\005\"\247\001\n\027DBUs" +
-      "erHomeStructureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014bui" +
-      "lding_iid\030\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017par" +
-      "ent_building\030\004 \001(\003\022\026\n\016building_resid\030\005 \001" +
-      "(\003\022\017\n\007look_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001(" +
-      "\t\"B\n\023DBUserHomeStructure\022+\n\005items\030\001 \003(\0132" +
-      "\034.PRO.DBUserHomeStructureItem\"h\n\rDBPetCa" +
-      "tegory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_type\030\003 \001(" +
-      "\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030\005 \001(\005\022\020\n" +
-      "\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem\022\014\n\004ver_" +
-      "\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010role_iid\030\003 " +
-      "\001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030\005 \001(\005\022\020\n" +
-      "\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n\004pets\030\001 " +
-      "\003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTaskAttrDat" +
-      "a\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAttrData.Da" +
-      "tasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
-      "alue\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskItem\022\014\n\004ver" +
-      "_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\020" +
-      "\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup\030\005 \001(\003\022\022" +
-      "\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001(\005\022\024\n\014ac" +
-      "cept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t \001(\010\022\021\n\t" +
-      "cycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 \001(\005\022\027\n\017f" +
-      "irstupdatetime\030\014 \001(\005\022\026\n\016lastupdatetime\030\r" +
-      " \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.DBTaskAtt" +
-      "rData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBUserTasks" +
-      "\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTaskItem\"h\n\021" +
-      "DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002" +
-      " \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate\030\007 \001(\005\022\026" +
-      "\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUserTaskEnds" +
-      "\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTaskEndItem\"" +
-      "o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003(\0132\037.PRO." +
-      "DBTaskGAttrData.DatasEntry\032,\n\nDatasEntry" +
-      "\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"\331\001\n\017DBU" +
-      "serTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022" +
-      "\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\022\n" +
-      "\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006 \001(\0132\024.P" +
-      "RO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001(\005\022\023\n\013tr" +
-      "igg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t \001(\005\022\017\n\007e" +
-      "ndtime\030\n \001(\005\"8\n\020DBUserTaskGroups\022$\n\006grou" +
-      "ps\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d\n\022DBUser" +
-      "TaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022" +
-      "\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 \001(\005\022\017\n\007e" +
-      "ndtime\030\n \001(\005\">\n\023DBUserTaskGroupEnds\022\'\n\006g" +
-      "roups\030\001 \003(\0132\027.PRO.DBUserTaskGroupEndBT\n\033" +
-      "com.cms.client.network.gproP\001Z\025gamelib/p" +
-      "rotobuf/gpro\252\002\033com.cms.client.network.gp" +
-      "rob\006proto3"
+      "istime\030\005 \001(\005\022\016\n\006levels\030\006 \001(\005\"1\n\013DBUserRo" +
+      "les\022\"\n\005roles\030\001 \003(\0132\023.PRO.DBRoleBaseInfo\"" +
+      "\265\001\n\nDBUserHome\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid" +
+      "\030\002 \001(\003\022\021\n\thome_name\030\003 \001(\t\022\024\n\014ground_resi" +
+      "d\030\004 \001(\003\022\017\n\007look_at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001(" +
+      "\t\022\023\n\013reside_time\030\007 \001(\005\022\027\n\017last_residedat" +
+      "e\030\010 \001(\005\022\016\n\006levels\030\t \001(\005\"\267\001\n\027DBUserHomeSt" +
+      "ructureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014building_ii" +
+      "d\030\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017parent_buil" +
+      "ding\030\004 \001(\003\022\026\n\016building_resid\030\005 \001(\003\022\017\n\007lo" +
+      "ok_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001(\t\022\016\n\006lev" +
+      "els\030\010 \001(\005\"B\n\023DBUserHomeStructure\022+\n\005item" +
+      "s\030\001 \003(\0132\034.PRO.DBUserHomeStructureItem\"h\n" +
+      "\rDBPetCategory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_t" +
+      "ype\030\003 \001(\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030" +
+      "\005 \001(\005\022\020\n\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem" +
+      "\022\014\n\004ver_\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010rol" +
+      "e_iid\030\003 \001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030" +
+      "\005 \001(\005\022\020\n\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n" +
+      "\004pets\030\001 \003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTas" +
+      "kAttrData\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAtt" +
+      "rData.DatasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 " +
+      "\001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskIte" +
+      "m\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid" +
+      "\030\003 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup" +
+      "\030\005 \001(\003\022\022\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001" +
+      "(\005\022\024\n\014accept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t" +
+      " \001(\010\022\021\n\tcycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 " +
+      "\001(\005\022\027\n\017firstupdatetime\030\014 \001(\005\022\026\n\016lastupda" +
+      "tetime\030\r \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.D" +
+      "BTaskAttrData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBU" +
+      "serTasks\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTask" +
+      "Item\"h\n\021DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022" +
+      "\013\n\003iid\030\002 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate" +
+      "\030\007 \001(\005\022\026\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUser" +
+      "TaskEnds\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTask" +
+      "EndItem\"o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003(" +
+      "\0132\037.PRO.DBTaskGAttrData.DatasEntry\032,\n\nDa" +
+      "tasEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001" +
+      "\"\331\001\n\017DBUserTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii" +
+      "d\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030" +
+      "\004 \001(\005\022\022\n\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006" +
+      " \001(\0132\024.PRO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001" +
+      "(\005\022\023\n\013trigg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t " +
+      "\001(\005\022\017\n\007endtime\030\n \001(\005\"8\n\020DBUserTaskGroups" +
+      "\022$\n\006groups\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d" +
+      "\n\022DBUserTaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii" +
+      "d\030\002 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 " +
+      "\001(\005\022\017\n\007endtime\030\n \001(\005\">\n\023DBUserTaskGroupE" +
+      "nds\022\'\n\006groups\030\001 \003(\0132\027.PRO.DBUserTaskGrou" +
+      "pEnd\"~\n\020DBUserBattleInfo\022\014\n\004ver_\030\001 \001(\r\022\013" +
+      "\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\016\n\006levels\030" +
+      "\004 \001(\005\022\017\n\007victory\030\005 \001(\005\022\016\n\006defeat\030\006 \001(\005\022\014" +
+      "\n\004draw\030\007 \001(\005\"5\n\rDBUserBattles\022$\n\005infos\030\001" +
+      " \003(\0132\025.PRO.DBUserBattleInfoBT\n\033com.cms.c" +
+      "lient.network.gproP\001Z\025gamelib/protobuf/g" +
+      "pro\252\002\033com.cms.client.network.gprob\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -212,7 +228,7 @@ public final class DbInternal {
     internal_static_PRO_DBRoleBaseInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_DBRoleBaseInfo_descriptor,
-        new java.lang.String[] { "Ver", "RoleIid", "UserIid", "Nickname", "Registime", });
+        new java.lang.String[] { "Ver", "RoleIid", "UserIid", "Nickname", "Registime", "Levels", });
     internal_static_PRO_DBUserRoles_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_DBUserRoles_fieldAccessorTable = new
@@ -224,13 +240,13 @@ public final class DbInternal {
     internal_static_PRO_DBUserHome_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_DBUserHome_descriptor,
-        new java.lang.String[] { "Ver", "RoleIid", "HomeName", "GroundResid", "LookAt", "GeoPos", "ResideTime", "LastResidedate", });
+        new java.lang.String[] { "Ver", "RoleIid", "HomeName", "GroundResid", "LookAt", "GeoPos", "ResideTime", "LastResidedate", "Levels", });
     internal_static_PRO_DBUserHomeStructureItem_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_PRO_DBUserHomeStructureItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_DBUserHomeStructureItem_descriptor,
-        new java.lang.String[] { "Ver", "BuildingIid", "HomeIid", "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos", });
+        new java.lang.String[] { "Ver", "BuildingIid", "HomeIid", "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos", "Levels", });
     internal_static_PRO_DBUserHomeStructure_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_PRO_DBUserHomeStructure_fieldAccessorTable = new
@@ -327,6 +343,18 @@ public final class DbInternal {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_DBUserTaskGroupEnds_descriptor,
         new java.lang.String[] { "Groups", });
+    internal_static_PRO_DBUserBattleInfo_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_PRO_DBUserBattleInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserBattleInfo_descriptor,
+        new java.lang.String[] { "Ver", "Iid", "RoleIid", "Levels", "Victory", "Defeat", "Draw", });
+    internal_static_PRO_DBUserBattles_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_PRO_DBUserBattles_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_DBUserBattles_descriptor,
+        new java.lang.String[] { "Infos", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

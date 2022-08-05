@@ -59,8 +59,7 @@ void UserCacheData::task_new_group(TaskGroupCellRT* gcrt)
 	pGroup->set_group_cell(gcrt->get_groupcell_iid());
 	pGroup->set_gstate( (S_INT_32)gcrt->get_gstate());
 
-	//TODO:level
-	pGroup->set_trigg_level(0);
+	pGroup->set_trigg_level( base_data_.get_levels());
 	pGroup->set_createtime(OSSystem::mOS->GetUnixTimestamp());
 	pGroup->set_endtime(0);
 
@@ -125,8 +124,8 @@ void UserCacheData::task_user_gettask(TaskGroupCellRT* gcrt, TaskCellRT* tc)
 	ptask->set_my_taskgroup(gcrt->get_iid());
 	ptask->set_task_group(gcrt->get_groupiid());
 	ptask->set_qstate( (S_INT_32)tc->get_qstate());
-	//TODO:
-	ptask->set_accept_level(1);
+
+	ptask->set_accept_level(base_data_.get_levels());
 	ptask->set_cycle_task(tc->is_cycle_task());
 	ptask->set_cycle_num(tc->get_cycle_num());
 	ptask->set_createtime(OSSystem::mOS->GetUnixTimestamp());

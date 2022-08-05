@@ -42,4 +42,10 @@ public interface DBRoleBaseInfoOrBuilder extends
    * @return The registime.
    */
   int getRegistime();
+
+  /**
+   * <code>int32 levels = 6;</code>
+   * @return The levels.
+   */
+  int getLevels();
 }

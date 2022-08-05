@@ -10,6 +10,18 @@
 namespace logging = boost::log;
 namespace sinks = logging::sinks;
 
+/*
+[Sinks.CmsWebService]
+Destination=WebService
+
+Filter="%Model% matches gd or %Model% matches mt"
+
+Models=gd;mt
+Model_gd_inf=
+Model_mt_inf=
+
+Asynchronous=true
+*/
 class WSSinkBackend : public sinks::basic_sink_backend<
 	sinks::combine_requirements<sinks::synchronized_feeding,sinks::flushing>::type>
 {

@@ -1,5 +1,5 @@
 ========================================================================
-    CONSOLE APPLICATION : sEureka Project Overview
+    CONSOLE APPLICATION : GateService Project Overview
 ========================================================================
 
 AppWizard has created this LobbyService application for you.

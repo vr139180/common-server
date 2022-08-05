@@ -196,7 +196,7 @@ public final class EurekaInternal {
       "tokenB\t\n\007_homeipB\013\n\t_homeportB\014\n\n_bindto" +
       "ken\"b\n\030Svr_GateBindHome_confirm\022\017\n\007gatei" +
       "id\030\001 \001(\003\022\017\n\007homeiid\030\002 \001(\003\022\021\n\thometoken\030\003" +
-      " \001(\003\022\021\n\tbindtoken\030\004 \001(\003*\317\002\n\017ERK_SERVICET" +
+      " \001(\003\022\021\n\tbindtoken\030\004 \001(\003*\211\003\n\017ERK_SERVICET" +
       "YPE\022\024\n\020ERK_SERVICE_NONE\020\000\022\026\n\022ERK_SERVICE" +
       "_EUREKA\020\001\022\023\n\017ERK_SERVICE_RES\020\002\022\024\n\020ERK_SE" +
       "RVICE_GATE\020\003\022\024\n\020ERK_SERVICE_HOME\020\004\022\025\n\021ER" +
@@ -204,10 +204,11 @@ public final class EurekaInternal {
       "\022\024\n\020ERK_SERVICE_GAME\020\007\022\030\n\024ERK_SERVICE_DA" +
       "TASYNC\020\010\022\026\n\022ERK_SERVICE_ROUTER\020\t\022\024\n\020ERK_" +
       "SERVICE_CHAT\020\n\022\024\n\020ERK_SERVICE_MAIL\020\013\022\026\n\022" +
-      "ERK_SERVICE_FRIEND\020\014\022\023\n\017ERK_SERVICE_MAX\020" +
-      "\rBT\n\033com.cms.client.network.gproP\001Z\025game" +
-      "lib/protobuf/gpro\252\002\033com.cms.client.netwo" +
-      "rk.gprob\006proto3"
+      "ERK_SERVICE_FRIEND\020\014\022\033\n\027ERK_SERVICE_FIGH" +
+      "TROUTER\020\r\022\033\n\027ERK_SERVICE_MATCHMAKING\020\016\022\023" +
+      "\n\017ERK_SERVICE_MAX\020\017BT\n\033com.cms.client.ne" +
+      "twork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033co" +
+      "m.cms.client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

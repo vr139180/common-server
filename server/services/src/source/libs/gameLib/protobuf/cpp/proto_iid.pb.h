@@ -325,6 +325,35 @@ inline bool TASK_PROTYPE_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<TASK_PROTYPE>(
     TASK_PROTYPE_descriptor(), name, value);
 }
+enum MMS_PROTYPE : int {
+  UNIVERSAL_3000 = 0,
+  MMS_MSG_BEGIN = 3000,
+  MMS_MATCHMAKING_REQ = 3001,
+  MMS_MATCHMAKING_ACK = 3002,
+  MMS_MSG_END = 3240,
+  MMS_MSGALL_END = 3249,
+  MMS_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  MMS_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool MMS_PROTYPE_IsValid(int value);
+constexpr MMS_PROTYPE MMS_PROTYPE_MIN = UNIVERSAL_3000;
+constexpr MMS_PROTYPE MMS_PROTYPE_MAX = MMS_MSGALL_END;
+constexpr int MMS_PROTYPE_ARRAYSIZE = MMS_PROTYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* MMS_PROTYPE_descriptor();
+template<typename T>
+inline const std::string& MMS_PROTYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, MMS_PROTYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function MMS_PROTYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    MMS_PROTYPE_descriptor(), enum_t_value);
+}
+inline bool MMS_PROTYPE_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, MMS_PROTYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MMS_PROTYPE>(
+    MMS_PROTYPE_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -386,6 +415,11 @@ template <> struct is_proto_enum< ::PRO::TASK_PROTYPE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::PRO::TASK_PROTYPE>() {
   return ::PRO::TASK_PROTYPE_descriptor();
+}
+template <> struct is_proto_enum< ::PRO::MMS_PROTYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::PRO::MMS_PROTYPE>() {
+  return ::PRO::MMS_PROTYPE_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

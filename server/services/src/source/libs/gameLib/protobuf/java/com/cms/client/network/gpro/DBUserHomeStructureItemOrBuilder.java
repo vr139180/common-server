@@ -60,4 +60,10 @@ public interface DBUserHomeStructureItemOrBuilder extends
    */
   com.google.protobuf.ByteString
       getBuildingPosBytes();
+
+  /**
+   * <code>int32 levels = 8;</code>
+   * @return The levels.
+   */
+  int getLevels();
 }

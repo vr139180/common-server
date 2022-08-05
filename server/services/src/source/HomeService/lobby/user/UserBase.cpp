@@ -36,6 +36,7 @@ void UserBase::load_from_database(sql::ResultSet& row)
 		base_data_.set_user_iid(row.getInt64(column++));
 		base_data_.set_nickname(row.getString(column++).c_str());
 		base_data_.set_registime(row.getInt(column++));
+		base_data_.set_levels(row.getInt(column++));
 	}
 }
 
@@ -82,6 +83,7 @@ void UserBase::new_rolebaseinfo(RedisClient* rdv, S_INT_64 uid, const char* nick
 	base_data_.set_user_iid(uid);
 	base_data_.set_nickname(nickname);
 	base_data_.set_registime(OSSystem::mOS->GetUnixTimestamp());
+	base_data_.set_levels(1);
 
 	base_data_update_ = true;
 }

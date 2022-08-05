@@ -176,4 +176,8 @@ func (pb *ProtobufFactory) initFactory() {
 	pb.registMessage(&gpro.Task_ObtainRewardNtf{}, int(gpro.TASK_PROTYPE_TASK_OBTAINREWARD_NTF))
 	pb.registMessage(&gpro.Task_GiveupTaskReq{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_REQ))
 	pb.registMessage(&gpro.Task_GiveupTaskAck{}, int(gpro.TASK_PROTYPE_TASK_GIVEUPTASK_ACK))
+
+	//matchmaking
+	pb.registMessage(&gpro.MMS_MatchMakingReq{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_REQ))
+	pb.registMessage(&gpro.MMS_MatchMakingAck{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_ACK))
 }

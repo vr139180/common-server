@@ -140,6 +140,9 @@
     <ClInclude Include="..\source\libs\gameLib\logstash\GameDataLog.h">
       <Filter>logstash</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\matchmaking_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -272,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\logstash\GameDataLog.cpp">
       <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\matchmaking_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -93,6 +93,7 @@ func (u *userBuildings) redisBean2DbBean(dat *gpro.DBUserHomeStructureItem) (b *
 	b.BuildingResId = dat.GetBuildingResid()
 	b.LookAt = dat.GetLookAt()
 	b.BuildingPos = dat.GetBuildingPos()
+	b.Levels = dat.GetLevels()
 
 	return b
 }

@@ -73,12 +73,16 @@ namespace com.cms.client.network.gpro {
             "QVNLX1NVQk1JVFRBU0tfUkVREMUVEhgKE1RBU0tfU1VCTUlUVEFTS19BQ0sQ",
             "xhUSGgoVVEFTS19PQlRBSU5SRVdBUkRfTlRGEMgVEhgKE1RBU0tfR0lWRVVQ",
             "VEFTS19SRVEQyRUSGAoTVEFTS19HSVZFVVBUQVNLX0FDSxDKFRIRCgxUQVNL",
-            "X01TR19FTkQQhhcSFAoPVEFTS19NU0dBTExfRU5EELcXQlQKG2NvbS5jbXMu",
-            "Y2xpZW50Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3Byb3RvYnVmL2dwcm+q",
-            "Ahtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnByb3RvMw=="));
+            "X01TR19FTkQQhhcSFAoPVEFTS19NU0dBTExfRU5EELcXKpABCgtNTVNfUFJP",
+            "VFlQRRISCg5VTklWRVJTQUxfMzAwMBAAEhIKDU1NU19NU0dfQkVHSU4QuBcS",
+            "GAoTTU1TX01BVENITUFLSU5HX1JFURC5FxIYChNNTVNfTUFUQ0hNQUtJTkdf",
+            "QUNLELoXEhAKC01NU19NU0dfRU5EEKgZEhMKDk1NU19NU0dBTExfRU5EELEZ",
+            "QlQKG2NvbS5jbXMuY2xpZW50Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3By",
+            "b3RvYnVmL2dwcm+qAhtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.USER_PROTYPE), typeof(global::com.cms.client.network.gpro.BUILD_PROTYPE), typeof(global::com.cms.client.network.gpro.PET_PROTYPE), typeof(global::com.cms.client.network.gpro.CHAT_PROTYPE), typeof(global::com.cms.client.network.gpro.MAIL_PROTYPE), typeof(global::com.cms.client.network.gpro.FRIEND_PROTYPE), typeof(global::com.cms.client.network.gpro.ITEMS_PROTYPE), typeof(global::com.cms.client.network.gpro.TASK_PROTYPE), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.USER_PROTYPE), typeof(global::com.cms.client.network.gpro.BUILD_PROTYPE), typeof(global::com.cms.client.network.gpro.PET_PROTYPE), typeof(global::com.cms.client.network.gpro.CHAT_PROTYPE), typeof(global::com.cms.client.network.gpro.MAIL_PROTYPE), typeof(global::com.cms.client.network.gpro.FRIEND_PROTYPE), typeof(global::com.cms.client.network.gpro.ITEMS_PROTYPE), typeof(global::com.cms.client.network.gpro.TASK_PROTYPE), typeof(global::com.cms.client.network.gpro.MMS_PROTYPE), }, null, null));
     }
     #endregion
 
@@ -197,6 +201,15 @@ namespace com.cms.client.network.gpro {
     [pbr::OriginalName("TASK_GIVEUPTASK_ACK")] TaskGiveuptaskAck = 2762,
     [pbr::OriginalName("TASK_MSG_END")] TaskMsgEnd = 2950,
     [pbr::OriginalName("TASK_MSGALL_END")] TaskMsgallEnd = 2999,
+  }
+
+  public enum MMS_PROTYPE {
+    [pbr::OriginalName("UNIVERSAL_3000")] Universal3000 = 0,
+    [pbr::OriginalName("MMS_MSG_BEGIN")] MmsMsgBegin = 3000,
+    [pbr::OriginalName("MMS_MATCHMAKING_REQ")] MmsMatchmakingReq = 3001,
+    [pbr::OriginalName("MMS_MATCHMAKING_ACK")] MmsMatchmakingAck = 3002,
+    [pbr::OriginalName("MMS_MSG_END")] MmsMsgEnd = 3240,
+    [pbr::OriginalName("MMS_MSGALL_END")] MmsMsgallEnd = 3249,
   }
 
   #endregion
