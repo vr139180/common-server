@@ -16,8 +16,9 @@
 #include "config/FightRouterConfig.h"
 
 #include "network/FightRouterSession.h"
-
 #include "network/HomeServiceLinkFrom.h"
+#include "network/GameServiceLinkFrom.h"
+#include "network/MatchMakingServiceLinkFrom.h"
 
 class FightRouterServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -75,7 +76,9 @@ protected:
 	std::shared_ptr<NetAcceptor>			acceptor_;
 	SessionMthHolder<FightRouterSession>	session_from_;
 
-	LinkFromHolder<HomeServiceLinkFrom>		home_links_from_;
+	LinkFromHolder<HomeServiceLinkFrom>			home_links_from_;
+	LinkFromHolder<GameServiceLinkFrom>			game_links_from_;
+	LinkFromHolder<MatchMakingServiceLinkFrom>	matchmaking_links_from_;
 
 	boost::scoped_ptr<FightRouterConfig>	conf_;
 
@@ -85,6 +88,8 @@ public:
 	void on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session);
 
 	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
+	void on_disconnected_with_gameservice(GameServiceLinkFrom* plink);
+	void on_disconnected_with_matchmakingservice(MatchMakingServiceLinkFrom* plink);
 };
 
 #define svrApp (FightRouterServiceApp::getInstance())

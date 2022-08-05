@@ -4,8 +4,8 @@ import (
 	"cmslib/gnet"
 	"cmslib/logx"
 	"errors"
-	"gamelib/eureka"
 	"friendservice/net"
+	"gamelib/eureka"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -23,7 +23,7 @@ func (l *FriendService) OnInitComplete(svr gnet.Server) (action gnet.Action) {
 }
 
 func (l *FriendService) OnTCPInitComplete() {
-	logx.Infof("Friend Service is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<FriendService listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *FriendService) OnTCPShutdown() {

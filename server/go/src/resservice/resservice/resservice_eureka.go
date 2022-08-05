@@ -8,7 +8,8 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *ResService) OnServiceRegisted(iid int64) {
-	logx.Infof("res service[%d] regist to eureka success........", iid)
+
+	logx.Warnf("<<<<<<<<<<<< res service node:%d online to eureka >>>>>>>>>>>>", iid)
 
 	l.loginSvrs.SIid = iid
 	l.homeSvrs.SIid = iid

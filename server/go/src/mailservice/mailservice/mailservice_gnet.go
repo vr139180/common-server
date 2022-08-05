@@ -23,7 +23,7 @@ func (l *MailService) OnInitComplete(svr gnet.Server) (action gnet.Action) {
 }
 
 func (l *MailService) OnTCPInitComplete() {
-	logx.Infof("Mail Service is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<MailService listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *MailService) OnTCPShutdown() {

@@ -1,13 +1,14 @@
-#ifndef __HOMESERVICELINKTO_H__
-#define __HOMESERVICELINKTO_H__
+#ifndef __FIGHTROUTERSERVICELINKTO_H__
+#define __FIGHTROUTERSERVICELINKTO_H__
 
 #include <cmsLib/net/LinkToBase.h>
 #include <gameLib/eureka/ServiceNodeInfo.h>
 
-class HomeServiceLinkTo : public LinkToBase
+class FightRouterServiceLinkTo : public LinkToBase
 {
 public:
-	HomeServiceLinkTo();
+	FightRouterServiceLinkTo();
+	FightRouterServiceLinkTo(ServiceNodeInfo* pnode);
 
 	virtual void connect();
 
@@ -38,4 +39,4 @@ protected:
 	std::shared_ptr<ServiceNodeInfo>	node_;
 };
 
-#endif	//__HOMESERVICELINKTO_H__
+#endif	//__FIGHTROUTERSERVICELINKTO_H__

@@ -22,7 +22,7 @@ void GateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 
 void GateServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_runtime, "gate service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "<<<<<<<<<<<< gate service node:%lld online to eureka >>>>>>>>>>>>", sid);
 
 	//第一次同步成功之后，发起home绑定请求
 	if (bind_home_step == GateBindHomeStep::GateBindHome_Waiting)

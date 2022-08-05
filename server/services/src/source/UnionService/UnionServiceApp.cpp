@@ -120,11 +120,11 @@ bool UnionServiceApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("UnionService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<UnionService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("UnionService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<UnionService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 

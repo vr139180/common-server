@@ -23,6 +23,7 @@
 #include "network/GateServiceLinkFrom.h"
 #include "network/UnionClusterLinkTo.h"
 #include "network/ResClusterLinkTo.h"
+#include "network/FightRouterServiceLinkTo.h"
 
 #include "lobby/LobbyUser.h"
 #include "lobby/LobbyService.h"
@@ -44,6 +45,8 @@ public:
 	SessionMthHolder<HomeSession>* get_session_from() { return &session_from_; }
 	void send_protocol_to_res(BasicProtocol* pro);
 	void send_protocol_to_gate(BasicProtocol* pro);
+
+	void send_protocol_to_fightrouter(BasicProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }
@@ -106,14 +109,16 @@ protected:
 	LinkFromHolder<GateServiceLinkFrom>		gate_link_map_;
 	GateServiceLinkFrom*					gate_link_;
 	//run in main thread
-	LinkToHolder<ResClusterLinkTo>		res_link_mth_;
+	LinkToHolder<ResClusterLinkTo>			res_link_mth_;
+	//fight router
+	LinkToHolder<FightRouterServiceLinkTo>	fightrouter_link_mth_;
 
 	//network
 	std::shared_ptr<NetAcceptor>			acceptor_;
-	SessionMthHolder<HomeSession>		session_from_;
+	SessionMthHolder<HomeSession>			session_from_;
 
-	boost::thread_specific_ptr<RedisClient>	redis_inthread_;
-	boost::thread_specific_ptr<RedisProtoBufThreadCache> rpcache_inthread_;
+	boost::thread_specific_ptr<RedisClient>					redis_inthread_;
+	boost::thread_specific_ptr<RedisProtoBufThreadCache>	rpcache_inthread_;
 
 	boost::thread_specific_ptr<ScriptContext>	lua_inthread_;
 
@@ -132,6 +137,10 @@ public:
 	void on_mth_gatebindhome_confirm(BasicProtocol* message, bool& autorelease);
 
 	void on_mth_userproxyslot_req(BasicProtocol* message, bool& autorelease);
+
+	void on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink);
+	void on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink);
+
 };
 
 #define svrApp (HomeServiceApp::getInstance())

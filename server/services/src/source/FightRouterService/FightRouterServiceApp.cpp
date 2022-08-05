@@ -79,6 +79,8 @@ bool FightRouterServiceApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 	home_links_from_.init_holder();
+	game_links_from_.init_holder();
+	matchmaking_links_from_.init_holder();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -120,11 +122,11 @@ bool FightRouterServiceApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("FightRouterService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<FightRouterService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("FightRouterService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<FightRouterService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
@@ -144,6 +146,8 @@ void FightRouterServiceApp::uninit_network()
 	NetDriverX::getInstance().uninitNetDriver();
 
 	home_links_from_.uninit_holder();
+	game_links_from_.uninit_holder();
+	matchmaking_links_from_.uninit_holder();
 
 	session_from_.unint_sessions();
 
@@ -278,5 +282,44 @@ void FightRouterServiceApp::on_disconnected_with_homeservice(HomeServiceLinkFrom
 	}
 }
 
+void FightRouterServiceApp::on_disconnected_with_gameservice(GameServiceLinkFrom* plink)
+{
+	FightRouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
 
+	plink->registinfo_tolog(false);
 
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		game_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
+void FightRouterServiceApp::on_disconnected_with_matchmakingservice(MatchMakingServiceLinkFrom* plink)
+{
+	FightRouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		matchmaking_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}

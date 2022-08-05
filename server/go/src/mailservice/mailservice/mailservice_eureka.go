@@ -8,9 +8,10 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *MailService) OnServiceRegisted(iid int64) {
-	logx.Infof("mail service[%d] regist to eureka success........", iid)
-	l.routerSvrs.RealStartTimer(true)
 
+	logx.Warnf("<<<<<<<<<<<< mail service node:%d online to eureka >>>>>>>>>>>>", iid)
+
+	l.routerSvrs.RealStartTimer(true)
 	l.softTimer.SetRealState(true)
 }
 

@@ -139,7 +139,6 @@
     <ClCompile Include="..\source\GateService\network\GateSession.cpp" />
     <ClCompile Include="..\source\GateService\network\HomeServiceLinkTo.cpp" />
     <ClCompile Include="..\source\GateService\network\RouterServiceLinkTo.cpp" />
-    <ClCompile Include="..\source\GateService\network\UnionClusterLinkTo.cpp" />
     <ClCompile Include="..\source\GateService\player\GamePlayer.cpp" />
     <ClCompile Include="..\source\GateService\player\GamePlayerCtrl.cpp" />
     <ClCompile Include="..\source\GateService\player\GamePlayerCtrl_Maintnce.cpp" />
@@ -156,7 +155,6 @@
     <ClInclude Include="..\source\GateService\network\GateSession.h" />
     <ClInclude Include="..\source\GateService\network\HomeServiceLinkTo.h" />
     <ClInclude Include="..\source\GateService\network\RouterServiceLinkTo.h" />
-    <ClInclude Include="..\source\GateService\network\UnionClusterLinkTo.h" />
     <ClInclude Include="..\source\GateService\player\GamePlayer.h" />
     <ClInclude Include="..\source\GateService\player\GamePlayerCtrl.h" />
     <ClInclude Include="..\source\GateService\player\PlayerChannel.h" />

@@ -8,9 +8,9 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *ChatService) OnServiceRegisted(iid int64) {
-	logx.Infof("chat service[%d] regist to eureka success........", iid)
-	l.routerSvrs.RealStartTimer(true)
+	logx.Warnf("<<<<<<<<<<<< chat service node:%d online to eureka >>>>>>>>>>>>", iid)
 
+	l.routerSvrs.RealStartTimer(true)
 	l.softTimer.SetRealState(true)
 }
 

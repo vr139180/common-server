@@ -26,7 +26,7 @@ func (l *ResService) OnInitComplete(svr gnet.Server) (action gnet.Action) {
 }
 
 func (l *ResService) OnTCPInitComplete() {
-	logx.Infof("Res Service is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<Res Service listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *ResService) OnTCPShutdown() {

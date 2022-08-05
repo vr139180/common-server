@@ -116,7 +116,7 @@ bool HomeServiceApp::pre_init()
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_RES);
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_UNION);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_HOME,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
@@ -154,11 +154,11 @@ bool HomeServiceApp::init_finish()
 
     if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
     {
-		logInfo( out_runtime, ("HomeService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<HomeService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
     }
     else
     {
-		logFatal( out_runtime, ("HomeService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<HomeService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
     }
 
@@ -192,6 +192,7 @@ void HomeServiceApp::uninit_network()
 
 	gate_link_map_.uninit_holder();
 	session_from_.unint_sessions();
+	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
 }
@@ -295,10 +296,16 @@ void HomeServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	}
 }
 
+void HomeServiceApp::send_protocol_to_fightrouter(BasicProtocol* pro)
+{
+	fightrouter_link_mth_.send_mth_protocol(pro);
+}
+
 void HomeServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
 	//connect ro res service
 	res_link_mth_.connect_to();
+	fightrouter_link_mth_.connect_to();
 }
 
 void HomeServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
@@ -441,4 +448,14 @@ void HomeServiceApp::post_syscmd_2_lobbyservice(S_INT_64 token, CommandBase* pcm
 	}
 
 	pls->regist_syscmd(pcmd);
+}
+
+void HomeServiceApp::on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink)
+{
+	fightrouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void HomeServiceApp::on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink)
+{
+	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }

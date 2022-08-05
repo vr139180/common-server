@@ -23,7 +23,7 @@ func (l *ChatService) OnInitComplete(svr gnet.Server) (action gnet.Action) {
 }
 
 func (l *ChatService) OnTCPInitComplete() {
-	logx.Infof("Chat Service is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<Chat Service listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *ChatService) OnTCPShutdown() {

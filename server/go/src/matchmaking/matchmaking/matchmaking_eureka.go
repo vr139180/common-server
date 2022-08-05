@@ -8,7 +8,8 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *MatchMakingService) OnServiceRegisted(iid int64) {
-	logx.Infof("matchmaking service[%d] regist to eureka success........", iid)
+
+	logx.Warnf("<<<<<<<<<<<< matchmaking service node:%d online to eureka >>>>>>>>>>>>", iid)
 
 	l.fightRouterSvrs.RealStartTimer(true)
 

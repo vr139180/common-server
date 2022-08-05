@@ -22,7 +22,7 @@ func (l *DataSync) OnInitComplete(svr gnet.Server) (action gnet.Action) {
 }
 
 func (l *DataSync) OnTCPInitComplete() {
-	logx.Infof("DataSync is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<DataSync listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *DataSync) OnTCPShutdown() {

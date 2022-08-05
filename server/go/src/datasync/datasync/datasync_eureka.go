@@ -8,7 +8,7 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *DataSync) OnServiceRegisted(iid int64) {
-	logx.Infof("datasync service[%d] regist to eureka success........", iid)
+	logx.Warnf("<<<<<<<<<<<< datasync service node:%d online to eureka >>>>>>>>>>>>", iid)
 }
 
 func (l *DataSync) OnEurekaLosted() {

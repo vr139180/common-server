@@ -18,7 +18,6 @@
 #include "network/GateSession.h"
 
 #include "network/HomeServiceLinkTo.h"
-#include "network/UnionClusterLinkTo.h"
 #include "network/GameServiceLinkTo.h"
 #include "network/RouterServiceLinkTo.h"
 
@@ -110,7 +109,6 @@ public:
 	void on_disconnected_with_routerservice(RouterServiceLinkTo* plink);
 	void on_routerservice_regist_result( RouterServiceLinkTo* plink);
 
-	void on_disconnected_with_unionservice(UnionClusterLinkTo* plink);
 	void on_disconnected_with_gameservice(GameServiceLinkTo* plink);
 
 public:

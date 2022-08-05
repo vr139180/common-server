@@ -56,6 +56,46 @@ void FightRouterServiceApp::on_mth_servicebindservice_req(BasicProtocol* pro, bo
 
 		ack->set_result(0);
 	}
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GAME)
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		session_from_.remove_waitsession_mth(psession);
+		GameServiceLinkFrom *pLink = game_links_from_.ask_free_link();
+
+		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+
+		psession->auth();
+		pLink->set_session(psession);
+		psession->set_netlinkbase(pLink);
+
+		//设置当前gatelinke
+		game_links_from_.regist_onlinelink(pLink);
+
+		pLink->registinfo_tolog(true);
+
+		ack->set_result(0);
+	}
+	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING)
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		session_from_.remove_waitsession_mth(psession);
+		MatchMakingServiceLinkFrom *pLink = matchmaking_links_from_.ask_free_link();
+
+		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+
+		psession->auth();
+		pLink->set_session(psession);
+		psession->set_netlinkbase(pLink);
+
+		//设置当前gatelinke
+		matchmaking_links_from_.regist_onlinelink(pLink);
+
+		pLink->registinfo_tolog(true);
+
+		ack->set_result(0);
+	}
 	else // other sevices
 	{
 
@@ -73,7 +113,8 @@ void FightRouterServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
 
 void FightRouterServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_runtime, "fightrouter service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "<<<<<<<<<<<< fightrouter service node:%lld online to eureka >>>>>>>>>>>>", sid);
+
 	this->is_ready_ = true;
 }
 

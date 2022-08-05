@@ -8,7 +8,9 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *LoginService) OnServiceRegisted(iid int64) {
-	logx.Infof("login service[%d] regist to eureka success........", iid)
+
+	logx.Warnf("<<<<<<<<<<<< login service node:%d online to eureka >>>>>>>>>>>>", iid)
+
 	l.resCtrl.RealStartTimer(true)
 }
 

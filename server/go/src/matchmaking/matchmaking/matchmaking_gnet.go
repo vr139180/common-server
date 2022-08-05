@@ -23,7 +23,7 @@ func (l *MatchMakingService) OnInitComplete(svr gnet.Server) (action gnet.Action
 }
 
 func (l *MatchMakingService) OnTCPInitComplete() {
-	logx.Infof("Matchmaking Service is listening on %s:%d", l.configTool.Ip, l.configTool.Port)
+	logx.Warnf("<<<<<<<<<<<<Matchmaking Service listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *MatchMakingService) OnTCPShutdown() {
@@ -38,6 +38,8 @@ func (l *MatchMakingService) OnTCPOpened(c gnet.Conn) {
 			case *eureka.EurekaSession:
 				// 通知有节点连接成功
 				l.eureka.OnEurekaNodeConnected(s)
+			case *net.FightRouterNetSession:
+				l.fightRouterSvrs.OnResNodeConnected(s)
 			default:
 			}
 		} else {

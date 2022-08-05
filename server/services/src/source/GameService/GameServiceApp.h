@@ -10,13 +10,14 @@
 #include <cmsLib/net/NetAcceptorEvent.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
+#include <gameLib/commons/LinkToHolder.h>
 #include <gameLib/commons/SessionMthHolder.h>
 
 #include "config/GameConfig.h"
 
 #include "network/GameSession.h"
 #include "network/GateServiceLinkFrom.h"
-#include "network/HomeServiceLinkTo.h"
+#include "network/FightRouterServiceLinkTo.h"
 
 class GameServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -29,6 +30,8 @@ public:
 
 	virtual void main_loop();
 
+	void send_protocol_to_fightrouter(BasicProtocol* pro);
+
 public:
 
 	//------------------------------implement NetAcceptorEvent ------------------------------//
@@ -40,7 +43,7 @@ public:
 	virtual void regist_eurekacommand(CommandBase *p) { regist_syscmd(p); }
 	virtual TimerKey add_apptimer_proxy(int step, APPTIMER_FUN_MAP f) { return add_apptimer(step, f); }
 	virtual void del_apptimer_proxy(TimerKey tid) { del_apptimer(tid); };
-	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
+	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE type, 
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
 
 	virtual void mth_service_registed(S_INT_64 sid);
@@ -70,13 +73,15 @@ protected:
 	std::shared_ptr<NetAcceptor>	acceptor_;
 	SessionMthHolder<GameSession>	session_from_;
 
+	LinkToHolder<FightRouterServiceLinkTo>	fightrouter_link_mth_;
+
 	boost::scoped_ptr<GameConfig>	conf_;
 
 public:
 	void on_connection_timeout(GameSession* session);
 
-	void on_disconnected_with_homeservice(HomeServiceLinkTo* plink);
-	void on_homeservice_regist_result(HomeServiceLinkTo* plink);
+	void on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink);
+	void on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink);
 
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 };

@@ -97,6 +97,9 @@
     <ClCompile Include="..\source\HomeService\lobby\LobbyService_Task.cpp">
       <Filter>lobby</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\HomeService\network\FightRouterServiceLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\HomeService\HomeServiceApp.h" />
@@ -162,6 +165,9 @@
     </ClInclude>
     <ClInclude Include="..\source\HomeService\lobby\user\UserTasks.h">
       <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\HomeService\network\FightRouterServiceLinkTo.h">
+      <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -137,7 +137,8 @@ void RouterServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
 
 void RouterServiceApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_runtime, "router service[%lld] registed to eureka, success............", sid);
+	logInfo(out_runtime, "<<<<<<<<<<<< router service node:%lld online to eureka >>>>>>>>>>>>", sid);
+	
 	this->is_ready_ = true;
 
 	//sid作为custom channel id的种子

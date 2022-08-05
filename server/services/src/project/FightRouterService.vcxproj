@@ -133,17 +133,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\FightRouterService\network\GameServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\FightRouterService\network\HomeServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\FightRouterService\network\FightRouterSession.cpp" />
     <ClCompile Include="..\source\FightRouterService\FightRouterServiceApp.cpp" />
     <ClCompile Include="..\source\FightRouterService\FightRouterServiceApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\FightRouterService\network\MatchMakingServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\FightRouterService\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\FightRouterService\config\FightRouterConfig.h" />
+    <ClInclude Include="..\source\FightRouterService\network\GameServiceLinkFrom.h" />
     <ClInclude Include="..\source\FightRouterService\network\HomeServiceLinkFrom.h" />
     <ClInclude Include="..\source\FightRouterService\network\FightRouterSession.h" />
     <ClInclude Include="..\source\FightRouterService\FightRouterServiceApp.h" />
+    <ClInclude Include="..\source\FightRouterService\network\MatchMakingServiceLinkFrom.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\FightRouterService\ReadMe.txt" />

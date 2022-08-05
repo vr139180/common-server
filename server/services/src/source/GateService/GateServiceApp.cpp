@@ -86,9 +86,6 @@ bool GateServiceApp::pre_init()
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_ROUTER);
 
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_UNION);
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_GAME);
-
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
 		gopt.eip.c_str(), gopt.eport, subscribe_types);
@@ -128,11 +125,11 @@ bool GateServiceApp::init_finish()
 	int maxsvr = cf.get_globaloption().svrnum_min;
     if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), maxsvr))
     {
-		logInfo( out_runtime, ("GateService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
     }
     else
     {
-		logFatal( out_runtime, ("GateService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
     }
 
@@ -331,11 +328,6 @@ void GateServiceApp::on_disconnected_with_routerservice(RouterServiceLinkTo* pli
 }
 
 void GateServiceApp::on_disconnected_with_gameservice(GameServiceLinkTo* plink)
-{
-
-}
-
-void GateServiceApp::on_disconnected_with_unionservice(UnionClusterLinkTo* plink)
 {
 
 }

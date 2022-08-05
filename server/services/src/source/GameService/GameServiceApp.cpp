@@ -78,7 +78,7 @@ bool GameServiceApp::pre_init()
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_HOME);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GAME,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
@@ -116,11 +116,11 @@ bool GameServiceApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("GameService listen socket at %s:%d \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<GameService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("GameService listen socket at %s:%d failed\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<GameService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
@@ -129,8 +129,6 @@ bool GameServiceApp::init_finish()
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
 	OSSystem::mOS->SetAppTitle(app_title_);
-
-	logDebug(out_gamedata, "xxxxxxx");
 
 	return true;
 }
@@ -142,6 +140,7 @@ void GameServiceApp::uninit_network()
 	NetDriverX::getInstance().uninitNetDriver();
 
 	session_from_.unint_sessions();
+	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
 }
@@ -231,8 +230,14 @@ void GameServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	}
 }
 
+void GameServiceApp::send_protocol_to_fightrouter(BasicProtocol* pro)
+{
+	fightrouter_link_mth_.send_mth_protocol(pro);
+}
+
 void GameServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
+	fightrouter_link_mth_.connect_to();
 }
 
 void GameServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
@@ -253,14 +258,14 @@ void GameServiceApp::on_connection_timeout(GameSession* session)
 	logError(out_runtime, "GameService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
-void GameServiceApp::on_disconnected_with_homeservice(HomeServiceLinkTo* plink)
+void GameServiceApp::on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink)
 {
-
+	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }
 
-void GameServiceApp::on_homeservice_regist_result(HomeServiceLinkTo* plink)
+void GameServiceApp::on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink)
 {
-
+	fightrouter_link_mth_.on_linkto_regist_result(plink);
 }
 
 void GameServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)

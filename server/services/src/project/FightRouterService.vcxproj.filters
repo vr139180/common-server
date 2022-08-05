@@ -10,6 +10,12 @@
     <ClCompile Include="..\source\FightRouterService\network\HomeServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\FightRouterService\network\GameServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\FightRouterService\network\MatchMakingServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\FightRouterService\FightRouterServiceApp.h" />
@@ -20,6 +26,12 @@
       <Filter>config</Filter>
     </ClInclude>
     <ClInclude Include="..\source\FightRouterService\network\HomeServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\FightRouterService\network\GameServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\FightRouterService\network\MatchMakingServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

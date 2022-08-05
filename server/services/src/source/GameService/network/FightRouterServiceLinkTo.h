@@ -1,13 +1,14 @@
-#ifndef __UNIONCLUSTERLINKTO_H__
-#define __UNIONCLUSTERLINKTO_H__
+#ifndef __FIGHTROUTERSERVICELINKTO_H__
+#define __FIGHTROUTERSERVICELINKTO_H__
 
 #include <cmsLib/net/LinkToBase.h>
 #include <gameLib/eureka/ServiceNodeInfo.h>
 
-class UnionClusterLinkTo : public LinkToBase
+class FightRouterServiceLinkTo : public LinkToBase
 {
 public:
-	UnionClusterLinkTo();
+	FightRouterServiceLinkTo();
+	FightRouterServiceLinkTo(ServiceNodeInfo* pnode);
 
 	virtual void connect();
 
@@ -38,4 +39,4 @@ protected:
 	std::shared_ptr<ServiceNodeInfo>	node_;
 };
 
-#endif	//__UNIONCLUSTERLINKTO_H__
+#endif	//__FIGHTROUTERSERVICELINKTO_H__

@@ -8,7 +8,8 @@ import (
 
 //----------------------------------eureka IEurekaNotify interface----------------------------
 func (l *FriendService) OnServiceRegisted(iid int64) {
-	logx.Infof("friend service[%d] regist to eureka success........", iid)
+	logx.Warnf("<<<<<<<<<<<< friend service node:%d online to eureka >>>>>>>>>>>>", iid)
+
 	l.routerSvrs.RealStartTimer(true)
 
 	l.softTimer.SetRealState(true)

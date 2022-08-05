@@ -37,9 +37,6 @@
     <ClCompile Include="..\source\GateService\network\RouterServiceLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GateService\network\UnionClusterLinkTo.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GateService\network\GateSession.h">
@@ -65,9 +62,6 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\GateService\network\RouterServiceLinkTo.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GateService\network\UnionClusterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

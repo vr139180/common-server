@@ -143,17 +143,17 @@
   <ItemGroup>
     <ClCompile Include="..\source\GameService\GameServiceApp.cpp" />
     <ClCompile Include="..\source\GameService\GameServiceApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\GameService\network\FightRouterServiceLinkTo.cpp" />
     <ClCompile Include="..\source\GameService\network\GameSession.cpp" />
     <ClCompile Include="..\source\GameService\network\GateServiceLinkFrom.cpp" />
-    <ClCompile Include="..\source\GameService\network\HomeServiceLinkTo.cpp" />
     <ClCompile Include="..\source\GameService\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GameService\config\GameConfig.h" />
     <ClInclude Include="..\source\GameService\GameServiceApp.h" />
+    <ClInclude Include="..\source\GameService\network\FightRouterServiceLinkTo.h" />
     <ClInclude Include="..\source\GameService\network\GameSession.h" />
     <ClInclude Include="..\source\GameService\network\GateServiceLinkFrom.h" />
-    <ClInclude Include="..\source\GameService\network\HomeServiceLinkTo.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\GameService\ReadMe.txt" />

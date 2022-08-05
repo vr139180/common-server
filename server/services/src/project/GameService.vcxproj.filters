@@ -10,7 +10,7 @@
     <ClCompile Include="..\source\GameService\network\GateServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GameService\network\HomeServiceLinkTo.cpp">
+    <ClCompile Include="..\source\GameService\network\FightRouterServiceLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -25,7 +25,7 @@
     <ClInclude Include="..\source\GameService\network\GateServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GameService\network\HomeServiceLinkTo.h">
+    <ClInclude Include="..\source\GameService\network\FightRouterServiceLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
