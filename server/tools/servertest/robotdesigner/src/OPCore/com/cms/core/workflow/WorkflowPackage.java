@@ -13,7 +13,7 @@ public class WorkflowPackage extends AbstractElement
 {
 	private List workflowProcesses;
 
-	//package±£´æµÄÎÄ¼ş
+	//packageä¿å­˜çš„æ–‡ä»¶
 	private File file = null;
 
 	/**
@@ -30,7 +30,7 @@ public class WorkflowPackage extends AbstractElement
 	}
 
 	/**
-	 * ³õÊ¼»¯°üµÄ³õÊÔĞÅÏ¢
+	 * åˆå§‹åŒ–åŒ…çš„åˆè¯•ä¿¡æ¯
 	 */
 	public void initPackage()
 	{
@@ -53,7 +53,7 @@ public class WorkflowPackage extends AbstractElement
 	}
 
 	/**
-	 * ±£´æxpdlÎÄ¼ş
+	 * ä¿å­˜xpdlæ–‡ä»¶
 	 */
 	public void savePackageFile()
 	{

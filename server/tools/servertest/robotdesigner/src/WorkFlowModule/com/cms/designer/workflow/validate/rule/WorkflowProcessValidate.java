@@ -1,17 +1,20 @@
 package com.cms.designer.workflow.validate.rule;
 
 
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import com.cms.core.workflow.WorkflowPackage;
 import com.cms.core.workflow.WorkflowProcess;
 import com.cms.core.workflow.activity.Activity;
+import com.cms.designer.coremodule.OBEModuleManager;
 import com.cms.designer.coremodule.workspace.ProjectData;
 
 /**
  * @author Administrator
- * Á÷³Ì¼ì²é
+ * æµç¨‹æ£€æŸ¥
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
@@ -54,7 +57,7 @@ public class WorkflowProcessValidate
 	
 
 	/**
-	 * Ã»ÓĞ¿ªÊ¼½Úµã
+	 * æ²¡æœ‰å¼€å§‹èŠ‚ç‚¹
 	 * @param process
 	 * @return
 	 */
@@ -68,7 +71,7 @@ public class WorkflowProcessValidate
 			if( act.getActivityType() == Activity.START)
 				return ret;
 		}
-		ret =process.getName()+"£º±ØĞëÓĞ¿ªÊ¼½Úµã";
+		ret =process.getName()+"ï¼šå¿…é¡»æœ‰å¼€å§‹èŠ‚ç‚¹";
 		
 		return ret;
 	}
@@ -86,7 +89,7 @@ public class WorkflowProcessValidate
 				++ii;
 		}
 		if( ii > 1)
-			ret =process.getName()+"£º¿ªÊ¼½ÚµãÖ»ÄÜÓĞÒ»¸ö£¡";
+			ret =process.getName()+"ï¼šå¼€å§‹èŠ‚ç‚¹åªèƒ½æœ‰ä¸€ä¸ªï¼";
 
 		return ret;
 	}

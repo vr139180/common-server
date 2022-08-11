@@ -63,6 +63,6 @@ public class EditTransitionDialog extends BasicDialog
 		addPane( ResourceUtil.getRS( "loop.condition"), conditionEditorPanel);
 
 		pack();
-		this.setSize( 300, 420);
+		this.setSize( 500, 420);
 	}
 }

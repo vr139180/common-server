@@ -1,25 +1,30 @@
 package com.cms.designer.workflow.validate.rule;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
 import com.cms.core.workflow.Transition;
 import com.cms.core.workflow.WorkflowProcess;
 import com.cms.core.workflow.activity.Activity;
+import com.cms.core.workflow.activity.Tool;
+import com.cms.core.workflow.activity.ToolSet;
 import com.cms.designer.coremodule.workspace.ProjectData;
 import com.cms.designer.workflow.WorkflowModuleData;
 
 /**
  * @author Administrator
- * »î¶¯¼ì²é
+ * æ´»åŠ¨æ£€æŸ¥
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class WorkflowActivityValidate
 {
 	/**
-	 * ÑéÖ¤ËùÓÐ½Úµã
+	 * éªŒè¯æ‰€æœ‰èŠ‚ç‚¹
 	 * @param process
 	 * @param v
 	 * @return
@@ -56,12 +61,12 @@ public class WorkflowActivityValidate
 			}
 		}
 
-		//ÑéÖ¤
+		//éªŒè¯
 		return ret;
 	}
 	
 	/**
-	 * ¿ªÊ¼½ÚµãÃ»ÓÐ³ö¿Ú
+	 * å¼€å§‹èŠ‚ç‚¹æ²¡æœ‰å‡ºå£
 	 * @param process
 	 * @param act
 	 * @return
@@ -84,7 +89,7 @@ public class WorkflowActivityValidate
 		{
 			Iterator ii =process.getTransitions().iterator();
 			List vv =new ArrayList();
-			//±£Ö¤º¬ÓÐÒ»¸öÈ±Ê¡×ªÒÆ»òÕß£¬Ã»ÓÐÌõ¼þÎª¿ÕµÄ×ªÒÆ
+			//ä¿è¯å«æœ‰ä¸€ä¸ªç¼ºçœè½¬ç§»æˆ–è€…ï¼Œæ²¡æœ‰æ¡ä»¶ä¸ºç©ºçš„è½¬ç§»
 			while( ii.hasNext())
 			{
 				Transition tt =( Transition)ii.next();
@@ -92,14 +97,14 @@ public class WorkflowActivityValidate
 					vv.add( tt.getFrom());
 			}
 			if( !vv.contains( act.getId()))
-				ret =act.getId()+"->"+act.getName()+"£º¾¯¸æ(¿ªÊ¼½Úµã)ÖÁÉÙ±ØÐëÉèÖÃÒ»¸öÈ±Ê¡µÄ×ª³ö£¡";
+				ret =act.getId()+"->"+act.getName()+"ï¼šè­¦å‘Š(å¼€å§‹èŠ‚ç‚¹)è‡³å°‘å¿…é¡»è®¾ç½®ä¸€ä¸ªç¼ºçœçš„è½¬å‡ºï¼";
 		}
 		
 		return ret;
 	}
 	
 	/**
-	 * ³ýÁË¿ªÊ¼ºÍ½áÊø½Úµã£¬ÆäËûµÄ½Úµã±ØÐëÓÐ³ö¿ÚºÍÈë¿Ú
+	 * é™¤äº†å¼€å§‹å’Œç»“æŸèŠ‚ç‚¹ï¼Œå…¶ä»–çš„èŠ‚ç‚¹å¿…é¡»æœ‰å‡ºå£å’Œå…¥å£
 	 * @param process
 	 * @param act
 	 * @return
@@ -122,9 +127,9 @@ public class WorkflowActivityValidate
 		}
 
 		if( bdef > 1)
-			ret =act.getId()+"->"+act.getName()+"£º½Úµã×î¶àÉèÖÃÒ»¸öÈ±Ê¡Ìõ¼þ£¡";
+			ret =act.getId()+"->"+act.getName()+"ï¼šèŠ‚ç‚¹æœ€å¤šè®¾ç½®ä¸€ä¸ªç¼ºçœæ¡ä»¶ï¼";
 		else if( bdef == 0)
-			ret =act.getId()+"->"+act.getName()+"£º½Úµã±ØÐëÉèÖÃÒ»¸öÈ±Ê¡Ìõ¼þ£¡";
+			ret =act.getId()+"->"+act.getName()+"ï¼šèŠ‚ç‚¹å¿…é¡»è®¾ç½®ä¸€ä¸ªç¼ºçœæ¡ä»¶ï¼";
 
 		return ret;
 	}
@@ -134,7 +139,7 @@ public class WorkflowActivityValidate
 		String ret =null;
 
 		if( act.getTset_().getTools().size() == 0)
-			ret =act.getId()+"->"+act.getName()+"½Úµã£¬±ØÐëÉèÖÃÖÁÉÙÒ»¸öaction";
+			ret =act.getId()+"->"+act.getName()+"èŠ‚ç‚¹ï¼Œå¿…é¡»è®¾ç½®è‡³å°‘ä¸€ä¸ªaction";
 
 		return ret;
 	}

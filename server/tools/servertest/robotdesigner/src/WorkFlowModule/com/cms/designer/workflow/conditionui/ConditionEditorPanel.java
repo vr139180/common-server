@@ -26,14 +26,14 @@ import com.cms.core.workflow.condition.Condition;
 public class ConditionEditorPanel extends JPanel
 {
 	private Container parent;
-	//条件对象
+	//鏉′欢瀵硅薄
 	private Transition transition;
 	private Condition condition;
 	private WorkflowProcess wfprocess;
 
 	private JTextArea	j_condition;
 	
-	//设置为缺省的条件
+	//璁剧疆涓虹己鐪佺殑鏉′欢
 	private JCheckBox	defaultCondition =null;
 	
 	public ConditionEditorPanel( Container parent)
@@ -81,22 +81,22 @@ public class ConditionEditorPanel extends JPanel
 	{
 		setLayout( null);
 		
-		//是否是缺省的条件
+		//鏄惁鏄己鐪佺殑鏉′欢
 		defaultCondition =new JCheckBox( new AbstractAction(){
 			public void actionPerformed( ActionEvent e)
 			{
 				defaultChanged( true);
 			}});
-		defaultCondition.setText( "该条件设置为缺省的条件！");
+		defaultCondition.setText( "璇ユ潯浠惰缃负缂虹渷鐨勬潯浠讹紒");
 		defaultCondition.setSelected( false);
 		add( defaultCondition);
-		defaultCondition.setBounds( 5, 3, 280, 23);
+		defaultCondition.setBounds( 5, 3, 480, 23);
 
 		j_condition =new JTextArea();
 		j_condition.setAutoscrolls( true);
 		JScrollPane panel = new JScrollPane( j_condition);
 		add( panel);
-		panel.setBounds( 5, 25, 280, 220);
+		panel.setBounds( 5, 25, 480, 320);
 	}
 	
 	private void defaultChanged( boolean validate)
@@ -108,8 +108,8 @@ public class ConditionEditorPanel extends JPanel
 				if( hasOtherDefault())
 				{
 					defaultCondition.setSelected( false);
-					//提示
-					JOptionPane.showMessageDialog( this, "在该条件的两个节点之间\r\n已经存在一个缺省转移！", "警告", JOptionPane.OK_OPTION);
+					//鎻愮ず
+					JOptionPane.showMessageDialog( this, "鍦ㄨ鏉′欢鐨勪袱涓妭鐐逛箣闂碶r\n宸茬粡瀛樺湪涓�涓己鐪佽浆绉伙紒", "璀﹀憡", JOptionPane.OK_OPTION);
 					return;
 				}
 			}
@@ -117,7 +117,7 @@ public class ConditionEditorPanel extends JPanel
 
 		if( defaultCondition.isSelected())
 		{
-			//查找是否已经有缺省的条件
+			//鏌ユ壘鏄惁宸茬粡鏈夌己鐪佺殑鏉′欢
 			j_condition.setEnabled( false);
 			j_condition.setText( "");
 		}

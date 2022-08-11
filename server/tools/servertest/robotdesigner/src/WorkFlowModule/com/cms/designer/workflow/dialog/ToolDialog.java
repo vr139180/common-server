@@ -1,8 +1,6 @@
 package com.cms.designer.workflow.dialog;
 
-import java.awt.BorderLayout;
-import java.awt.Dialog;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +14,7 @@ import com.cms.core.util.ResourceUtil;
 import com.cms.core.workflow.WorkflowProcess;
 import com.cms.core.workflow.activity.Tool;
 import com.cms.core.workflow.activity.ToolSet;
+import com.cms.designer.util.Utilities;
 import com.cms.designer.workflow.panel.ToolPanel;
 
 /**
@@ -73,6 +72,7 @@ public class ToolDialog extends JDialog
 	private void init()
 	{
 		setModal( true);
+		this.setPreferredSize( new Dimension( 480, 400));
 
 		toolPanel = new ToolPanel( process, toolSet, tool);
 		
@@ -94,7 +94,9 @@ public class ToolDialog extends JDialog
 	
 	public int showDialog()
 	{
+		Utilities.center(this);
 		setVisible( true);
+
 		return result;
 	}
 

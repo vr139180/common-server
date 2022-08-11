@@ -41,7 +41,7 @@ public class ToolPanel extends JPanel
 	private ToolSet toolSet;
 	private Tool tool;
 	
-	//输入参数设置
+	//杈撳叆鍙傛暟璁剧疆
 	private List data = new ArrayList();
 	private EditableTableModel callFunModel;
 	private DefaultListSelectionModel callFunListModel;
@@ -49,7 +49,7 @@ public class ToolPanel extends JPanel
 	
 	private JTextField pm_value;
 	
-	//返回值下拉矿
+	//杩斿洖鍊间笅鎷夌熆
 	private JComboBox classComboBox;
 	
 	public ToolPanel( WorkflowProcess process, ToolSet toolSet, Tool tool)
@@ -62,7 +62,7 @@ public class ToolPanel extends JPanel
 		
 		initValidateClass();
 		
-		//设置class是否可以编辑
+		//璁剧疆class鏄惁鍙互缂栬緫
 		classComboBox.setEditable( false);
 	}
 	
@@ -88,7 +88,7 @@ public class ToolPanel extends JPanel
 		AppSelector as =( AppSelector)classComboBox.getSelectedItem();
 		if( as == null)
 			return false;
-		//设置输入参数
+		//璁剧疆杈撳叆鍙傛暟
 		Map mm =Tool.getParamsOfAction( as.getName());
 		Map m1 =new HashMap();
 
@@ -111,7 +111,7 @@ public class ToolPanel extends JPanel
 	
 	private void init()
 	{
-		this.setPreferredSize( new Dimension( 350, 340));
+		//this.setPreferredSize( new Dimension( 350, 340));
 		setLayout( null);
 
 		JLabel toolTypeLabel = new JLabel( "actions");
@@ -134,7 +134,7 @@ public class ToolPanel extends JPanel
 		});
 
 		JLabel lb = new JLabel( "action param");
-		lb.setBounds( 5, 30, 70, 20);
+		lb.setBounds( 5, 30, 120, 20);
 		add( lb);
 		callFunModel = new EditableTableModel( new String[]{"name", "value"}, data);
 		callFunListModel = new DefaultListSelectionModel();
@@ -144,7 +144,7 @@ public class ToolPanel extends JPanel
 		callFunTable.setAutoscrolls( true);
 		
 		JScrollPane jScrollPane2 = new JScrollPane();
-		jScrollPane2.setBounds( new Rectangle( 5, 55, 340, 330));
+		jScrollPane2.setBounds( new Rectangle( 5, 55, 460, 330));
 
 		jScrollPane2.getViewport().add( callFunTable, null);
 		add( jScrollPane2, null);
@@ -172,7 +172,7 @@ public class ToolPanel extends JPanel
 			classComboBox.addItem( as);
 		}
 		
-		//设置初试信息
+		//璁剧疆鍒濊瘯淇℃伅
 		String id =tool.getName();
 		if( id == null || id.equals( ""))
 			return;

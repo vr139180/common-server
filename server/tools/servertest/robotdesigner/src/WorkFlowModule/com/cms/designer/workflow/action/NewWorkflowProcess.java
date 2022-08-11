@@ -46,7 +46,7 @@ public class NewWorkflowProcess extends OBEStandardAction
 				ek.analyze(data.getKey());
 
 				WorkflowProcess wp = dialog.getWorkflowProcess();
-				//»ñÈ¡Ä£¿éĞÅÏ¢
+				//è·å–æ¨¡å—ä¿¡æ¯
 				ProjectManager pm =OBEModuleManager.getInstance().getProjectManager();
 				ProjectData pd =pm.getOneProject( ek.getProjectID());
 				if( pd == null)
@@ -61,10 +61,10 @@ public class NewWorkflowProcess extends OBEStandardAction
 				if (wmd == null)
 					return;
 
-				//±£´æ¹ı³ÌĞÅÏ¢
+				//ä¿å­˜è¿‡ç¨‹ä¿¡æ¯
 				if (!wmd.addOneProcess( wp)) return;
 				
-				//Ôö¼Ó¹ı³ÌĞÅÏ¢µ½treeÖĞ
+				//å¢åŠ è¿‡ç¨‹ä¿¡æ¯åˆ°treeä¸­
 				TreeNodeKey tk = new TreeNodeKey();
 				tk.setProcessID( wp.getName());
 				

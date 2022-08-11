@@ -42,7 +42,7 @@ public class EditWorkflowProcessDialog extends JDialog
 	private JButton okButton;
 	private JButton cancelButton;
 
-	//保存tree中的key
+	//淇濆瓨tree涓殑key
 	private String elementKey;
 
 	public EditWorkflowProcessDialog(OBEDesigner parent, WorkflowProcess workflowProcess, String elementKey, String title)
@@ -102,7 +102,7 @@ public class EditWorkflowProcessDialog extends JDialog
 		JTabbedPane tabbedPane = new JTabbedPane();
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
-		//常规
+		//甯歌
 		activityNormalInformationPanel = new ActivityNormalInformationPanel(workflowProcess, elementKey, null);
 		tabbedPane.add(ResourceUtil.getRS("detail.general"), activityNormalInformationPanel);
 

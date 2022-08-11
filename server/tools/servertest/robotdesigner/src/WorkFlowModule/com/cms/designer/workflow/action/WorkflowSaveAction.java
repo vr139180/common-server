@@ -80,25 +80,25 @@ public class WorkflowSaveAction extends OBEStandardAction
 
 		OBEWorkFlowFrame frame =( OBEWorkFlowFrame)parent.getDesktopPanel().getInternalFrame( key);
 		if( frame == null) return;
-		//±£´æ¸÷¸öÔªËØµÄÎ»ÖÃ
+		//ä¿å­˜å„ä¸ªå…ƒç´ çš„ä½ç½®
 		((OBEGraphWorkflow)frame.getGraph()).save(null);
 		
-		//Ôö¼Ó¼à²â
+		//å¢åŠ ç›‘æµ‹
 		pk.savePackageFile();
 		
 		parent.setStatus("Saving workflow to " + pk.getFile().getAbsolutePath());
 
 		if( !checkWorkflowValidate(pd, data, pk, ((OBEGraphWorkflow)frame.getGraph()).getWorkflowProcess()))
 		{
-			JOptionPane.showMessageDialog(parent, "¼à²âµ½Éè¼ÆµÄÁ÷³ÌÓĞÎÊÌâ£¡\r\n\tÇë²ÎÕÕÌáÊ¾ĞÅÏ¢½øĞĞĞŞ¸Ä", 
-					"¾¯¸æ", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(parent, "ç›‘æµ‹åˆ°è®¾è®¡çš„æµç¨‹æœ‰é—®é¢˜ï¼\r\n\tè¯·å‚ç…§æç¤ºä¿¡æ¯è¿›è¡Œä¿®æ”¹", 
+					"è­¦å‘Š", JOptionPane.WARNING_MESSAGE);
 		}
 		
 		frame.setFrameModified( false);
 	}
 	
 	/**
-	 * 20040811 york ĞŞ¸Ä Ôö¼ÓÁË WorkflowModuleData data ºÍ ProjectData pd ²ÎÊı ½«ÔÚWorkflowProcessValidateÖĞÊ¹ÓÃ
+	 * 20040811 york ä¿®æ”¹ å¢åŠ äº† WorkflowModuleData data å’Œ ProjectData pd å‚æ•° å°†åœ¨WorkflowProcessValidateä¸­ä½¿ç”¨
 	 * @param wp
 	 * @return
 	 */

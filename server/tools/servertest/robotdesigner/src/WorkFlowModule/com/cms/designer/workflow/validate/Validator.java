@@ -33,7 +33,7 @@ public class Validator implements Validate
 	private Map errMap =new HashMap();
 	
 	/**
-	 * 20040811 york ĞŞ¸Ä Ôö¼ÓÁË WorkflowModuleData data ²ÎÊı ½«ÔÚWorkflowProcessValidateÖĞÊ¹ÓÃ
+	 * 20040811 york ä¿®æ”¹ å¢åŠ äº† WorkflowModuleData data å‚æ•° å°†åœ¨WorkflowProcessValidateä¸­ä½¿ç”¨
 	 * @param data
 	 * @param wp
 	 * @param process
@@ -52,12 +52,12 @@ public class Validator implements Validate
 	{
 		boolean ret =true;
 		
-		//ÑéÖ¤package
+		//éªŒè¯package
 		List ll =null;
 		
 		String error =null;
 		
-		//ÑéÖ¤process
+		//éªŒè¯process
 		ll =( List)errMap.get( "process");
 		if( ll == null)
 		{
@@ -77,7 +77,7 @@ public class Validator implements Validate
 			
 		}
 		
-		//ÑéÖ¤½Úµã
+		//éªŒè¯èŠ‚ç‚¹
 		ll =( List)errMap.get( "activity");
 		if( ll == null)
 		{
@@ -100,7 +100,7 @@ public class Validator implements Validate
 				ret =false;
 		}
 		
-		//ÑéÖ¤×ªÒÆ
+		//éªŒè¯è½¬ç§»
 		ll =( List)errMap.get( "transition");
 		if( ll == null)
 		{
@@ -144,9 +144,9 @@ public class Validator implements Validate
 		ll =( List)errMap.get( "process");
 		if( ll != null && ll.size() > 0)
 		{
-			//¹¹ÔìprocessĞÅÏ¢
+			//æ„é€ processä¿¡æ¯
 			buffer.append( style1);
-			buffer.append( "Á÷³ÌµÄ´íÎó");
+			buffer.append( "æµç¨‹çš„é”™è¯¯");
 			buffer.append( style2);
 			Iterator ff =ll.iterator();
 			while( ff.hasNext())
@@ -159,9 +159,9 @@ public class Validator implements Validate
 		ll =( List)errMap.get( "activity");
 		if( ll != null && ll.size() > 0)
 		{
-			//¹¹ÔìprocessĞÅÏ¢
+			//æ„é€ processä¿¡æ¯
 			buffer.append( style1);
-			buffer.append( "½ÚµãµÄ´íÎó");
+			buffer.append( "èŠ‚ç‚¹çš„é”™è¯¯");
 			buffer.append( style2);
 			Iterator ff =ll.iterator();
 			while( ff.hasNext())
@@ -174,9 +174,9 @@ public class Validator implements Validate
 		ll =( List)errMap.get( "transition");
 		if( ll != null && ll.size() > 0)
 		{
-			//¹¹ÔìprocessĞÅÏ¢
+			//æ„é€ processä¿¡æ¯
 			buffer.append( style1);
-			buffer.append( "×ªÒÆµÄ´íÎó");
+			buffer.append( "è½¬ç§»çš„é”™è¯¯");
 			buffer.append( style2);
 			Iterator ff =ll.iterator();
 			while( ff.hasNext())

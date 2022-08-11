@@ -8,7 +8,7 @@ import com.cms.designer.workflow.WorkflowModuleData;
 
 /**
  * @author Administrator
- * ÑéÖ¤×ªÒÆµÄĞÅÏ¢
+ * éªŒè¯è½¬ç§»çš„ä¿¡æ¯
  */
 public class WorkflowTransitionValidate
 {

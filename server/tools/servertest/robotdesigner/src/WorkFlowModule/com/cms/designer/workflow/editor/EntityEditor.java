@@ -62,15 +62,15 @@ public class EntityEditor extends JPanel
 	private void init()
 	{
 		this.setLayout( null);
-		this.setPreferredSize( new Dimension( 280, 240));
+		this.setPreferredSize( new Dimension( 480, 440));
 
 		JLabel nameLabel = new JLabel(ResourceUtil.getRS("detail.name"));
 		add(nameLabel);
-		nameLabel.setBounds( 5, 5, 30, 25);
+		nameLabel.setBounds( 5, 5, 50, 25);
 
 		nameField = new JTextField();
 		add(nameField);
-		nameField.setBounds( 35, 5, 220, 25);
+		nameField.setBounds( 55, 5, 380, 25);
 
 	}
 }

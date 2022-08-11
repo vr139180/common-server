@@ -25,7 +25,7 @@ public class HelpAbout extends OBEStandardAction
 	{
 		super.actionPerformed(e);
 		
-		JOptionPane.showConfirmDialog( null,"version:1.0\nCopyright:»ªÀÚ¿Æ¼¼","¹ØÓÚ¶Ô»°¿ò",JOptionPane.DEFAULT_OPTION);
+		JOptionPane.showConfirmDialog( null,"version:1.0\nCopyright:Lujf","å…³äºå¯¹è¯æ¡†",JOptionPane.DEFAULT_OPTION);
 		return;
 	}
 }

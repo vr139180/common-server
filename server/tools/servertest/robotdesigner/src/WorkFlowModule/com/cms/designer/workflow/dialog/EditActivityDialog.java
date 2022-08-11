@@ -45,9 +45,9 @@ public class EditActivityDialog extends JDialog
 	private WorkflowPackage wfPackage;
 	private WorkflowProcess wfProcess;
 
-	// ³£¹æÊôĞÔ
+	// å¸¸è§„å±æ€§
 	private ActivityNormalInformationPanel activityNormalInformationPanel;
-	//Ó¦ÓÃÉèÖÃ
+	//åº”ç”¨è®¾ç½®
 	private ToolSetEditor	toolAppPanel;
 	
 	public EditActivityDialog( OBEGraphWorkflow parent, String key, Activity a, 
@@ -92,7 +92,7 @@ public class EditActivityDialog extends JDialog
 
 	public void revert()
 	{
-		//³£¹æĞÅÏ¢
+		//å¸¸è§„ä¿¡æ¯
 		activityNormalInformationPanel.setElement(activity);
 	}
 
@@ -113,9 +113,9 @@ public class EditActivityDialog extends JDialog
 		this.setResizable( true);
 		getContentPane().setLayout(new BorderLayout());
 		setModal(true);
-		setTitle( "ÉèÖÃActions");
+		setTitle( "è®¾ç½®Actions");
 
-		//tab¿Ø¼ş
+		//tabæ§ä»¶
 		JTabbedPane tabbedPane = new JTabbedPane();
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
@@ -129,17 +129,16 @@ public class EditActivityDialog extends JDialog
 			toolAppPanel.set( parent.getFrame().getName(), wfProcess, activity);
 			
 			tabbedPane.add( "actions", toolAppPanel);
-
 		}
 		
-		//Ôö¼Ó¹¦ÄÜ°´Å¥
+		//å¢åŠ åŠŸèƒ½æŒ‰é’®
 		getContentPane().add(createButtonPanel(), BorderLayout.SOUTH);
 
 		pack();
 	}
 
 	/**
-	 * ´´½¨¹¤¾ßÌõ
+	 * åˆ›å»ºå·¥å…·æ¡
 	 * @return
 	 */
 	private JPanel createButtonPanel()

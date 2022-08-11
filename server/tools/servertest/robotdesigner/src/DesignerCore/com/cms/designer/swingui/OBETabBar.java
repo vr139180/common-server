@@ -49,7 +49,7 @@ public class OBETabBar extends OBEFrameBar implements CheckToolTip
 	private JTabbedPane tabbedPane;
 	private int orientation = JToolBar.HORIZONTAL;
 	
-	//ĞÅÏ¢ÌáÊ¾¶¨Ê±Æ÷
+	//ä¿¡æ¯æç¤ºå®šæ—¶å™¨
 	private Timer checkTimer =null;
 	
 	public OBETabBar( OBEDesigner parent)
@@ -63,7 +63,7 @@ public class OBETabBar extends OBEFrameBar implements CheckToolTip
 
 		init();
 		
-		//¹Ò½Ó¼àÌıÆ÷
+		//æŒ‚æ¥ç›‘å¬å™¨
 		parent.addCheckListener( this);
 		checkTimer =new Timer( 1200, new ActionListener(){
 			public void actionPerformed( ActionEvent e)
@@ -100,10 +100,10 @@ public class OBETabBar extends OBEFrameBar implements CheckToolTip
 		tabbedPane.add( treePane, ResourceUtil.getRS("window.workplat"), WORKSPACE_TAB);
 		
 		JScrollPane check =new JScrollPane( checkPanel);
-		tabbedPane.add( check, "ĞÅÏ¢ÌáÊ¾", CHECK_TAB);
+		tabbedPane.add( check, "ä¿¡æ¯æç¤º", CHECK_TAB);
 		
 		view =new JScrollPane( xpdlview);
-		tabbedPane.add( view, "Ô¤ÀÀ", VIEW_TAB);		
+		tabbedPane.add( view, "é¢„è§ˆ", VIEW_TAB);		
 
 		
 		
@@ -209,7 +209,7 @@ public class OBETabBar extends OBEFrameBar implements CheckToolTip
 		
 		if( tabbedPane.getSelectedIndex() != CHECK_TAB)
 		{
-			//¸ù¾İĞèÒª¾ö¶¨ÊÇ·ñÌáÊ¾
+			//æ ¹æ®éœ€è¦å†³å®šæ˜¯å¦æç¤º
 			if( remind )
 			{
 				if( !checkTimer.isRunning())

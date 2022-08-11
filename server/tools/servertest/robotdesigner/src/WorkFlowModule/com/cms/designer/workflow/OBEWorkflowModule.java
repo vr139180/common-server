@@ -34,25 +34,25 @@ import com.cms.designer.workflow.graph.OBEGraphModel;
 
 /**
  * @author Administrator
- * ¹¤×÷Á÷Ä£¿éµÄÈë¿Ú
+ * å·¥ä½œæµæ¨¡å—çš„å…¥å£
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  * $Id: OBEWorkflowModule.java,v 1.6 2004/09/02 09:06:18 jefferyd Exp $
  */
 public class OBEWorkflowModule extends OBEModuleStandard
 {
-	//Ä£¿é±êÊ¾
+	//æ¨¡å—æ ‡ç¤º
 	public final static String MODULE_ID ="designer.workflow";
-	//¹¤¾ßÌõ³£Á¿¶¨Òå
+	//å·¥å…·æ¡å¸¸é‡å®šä¹‰
 	public final static String EDIT = "edit";
 
 	public final static String LINE = "line";
 	public final static String TOOLIMP ="toolimp";
 	
-	//±£´æ×¢²áµÄÊÂ¼ş
+	//ä¿å­˜æ³¨å†Œçš„äº‹ä»¶
 	private HashMap actions =new HashMap();
 
-	//²Ëµ¥¹ÜÀí
+	//èœå•ç®¡ç†
 	private WorkFlowMenuManager menuManager =null;
 	
 	public OBEWorkflowModule( OBEModule m, OBEDesigner p)
@@ -62,14 +62,14 @@ public class OBEWorkflowModule extends OBEModuleStandard
 	}
 	
 	/**
-	 * Íê³É¸÷ÖÖ´ÙÊ¹»¯ÈÎÎñ
+	 * å®Œæˆå„ç§ä¿ƒä½¿åŒ–ä»»åŠ¡
 	 */
 	protected void init()
 	{
-		//³õÊ¼»¯²Ëµ¥¹ÜÀí
+		//åˆå§‹åŒ–èœå•ç®¡ç†
 		menuManager =new WorkFlowMenuManager( this);
 		
-		//×¢²á¹¤¾ßÌõ°´Å¥
+		//æ³¨å†Œå·¥å…·æ¡æŒ‰é’®
 		registerWorkflowActions();
 		registerToolbar();
 		registerIDEActions();
@@ -134,13 +134,13 @@ public class OBEWorkflowModule extends OBEModuleStandard
 			TOOLIMP,
 			"tooldealup_16.gif",
 			"tooldealup_16.gif",
-			"¹¤¾ß×Ô¶¯´¦Àí");
+			"å·¥å…·è‡ªåŠ¨å¤„ç†");
 
 		registerToolbarButton(
 			LINE,
 			"drawlineup_16.gif",
 			"drawlineup_16.gif",
-			"Ìõ¼ş×ªÒÆ");
+			"æ¡ä»¶è½¬ç§»");
 		
 	}
 	
@@ -226,10 +226,10 @@ public class OBEWorkflowModule extends OBEModuleStandard
 		WorkflowModuleData data =new WorkflowModuleData( OBEWorkflowModule.MODULE_ID, projectID);
 		data.setWorkDir( f);
 		
-		//±£´æÄ£¿éÊı¾İĞÅÏ¢
+		//ä¿å­˜æ¨¡å—æ•°æ®ä¿¡æ¯
 		addModuleData( data);
 		
-		//·ÖÎöÄ¿Â¼¼ÓÔØ°üĞÅÏ¢
+		//åˆ†æç›®å½•åŠ è½½åŒ…ä¿¡æ¯
 		File[] dd =f.listFiles( new FileFilter(){
 			public boolean accept(File pathname)
 			{
@@ -242,11 +242,11 @@ public class OBEWorkflowModule extends OBEModuleStandard
 		{
 			if( !dd[i].isFile())
 				continue;
-			//¸ù¾İÄ¿Â¼Ãû³Æ·ÖÎö°üĞÅÏ¢
+			//æ ¹æ®ç›®å½•åç§°åˆ†æåŒ…ä¿¡æ¯
 			WorkflowPackage pp =loadPackageFromFile( dd[i]);
 			if( pp == null)
 				continue;
-			//Ôö¼Ó°üĞÅÏ¢
+			//å¢åŠ åŒ…ä¿¡æ¯
 			data.addPackage( pp);
 		}
 		
@@ -254,7 +254,7 @@ public class OBEWorkflowModule extends OBEModuleStandard
 	}
 	
 	/**
-	 * ¼ÓÔØ°üĞÅÏ¢
+	 * åŠ è½½åŒ…ä¿¡æ¯
 	 * @param f
 	 * @return
 	 */

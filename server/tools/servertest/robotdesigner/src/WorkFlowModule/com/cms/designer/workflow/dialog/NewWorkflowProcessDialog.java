@@ -70,7 +70,7 @@ public class NewWorkflowProcessDialog extends JDialog
 			return false;
 
 		if(wp.getName()==null||wp.getName().trim().length()<=0){
-			JOptionPane.showConfirmDialog(null,"ÇëÌîÐ´Ãû³Æ.","Ãû³Æ²»ÄÜÎª¿Õ.",JOptionPane.DEFAULT_OPTION);
+			JOptionPane.showConfirmDialog(null,"è¯·å¡«å†™åç§°.","åç§°ä¸èƒ½ä¸ºç©º.",JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
 		return true;
@@ -83,7 +83,7 @@ public class NewWorkflowProcessDialog extends JDialog
 
 	private void init()
 	{
-		//³õÊ¼»¯Á÷³ÌÐÅÏ¢,processµÄidÊÇÈ·¶¨µÄ
+		//åˆå§‹åŒ–æµç¨‹ä¿¡æ¯,processçš„idæ˜¯ç¡®å®šçš„
 		BasicWorkflowProcess bwp = new BasicWorkflowProcess( "none", ResourceUtil.getRS("window.newprocess"));
 		bwp.initBasicWorkflowProcess();
 		wp =bwp;
@@ -97,12 +97,12 @@ public class NewWorkflowProcessDialog extends JDialog
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 
 		entityEditor = new EntityEditor();
-		tabbedPane.add( "»ù±¾ÐÅÏ¢", entityEditor);
+		tabbedPane.add( "åŸºæœ¬ä¿¡æ¯", entityEditor);
 
 		getContentPane().add( createButtonPanel(), BorderLayout.SOUTH);
 		getRootPane().setDefaultButton(okButton);
 
-		//ÉèÖÃÐÞ¸Ä¹ØÁª
+		//è®¾ç½®ä¿®æ”¹å…³è”
 		entityEditor.setElement( wp);
 
 		pack();

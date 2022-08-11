@@ -26,10 +26,10 @@ public class ActivityNormalInformationPanel extends JPanel
 
 	private Activity activity;
 	
-	//Ãû³Æ
+	//åç§°
 	private JTextField nameField;
 
-	//±£´æÏîÄ¿ĞÅÏ¢
+	//ä¿å­˜é¡¹ç›®ä¿¡æ¯
 	private String elementKey;
 	
 	public ActivityNormalInformationPanel( String key, Activity activity)
@@ -37,7 +37,7 @@ public class ActivityNormalInformationPanel extends JPanel
 		this.elementKey =key;
 		this.activity =activity;
 		
-		//Ö»ÓĞ¿ªÊ¼½Úµã£¬½áÊø½ÚµãºÍÈË¹¤½Úµã²ÅÄÜÓĞ¹éµµ¹¦ÄÜ
+		//åªæœ‰å¼€å§‹èŠ‚ç‚¹ï¼Œç»“æŸèŠ‚ç‚¹å’Œäººå·¥èŠ‚ç‚¹æ‰èƒ½æœ‰å½’æ¡£åŠŸèƒ½
 		try
 		{
 			jbInit();
@@ -71,11 +71,11 @@ public class ActivityNormalInformationPanel extends JPanel
 		return nameField.getText();
 	}
 
-	//±£´æ
+	//ä¿å­˜
 	public boolean save()
 	{
 		if(nameField.getText()==null||nameField.getText().trim().length()<=0){
-			JOptionPane.showConfirmDialog(null,"ÇëÌîĞ´Ãû³Æ.","Ãû³Æ²»ÄÜÎª¿Õ.",JOptionPane.DEFAULT_OPTION);
+			JOptionPane.showConfirmDialog(null,"è¯·å¡«å†™åç§°.","åç§°ä¸èƒ½ä¸ºç©º.",JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
 
@@ -87,7 +87,7 @@ public class ActivityNormalInformationPanel extends JPanel
 		return true;
 	}
 
-	//³õÊ¼»¯½çÃæÊı¾İ
+	//åˆå§‹åŒ–ç•Œé¢æ•°æ®
 	public void revert()
 	{
 		if( element != null)
@@ -96,22 +96,22 @@ public class ActivityNormalInformationPanel extends JPanel
 		}
 	}
 
-	//³õÊ¼»¯½çÃæ
+	//åˆå§‹åŒ–ç•Œé¢
 	private void jbInit() throws Exception
 	{
 		setBackground(SystemColor.control);
-		setPreferredSize( new Dimension( 250, 200));
+		setPreferredSize( new Dimension( 450, 300));
 		setLayout(null);
 
 		JLabel nameLabel = new JLabel();
 		nameLabel.setText( ResourceUtil.getRS("activity.name"));
-		nameLabel.setBounds( new Rectangle( 5, 3, 45, 24));
+		nameLabel.setBounds( new Rectangle( 5, 3, 60, 24));
 		this.add(nameLabel, null);
 		
 		nameField = new JTextField();
-		nameField.setBounds( new Rectangle( 53, 3, 180, 24));
+		nameField.setBounds( new Rectangle( 70, 3, 240, 24));
 		this.add(nameField, null);
-		//±à¼­Á÷³ÌĞÅÏ¢Ê±²»ÄÜĞŞ¸ÄÃû³Æ
+		//ç¼–è¾‘æµç¨‹ä¿¡æ¯æ—¶ä¸èƒ½ä¿®æ”¹åç§°
 		if( activity == null)
 			nameField.setEditable( false);
 	}

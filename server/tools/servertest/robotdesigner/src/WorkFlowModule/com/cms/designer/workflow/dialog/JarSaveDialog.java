@@ -36,7 +36,7 @@ public class JarSaveDialog extends JDialog
 
 	private int result = CANCEL_OPTION;
 
-	//ÎÄ¼þÎ»ÖÃ´æ·Å
+	//æ–‡ä»¶ä½ç½®å­˜æ”¾
 	private JarSaveEditor editor;
 	private String destPath ="";
 	private String destName ="";
@@ -86,7 +86,7 @@ public class JarSaveDialog extends JDialog
 				File destFile=new File(destPath+File.separator+destName);
 				if( destFile.exists())
 				{	int flag=-1;
-					flag = JOptionPane.showConfirmDialog( null, "Òª¸²¸ÇÔ­Ä¿±êÎÄ¼þÂð?", "Ä¿±êÎÄ¼þÒÑ´æÔÚ!",JOptionPane.YES_OPTION);
+					flag = JOptionPane.showConfirmDialog( null, "è¦è¦†ç›–åŽŸç›®æ ‡æ–‡ä»¶å—?", "ç›®æ ‡æ–‡ä»¶å·²å­˜åœ¨!",JOptionPane.YES_OPTION);
 					if( flag > 0){
 						result =CANCEL_OPTION;
 						close();

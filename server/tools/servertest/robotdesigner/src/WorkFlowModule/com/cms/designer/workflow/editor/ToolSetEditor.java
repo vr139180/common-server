@@ -50,7 +50,7 @@ public class ToolSetEditor extends JPanel implements WorkflowEditor
 	
     public void set( String key, WorkflowProcess process, Activity act)
     {
-		//³õÊ¼»¯ÏîÄ¿ÖĞ¿ÉÓÃµÄÓ¦ÓÃ
+		//åˆå§‹åŒ–é¡¹ç›®ä¸­å¯ç”¨çš„åº”ç”¨
 		ElementKey ek =new ElementKey();
 		ek.analyze( key);
 		
@@ -75,7 +75,7 @@ public class ToolSetEditor extends JPanel implements WorkflowEditor
 
     private void updateListView()
     {
-    	//³õÊ¼»¯ÒÑÉèÖÃĞÅÏ¢
+    	//åˆå§‹åŒ–å·²è®¾ç½®ä¿¡æ¯
 		Iterator iter = toolSet.getTools().values().iterator();
 		Vector vt =new Vector();
 		while( iter.hasNext())
