@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/lib/commons-logging.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/dom4j-full.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/EdenLib.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jdom.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jgraph3.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jh.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jlfgr-1_0.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/jug.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src/DesignerCore" expected_position="0" />
+      <src_folder value="file://$MODULE_DIR$/src/OPCore" expected_position="1" />
+      <src_folder value="file://$MODULE_DIR$/src/WorkFlowModule" expected_position="2" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/DesignerCore" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/OPCore" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/WorkFlowModule" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="module-library">
+      <library name="commons-logging.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/commons-logging.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="dom4j-full.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/dom4j-full.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="EdenLib.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/EdenLib.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jdom.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jdom.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jgraph3.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jgraph3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jh.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jh.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jlfgr-1_0.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jlfgr-1_0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="jug.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jug.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="service.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/service.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>

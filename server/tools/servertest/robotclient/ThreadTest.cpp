@@ -7,7 +7,7 @@
 #include "resource.h"
 
 #include "ThreadTestDlg.h"
-
+#include <gameLib/protobuf/Proto_all.h>
 
 CAppModule _Module;
 
@@ -40,6 +40,8 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	//	HRESULT hRes = ::CoInitializeEx(NULL, COINIT_MULTITHREADED);
 	ATLASSERT(SUCCEEDED(hRes));
 
+	ProtocolFactory::instance()->init_factory();
+
 	WSADATA wsa_data;
 	int error = WSAStartup (MAKEWORD (1, 1), &wsa_data);
 
@@ -60,6 +62,8 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	WSACleanup();
 
 	::CoUninitialize();
+
+	ProtocolFactory::instance()->uinit();
 
 	return nRet;
 }

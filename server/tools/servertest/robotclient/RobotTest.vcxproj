@@ -76,7 +76,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;../;../../../services/src/sdk/include;../../../services/src/sdk/include/protobuf/include;../../../services/src/source/libs;../../../services/src/sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;LOG4CXX_STATIC;APR_DECLARE_STATIC;APU_DECLARE_STATIC;XERCES_STATIC_LIBRARY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -93,7 +93,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../../../services/src/sdk/lib64;../../../services/src/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -155,18 +155,42 @@
     <ClCompile Include="CommandTestImpl_Cmd_Mail.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Pets.cpp" />
     <ClCompile Include="CommandTestImpl_Script.cpp" />
+    <ClCompile Include="LogonDlg.cpp" />
     <ClCompile Include="ScriptDlg.cpp" />
     <ClCompile Include="MsgNotify.cpp" />
+    <ClCompile Include="TestCase.cpp" />
+    <ClCompile Include="testcase\BeforeServiceAction.cpp" />
+    <ClCompile Include="testcase\CaseActionBase_regist.cpp" />
+    <ClCompile Include="testcase\core\CaseActionBase.cpp" />
+    <ClCompile Include="testcase\core\DaemonNode.cpp" />
+    <ClCompile Include="testcase\core\FlowCondition.cpp" />
+    <ClCompile Include="testcase\core\FlowNode.cpp" />
+    <ClCompile Include="testcase\core\TestCaseWorkFlow.cpp" />
+    <ClCompile Include="testcase\core\UtilServiceAction.cpp" />
+    <ClCompile Include="testcase\VirtualUser.cpp" />
+    <ClCompile Include="testcase\VirtualUser_Script.cpp" />
     <ClCompile Include="ThreadTest.cpp" />
     <ClCompile Include="ThreadTestDlg.cpp" />
+    <ClCompile Include="ThreadWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandTestImpl.h" />
+    <ClInclude Include="LogonDlg.h" />
     <ClInclude Include="ScriptDlg.h" />
     <ClInclude Include="MsgNotify.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TestCase.h" />
+    <ClInclude Include="testcase\BeforeServiceAction.h" />
+    <ClInclude Include="testcase\core\CaseActionBase.h" />
+    <ClInclude Include="testcase\core\DaemonNode.h" />
+    <ClInclude Include="testcase\core\FlowCondition.h" />
+    <ClInclude Include="testcase\core\FlowNode.h" />
+    <ClInclude Include="testcase\core\TestCaseWorkFlow.h" />
+    <ClInclude Include="testcase\core\UtilServiceAction.h" />
+    <ClInclude Include="testcase\VirtualUser.h" />
     <ClInclude Include="ThreadTestDlg.h" />
+    <ClInclude Include="ThreadWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ThreadTest.ico" />

@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package PRO;
+
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+enum ROBOT_CONST{
+  ROBOT_CONST_UNIVERSAL = 0;
+  ROBOT_VERSION =1;
+}
+
+message Robot_Config_Req{
+  int32 version = 1;
+  string robotname = 2;
+  string robotpwd = 3;
+}
+
+message Robot_Config_Ack{
+  //机器人协议版本
+  int32 version = 1;		
+  //0 成功,-1没有此机器人,-2密码错,-3其他错误, -4版本错误
+  int32 result = 2;
+  //只有ret == 0 时,才有下面选项
+  //机器人在服务器的唯一标识
+  optional int32 robotid = 3;
+  optional int64 startuserid = 4;
+  optional int32 users = 5;
+  optional int32 usersrange = 6;
+  optional string lgsip = 7;
+  optional int32 lgsport = 8;
+}
+
+message Robot_Start_Ack{
+  //开始的用户数,不能大于配置里的 users
+  int32 startusernum = 1;
+  //两个用户间登录时间间隔,单位(毫秒)
+  int64 logininterval = 2;
+  //机器人类型,参照 TEST_TYPE
+  repeated string behavior = 3;
+}
+
+message Robot_Stop_Ack{
+}
+
+message Robot_State_Rpt{
+  message ActionGroup
+  {
+	int64 actions = 1;		//动作总数
+	int64 succeeds = 2;		//操作成功总数
+	int64 faileds = 3;		//操作失败总数
+	int64 timeouts = 4;		//操作超时总数
+	int64 timeinterval = 5;	//操作超时时间,单位毫秒
+  }
+  
+  message StateData {
+	//登录
+	ActionGroup logon = 1;
+	ActionGroup getrole = 2;
+	ActionGroup selrole = 3;
+	ActionGroup getchannel = 4;
+	ActionGroup selchannel = 5;
+	ActionGroup getroom = 6;
+	ActionGroup loginroom = 7;
+	ActionGroup logoutroom = 8 ;
+	ActionGroup logoutchannel = 9;
+	ActionGroup logout = 10;
+  }
+  //被回复的用户ID
+  int64 robotid = 1;
+  repeated StateData stat_data = 2;
+}
+
+message Robot_State_Ack{
+  int64 userid = 1;
+}

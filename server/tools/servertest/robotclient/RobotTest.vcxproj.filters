@@ -14,6 +14,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
     </Filter>
+    <Filter Include="robotcore">
+      <UniqueIdentifier>{68eddcf8-a83f-4d2c-a508-6226a64f2143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="testaction">
+      <UniqueIdentifier>{ff38aa15-23f2-441a-b07a-3598834bd2c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="testaction\core">
+      <UniqueIdentifier>{f68eacfb-2af2-4670-8fbf-bb21bfac76cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandTestImpl.cpp">
@@ -52,6 +61,45 @@
     <ClCompile Include="CommandTestImpl_Cmd_Friend.cpp">
       <Filter>cmdtest</Filter>
     </ClCompile>
+    <ClCompile Include="testcase\BeforeServiceAction.cpp">
+      <Filter>testaction</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\CaseActionBase_regist.cpp">
+      <Filter>testaction</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\VirtualUser.cpp">
+      <Filter>testaction</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\VirtualUser_Script.cpp">
+      <Filter>testaction</Filter>
+    </ClCompile>
+    <ClCompile Include="LogonDlg.cpp">
+      <Filter>robotcore</Filter>
+    </ClCompile>
+    <ClCompile Include="TestCase.cpp">
+      <Filter>robotcore</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadWrapper.cpp">
+      <Filter>robotcore</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\CaseActionBase.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\DaemonNode.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\FlowCondition.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\FlowNode.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\TestCaseWorkFlow.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
+    <ClCompile Include="testcase\core\UtilServiceAction.cpp">
+      <Filter>testaction\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandTestImpl.h">
@@ -71,6 +119,39 @@
     </ClInclude>
     <ClInclude Include="ThreadTestDlg.h">
       <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\BeforeServiceAction.h">
+      <Filter>testaction</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\VirtualUser.h">
+      <Filter>testaction</Filter>
+    </ClInclude>
+    <ClInclude Include="LogonDlg.h">
+      <Filter>robotcore</Filter>
+    </ClInclude>
+    <ClInclude Include="TestCase.h">
+      <Filter>robotcore</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadWrapper.h">
+      <Filter>robotcore</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\CaseActionBase.h">
+      <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\DaemonNode.h">
+      <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\FlowCondition.h">
+      <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\FlowNode.h">
+      <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\TestCaseWorkFlow.h">
+      <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="testcase\core\UtilServiceAction.h">
+      <Filter>testaction\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

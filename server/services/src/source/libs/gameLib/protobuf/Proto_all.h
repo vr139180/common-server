@@ -11,6 +11,8 @@
 #include <gameLib/protobuf/cpp/res_internal.pb.h>
 #include <gameLib/protobuf/cpp/gatehome_internal.pb.h>
 
+#include <gameLib/protobuf/cpp/robot_test_internal.pb.h>
+
 #include <gameLib/protobuf/cpp/proto_iid.pb.h>
 #include <gameLib/protobuf/cpp/user_login.pb.h>
 

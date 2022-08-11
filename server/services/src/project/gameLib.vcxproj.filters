@@ -143,6 +143,9 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\matchmaking_system.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\robot_test_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -277,6 +280,9 @@
       <Filter>logstash</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\matchmaking_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\robot_test_internal.pb.cc">
       <Filter>protobuf\cpp</Filter>
     </ClCompile>
   </ItemGroup>

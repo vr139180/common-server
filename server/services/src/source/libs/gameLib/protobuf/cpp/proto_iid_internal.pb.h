@@ -130,6 +130,36 @@ inline bool GATEHOME_PROTYPE_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<GATEHOME_PROTYPE>(
     GATEHOME_PROTYPE_descriptor(), name, value);
 }
+enum ROBOTTEST_PROTYPE : int {
+  UNIVERSAL_300 = 0,
+  ROBOTOTEST_ROBOT_CONFIG_REQ = 301,
+  ROBOTOTEST_ROBOT_CONFIG_ACK = 302,
+  ROBOTOTEST_ROBOT_START_ACK = 303,
+  ROBOTOTEST_ROBOT_STOP_ACK = 304,
+  ROBOTOTEST_ROBOT_STATE_RPT = 305,
+  ROBOTOTEST_ROBOT_STATE_ACK = 306,
+  ROBOTTEST_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  ROBOTTEST_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool ROBOTTEST_PROTYPE_IsValid(int value);
+constexpr ROBOTTEST_PROTYPE ROBOTTEST_PROTYPE_MIN = UNIVERSAL_300;
+constexpr ROBOTTEST_PROTYPE ROBOTTEST_PROTYPE_MAX = ROBOTOTEST_ROBOT_STATE_ACK;
+constexpr int ROBOTTEST_PROTYPE_ARRAYSIZE = ROBOTTEST_PROTYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ROBOTTEST_PROTYPE_descriptor();
+template<typename T>
+inline const std::string& ROBOTTEST_PROTYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ROBOTTEST_PROTYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ROBOTTEST_PROTYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ROBOTTEST_PROTYPE_descriptor(), enum_t_value);
+}
+inline bool ROBOTTEST_PROTYPE_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ROBOTTEST_PROTYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ROBOTTEST_PROTYPE>(
+    ROBOTTEST_PROTYPE_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -161,6 +191,11 @@ template <> struct is_proto_enum< ::PRO::GATEHOME_PROTYPE> : ::std::true_type {}
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::PRO::GATEHOME_PROTYPE>() {
   return ::PRO::GATEHOME_PROTYPE_descriptor();
+}
+template <> struct is_proto_enum< ::PRO::ROBOTTEST_PROTYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::PRO::ROBOTTEST_PROTYPE>() {
+  return ::PRO::ROBOTTEST_PROTYPE_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

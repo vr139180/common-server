@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="framework">
+      <UniqueIdentifier>{67c9adfb-4f7f-49b9-b2d5-a32f31cccb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\Resource Files">
+      <UniqueIdentifier>{850e4f4a-ce8f-431c-8a02-55d30ed8079c}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;manifest</Extensions>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{e094d476-3349-461f-bfe8-8fe958031d20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AboutDlg.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDlg.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionUtil.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="SelTypeDlg.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpAcceptListener.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpAcceptUser.h">
+      <Filter>net</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="maindlg.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="RobotSvr.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="SelTypeDlg.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpAcceptListener.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpAcceptUser.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\connected.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+    <Image Include="res\RobotSvr.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+    <Image Include="res\running.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+    <Image Include="res\stop.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+    <Image Include="res\unknow.ico">
+      <Filter>framework\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RobotSvr.rc">
+      <Filter>framework\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

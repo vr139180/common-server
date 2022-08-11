@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/DesignerCore"/>
+	<classpathentry kind="src" path="src/OPCore"/>
+	<classpathentry kind="src" path="src/WorkFlowModule"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-full.jar"/>
+	<classpathentry kind="lib" path="lib/EdenLib.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
+	<classpathentry kind="lib" path="lib/jgraph3.1.jar"/>
+	<classpathentry kind="lib" path="lib/jh.jar"/>
+	<classpathentry kind="lib" path="lib/jlfgr-1_0.jar"/>
+	<classpathentry kind="lib" path="lib/jug.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module
+   	id="designer.workflow"
+   	name="robot flow"
+	provider-name="jefferyendwar"
+	work-dir="workflow"
+   	class="com.cms.designer.workflow.OBEWorkflowModule">
+
+	<!--重新定义系统框架菜单的处理-->
+   	<ide.menu>
+   		<extension point="core.global.fileoperator">
+			 <action
+				   id="core.operator.filenew"
+				   class="com.cms.designer.workflow.action.WorkflowFileNew">
+			 </action>
+			 <action
+				   id="core.operator.fileopen"
+				   class="com.cms.designer.workflow.action.WorkflowFileOpen">
+			 </action>
+			 <action
+				   id="core.operator.filesave"
+				   class="com.cms.designer.workflow.action.WorkflowSaveAction">
+			 </action>
+			 <action
+				   id="core.operator.filesaveas"
+				   class="com.cms.designer.workflow.action.WorkflowSaveasAction">
+			 </action>
+   		</extension>
+   		<extension point="core.global.editoperator">
+   		</extension>
+   		<extension point="core.global.viewoperator">
+			 <action
+				   id="core.operator.zoomin"
+				   class="com.cms.designer.workflow.action.WorkflowZoominAction">
+			 </action>
+			 <action
+				   id="core.operator.zoomout"
+				   class="com.cms.designer.workflow.action.WorkflowZoomoutAction">
+			 </action>
+   		</extension>
+   	</ide.menu>
+   	<workPlat>
+   		<toolbarConfig>
+   			<buttonSet name="shapeAlignLeft" visible="true"/>
+   		</toolbarConfig>
+   	</workPlat>
+</module>

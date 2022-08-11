@@ -31,6 +31,14 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Svr_GateBindHome_ack>(ERK_PROTYPE::SVR_GATEBINDHOME_ACK);
 	regist_protocal<Svr_GateBindHome_confirm>(ERK_PROTYPE::SVR_GATEBINDHOME_CONFIRM);
 
+	//robot_test_internal.proto
+	regist_protocal<Robot_Config_Req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_REQ);
+	regist_protocal<Robot_Config_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_ACK);
+	regist_protocal<Robot_Start_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_START_ACK);
+	regist_protocal<Robot_Stop_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STOP_ACK);
+	regist_protocal<Robot_State_Rpt>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_RPT);
+	regist_protocal<Robot_State_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_ACK);
+
 	//res_internal.proto
 	regist_protocal<Res_UserSlot_req>(ERK_PROTYPE::RES_USERSLOT_REQ);
 	regist_protocal<Res_UserSlot_req>(ERK_PROTYPE::RES_USERSLOT_ACK);

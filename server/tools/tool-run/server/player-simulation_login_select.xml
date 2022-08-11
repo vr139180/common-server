@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="logon">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="5"/>
+  </s>
+  <s id="3" n="sleep for a while">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="4"/>
+  </s>
+  <s id="4" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="1"/>
+  </s>
+  <s id="5" n="select character">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="3"/>
+  </s>
+</bh>

@@ -18,7 +18,7 @@
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
 }  // namespace PRO
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_5finternal_2eproto[2];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_proto_5fiid_5finternal_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_proto_5fiid_5finternal_2eproto = nullptr;
 const uint32_t TableStruct_proto_5fiid_5finternal_2eproto::offsets[1] = {};
 static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = nullptr;
@@ -44,14 +44,20 @@ const char descriptor_table_protodef_proto_5fiid_5finternal_2eproto[] PROTOBUF_S
   "LOT_ACK\020g\022\030\n\024RES_SYNCGATESLOT_NTF\020h*n\n\020G"
   "ATEHOME_PROTYPE\022\021\n\rUNIVERSAL_200\020\000\022\025\n\020GH"
   "S_USERINIT_REQ\020\311\001\022\027\n\022GHS_USERLOGOUT_NTF\020"
-  "\312\001\022\027\n\022GHS_ROLEDETAIL_ASK\020\313\001BT\n\033com.cms.c"
+  "\312\001\022\027\n\022GHS_ROLEDETAIL_ASK\020\313\001*\355\001\n\021ROBOTTES"
+  "T_PROTYPE\022\021\n\rUNIVERSAL_300\020\000\022 \n\033ROBOTOTE"
+  "ST_ROBOT_CONFIG_REQ\020\255\002\022 \n\033ROBOTOTEST_ROB"
+  "OT_CONFIG_ACK\020\256\002\022\037\n\032ROBOTOTEST_ROBOT_STA"
+  "RT_ACK\020\257\002\022\036\n\031ROBOTOTEST_ROBOT_STOP_ACK\020\260"
+  "\002\022\037\n\032ROBOTOTEST_ROBOT_STATE_RPT\020\261\002\022\037\n\032RO"
+  "BOTOTEST_ROBOT_STATE_ACK\020\262\002BT\n\033com.cms.c"
   "lient.network.gproP\001Z\025gamelib/protobuf/g"
   "pro\252\002\033com.cms.client.network.gprob\006proto"
   "3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_5finternal_2eproto = {
-  false, false, 881, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
+  false, false, 1121, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
   &descriptor_table_proto_5fiid_5finternal_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_5finternal_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_5finternal_2eproto, file_level_service_descriptors_proto_5fiid_5finternal_2eproto,
@@ -109,6 +115,25 @@ bool GATEHOME_PROTYPE_IsValid(int value) {
     case 201:
     case 202:
     case 203:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ROBOTTEST_PROTYPE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_proto_5fiid_5finternal_2eproto);
+  return file_level_enum_descriptors_proto_5fiid_5finternal_2eproto[2];
+}
+bool ROBOTTEST_PROTYPE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 301:
+    case 302:
+    case 303:
+    case 304:
+    case 305:
+    case 306:
       return true;
     default:
       return false;
