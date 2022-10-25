@@ -21,7 +21,9 @@ public:
 
 	//和eureka同步服务
 	void sync_eureka_services(std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
-	void send_mth_protocol(BasicProtocol* pro);
+
+	void send_mth_protocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void send_mth_protocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 
 	template<class M>
 	void broadcast(M* pro)
@@ -136,7 +138,7 @@ void LinkToHolder<T>::connect_to()
 }
 
 template<typename T>
-void LinkToHolder<T>::send_mth_protocol(BasicProtocol* pro)
+void LinkToHolder<T>::send_mth_protocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
 	size_t num = online_links_.size();
 	if (num == 0)
@@ -160,7 +162,35 @@ void LinkToHolder<T>::send_mth_protocol(BasicProtocol* pro)
 	else if (cur_online_link_ < 0)
 		cur_online_link_ = 0;
 
-	online_links_[cur_online_link_]->send_protocol(pro);
+	online_links_[cur_online_link_]->send_netprotocol(to, pro);
+}
+
+template<typename T>
+void LinkToHolder<T>::send_mth_protocol(PRO::ERK_SERVICETYPE to, BasicProtocol* pro)
+{
+	size_t num = online_links_.size();
+	if (num == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	ThreadLockWrapper guard(lock_);
+
+	num = online_links_.size();
+	if (num == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	++cur_online_link_;
+	if (cur_online_link_ >= num)
+		cur_online_link_ = 0;
+	else if (cur_online_link_ < 0)
+		cur_online_link_ = 0;
+
+	online_links_[cur_online_link_]->send_netprotocol(to, pro);
 }
 
 template<typename T>

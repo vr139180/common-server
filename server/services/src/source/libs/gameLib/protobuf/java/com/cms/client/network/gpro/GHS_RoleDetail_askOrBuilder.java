@@ -8,17 +8,8 @@ public interface GHS_RoleDetail_askOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
+   * <code>int64 roleiid = 1;</code>
+   * @return The roleiid.
    */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
+  long getRoleiid();
 }

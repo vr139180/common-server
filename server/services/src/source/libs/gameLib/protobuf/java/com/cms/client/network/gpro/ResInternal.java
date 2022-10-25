@@ -15,26 +15,6 @@ public final class ResInternal {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Res_UserSlot_req_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Res_UserSlot_req_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Res_UserSlot_ack_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Res_UserSlot_ack_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Res_ProxyUserSlot_req_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Res_ProxyUserSlot_req_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Res_ProxyUserSlot_ack_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Res_ProxyUserSlot_ack_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PRO_Res_SyncGateSlot_ntf_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -48,61 +28,19 @@ public final class ResInternal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022res_internal.proto\022\003PRO\"D\n\020Res_UserSlo" +
-      "t_req\022\014\n\004lsno\030\001 \001(\003\022\020\n\010sequence\030\002 \001(\003\022\020\n" +
-      "\010user_iid\030\003 \001(\003\"\336\001\n\020Res_UserSlot_ack\022\016\n\006" +
-      "result\030\001 \001(\005\022\021\n\004slot\030\002 \001(\005H\000\210\001\001\022\024\n\007proxy" +
-      "ip\030\003 \001(\tH\001\210\001\001\022\026\n\tproxyport\030\004 \001(\005H\002\210\001\001\022\026\n" +
-      "\tslottoken\030\005 \001(\003H\003\210\001\001\022\014\n\004lsno\030\024 \001(\003\022\020\n\010s" +
-      "equence\030\025 \001(\003\022\020\n\010user_iid\030\026 \001(\003B\007\n\005_slot" +
-      "B\n\n\010_proxyipB\014\n\n_proxyportB\014\n\n_slottoken" +
-      "\"\217\001\n\025Res_ProxyUserSlot_req\022\022\n\nproxytoken" +
-      "\030\n \001(\t\022\017\n\007homeiid\030\013 \001(\003\022\017\n\007gateiid\030\014 \001(\003" +
-      "\022\016\n\006hgtype\030\r \001(\005\022\014\n\004lsno\030\024 \001(\003\022\020\n\010sequen" +
-      "ce\030\025 \001(\003\022\020\n\010user_iid\030\026 \001(\003\"\251\002\n\025Res_Proxy" +
-      "UserSlot_ack\022\016\n\006result\030\001 \001(\005\022\021\n\004slot\030\002 \001" +
-      "(\005H\000\210\001\001\022\024\n\007proxyip\030\003 \001(\tH\001\210\001\001\022\026\n\tproxypo" +
-      "rt\030\004 \001(\005H\002\210\001\001\022\026\n\tslottoken\030\005 \001(\003H\003\210\001\001\022\022\n" +
-      "\nproxytoken\030\n \001(\t\022\017\n\007homeiid\030\013 \001(\003\022\017\n\007ga" +
-      "teiid\030\014 \001(\003\022\016\n\006hgtype\030\r \001(\005\022\014\n\004lsno\030\024 \001(" +
-      "\003\022\020\n\010sequence\030\025 \001(\003\022\020\n\010user_iid\030\026 \001(\003B\007\n" +
-      "\005_slotB\n\n\010_proxyipB\014\n\n_proxyportB\014\n\n_slo" +
-      "ttoken\"a\n\024Res_SyncGateSlot_ntf\022\021\n\tfreesl" +
-      "ots\030\001 \001(\005\022\024\n\014syncsequence\030\002 \001(\003\022\017\n\007homei" +
-      "id\030\004 \001(\003\022\017\n\007gateiid\030\005 \001(\003BT\n\033com.cms.cli" +
-      "ent.network.gproP\001Z\025gamelib/protobuf/gpr" +
-      "o\252\002\033com.cms.client.network.gprob\006proto3"
+      "\n\022res_internal.proto\022\003PRO\"a\n\024Res_SyncGat" +
+      "eSlot_ntf\022\021\n\tfreeslots\030\001 \001(\005\022\024\n\014syncsequ" +
+      "ence\030\002 \001(\003\022\017\n\007homeiid\030\004 \001(\003\022\017\n\007gateiid\030\005" +
+      " \001(\003BT\n\033com.cms.client.network.gproP\001Z\025g" +
+      "amelib/protobuf/gpro\252\002\033com.cms.client.ne" +
+      "twork.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_PRO_Res_UserSlot_req_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_PRO_Res_UserSlot_req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Res_UserSlot_req_descriptor,
-        new java.lang.String[] { "Lsno", "Sequence", "UserIid", });
-    internal_static_PRO_Res_UserSlot_ack_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_PRO_Res_UserSlot_ack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Res_UserSlot_ack_descriptor,
-        new java.lang.String[] { "Result", "Slot", "Proxyip", "Proxyport", "Slottoken", "Lsno", "Sequence", "UserIid", "Slot", "Proxyip", "Proxyport", "Slottoken", });
-    internal_static_PRO_Res_ProxyUserSlot_req_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_PRO_Res_ProxyUserSlot_req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Res_ProxyUserSlot_req_descriptor,
-        new java.lang.String[] { "Proxytoken", "Homeiid", "Gateiid", "Hgtype", "Lsno", "Sequence", "UserIid", });
-    internal_static_PRO_Res_ProxyUserSlot_ack_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_PRO_Res_ProxyUserSlot_ack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Res_ProxyUserSlot_ack_descriptor,
-        new java.lang.String[] { "Result", "Slot", "Proxyip", "Proxyport", "Slottoken", "Proxytoken", "Homeiid", "Gateiid", "Hgtype", "Lsno", "Sequence", "UserIid", "Slot", "Proxyip", "Proxyport", "Slottoken", });
     internal_static_PRO_Res_SyncGateSlot_ntf_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_PRO_Res_SyncGateSlot_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Res_SyncGateSlot_ntf_descriptor,

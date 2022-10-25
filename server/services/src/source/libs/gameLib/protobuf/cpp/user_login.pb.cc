@@ -40,9 +40,8 @@ constexpr User_Login_ack::User_Login_ack(
   , type_(0)
   , result_(0)
   , user_iid_(int64_t{0})
-  , proxytoken_(int64_t{0})
-  , slot_(0)
-  , proxyport_(0){}
+  , proxyport_(0)
+  , proxytoken_(int64_t{0}){}
 struct User_Login_ackDefaultTypeInternal {
   constexpr User_Login_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -55,8 +54,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Login_ackDefaultTypeIntern
 constexpr User_ProxyLogin_req::User_ProxyLogin_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : user_iid_(int64_t{0})
-  , proxytoken_(int64_t{0})
-  , slot_(0){}
+  , proxytoken_(int64_t{0}){}
 struct User_ProxyLogin_reqDefaultTypeInternal {
   constexpr User_ProxyLogin_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -68,7 +66,9 @@ struct User_ProxyLogin_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ProxyLogin_reqDefaultTypeInternal _User_ProxyLogin_req_default_instance_;
 constexpr User_ProxyLogin_ack::User_ProxyLogin_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : result_(0){}
+  : user_iid_(int64_t{0})
+  , proxytoken_(int64_t{0})
+  , result_(0){}
 struct User_ProxyLogin_ackDefaultTypeInternal {
   constexpr User_ProxyLogin_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -79,8 +79,7 @@ struct User_ProxyLogin_ackDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ProxyLogin_ackDefaultTypeInternal _User_ProxyLogin_ack_default_instance_;
 constexpr User_Logout_ntf::User_Logout_ntf(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
 struct User_Logout_ntfDefaultTypeInternal {
   constexpr User_Logout_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -92,8 +91,7 @@ struct User_Logout_ntfDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Logout_ntfDefaultTypeInternal _User_Logout_ntf_default_instance_;
 constexpr User_RoleList_ack::User_RoleList_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , roles_(nullptr){}
+  : roles_(nullptr){}
 struct User_RoleList_ackDefaultTypeInternal {
   constexpr User_RoleList_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -105,8 +103,7 @@ struct User_RoleList_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleList_ackDefaultTypeInternal _User_RoleList_ack_default_instance_;
 constexpr User_RoleCreate_req::User_RoleCreate_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , utoken_(nullptr){}
+  : nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
 struct User_RoleCreate_reqDefaultTypeInternal {
   constexpr User_RoleCreate_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -118,8 +115,7 @@ struct User_RoleCreate_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleCreate_reqDefaultTypeInternal _User_RoleCreate_req_default_instance_;
 constexpr User_RoleCreate_ack::User_RoleCreate_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , role_iid_(int64_t{0})
+  : role_iid_(int64_t{0})
   , result_(0){}
 struct User_RoleCreate_ackDefaultTypeInternal {
   constexpr User_RoleCreate_ackDefaultTypeInternal()
@@ -132,8 +128,7 @@ struct User_RoleCreate_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleCreate_ackDefaultTypeInternal _User_RoleCreate_ack_default_instance_;
 constexpr User_RoleSelect_req::User_RoleSelect_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , role_iid_(int64_t{0}){}
+  : role_iid_(int64_t{0}){}
 struct User_RoleSelect_reqDefaultTypeInternal {
   constexpr User_RoleSelect_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -145,8 +140,7 @@ struct User_RoleSelect_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleSelect_reqDefaultTypeInternal _User_RoleSelect_req_default_instance_;
 constexpr User_RoleSelect_ack::User_RoleSelect_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , role_iid_(int64_t{0})
+  : role_iid_(int64_t{0})
   , result_(0){}
 struct User_RoleSelect_ackDefaultTypeInternal {
   constexpr User_RoleSelect_ackDefaultTypeInternal()
@@ -159,8 +153,7 @@ struct User_RoleSelect_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleSelect_ackDefaultTypeInternal _User_RoleSelect_ack_default_instance_;
 constexpr User_RoleDetailA_ntf::User_RoleDetailA_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , home_(nullptr)
+  : home_(nullptr)
   , homeitems_(nullptr){}
 struct User_RoleDetailA_ntfDefaultTypeInternal {
   constexpr User_RoleDetailA_ntfDefaultTypeInternal()
@@ -173,8 +166,7 @@ struct User_RoleDetailA_ntfDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleDetailA_ntfDefaultTypeInternal _User_RoleDetailA_ntf_default_instance_;
 constexpr User_RoleDetailB_ntf::User_RoleDetailB_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , pets_(nullptr){}
+  : pets_(nullptr){}
 struct User_RoleDetailB_ntfDefaultTypeInternal {
   constexpr User_RoleDetailB_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -185,8 +177,7 @@ struct User_RoleDetailB_ntfDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleDetailB_ntfDefaultTypeInternal _User_RoleDetailB_ntf_default_instance_;
 constexpr User_RoleDetailEnd_ntf::User_RoleDetailEnd_ntf(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
 struct User_RoleDetailEnd_ntfDefaultTypeInternal {
   constexpr User_RoleDetailEnd_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -229,17 +220,15 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, user_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, logintoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxytoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, slot_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxyip_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxyport_),
   ~0u,
   ~0u,
   2,
   0,
-  3,
   4,
   1,
-  5,
+  3,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -248,121 +237,99 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, user_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, proxytoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, slot_),
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, result_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, proxytoken_),
+  ~0u,
+  0,
+  1,
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, utoken_),
-  0,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_ack, roles_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_req, nickname_),
-  0,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleCreate_ack, role_iid_),
-  0,
   ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_req, _has_bits_),
+  0,
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_req, role_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleSelect_ack, role_iid_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailA_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailA_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailA_ntf, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailA_ntf, home_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailA_ntf, homeitems_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailB_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailB_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailB_ntf, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailB_ntf, pets_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailEnd_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailEnd_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleDetailEnd_ntf, utoken_),
-  0,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 11, -1, sizeof(::PRO::User_Login_req)},
-  { 16, 30, -1, sizeof(::PRO::User_Login_ack)},
-  { 38, -1, -1, sizeof(::PRO::User_ProxyLogin_req)},
-  { 47, -1, -1, sizeof(::PRO::User_ProxyLogin_ack)},
-  { 54, 61, -1, sizeof(::PRO::User_Logout_ntf)},
-  { 62, 70, -1, sizeof(::PRO::User_RoleList_ack)},
-  { 72, 80, -1, sizeof(::PRO::User_RoleCreate_req)},
-  { 82, 91, -1, sizeof(::PRO::User_RoleCreate_ack)},
-  { 94, 102, -1, sizeof(::PRO::User_RoleSelect_req)},
-  { 104, 113, -1, sizeof(::PRO::User_RoleSelect_ack)},
-  { 116, 125, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
-  { 128, 136, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
-  { 138, 145, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
+  { 16, 29, -1, sizeof(::PRO::User_Login_ack)},
+  { 36, -1, -1, sizeof(::PRO::User_ProxyLogin_req)},
+  { 44, 53, -1, sizeof(::PRO::User_ProxyLogin_ack)},
+  { 56, -1, -1, sizeof(::PRO::User_Logout_ntf)},
+  { 62, -1, -1, sizeof(::PRO::User_RoleList_ack)},
+  { 69, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
+  { 76, 84, -1, sizeof(::PRO::User_RoleCreate_ack)},
+  { 86, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
+  { 93, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
+  { 101, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
+  { 109, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
+  { 116, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -382,55 +349,44 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_user_5flogin_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020user_login.proto\022\003PRO\032\025global_internal"
-  ".proto\032\021db_internal.proto\"\230\001\n\016User_Login"
-  "_req\022\014\n\004type\030\001 \001(\005\022\024\n\007account\030\002 \001(\tH\000\210\001\001"
-  "\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005token\030\004 \001(\tH\002\210\001\001\022\023"
-  "\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010_accountB\006\n\004_pwdB"
-  "\010\n\006_tokenB\t\n\007_userid\"\206\002\n\016User_Login_ack\022"
-  "\014\n\004type\030\001 \001(\005\022\016\n\006result\030\002 \001(\005\022\025\n\010user_ii"
-  "d\030\003 \001(\003H\000\210\001\001\022\027\n\nlogintoken\030\004 \001(\tH\001\210\001\001\022\027\n"
-  "\nproxytoken\030\n \001(\003H\002\210\001\001\022\021\n\004slot\030\013 \001(\005H\003\210\001"
-  "\001\022\024\n\007proxyip\030\014 \001(\tH\004\210\001\001\022\026\n\tproxyport\030\r \001"
-  "(\005H\005\210\001\001B\013\n\t_user_iidB\r\n\013_logintokenB\r\n\013_"
-  "proxytokenB\007\n\005_slotB\n\n\010_proxyipB\014\n\n_prox"
-  "yport\"I\n\023User_ProxyLogin_req\022\020\n\010user_iid"
-  "\030\001 \001(\003\022\022\n\nproxytoken\030\002 \001(\003\022\014\n\004slot\030\003 \001(\005"
-  "\"%\n\023User_ProxyLogin_ack\022\016\n\006result\030\001 \001(\005\""
-  "A\n\017User_Logout_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO"
-  ".UserTokenH\000\210\001\001B\t\n\007_utoken\"d\n\021User_RoleL"
-  "ist_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH"
-  "\000\210\001\001\022\037\n\005roles\030\002 \001(\0132\020.PRO.DBUserRolesB\t\n"
-  "\007_utoken\"W\n\023User_RoleCreate_req\022#\n\006utoke"
-  "n\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010nickname"
-  "\030\002 \001(\tB\t\n\007_utoken\"y\n\023User_RoleCreate_ack"
-  "\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\016\n"
-  "\006result\030\002 \001(\005\022\025\n\010role_iid\030\003 \001(\003H\001\210\001\001B\t\n\007"
-  "_utokenB\013\n\t_role_iid\"W\n\023User_RoleSelect_"
-  "req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001"
-  "\022\020\n\010role_iid\030\002 \001(\003B\t\n\007_utoken\"g\n\023User_Ro"
-  "leSelect_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserT"
-  "okenH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022\020\n\010role_iid\030\003 "
-  "\001(\003B\t\n\007_utoken\"\222\001\n\024User_RoleDetailA_ntf\022"
-  "#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\035\n\004"
-  "home\030\002 \001(\0132\017.PRO.DBUserHome\022+\n\thomeitems"
-  "\030\003 \001(\0132\030.PRO.DBUserHomeStructureB\t\n\007_uto"
-  "ken\"e\n\024User_RoleDetailB_ntf\022#\n\006utoken\030\001 "
-  "\001(\0132\016.PRO.UserTokenH\000\210\001\001\022\035\n\004pets\030\002 \001(\0132\017"
-  ".PRO.DBUserPetsB\t\n\007_utoken\"H\n\026User_RoleD"
-  "etailEnd_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserT"
-  "okenH\000\210\001\001B\t\n\007_utokenBT\n\033com.cms.client.n"
-  "etwork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033c"
-  "om.cms.client.network.gprob\006proto3"
+  "\n\020user_login.proto\022\003PRO\032\021db_internal.pro"
+  "to\"\230\001\n\016User_Login_req\022\014\n\004type\030\001 \001(\005\022\024\n\007a"
+  "ccount\030\002 \001(\tH\000\210\001\001\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005t"
+  "oken\030\004 \001(\tH\002\210\001\001\022\023\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010"
+  "_accountB\006\n\004_pwdB\010\n\006_tokenB\t\n\007_userid\"\352\001"
+  "\n\016User_Login_ack\022\014\n\004type\030\001 \001(\005\022\016\n\006result"
+  "\030\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nloginto"
+  "ken\030\004 \001(\tH\001\210\001\001\022\027\n\nproxytoken\030\n \001(\003H\002\210\001\001\022"
+  "\024\n\007proxyip\030\013 \001(\tH\003\210\001\001\022\026\n\tproxyport\030\014 \001(\005"
+  "H\004\210\001\001B\013\n\t_user_iidB\r\n\013_logintokenB\r\n\013_pr"
+  "oxytokenB\n\n\010_proxyipB\014\n\n_proxyport\";\n\023Us"
+  "er_ProxyLogin_req\022\020\n\010user_iid\030\001 \001(\003\022\022\n\np"
+  "roxytoken\030\002 \001(\003\"q\n\023User_ProxyLogin_ack\022\016"
+  "\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027\n"
+  "\nproxytoken\030\003 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013_"
+  "proxytoken\"\021\n\017User_Logout_ntf\"4\n\021User_Ro"
+  "leList_ack\022\037\n\005roles\030\001 \001(\0132\020.PRO.DBUserRo"
+  "les\"\'\n\023User_RoleCreate_req\022\020\n\010nickname\030\001"
+  " \001(\t\"I\n\023User_RoleCreate_ack\022\016\n\006result\030\001 "
+  "\001(\005\022\025\n\010role_iid\030\002 \001(\003H\000\210\001\001B\013\n\t_role_iid\""
+  "\'\n\023User_RoleSelect_req\022\020\n\010role_iid\030\001 \001(\003"
+  "\"7\n\023User_RoleSelect_ack\022\016\n\006result\030\001 \001(\005\022"
+  "\020\n\010role_iid\030\002 \001(\003\"b\n\024User_RoleDetailA_nt"
+  "f\022\035\n\004home\030\001 \001(\0132\017.PRO.DBUserHome\022+\n\thome"
+  "items\030\002 \001(\0132\030.PRO.DBUserHomeStructure\"5\n"
+  "\024User_RoleDetailB_ntf\022\035\n\004pets\030\001 \001(\0132\017.PR"
+  "O.DBUserPets\"\030\n\026User_RoleDetailEnd_ntfBT"
+  "\n\033com.cms.client.network.gproP\001Z\025gamelib"
+  "/protobuf/gpro\252\002\033com.cms.client.network."
+  "gprob\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5flogin_2eproto_deps[2] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5flogin_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
-  &::descriptor_table_global_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5flogin_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5flogin_2eproto = {
-  false, false, 1594, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
-  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 2, 13,
+  false, false, 1172, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
+  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 13,
   schemas, file_default_instances, TableStruct_user_5flogin_2eproto::offsets,
   file_level_metadata_user_5flogin_2eproto, file_level_enum_descriptors_user_5flogin_2eproto, file_level_service_descriptors_user_5flogin_2eproto,
 };
@@ -849,16 +805,13 @@ class User_Login_ack::_Internal {
     (*has_bits)[0] |= 1u;
   }
   static void set_has_proxytoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
-  }
-  static void set_has_slot(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
   static void set_has_proxyip(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
   static void set_has_proxyport(HasBits* has_bits) {
-    (*has_bits)[0] |= 32u;
+    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -892,8 +845,8 @@ User_Login_ack::User_Login_ack(const User_Login_ack& from)
       GetArenaForAllocation());
   }
   ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&proxyport_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(proxyport_));
+    static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(proxytoken_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_Login_ack)
 }
 
@@ -908,8 +861,8 @@ proxyip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlre
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&type_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&proxyport_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(proxyport_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(proxytoken_));
 }
 
 User_Login_ack::~User_Login_ack() {
@@ -953,10 +906,10 @@ void User_Login_ack::Clear() {
   ::memset(&type_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&type_)) + sizeof(result_));
-  if (cached_has_bits & 0x0000003cu) {
+  if (cached_has_bits & 0x0000001cu) {
     ::memset(&user_iid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&proxyport_) -
-        reinterpret_cast<char*>(&user_iid_)) + sizeof(proxyport_));
+        reinterpret_cast<char*>(&proxytoken_) -
+        reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -1013,18 +966,9 @@ const char* User_Login_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         } else
           goto handle_unusual;
         continue;
-      // optional int32 slot = 11;
+      // optional string proxyip = 11;
       case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
-          _Internal::set_has_slot(&has_bits);
-          slot_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional string proxyip = 12;
-      case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
           auto str = _internal_mutable_proxyip();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_Login_ack.proxyip"));
@@ -1032,9 +976,9 @@ const char* User_Login_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         } else
           goto handle_unusual;
         continue;
-      // optional int32 proxyport = 13;
-      case 13:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 104)) {
+      // optional int32 proxyport = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
           _Internal::set_has_proxyport(&has_bits);
           proxyport_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
@@ -1105,26 +1049,20 @@ uint8_t* User_Login_ack::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(10, this->_internal_proxytoken(), target);
   }
 
-  // optional int32 slot = 11;
-  if (_internal_has_slot()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(11, this->_internal_slot(), target);
-  }
-
-  // optional string proxyip = 12;
+  // optional string proxyip = 11;
   if (_internal_has_proxyip()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_proxyip().data(), static_cast<int>(this->_internal_proxyip().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.User_Login_ack.proxyip");
     target = stream->WriteStringMaybeAliased(
-        12, this->_internal_proxyip(), target);
+        11, this->_internal_proxyip(), target);
   }
 
-  // optional int32 proxyport = 13;
+  // optional int32 proxyport = 12;
   if (_internal_has_proxyport()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(13, this->_internal_proxyport(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(12, this->_internal_proxyport(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1152,7 +1090,7 @@ size_t User_Login_ack::ByteSizeLong() const {
           this->_internal_logintoken());
     }
 
-    // optional string proxyip = 12;
+    // optional string proxyip = 11;
     if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1170,25 +1108,20 @@ size_t User_Login_ack::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
 
-  if (cached_has_bits & 0x0000003cu) {
+  if (cached_has_bits & 0x0000001cu) {
     // optional int64 user_iid = 3;
     if (cached_has_bits & 0x00000004u) {
       total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
     }
 
-    // optional int64 proxytoken = 10;
+    // optional int32 proxyport = 12;
     if (cached_has_bits & 0x00000008u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
-    }
-
-    // optional int32 slot = 11;
-    if (cached_has_bits & 0x00000010u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_slot());
-    }
-
-    // optional int32 proxyport = 13;
-    if (cached_has_bits & 0x00000020u) {
       total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_proxyport());
+    }
+
+    // optional int64 proxytoken = 10;
+    if (cached_has_bits & 0x00000010u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
     }
 
   }
@@ -1229,18 +1162,15 @@ void User_Login_ack::MergeFrom(const User_Login_ack& from) {
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
   }
-  if (cached_has_bits & 0x0000003cu) {
+  if (cached_has_bits & 0x0000001cu) {
     if (cached_has_bits & 0x00000004u) {
       user_iid_ = from.user_iid_;
     }
     if (cached_has_bits & 0x00000008u) {
-      proxytoken_ = from.proxytoken_;
+      proxyport_ = from.proxyport_;
     }
     if (cached_has_bits & 0x00000010u) {
-      slot_ = from.slot_;
-    }
-    if (cached_has_bits & 0x00000020u) {
-      proxyport_ = from.proxyport_;
+      proxytoken_ = from.proxytoken_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1275,8 +1205,8 @@ void User_Login_ack::InternalSwap(User_Login_ack* other) {
       &other->proxyip_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_Login_ack, proxyport_)
-      + sizeof(User_Login_ack::proxyport_)
+      PROTOBUF_FIELD_OFFSET(User_Login_ack, proxytoken_)
+      + sizeof(User_Login_ack::proxytoken_)
       - PROTOBUF_FIELD_OFFSET(User_Login_ack, type_)>(
           reinterpret_cast<char*>(&type_),
           reinterpret_cast<char*>(&other->type_));
@@ -1307,16 +1237,16 @@ User_ProxyLogin_req::User_ProxyLogin_req(const User_ProxyLogin_req& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&user_iid_, &from.user_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&slot_) -
-    reinterpret_cast<char*>(&user_iid_)) + sizeof(slot_));
+    static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_ProxyLogin_req)
 }
 
 inline void User_ProxyLogin_req::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&slot_) -
-    reinterpret_cast<char*>(&user_iid_)) + sizeof(slot_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
 }
 
 User_ProxyLogin_req::~User_ProxyLogin_req() {
@@ -1347,8 +1277,8 @@ void User_ProxyLogin_req::Clear() {
   (void) cached_has_bits;
 
   ::memset(&user_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&slot_) -
-      reinterpret_cast<char*>(&user_iid_)) + sizeof(slot_));
+      reinterpret_cast<char*>(&proxytoken_) -
+      reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1370,14 +1300,6 @@ const char* User_ProxyLogin_req::_InternalParse(const char* ptr, ::PROTOBUF_NAME
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           proxytoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 slot = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          slot_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1423,12 +1345,6 @@ uint8_t* User_ProxyLogin_req::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_proxytoken(), target);
   }
 
-  // int32 slot = 3;
-  if (this->_internal_slot() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_slot(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1453,11 +1369,6 @@ size_t User_ProxyLogin_req::ByteSizeLong() const {
   // int64 proxytoken = 2;
   if (this->_internal_proxytoken() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
-  }
-
-  // int32 slot = 3;
-  if (this->_internal_slot() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_slot());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1488,9 +1399,6 @@ void User_ProxyLogin_req::MergeFrom(const User_ProxyLogin_req& from) {
   if (from._internal_proxytoken() != 0) {
     _internal_set_proxytoken(from._internal_proxytoken());
   }
-  if (from._internal_slot() != 0) {
-    _internal_set_slot(from._internal_slot());
-  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1509,8 +1417,8 @@ void User_ProxyLogin_req::InternalSwap(User_ProxyLogin_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_ProxyLogin_req, slot_)
-      + sizeof(User_ProxyLogin_req::slot_)
+      PROTOBUF_FIELD_OFFSET(User_ProxyLogin_req, proxytoken_)
+      + sizeof(User_ProxyLogin_req::proxytoken_)
       - PROTOBUF_FIELD_OFFSET(User_ProxyLogin_req, user_iid_)>(
           reinterpret_cast<char*>(&user_iid_),
           reinterpret_cast<char*>(&other->user_iid_));
@@ -1526,6 +1434,13 @@ void User_ProxyLogin_req::InternalSwap(User_ProxyLogin_req* other) {
 
 class User_ProxyLogin_ack::_Internal {
  public:
+  using HasBits = decltype(std::declval<User_ProxyLogin_ack>()._has_bits_);
+  static void set_has_user_iid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_proxytoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
 User_ProxyLogin_ack::User_ProxyLogin_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1538,14 +1453,20 @@ User_ProxyLogin_ack::User_ProxyLogin_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.User_ProxyLogin_ack)
 }
 User_ProxyLogin_ack::User_ProxyLogin_ack(const User_ProxyLogin_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  result_ = from.result_;
+  ::memcpy(&user_iid_, &from.user_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(result_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_ProxyLogin_ack)
 }
 
 inline void User_ProxyLogin_ack::SharedCtor() {
-result_ = 0;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(result_));
 }
 
 User_ProxyLogin_ack::~User_ProxyLogin_ack() {
@@ -1575,12 +1496,20 @@ void User_ProxyLogin_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&user_iid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&proxytoken_) -
+        reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
+  }
   result_ = 0;
+  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_ProxyLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1589,6 +1518,24 @@ const char* User_ProxyLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAME
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 user_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_user_iid(&has_bits);
+          user_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 proxytoken = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _Internal::set_has_proxytoken(&has_bits);
+          proxytoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1609,6 +1556,7 @@ const char* User_ProxyLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1628,6 +1576,18 @@ uint8_t* User_ProxyLogin_ack::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
+  // optional int64 user_iid = 2;
+  if (_internal_has_user_iid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_user_iid(), target);
+  }
+
+  // optional int64 proxytoken = 3;
+  if (_internal_has_proxytoken()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_proxytoken(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1644,6 +1604,19 @@ size_t User_ProxyLogin_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional int64 user_iid = 2;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
+    }
+
+    // optional int64 proxytoken = 3;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
+    }
+
+  }
   // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
@@ -1671,6 +1644,16 @@ void User_ProxyLogin_ack::MergeFrom(const User_ProxyLogin_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      user_iid_ = from.user_iid_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      proxytoken_ = from.proxytoken_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
   }
@@ -1691,7 +1674,13 @@ bool User_ProxyLogin_ack::IsInitialized() const {
 void User_ProxyLogin_ack::InternalSwap(User_ProxyLogin_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(result_, other->result_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(User_ProxyLogin_ack, result_)
+      + sizeof(User_ProxyLogin_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(User_ProxyLogin_ack, user_iid_)>(
+          reinterpret_cast<char*>(&user_iid_),
+          reinterpret_cast<char*>(&other->user_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_ProxyLogin_ack::GetMetadata() const {
@@ -1704,205 +1693,34 @@ void User_ProxyLogin_ack::InternalSwap(User_ProxyLogin_ack* other) {
 
 class User_Logout_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_Logout_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_Logout_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-User_Logout_ntf::_Internal::utoken(const User_Logout_ntf* msg) {
-  return *msg->utoken_;
-}
-void User_Logout_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 User_Logout_ntf::User_Logout_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:PRO.User_Logout_ntf)
 }
 User_Logout_ntf::User_Logout_ntf(const User_Logout_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.User_Logout_ntf)
 }
 
-inline void User_Logout_ntf::SharedCtor() {
-utoken_ = nullptr;
-}
 
-User_Logout_ntf::~User_Logout_ntf() {
-  // @@protoc_insertion_point(destructor:PRO.User_Logout_ntf)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
 
-inline void User_Logout_ntf::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
 
-void User_Logout_ntf::ArenaDtor(void* object) {
-  User_Logout_ntf* _this = reinterpret_cast< User_Logout_ntf* >(object);
-  (void)_this;
-}
-void User_Logout_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void User_Logout_ntf::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void User_Logout_ntf::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.User_Logout_ntf)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* User_Logout_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* User_Logout_ntf::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_Logout_ntf)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_Logout_ntf)
-  return target;
-}
-
-size_t User_Logout_ntf::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.User_Logout_ntf)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_Logout_ntf::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    User_Logout_ntf::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_Logout_ntf::GetClassData() const { return &_class_data_; }
 
-void User_Logout_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<User_Logout_ntf *>(to)->MergeFrom(
-      static_cast<const User_Logout_ntf &>(from));
-}
 
 
-void User_Logout_ntf::MergeFrom(const User_Logout_ntf& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_Logout_ntf)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void User_Logout_ntf::CopyFrom(const User_Logout_ntf& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_Logout_ntf)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool User_Logout_ntf::IsInitialized() const {
-  return true;
-}
-
-void User_Logout_ntf::InternalSwap(User_Logout_ntf* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_Logout_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
@@ -1914,25 +1732,12 @@ void User_Logout_ntf::InternalSwap(User_Logout_ntf* other) {
 
 class User_RoleList_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleList_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleList_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::DBUserRoles& roles(const User_RoleList_ack* msg);
 };
 
-const ::PRO::UserToken&
-User_RoleList_ack::_Internal::utoken(const User_RoleList_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::DBUserRoles&
 User_RoleList_ack::_Internal::roles(const User_RoleList_ack* msg) {
   return *msg->roles_;
-}
-void User_RoleList_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 void User_RoleList_ack::clear_roles() {
   if (GetArenaForAllocation() == nullptr && roles_ != nullptr) {
@@ -1950,14 +1755,8 @@ User_RoleList_ack::User_RoleList_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleList_ack)
 }
 User_RoleList_ack::User_RoleList_ack(const User_RoleList_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_roles()) {
     roles_ = new ::PRO::DBUserRoles(*from.roles_);
   } else {
@@ -1967,10 +1766,7 @@ User_RoleList_ack::User_RoleList_ack(const User_RoleList_ack& from)
 }
 
 inline void User_RoleList_ack::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&roles_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(roles_));
+roles_ = nullptr;
 }
 
 User_RoleList_ack::~User_RoleList_ack() {
@@ -1982,7 +1778,6 @@ User_RoleList_ack::~User_RoleList_ack() {
 
 inline void User_RoleList_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete roles_;
 }
 
@@ -2002,37 +1797,22 @@ void User_RoleList_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && roles_ != nullptr) {
     delete roles_;
   }
   roles_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_RoleList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.DBUserRoles roles = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.DBUserRoles roles = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_roles(), ptr);
           CHK_(ptr);
         } else
@@ -2054,7 +1834,6 @@ const char* User_RoleList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2068,20 +1847,12 @@ uint8_t* User_RoleList_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.DBUserRoles roles = 2;
+  // .PRO.DBUserRoles roles = 1;
   if (this->_internal_has_roles()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::roles(this), target, stream);
+        1, _Internal::roles(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2100,15 +1871,7 @@ size_t User_RoleList_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.DBUserRoles roles = 2;
+  // .PRO.DBUserRoles roles = 1;
   if (this->_internal_has_roles()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2137,9 +1900,6 @@ void User_RoleList_ack::MergeFrom(const User_RoleList_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_roles()) {
     _internal_mutable_roles()->::PRO::DBUserRoles::MergeFrom(from._internal_roles());
   }
@@ -2160,13 +1920,7 @@ bool User_RoleList_ack::IsInitialized() const {
 void User_RoleList_ack::InternalSwap(User_RoleList_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_RoleList_ack, roles_)
-      + sizeof(User_RoleList_ack::roles_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleList_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(roles_, other->roles_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleList_ack::GetMetadata() const {
@@ -2179,21 +1933,8 @@ void User_RoleList_ack::InternalSwap(User_RoleList_ack* other) {
 
 class User_RoleCreate_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleCreate_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleCreate_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-User_RoleCreate_req::_Internal::utoken(const User_RoleCreate_req* msg) {
-  return *msg->utoken_;
-}
-void User_RoleCreate_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 User_RoleCreate_req::User_RoleCreate_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2204,8 +1945,7 @@ User_RoleCreate_req::User_RoleCreate_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleCreate_req)
 }
 User_RoleCreate_req::User_RoleCreate_req(const User_RoleCreate_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2215,11 +1955,6 @@ User_RoleCreate_req::User_RoleCreate_req(const User_RoleCreate_req& from)
     nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nickname(), 
       GetArenaForAllocation());
   }
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.User_RoleCreate_req)
 }
 
@@ -2228,7 +1963,6 @@ nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-utoken_ = nullptr;
 }
 
 User_RoleCreate_req::~User_RoleCreate_req() {
@@ -2241,7 +1975,6 @@ User_RoleCreate_req::~User_RoleCreate_req() {
 inline void User_RoleCreate_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void User_RoleCreate_req::ArenaDtor(void* object) {
@@ -2261,33 +1994,18 @@ void User_RoleCreate_req::Clear() {
   (void) cached_has_bits;
 
   nickname_.ClearToEmpty();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_RoleCreate_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // string nickname = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string nickname = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_nickname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_RoleCreate_req.nickname"));
@@ -2311,7 +2029,6 @@ const char* User_RoleCreate_req::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2325,22 +2042,14 @@ uint8_t* User_RoleCreate_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // string nickname = 2;
+  // string nickname = 1;
   if (!this->_internal_nickname().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.User_RoleCreate_req.nickname");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_nickname(), target);
+        1, this->_internal_nickname(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2359,19 +2068,11 @@ size_t User_RoleCreate_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string nickname = 2;
+  // string nickname = 1;
   if (!this->_internal_nickname().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_nickname());
-  }
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2399,9 +2100,6 @@ void User_RoleCreate_req::MergeFrom(const User_RoleCreate_req& from) {
   if (!from._internal_nickname().empty()) {
     _internal_set_nickname(from._internal_nickname());
   }
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2421,13 +2119,11 @@ void User_RoleCreate_req::InternalSwap(User_RoleCreate_req* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &nickname_, lhs_arena,
       &other->nickname_, rhs_arena
   );
-  swap(utoken_, other->utoken_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_req::GetMetadata() const {
@@ -2441,23 +2137,11 @@ void User_RoleCreate_req::InternalSwap(User_RoleCreate_req* other) {
 class User_RoleCreate_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<User_RoleCreate_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleCreate_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static void set_has_role_iid(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-User_RoleCreate_ack::_Internal::utoken(const User_RoleCreate_ack* msg) {
-  return *msg->utoken_;
-}
-void User_RoleCreate_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 User_RoleCreate_ack::User_RoleCreate_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2471,11 +2155,6 @@ User_RoleCreate_ack::User_RoleCreate_ack(const User_RoleCreate_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&role_iid_, &from.role_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
@@ -2484,9 +2163,9 @@ User_RoleCreate_ack::User_RoleCreate_ack(const User_RoleCreate_ack& from)
 
 inline void User_RoleCreate_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&role_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
 }
 
 User_RoleCreate_ack::~User_RoleCreate_ack() {
@@ -2498,7 +2177,6 @@ User_RoleCreate_ack::~User_RoleCreate_ack() {
 
 inline void User_RoleCreate_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void User_RoleCreate_ack::ArenaDtor(void* object) {
@@ -2517,11 +2195,6 @@ void User_RoleCreate_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   role_iid_ = int64_t{0};
   result_ = 0;
   _has_bits_.Clear();
@@ -2535,25 +2208,17 @@ const char* User_RoleCreate_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional int64 role_iid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // optional int64 role_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _Internal::set_has_role_iid(&has_bits);
           role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
@@ -2590,24 +2255,16 @@ uint8_t* User_RoleCreate_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // optional int64 role_iid = 3;
+  // optional int64 role_iid = 2;
   if (_internal_has_role_iid()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_role_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_role_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2626,22 +2283,13 @@ size_t User_RoleCreate_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional int64 role_iid = 2;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional int64 role_iid = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
   }
-  // int32 result = 2;
+
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -2668,15 +2316,8 @@ void User_RoleCreate_ack::MergeFrom(const User_RoleCreate_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      role_iid_ = from.role_iid_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from._internal_has_role_iid()) {
+    _internal_set_role_iid(from._internal_role_iid());
   }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
@@ -2702,9 +2343,9 @@ void User_RoleCreate_ack::InternalSwap(User_RoleCreate_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(User_RoleCreate_ack, result_)
       + sizeof(User_RoleCreate_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleCreate_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(User_RoleCreate_ack, role_iid_)>(
+          reinterpret_cast<char*>(&role_iid_),
+          reinterpret_cast<char*>(&other->role_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_ack::GetMetadata() const {
@@ -2717,21 +2358,8 @@ void User_RoleCreate_ack::InternalSwap(User_RoleCreate_ack* other) {
 
 class User_RoleSelect_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleSelect_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleSelect_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-User_RoleSelect_req::_Internal::utoken(const User_RoleSelect_req* msg) {
-  return *msg->utoken_;
-}
-void User_RoleSelect_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 User_RoleSelect_req::User_RoleSelect_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2742,23 +2370,14 @@ User_RoleSelect_req::User_RoleSelect_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleSelect_req)
 }
 User_RoleSelect_req::User_RoleSelect_req(const User_RoleSelect_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   role_iid_ = from.role_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.User_RoleSelect_req)
 }
 
 inline void User_RoleSelect_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&role_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(role_iid_));
+role_iid_ = int64_t{0};
 }
 
 User_RoleSelect_req::~User_RoleSelect_req() {
@@ -2770,7 +2389,6 @@ User_RoleSelect_req::~User_RoleSelect_req() {
 
 inline void User_RoleSelect_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void User_RoleSelect_req::ArenaDtor(void* object) {
@@ -2789,27 +2407,205 @@ void User_RoleSelect_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   role_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_RoleSelect_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 role_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* User_RoleSelect_req::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_RoleSelect_req)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 role_iid = 1;
+  if (this->_internal_role_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_role_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_RoleSelect_req)
+  return target;
+}
+
+size_t User_RoleSelect_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_RoleSelect_req)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 role_iid = 1;
+  if (this->_internal_role_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_RoleSelect_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    User_RoleSelect_req::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleSelect_req::GetClassData() const { return &_class_data_; }
+
+void User_RoleSelect_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<User_RoleSelect_req *>(to)->MergeFrom(
+      static_cast<const User_RoleSelect_req &>(from));
+}
+
+
+void User_RoleSelect_req::MergeFrom(const User_RoleSelect_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_RoleSelect_req)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_role_iid() != 0) {
+    _internal_set_role_iid(from._internal_role_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void User_RoleSelect_req::CopyFrom(const User_RoleSelect_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_RoleSelect_req)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool User_RoleSelect_req::IsInitialized() const {
+  return true;
+}
+
+void User_RoleSelect_req::InternalSwap(User_RoleSelect_req* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(role_iid_, other->role_iid_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
+      file_level_metadata_user_5flogin_2eproto[8]);
+}
+
+// ===================================================================
+
+class User_RoleSelect_ack::_Internal {
+ public:
+};
+
+User_RoleSelect_ack::User_RoleSelect_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.User_RoleSelect_ack)
+}
+User_RoleSelect_ack::User_RoleSelect_ack(const User_RoleSelect_ack& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&role_iid_, &from.role_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
+  // @@protoc_insertion_point(copy_constructor:PRO.User_RoleSelect_ack)
+}
+
+inline void User_RoleSelect_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&role_iid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
+    reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
+}
+
+User_RoleSelect_ack::~User_RoleSelect_ack() {
+  // @@protoc_insertion_point(destructor:PRO.User_RoleSelect_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void User_RoleSelect_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void User_RoleSelect_ack::ArenaDtor(void* object) {
+  User_RoleSelect_ack* _this = reinterpret_cast< User_RoleSelect_ack* >(object);
+  (void)_this;
+}
+void User_RoleSelect_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void User_RoleSelect_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void User_RoleSelect_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_RoleSelect_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&role_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&result_) -
+      reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* User_RoleSelect_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 result = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2838,261 +2634,6 @@ const char* User_RoleSelect_req::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* User_RoleSelect_req::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_RoleSelect_req)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 role_iid = 2;
-  if (this->_internal_role_iid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_role_iid(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_RoleSelect_req)
-  return target;
-}
-
-size_t User_RoleSelect_req::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.User_RoleSelect_req)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 role_iid = 2;
-  if (this->_internal_role_iid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_RoleSelect_req::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    User_RoleSelect_req::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleSelect_req::GetClassData() const { return &_class_data_; }
-
-void User_RoleSelect_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<User_RoleSelect_req *>(to)->MergeFrom(
-      static_cast<const User_RoleSelect_req &>(from));
-}
-
-
-void User_RoleSelect_req::MergeFrom(const User_RoleSelect_req& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_RoleSelect_req)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  if (from._internal_role_iid() != 0) {
-    _internal_set_role_iid(from._internal_role_iid());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void User_RoleSelect_req::CopyFrom(const User_RoleSelect_req& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_RoleSelect_req)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool User_RoleSelect_req::IsInitialized() const {
-  return true;
-}
-
-void User_RoleSelect_req::InternalSwap(User_RoleSelect_req* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_RoleSelect_req, role_iid_)
-      + sizeof(User_RoleSelect_req::role_iid_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleSelect_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_req::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[8]);
-}
-
-// ===================================================================
-
-class User_RoleSelect_ack::_Internal {
- public:
-  using HasBits = decltype(std::declval<User_RoleSelect_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleSelect_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-};
-
-const ::PRO::UserToken&
-User_RoleSelect_ack::_Internal::utoken(const User_RoleSelect_ack* msg) {
-  return *msg->utoken_;
-}
-void User_RoleSelect_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
-User_RoleSelect_ack::User_RoleSelect_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:PRO.User_RoleSelect_ack)
-}
-User_RoleSelect_ack::User_RoleSelect_ack(const User_RoleSelect_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
-  ::memcpy(&role_iid_, &from.role_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
-  // @@protoc_insertion_point(copy_constructor:PRO.User_RoleSelect_ack)
-}
-
-inline void User_RoleSelect_ack::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
-}
-
-User_RoleSelect_ack::~User_RoleSelect_ack() {
-  // @@protoc_insertion_point(destructor:PRO.User_RoleSelect_ack)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void User_RoleSelect_ack::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
-
-void User_RoleSelect_ack::ArenaDtor(void* object) {
-  User_RoleSelect_ack* _this = reinterpret_cast< User_RoleSelect_ack* >(object);
-  (void)_this;
-}
-void User_RoleSelect_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void User_RoleSelect_ack::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void User_RoleSelect_ack::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.User_RoleSelect_ack)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  ::memset(&role_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&result_) -
-      reinterpret_cast<char*>(&role_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* User_RoleSelect_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 role_iid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -3106,24 +2647,16 @@ uint8_t* User_RoleSelect_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // int64 role_iid = 3;
+  // int64 role_iid = 2;
   if (this->_internal_role_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_role_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_role_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3142,20 +2675,12 @@ size_t User_RoleSelect_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 role_iid = 3;
+  // int64 role_iid = 2;
   if (this->_internal_role_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
   }
 
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -3182,9 +2707,6 @@ void User_RoleSelect_ack::MergeFrom(const User_RoleSelect_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_role_iid() != 0) {
     _internal_set_role_iid(from._internal_role_iid());
   }
@@ -3208,13 +2730,12 @@ bool User_RoleSelect_ack::IsInitialized() const {
 void User_RoleSelect_ack::InternalSwap(User_RoleSelect_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(User_RoleSelect_ack, result_)
       + sizeof(User_RoleSelect_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleSelect_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(User_RoleSelect_ack, role_iid_)>(
+          reinterpret_cast<char*>(&role_iid_),
+          reinterpret_cast<char*>(&other->role_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_ack::GetMetadata() const {
@@ -3227,19 +2748,10 @@ void User_RoleSelect_ack::InternalSwap(User_RoleSelect_ack* other) {
 
 class User_RoleDetailA_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleDetailA_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleDetailA_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::DBUserHome& home(const User_RoleDetailA_ntf* msg);
   static const ::PRO::DBUserHomeStructure& homeitems(const User_RoleDetailA_ntf* msg);
 };
 
-const ::PRO::UserToken&
-User_RoleDetailA_ntf::_Internal::utoken(const User_RoleDetailA_ntf* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::DBUserHome&
 User_RoleDetailA_ntf::_Internal::home(const User_RoleDetailA_ntf* msg) {
   return *msg->home_;
@@ -3247,10 +2759,6 @@ User_RoleDetailA_ntf::_Internal::home(const User_RoleDetailA_ntf* msg) {
 const ::PRO::DBUserHomeStructure&
 User_RoleDetailA_ntf::_Internal::homeitems(const User_RoleDetailA_ntf* msg) {
   return *msg->homeitems_;
-}
-void User_RoleDetailA_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 void User_RoleDetailA_ntf::clear_home() {
   if (GetArenaForAllocation() == nullptr && home_ != nullptr) {
@@ -3274,14 +2782,8 @@ User_RoleDetailA_ntf::User_RoleDetailA_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleDetailA_ntf)
 }
 User_RoleDetailA_ntf::User_RoleDetailA_ntf(const User_RoleDetailA_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_home()) {
     home_ = new ::PRO::DBUserHome(*from.home_);
   } else {
@@ -3297,9 +2799,9 @@ User_RoleDetailA_ntf::User_RoleDetailA_ntf(const User_RoleDetailA_ntf& from)
 
 inline void User_RoleDetailA_ntf::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&home_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&homeitems_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(homeitems_));
+    reinterpret_cast<char*>(&home_)) + sizeof(homeitems_));
 }
 
 User_RoleDetailA_ntf::~User_RoleDetailA_ntf() {
@@ -3311,7 +2813,6 @@ User_RoleDetailA_ntf::~User_RoleDetailA_ntf() {
 
 inline void User_RoleDetailA_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete home_;
   if (this != internal_default_instance()) delete homeitems_;
 }
@@ -3332,11 +2833,6 @@ void User_RoleDetailA_ntf::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && home_ != nullptr) {
     delete home_;
   }
@@ -3345,36 +2841,26 @@ void User_RoleDetailA_ntf::Clear() {
     delete homeitems_;
   }
   homeitems_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_RoleDetailA_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.DBUserHome home = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.DBUserHome home = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_home(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .PRO.DBUserHomeStructure homeitems = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // .PRO.DBUserHomeStructure homeitems = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_homeitems(), ptr);
           CHK_(ptr);
         } else
@@ -3396,7 +2882,6 @@ const char* User_RoleDetailA_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -3410,28 +2895,20 @@ uint8_t* User_RoleDetailA_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.DBUserHome home = 2;
+  // .PRO.DBUserHome home = 1;
   if (this->_internal_has_home()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::home(this), target, stream);
+        1, _Internal::home(this), target, stream);
   }
 
-  // .PRO.DBUserHomeStructure homeitems = 3;
+  // .PRO.DBUserHomeStructure homeitems = 2;
   if (this->_internal_has_homeitems()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::homeitems(this), target, stream);
+        2, _Internal::homeitems(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3450,22 +2927,14 @@ size_t User_RoleDetailA_ntf::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.DBUserHome home = 2;
+  // .PRO.DBUserHome home = 1;
   if (this->_internal_has_home()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *home_);
   }
 
-  // .PRO.DBUserHomeStructure homeitems = 3;
+  // .PRO.DBUserHomeStructure homeitems = 2;
   if (this->_internal_has_homeitems()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -3494,9 +2963,6 @@ void User_RoleDetailA_ntf::MergeFrom(const User_RoleDetailA_ntf& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_home()) {
     _internal_mutable_home()->::PRO::DBUserHome::MergeFrom(from._internal_home());
   }
@@ -3520,13 +2986,12 @@ bool User_RoleDetailA_ntf::IsInitialized() const {
 void User_RoleDetailA_ntf::InternalSwap(User_RoleDetailA_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(User_RoleDetailA_ntf, homeitems_)
       + sizeof(User_RoleDetailA_ntf::homeitems_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleDetailA_ntf, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(User_RoleDetailA_ntf, home_)>(
+          reinterpret_cast<char*>(&home_),
+          reinterpret_cast<char*>(&other->home_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailA_ntf::GetMetadata() const {
@@ -3539,25 +3004,12 @@ void User_RoleDetailA_ntf::InternalSwap(User_RoleDetailA_ntf* other) {
 
 class User_RoleDetailB_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleDetailB_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleDetailB_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::DBUserPets& pets(const User_RoleDetailB_ntf* msg);
 };
 
-const ::PRO::UserToken&
-User_RoleDetailB_ntf::_Internal::utoken(const User_RoleDetailB_ntf* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::DBUserPets&
 User_RoleDetailB_ntf::_Internal::pets(const User_RoleDetailB_ntf* msg) {
   return *msg->pets_;
-}
-void User_RoleDetailB_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 void User_RoleDetailB_ntf::clear_pets() {
   if (GetArenaForAllocation() == nullptr && pets_ != nullptr) {
@@ -3575,14 +3027,8 @@ User_RoleDetailB_ntf::User_RoleDetailB_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleDetailB_ntf)
 }
 User_RoleDetailB_ntf::User_RoleDetailB_ntf(const User_RoleDetailB_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_pets()) {
     pets_ = new ::PRO::DBUserPets(*from.pets_);
   } else {
@@ -3592,10 +3038,7 @@ User_RoleDetailB_ntf::User_RoleDetailB_ntf(const User_RoleDetailB_ntf& from)
 }
 
 inline void User_RoleDetailB_ntf::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&pets_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(pets_));
+pets_ = nullptr;
 }
 
 User_RoleDetailB_ntf::~User_RoleDetailB_ntf() {
@@ -3607,7 +3050,6 @@ User_RoleDetailB_ntf::~User_RoleDetailB_ntf() {
 
 inline void User_RoleDetailB_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete pets_;
 }
 
@@ -3627,37 +3069,22 @@ void User_RoleDetailB_ntf::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && pets_ != nullptr) {
     delete pets_;
   }
   pets_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* User_RoleDetailB_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.DBUserPets pets = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.DBUserPets pets = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_pets(), ptr);
           CHK_(ptr);
         } else
@@ -3679,7 +3106,6 @@ const char* User_RoleDetailB_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -3693,20 +3119,12 @@ uint8_t* User_RoleDetailB_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.DBUserPets pets = 2;
+  // .PRO.DBUserPets pets = 1;
   if (this->_internal_has_pets()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::pets(this), target, stream);
+        1, _Internal::pets(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3725,15 +3143,7 @@ size_t User_RoleDetailB_ntf::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.DBUserPets pets = 2;
+  // .PRO.DBUserPets pets = 1;
   if (this->_internal_has_pets()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -3762,9 +3172,6 @@ void User_RoleDetailB_ntf::MergeFrom(const User_RoleDetailB_ntf& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_pets()) {
     _internal_mutable_pets()->::PRO::DBUserPets::MergeFrom(from._internal_pets());
   }
@@ -3785,13 +3192,7 @@ bool User_RoleDetailB_ntf::IsInitialized() const {
 void User_RoleDetailB_ntf::InternalSwap(User_RoleDetailB_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_RoleDetailB_ntf, pets_)
-      + sizeof(User_RoleDetailB_ntf::pets_)
-      - PROTOBUF_FIELD_OFFSET(User_RoleDetailB_ntf, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(pets_, other->pets_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailB_ntf::GetMetadata() const {
@@ -3804,205 +3205,34 @@ void User_RoleDetailB_ntf::InternalSwap(User_RoleDetailB_ntf* other) {
 
 class User_RoleDetailEnd_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_RoleDetailEnd_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const User_RoleDetailEnd_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-User_RoleDetailEnd_ntf::_Internal::utoken(const User_RoleDetailEnd_ntf* msg) {
-  return *msg->utoken_;
-}
-void User_RoleDetailEnd_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 User_RoleDetailEnd_ntf::User_RoleDetailEnd_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:PRO.User_RoleDetailEnd_ntf)
 }
 User_RoleDetailEnd_ntf::User_RoleDetailEnd_ntf(const User_RoleDetailEnd_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.User_RoleDetailEnd_ntf)
 }
 
-inline void User_RoleDetailEnd_ntf::SharedCtor() {
-utoken_ = nullptr;
-}
 
-User_RoleDetailEnd_ntf::~User_RoleDetailEnd_ntf() {
-  // @@protoc_insertion_point(destructor:PRO.User_RoleDetailEnd_ntf)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
 
-inline void User_RoleDetailEnd_ntf::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
 
-void User_RoleDetailEnd_ntf::ArenaDtor(void* object) {
-  User_RoleDetailEnd_ntf* _this = reinterpret_cast< User_RoleDetailEnd_ntf* >(object);
-  (void)_this;
-}
-void User_RoleDetailEnd_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void User_RoleDetailEnd_ntf::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void User_RoleDetailEnd_ntf::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.User_RoleDetailEnd_ntf)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* User_RoleDetailEnd_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* User_RoleDetailEnd_ntf::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_RoleDetailEnd_ntf)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_RoleDetailEnd_ntf)
-  return target;
-}
-
-size_t User_RoleDetailEnd_ntf::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.User_RoleDetailEnd_ntf)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_RoleDetailEnd_ntf::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    User_RoleDetailEnd_ntf::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleDetailEnd_ntf::GetClassData() const { return &_class_data_; }
 
-void User_RoleDetailEnd_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<User_RoleDetailEnd_ntf *>(to)->MergeFrom(
-      static_cast<const User_RoleDetailEnd_ntf &>(from));
-}
 
 
-void User_RoleDetailEnd_ntf::MergeFrom(const User_RoleDetailEnd_ntf& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_RoleDetailEnd_ntf)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void User_RoleDetailEnd_ntf::CopyFrom(const User_RoleDetailEnd_ntf& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_RoleDetailEnd_ntf)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool User_RoleDetailEnd_ntf::IsInitialized() const {
-  return true;
-}
-
-void User_RoleDetailEnd_ntf::InternalSwap(User_RoleDetailEnd_ntf* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailEnd_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(

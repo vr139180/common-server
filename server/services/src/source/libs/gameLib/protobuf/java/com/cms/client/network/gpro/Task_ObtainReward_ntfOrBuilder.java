@@ -8,38 +8,23 @@ public interface Task_ObtainReward_ntfOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>int32 task_iid = 2;</code>
+   * <code>int32 task_iid = 1;</code>
    * @return The taskIid.
    */
   int getTaskIid();
 
   /**
-   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * <code>.PRO.TaskRewardItems reward = 2;</code>
    * @return Whether the reward field is set.
    */
   boolean hasReward();
   /**
-   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * <code>.PRO.TaskRewardItems reward = 2;</code>
    * @return The reward.
    */
   com.cms.client.network.gpro.TaskRewardItems getReward();
   /**
-   * <code>.PRO.TaskRewardItems reward = 3;</code>
+   * <code>.PRO.TaskRewardItems reward = 2;</code>
    */
   com.cms.client.network.gpro.TaskRewardItemsOrBuilder getRewardOrBuilder();
 }

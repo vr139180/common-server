@@ -20,7 +20,6 @@ namespace PRO {
 constexpr Frd_FriendList_req::Frd_FriendList_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , utoken_(nullptr)
   , last_invite_(int64_t{0})
   , friendindex_(0)
   , next_(false)
@@ -38,7 +37,6 @@ constexpr Frd_FriendList_ack::Frd_FriendList_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : invites_()
   , friends_()
-  , utoken_(nullptr)
   , totleinvite_(0)
   , totlefriend_(0)
   , next_(false){}
@@ -53,8 +51,7 @@ struct Frd_FriendList_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_FriendList_ackDefaultTypeInternal _Frd_FriendList_ack_default_instance_;
 constexpr Frd_FriendInvite_req::Frd_FriendInvite_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , invite_iid_(int64_t{0}){}
+  : invite_iid_(int64_t{0}){}
 struct Frd_FriendInvite_reqDefaultTypeInternal {
   constexpr Frd_FriendInvite_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -66,8 +63,7 @@ struct Frd_FriendInvite_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_FriendInvite_reqDefaultTypeInternal _Frd_FriendInvite_req_default_instance_;
 constexpr Frd_FriendInvite_ack::Frd_FriendInvite_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , invite_(nullptr)
+  : invite_(nullptr)
   , invite_iid_(int64_t{0})
   , result_(0){}
 struct Frd_FriendInvite_ackDefaultTypeInternal {
@@ -81,8 +77,7 @@ struct Frd_FriendInvite_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_FriendInvite_ackDefaultTypeInternal _Frd_FriendInvite_ack_default_instance_;
 constexpr Frd_InviteConfirm_req::Frd_InviteConfirm_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , iid_(int64_t{0})
+  : iid_(int64_t{0})
   , agree_(false){}
 struct Frd_InviteConfirm_reqDefaultTypeInternal {
   constexpr Frd_InviteConfirm_reqDefaultTypeInternal()
@@ -95,8 +90,7 @@ struct Frd_InviteConfirm_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_InviteConfirm_reqDefaultTypeInternal _Frd_InviteConfirm_req_default_instance_;
 constexpr Frd_InviteConfirm_ack::Frd_InviteConfirm_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , friend__(nullptr)
+  : friend__(nullptr)
   , iid_(int64_t{0})
   , agree_(false)
   , result_(0){}
@@ -111,8 +105,7 @@ struct Frd_InviteConfirm_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_InviteConfirm_ackDefaultTypeInternal _Frd_InviteConfirm_ack_default_instance_;
 constexpr Frd_FriendDelete_req::Frd_FriendDelete_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , friendiid_(int64_t{0}){}
+  : friendiid_(int64_t{0}){}
 struct Frd_FriendDelete_reqDefaultTypeInternal {
   constexpr Frd_FriendDelete_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -124,8 +117,7 @@ struct Frd_FriendDelete_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Frd_FriendDelete_reqDefaultTypeInternal _Frd_FriendDelete_req_default_instance_;
 constexpr Frd_FriendDelete_ack::Frd_FriendDelete_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , friendiid_(int64_t{0})
+  : friendiid_(int64_t{0})
   , result_(0){}
 struct Frd_FriendDelete_ackDefaultTypeInternal {
   constexpr Frd_FriendDelete_ackDefaultTypeInternal()
@@ -142,126 +134,94 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_friend_5fsystem_2eproto = nullptr;
 
 const uint32_t TableStruct_friend_5fsystem_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, last_invite_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, friendindex_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, next_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, num_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_req, nickname_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, invites_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, totleinvite_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, friends_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, totlefriend_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendList_ack, next_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_req, invite_iid_),
-  0,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, invite_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendInvite_ack, invite_),
+  ~0u,
+  ~0u,
   0,
-  ~0u,
-  ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_req, iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_req, agree_),
-  0,
-  ~0u,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, agree_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_InviteConfirm_ack, friend__),
+  ~0u,
+  ~0u,
+  ~0u,
   0,
-  ~0u,
-  ~0u,
-  ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_req, friendiid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_ack, friendiid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Frd_FriendDelete_ack, result_),
-  0,
-  ~0u,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 12, -1, sizeof(::PRO::Frd_FriendList_req)},
-  { 18, 30, -1, sizeof(::PRO::Frd_FriendList_ack)},
-  { 36, 44, -1, sizeof(::PRO::Frd_FriendInvite_req)},
-  { 46, 56, -1, sizeof(::PRO::Frd_FriendInvite_ack)},
-  { 60, 69, -1, sizeof(::PRO::Frd_InviteConfirm_req)},
-  { 72, 83, -1, sizeof(::PRO::Frd_InviteConfirm_ack)},
-  { 88, 96, -1, sizeof(::PRO::Frd_FriendDelete_req)},
-  { 98, 107, -1, sizeof(::PRO::Frd_FriendDelete_ack)},
+  { 0, -1, -1, sizeof(::PRO::Frd_FriendList_req)},
+  { 11, -1, -1, sizeof(::PRO::Frd_FriendList_ack)},
+  { 22, -1, -1, sizeof(::PRO::Frd_FriendInvite_req)},
+  { 29, 38, -1, sizeof(::PRO::Frd_FriendInvite_ack)},
+  { 41, -1, -1, sizeof(::PRO::Frd_InviteConfirm_req)},
+  { 49, 59, -1, sizeof(::PRO::Frd_InviteConfirm_ack)},
+  { 63, -1, -1, sizeof(::PRO::Frd_FriendDelete_req)},
+  { 70, -1, -1, sizeof(::PRO::Frd_FriendDelete_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -277,43 +237,34 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_friend_5fsystem_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\023friend_system.proto\022\003PRO\032\025global_inter"
-  "nal.proto\"\233\001\n\022Frd_FriendList_req\022#\n\006utok"
-  "en\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\023\n\013last_in"
-  "vite\030\002 \001(\003\022\023\n\013friendindex\030\003 \001(\005\022\014\n\004next\030"
-  "\004 \001(\010\022\013\n\003num\030\005 \001(\005\022\020\n\010nickname\030\n \001(\tB\t\n\007"
-  "_utoken\"\312\001\n\022Frd_FriendList_ack\022#\n\006utoken"
-  "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022&\n\007invites\030\002"
-  " \003(\0132\025.PRO.FriendInviteItem\022\023\n\013totleinvi"
-  "te\030\003 \001(\005\022$\n\007friends\030\004 \003(\0132\023.PRO.FriendRe"
-  "lation\022\023\n\013totlefriend\030\005 \001(\005\022\014\n\004next\030\006 \001("
-  "\010B\t\n\007_utoken\"Z\n\024Frd_FriendInvite_req\022#\n\006"
-  "utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\022\n\ninv"
-  "ite_iid\030\002 \001(\003B\t\n\007_utoken\"\241\001\n\024Frd_FriendI"
-  "nvite_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToke"
-  "nH\000\210\001\001\022\022\n\ninvite_iid\030\002 \001(\003\022\016\n\006result\030\003 \001"
-  "(\005\022*\n\006invite\030\004 \001(\0132\025.PRO.FriendInviteIte"
-  "mH\001\210\001\001B\t\n\007_utokenB\t\n\007_invite\"c\n\025Frd_Invi"
-  "teConfirm_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.User"
-  "TokenH\000\210\001\001\022\013\n\003iid\030\002 \001(\003\022\r\n\005agree\030\003 \001(\010B\t"
-  "\n\007_utoken\"\250\001\n\025Frd_InviteConfirm_ack\022#\n\006u"
-  "token\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\013\n\003iid\030"
-  "\002 \001(\003\022\r\n\005agree\030\003 \001(\010\022\016\n\006result\030\004 \001(\005\022(\n\006"
-  "friend\030\005 \001(\0132\023.PRO.FriendRelationH\001\210\001\001B\t"
-  "\n\007_utokenB\t\n\007_friend\"Y\n\024Frd_FriendDelete"
-  "_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001"
-  "\001\022\021\n\tfriendiid\030\002 \001(\003B\t\n\007_utoken\"i\n\024Frd_F"
-  "riendDelete_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us"
-  "erTokenH\000\210\001\001\022\021\n\tfriendiid\030\002 \001(\003\022\016\n\006resul"
-  "t\030\003 \001(\005B\t\n\007_utokenBT\n\033com.cms.client.net"
-  "work.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com"
-  ".cms.client.network.gprob\006proto3"
+  "nal.proto\"k\n\022Frd_FriendList_req\022\023\n\013last_"
+  "invite\030\001 \001(\003\022\023\n\013friendindex\030\002 \001(\005\022\014\n\004nex"
+  "t\030\003 \001(\010\022\013\n\003num\030\004 \001(\005\022\020\n\010nickname\030\n \001(\t\"\232"
+  "\001\n\022Frd_FriendList_ack\022&\n\007invites\030\001 \003(\0132\025"
+  ".PRO.FriendInviteItem\022\023\n\013totleinvite\030\002 \001"
+  "(\005\022$\n\007friends\030\003 \003(\0132\023.PRO.FriendRelation"
+  "\022\023\n\013totlefriend\030\004 \001(\005\022\014\n\004next\030\005 \001(\010\"*\n\024F"
+  "rd_FriendInvite_req\022\022\n\ninvite_iid\030\001 \001(\003\""
+  "q\n\024Frd_FriendInvite_ack\022\022\n\ninvite_iid\030\001 "
+  "\001(\003\022\016\n\006result\030\002 \001(\005\022*\n\006invite\030\003 \001(\0132\025.PR"
+  "O.FriendInviteItemH\000\210\001\001B\t\n\007_invite\"3\n\025Fr"
+  "d_InviteConfirm_req\022\013\n\003iid\030\001 \001(\003\022\r\n\005agre"
+  "e\030\002 \001(\010\"x\n\025Frd_InviteConfirm_ack\022\013\n\003iid\030"
+  "\001 \001(\003\022\r\n\005agree\030\002 \001(\010\022\016\n\006result\030\003 \001(\005\022(\n\006"
+  "friend\030\004 \001(\0132\023.PRO.FriendRelationH\000\210\001\001B\t"
+  "\n\007_friend\")\n\024Frd_FriendDelete_req\022\021\n\tfri"
+  "endiid\030\001 \001(\003\"9\n\024Frd_FriendDelete_ack\022\021\n\t"
+  "friendiid\030\001 \001(\003\022\016\n\006result\030\002 \001(\005BT\n\033com.c"
+  "ms.client.network.gproP\001Z\025gamelib/protob"
+  "uf/gpro\252\002\033com.cms.client.network.gprob\006p"
+  "roto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_friend_5fsystem_2eproto_deps[1] = {
   &::descriptor_table_global_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_friend_5fsystem_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_friend_5fsystem_2eproto = {
-  false, false, 1232, descriptor_table_protodef_friend_5fsystem_2eproto, "friend_system.proto", 
+  false, false, 845, descriptor_table_protodef_friend_5fsystem_2eproto, "friend_system.proto", 
   &descriptor_table_friend_5fsystem_2eproto_once, descriptor_table_friend_5fsystem_2eproto_deps, 1, 8,
   schemas, file_default_instances, TableStruct_friend_5fsystem_2eproto::offsets,
   file_level_metadata_friend_5fsystem_2eproto, file_level_enum_descriptors_friend_5fsystem_2eproto, file_level_service_descriptors_friend_5fsystem_2eproto,
@@ -330,21 +281,8 @@ namespace PRO {
 
 class Frd_FriendList_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_FriendList_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendList_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_FriendList_req::_Internal::utoken(const Frd_FriendList_req* msg) {
-  return *msg->utoken_;
-}
-void Frd_FriendList_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Frd_FriendList_req::Frd_FriendList_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -355,8 +293,7 @@ Frd_FriendList_req::Frd_FriendList_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Frd_FriendList_req)
 }
 Frd_FriendList_req::Frd_FriendList_req(const Frd_FriendList_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -365,11 +302,6 @@ Frd_FriendList_req::Frd_FriendList_req(const Frd_FriendList_req& from)
   if (!from._internal_nickname().empty()) {
     nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nickname(), 
       GetArenaForAllocation());
-  }
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
   }
   ::memcpy(&last_invite_, &from.last_invite_,
     static_cast<size_t>(reinterpret_cast<char*>(&num_) -
@@ -383,9 +315,9 @@ nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
   nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&last_invite_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&num_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(num_));
+    reinterpret_cast<char*>(&last_invite_)) + sizeof(num_));
 }
 
 Frd_FriendList_req::~Frd_FriendList_req() {
@@ -398,7 +330,6 @@ Frd_FriendList_req::~Frd_FriendList_req() {
 inline void Frd_FriendList_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_FriendList_req::ArenaDtor(void* object) {
@@ -418,60 +349,45 @@ void Frd_FriendList_req::Clear() {
   (void) cached_has_bits;
 
   nickname_.ClearToEmpty();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&last_invite_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&num_) -
       reinterpret_cast<char*>(&last_invite_)) + sizeof(num_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_FriendList_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 last_invite = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 last_invite = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           last_invite_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 friendindex = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 friendindex = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           friendindex_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool next = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+      // bool next = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           next_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 num = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+      // int32 num = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           num_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -503,7 +419,6 @@ const char* Frd_FriendList_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -517,36 +432,28 @@ uint8_t* Frd_FriendList_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 last_invite = 2;
+  // int64 last_invite = 1;
   if (this->_internal_last_invite() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_last_invite(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_last_invite(), target);
   }
 
-  // int32 friendindex = 3;
+  // int32 friendindex = 2;
   if (this->_internal_friendindex() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_friendindex(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_friendindex(), target);
   }
 
-  // bool next = 4;
+  // bool next = 3;
   if (this->_internal_next() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_next(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_next(), target);
   }
 
-  // int32 num = 5;
+  // int32 num = 4;
   if (this->_internal_num() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_num(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_num(), target);
   }
 
   // string nickname = 10;
@@ -582,30 +489,22 @@ size_t Frd_FriendList_req::ByteSizeLong() const {
         this->_internal_nickname());
   }
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 last_invite = 2;
+  // int64 last_invite = 1;
   if (this->_internal_last_invite() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_last_invite());
   }
 
-  // int32 friendindex = 3;
+  // int32 friendindex = 2;
   if (this->_internal_friendindex() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_friendindex());
   }
 
-  // bool next = 4;
+  // bool next = 3;
   if (this->_internal_next() != 0) {
     total_size += 1 + 1;
   }
 
-  // int32 num = 5;
+  // int32 num = 4;
   if (this->_internal_num() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_num());
   }
@@ -634,9 +533,6 @@ void Frd_FriendList_req::MergeFrom(const Frd_FriendList_req& from) {
 
   if (!from._internal_nickname().empty()) {
     _internal_set_nickname(from._internal_nickname());
-  }
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
   }
   if (from._internal_last_invite() != 0) {
     _internal_set_last_invite(from._internal_last_invite());
@@ -669,7 +565,6 @@ void Frd_FriendList_req::InternalSwap(Frd_FriendList_req* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &nickname_, lhs_arena,
@@ -678,9 +573,9 @@ void Frd_FriendList_req::InternalSwap(Frd_FriendList_req* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_FriendList_req, num_)
       + sizeof(Frd_FriendList_req::num_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendList_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_FriendList_req, last_invite_)>(
+          reinterpret_cast<char*>(&last_invite_),
+          reinterpret_cast<char*>(&other->last_invite_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendList_req::GetMetadata() const {
@@ -693,21 +588,8 @@ void Frd_FriendList_req::InternalSwap(Frd_FriendList_req* other) {
 
 class Frd_FriendList_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_FriendList_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendList_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_FriendList_ack::_Internal::utoken(const Frd_FriendList_ack* msg) {
-  return *msg->utoken_;
-}
-void Frd_FriendList_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Frd_FriendList_ack::clear_invites() {
   invites_.Clear();
 }
@@ -727,15 +609,9 @@ Frd_FriendList_ack::Frd_FriendList_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 }
 Frd_FriendList_ack::Frd_FriendList_ack(const Frd_FriendList_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
       invites_(from.invites_),
       friends_(from.friends_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&totleinvite_, &from.totleinvite_,
     static_cast<size_t>(reinterpret_cast<char*>(&next_) -
     reinterpret_cast<char*>(&totleinvite_)) + sizeof(next_));
@@ -744,9 +620,9 @@ Frd_FriendList_ack::Frd_FriendList_ack(const Frd_FriendList_ack& from)
 
 inline void Frd_FriendList_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&totleinvite_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&next_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(next_));
+    reinterpret_cast<char*>(&totleinvite_)) + sizeof(next_));
 }
 
 Frd_FriendList_ack::~Frd_FriendList_ack() {
@@ -758,7 +634,6 @@ Frd_FriendList_ack::~Frd_FriendList_ack() {
 
 inline void Frd_FriendList_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_FriendList_ack::ArenaDtor(void* object) {
@@ -779,78 +654,63 @@ void Frd_FriendList_ack::Clear() {
 
   invites_.Clear();
   friends_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&totleinvite_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&next_) -
       reinterpret_cast<char*>(&totleinvite_)) + sizeof(next_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_FriendList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // repeated .PRO.FriendInviteItem invites = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .PRO.FriendInviteItem invites = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_invites(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // int32 totleinvite = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 totleinvite = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           totleinvite_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // repeated .PRO.FriendRelation friends = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // repeated .PRO.FriendRelation friends = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_friends(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // int32 totlefriend = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+      // int32 totlefriend = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           totlefriend_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool next = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+      // bool next = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           next_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -872,7 +732,6 @@ const char* Frd_FriendList_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -886,46 +745,38 @@ uint8_t* Frd_FriendList_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // repeated .PRO.FriendInviteItem invites = 2;
+  // repeated .PRO.FriendInviteItem invites = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_invites_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_invites(i), target, stream);
+      InternalWriteMessage(1, this->_internal_invites(i), target, stream);
   }
 
-  // int32 totleinvite = 3;
+  // int32 totleinvite = 2;
   if (this->_internal_totleinvite() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_totleinvite(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_totleinvite(), target);
   }
 
-  // repeated .PRO.FriendRelation friends = 4;
+  // repeated .PRO.FriendRelation friends = 3;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_friends_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(4, this->_internal_friends(i), target, stream);
+      InternalWriteMessage(3, this->_internal_friends(i), target, stream);
   }
 
-  // int32 totlefriend = 5;
+  // int32 totlefriend = 4;
   if (this->_internal_totlefriend() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_totlefriend(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_totlefriend(), target);
   }
 
-  // bool next = 6;
+  // bool next = 5;
   if (this->_internal_next() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(6, this->_internal_next(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_next(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -944,39 +795,31 @@ size_t Frd_FriendList_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .PRO.FriendInviteItem invites = 2;
+  // repeated .PRO.FriendInviteItem invites = 1;
   total_size += 1UL * this->_internal_invites_size();
   for (const auto& msg : this->invites_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .PRO.FriendRelation friends = 4;
+  // repeated .PRO.FriendRelation friends = 3;
   total_size += 1UL * this->_internal_friends_size();
   for (const auto& msg : this->friends_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int32 totleinvite = 3;
+  // int32 totleinvite = 2;
   if (this->_internal_totleinvite() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_totleinvite());
   }
 
-  // int32 totlefriend = 5;
+  // int32 totlefriend = 4;
   if (this->_internal_totlefriend() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_totlefriend());
   }
 
-  // bool next = 6;
+  // bool next = 5;
   if (this->_internal_next() != 0) {
     total_size += 1 + 1;
   }
@@ -1005,9 +848,6 @@ void Frd_FriendList_ack::MergeFrom(const Frd_FriendList_ack& from) {
 
   invites_.MergeFrom(from.invites_);
   friends_.MergeFrom(from.friends_);
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_totleinvite() != 0) {
     _internal_set_totleinvite(from._internal_totleinvite());
   }
@@ -1034,15 +874,14 @@ bool Frd_FriendList_ack::IsInitialized() const {
 void Frd_FriendList_ack::InternalSwap(Frd_FriendList_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   invites_.InternalSwap(&other->invites_);
   friends_.InternalSwap(&other->friends_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_FriendList_ack, next_)
       + sizeof(Frd_FriendList_ack::next_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendList_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_FriendList_ack, totleinvite_)>(
+          reinterpret_cast<char*>(&totleinvite_),
+          reinterpret_cast<char*>(&other->totleinvite_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendList_ack::GetMetadata() const {
@@ -1055,21 +894,8 @@ void Frd_FriendList_ack::InternalSwap(Frd_FriendList_ack* other) {
 
 class Frd_FriendInvite_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_FriendInvite_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendInvite_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_FriendInvite_req::_Internal::utoken(const Frd_FriendInvite_req* msg) {
-  return *msg->utoken_;
-}
-void Frd_FriendInvite_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Frd_FriendInvite_req::Frd_FriendInvite_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1080,23 +906,14 @@ Frd_FriendInvite_req::Frd_FriendInvite_req(::PROTOBUF_NAMESPACE_ID::Arena* arena
   // @@protoc_insertion_point(arena_constructor:PRO.Frd_FriendInvite_req)
 }
 Frd_FriendInvite_req::Frd_FriendInvite_req(const Frd_FriendInvite_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   invite_iid_ = from.invite_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Frd_FriendInvite_req)
 }
 
 inline void Frd_FriendInvite_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&invite_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(invite_iid_));
+invite_iid_ = int64_t{0};
 }
 
 Frd_FriendInvite_req::~Frd_FriendInvite_req() {
@@ -1108,7 +925,6 @@ Frd_FriendInvite_req::~Frd_FriendInvite_req() {
 
 inline void Frd_FriendInvite_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_FriendInvite_req::ArenaDtor(void* object) {
@@ -1127,34 +943,19 @@ void Frd_FriendInvite_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   invite_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_FriendInvite_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 invite_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 invite_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           invite_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -1176,7 +977,6 @@ const char* Frd_FriendInvite_req::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1190,18 +990,10 @@ uint8_t* Frd_FriendInvite_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 invite_iid = 2;
+  // int64 invite_iid = 1;
   if (this->_internal_invite_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_invite_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_invite_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1220,15 +1012,7 @@ size_t Frd_FriendInvite_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 invite_iid = 2;
+  // int64 invite_iid = 1;
   if (this->_internal_invite_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_invite_iid());
   }
@@ -1255,9 +1039,6 @@ void Frd_FriendInvite_req::MergeFrom(const Frd_FriendInvite_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_invite_iid() != 0) {
     _internal_set_invite_iid(from._internal_invite_iid());
   }
@@ -1278,13 +1059,7 @@ bool Frd_FriendInvite_req::IsInitialized() const {
 void Frd_FriendInvite_req::InternalSwap(Frd_FriendInvite_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Frd_FriendInvite_req, invite_iid_)
-      + sizeof(Frd_FriendInvite_req::invite_iid_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendInvite_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(invite_iid_, other->invite_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendInvite_req::GetMetadata() const {
@@ -1298,31 +1073,19 @@ void Frd_FriendInvite_req::InternalSwap(Frd_FriendInvite_req* other) {
 class Frd_FriendInvite_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<Frd_FriendInvite_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendInvite_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::FriendInviteItem& invite(const Frd_FriendInvite_ack* msg);
   static void set_has_invite(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-Frd_FriendInvite_ack::_Internal::utoken(const Frd_FriendInvite_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::FriendInviteItem&
 Frd_FriendInvite_ack::_Internal::invite(const Frd_FriendInvite_ack* msg) {
   return *msg->invite_;
 }
-void Frd_FriendInvite_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Frd_FriendInvite_ack::clear_invite() {
   if (invite_ != nullptr) invite_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 Frd_FriendInvite_ack::Frd_FriendInvite_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1337,11 +1100,6 @@ Frd_FriendInvite_ack::Frd_FriendInvite_ack(const Frd_FriendInvite_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_invite()) {
     invite_ = new ::PRO::FriendInviteItem(*from.invite_);
   } else {
@@ -1355,9 +1113,9 @@ Frd_FriendInvite_ack::Frd_FriendInvite_ack(const Frd_FriendInvite_ack& from)
 
 inline void Frd_FriendInvite_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&invite_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&invite_)) + sizeof(result_));
 }
 
 Frd_FriendInvite_ack::~Frd_FriendInvite_ack() {
@@ -1369,7 +1127,6 @@ Frd_FriendInvite_ack::~Frd_FriendInvite_ack() {
 
 inline void Frd_FriendInvite_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete invite_;
 }
 
@@ -1390,15 +1147,9 @@ void Frd_FriendInvite_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(utoken_ != nullptr);
-      utoken_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(invite_ != nullptr);
-      invite_->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(invite_ != nullptr);
+    invite_->Clear();
   }
   ::memset(&invite_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
@@ -1414,33 +1165,25 @@ const char* Frd_FriendInvite_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 invite_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 invite_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           invite_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 result = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 result = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PRO.FriendInviteItem invite = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // optional .PRO.FriendInviteItem invite = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_invite(), ptr);
           CHK_(ptr);
         } else
@@ -1476,32 +1219,24 @@ uint8_t* Frd_FriendInvite_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 invite_iid = 2;
+  // int64 invite_iid = 1;
   if (this->_internal_invite_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_invite_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_invite_iid(), target);
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
   }
 
-  // optional .PRO.FriendInviteItem invite = 4;
+  // optional .PRO.FriendInviteItem invite = 3;
   if (_internal_has_invite()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        4, _Internal::invite(this), target, stream);
+        3, _Internal::invite(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1520,29 +1255,20 @@ size_t Frd_FriendInvite_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional .PRO.FriendInviteItem invite = 3;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional .PRO.FriendInviteItem invite = 4;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *invite_);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *invite_);
   }
-  // int64 invite_iid = 2;
+
+  // int64 invite_iid = 1;
   if (this->_internal_invite_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_invite_iid());
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -1569,14 +1295,8 @@ void Frd_FriendInvite_ack::MergeFrom(const Frd_FriendInvite_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_invite()->::PRO::FriendInviteItem::MergeFrom(from._internal_invite());
-    }
+  if (from._internal_has_invite()) {
+    _internal_mutable_invite()->::PRO::FriendInviteItem::MergeFrom(from._internal_invite());
   }
   if (from._internal_invite_iid() != 0) {
     _internal_set_invite_iid(from._internal_invite_iid());
@@ -1605,9 +1325,9 @@ void Frd_FriendInvite_ack::InternalSwap(Frd_FriendInvite_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_FriendInvite_ack, result_)
       + sizeof(Frd_FriendInvite_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendInvite_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_FriendInvite_ack, invite_)>(
+          reinterpret_cast<char*>(&invite_),
+          reinterpret_cast<char*>(&other->invite_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendInvite_ack::GetMetadata() const {
@@ -1620,21 +1340,8 @@ void Frd_FriendInvite_ack::InternalSwap(Frd_FriendInvite_ack* other) {
 
 class Frd_InviteConfirm_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_InviteConfirm_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_InviteConfirm_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_InviteConfirm_req::_Internal::utoken(const Frd_InviteConfirm_req* msg) {
-  return *msg->utoken_;
-}
-void Frd_InviteConfirm_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Frd_InviteConfirm_req::Frd_InviteConfirm_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1645,14 +1352,8 @@ Frd_InviteConfirm_req::Frd_InviteConfirm_req(::PROTOBUF_NAMESPACE_ID::Arena* are
   // @@protoc_insertion_point(arena_constructor:PRO.Frd_InviteConfirm_req)
 }
 Frd_InviteConfirm_req::Frd_InviteConfirm_req(const Frd_InviteConfirm_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&iid_, &from.iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&agree_) -
     reinterpret_cast<char*>(&iid_)) + sizeof(agree_));
@@ -1661,9 +1362,9 @@ Frd_InviteConfirm_req::Frd_InviteConfirm_req(const Frd_InviteConfirm_req& from)
 
 inline void Frd_InviteConfirm_req::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&agree_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(agree_));
+    reinterpret_cast<char*>(&iid_)) + sizeof(agree_));
 }
 
 Frd_InviteConfirm_req::~Frd_InviteConfirm_req() {
@@ -1675,7 +1376,6 @@ Frd_InviteConfirm_req::~Frd_InviteConfirm_req() {
 
 inline void Frd_InviteConfirm_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_InviteConfirm_req::ArenaDtor(void* object) {
@@ -1694,44 +1394,29 @@ void Frd_InviteConfirm_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&agree_) -
       reinterpret_cast<char*>(&iid_)) + sizeof(agree_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_InviteConfirm_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool agree = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // bool agree = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           agree_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -1753,7 +1438,6 @@ const char* Frd_InviteConfirm_req::_InternalParse(const char* ptr, ::PROTOBUF_NA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1767,24 +1451,16 @@ uint8_t* Frd_InviteConfirm_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 iid = 2;
+  // int64 iid = 1;
   if (this->_internal_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_iid(), target);
   }
 
-  // bool agree = 3;
+  // bool agree = 2;
   if (this->_internal_agree() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_agree(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_agree(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1803,20 +1479,12 @@ size_t Frd_InviteConfirm_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 iid = 2;
+  // int64 iid = 1;
   if (this->_internal_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_iid());
   }
 
-  // bool agree = 3;
+  // bool agree = 2;
   if (this->_internal_agree() != 0) {
     total_size += 1 + 1;
   }
@@ -1843,9 +1511,6 @@ void Frd_InviteConfirm_req::MergeFrom(const Frd_InviteConfirm_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_iid() != 0) {
     _internal_set_iid(from._internal_iid());
   }
@@ -1869,13 +1534,12 @@ bool Frd_InviteConfirm_req::IsInitialized() const {
 void Frd_InviteConfirm_req::InternalSwap(Frd_InviteConfirm_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_req, agree_)
       + sizeof(Frd_InviteConfirm_req::agree_)
-      - PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_req, iid_)>(
+          reinterpret_cast<char*>(&iid_),
+          reinterpret_cast<char*>(&other->iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_InviteConfirm_req::GetMetadata() const {
@@ -1889,31 +1553,19 @@ void Frd_InviteConfirm_req::InternalSwap(Frd_InviteConfirm_req* other) {
 class Frd_InviteConfirm_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<Frd_InviteConfirm_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_InviteConfirm_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::FriendRelation& friend_(const Frd_InviteConfirm_ack* msg);
   static void set_has_friend_(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-Frd_InviteConfirm_ack::_Internal::utoken(const Frd_InviteConfirm_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::FriendRelation&
 Frd_InviteConfirm_ack::_Internal::friend_(const Frd_InviteConfirm_ack* msg) {
   return *msg->friend__;
 }
-void Frd_InviteConfirm_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Frd_InviteConfirm_ack::clear_friend_() {
   if (friend__ != nullptr) friend__->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 Frd_InviteConfirm_ack::Frd_InviteConfirm_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1928,11 +1580,6 @@ Frd_InviteConfirm_ack::Frd_InviteConfirm_ack(const Frd_InviteConfirm_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_friend_()) {
     friend__ = new ::PRO::FriendRelation(*from.friend__);
   } else {
@@ -1946,9 +1593,9 @@ Frd_InviteConfirm_ack::Frd_InviteConfirm_ack(const Frd_InviteConfirm_ack& from)
 
 inline void Frd_InviteConfirm_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&friend__) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&friend__)) + sizeof(result_));
 }
 
 Frd_InviteConfirm_ack::~Frd_InviteConfirm_ack() {
@@ -1960,7 +1607,6 @@ Frd_InviteConfirm_ack::~Frd_InviteConfirm_ack() {
 
 inline void Frd_InviteConfirm_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete friend__;
 }
 
@@ -1981,15 +1627,9 @@ void Frd_InviteConfirm_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(utoken_ != nullptr);
-      utoken_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(friend__ != nullptr);
-      friend__->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(friend__ != nullptr);
+    friend__->Clear();
   }
   ::memset(&iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
@@ -2005,41 +1645,33 @@ const char* Frd_InviteConfirm_ack::_InternalParse(const char* ptr, ::PROTOBUF_NA
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool agree = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // bool agree = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           agree_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 result = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+      // int32 result = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PRO.FriendRelation friend = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+      // optional .PRO.FriendRelation friend = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_friend_(), ptr);
           CHK_(ptr);
         } else
@@ -2075,38 +1707,30 @@ uint8_t* Frd_InviteConfirm_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 iid = 2;
+  // int64 iid = 1;
   if (this->_internal_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_iid(), target);
   }
 
-  // bool agree = 3;
+  // bool agree = 2;
   if (this->_internal_agree() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_agree(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_agree(), target);
   }
 
-  // int32 result = 4;
+  // int32 result = 3;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
   }
 
-  // optional .PRO.FriendRelation friend = 5;
+  // optional .PRO.FriendRelation friend = 4;
   if (_internal_has_friend_()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        5, _Internal::friend_(this), target, stream);
+        4, _Internal::friend_(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2125,34 +1749,25 @@ size_t Frd_InviteConfirm_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional .PRO.FriendRelation friend = 4;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional .PRO.FriendRelation friend = 5;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *friend__);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *friend__);
   }
-  // int64 iid = 2;
+
+  // int64 iid = 1;
   if (this->_internal_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_iid());
   }
 
-  // bool agree = 3;
+  // bool agree = 2;
   if (this->_internal_agree() != 0) {
     total_size += 1 + 1;
   }
 
-  // int32 result = 4;
+  // int32 result = 3;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -2179,14 +1794,8 @@ void Frd_InviteConfirm_ack::MergeFrom(const Frd_InviteConfirm_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_friend_()->::PRO::FriendRelation::MergeFrom(from._internal_friend_());
-    }
+  if (from._internal_has_friend_()) {
+    _internal_mutable_friend_()->::PRO::FriendRelation::MergeFrom(from._internal_friend_());
   }
   if (from._internal_iid() != 0) {
     _internal_set_iid(from._internal_iid());
@@ -2218,9 +1827,9 @@ void Frd_InviteConfirm_ack::InternalSwap(Frd_InviteConfirm_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_ack, result_)
       + sizeof(Frd_InviteConfirm_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_InviteConfirm_ack, friend__)>(
+          reinterpret_cast<char*>(&friend__),
+          reinterpret_cast<char*>(&other->friend__));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_InviteConfirm_ack::GetMetadata() const {
@@ -2233,21 +1842,8 @@ void Frd_InviteConfirm_ack::InternalSwap(Frd_InviteConfirm_ack* other) {
 
 class Frd_FriendDelete_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_FriendDelete_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendDelete_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_FriendDelete_req::_Internal::utoken(const Frd_FriendDelete_req* msg) {
-  return *msg->utoken_;
-}
-void Frd_FriendDelete_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Frd_FriendDelete_req::Frd_FriendDelete_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2258,23 +1854,14 @@ Frd_FriendDelete_req::Frd_FriendDelete_req(::PROTOBUF_NAMESPACE_ID::Arena* arena
   // @@protoc_insertion_point(arena_constructor:PRO.Frd_FriendDelete_req)
 }
 Frd_FriendDelete_req::Frd_FriendDelete_req(const Frd_FriendDelete_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   friendiid_ = from.friendiid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Frd_FriendDelete_req)
 }
 
 inline void Frd_FriendDelete_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&friendiid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(friendiid_));
+friendiid_ = int64_t{0};
 }
 
 Frd_FriendDelete_req::~Frd_FriendDelete_req() {
@@ -2286,7 +1873,6 @@ Frd_FriendDelete_req::~Frd_FriendDelete_req() {
 
 inline void Frd_FriendDelete_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_FriendDelete_req::ArenaDtor(void* object) {
@@ -2305,34 +1891,19 @@ void Frd_FriendDelete_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   friendiid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_FriendDelete_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 friendiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 friendiid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           friendiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -2354,7 +1925,6 @@ const char* Frd_FriendDelete_req::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2368,18 +1938,10 @@ uint8_t* Frd_FriendDelete_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   if (this->_internal_friendiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_friendiid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_friendiid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2398,15 +1960,7 @@ size_t Frd_FriendDelete_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   if (this->_internal_friendiid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_friendiid());
   }
@@ -2433,9 +1987,6 @@ void Frd_FriendDelete_req::MergeFrom(const Frd_FriendDelete_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_friendiid() != 0) {
     _internal_set_friendiid(from._internal_friendiid());
   }
@@ -2456,13 +2007,7 @@ bool Frd_FriendDelete_req::IsInitialized() const {
 void Frd_FriendDelete_req::InternalSwap(Frd_FriendDelete_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Frd_FriendDelete_req, friendiid_)
-      + sizeof(Frd_FriendDelete_req::friendiid_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendDelete_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(friendiid_, other->friendiid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendDelete_req::GetMetadata() const {
@@ -2475,21 +2020,8 @@ void Frd_FriendDelete_req::InternalSwap(Frd_FriendDelete_req* other) {
 
 class Frd_FriendDelete_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Frd_FriendDelete_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Frd_FriendDelete_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Frd_FriendDelete_ack::_Internal::utoken(const Frd_FriendDelete_ack* msg) {
-  return *msg->utoken_;
-}
-void Frd_FriendDelete_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Frd_FriendDelete_ack::Frd_FriendDelete_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2500,14 +2032,8 @@ Frd_FriendDelete_ack::Frd_FriendDelete_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena
   // @@protoc_insertion_point(arena_constructor:PRO.Frd_FriendDelete_ack)
 }
 Frd_FriendDelete_ack::Frd_FriendDelete_ack(const Frd_FriendDelete_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&friendiid_, &from.friendiid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&friendiid_)) + sizeof(result_));
@@ -2516,9 +2042,9 @@ Frd_FriendDelete_ack::Frd_FriendDelete_ack(const Frd_FriendDelete_ack& from)
 
 inline void Frd_FriendDelete_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&friendiid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&friendiid_)) + sizeof(result_));
 }
 
 Frd_FriendDelete_ack::~Frd_FriendDelete_ack() {
@@ -2530,7 +2056,6 @@ Frd_FriendDelete_ack::~Frd_FriendDelete_ack() {
 
 inline void Frd_FriendDelete_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Frd_FriendDelete_ack::ArenaDtor(void* object) {
@@ -2549,44 +2074,29 @@ void Frd_FriendDelete_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&friendiid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&friendiid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Frd_FriendDelete_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 friendiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 friendiid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           friendiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 result = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 result = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -2608,7 +2118,6 @@ const char* Frd_FriendDelete_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAM
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2622,24 +2131,16 @@ uint8_t* Frd_FriendDelete_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   if (this->_internal_friendiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_friendiid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_friendiid(), target);
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2658,20 +2159,12 @@ size_t Frd_FriendDelete_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   if (this->_internal_friendiid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_friendiid());
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -2698,9 +2191,6 @@ void Frd_FriendDelete_ack::MergeFrom(const Frd_FriendDelete_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_friendiid() != 0) {
     _internal_set_friendiid(from._internal_friendiid());
   }
@@ -2724,13 +2214,12 @@ bool Frd_FriendDelete_ack::IsInitialized() const {
 void Frd_FriendDelete_ack::InternalSwap(Frd_FriendDelete_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Frd_FriendDelete_ack, result_)
       + sizeof(Frd_FriendDelete_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Frd_FriendDelete_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Frd_FriendDelete_ack, friendiid_)>(
+          reinterpret_cast<char*>(&friendiid_),
+          reinterpret_cast<char*>(&other->friendiid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Frd_FriendDelete_ack::GetMetadata() const {

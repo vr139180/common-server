@@ -145,7 +145,6 @@
     <ClCompile Include="..\source\sEureka\network\EurekaLinkTo.cpp" />
     <ClCompile Include="..\source\sEureka\network\EurekaSession.cpp" />
     <ClCompile Include="..\source\sEureka\network\ServiceLinkFrom.cpp" />
-    <ClCompile Include="..\source\sEureka\rediscript\homegate_script.cpp" />
     <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl.cpp" />
     <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_Maintnce.cpp" />
     <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_NetCmd.cpp" />
@@ -163,7 +162,6 @@
     <ClInclude Include="..\source\sEureka\network\EurekaSession.h" />
     <ClInclude Include="..\source\sEureka\network\IEurekaNodeLink.h" />
     <ClInclude Include="..\source\sEureka\network\ServiceLinkFrom.h" />
-    <ClInclude Include="..\source\sEureka\rediscript\homegate_script.h" />
     <ClInclude Include="..\source\sEureka\services\ServiceRegisterCtrl.h" />
     <ClInclude Include="..\source\sEureka\sEurekaApp.h" />
   </ItemGroup>

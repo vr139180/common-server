@@ -5,7 +5,7 @@
 #include <list>
 #include <boost/unordered_map.hpp>
 #include <cmsLib/ThreadLock.h>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 
 template<typename T>
 class LinkFromHolder

@@ -52,17 +52,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (token_ != null) {
-              subBuilder = token_.toBuilder();
-            }
-            token_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(token_);
-              token_ = subBuilder.buildPartial();
-            }
+          case 8: {
 
+            roleiid_ = input.readInt64();
             break;
           }
           default: {
@@ -97,30 +89,15 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.FriendUserInfo.class, com.cms.client.network.gpro.FriendUserInfo.Builder.class);
   }
 
-  public static final int TOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken token_;
+  public static final int ROLEIID_FIELD_NUMBER = 1;
+  private long roleiid_;
   /**
-   * <code>.PRO.UserToken token = 1;</code>
-   * @return Whether the token field is set.
+   * <code>int64 roleiid = 1;</code>
+   * @return The roleiid.
    */
   @java.lang.Override
-  public boolean hasToken() {
-    return token_ != null;
-  }
-  /**
-   * <code>.PRO.UserToken token = 1;</code>
-   * @return The token.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getToken() {
-    return token_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : token_;
-  }
-  /**
-   * <code>.PRO.UserToken token = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getTokenOrBuilder() {
-    return getToken();
+  public long getRoleiid() {
+    return roleiid_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -137,8 +114,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (token_ != null) {
-      output.writeMessage(1, getToken());
+    if (roleiid_ != 0L) {
+      output.writeInt64(1, roleiid_);
     }
     unknownFields.writeTo(output);
   }
@@ -149,9 +126,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (token_ != null) {
+    if (roleiid_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getToken());
+        .computeInt64Size(1, roleiid_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,11 +145,8 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.FriendUserInfo other = (com.cms.client.network.gpro.FriendUserInfo) obj;
 
-    if (hasToken() != other.hasToken()) return false;
-    if (hasToken()) {
-      if (!getToken()
-          .equals(other.getToken())) return false;
-    }
+    if (getRoleiid()
+        != other.getRoleiid()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -184,10 +158,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasToken()) {
-      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getToken().hashCode();
-    }
+    hash = (37 * hash) + ROLEIID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getRoleiid());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -325,12 +298,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (tokenBuilder_ == null) {
-        token_ = null;
-      } else {
-        token_ = null;
-        tokenBuilder_ = null;
-      }
+      roleiid_ = 0L;
+
       return this;
     }
 
@@ -357,11 +326,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.FriendUserInfo buildPartial() {
       com.cms.client.network.gpro.FriendUserInfo result = new com.cms.client.network.gpro.FriendUserInfo(this);
-      if (tokenBuilder_ == null) {
-        result.token_ = token_;
-      } else {
-        result.token_ = tokenBuilder_.build();
-      }
+      result.roleiid_ = roleiid_;
       onBuilt();
       return result;
     }
@@ -410,8 +375,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.FriendUserInfo other) {
       if (other == com.cms.client.network.gpro.FriendUserInfo.getDefaultInstance()) return this;
-      if (other.hasToken()) {
-        mergeToken(other.getToken());
+      if (other.getRoleiid() != 0L) {
+        setRoleiid(other.getRoleiid());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -442,123 +407,35 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.cms.client.network.gpro.UserToken token_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> tokenBuilder_;
+    private long roleiid_ ;
     /**
-     * <code>.PRO.UserToken token = 1;</code>
-     * @return Whether the token field is set.
+     * <code>int64 roleiid = 1;</code>
+     * @return The roleiid.
      */
-    public boolean hasToken() {
-      return tokenBuilder_ != null || token_ != null;
+    @java.lang.Override
+    public long getRoleiid() {
+      return roleiid_;
     }
     /**
-     * <code>.PRO.UserToken token = 1;</code>
-     * @return The token.
+     * <code>int64 roleiid = 1;</code>
+     * @param value The roleiid to set.
+     * @return This builder for chaining.
      */
-    public com.cms.client.network.gpro.UserToken getToken() {
-      if (tokenBuilder_ == null) {
-        return token_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : token_;
-      } else {
-        return tokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    public Builder setToken(com.cms.client.network.gpro.UserToken value) {
-      if (tokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        token_ = value;
-        onChanged();
-      } else {
-        tokenBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    public Builder setToken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (tokenBuilder_ == null) {
-        token_ = builderForValue.build();
-        onChanged();
-      } else {
-        tokenBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    public Builder mergeToken(com.cms.client.network.gpro.UserToken value) {
-      if (tokenBuilder_ == null) {
-        if (token_ != null) {
-          token_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(token_).mergeFrom(value).buildPartial();
-        } else {
-          token_ = value;
-        }
-        onChanged();
-      } else {
-        tokenBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    public Builder clearToken() {
-      if (tokenBuilder_ == null) {
-        token_ = null;
-        onChanged();
-      } else {
-        token_ = null;
-        tokenBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getTokenBuilder() {
+    public Builder setRoleiid(long value) {
       
+      roleiid_ = value;
       onChanged();
-      return getTokenFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.PRO.UserToken token = 1;</code>
+     * <code>int64 roleiid = 1;</code>
+     * @return This builder for chaining.
      */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getTokenOrBuilder() {
-      if (tokenBuilder_ != null) {
-        return tokenBuilder_.getMessageOrBuilder();
-      } else {
-        return token_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : token_;
-      }
-    }
-    /**
-     * <code>.PRO.UserToken token = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getTokenFieldBuilder() {
-      if (tokenBuilder_ == null) {
-        tokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getToken(),
-                getParentForChildren(),
-                isClean());
-        token_ = null;
-      }
-      return tokenBuilder_;
+    public Builder clearRoleiid() {
+      
+      roleiid_ = 0L;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

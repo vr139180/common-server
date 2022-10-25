@@ -1,16 +1,14 @@
 ﻿#ifndef __COMMANDBASE__H__
 #define __COMMANDBASE__H__
 
-//#include <cmsLib/prolib/core_type.h>
 #include "cmsLib/prolib/BasicProtocol.h"
 
 #pragma pack( push, 8)
 #include <boost/function.hpp>
 #pragma  pack( pop)
 
-typedef boost::function< void( BasicProtocol*, bool&)>			NETCMD_FUN_MAP;
-typedef boost::function< void( BasicProtocol*, bool&, int)>		NETCMD_FUN_MAP2;
-typedef boost::function< void( BasicProtocol*, bool&, void*)>	NETCMD_FUN_MAP3;
+typedef boost::function< void( NetProtocol*, bool&)>			NETCMD_FUN_MAP;
+typedef boost::function< void( NetProtocol*, bool&, void*)>		NETCMD_FUN_MAP3;
 
 class CommandBase
 {
@@ -29,30 +27,27 @@ public:
 class NetCommand : public CommandBase
 {
 public:
-	NetCommand( BasicProtocol *d2, NETCMD_FUN_MAP fun, bool autorelease =true);
-	NetCommand( BasicProtocol *d2, NETCMD_FUN_MAP2 fun, int v, bool autorelease =true);
+	NetCommand(NetProtocol *d2, NETCMD_FUN_MAP fun, bool autorelease =true);
 	virtual ~NetCommand();
 
 	virtual void run();
 
 private:
 	NETCMD_FUN_MAP	fun_;
-	NETCMD_FUN_MAP2	fun2_;
-	int fun2_v;
-	BasicProtocol*	pro_;
+	NetProtocol*	pro_;
 };
 
 class NetCommandV : public CommandBase
 {
 public:
-	NetCommandV( BasicProtocol *d2, NETCMD_FUN_MAP3 fun, bool autorelease =true);
+	NetCommandV(NetProtocol *d2, NETCMD_FUN_MAP3 fun, bool autorelease =true);
 	virtual ~NetCommandV();
 
 	virtual void run();
 
 private:
 	NETCMD_FUN_MAP3	fun_;
-	BasicProtocol*	pro_;
+	NetProtocol*	pro_;
 };
 
 template< class T>

@@ -33,8 +33,7 @@ struct MailUserBoxDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT MailUserBoxDefaultTypeInternal _MailUserBox_default_instance_;
 constexpr Mail_NewMail_ntf::Mail_NewMail_ntf(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
 struct Mail_NewMail_ntfDefaultTypeInternal {
   constexpr Mail_NewMail_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -46,8 +45,7 @@ struct Mail_NewMail_ntfDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_NewMail_ntfDefaultTypeInternal _Mail_NewMail_ntf_default_instance_;
 constexpr Mail_MailGet_req::Mail_MailGet_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mailiid_(int64_t{0})
+  : mailiid_(int64_t{0})
   , next_(false)
   , num_(0){}
 struct Mail_MailGet_reqDefaultTypeInternal {
@@ -62,7 +60,6 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_MailGet_reqDefaultTypeInte
 constexpr Mail_MailGet_ack::Mail_MailGet_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : mails_()
-  , utoken_(nullptr)
   , totle_(0){}
 struct Mail_MailGet_ackDefaultTypeInternal {
   constexpr Mail_MailGet_ackDefaultTypeInternal()
@@ -75,8 +72,7 @@ struct Mail_MailGet_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_MailGet_ackDefaultTypeInternal _Mail_MailGet_ack_default_instance_;
 constexpr Mail_UserOnline_active::Mail_UserOnline_active(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , last_mailiid_(int64_t{0})
+  : last_mailiid_(int64_t{0})
   , firstactive_(false){}
 struct Mail_UserOnline_activeDefaultTypeInternal {
   constexpr Mail_UserOnline_activeDefaultTypeInternal()
@@ -89,8 +85,7 @@ struct Mail_UserOnline_activeDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_UserOnline_activeDefaultTypeInternal _Mail_UserOnline_active_default_instance_;
 constexpr Mail_ReadMail_req::Mail_ReadMail_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0}){}
+  : mail_iid_(int64_t{0}){}
 struct Mail_ReadMail_reqDefaultTypeInternal {
   constexpr Mail_ReadMail_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -102,8 +97,7 @@ struct Mail_ReadMail_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_ReadMail_reqDefaultTypeInternal _Mail_ReadMail_req_default_instance_;
 constexpr Mail_ReadMail_ack::Mail_ReadMail_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0})
+  : mail_iid_(int64_t{0})
   , result_(0){}
 struct Mail_ReadMail_ackDefaultTypeInternal {
   constexpr Mail_ReadMail_ackDefaultTypeInternal()
@@ -116,8 +110,7 @@ struct Mail_ReadMail_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_ReadMail_ackDefaultTypeInternal _Mail_ReadMail_ack_default_instance_;
 constexpr Mail_DeleteMail_req::Mail_DeleteMail_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0}){}
+  : mail_iid_(int64_t{0}){}
 struct Mail_DeleteMail_reqDefaultTypeInternal {
   constexpr Mail_DeleteMail_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -129,8 +122,7 @@ struct Mail_DeleteMail_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_DeleteMail_reqDefaultTypeInternal _Mail_DeleteMail_req_default_instance_;
 constexpr Mail_DeleteMail_ack::Mail_DeleteMail_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0})
+  : mail_iid_(int64_t{0})
   , result_(0){}
 struct Mail_DeleteMail_ackDefaultTypeInternal {
   constexpr Mail_DeleteMail_ackDefaultTypeInternal()
@@ -143,8 +135,7 @@ struct Mail_DeleteMail_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_DeleteMail_ackDefaultTypeInternal _Mail_DeleteMail_ack_default_instance_;
 constexpr Mail_UnBindAttachs_req::Mail_UnBindAttachs_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0}){}
+  : mail_iid_(int64_t{0}){}
 struct Mail_UnBindAttachs_reqDefaultTypeInternal {
   constexpr Mail_UnBindAttachs_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -156,8 +147,7 @@ struct Mail_UnBindAttachs_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Mail_UnBindAttachs_reqDefaultTypeInternal _Mail_UnBindAttachs_req_default_instance_;
 constexpr Mail_UnBindAttachs_ack::Mail_UnBindAttachs_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mail_iid_(int64_t{0})
+  : mail_iid_(int64_t{0})
   , result_(0){}
 struct Mail_UnBindAttachs_ackDefaultTypeInternal {
   constexpr Mail_UnBindAttachs_ackDefaultTypeInternal()
@@ -184,131 +174,95 @@ const uint32_t TableStruct_mail_5fsystem_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::MailUserBox, role_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::MailUserBox, sysmail_sync_),
   PROTOBUF_FIELD_OFFSET(::PRO::MailUserBox, lastlist_mail_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_NewMail_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_NewMail_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_NewMail_ntf, utoken_),
-  0,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, mailiid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, next_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_req, num_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_ack, mails_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_MailGet_ack, totle_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UserOnline_active, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UserOnline_active, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UserOnline_active, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UserOnline_active, last_mailiid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UserOnline_active, firstactive_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_req, mail_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_ReadMail_ack, mail_iid_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_req, mail_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_DeleteMail_ack, mail_iid_),
-  0,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_req, mail_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Mail_UnBindAttachs_ack, mail_iid_),
-  0,
-  ~0u,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::PRO::MailUserBox)},
-  { 10, 17, -1, sizeof(::PRO::Mail_NewMail_ntf)},
-  { 18, 28, -1, sizeof(::PRO::Mail_MailGet_req)},
-  { 32, 41, -1, sizeof(::PRO::Mail_MailGet_ack)},
-  { 44, 53, -1, sizeof(::PRO::Mail_UserOnline_active)},
-  { 56, 64, -1, sizeof(::PRO::Mail_ReadMail_req)},
-  { 66, 75, -1, sizeof(::PRO::Mail_ReadMail_ack)},
-  { 78, 86, -1, sizeof(::PRO::Mail_DeleteMail_req)},
-  { 88, 97, -1, sizeof(::PRO::Mail_DeleteMail_ack)},
-  { 100, 108, -1, sizeof(::PRO::Mail_UnBindAttachs_req)},
-  { 110, 119, -1, sizeof(::PRO::Mail_UnBindAttachs_ack)},
+  { 10, -1, -1, sizeof(::PRO::Mail_NewMail_ntf)},
+  { 16, -1, -1, sizeof(::PRO::Mail_MailGet_req)},
+  { 25, -1, -1, sizeof(::PRO::Mail_MailGet_ack)},
+  { 33, -1, -1, sizeof(::PRO::Mail_UserOnline_active)},
+  { 41, -1, -1, sizeof(::PRO::Mail_ReadMail_req)},
+  { 48, -1, -1, sizeof(::PRO::Mail_ReadMail_ack)},
+  { 56, -1, -1, sizeof(::PRO::Mail_DeleteMail_req)},
+  { 63, -1, -1, sizeof(::PRO::Mail_DeleteMail_ack)},
+  { 71, -1, -1, sizeof(::PRO::Mail_UnBindAttachs_req)},
+  { 78, -1, -1, sizeof(::PRO::Mail_UnBindAttachs_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -329,32 +283,20 @@ const char descriptor_table_protodef_mail_5fsystem_2eproto[] PROTOBUF_SECTION_VA
   "\n\021mail_system.proto\022\003PRO\032\025global_interna"
   "l.proto\"Z\n\013MailUserBox\022\014\n\004ver_\030\001 \001(\005\022\020\n\010"
   "role_iid\030\002 \001(\003\022\024\n\014sysmail_sync\030\003 \001(\003\022\025\n\r"
-  "lastlist_mail\030\004 \001(\003\"B\n\020Mail_NewMail_ntf\022"
-  "#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n\007"
-  "_utoken\"n\n\020Mail_MailGet_req\022#\n\006utoken\030\001 "
-  "\001(\0132\016.PRO.UserTokenH\000\210\001\001\022\017\n\007mailiid\030\002 \001("
-  "\003\022\014\n\004next\030\003 \001(\010\022\013\n\003num\030\004 \001(\005B\t\n\007_utoken\""
-  "u\n\020Mail_MailGet_ack\022#\n\006utoken\030\001 \001(\0132\016.PR"
-  "O.UserTokenH\000\210\001\001\022\"\n\005mails\030\002 \003(\0132\023.PRO.Ma"
-  "ilNormalItem\022\r\n\005totle\030\003 \001(\005B\t\n\007_utoken\"s"
-  "\n\026Mail_UserOnline_active\022#\n\006utoken\030\001 \001(\013"
-  "2\016.PRO.UserTokenH\000\210\001\001\022\024\n\014last_mailiid\030\002 "
-  "\001(\003\022\023\n\013firstactive\030\003 \001(\010B\t\n\007_utoken\"U\n\021M"
-  "ail_ReadMail_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.U"
-  "serTokenH\000\210\001\001\022\020\n\010mail_iid\030\002 \001(\003B\t\n\007_utok"
-  "en\"e\n\021Mail_ReadMail_ack\022#\n\006utoken\030\001 \001(\0132"
-  "\016.PRO.UserTokenH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022\020\n\010"
-  "mail_iid\030\003 \001(\003B\t\n\007_utoken\"W\n\023Mail_Delete"
-  "Mail_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToken"
-  "H\000\210\001\001\022\020\n\010mail_iid\030\002 \001(\003B\t\n\007_utoken\"g\n\023Ma"
-  "il_DeleteMail_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO."
-  "UserTokenH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022\020\n\010mail_i"
-  "id\030\003 \001(\003B\t\n\007_utoken\"Z\n\026Mail_UnBindAttach"
-  "s_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210"
-  "\001\001\022\020\n\010mail_iid\030\002 \001(\003B\t\n\007_utoken\"j\n\026Mail_"
-  "UnBindAttachs_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO."
-  "UserTokenH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022\020\n\010mail_i"
-  "id\030\003 \001(\003B\t\n\007_utoken*X\n\010MailType\022\021\n\rMailT"
+  "lastlist_mail\030\004 \001(\003\"\022\n\020Mail_NewMail_ntf\""
+  ">\n\020Mail_MailGet_req\022\017\n\007mailiid\030\001 \001(\003\022\014\n\004"
+  "next\030\002 \001(\010\022\013\n\003num\030\003 \001(\005\"E\n\020Mail_MailGet_"
+  "ack\022\"\n\005mails\030\001 \003(\0132\023.PRO.MailNormalItem\022"
+  "\r\n\005totle\030\002 \001(\005\"C\n\026Mail_UserOnline_active"
+  "\022\024\n\014last_mailiid\030\001 \001(\003\022\023\n\013firstactive\030\002 "
+  "\001(\010\"%\n\021Mail_ReadMail_req\022\020\n\010mail_iid\030\001 \001"
+  "(\003\"5\n\021Mail_ReadMail_ack\022\016\n\006result\030\001 \001(\005\022"
+  "\020\n\010mail_iid\030\002 \001(\003\"\'\n\023Mail_DeleteMail_req"
+  "\022\020\n\010mail_iid\030\001 \001(\003\"7\n\023Mail_DeleteMail_ac"
+  "k\022\016\n\006result\030\001 \001(\005\022\020\n\010mail_iid\030\002 \001(\003\"*\n\026M"
+  "ail_UnBindAttachs_req\022\020\n\010mail_iid\030\001 \001(\003\""
+  ":\n\026Mail_UnBindAttachs_ack\022\016\n\006result\030\001 \001("
+  "\005\022\020\n\010mail_iid\030\002 \001(\003*X\n\010MailType\022\021\n\rMailT"
   "ype_Init\020\000\022\023\n\017MailType_System\020\001\022\022\n\016MailT"
   "ype_Union\020\002\022\020\n\014MailType_Max\020\003BT\n\033com.cms"
   ".client.network.gproP\001Z\025gamelib/protobuf"
@@ -366,7 +308,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_mail_5fsystem_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_mail_5fsystem_2eproto = {
-  false, false, 1323, descriptor_table_protodef_mail_5fsystem_2eproto, "mail_system.proto", 
+  false, false, 843, descriptor_table_protodef_mail_5fsystem_2eproto, "mail_system.proto", 
   &descriptor_table_mail_5fsystem_2eproto_once, descriptor_table_mail_5fsystem_2eproto_deps, 1, 11,
   schemas, file_default_instances, TableStruct_mail_5fsystem_2eproto::offsets,
   file_level_metadata_mail_5fsystem_2eproto, file_level_enum_descriptors_mail_5fsystem_2eproto, file_level_service_descriptors_mail_5fsystem_2eproto,
@@ -655,205 +597,34 @@ void MailUserBox::InternalSwap(MailUserBox* other) {
 
 class Mail_NewMail_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_NewMail_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_NewMail_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_NewMail_ntf::_Internal::utoken(const Mail_NewMail_ntf* msg) {
-  return *msg->utoken_;
-}
-void Mail_NewMail_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_NewMail_ntf::Mail_NewMail_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_NewMail_ntf)
 }
 Mail_NewMail_ntf::Mail_NewMail_ntf(const Mail_NewMail_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.Mail_NewMail_ntf)
 }
 
-inline void Mail_NewMail_ntf::SharedCtor() {
-utoken_ = nullptr;
-}
 
-Mail_NewMail_ntf::~Mail_NewMail_ntf() {
-  // @@protoc_insertion_point(destructor:PRO.Mail_NewMail_ntf)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
 
-inline void Mail_NewMail_ntf::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
 
-void Mail_NewMail_ntf::ArenaDtor(void* object) {
-  Mail_NewMail_ntf* _this = reinterpret_cast< Mail_NewMail_ntf* >(object);
-  (void)_this;
-}
-void Mail_NewMail_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void Mail_NewMail_ntf::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void Mail_NewMail_ntf::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Mail_NewMail_ntf)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* Mail_NewMail_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* Mail_NewMail_ntf::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Mail_NewMail_ntf)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Mail_NewMail_ntf)
-  return target;
-}
-
-size_t Mail_NewMail_ntf::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Mail_NewMail_ntf)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Mail_NewMail_ntf::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Mail_NewMail_ntf::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Mail_NewMail_ntf::GetClassData() const { return &_class_data_; }
 
-void Mail_NewMail_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Mail_NewMail_ntf *>(to)->MergeFrom(
-      static_cast<const Mail_NewMail_ntf &>(from));
-}
 
 
-void Mail_NewMail_ntf::MergeFrom(const Mail_NewMail_ntf& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Mail_NewMail_ntf)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void Mail_NewMail_ntf::CopyFrom(const Mail_NewMail_ntf& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Mail_NewMail_ntf)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool Mail_NewMail_ntf::IsInitialized() const {
-  return true;
-}
-
-void Mail_NewMail_ntf::InternalSwap(Mail_NewMail_ntf* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_NewMail_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
@@ -865,21 +636,8 @@ void Mail_NewMail_ntf::InternalSwap(Mail_NewMail_ntf* other) {
 
 class Mail_MailGet_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_MailGet_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_MailGet_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_MailGet_req::_Internal::utoken(const Mail_MailGet_req* msg) {
-  return *msg->utoken_;
-}
-void Mail_MailGet_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_MailGet_req::Mail_MailGet_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -890,14 +648,8 @@ Mail_MailGet_req::Mail_MailGet_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_MailGet_req)
 }
 Mail_MailGet_req::Mail_MailGet_req(const Mail_MailGet_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&mailiid_, &from.mailiid_,
     static_cast<size_t>(reinterpret_cast<char*>(&num_) -
     reinterpret_cast<char*>(&mailiid_)) + sizeof(num_));
@@ -906,9 +658,9 @@ Mail_MailGet_req::Mail_MailGet_req(const Mail_MailGet_req& from)
 
 inline void Mail_MailGet_req::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&mailiid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&num_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(num_));
+    reinterpret_cast<char*>(&mailiid_)) + sizeof(num_));
 }
 
 Mail_MailGet_req::~Mail_MailGet_req() {
@@ -920,7 +672,6 @@ Mail_MailGet_req::~Mail_MailGet_req() {
 
 inline void Mail_MailGet_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_MailGet_req::ArenaDtor(void* object) {
@@ -939,52 +690,37 @@ void Mail_MailGet_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&mailiid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&num_) -
       reinterpret_cast<char*>(&mailiid_)) + sizeof(num_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_MailGet_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 mailiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mailiid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           mailiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool next = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // bool next = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           next_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 num = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+      // int32 num = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           num_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -1006,7 +742,6 @@ const char* Mail_MailGet_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1020,30 +755,22 @@ uint8_t* Mail_MailGet_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mailiid = 2;
+  // int64 mailiid = 1;
   if (this->_internal_mailiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mailiid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mailiid(), target);
   }
 
-  // bool next = 3;
+  // bool next = 2;
   if (this->_internal_next() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_next(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_next(), target);
   }
 
-  // int32 num = 4;
+  // int32 num = 3;
   if (this->_internal_num() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_num(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_num(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1062,25 +789,17 @@ size_t Mail_MailGet_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mailiid = 2;
+  // int64 mailiid = 1;
   if (this->_internal_mailiid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mailiid());
   }
 
-  // bool next = 3;
+  // bool next = 2;
   if (this->_internal_next() != 0) {
     total_size += 1 + 1;
   }
 
-  // int32 num = 4;
+  // int32 num = 3;
   if (this->_internal_num() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_num());
   }
@@ -1107,9 +826,6 @@ void Mail_MailGet_req::MergeFrom(const Mail_MailGet_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mailiid() != 0) {
     _internal_set_mailiid(from._internal_mailiid());
   }
@@ -1136,13 +852,12 @@ bool Mail_MailGet_req::IsInitialized() const {
 void Mail_MailGet_req::InternalSwap(Mail_MailGet_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Mail_MailGet_req, num_)
       + sizeof(Mail_MailGet_req::num_)
-      - PROTOBUF_FIELD_OFFSET(Mail_MailGet_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Mail_MailGet_req, mailiid_)>(
+          reinterpret_cast<char*>(&mailiid_),
+          reinterpret_cast<char*>(&other->mailiid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_MailGet_req::GetMetadata() const {
@@ -1155,21 +870,8 @@ void Mail_MailGet_req::InternalSwap(Mail_MailGet_req* other) {
 
 class Mail_MailGet_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_MailGet_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_MailGet_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_MailGet_ack::_Internal::utoken(const Mail_MailGet_ack* msg) {
-  return *msg->utoken_;
-}
-void Mail_MailGet_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Mail_MailGet_ack::clear_mails() {
   mails_.Clear();
 }
@@ -1185,23 +887,14 @@ Mail_MailGet_ack::Mail_MailGet_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 }
 Mail_MailGet_ack::Mail_MailGet_ack(const Mail_MailGet_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
       mails_(from.mails_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   totle_ = from.totle_;
   // @@protoc_insertion_point(copy_constructor:PRO.Mail_MailGet_ack)
 }
 
 inline void Mail_MailGet_ack::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&totle_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(totle_));
+totle_ = 0;
 }
 
 Mail_MailGet_ack::~Mail_MailGet_ack() {
@@ -1213,7 +906,6 @@ Mail_MailGet_ack::~Mail_MailGet_ack() {
 
 inline void Mail_MailGet_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_MailGet_ack::ArenaDtor(void* object) {
@@ -1233,47 +925,32 @@ void Mail_MailGet_ack::Clear() {
   (void) cached_has_bits;
 
   mails_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   totle_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_MailGet_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // repeated .PRO.MailNormalItem mails = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .PRO.MailNormalItem mails = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_mails(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
           goto handle_unusual;
         continue;
-      // int32 totle = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 totle = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           totle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -1295,7 +972,6 @@ const char* Mail_MailGet_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1309,26 +985,18 @@ uint8_t* Mail_MailGet_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // repeated .PRO.MailNormalItem mails = 2;
+  // repeated .PRO.MailNormalItem mails = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_mails_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_mails(i), target, stream);
+      InternalWriteMessage(1, this->_internal_mails(i), target, stream);
   }
 
-  // int32 totle = 3;
+  // int32 totle = 2;
   if (this->_internal_totle() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_totle(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_totle(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1347,22 +1015,14 @@ size_t Mail_MailGet_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .PRO.MailNormalItem mails = 2;
+  // repeated .PRO.MailNormalItem mails = 1;
   total_size += 1UL * this->_internal_mails_size();
   for (const auto& msg : this->mails_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int32 totle = 3;
+  // int32 totle = 2;
   if (this->_internal_totle() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_totle());
   }
@@ -1390,9 +1050,6 @@ void Mail_MailGet_ack::MergeFrom(const Mail_MailGet_ack& from) {
   (void) cached_has_bits;
 
   mails_.MergeFrom(from.mails_);
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_totle() != 0) {
     _internal_set_totle(from._internal_totle());
   }
@@ -1413,14 +1070,8 @@ bool Mail_MailGet_ack::IsInitialized() const {
 void Mail_MailGet_ack::InternalSwap(Mail_MailGet_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   mails_.InternalSwap(&other->mails_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Mail_MailGet_ack, totle_)
-      + sizeof(Mail_MailGet_ack::totle_)
-      - PROTOBUF_FIELD_OFFSET(Mail_MailGet_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(totle_, other->totle_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_MailGet_ack::GetMetadata() const {
@@ -1433,21 +1084,8 @@ void Mail_MailGet_ack::InternalSwap(Mail_MailGet_ack* other) {
 
 class Mail_UserOnline_active::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_UserOnline_active>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_UserOnline_active* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_UserOnline_active::_Internal::utoken(const Mail_UserOnline_active* msg) {
-  return *msg->utoken_;
-}
-void Mail_UserOnline_active::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_UserOnline_active::Mail_UserOnline_active(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1458,14 +1096,8 @@ Mail_UserOnline_active::Mail_UserOnline_active(::PROTOBUF_NAMESPACE_ID::Arena* a
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_UserOnline_active)
 }
 Mail_UserOnline_active::Mail_UserOnline_active(const Mail_UserOnline_active& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&last_mailiid_, &from.last_mailiid_,
     static_cast<size_t>(reinterpret_cast<char*>(&firstactive_) -
     reinterpret_cast<char*>(&last_mailiid_)) + sizeof(firstactive_));
@@ -1474,9 +1106,9 @@ Mail_UserOnline_active::Mail_UserOnline_active(const Mail_UserOnline_active& fro
 
 inline void Mail_UserOnline_active::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&last_mailiid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&firstactive_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(firstactive_));
+    reinterpret_cast<char*>(&last_mailiid_)) + sizeof(firstactive_));
 }
 
 Mail_UserOnline_active::~Mail_UserOnline_active() {
@@ -1488,7 +1120,6 @@ Mail_UserOnline_active::~Mail_UserOnline_active() {
 
 inline void Mail_UserOnline_active::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_UserOnline_active::ArenaDtor(void* object) {
@@ -1507,44 +1138,29 @@ void Mail_UserOnline_active::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&last_mailiid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&firstactive_) -
       reinterpret_cast<char*>(&last_mailiid_)) + sizeof(firstactive_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_UserOnline_active::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 last_mailiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 last_mailiid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           last_mailiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // bool firstactive = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // bool firstactive = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           firstactive_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -1566,7 +1182,6 @@ const char* Mail_UserOnline_active::_InternalParse(const char* ptr, ::PROTOBUF_N
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1580,24 +1195,16 @@ uint8_t* Mail_UserOnline_active::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 last_mailiid = 2;
+  // int64 last_mailiid = 1;
   if (this->_internal_last_mailiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_last_mailiid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_last_mailiid(), target);
   }
 
-  // bool firstactive = 3;
+  // bool firstactive = 2;
   if (this->_internal_firstactive() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_firstactive(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(2, this->_internal_firstactive(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1616,20 +1223,12 @@ size_t Mail_UserOnline_active::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 last_mailiid = 2;
+  // int64 last_mailiid = 1;
   if (this->_internal_last_mailiid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_last_mailiid());
   }
 
-  // bool firstactive = 3;
+  // bool firstactive = 2;
   if (this->_internal_firstactive() != 0) {
     total_size += 1 + 1;
   }
@@ -1656,9 +1255,6 @@ void Mail_UserOnline_active::MergeFrom(const Mail_UserOnline_active& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_last_mailiid() != 0) {
     _internal_set_last_mailiid(from._internal_last_mailiid());
   }
@@ -1682,13 +1278,12 @@ bool Mail_UserOnline_active::IsInitialized() const {
 void Mail_UserOnline_active::InternalSwap(Mail_UserOnline_active* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Mail_UserOnline_active, firstactive_)
       + sizeof(Mail_UserOnline_active::firstactive_)
-      - PROTOBUF_FIELD_OFFSET(Mail_UserOnline_active, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Mail_UserOnline_active, last_mailiid_)>(
+          reinterpret_cast<char*>(&last_mailiid_),
+          reinterpret_cast<char*>(&other->last_mailiid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_UserOnline_active::GetMetadata() const {
@@ -1701,21 +1296,8 @@ void Mail_UserOnline_active::InternalSwap(Mail_UserOnline_active* other) {
 
 class Mail_ReadMail_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_ReadMail_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_ReadMail_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_ReadMail_req::_Internal::utoken(const Mail_ReadMail_req* msg) {
-  return *msg->utoken_;
-}
-void Mail_ReadMail_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_ReadMail_req::Mail_ReadMail_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1726,23 +1308,14 @@ Mail_ReadMail_req::Mail_ReadMail_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_ReadMail_req)
 }
 Mail_ReadMail_req::Mail_ReadMail_req(const Mail_ReadMail_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   mail_iid_ = from.mail_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Mail_ReadMail_req)
 }
 
 inline void Mail_ReadMail_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&mail_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(mail_iid_));
+mail_iid_ = int64_t{0};
 }
 
 Mail_ReadMail_req::~Mail_ReadMail_req() {
@@ -1754,7 +1327,6 @@ Mail_ReadMail_req::~Mail_ReadMail_req() {
 
 inline void Mail_ReadMail_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_ReadMail_req::ArenaDtor(void* object) {
@@ -1773,34 +1345,19 @@ void Mail_ReadMail_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   mail_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_ReadMail_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 mail_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mail_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -1822,7 +1379,6 @@ const char* Mail_ReadMail_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1836,18 +1392,10 @@ uint8_t* Mail_ReadMail_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mail_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1866,15 +1414,7 @@ size_t Mail_ReadMail_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
   }
@@ -1901,9 +1441,6 @@ void Mail_ReadMail_req::MergeFrom(const Mail_ReadMail_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mail_iid() != 0) {
     _internal_set_mail_iid(from._internal_mail_iid());
   }
@@ -1924,13 +1461,7 @@ bool Mail_ReadMail_req::IsInitialized() const {
 void Mail_ReadMail_req::InternalSwap(Mail_ReadMail_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Mail_ReadMail_req, mail_iid_)
-      + sizeof(Mail_ReadMail_req::mail_iid_)
-      - PROTOBUF_FIELD_OFFSET(Mail_ReadMail_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(mail_iid_, other->mail_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_ReadMail_req::GetMetadata() const {
@@ -1943,21 +1474,8 @@ void Mail_ReadMail_req::InternalSwap(Mail_ReadMail_req* other) {
 
 class Mail_ReadMail_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_ReadMail_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_ReadMail_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_ReadMail_ack::_Internal::utoken(const Mail_ReadMail_ack* msg) {
-  return *msg->utoken_;
-}
-void Mail_ReadMail_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_ReadMail_ack::Mail_ReadMail_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1968,14 +1486,8 @@ Mail_ReadMail_ack::Mail_ReadMail_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_ReadMail_ack)
 }
 Mail_ReadMail_ack::Mail_ReadMail_ack(const Mail_ReadMail_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&mail_iid_, &from.mail_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
@@ -1984,9 +1496,9 @@ Mail_ReadMail_ack::Mail_ReadMail_ack(const Mail_ReadMail_ack& from)
 
 inline void Mail_ReadMail_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&mail_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
 }
 
 Mail_ReadMail_ack::~Mail_ReadMail_ack() {
@@ -1998,7 +1510,6 @@ Mail_ReadMail_ack::~Mail_ReadMail_ack() {
 
 inline void Mail_ReadMail_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_ReadMail_ack::ArenaDtor(void* object) {
@@ -2017,44 +1528,29 @@ void Mail_ReadMail_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&mail_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_ReadMail_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int64 mail_iid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int64 mail_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -2076,7 +1572,6 @@ const char* Mail_ReadMail_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2090,24 +1585,16 @@ uint8_t* Mail_ReadMail_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // int64 mail_iid = 3;
+  // int64 mail_iid = 2;
   if (this->_internal_mail_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_mail_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2126,20 +1613,12 @@ size_t Mail_ReadMail_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 3;
+  // int64 mail_iid = 2;
   if (this->_internal_mail_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
   }
 
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -2166,9 +1645,6 @@ void Mail_ReadMail_ack::MergeFrom(const Mail_ReadMail_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mail_iid() != 0) {
     _internal_set_mail_iid(from._internal_mail_iid());
   }
@@ -2192,13 +1668,12 @@ bool Mail_ReadMail_ack::IsInitialized() const {
 void Mail_ReadMail_ack::InternalSwap(Mail_ReadMail_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Mail_ReadMail_ack, result_)
       + sizeof(Mail_ReadMail_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Mail_ReadMail_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Mail_ReadMail_ack, mail_iid_)>(
+          reinterpret_cast<char*>(&mail_iid_),
+          reinterpret_cast<char*>(&other->mail_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_ReadMail_ack::GetMetadata() const {
@@ -2211,21 +1686,8 @@ void Mail_ReadMail_ack::InternalSwap(Mail_ReadMail_ack* other) {
 
 class Mail_DeleteMail_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_DeleteMail_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_DeleteMail_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_DeleteMail_req::_Internal::utoken(const Mail_DeleteMail_req* msg) {
-  return *msg->utoken_;
-}
-void Mail_DeleteMail_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_DeleteMail_req::Mail_DeleteMail_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2236,23 +1698,14 @@ Mail_DeleteMail_req::Mail_DeleteMail_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_DeleteMail_req)
 }
 Mail_DeleteMail_req::Mail_DeleteMail_req(const Mail_DeleteMail_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   mail_iid_ = from.mail_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Mail_DeleteMail_req)
 }
 
 inline void Mail_DeleteMail_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&mail_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(mail_iid_));
+mail_iid_ = int64_t{0};
 }
 
 Mail_DeleteMail_req::~Mail_DeleteMail_req() {
@@ -2264,7 +1717,6 @@ Mail_DeleteMail_req::~Mail_DeleteMail_req() {
 
 inline void Mail_DeleteMail_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_DeleteMail_req::ArenaDtor(void* object) {
@@ -2283,34 +1735,19 @@ void Mail_DeleteMail_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   mail_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_DeleteMail_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 mail_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mail_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -2332,7 +1769,6 @@ const char* Mail_DeleteMail_req::_InternalParse(const char* ptr, ::PROTOBUF_NAME
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2346,18 +1782,10 @@ uint8_t* Mail_DeleteMail_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mail_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2376,15 +1804,7 @@ size_t Mail_DeleteMail_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
   }
@@ -2411,9 +1831,6 @@ void Mail_DeleteMail_req::MergeFrom(const Mail_DeleteMail_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mail_iid() != 0) {
     _internal_set_mail_iid(from._internal_mail_iid());
   }
@@ -2434,13 +1851,7 @@ bool Mail_DeleteMail_req::IsInitialized() const {
 void Mail_DeleteMail_req::InternalSwap(Mail_DeleteMail_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_req, mail_iid_)
-      + sizeof(Mail_DeleteMail_req::mail_iid_)
-      - PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(mail_iid_, other->mail_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_DeleteMail_req::GetMetadata() const {
@@ -2453,21 +1864,8 @@ void Mail_DeleteMail_req::InternalSwap(Mail_DeleteMail_req* other) {
 
 class Mail_DeleteMail_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_DeleteMail_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_DeleteMail_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_DeleteMail_ack::_Internal::utoken(const Mail_DeleteMail_ack* msg) {
-  return *msg->utoken_;
-}
-void Mail_DeleteMail_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_DeleteMail_ack::Mail_DeleteMail_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2478,14 +1876,8 @@ Mail_DeleteMail_ack::Mail_DeleteMail_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_DeleteMail_ack)
 }
 Mail_DeleteMail_ack::Mail_DeleteMail_ack(const Mail_DeleteMail_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&mail_iid_, &from.mail_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
@@ -2494,9 +1886,9 @@ Mail_DeleteMail_ack::Mail_DeleteMail_ack(const Mail_DeleteMail_ack& from)
 
 inline void Mail_DeleteMail_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&mail_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
 }
 
 Mail_DeleteMail_ack::~Mail_DeleteMail_ack() {
@@ -2508,7 +1900,6 @@ Mail_DeleteMail_ack::~Mail_DeleteMail_ack() {
 
 inline void Mail_DeleteMail_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_DeleteMail_ack::ArenaDtor(void* object) {
@@ -2527,293 +1918,22 @@ void Mail_DeleteMail_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&mail_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_DeleteMail_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mail_iid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* Mail_DeleteMail_ack::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Mail_DeleteMail_ack)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
-  if (this->_internal_result() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
-  }
-
-  // int64 mail_iid = 3;
-  if (this->_internal_mail_iid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_mail_iid(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Mail_DeleteMail_ack)
-  return target;
-}
-
-size_t Mail_DeleteMail_ack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Mail_DeleteMail_ack)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 3;
-  if (this->_internal_mail_iid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
-  }
-
-  // int32 result = 2;
-  if (this->_internal_result() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Mail_DeleteMail_ack::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Mail_DeleteMail_ack::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Mail_DeleteMail_ack::GetClassData() const { return &_class_data_; }
-
-void Mail_DeleteMail_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Mail_DeleteMail_ack *>(to)->MergeFrom(
-      static_cast<const Mail_DeleteMail_ack &>(from));
-}
-
-
-void Mail_DeleteMail_ack::MergeFrom(const Mail_DeleteMail_ack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Mail_DeleteMail_ack)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  if (from._internal_mail_iid() != 0) {
-    _internal_set_mail_iid(from._internal_mail_iid());
-  }
-  if (from._internal_result() != 0) {
-    _internal_set_result(from._internal_result());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Mail_DeleteMail_ack::CopyFrom(const Mail_DeleteMail_ack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Mail_DeleteMail_ack)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Mail_DeleteMail_ack::IsInitialized() const {
-  return true;
-}
-
-void Mail_DeleteMail_ack::InternalSwap(Mail_DeleteMail_ack* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_ack, result_)
-      + sizeof(Mail_DeleteMail_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata Mail_DeleteMail_ack::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_mail_5fsystem_2eproto_getter, &descriptor_table_mail_5fsystem_2eproto_once,
-      file_level_metadata_mail_5fsystem_2eproto[8]);
-}
-
-// ===================================================================
-
-class Mail_UnBindAttachs_req::_Internal {
- public:
-  using HasBits = decltype(std::declval<Mail_UnBindAttachs_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_UnBindAttachs_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-};
-
-const ::PRO::UserToken&
-Mail_UnBindAttachs_req::_Internal::utoken(const Mail_UnBindAttachs_req* msg) {
-  return *msg->utoken_;
-}
-void Mail_UnBindAttachs_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
-Mail_UnBindAttachs_req::Mail_UnBindAttachs_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:PRO.Mail_UnBindAttachs_req)
-}
-Mail_UnBindAttachs_req::Mail_UnBindAttachs_req(const Mail_UnBindAttachs_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
-  mail_iid_ = from.mail_iid_;
-  // @@protoc_insertion_point(copy_constructor:PRO.Mail_UnBindAttachs_req)
-}
-
-inline void Mail_UnBindAttachs_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&mail_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(mail_iid_));
-}
-
-Mail_UnBindAttachs_req::~Mail_UnBindAttachs_req() {
-  // @@protoc_insertion_point(destructor:PRO.Mail_UnBindAttachs_req)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void Mail_UnBindAttachs_req::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
-
-void Mail_UnBindAttachs_req::ArenaDtor(void* object) {
-  Mail_UnBindAttachs_req* _this = reinterpret_cast< Mail_UnBindAttachs_req* >(object);
-  (void)_this;
-}
-void Mail_UnBindAttachs_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void Mail_UnBindAttachs_req::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void Mail_UnBindAttachs_req::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Mail_UnBindAttachs_req)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  mail_iid_ = int64_t{0};
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* Mail_UnBindAttachs_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2842,7 +1962,203 @@ const char* Mail_UnBindAttachs_req::_InternalParse(const char* ptr, ::PROTOBUF_N
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Mail_DeleteMail_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Mail_DeleteMail_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 result = 1;
+  if (this->_internal_result() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
+  }
+
+  // int64 mail_iid = 2;
+  if (this->_internal_mail_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Mail_DeleteMail_ack)
+  return target;
+}
+
+size_t Mail_DeleteMail_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Mail_DeleteMail_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 mail_iid = 2;
+  if (this->_internal_mail_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
+  }
+
+  // int32 result = 1;
+  if (this->_internal_result() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Mail_DeleteMail_ack::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Mail_DeleteMail_ack::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Mail_DeleteMail_ack::GetClassData() const { return &_class_data_; }
+
+void Mail_DeleteMail_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Mail_DeleteMail_ack *>(to)->MergeFrom(
+      static_cast<const Mail_DeleteMail_ack &>(from));
+}
+
+
+void Mail_DeleteMail_ack::MergeFrom(const Mail_DeleteMail_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Mail_DeleteMail_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_mail_iid() != 0) {
+    _internal_set_mail_iid(from._internal_mail_iid());
+  }
+  if (from._internal_result() != 0) {
+    _internal_set_result(from._internal_result());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Mail_DeleteMail_ack::CopyFrom(const Mail_DeleteMail_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Mail_DeleteMail_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Mail_DeleteMail_ack::IsInitialized() const {
+  return true;
+}
+
+void Mail_DeleteMail_ack::InternalSwap(Mail_DeleteMail_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_ack, result_)
+      + sizeof(Mail_DeleteMail_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(Mail_DeleteMail_ack, mail_iid_)>(
+          reinterpret_cast<char*>(&mail_iid_),
+          reinterpret_cast<char*>(&other->mail_iid_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Mail_DeleteMail_ack::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_mail_5fsystem_2eproto_getter, &descriptor_table_mail_5fsystem_2eproto_once,
+      file_level_metadata_mail_5fsystem_2eproto[8]);
+}
+
+// ===================================================================
+
+class Mail_UnBindAttachs_req::_Internal {
+ public:
+};
+
+Mail_UnBindAttachs_req::Mail_UnBindAttachs_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Mail_UnBindAttachs_req)
+}
+Mail_UnBindAttachs_req::Mail_UnBindAttachs_req(const Mail_UnBindAttachs_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  mail_iid_ = from.mail_iid_;
+  // @@protoc_insertion_point(copy_constructor:PRO.Mail_UnBindAttachs_req)
+}
+
+inline void Mail_UnBindAttachs_req::SharedCtor() {
+mail_iid_ = int64_t{0};
+}
+
+Mail_UnBindAttachs_req::~Mail_UnBindAttachs_req() {
+  // @@protoc_insertion_point(destructor:PRO.Mail_UnBindAttachs_req)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Mail_UnBindAttachs_req::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Mail_UnBindAttachs_req::ArenaDtor(void* object) {
+  Mail_UnBindAttachs_req* _this = reinterpret_cast< Mail_UnBindAttachs_req* >(object);
+  (void)_this;
+}
+void Mail_UnBindAttachs_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Mail_UnBindAttachs_req::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Mail_UnBindAttachs_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Mail_UnBindAttachs_req)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  mail_iid_ = int64_t{0};
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Mail_UnBindAttachs_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int64 mail_iid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
   return ptr;
 failure:
   ptr = nullptr;
@@ -2856,18 +2172,10 @@ uint8_t* Mail_UnBindAttachs_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mail_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2886,15 +2194,7 @@ size_t Mail_UnBindAttachs_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 2;
+  // int64 mail_iid = 1;
   if (this->_internal_mail_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
   }
@@ -2921,9 +2221,6 @@ void Mail_UnBindAttachs_req::MergeFrom(const Mail_UnBindAttachs_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mail_iid() != 0) {
     _internal_set_mail_iid(from._internal_mail_iid());
   }
@@ -2944,13 +2241,7 @@ bool Mail_UnBindAttachs_req::IsInitialized() const {
 void Mail_UnBindAttachs_req::InternalSwap(Mail_UnBindAttachs_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Mail_UnBindAttachs_req, mail_iid_)
-      + sizeof(Mail_UnBindAttachs_req::mail_iid_)
-      - PROTOBUF_FIELD_OFFSET(Mail_UnBindAttachs_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(mail_iid_, other->mail_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_UnBindAttachs_req::GetMetadata() const {
@@ -2963,21 +2254,8 @@ void Mail_UnBindAttachs_req::InternalSwap(Mail_UnBindAttachs_req* other) {
 
 class Mail_UnBindAttachs_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Mail_UnBindAttachs_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Mail_UnBindAttachs_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Mail_UnBindAttachs_ack::_Internal::utoken(const Mail_UnBindAttachs_ack* msg) {
-  return *msg->utoken_;
-}
-void Mail_UnBindAttachs_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Mail_UnBindAttachs_ack::Mail_UnBindAttachs_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2988,14 +2266,8 @@ Mail_UnBindAttachs_ack::Mail_UnBindAttachs_ack(::PROTOBUF_NAMESPACE_ID::Arena* a
   // @@protoc_insertion_point(arena_constructor:PRO.Mail_UnBindAttachs_ack)
 }
 Mail_UnBindAttachs_ack::Mail_UnBindAttachs_ack(const Mail_UnBindAttachs_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&mail_iid_, &from.mail_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
@@ -3004,9 +2276,9 @@ Mail_UnBindAttachs_ack::Mail_UnBindAttachs_ack(const Mail_UnBindAttachs_ack& fro
 
 inline void Mail_UnBindAttachs_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&mail_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
 }
 
 Mail_UnBindAttachs_ack::~Mail_UnBindAttachs_ack() {
@@ -3018,7 +2290,6 @@ Mail_UnBindAttachs_ack::~Mail_UnBindAttachs_ack() {
 
 inline void Mail_UnBindAttachs_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Mail_UnBindAttachs_ack::ArenaDtor(void* object) {
@@ -3037,44 +2308,29 @@ void Mail_UnBindAttachs_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&mail_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&mail_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Mail_UnBindAttachs_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int64 mail_iid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int64 mail_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           mail_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -3096,7 +2352,6 @@ const char* Mail_UnBindAttachs_ack::_InternalParse(const char* ptr, ::PROTOBUF_N
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -3110,24 +2365,16 @@ uint8_t* Mail_UnBindAttachs_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // int64 mail_iid = 3;
+  // int64 mail_iid = 2;
   if (this->_internal_mail_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_mail_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mail_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3146,20 +2393,12 @@ size_t Mail_UnBindAttachs_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mail_iid = 3;
+  // int64 mail_iid = 2;
   if (this->_internal_mail_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mail_iid());
   }
 
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -3186,9 +2425,6 @@ void Mail_UnBindAttachs_ack::MergeFrom(const Mail_UnBindAttachs_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mail_iid() != 0) {
     _internal_set_mail_iid(from._internal_mail_iid());
   }
@@ -3212,13 +2448,12 @@ bool Mail_UnBindAttachs_ack::IsInitialized() const {
 void Mail_UnBindAttachs_ack::InternalSwap(Mail_UnBindAttachs_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Mail_UnBindAttachs_ack, result_)
       + sizeof(Mail_UnBindAttachs_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Mail_UnBindAttachs_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Mail_UnBindAttachs_ack, mail_iid_)>(
+          reinterpret_cast<char*>(&mail_iid_),
+          reinterpret_cast<char*>(&other->mail_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Mail_UnBindAttachs_ack::GetMetadata() const {

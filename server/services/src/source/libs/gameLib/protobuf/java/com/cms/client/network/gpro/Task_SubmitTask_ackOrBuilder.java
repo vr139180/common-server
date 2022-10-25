@@ -8,22 +8,7 @@ public interface Task_SubmitTask_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>int32 task_iid = 2;</code>
+   * <code>int32 task_iid = 1;</code>
    * @return The taskIid.
    */
   int getTaskIid();
@@ -33,7 +18,7 @@ public interface Task_SubmitTask_ackOrBuilder extends
    *0:success 1:task not exist 2:system error 3:condition error
    * </pre>
    *
-   * <code>int32 result = 3;</code>
+   * <code>int32 result = 2;</code>
    * @return The result.
    */
   int getResult();

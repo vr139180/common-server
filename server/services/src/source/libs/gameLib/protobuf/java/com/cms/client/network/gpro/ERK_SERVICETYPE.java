@@ -22,109 +22,120 @@ public enum ERK_SERVICETYPE
   ERK_SERVICE_EUREKA(1),
   /**
    * <pre>
+   *数据网关 ,gate,home,login的负载均衡
+   * </pre>
+   *
+   * <code>ERK_SERVICE_DATAROUTER = 2;</code>
+   */
+  ERK_SERVICE_DATAROUTER(2),
+  /**
+   * <pre>
    *资源分配
    * </pre>
    *
-   * <code>ERK_SERVICE_RES = 2;</code>
+   * <code>ERK_SERVICE_RES = 3;</code>
    */
-  ERK_SERVICE_RES(2),
+  ERK_SERVICE_RES(3),
   /**
    * <pre>
    *客户端直连网关
    * </pre>
    *
-   * <code>ERK_SERVICE_GATE = 3;</code>
+   * <code>ERK_SERVICE_GATE = 4;</code>
    */
-  ERK_SERVICE_GATE(3),
+  ERK_SERVICE_GATE(4),
   /**
    * <pre>
    *部署任务系统，购买等逻辑
    * </pre>
    *
-   * <code>ERK_SERVICE_HOME = 4;</code>
+   * <code>ERK_SERVICE_HOME = 5;</code>
    */
-  ERK_SERVICE_HOME(4),
+  ERK_SERVICE_HOME(5),
   /**
    * <pre>
-   *全局服务，比如工会、战斗匹配
    *身份认证服务，登陆排队等
    * </pre>
    *
-   * <code>ERK_SERVICE_LOGIN = 5;</code>
+   * <code>ERK_SERVICE_LOGIN = 6;</code>
    */
-  ERK_SERVICE_LOGIN(5),
-  /**
-   * <code>ERK_SERVICE_UNION = 6;</code>
-   */
-  ERK_SERVICE_UNION(6),
+  ERK_SERVICE_LOGIN(6),
   /**
    * <pre>
-   *游戏逻辑服务器
+   *第三方服务router负载均衡器
    * </pre>
    *
-   * <code>ERK_SERVICE_GAME = 7;</code>
+   * <code>ERK_SERVICE_SVRROUTER = 7;</code>
    */
-  ERK_SERVICE_GAME(7),
+  ERK_SERVICE_SVRROUTER(7),
   /**
    * <pre>
-   *数据同步服务器
+   *全局服务，比如工会、战斗匹配
    * </pre>
    *
-   * <code>ERK_SERVICE_DATASYNC = 8;</code>
+   * <code>ERK_SERVICE_UNION = 8;</code>
    */
-  ERK_SERVICE_DATASYNC(8),
-  /**
-   * <pre>
-   *router
-   * </pre>
-   *
-   * <code>ERK_SERVICE_ROUTER = 9;</code>
-   */
-  ERK_SERVICE_ROUTER(9),
+  ERK_SERVICE_UNION(8),
   /**
    * <pre>
    *chat
    * </pre>
    *
-   * <code>ERK_SERVICE_CHAT = 10;</code>
+   * <code>ERK_SERVICE_CHAT = 9;</code>
    */
-  ERK_SERVICE_CHAT(10),
+  ERK_SERVICE_CHAT(9),
   /**
    * <pre>
    *mail
    * </pre>
    *
-   * <code>ERK_SERVICE_MAIL = 11;</code>
+   * <code>ERK_SERVICE_MAIL = 10;</code>
    */
-  ERK_SERVICE_MAIL(11),
+  ERK_SERVICE_MAIL(10),
   /**
    * <pre>
    *friend
    * </pre>
    *
-   * <code>ERK_SERVICE_FRIEND = 12;</code>
+   * <code>ERK_SERVICE_FRIEND = 11;</code>
    */
-  ERK_SERVICE_FRIEND(12),
+  ERK_SERVICE_FRIEND(11),
   /**
    * <pre>
    *fightrouter
    * </pre>
    *
-   * <code>ERK_SERVICE_FIGHTROUTER = 13;</code>
+   * <code>ERK_SERVICE_FIGHTROUTER = 12;</code>
    */
-  ERK_SERVICE_FIGHTROUTER(13),
+  ERK_SERVICE_FIGHTROUTER(12),
   /**
    * <pre>
    *matchmaking
    * </pre>
    *
-   * <code>ERK_SERVICE_MATCHMAKING = 14;</code>
+   * <code>ERK_SERVICE_MATCHMAKING = 13;</code>
    */
-  ERK_SERVICE_MATCHMAKING(14),
+  ERK_SERVICE_MATCHMAKING(13),
   /**
-   * <code>ERK_SERVICE_MAX = 15;</code>
+   * <pre>
+   *游戏逻辑服务器
+   * </pre>
+   *
+   * <code>ERK_SERVICE_GAME = 14;</code>
    */
-  ERK_SERVICE_MAX(15),
+  ERK_SERVICE_GAME(14),
+  /**
+   * <pre>
+   *数据同步服务器
+   * </pre>
+   *
+   * <code>ERK_SERVICE_DATASYNC = 15;</code>
+   */
+  ERK_SERVICE_DATASYNC(15),
+  /**
+   * <code>ERK_SERVICE_MAX = 16;</code>
+   */
+  ERK_SERVICE_MAX(16),
   UNRECOGNIZED(-1),
   ;
 
@@ -138,109 +149,120 @@ public enum ERK_SERVICETYPE
   public static final int ERK_SERVICE_EUREKA_VALUE = 1;
   /**
    * <pre>
+   *数据网关 ,gate,home,login的负载均衡
+   * </pre>
+   *
+   * <code>ERK_SERVICE_DATAROUTER = 2;</code>
+   */
+  public static final int ERK_SERVICE_DATAROUTER_VALUE = 2;
+  /**
+   * <pre>
    *资源分配
    * </pre>
    *
-   * <code>ERK_SERVICE_RES = 2;</code>
+   * <code>ERK_SERVICE_RES = 3;</code>
    */
-  public static final int ERK_SERVICE_RES_VALUE = 2;
+  public static final int ERK_SERVICE_RES_VALUE = 3;
   /**
    * <pre>
    *客户端直连网关
    * </pre>
    *
-   * <code>ERK_SERVICE_GATE = 3;</code>
+   * <code>ERK_SERVICE_GATE = 4;</code>
    */
-  public static final int ERK_SERVICE_GATE_VALUE = 3;
+  public static final int ERK_SERVICE_GATE_VALUE = 4;
   /**
    * <pre>
    *部署任务系统，购买等逻辑
    * </pre>
    *
-   * <code>ERK_SERVICE_HOME = 4;</code>
+   * <code>ERK_SERVICE_HOME = 5;</code>
    */
-  public static final int ERK_SERVICE_HOME_VALUE = 4;
+  public static final int ERK_SERVICE_HOME_VALUE = 5;
   /**
    * <pre>
-   *全局服务，比如工会、战斗匹配
    *身份认证服务，登陆排队等
    * </pre>
    *
-   * <code>ERK_SERVICE_LOGIN = 5;</code>
+   * <code>ERK_SERVICE_LOGIN = 6;</code>
    */
-  public static final int ERK_SERVICE_LOGIN_VALUE = 5;
-  /**
-   * <code>ERK_SERVICE_UNION = 6;</code>
-   */
-  public static final int ERK_SERVICE_UNION_VALUE = 6;
+  public static final int ERK_SERVICE_LOGIN_VALUE = 6;
   /**
    * <pre>
-   *游戏逻辑服务器
+   *第三方服务router负载均衡器
    * </pre>
    *
-   * <code>ERK_SERVICE_GAME = 7;</code>
+   * <code>ERK_SERVICE_SVRROUTER = 7;</code>
    */
-  public static final int ERK_SERVICE_GAME_VALUE = 7;
+  public static final int ERK_SERVICE_SVRROUTER_VALUE = 7;
   /**
    * <pre>
-   *数据同步服务器
+   *全局服务，比如工会、战斗匹配
    * </pre>
    *
-   * <code>ERK_SERVICE_DATASYNC = 8;</code>
+   * <code>ERK_SERVICE_UNION = 8;</code>
    */
-  public static final int ERK_SERVICE_DATASYNC_VALUE = 8;
-  /**
-   * <pre>
-   *router
-   * </pre>
-   *
-   * <code>ERK_SERVICE_ROUTER = 9;</code>
-   */
-  public static final int ERK_SERVICE_ROUTER_VALUE = 9;
+  public static final int ERK_SERVICE_UNION_VALUE = 8;
   /**
    * <pre>
    *chat
    * </pre>
    *
-   * <code>ERK_SERVICE_CHAT = 10;</code>
+   * <code>ERK_SERVICE_CHAT = 9;</code>
    */
-  public static final int ERK_SERVICE_CHAT_VALUE = 10;
+  public static final int ERK_SERVICE_CHAT_VALUE = 9;
   /**
    * <pre>
    *mail
    * </pre>
    *
-   * <code>ERK_SERVICE_MAIL = 11;</code>
+   * <code>ERK_SERVICE_MAIL = 10;</code>
    */
-  public static final int ERK_SERVICE_MAIL_VALUE = 11;
+  public static final int ERK_SERVICE_MAIL_VALUE = 10;
   /**
    * <pre>
    *friend
    * </pre>
    *
-   * <code>ERK_SERVICE_FRIEND = 12;</code>
+   * <code>ERK_SERVICE_FRIEND = 11;</code>
    */
-  public static final int ERK_SERVICE_FRIEND_VALUE = 12;
+  public static final int ERK_SERVICE_FRIEND_VALUE = 11;
   /**
    * <pre>
    *fightrouter
    * </pre>
    *
-   * <code>ERK_SERVICE_FIGHTROUTER = 13;</code>
+   * <code>ERK_SERVICE_FIGHTROUTER = 12;</code>
    */
-  public static final int ERK_SERVICE_FIGHTROUTER_VALUE = 13;
+  public static final int ERK_SERVICE_FIGHTROUTER_VALUE = 12;
   /**
    * <pre>
    *matchmaking
    * </pre>
    *
-   * <code>ERK_SERVICE_MATCHMAKING = 14;</code>
+   * <code>ERK_SERVICE_MATCHMAKING = 13;</code>
    */
-  public static final int ERK_SERVICE_MATCHMAKING_VALUE = 14;
+  public static final int ERK_SERVICE_MATCHMAKING_VALUE = 13;
   /**
-   * <code>ERK_SERVICE_MAX = 15;</code>
+   * <pre>
+   *游戏逻辑服务器
+   * </pre>
+   *
+   * <code>ERK_SERVICE_GAME = 14;</code>
    */
-  public static final int ERK_SERVICE_MAX_VALUE = 15;
+  public static final int ERK_SERVICE_GAME_VALUE = 14;
+  /**
+   * <pre>
+   *数据同步服务器
+   * </pre>
+   *
+   * <code>ERK_SERVICE_DATASYNC = 15;</code>
+   */
+  public static final int ERK_SERVICE_DATASYNC_VALUE = 15;
+  /**
+   * <code>ERK_SERVICE_MAX = 16;</code>
+   */
+  public static final int ERK_SERVICE_MAX_VALUE = 16;
 
 
   public final int getNumber() {
@@ -269,20 +291,21 @@ public enum ERK_SERVICETYPE
     switch (value) {
       case 0: return ERK_SERVICE_NONE;
       case 1: return ERK_SERVICE_EUREKA;
-      case 2: return ERK_SERVICE_RES;
-      case 3: return ERK_SERVICE_GATE;
-      case 4: return ERK_SERVICE_HOME;
-      case 5: return ERK_SERVICE_LOGIN;
-      case 6: return ERK_SERVICE_UNION;
-      case 7: return ERK_SERVICE_GAME;
-      case 8: return ERK_SERVICE_DATASYNC;
-      case 9: return ERK_SERVICE_ROUTER;
-      case 10: return ERK_SERVICE_CHAT;
-      case 11: return ERK_SERVICE_MAIL;
-      case 12: return ERK_SERVICE_FRIEND;
-      case 13: return ERK_SERVICE_FIGHTROUTER;
-      case 14: return ERK_SERVICE_MATCHMAKING;
-      case 15: return ERK_SERVICE_MAX;
+      case 2: return ERK_SERVICE_DATAROUTER;
+      case 3: return ERK_SERVICE_RES;
+      case 4: return ERK_SERVICE_GATE;
+      case 5: return ERK_SERVICE_HOME;
+      case 6: return ERK_SERVICE_LOGIN;
+      case 7: return ERK_SERVICE_SVRROUTER;
+      case 8: return ERK_SERVICE_UNION;
+      case 9: return ERK_SERVICE_CHAT;
+      case 10: return ERK_SERVICE_MAIL;
+      case 11: return ERK_SERVICE_FRIEND;
+      case 12: return ERK_SERVICE_FIGHTROUTER;
+      case 13: return ERK_SERVICE_MATCHMAKING;
+      case 14: return ERK_SERVICE_GAME;
+      case 15: return ERK_SERVICE_DATASYNC;
+      case 16: return ERK_SERVICE_MAX;
       default: return null;
     }
   }

@@ -25,7 +25,7 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = n
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_proto_5fiid_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\030proto_iid_internal.proto\022\003PRO*\201\005\n\013ERK_"
+  "\n\030proto_iid_internal.proto\022\003PRO*\315\003\n\013ERK_"
   "PROTYPE\022\017\n\013UNIVERSAL_1\020\000\022\026\n\022ERK_EUREKABI"
   "ND_REQ\020\001\022\026\n\022ERK_EUREKABIND_ACK\020\002\022\030\n\024ERK_"
   "EUREKAUPDATE_NTF\020\003\022\023\n\017ERK_EUREKA_SYNC\020\004\022"
@@ -36,28 +36,23 @@ const char descriptor_table_protodef_proto_5fiid_5finternal_2eproto[] PROTOBUF_S
   "EQ\020\017\022\034\n\030ERK_SERVICESUBSCRIBE_ACK\020\020\022\033\n\027ER"
   "K_SERVICESHUTDOWN_NTF\020\021\022\024\n\020SVR_LIVETICK_"
   "NTF\0201\022\036\n\032SVR_SERVICEBINDSERVICE_REQ\0202\022\036\n"
-  "\032SVR_SERVICEBINDSERVICE_ACK\0203\022\030\n\024SVR_GAT"
-  "EBINDHOME_REQ\0204\022\030\n\024SVR_GATEBINDHOME_ACK\020"
-  "5\022\034\n\030SVR_GATEBINDHOME_CONFIRM\0206\022\024\n\020RES_U"
-  "SERSLOT_REQ\020d\022\024\n\020RES_USERSLOT_ACK\020e\022\031\n\025R"
-  "ES_PROXYUSERSLOT_REQ\020f\022\031\n\025RES_PROXYUSERS"
-  "LOT_ACK\020g\022\030\n\024RES_SYNCGATESLOT_NTF\020h*n\n\020G"
-  "ATEHOME_PROTYPE\022\021\n\rUNIVERSAL_200\020\000\022\025\n\020GH"
-  "S_USERINIT_REQ\020\311\001\022\027\n\022GHS_USERLOGOUT_NTF\020"
-  "\312\001\022\027\n\022GHS_ROLEDETAIL_ASK\020\313\001*\355\001\n\021ROBOTTES"
-  "T_PROTYPE\022\021\n\rUNIVERSAL_300\020\000\022 \n\033ROBOTOTE"
-  "ST_ROBOT_CONFIG_REQ\020\255\002\022 \n\033ROBOTOTEST_ROB"
-  "OT_CONFIG_ACK\020\256\002\022\037\n\032ROBOTOTEST_ROBOT_STA"
-  "RT_ACK\020\257\002\022\036\n\031ROBOTOTEST_ROBOT_STOP_ACK\020\260"
-  "\002\022\037\n\032ROBOTOTEST_ROBOT_STATE_RPT\020\261\002\022\037\n\032RO"
-  "BOTOTEST_ROBOT_STATE_ACK\020\262\002BT\n\033com.cms.c"
-  "lient.network.gproP\001Z\025gamelib/protobuf/g"
-  "pro\252\002\033com.cms.client.network.gprob\006proto"
-  "3"
+  "\032SVR_SERVICEBINDSERVICE_ACK\0203\022\030\n\024RES_SYN"
+  "CGATESLOT_NTF\020d*n\n\020GATEHOME_PROTYPE\022\021\n\rU"
+  "NIVERSAL_200\020\000\022\025\n\020GHS_USERINIT_REQ\020\311\001\022\027\n"
+  "\022GHS_USERLOGOUT_NTF\020\312\001\022\027\n\022GHS_ROLEDETAIL"
+  "_ASK\020\313\001*\355\001\n\021ROBOTTEST_PROTYPE\022\021\n\rUNIVERS"
+  "AL_300\020\000\022 \n\033ROBOTOTEST_ROBOT_CONFIG_REQ\020"
+  "\255\002\022 \n\033ROBOTOTEST_ROBOT_CONFIG_ACK\020\256\002\022\037\n\032"
+  "ROBOTOTEST_ROBOT_START_ACK\020\257\002\022\036\n\031ROBOTOT"
+  "EST_ROBOT_STOP_ACK\020\260\002\022\037\n\032ROBOTOTEST_ROBO"
+  "T_STATE_RPT\020\261\002\022\037\n\032ROBOTOTEST_ROBOT_STATE"
+  "_ACK\020\262\002BT\n\033com.cms.client.network.gproP\001"
+  "Z\025gamelib/protobuf/gpro\252\002\033com.cms.client"
+  ".network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_5finternal_2eproto = {
-  false, false, 1121, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
+  false, false, 941, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
   &descriptor_table_proto_5fiid_5finternal_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_5finternal_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_5finternal_2eproto, file_level_service_descriptors_proto_5fiid_5finternal_2eproto,
@@ -91,14 +86,7 @@ bool ERK_PROTYPE_IsValid(int value) {
     case 49:
     case 50:
     case 51:
-    case 52:
-    case 53:
-    case 54:
     case 100:
-    case 101:
-    case 102:
-    case 103:
-    case 104:
       return true;
     default:
       return false;

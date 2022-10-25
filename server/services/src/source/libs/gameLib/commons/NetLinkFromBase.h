@@ -3,7 +3,7 @@
 
 #include <google/protobuf/map.h>
 #include <boost/unordered_map.hpp>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 
 template<typename T>
@@ -33,14 +33,14 @@ public:
 
 	virtual void force_linkclose() = 0;
 
+	//初始化协议头
+	virtual void init_protocolhead() = 0;
+	virtual const SProtocolHead& get_protocolhead() = 0;
+
 	std::string get_ext_bykey(const char* key);
 
-	void send_protocol( BasicProtocol* pro){
-		std::unique_ptr<BasicProtocol> p_msg( pro);
-		if( session_ == 0)
-			return;
-
-		session_->send_protocol( p_msg.release());
+	void send_protocol( NetProtocol* pro){
+		session_->send_protocol( pro);
 	}
 
 	void heart_beat(){
@@ -54,7 +54,7 @@ public:
 	virtual void on_connectedto_done() {}
 
 	virtual void on_connect_lost_netthread() = 0;
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro) = 0;
+	virtual void on_recv_protocol_netthread( NetProtocol* pro) = 0;
 
 protected:
 	T*	session_;

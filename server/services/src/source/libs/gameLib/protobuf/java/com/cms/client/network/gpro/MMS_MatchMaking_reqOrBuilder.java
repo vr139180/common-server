@@ -8,32 +8,17 @@ public interface MMS_MatchMaking_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>.PRO.DBUserBattles battles = 2;</code>
+   * <code>.PRO.DBUserBattles battles = 1;</code>
    * @return Whether the battles field is set.
    */
   boolean hasBattles();
   /**
-   * <code>.PRO.DBUserBattles battles = 2;</code>
+   * <code>.PRO.DBUserBattles battles = 1;</code>
    * @return The battles.
    */
   com.cms.client.network.gpro.DBUserBattles getBattles();
   /**
-   * <code>.PRO.DBUserBattles battles = 2;</code>
+   * <code>.PRO.DBUserBattles battles = 1;</code>
    */
   com.cms.client.network.gpro.DBUserBattlesOrBuilder getBattlesOrBuilder();
 }

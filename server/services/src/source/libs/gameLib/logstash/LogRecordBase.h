@@ -2,7 +2,7 @@
 #define __LOGRECORDBASE_H__
 
 #include <string>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <gameLib/LogExt.h>
 
 class LogRecordBase

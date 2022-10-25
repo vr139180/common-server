@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "global_internal.proto";
 import "db_internal.proto";
 
 package PRO;
@@ -12,10 +11,8 @@ option java_multiple_files = true;
 option java_package = "com.cms.client.network.gpro";
 
 message MMS_MatchMaking_req{
-  optional UserToken utoken = 1;
-  DBUserBattles battles = 2;
+  DBUserBattles battles = 1;
 }
 
 message MMS_MatchMaking_ack{
-  optional UserToken utoken = 1;
 }

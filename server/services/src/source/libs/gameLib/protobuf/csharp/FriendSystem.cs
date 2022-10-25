@@ -25,44 +25,35 @@ namespace com.cms.client.network.gpro {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChNmcmllbmRfc3lzdGVtLnByb3RvEgNQUk8aFWdsb2JhbF9pbnRlcm5hbC5w",
-            "cm90byKbAQoSRnJkX0ZyaWVuZExpc3RfcmVxEiMKBnV0b2tlbhgBIAEoCzIO",
-            "LlBSTy5Vc2VyVG9rZW5IAIgBARITCgtsYXN0X2ludml0ZRgCIAEoAxITCgtm",
-            "cmllbmRpbmRleBgDIAEoBRIMCgRuZXh0GAQgASgIEgsKA251bRgFIAEoBRIQ",
-            "CghuaWNrbmFtZRgKIAEoCUIJCgdfdXRva2VuIsoBChJGcmRfRnJpZW5kTGlz",
-            "dF9hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEiYK",
-            "B2ludml0ZXMYAiADKAsyFS5QUk8uRnJpZW5kSW52aXRlSXRlbRITCgt0b3Rs",
-            "ZWludml0ZRgDIAEoBRIkCgdmcmllbmRzGAQgAygLMhMuUFJPLkZyaWVuZFJl",
-            "bGF0aW9uEhMKC3RvdGxlZnJpZW5kGAUgASgFEgwKBG5leHQYBiABKAhCCQoH",
-            "X3V0b2tlbiJaChRGcmRfRnJpZW5kSW52aXRlX3JlcRIjCgZ1dG9rZW4YASAB",
-            "KAsyDi5QUk8uVXNlclRva2VuSACIAQESEgoKaW52aXRlX2lpZBgCIAEoA0IJ",
-            "CgdfdXRva2VuIqEBChRGcmRfRnJpZW5kSW52aXRlX2FjaxIjCgZ1dG9rZW4Y",
-            "ASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESEgoKaW52aXRlX2lpZBgCIAEo",
-            "AxIOCgZyZXN1bHQYAyABKAUSKgoGaW52aXRlGAQgASgLMhUuUFJPLkZyaWVu",
-            "ZEludml0ZUl0ZW1IAYgBAUIJCgdfdXRva2VuQgkKB19pbnZpdGUiYwoVRnJk",
-            "X0ludml0ZUNvbmZpcm1fcmVxEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2Vy",
-            "VG9rZW5IAIgBARILCgNpaWQYAiABKAMSDQoFYWdyZWUYAyABKAhCCQoHX3V0",
-            "b2tlbiKoAQoVRnJkX0ludml0ZUNvbmZpcm1fYWNrEiMKBnV0b2tlbhgBIAEo",
-            "CzIOLlBSTy5Vc2VyVG9rZW5IAIgBARILCgNpaWQYAiABKAMSDQoFYWdyZWUY",
-            "AyABKAgSDgoGcmVzdWx0GAQgASgFEigKBmZyaWVuZBgFIAEoCzITLlBSTy5G",
-            "cmllbmRSZWxhdGlvbkgBiAEBQgkKB191dG9rZW5CCQoHX2ZyaWVuZCJZChRG",
-            "cmRfRnJpZW5kRGVsZXRlX3JlcRIjCgZ1dG9rZW4YASABKAsyDi5QUk8uVXNl",
-            "clRva2VuSACIAQESEQoJZnJpZW5kaWlkGAIgASgDQgkKB191dG9rZW4iaQoU",
-            "RnJkX0ZyaWVuZERlbGV0ZV9hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVz",
-            "ZXJUb2tlbkgAiAEBEhEKCWZyaWVuZGlpZBgCIAEoAxIOCgZyZXN1bHQYAyAB",
-            "KAVCCQoHX3V0b2tlbkJUChtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9Q",
-            "AVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQubmV0",
-            "d29yay5ncHJvYgZwcm90bzM="));
+            "cm90byJrChJGcmRfRnJpZW5kTGlzdF9yZXESEwoLbGFzdF9pbnZpdGUYASAB",
+            "KAMSEwoLZnJpZW5kaW5kZXgYAiABKAUSDAoEbmV4dBgDIAEoCBILCgNudW0Y",
+            "BCABKAUSEAoIbmlja25hbWUYCiABKAkimgEKEkZyZF9GcmllbmRMaXN0X2Fj",
+            "axImCgdpbnZpdGVzGAEgAygLMhUuUFJPLkZyaWVuZEludml0ZUl0ZW0SEwoL",
+            "dG90bGVpbnZpdGUYAiABKAUSJAoHZnJpZW5kcxgDIAMoCzITLlBSTy5Gcmll",
+            "bmRSZWxhdGlvbhITCgt0b3RsZWZyaWVuZBgEIAEoBRIMCgRuZXh0GAUgASgI",
+            "IioKFEZyZF9GcmllbmRJbnZpdGVfcmVxEhIKCmludml0ZV9paWQYASABKAMi",
+            "cQoURnJkX0ZyaWVuZEludml0ZV9hY2sSEgoKaW52aXRlX2lpZBgBIAEoAxIO",
+            "CgZyZXN1bHQYAiABKAUSKgoGaW52aXRlGAMgASgLMhUuUFJPLkZyaWVuZElu",
+            "dml0ZUl0ZW1IAIgBAUIJCgdfaW52aXRlIjMKFUZyZF9JbnZpdGVDb25maXJt",
+            "X3JlcRILCgNpaWQYASABKAMSDQoFYWdyZWUYAiABKAgieAoVRnJkX0ludml0",
+            "ZUNvbmZpcm1fYWNrEgsKA2lpZBgBIAEoAxINCgVhZ3JlZRgCIAEoCBIOCgZy",
+            "ZXN1bHQYAyABKAUSKAoGZnJpZW5kGAQgASgLMhMuUFJPLkZyaWVuZFJlbGF0",
+            "aW9uSACIAQFCCQoHX2ZyaWVuZCIpChRGcmRfRnJpZW5kRGVsZXRlX3JlcRIR",
+            "CglmcmllbmRpaWQYASABKAMiOQoURnJkX0ZyaWVuZERlbGV0ZV9hY2sSEQoJ",
+            "ZnJpZW5kaWlkGAEgASgDEg4KBnJlc3VsdBgCIAEoBUJUChtjb20uY21zLmNs",
+            "aWVudC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIb",
+            "Y29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendList_req), global::com.cms.client.network.gpro.Frd_FriendList_req.Parser, new[]{ "Utoken", "LastInvite", "Friendindex", "Next", "Num", "Nickname" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendList_ack), global::com.cms.client.network.gpro.Frd_FriendList_ack.Parser, new[]{ "Utoken", "Invites", "Totleinvite", "Friends", "Totlefriend", "Next" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendInvite_req), global::com.cms.client.network.gpro.Frd_FriendInvite_req.Parser, new[]{ "Utoken", "InviteIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendInvite_ack), global::com.cms.client.network.gpro.Frd_FriendInvite_ack.Parser, new[]{ "Utoken", "InviteIid", "Result", "Invite" }, new[]{ "Utoken", "Invite" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_InviteConfirm_req), global::com.cms.client.network.gpro.Frd_InviteConfirm_req.Parser, new[]{ "Utoken", "Iid", "Agree" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_InviteConfirm_ack), global::com.cms.client.network.gpro.Frd_InviteConfirm_ack.Parser, new[]{ "Utoken", "Iid", "Agree", "Result", "Friend" }, new[]{ "Utoken", "Friend" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendDelete_req), global::com.cms.client.network.gpro.Frd_FriendDelete_req.Parser, new[]{ "Utoken", "Friendiid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendDelete_ack), global::com.cms.client.network.gpro.Frd_FriendDelete_ack.Parser, new[]{ "Utoken", "Friendiid", "Result" }, new[]{ "Utoken" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendList_req), global::com.cms.client.network.gpro.Frd_FriendList_req.Parser, new[]{ "LastInvite", "Friendindex", "Next", "Num", "Nickname" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendList_ack), global::com.cms.client.network.gpro.Frd_FriendList_ack.Parser, new[]{ "Invites", "Totleinvite", "Friends", "Totlefriend", "Next" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendInvite_req), global::com.cms.client.network.gpro.Frd_FriendInvite_req.Parser, new[]{ "InviteIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendInvite_ack), global::com.cms.client.network.gpro.Frd_FriendInvite_ack.Parser, new[]{ "InviteIid", "Result", "Invite" }, new[]{ "Invite" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_InviteConfirm_req), global::com.cms.client.network.gpro.Frd_InviteConfirm_req.Parser, new[]{ "Iid", "Agree" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_InviteConfirm_ack), global::com.cms.client.network.gpro.Frd_InviteConfirm_ack.Parser, new[]{ "Iid", "Agree", "Result", "Friend" }, new[]{ "Friend" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendDelete_req), global::com.cms.client.network.gpro.Frd_FriendDelete_req.Parser, new[]{ "Friendiid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Frd_FriendDelete_ack), global::com.cms.client.network.gpro.Frd_FriendDelete_ack.Parser, new[]{ "Friendiid", "Result" }, null, null, null, null)
           }));
     }
     #endregion
@@ -103,7 +94,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendList_req(Frd_FriendList_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       lastInvite_ = other.lastInvite_;
       friendindex_ = other.friendindex_;
       next_ = other.next_;
@@ -118,20 +108,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendList_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "last_invite" field.</summary>
-    public const int LastInviteFieldNumber = 2;
+    public const int LastInviteFieldNumber = 1;
     private long lastInvite_;
     /// <summary>
     ///最大的一个invite的iid，会获取新的邀请
@@ -146,7 +124,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "friendindex" field.</summary>
-    public const int FriendindexFieldNumber = 3;
+    public const int FriendindexFieldNumber = 2;
     private int friendindex_;
     /// <summary>
     ///根据活跃度排行的索引 0开始
@@ -161,7 +139,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "next" field.</summary>
-    public const int NextFieldNumber = 4;
+    public const int NextFieldNumber = 3;
     private bool next_;
     /// <summary>
     ///true 小到大 获取下一批好友信息, false 大到小获取
@@ -176,7 +154,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 5;
+    public const int NumFieldNumber = 4;
     private int num_;
     /// <summary>
     ///每批的长度，不超过20
@@ -220,7 +198,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (LastInvite != other.LastInvite) return false;
       if (Friendindex != other.Friendindex) return false;
       if (Next != other.Next) return false;
@@ -233,7 +210,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (LastInvite != 0L) hash ^= LastInvite.GetHashCode();
       if (Friendindex != 0) hash ^= Friendindex.GetHashCode();
       if (Next != false) hash ^= Next.GetHashCode();
@@ -257,24 +233,20 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (LastInvite != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(LastInvite);
       }
       if (Friendindex != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Friendindex);
       }
       if (Next != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteBool(Next);
       }
       if (Num != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(Num);
       }
       if (Nickname.Length != 0) {
@@ -291,24 +263,20 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (LastInvite != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(LastInvite);
       }
       if (Friendindex != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Friendindex);
       }
       if (Next != false) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteBool(Next);
       }
       if (Num != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(Num);
       }
       if (Nickname.Length != 0) {
@@ -325,9 +293,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (LastInvite != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastInvite);
       }
@@ -354,12 +319,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendList_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.LastInvite != 0L) {
         LastInvite = other.LastInvite;
@@ -391,26 +350,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             LastInvite = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Friendindex = input.ReadInt32();
             break;
           }
-          case 32: {
+          case 24: {
             Next = input.ReadBool();
             break;
           }
-          case 40: {
+          case 32: {
             Num = input.ReadInt32();
             break;
           }
@@ -433,26 +385,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             LastInvite = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Friendindex = input.ReadInt32();
             break;
           }
-          case 32: {
+          case 24: {
             Next = input.ReadBool();
             break;
           }
-          case 40: {
+          case 32: {
             Num = input.ReadInt32();
             break;
           }
@@ -501,7 +446,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendList_ack(Frd_FriendList_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       invites_ = other.invites_.Clone();
       totleinvite_ = other.totleinvite_;
       friends_ = other.friends_.Clone();
@@ -516,22 +460,10 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendList_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "invites" field.</summary>
-    public const int InvitesFieldNumber = 2;
+    public const int InvitesFieldNumber = 1;
     private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.FriendInviteItem> _repeated_invites_codec
-        = pb::FieldCodec.ForMessage(18, global::com.cms.client.network.gpro.FriendInviteItem.Parser);
+        = pb::FieldCodec.ForMessage(10, global::com.cms.client.network.gpro.FriendInviteItem.Parser);
     private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.FriendInviteItem> invites_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.FriendInviteItem>();
     /// <summary>
     ///iid从小到大
@@ -543,7 +475,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "totleinvite" field.</summary>
-    public const int TotleinviteFieldNumber = 3;
+    public const int TotleinviteFieldNumber = 2;
     private int totleinvite_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -555,9 +487,9 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "friends" field.</summary>
-    public const int FriendsFieldNumber = 4;
+    public const int FriendsFieldNumber = 3;
     private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.FriendRelation> _repeated_friends_codec
-        = pb::FieldCodec.ForMessage(34, global::com.cms.client.network.gpro.FriendRelation.Parser);
+        = pb::FieldCodec.ForMessage(26, global::com.cms.client.network.gpro.FriendRelation.Parser);
     private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.FriendRelation> friends_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.FriendRelation>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -566,7 +498,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "totlefriend" field.</summary>
-    public const int TotlefriendFieldNumber = 5;
+    public const int TotlefriendFieldNumber = 4;
     private int totlefriend_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -578,7 +510,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "next" field.</summary>
-    public const int NextFieldNumber = 6;
+    public const int NextFieldNumber = 5;
     private bool next_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -604,7 +536,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if(!invites_.Equals(other.invites_)) return false;
       if (Totleinvite != other.Totleinvite) return false;
       if(!friends_.Equals(other.friends_)) return false;
@@ -617,7 +548,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       hash ^= invites_.GetHashCode();
       if (Totleinvite != 0) hash ^= Totleinvite.GetHashCode();
       hash ^= friends_.GetHashCode();
@@ -641,22 +571,18 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       invites_.WriteTo(output, _repeated_invites_codec);
       if (Totleinvite != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Totleinvite);
       }
       friends_.WriteTo(output, _repeated_friends_codec);
       if (Totlefriend != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(Totlefriend);
       }
       if (Next != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteBool(Next);
       }
       if (_unknownFields != null) {
@@ -669,22 +595,18 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       invites_.WriteTo(ref output, _repeated_invites_codec);
       if (Totleinvite != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Totleinvite);
       }
       friends_.WriteTo(ref output, _repeated_friends_codec);
       if (Totlefriend != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(32);
         output.WriteInt32(Totlefriend);
       }
       if (Next != false) {
-        output.WriteRawTag(48);
+        output.WriteRawTag(40);
         output.WriteBool(Next);
       }
       if (_unknownFields != null) {
@@ -697,9 +619,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       size += invites_.CalculateSize(_repeated_invites_codec);
       if (Totleinvite != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Totleinvite);
@@ -722,12 +641,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendList_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       invites_.Add(other.invites_);
       if (other.Totleinvite != 0) {
@@ -756,29 +669,22 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             invites_.AddEntriesFrom(input, _repeated_invites_codec);
             break;
           }
-          case 24: {
+          case 16: {
             Totleinvite = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             friends_.AddEntriesFrom(input, _repeated_friends_codec);
             break;
           }
-          case 40: {
+          case 32: {
             Totlefriend = input.ReadInt32();
             break;
           }
-          case 48: {
+          case 40: {
             Next = input.ReadBool();
             break;
           }
@@ -798,29 +704,22 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             invites_.AddEntriesFrom(ref input, _repeated_invites_codec);
             break;
           }
-          case 24: {
+          case 16: {
             Totleinvite = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             friends_.AddEntriesFrom(ref input, _repeated_friends_codec);
             break;
           }
-          case 40: {
+          case 32: {
             Totlefriend = input.ReadInt32();
             break;
           }
-          case 48: {
+          case 40: {
             Next = input.ReadBool();
             break;
           }
@@ -865,7 +764,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendInvite_req(Frd_FriendInvite_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       inviteIid_ = other.inviteIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -876,20 +774,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendInvite_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "invite_iid" field.</summary>
-    public const int InviteIidFieldNumber = 2;
+    public const int InviteIidFieldNumber = 1;
     private long inviteIid_;
     /// <summary>
     ///被邀请人
@@ -918,7 +804,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (InviteIid != other.InviteIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -927,7 +812,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (InviteIid != 0L) hash ^= InviteIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -947,12 +831,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (InviteIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(InviteIid);
       }
       if (_unknownFields != null) {
@@ -965,12 +845,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (InviteIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(InviteIid);
       }
       if (_unknownFields != null) {
@@ -983,9 +859,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (InviteIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(InviteIid);
       }
@@ -1000,12 +873,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendInvite_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.InviteIid != 0L) {
         InviteIid = other.InviteIid;
@@ -1025,14 +892,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             InviteIid = input.ReadInt64();
             break;
           }
@@ -1051,14 +911,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             InviteIid = input.ReadInt64();
             break;
           }
@@ -1103,7 +956,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendInvite_ack(Frd_FriendInvite_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       inviteIid_ = other.inviteIid_;
       result_ = other.result_;
       invite_ = other.invite_ != null ? other.invite_.Clone() : null;
@@ -1116,20 +968,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendInvite_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "invite_iid" field.</summary>
-    public const int InviteIidFieldNumber = 2;
+    public const int InviteIidFieldNumber = 1;
     private long inviteIid_;
     /// <summary>
     ///被邀请人
@@ -1144,7 +984,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0 成功 1 system error 2 already friend 3 invite not exist
@@ -1159,7 +999,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "invite" field.</summary>
-    public const int InviteFieldNumber = 4;
+    public const int InviteFieldNumber = 3;
     private global::com.cms.client.network.gpro.FriendInviteItem invite_;
     /// <summary>
     ///成功包含invite信息
@@ -1188,7 +1028,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (InviteIid != other.InviteIid) return false;
       if (Result != other.Result) return false;
       if (!object.Equals(Invite, other.Invite)) return false;
@@ -1199,7 +1038,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (InviteIid != 0L) hash ^= InviteIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (invite_ != null) hash ^= Invite.GetHashCode();
@@ -1221,20 +1059,16 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (InviteIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(InviteIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (invite_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Invite);
       }
       if (_unknownFields != null) {
@@ -1247,20 +1081,16 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (InviteIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(InviteIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (invite_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Invite);
       }
       if (_unknownFields != null) {
@@ -1273,9 +1103,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (InviteIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(InviteIid);
       }
@@ -1296,12 +1123,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendInvite_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.InviteIid != 0L) {
         InviteIid = other.InviteIid;
@@ -1330,22 +1151,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             InviteIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (invite_ == null) {
               Invite = new global::com.cms.client.network.gpro.FriendInviteItem();
             }
@@ -1367,22 +1181,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             InviteIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (invite_ == null) {
               Invite = new global::com.cms.client.network.gpro.FriendInviteItem();
             }
@@ -1430,7 +1237,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_InviteConfirm_req(Frd_InviteConfirm_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       iid_ = other.iid_;
       agree_ = other.agree_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1442,20 +1248,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_InviteConfirm_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "iid" field.</summary>
-    public const int IidFieldNumber = 2;
+    public const int IidFieldNumber = 1;
     private long iid_;
     /// <summary>
     ///invite的编号
@@ -1470,7 +1264,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "agree" field.</summary>
-    public const int AgreeFieldNumber = 3;
+    public const int AgreeFieldNumber = 2;
     private bool agree_;
     /// <summary>
     ///true 同意 false 拒绝
@@ -1499,7 +1293,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Iid != other.Iid) return false;
       if (Agree != other.Agree) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1509,7 +1302,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Iid != 0L) hash ^= Iid.GetHashCode();
       if (Agree != false) hash ^= Agree.GetHashCode();
       if (_unknownFields != null) {
@@ -1530,16 +1322,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Iid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Iid);
       }
       if (Agree != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Agree);
       }
       if (_unknownFields != null) {
@@ -1552,16 +1340,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Iid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Iid);
       }
       if (Agree != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Agree);
       }
       if (_unknownFields != null) {
@@ -1574,9 +1358,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Iid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Iid);
       }
@@ -1594,12 +1375,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_InviteConfirm_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Iid != 0L) {
         Iid = other.Iid;
@@ -1622,18 +1397,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Iid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Agree = input.ReadBool();
             break;
           }
@@ -1652,18 +1420,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Iid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Agree = input.ReadBool();
             break;
           }
@@ -1708,7 +1469,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_InviteConfirm_ack(Frd_InviteConfirm_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       iid_ = other.iid_;
       agree_ = other.agree_;
       result_ = other.result_;
@@ -1722,20 +1482,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_InviteConfirm_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "iid" field.</summary>
-    public const int IidFieldNumber = 2;
+    public const int IidFieldNumber = 1;
     private long iid_;
     /// <summary>
     ///invite的编号
@@ -1750,7 +1498,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "agree" field.</summary>
-    public const int AgreeFieldNumber = 3;
+    public const int AgreeFieldNumber = 2;
     private bool agree_;
     /// <summary>
     ///true 同意 false 拒绝
@@ -1765,7 +1513,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 4;
+    public const int ResultFieldNumber = 3;
     private int result_;
     /// <summary>
     ///0 ok 1 system error 2 invite no exist
@@ -1780,7 +1528,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "friend" field.</summary>
-    public const int FriendFieldNumber = 5;
+    public const int FriendFieldNumber = 4;
     private global::com.cms.client.network.gpro.FriendRelation friend_;
     /// <summary>
     ///成功 并且同意 返回好友关系
@@ -1809,7 +1557,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Iid != other.Iid) return false;
       if (Agree != other.Agree) return false;
       if (Result != other.Result) return false;
@@ -1821,7 +1568,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Iid != 0L) hash ^= Iid.GetHashCode();
       if (Agree != false) hash ^= Agree.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
@@ -1844,24 +1590,20 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Iid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Iid);
       }
       if (Agree != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Agree);
       }
       if (Result != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(Result);
       }
       if (friend_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(Friend);
       }
       if (_unknownFields != null) {
@@ -1874,24 +1616,20 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Iid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Iid);
       }
       if (Agree != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Agree);
       }
       if (Result != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(Result);
       }
       if (friend_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteMessage(Friend);
       }
       if (_unknownFields != null) {
@@ -1904,9 +1642,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Iid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Iid);
       }
@@ -1930,12 +1665,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_InviteConfirm_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Iid != 0L) {
         Iid = other.Iid;
@@ -1967,26 +1696,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Iid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Agree = input.ReadBool();
             break;
           }
-          case 32: {
+          case 24: {
             Result = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 34: {
             if (friend_ == null) {
               Friend = new global::com.cms.client.network.gpro.FriendRelation();
             }
@@ -2008,26 +1730,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Iid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Agree = input.ReadBool();
             break;
           }
-          case 32: {
+          case 24: {
             Result = input.ReadInt32();
             break;
           }
-          case 42: {
+          case 34: {
             if (friend_ == null) {
               Friend = new global::com.cms.client.network.gpro.FriendRelation();
             }
@@ -2075,7 +1790,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendDelete_req(Frd_FriendDelete_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       friendiid_ = other.friendiid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2086,20 +1800,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendDelete_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "friendiid" field.</summary>
-    public const int FriendiidFieldNumber = 2;
+    public const int FriendiidFieldNumber = 1;
     private long friendiid_;
     /// <summary>
     ///好友
@@ -2128,7 +1830,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Friendiid != other.Friendiid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2137,7 +1838,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Friendiid != 0L) hash ^= Friendiid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2157,12 +1857,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Friendiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Friendiid);
       }
       if (_unknownFields != null) {
@@ -2175,12 +1871,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Friendiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Friendiid);
       }
       if (_unknownFields != null) {
@@ -2193,9 +1885,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Friendiid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Friendiid);
       }
@@ -2210,12 +1899,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendDelete_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Friendiid != 0L) {
         Friendiid = other.Friendiid;
@@ -2235,14 +1918,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Friendiid = input.ReadInt64();
             break;
           }
@@ -2261,14 +1937,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Friendiid = input.ReadInt64();
             break;
           }
@@ -2313,7 +1982,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Frd_FriendDelete_ack(Frd_FriendDelete_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       friendiid_ = other.friendiid_;
       result_ = other.result_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2325,20 +1993,8 @@ namespace com.cms.client.network.gpro {
       return new Frd_FriendDelete_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "friendiid" field.</summary>
-    public const int FriendiidFieldNumber = 2;
+    public const int FriendiidFieldNumber = 1;
     private long friendiid_;
     /// <summary>
     ///好友
@@ -2353,7 +2009,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0 success 1 system err 2: friend not exist
@@ -2382,7 +2038,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Friendiid != other.Friendiid) return false;
       if (Result != other.Result) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2392,7 +2047,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Friendiid != 0L) hash ^= Friendiid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (_unknownFields != null) {
@@ -2413,16 +2067,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Friendiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Friendiid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -2435,16 +2085,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Friendiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Friendiid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -2457,9 +2103,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Friendiid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Friendiid);
       }
@@ -2477,12 +2120,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Frd_FriendDelete_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Friendiid != 0L) {
         Friendiid = other.Friendiid;
@@ -2505,18 +2142,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Friendiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
@@ -2535,18 +2165,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Friendiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }

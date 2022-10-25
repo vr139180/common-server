@@ -217,11 +217,10 @@ class Frd_FriendList_req final :
 
   enum : int {
     kNicknameFieldNumber = 10,
-    kUtokenFieldNumber = 1,
-    kLastInviteFieldNumber = 2,
-    kFriendindexFieldNumber = 3,
-    kNextFieldNumber = 4,
-    kNumFieldNumber = 5,
+    kLastInviteFieldNumber = 1,
+    kFriendindexFieldNumber = 2,
+    kNextFieldNumber = 3,
+    kNumFieldNumber = 4,
   };
   // string nickname = 10;
   void clear_nickname();
@@ -237,25 +236,7 @@ class Frd_FriendList_req final :
   std::string* _internal_mutable_nickname();
   public:
 
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 last_invite = 2;
+  // int64 last_invite = 1;
   void clear_last_invite();
   int64_t last_invite() const;
   void set_last_invite(int64_t value);
@@ -264,7 +245,7 @@ class Frd_FriendList_req final :
   void _internal_set_last_invite(int64_t value);
   public:
 
-  // int32 friendindex = 3;
+  // int32 friendindex = 2;
   void clear_friendindex();
   int32_t friendindex() const;
   void set_friendindex(int32_t value);
@@ -273,7 +254,7 @@ class Frd_FriendList_req final :
   void _internal_set_friendindex(int32_t value);
   public:
 
-  // bool next = 4;
+  // bool next = 3;
   void clear_next();
   bool next() const;
   void set_next(bool value);
@@ -282,7 +263,7 @@ class Frd_FriendList_req final :
   void _internal_set_next(bool value);
   public:
 
-  // int32 num = 5;
+  // int32 num = 4;
   void clear_num();
   int32_t num() const;
   void set_num(int32_t value);
@@ -298,14 +279,12 @@ class Frd_FriendList_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
-  ::PRO::UserToken* utoken_;
   int64_t last_invite_;
   int32_t friendindex_;
   bool next_;
   int32_t num_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // -------------------------------------------------------------------
@@ -432,14 +411,13 @@ class Frd_FriendList_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kInvitesFieldNumber = 2,
-    kFriendsFieldNumber = 4,
-    kUtokenFieldNumber = 1,
-    kTotleinviteFieldNumber = 3,
-    kTotlefriendFieldNumber = 5,
-    kNextFieldNumber = 6,
+    kInvitesFieldNumber = 1,
+    kFriendsFieldNumber = 3,
+    kTotleinviteFieldNumber = 2,
+    kTotlefriendFieldNumber = 4,
+    kNextFieldNumber = 5,
   };
-  // repeated .PRO.FriendInviteItem invites = 2;
+  // repeated .PRO.FriendInviteItem invites = 1;
   int invites_size() const;
   private:
   int _internal_invites_size() const;
@@ -457,7 +435,7 @@ class Frd_FriendList_ack final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::FriendInviteItem >&
       invites() const;
 
-  // repeated .PRO.FriendRelation friends = 4;
+  // repeated .PRO.FriendRelation friends = 3;
   int friends_size() const;
   private:
   int _internal_friends_size() const;
@@ -475,25 +453,7 @@ class Frd_FriendList_ack final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::FriendRelation >&
       friends() const;
 
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int32 totleinvite = 3;
+  // int32 totleinvite = 2;
   void clear_totleinvite();
   int32_t totleinvite() const;
   void set_totleinvite(int32_t value);
@@ -502,7 +462,7 @@ class Frd_FriendList_ack final :
   void _internal_set_totleinvite(int32_t value);
   public:
 
-  // int32 totlefriend = 5;
+  // int32 totlefriend = 4;
   void clear_totlefriend();
   int32_t totlefriend() const;
   void set_totlefriend(int32_t value);
@@ -511,7 +471,7 @@ class Frd_FriendList_ack final :
   void _internal_set_totlefriend(int32_t value);
   public:
 
-  // bool next = 6;
+  // bool next = 5;
   void clear_next();
   bool next() const;
   void set_next(bool value);
@@ -527,14 +487,12 @@ class Frd_FriendList_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::FriendInviteItem > invites_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::FriendRelation > friends_;
-  ::PRO::UserToken* utoken_;
   int32_t totleinvite_;
   int32_t totlefriend_;
   bool next_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // -------------------------------------------------------------------
@@ -661,28 +619,9 @@ class Frd_FriendInvite_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kInviteIidFieldNumber = 2,
+    kInviteIidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 invite_iid = 2;
+  // int64 invite_iid = 1;
   void clear_invite_iid();
   int64_t invite_iid() const;
   void set_invite_iid(int64_t value);
@@ -698,10 +637,8 @@ class Frd_FriendInvite_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t invite_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // -------------------------------------------------------------------
@@ -828,30 +765,11 @@ class Frd_FriendInvite_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kInviteFieldNumber = 4,
-    kInviteIidFieldNumber = 2,
-    kResultFieldNumber = 3,
+    kInviteFieldNumber = 3,
+    kInviteIidFieldNumber = 1,
+    kResultFieldNumber = 2,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // optional .PRO.FriendInviteItem invite = 4;
+  // optional .PRO.FriendInviteItem invite = 3;
   bool has_invite() const;
   private:
   bool _internal_has_invite() const;
@@ -869,7 +787,7 @@ class Frd_FriendInvite_ack final :
       ::PRO::FriendInviteItem* invite);
   ::PRO::FriendInviteItem* unsafe_arena_release_invite();
 
-  // int64 invite_iid = 2;
+  // int64 invite_iid = 1;
   void clear_invite_iid();
   int64_t invite_iid() const;
   void set_invite_iid(int64_t value);
@@ -878,7 +796,7 @@ class Frd_FriendInvite_ack final :
   void _internal_set_invite_iid(int64_t value);
   public:
 
-  // int32 result = 3;
+  // int32 result = 2;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -896,7 +814,6 @@ class Frd_FriendInvite_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   ::PRO::FriendInviteItem* invite_;
   int64_t invite_iid_;
   int32_t result_;
@@ -1026,29 +943,10 @@ class Frd_InviteConfirm_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kIidFieldNumber = 2,
-    kAgreeFieldNumber = 3,
+    kIidFieldNumber = 1,
+    kAgreeFieldNumber = 2,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 iid = 2;
+  // int64 iid = 1;
   void clear_iid();
   int64_t iid() const;
   void set_iid(int64_t value);
@@ -1057,7 +955,7 @@ class Frd_InviteConfirm_req final :
   void _internal_set_iid(int64_t value);
   public:
 
-  // bool agree = 3;
+  // bool agree = 2;
   void clear_agree();
   bool agree() const;
   void set_agree(bool value);
@@ -1073,11 +971,9 @@ class Frd_InviteConfirm_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t iid_;
   bool agree_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1204,31 +1100,12 @@ class Frd_InviteConfirm_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kFriendFieldNumber = 5,
-    kIidFieldNumber = 2,
-    kAgreeFieldNumber = 3,
-    kResultFieldNumber = 4,
+    kFriendFieldNumber = 4,
+    kIidFieldNumber = 1,
+    kAgreeFieldNumber = 2,
+    kResultFieldNumber = 3,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // optional .PRO.FriendRelation friend = 5;
+  // optional .PRO.FriendRelation friend = 4;
   bool has_friend_() const;
   private:
   bool _internal_has_friend_() const;
@@ -1246,7 +1123,7 @@ class Frd_InviteConfirm_ack final :
       ::PRO::FriendRelation* friend_);
   ::PRO::FriendRelation* unsafe_arena_release_friend_();
 
-  // int64 iid = 2;
+  // int64 iid = 1;
   void clear_iid();
   int64_t iid() const;
   void set_iid(int64_t value);
@@ -1255,7 +1132,7 @@ class Frd_InviteConfirm_ack final :
   void _internal_set_iid(int64_t value);
   public:
 
-  // bool agree = 3;
+  // bool agree = 2;
   void clear_agree();
   bool agree() const;
   void set_agree(bool value);
@@ -1264,7 +1141,7 @@ class Frd_InviteConfirm_ack final :
   void _internal_set_agree(bool value);
   public:
 
-  // int32 result = 4;
+  // int32 result = 3;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -1282,7 +1159,6 @@ class Frd_InviteConfirm_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   ::PRO::FriendRelation* friend__;
   int64_t iid_;
   bool agree_;
@@ -1413,28 +1289,9 @@ class Frd_FriendDelete_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kFriendiidFieldNumber = 2,
+    kFriendiidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   void clear_friendiid();
   int64_t friendiid() const;
   void set_friendiid(int64_t value);
@@ -1450,10 +1307,8 @@ class Frd_FriendDelete_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t friendiid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1580,29 +1435,10 @@ class Frd_FriendDelete_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kFriendiidFieldNumber = 2,
-    kResultFieldNumber = 3,
+    kFriendiidFieldNumber = 1,
+    kResultFieldNumber = 2,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 friendiid = 2;
+  // int64 friendiid = 1;
   void clear_friendiid();
   int64_t friendiid() const;
   void set_friendiid(int64_t value);
@@ -1611,7 +1447,7 @@ class Frd_FriendDelete_ack final :
   void _internal_set_friendiid(int64_t value);
   public:
 
-  // int32 result = 3;
+  // int32 result = 2;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -1627,11 +1463,9 @@ class Frd_FriendDelete_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t friendiid_;
   int32_t result_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_friend_5fsystem_2eproto;
 };
 // ===================================================================
@@ -1645,95 +1479,7 @@ class Frd_FriendDelete_ack final :
 #endif  // __GNUC__
 // Frd_FriendList_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendList_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendList_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendList_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendList_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendList_req.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendList_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendList_req.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendList_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendList_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendList_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendList_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendList_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendList_req.utoken)
-  return _msg;
-}
-inline void Frd_FriendList_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendList_req.utoken)
-}
-
-// int64 last_invite = 2;
+// int64 last_invite = 1;
 inline void Frd_FriendList_req::clear_last_invite() {
   last_invite_ = int64_t{0};
 }
@@ -1753,7 +1499,7 @@ inline void Frd_FriendList_req::set_last_invite(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendList_req.last_invite)
 }
 
-// int32 friendindex = 3;
+// int32 friendindex = 2;
 inline void Frd_FriendList_req::clear_friendindex() {
   friendindex_ = 0;
 }
@@ -1773,7 +1519,7 @@ inline void Frd_FriendList_req::set_friendindex(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendList_req.friendindex)
 }
 
-// bool next = 4;
+// bool next = 3;
 inline void Frd_FriendList_req::clear_next() {
   next_ = false;
 }
@@ -1793,7 +1539,7 @@ inline void Frd_FriendList_req::set_next(bool value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendList_req.next)
 }
 
-// int32 num = 5;
+// int32 num = 4;
 inline void Frd_FriendList_req::clear_num() {
   num_ = 0;
 }
@@ -1868,95 +1614,7 @@ inline void Frd_FriendList_req::set_allocated_nickname(std::string* nickname) {
 
 // Frd_FriendList_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendList_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendList_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendList_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendList_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendList_ack.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendList_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendList_ack.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendList_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendList_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendList_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendList_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendList_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendList_ack.utoken)
-  return _msg;
-}
-inline void Frd_FriendList_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendList_ack.utoken)
-}
-
-// repeated .PRO.FriendInviteItem invites = 2;
+// repeated .PRO.FriendInviteItem invites = 1;
 inline int Frd_FriendList_ack::_internal_invites_size() const {
   return invites_.size();
 }
@@ -1993,7 +1651,7 @@ Frd_FriendList_ack::invites() const {
   return invites_;
 }
 
-// int32 totleinvite = 3;
+// int32 totleinvite = 2;
 inline void Frd_FriendList_ack::clear_totleinvite() {
   totleinvite_ = 0;
 }
@@ -2013,7 +1671,7 @@ inline void Frd_FriendList_ack::set_totleinvite(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendList_ack.totleinvite)
 }
 
-// repeated .PRO.FriendRelation friends = 4;
+// repeated .PRO.FriendRelation friends = 3;
 inline int Frd_FriendList_ack::_internal_friends_size() const {
   return friends_.size();
 }
@@ -2050,7 +1708,7 @@ Frd_FriendList_ack::friends() const {
   return friends_;
 }
 
-// int32 totlefriend = 5;
+// int32 totlefriend = 4;
 inline void Frd_FriendList_ack::clear_totlefriend() {
   totlefriend_ = 0;
 }
@@ -2070,7 +1728,7 @@ inline void Frd_FriendList_ack::set_totlefriend(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendList_ack.totlefriend)
 }
 
-// bool next = 6;
+// bool next = 5;
 inline void Frd_FriendList_ack::clear_next() {
   next_ = false;
 }
@@ -2094,95 +1752,7 @@ inline void Frd_FriendList_ack::set_next(bool value) {
 
 // Frd_FriendInvite_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendInvite_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendInvite_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendInvite_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendInvite_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendInvite_req.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendInvite_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendInvite_req.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendInvite_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendInvite_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendInvite_req.utoken)
-  return _msg;
-}
-inline void Frd_FriendInvite_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendInvite_req.utoken)
-}
-
-// int64 invite_iid = 2;
+// int64 invite_iid = 1;
 inline void Frd_FriendInvite_req::clear_invite_iid() {
   invite_iid_ = int64_t{0};
 }
@@ -2206,95 +1776,7 @@ inline void Frd_FriendInvite_req::set_invite_iid(int64_t value) {
 
 // Frd_FriendInvite_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendInvite_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendInvite_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendInvite_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendInvite_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendInvite_ack.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendInvite_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendInvite_ack.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendInvite_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendInvite_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendInvite_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendInvite_ack.utoken)
-  return _msg;
-}
-inline void Frd_FriendInvite_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendInvite_ack.utoken)
-}
-
-// int64 invite_iid = 2;
+// int64 invite_iid = 1;
 inline void Frd_FriendInvite_ack::clear_invite_iid() {
   invite_iid_ = int64_t{0};
 }
@@ -2314,7 +1796,7 @@ inline void Frd_FriendInvite_ack::set_invite_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendInvite_ack.invite_iid)
 }
 
-// int32 result = 3;
+// int32 result = 2;
 inline void Frd_FriendInvite_ack::clear_result() {
   result_ = 0;
 }
@@ -2334,9 +1816,9 @@ inline void Frd_FriendInvite_ack::set_result(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendInvite_ack.result)
 }
 
-// optional .PRO.FriendInviteItem invite = 4;
+// optional .PRO.FriendInviteItem invite = 3;
 inline bool Frd_FriendInvite_ack::_internal_has_invite() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || invite_ != nullptr);
   return value;
 }
@@ -2359,14 +1841,14 @@ inline void Frd_FriendInvite_ack::unsafe_arena_set_allocated_invite(
   }
   invite_ = invite;
   if (invite) {
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendInvite_ack.invite)
 }
 inline ::PRO::FriendInviteItem* Frd_FriendInvite_ack::release_invite() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::FriendInviteItem* temp = invite_;
   invite_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -2382,13 +1864,13 @@ inline ::PRO::FriendInviteItem* Frd_FriendInvite_ack::release_invite() {
 }
 inline ::PRO::FriendInviteItem* Frd_FriendInvite_ack::unsafe_arena_release_invite() {
   // @@protoc_insertion_point(field_release:PRO.Frd_FriendInvite_ack.invite)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::FriendInviteItem* temp = invite_;
   invite_ = nullptr;
   return temp;
 }
 inline ::PRO::FriendInviteItem* Frd_FriendInvite_ack::_internal_mutable_invite() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   if (invite_ == nullptr) {
     auto* p = CreateMaybeMessage<::PRO::FriendInviteItem>(GetArenaForAllocation());
     invite_ = p;
@@ -2414,9 +1896,9 @@ inline void Frd_FriendInvite_ack::set_allocated_invite(::PRO::FriendInviteItem* 
       invite = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, invite, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   invite_ = invite;
   // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendInvite_ack.invite)
@@ -2426,95 +1908,7 @@ inline void Frd_FriendInvite_ack::set_allocated_invite(::PRO::FriendInviteItem* 
 
 // Frd_InviteConfirm_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_InviteConfirm_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_InviteConfirm_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_InviteConfirm_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_InviteConfirm_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_InviteConfirm_req.utoken)
-  return _internal_utoken();
-}
-inline void Frd_InviteConfirm_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_InviteConfirm_req.utoken)
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_InviteConfirm_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_InviteConfirm_req.utoken)
-  return _msg;
-}
-inline void Frd_InviteConfirm_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_InviteConfirm_req.utoken)
-}
-
-// int64 iid = 2;
+// int64 iid = 1;
 inline void Frd_InviteConfirm_req::clear_iid() {
   iid_ = int64_t{0};
 }
@@ -2534,7 +1928,7 @@ inline void Frd_InviteConfirm_req::set_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_InviteConfirm_req.iid)
 }
 
-// bool agree = 3;
+// bool agree = 2;
 inline void Frd_InviteConfirm_req::clear_agree() {
   agree_ = false;
 }
@@ -2558,95 +1952,7 @@ inline void Frd_InviteConfirm_req::set_agree(bool value) {
 
 // Frd_InviteConfirm_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_InviteConfirm_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_InviteConfirm_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_InviteConfirm_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_InviteConfirm_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_InviteConfirm_ack.utoken)
-  return _internal_utoken();
-}
-inline void Frd_InviteConfirm_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_InviteConfirm_ack.utoken)
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_InviteConfirm_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_InviteConfirm_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_InviteConfirm_ack.utoken)
-  return _msg;
-}
-inline void Frd_InviteConfirm_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_InviteConfirm_ack.utoken)
-}
-
-// int64 iid = 2;
+// int64 iid = 1;
 inline void Frd_InviteConfirm_ack::clear_iid() {
   iid_ = int64_t{0};
 }
@@ -2666,7 +1972,7 @@ inline void Frd_InviteConfirm_ack::set_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_InviteConfirm_ack.iid)
 }
 
-// bool agree = 3;
+// bool agree = 2;
 inline void Frd_InviteConfirm_ack::clear_agree() {
   agree_ = false;
 }
@@ -2686,7 +1992,7 @@ inline void Frd_InviteConfirm_ack::set_agree(bool value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_InviteConfirm_ack.agree)
 }
 
-// int32 result = 4;
+// int32 result = 3;
 inline void Frd_InviteConfirm_ack::clear_result() {
   result_ = 0;
 }
@@ -2706,9 +2012,9 @@ inline void Frd_InviteConfirm_ack::set_result(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_InviteConfirm_ack.result)
 }
 
-// optional .PRO.FriendRelation friend = 5;
+// optional .PRO.FriendRelation friend = 4;
 inline bool Frd_InviteConfirm_ack::_internal_has_friend_() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || friend__ != nullptr);
   return value;
 }
@@ -2731,14 +2037,14 @@ inline void Frd_InviteConfirm_ack::unsafe_arena_set_allocated_friend_(
   }
   friend__ = friend_;
   if (friend_) {
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_InviteConfirm_ack.friend)
 }
 inline ::PRO::FriendRelation* Frd_InviteConfirm_ack::release_friend_() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::FriendRelation* temp = friend__;
   friend__ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -2754,13 +2060,13 @@ inline ::PRO::FriendRelation* Frd_InviteConfirm_ack::release_friend_() {
 }
 inline ::PRO::FriendRelation* Frd_InviteConfirm_ack::unsafe_arena_release_friend_() {
   // @@protoc_insertion_point(field_release:PRO.Frd_InviteConfirm_ack.friend)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::FriendRelation* temp = friend__;
   friend__ = nullptr;
   return temp;
 }
 inline ::PRO::FriendRelation* Frd_InviteConfirm_ack::_internal_mutable_friend_() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   if (friend__ == nullptr) {
     auto* p = CreateMaybeMessage<::PRO::FriendRelation>(GetArenaForAllocation());
     friend__ = p;
@@ -2786,9 +2092,9 @@ inline void Frd_InviteConfirm_ack::set_allocated_friend_(::PRO::FriendRelation* 
       friend_ = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, friend_, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   friend__ = friend_;
   // @@protoc_insertion_point(field_set_allocated:PRO.Frd_InviteConfirm_ack.friend)
@@ -2798,95 +2104,7 @@ inline void Frd_InviteConfirm_ack::set_allocated_friend_(::PRO::FriendRelation* 
 
 // Frd_FriendDelete_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendDelete_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendDelete_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendDelete_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendDelete_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendDelete_req.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendDelete_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendDelete_req.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendDelete_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendDelete_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendDelete_req.utoken)
-  return _msg;
-}
-inline void Frd_FriendDelete_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendDelete_req.utoken)
-}
-
-// int64 friendiid = 2;
+// int64 friendiid = 1;
 inline void Frd_FriendDelete_req::clear_friendiid() {
   friendiid_ = int64_t{0};
 }
@@ -2910,95 +2128,7 @@ inline void Frd_FriendDelete_req::set_friendiid(int64_t value) {
 
 // Frd_FriendDelete_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Frd_FriendDelete_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Frd_FriendDelete_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Frd_FriendDelete_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Frd_FriendDelete_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Frd_FriendDelete_ack.utoken)
-  return _internal_utoken();
-}
-inline void Frd_FriendDelete_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Frd_FriendDelete_ack.utoken)
-}
-inline ::PRO::UserToken* Frd_FriendDelete_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Frd_FriendDelete_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Frd_FriendDelete_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Frd_FriendDelete_ack.utoken)
-  return _msg;
-}
-inline void Frd_FriendDelete_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Frd_FriendDelete_ack.utoken)
-}
-
-// int64 friendiid = 2;
+// int64 friendiid = 1;
 inline void Frd_FriendDelete_ack::clear_friendiid() {
   friendiid_ = int64_t{0};
 }
@@ -3018,7 +2148,7 @@ inline void Frd_FriendDelete_ack::set_friendiid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Frd_FriendDelete_ack.friendiid)
 }
 
-// int32 result = 3;
+// int32 result = 2;
 inline void Frd_FriendDelete_ack::clear_result() {
   result_ = 0;
 }

@@ -24,66 +24,54 @@ namespace com.cms.client.network.gpro {
     static TaskSystemReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChF0YXNrX3N5c3RlbS5wcm90bxIDUFJPGhVnbG9iYWxfaW50ZXJuYWwucHJv",
-            "dG8aEWRiX2ludGVybmFsLnByb3RvIlQKDlRhc2tSZXdhcmRJdGVtEiIKBHR5",
-            "cGUYASABKA4yFC5QUk8uVEFTS1JFV0FSRF9UWVBFEhAKCGl0ZW1faWlkGAIg",
-            "ASgFEgwKBG51bXMYAyABKAUiNwoPVGFza1Jld2FyZEl0ZW1zEiQKB3Jld2Fy",
-            "ZHMYASADKAsyEy5QUk8uVGFza1Jld2FyZEl0ZW0iQwoRVGFza19XYWl0TGlz",
-            "dF9yZXESIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBQgkK",
-            "B191dG9rZW4iVgoRVGFza19XYWl0TGlzdF9hY2sSIwoGdXRva2VuGAEgASgL",
-            "Mg4uUFJPLlVzZXJUb2tlbkgAiAEBEhEKCXRhc2tfaWlkcxgCIAMoBUIJCgdf",
-            "dXRva2VuIkUKE1Rhc2tfTXlUYXNrTGlzdF9yZXESIwoGdXRva2VuGAEgASgL",
-            "Mg4uUFJPLlVzZXJUb2tlbkgAiAEBQgkKB191dG9rZW4ijQEKE1Rhc2tfTXlU",
-            "YXNrTGlzdF9hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgA",
-            "iAEBEiUKBmdyb3VwcxgCIAEoCzIVLlBSTy5EQlVzZXJUYXNrR3JvdXBzEh8K",
-            "BXRhc2tzGAMgASgLMhAuUFJPLkRCVXNlclRhc2tzQgkKB191dG9rZW4iVAoQ",
-            "VGFza19HZXRUYXNrX3JlcRIjCgZ1dG9rZW4YASABKAsyDi5QUk8uVXNlclRv",
-            "a2VuSACIAQESEAoIdGFza19paWQYAiABKAVCCQoHX3V0b2tlbiKVAQoQVGFz",
-            "a19HZXRUYXNrX2FjaxIjCgZ1dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2Vu",
-            "SACIAQESEAoIdGFza19paWQYAiABKAUSDgoGcmVzdWx0GAMgASgFEiYKBHRh",
-            "c2sYBCABKAsyEy5QUk8uREJVc2VyVGFza0l0ZW1IAYgBAUIJCgdfdXRva2Vu",
-            "QgcKBV90YXNrIlcKE1Rhc2tfU3VibWl0VGFza19yZXESIwoGdXRva2VuGAEg",
-            "ASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEhAKCHRhc2tfaWlkGAIgASgFQgkK",
-            "B191dG9rZW4iZwoTVGFza19TdWJtaXRUYXNrX2FjaxIjCgZ1dG9rZW4YASAB",
-            "KAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQYAiABKAUSDgoG",
-            "cmVzdWx0GAMgASgFQgkKB191dG9rZW4ifwoVVGFza19PYnRhaW5SZXdhcmRf",
-            "bnRmEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCgh0",
-            "YXNrX2lpZBgCIAEoBRIkCgZyZXdhcmQYAyABKAsyFC5QUk8uVGFza1Jld2Fy",
-            "ZEl0ZW1zQgkKB191dG9rZW4iVwoTVGFza19HaXZldXBUYXNrX3JlcRIjCgZ1",
-            "dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQY",
-            "AiABKAVCCQoHX3V0b2tlbiKYAQoTVGFza19HaXZldXBUYXNrX2FjaxIjCgZ1",
-            "dG9rZW4YASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESEAoIdGFza19paWQY",
-            "AiABKAUSDgoGcmVzdWx0GAMgASgFEiYKBHRhc2sYBCABKAsyEy5QUk8uREJV",
-            "c2VyVGFza0l0ZW1IAYgBAUIJCgdfdXRva2VuQgcKBV90YXNrKoYBChFUQVNL",
-            "X1RSSUdHRVJfVFlQRRIMCghUVF9CRUdJThAAEhQKEFRUX1RSSUdHRVJfVElN",
-            "RVIQARIWChJUVF9ST0xFSU5GT19DSEFOR0UQAhIRCg1UVF9CQUdfQ0hBTkdF",
-            "EAQSFgoSVFRfQlVJTERJTkdfQ0hBTkdFEAgSCgoGVFRfTUFYEAkqVAoQVEFT",
-            "S19HUk9VUF9TVEFURRIUChBUQVNLR1JPVVBfQUNDRVBUEAASFAoQVEFTS0dS",
-            "T1VQX0ZJTklTSBABEhQKEFRBU0tHUk9VUF9HSVZFVVAQAiqvAQoKVEFTS19T",
-            "VEFURRIUChBUQVNLU1RBVEVfQUNDRVBUEAASGwoOVEFTS1NUQVRFX1dBSVQQ",
-            "////////////ARIWChJUQVNLU1RBVEVfUkVBQ0NFUFQQARIUChBUQVNLU1RB",
-            "VEVfU1VCTUlUEAISFAoQVEFTS1NUQVRFX0ZBSUxFRBADEhQKEFRBU0tTVEFU",
-            "RV9HSVZFVVAQBBIUChBUQVNLU1RBVEVfRklOSVNIEAUqSAoPVEFTS1JFV0FS",
-            "RF9UWVBFEhcKE1RBU0tSRVdBUkRUX0JBR0lURU0QABIcCg9UQVNLUkVXQVJE",
-            "VF9FWFAQ////////////AUJUChtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdw",
-            "cm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQu",
-            "bmV0d29yay5ncHJvYgZwcm90bzM="));
+            "ChF0YXNrX3N5c3RlbS5wcm90bxIDUFJPGhFkYl9pbnRlcm5hbC5wcm90byJU",
+            "Cg5UYXNrUmV3YXJkSXRlbRIiCgR0eXBlGAEgASgOMhQuUFJPLlRBU0tSRVdB",
+            "UkRfVFlQRRIQCghpdGVtX2lpZBgCIAEoBRIMCgRudW1zGAMgASgFIjcKD1Rh",
+            "c2tSZXdhcmRJdGVtcxIkCgdyZXdhcmRzGAEgAygLMhMuUFJPLlRhc2tSZXdh",
+            "cmRJdGVtIhMKEVRhc2tfV2FpdExpc3RfcmVxIiYKEVRhc2tfV2FpdExpc3Rf",
+            "YWNrEhEKCXRhc2tfaWlkcxgBIAMoBSIVChNUYXNrX015VGFza0xpc3RfcmVx",
+            "Il0KE1Rhc2tfTXlUYXNrTGlzdF9hY2sSJQoGZ3JvdXBzGAEgASgLMhUuUFJP",
+            "LkRCVXNlclRhc2tHcm91cHMSHwoFdGFza3MYAiABKAsyEC5QUk8uREJVc2Vy",
+            "VGFza3MiJAoQVGFza19HZXRUYXNrX3JlcRIQCgh0YXNrX2lpZBgBIAEoBSJl",
+            "ChBUYXNrX0dldFRhc2tfYWNrEhAKCHRhc2tfaWlkGAEgASgFEg4KBnJlc3Vs",
+            "dBgCIAEoBRImCgR0YXNrGAMgASgLMhMuUFJPLkRCVXNlclRhc2tJdGVtSACI",
+            "AQFCBwoFX3Rhc2siJwoTVGFza19TdWJtaXRUYXNrX3JlcRIQCgh0YXNrX2lp",
+            "ZBgBIAEoBSI3ChNUYXNrX1N1Ym1pdFRhc2tfYWNrEhAKCHRhc2tfaWlkGAEg",
+            "ASgFEg4KBnJlc3VsdBgCIAEoBSJPChVUYXNrX09idGFpblJld2FyZF9udGYS",
+            "EAoIdGFza19paWQYASABKAUSJAoGcmV3YXJkGAIgASgLMhQuUFJPLlRhc2tS",
+            "ZXdhcmRJdGVtcyInChNUYXNrX0dpdmV1cFRhc2tfcmVxEhAKCHRhc2tfaWlk",
+            "GAEgASgFImgKE1Rhc2tfR2l2ZXVwVGFza19hY2sSEAoIdGFza19paWQYASAB",
+            "KAUSDgoGcmVzdWx0GAIgASgFEiYKBHRhc2sYAyABKAsyEy5QUk8uREJVc2Vy",
+            "VGFza0l0ZW1IAIgBAUIHCgVfdGFzayqGAQoRVEFTS19UUklHR0VSX1RZUEUS",
+            "DAoIVFRfQkVHSU4QABIUChBUVF9UUklHR0VSX1RJTUVSEAESFgoSVFRfUk9M",
+            "RUlORk9fQ0hBTkdFEAISEQoNVFRfQkFHX0NIQU5HRRAEEhYKElRUX0JVSUxE",
+            "SU5HX0NIQU5HRRAIEgoKBlRUX01BWBAJKlQKEFRBU0tfR1JPVVBfU1RBVEUS",
+            "FAoQVEFTS0dST1VQX0FDQ0VQVBAAEhQKEFRBU0tHUk9VUF9GSU5JU0gQARIU",
+            "ChBUQVNLR1JPVVBfR0lWRVVQEAIqrwEKClRBU0tfU1RBVEUSFAoQVEFTS1NU",
+            "QVRFX0FDQ0VQVBAAEhsKDlRBU0tTVEFURV9XQUlUEP///////////wESFgoS",
+            "VEFTS1NUQVRFX1JFQUNDRVBUEAESFAoQVEFTS1NUQVRFX1NVQk1JVBACEhQK",
+            "EFRBU0tTVEFURV9GQUlMRUQQAxIUChBUQVNLU1RBVEVfR0lWRVVQEAQSFAoQ",
+            "VEFTS1NUQVRFX0ZJTklTSBAFKkgKD1RBU0tSRVdBUkRfVFlQRRIXChNUQVNL",
+            "UkVXQVJEVF9CQUdJVEVNEAASHAoPVEFTS1JFV0FSRFRfRVhQEP//////////",
+            "/wFCVAobY29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvUAFaFWdhbWVsaWIv",
+            "cHJvdG9idWYvZ3Byb6oCG2NvbS5jbXMuY2xpZW50Lm5ldHdvcmsuZ3Byb2IG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.TASK_TRIGGER_TYPE), typeof(global::com.cms.client.network.gpro.TASK_GROUP_STATE), typeof(global::com.cms.client.network.gpro.TASK_STATE), typeof(global::com.cms.client.network.gpro.TASKREWARD_TYPE), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.TaskRewardItem), global::com.cms.client.network.gpro.TaskRewardItem.Parser, new[]{ "Type", "ItemIid", "Nums" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.TaskRewardItems), global::com.cms.client.network.gpro.TaskRewardItems.Parser, new[]{ "Rewards" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_req), global::com.cms.client.network.gpro.Task_WaitList_req.Parser, new[]{ "Utoken" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_ack), global::com.cms.client.network.gpro.Task_WaitList_ack.Parser, new[]{ "Utoken", "TaskIids" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_MyTaskList_req), global::com.cms.client.network.gpro.Task_MyTaskList_req.Parser, new[]{ "Utoken" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_MyTaskList_ack), global::com.cms.client.network.gpro.Task_MyTaskList_ack.Parser, new[]{ "Utoken", "Groups", "Tasks" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GetTask_req), global::com.cms.client.network.gpro.Task_GetTask_req.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GetTask_ack), global::com.cms.client.network.gpro.Task_GetTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result", "Task" }, new[]{ "Utoken", "Task" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_req), global::com.cms.client.network.gpro.Task_SubmitTask_req.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_ack), global::com.cms.client.network.gpro.Task_SubmitTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_ObtainReward_ntf), global::com.cms.client.network.gpro.Task_ObtainReward_ntf.Parser, new[]{ "Utoken", "TaskIid", "Reward" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_req), global::com.cms.client.network.gpro.Task_GiveupTask_req.Parser, new[]{ "Utoken", "TaskIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_ack), global::com.cms.client.network.gpro.Task_GiveupTask_ack.Parser, new[]{ "Utoken", "TaskIid", "Result", "Task" }, new[]{ "Utoken", "Task" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_req), global::com.cms.client.network.gpro.Task_WaitList_req.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_WaitList_ack), global::com.cms.client.network.gpro.Task_WaitList_ack.Parser, new[]{ "TaskIids" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_MyTaskList_req), global::com.cms.client.network.gpro.Task_MyTaskList_req.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_MyTaskList_ack), global::com.cms.client.network.gpro.Task_MyTaskList_ack.Parser, new[]{ "Groups", "Tasks" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GetTask_req), global::com.cms.client.network.gpro.Task_GetTask_req.Parser, new[]{ "TaskIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GetTask_ack), global::com.cms.client.network.gpro.Task_GetTask_ack.Parser, new[]{ "TaskIid", "Result", "Task" }, new[]{ "Task" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_req), global::com.cms.client.network.gpro.Task_SubmitTask_req.Parser, new[]{ "TaskIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_SubmitTask_ack), global::com.cms.client.network.gpro.Task_SubmitTask_ack.Parser, new[]{ "TaskIid", "Result" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_ObtainReward_ntf), global::com.cms.client.network.gpro.Task_ObtainReward_ntf.Parser, new[]{ "TaskIid", "Reward" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_req), global::com.cms.client.network.gpro.Task_GiveupTask_req.Parser, new[]{ "TaskIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Task_GiveupTask_ack), global::com.cms.client.network.gpro.Task_GiveupTask_ack.Parser, new[]{ "TaskIid", "Result", "Task" }, new[]{ "Task" }, null, null, null)
           }));
     }
     #endregion
@@ -613,7 +601,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_WaitList_req(Task_WaitList_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -621,18 +608,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_WaitList_req Clone() {
       return new Task_WaitList_req(this);
-    }
-
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -650,7 +625,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -658,7 +632,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -677,10 +650,6 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -691,10 +660,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -705,9 +670,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -719,12 +681,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_WaitList_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -741,13 +697,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     #endif
@@ -763,13 +712,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     }
@@ -811,7 +753,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_WaitList_ack(Task_WaitList_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIids_ = other.taskIids_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -822,22 +763,10 @@ namespace com.cms.client.network.gpro {
       return new Task_WaitList_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iids" field.</summary>
-    public const int TaskIidsFieldNumber = 2;
+    public const int TaskIidsFieldNumber = 1;
     private static readonly pb::FieldCodec<int> _repeated_taskIids_codec
-        = pb::FieldCodec.ForInt32(18);
+        = pb::FieldCodec.ForInt32(10);
     private readonly pbc::RepeatedField<int> taskIids_ = new pbc::RepeatedField<int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -860,7 +789,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if(!taskIids_.Equals(other.taskIids_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -869,7 +797,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       hash ^= taskIids_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -889,10 +816,6 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       taskIids_.WriteTo(output, _repeated_taskIids_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -904,10 +827,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       taskIids_.WriteTo(ref output, _repeated_taskIids_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -919,9 +838,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       size += taskIids_.CalculateSize(_repeated_taskIids_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -934,12 +850,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_WaitList_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       taskIids_.Add(other.taskIids_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -957,15 +867,8 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18:
-          case 16: {
+          case 10:
+          case 8: {
             taskIids_.AddEntriesFrom(input, _repeated_taskIids_codec);
             break;
           }
@@ -984,15 +887,8 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18:
-          case 16: {
+          case 10:
+          case 8: {
             taskIids_.AddEntriesFrom(ref input, _repeated_taskIids_codec);
             break;
           }
@@ -1037,7 +933,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_MyTaskList_req(Task_MyTaskList_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1045,18 +940,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_MyTaskList_req Clone() {
       return new Task_MyTaskList_req(this);
-    }
-
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1074,7 +957,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1082,7 +964,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1101,10 +982,6 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1115,10 +992,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1129,9 +1002,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1143,12 +1013,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_MyTaskList_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1165,13 +1029,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     #endif
@@ -1187,13 +1044,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     }
@@ -1235,7 +1085,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_MyTaskList_ack(Task_MyTaskList_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       groups_ = other.groups_ != null ? other.groups_.Clone() : null;
       tasks_ = other.tasks_ != null ? other.tasks_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1247,20 +1096,8 @@ namespace com.cms.client.network.gpro {
       return new Task_MyTaskList_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "groups" field.</summary>
-    public const int GroupsFieldNumber = 2;
+    public const int GroupsFieldNumber = 1;
     private global::com.cms.client.network.gpro.DBUserTaskGroups groups_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1272,7 +1109,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "tasks" field.</summary>
-    public const int TasksFieldNumber = 3;
+    public const int TasksFieldNumber = 2;
     private global::com.cms.client.network.gpro.DBUserTasks tasks_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1298,7 +1135,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (!object.Equals(Groups, other.Groups)) return false;
       if (!object.Equals(Tasks, other.Tasks)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1308,7 +1144,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (groups_ != null) hash ^= Groups.GetHashCode();
       if (tasks_ != null) hash ^= Tasks.GetHashCode();
       if (_unknownFields != null) {
@@ -1329,16 +1164,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (groups_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(Groups);
       }
       if (tasks_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Tasks);
       }
       if (_unknownFields != null) {
@@ -1351,16 +1182,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (groups_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(10);
         output.WriteMessage(Groups);
       }
       if (tasks_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Tasks);
       }
       if (_unknownFields != null) {
@@ -1373,9 +1200,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (groups_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Groups);
       }
@@ -1393,12 +1217,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_MyTaskList_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.groups_ != null) {
         if (groups_ == null) {
@@ -1428,20 +1246,13 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             if (groups_ == null) {
               Groups = new global::com.cms.client.network.gpro.DBUserTaskGroups();
             }
             input.ReadMessage(Groups);
             break;
           }
-          case 26: {
+          case 18: {
             if (tasks_ == null) {
               Tasks = new global::com.cms.client.network.gpro.DBUserTasks();
             }
@@ -1464,20 +1275,13 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             if (groups_ == null) {
               Groups = new global::com.cms.client.network.gpro.DBUserTaskGroups();
             }
             input.ReadMessage(Groups);
             break;
           }
-          case 26: {
+          case 18: {
             if (tasks_ == null) {
               Tasks = new global::com.cms.client.network.gpro.DBUserTasks();
             }
@@ -1525,7 +1329,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_GetTask_req(Task_GetTask_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1536,20 +1339,8 @@ namespace com.cms.client.network.gpro {
       return new Task_GetTask_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     /// <summary>
     ///任务iid
@@ -1578,7 +1369,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1587,7 +1377,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1607,12 +1396,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -1625,12 +1410,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -1643,9 +1424,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -1660,12 +1438,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_GetTask_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -1685,14 +1457,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -1711,14 +1476,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -1763,7 +1521,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_GetTask_ack(Task_GetTask_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       result_ = other.result_;
       task_ = other.task_ != null ? other.task_.Clone() : null;
@@ -1776,20 +1533,8 @@ namespace com.cms.client.network.gpro {
       return new Task_GetTask_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1801,7 +1546,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0:success 1:failed
@@ -1816,7 +1561,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "task" field.</summary>
-    public const int TaskFieldNumber = 4;
+    public const int TaskFieldNumber = 3;
     private global::com.cms.client.network.gpro.DBUserTaskItem task_;
     /// <summary>
     ///result = 0,包含任务信息
@@ -1845,7 +1590,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       if (Result != other.Result) return false;
       if (!object.Equals(Task, other.Task)) return false;
@@ -1856,7 +1600,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (task_ != null) hash ^= Task.GetHashCode();
@@ -1878,20 +1621,16 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (task_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Task);
       }
       if (_unknownFields != null) {
@@ -1904,20 +1643,16 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (task_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Task);
       }
       if (_unknownFields != null) {
@@ -1930,9 +1665,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -1953,12 +1685,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_GetTask_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -1987,22 +1713,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (task_ == null) {
               Task = new global::com.cms.client.network.gpro.DBUserTaskItem();
             }
@@ -2024,22 +1743,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (task_ == null) {
               Task = new global::com.cms.client.network.gpro.DBUserTaskItem();
             }
@@ -2087,7 +1799,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_SubmitTask_req(Task_SubmitTask_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2098,20 +1809,8 @@ namespace com.cms.client.network.gpro {
       return new Task_SubmitTask_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     /// <summary>
     ///任务iid
@@ -2140,7 +1839,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2149,7 +1847,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2169,12 +1866,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -2187,12 +1880,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -2205,9 +1894,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -2222,12 +1908,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_SubmitTask_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -2247,14 +1927,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -2273,14 +1946,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -2325,7 +1991,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_SubmitTask_ack(Task_SubmitTask_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       result_ = other.result_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2337,20 +2002,8 @@ namespace com.cms.client.network.gpro {
       return new Task_SubmitTask_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2362,7 +2015,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0:success 1:task not exist 2:system error 3:condition error
@@ -2391,7 +2044,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       if (Result != other.Result) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2401,7 +2053,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (_unknownFields != null) {
@@ -2422,16 +2073,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -2444,16 +2091,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -2466,9 +2109,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -2486,12 +2126,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_SubmitTask_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -2514,18 +2148,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
@@ -2544,18 +2171,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
@@ -2600,7 +2220,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_ObtainReward_ntf(Task_ObtainReward_ntf other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       reward_ = other.reward_ != null ? other.reward_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2612,20 +2231,8 @@ namespace com.cms.client.network.gpro {
       return new Task_ObtainReward_ntf(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2637,7 +2244,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "reward" field.</summary>
-    public const int RewardFieldNumber = 3;
+    public const int RewardFieldNumber = 2;
     private global::com.cms.client.network.gpro.TaskRewardItems reward_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2663,7 +2270,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       if (!object.Equals(Reward, other.Reward)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2673,7 +2279,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (reward_ != null) hash ^= Reward.GetHashCode();
       if (_unknownFields != null) {
@@ -2694,16 +2299,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (reward_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -2716,16 +2317,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (reward_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Reward);
       }
       if (_unknownFields != null) {
@@ -2738,9 +2335,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -2758,12 +2352,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_ObtainReward_ntf other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -2789,18 +2377,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (reward_ == null) {
               Reward = new global::com.cms.client.network.gpro.TaskRewardItems();
             }
@@ -2822,18 +2403,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (reward_ == null) {
               Reward = new global::com.cms.client.network.gpro.TaskRewardItems();
             }
@@ -2881,7 +2455,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_GiveupTask_req(Task_GiveupTask_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2892,20 +2465,8 @@ namespace com.cms.client.network.gpro {
       return new Task_GiveupTask_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     /// <summary>
     ///放弃的任务iid
@@ -2934,7 +2495,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2943,7 +2503,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2963,12 +2522,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -2981,12 +2536,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (_unknownFields != null) {
@@ -2999,9 +2550,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -3016,12 +2564,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_GiveupTask_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -3041,14 +2583,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -3067,14 +2602,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
@@ -3119,7 +2647,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Task_GiveupTask_ack(Task_GiveupTask_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       taskIid_ = other.taskIid_;
       result_ = other.result_;
       task_ = other.task_ != null ? other.task_.Clone() : null;
@@ -3132,20 +2659,8 @@ namespace com.cms.client.network.gpro {
       return new Task_GiveupTask_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "task_iid" field.</summary>
-    public const int TaskIidFieldNumber = 2;
+    public const int TaskIidFieldNumber = 1;
     private int taskIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3157,7 +2672,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0:success 
@@ -3172,7 +2687,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "task" field.</summary>
-    public const int TaskFieldNumber = 4;
+    public const int TaskFieldNumber = 3;
     private global::com.cms.client.network.gpro.DBUserTaskItem task_;
     /// <summary>
     ///result = 0,包含任务信息
@@ -3201,7 +2716,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (TaskIid != other.TaskIid) return false;
       if (Result != other.Result) return false;
       if (!object.Equals(Task, other.Task)) return false;
@@ -3212,7 +2726,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (TaskIid != 0) hash ^= TaskIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (task_ != null) hash ^= Task.GetHashCode();
@@ -3234,20 +2747,16 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (task_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Task);
       }
       if (_unknownFields != null) {
@@ -3260,20 +2769,16 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (TaskIid != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(TaskIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (task_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteMessage(Task);
       }
       if (_unknownFields != null) {
@@ -3286,9 +2791,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (TaskIid != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(TaskIid);
       }
@@ -3309,12 +2811,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Task_GiveupTask_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.TaskIid != 0) {
         TaskIid = other.TaskIid;
@@ -3343,22 +2839,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (task_ == null) {
               Task = new global::com.cms.client.network.gpro.DBUserTaskItem();
             }
@@ -3380,22 +2869,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             TaskIid = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
-          case 34: {
+          case 26: {
             if (task_ == null) {
               Task = new global::com.cms.client.network.gpro.DBUserTaskItem();
             }

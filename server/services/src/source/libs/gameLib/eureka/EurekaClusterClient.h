@@ -63,11 +63,10 @@ public:
 protected:
 	//---------------------- MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
-	virtual void ProcessMessage( BasicProtocol* message, bool& autorelease, int msgid) {}
+	virtual void ProcessMessage(NetProtocol* message, bool& autorelease) {}
 
-	void on_service_subscribe_ack(BasicProtocol* message, bool& autorelease);
-	void on_eurekaupdate_ntf(BasicProtocol* message, bool& autorelease);
-	void on_gatebindhome_ack(BasicProtocol* message, bool& autorelease);
+	void on_service_subscribe_ack(NetProtocol* message, bool& autorelease);
+	void on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease);
 
 protected:
 	void auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish);

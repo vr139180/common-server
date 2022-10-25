@@ -8,37 +8,22 @@ public interface User_RoleCreate_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *0:成功 1:不允许创建角色 2:创建角色失败
    * </pre>
    *
-   * <code>int32 result = 2;</code>
+   * <code>int32 result = 1;</code>
    * @return The result.
    */
   int getResult();
 
   /**
-   * <code>optional int64 role_iid = 3;</code>
+   * <code>optional int64 role_iid = 2;</code>
    * @return Whether the roleIid field is set.
    */
   boolean hasRoleIid();
   /**
-   * <code>optional int64 role_iid = 3;</code>
+   * <code>optional int64 role_iid = 2;</code>
    * @return The roleIid.
    */
   long getRoleIid();

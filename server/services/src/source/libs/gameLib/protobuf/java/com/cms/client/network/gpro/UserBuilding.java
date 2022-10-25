@@ -43,28 +43,22 @@ public final class UserBuilding {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023user_building.proto\022\003PRO\032\025global_inter" +
-      "nal.proto\032\021db_internal.proto\"\233\001\n\021Build_A" +
-      "ddItem_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTok" +
-      "enH\000\210\001\001\022\027\n\017parent_building\030\002 \001(\003\022\026\n\016buil" +
-      "ding_resid\030\003 \001(\003\022\017\n\007look_at\030\004 \001(\t\022\024\n\014bui" +
-      "lding_pos\030\005 \001(\tB\t\n\007_utoken\"\215\001\n\021Build_Add" +
-      "Item_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToken" +
-      "H\000\210\001\001\022\016\n\006result\030\002 \001(\005\022/\n\004item\030\003 \001(\0132\034.PR" +
-      "O.DBUserHomeStructureItemH\001\210\001\001B\t\n\007_utoke" +
-      "nB\007\n\005_item\"Y\n\021Build_DelItem_req\022#\n\006utoke" +
-      "n\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\024\n\014building" +
-      "_iid\030\002 \001(\003B\t\n\007_utoken\"i\n\021Build_DelItem_a" +
-      "ck\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022" +
-      "\024\n\014building_iid\030\002 \001(\003\022\016\n\006result\030\003 \001(\005B\t\n" +
-      "\007_utokenBT\n\033com.cms.client.network.gproP" +
-      "\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clien" +
-      "t.network.gprob\006proto3"
+      "\n\023user_building.proto\022\003PRO\032\021db_internal." +
+      "proto\"k\n\021Build_AddItem_req\022\027\n\017parent_bui" +
+      "lding\030\001 \001(\003\022\026\n\016building_resid\030\002 \001(\003\022\017\n\007l" +
+      "ook_at\030\003 \001(\t\022\024\n\014building_pos\030\004 \001(\t\"]\n\021Bu" +
+      "ild_AddItem_ack\022\016\n\006result\030\001 \001(\005\022/\n\004item\030" +
+      "\002 \001(\0132\034.PRO.DBUserHomeStructureItemH\000\210\001\001" +
+      "B\007\n\005_item\")\n\021Build_DelItem_req\022\024\n\014buildi" +
+      "ng_iid\030\001 \001(\003\"9\n\021Build_DelItem_ack\022\024\n\014bui" +
+      "lding_iid\030\001 \001(\003\022\016\n\006result\030\002 \001(\005BT\n\033com.c" +
+      "ms.client.network.gproP\001Z\025gamelib/protob" +
+      "uf/gpro\252\002\033com.cms.client.network.gprob\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.cms.client.network.gpro.GlobalInternal.getDescriptor(),
           com.cms.client.network.gpro.DbInternal.getDescriptor(),
         });
     internal_static_PRO_Build_AddItem_req_descriptor =
@@ -72,26 +66,25 @@ public final class UserBuilding {
     internal_static_PRO_Build_AddItem_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Build_AddItem_req_descriptor,
-        new java.lang.String[] { "Utoken", "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos", "Utoken", });
+        new java.lang.String[] { "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos", });
     internal_static_PRO_Build_AddItem_ack_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_Build_AddItem_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Build_AddItem_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Result", "Item", "Utoken", "Item", });
+        new java.lang.String[] { "Result", "Item", "Item", });
     internal_static_PRO_Build_DelItem_req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_Build_DelItem_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Build_DelItem_req_descriptor,
-        new java.lang.String[] { "Utoken", "BuildingIid", "Utoken", });
+        new java.lang.String[] { "BuildingIid", });
     internal_static_PRO_Build_DelItem_ack_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_Build_DelItem_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Build_DelItem_ack_descriptor,
-        new java.lang.String[] { "Utoken", "BuildingIid", "Result", "Utoken", });
-    com.cms.client.network.gpro.GlobalInternal.getDescriptor();
+        new java.lang.String[] { "BuildingIid", "Result", });
     com.cms.client.network.gpro.DbInternal.getDescriptor();
   }
 

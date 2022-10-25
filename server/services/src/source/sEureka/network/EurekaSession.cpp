@@ -16,15 +16,20 @@ EurekaSession::~EurekaSession()
 {
 }
 
-void EurekaSession::send_protocol(BasicProtocol* pro)
-{
-	session_->send_protocol(pro);
-}
-
-BasicProtocol* EurekaSession::get_livekeep_msg()
+NetProtocol* EurekaSession::get_livekeep_msg()
 {
 	Svr_LiveTick_ntf* ntf = new Svr_LiveTick_ntf();
-	return ntf;
+	NetProtocol* pro = new NetProtocol(ntf);
+	SProtocolHead& head = pro->write_head();
+	head.router_balance_ = false;
+
+	return pro;
+}
+
+void EurekaSession::send_to_service(const SProtocolHead& head, BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(head, msg);
+	session_->send_protocol(pro);
 }
 
 void EurekaSession::on_connect_lost_netthread()
@@ -39,9 +44,9 @@ void EurekaSession::on_connect_lost_netthread()
 	}
 }
 
-void EurekaSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void EurekaSession::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	if (proiid == ERK_PROTYPE::ERK_EUREKABIND_REQ)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_REQ)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekabind_req, svrApp.get_eurekactrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -49,7 +54,7 @@ void EurekaSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 
 		svrApp.regist_syscmd(pcmd);
 	}
-	else if (proiid == ERK_PROTYPE::ERK_SERVICEREGIST_REQ)
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICEREGIST_REQ)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&ServiceRegisterCtrl::on_mth_serviceregist_req, svrApp.get_servicectrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -57,7 +62,7 @@ void EurekaSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 
 		svrApp.regist_syscmd(pcmd);
 	}
-	else if (proiid == ERK_PROTYPE::ERK_SERVICEBIND_REQ)
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICEBIND_REQ)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&ServiceRegisterCtrl::on_mth_servicebind_req, svrApp.get_servicectrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -67,9 +72,9 @@ void EurekaSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 	}
 	else
 	{
-		std::unique_ptr<BasicProtocol> p_msg(pro);
+		std::unique_ptr<NetProtocol> p_msg(pro);
 		if (is_auth() && parent_)
-			parent_->on_recv_protocol_netthread(proiid, p_msg.release());
+			parent_->on_recv_protocol_netthread( p_msg.release());
 	}
 }
 

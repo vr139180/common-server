@@ -38,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -50,19 +49,6 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 18: {
             com.cms.client.network.gpro.DBUserRoles.Builder subBuilder = null;
             if (roles_ != null) {
               subBuilder = roles_.toBuilder();
@@ -107,37 +93,10 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.User_RoleList_ack.class, com.cms.client.network.gpro.User_RoleList_ack.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int ROLES_FIELD_NUMBER = 2;
+  public static final int ROLES_FIELD_NUMBER = 1;
   private com.cms.client.network.gpro.DBUserRoles roles_;
   /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    * @return Whether the roles field is set.
    */
   @java.lang.Override
@@ -145,7 +104,7 @@ private static final long serialVersionUID = 0L;
     return roles_ != null;
   }
   /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    * @return The roles.
    */
   @java.lang.Override
@@ -153,7 +112,7 @@ private static final long serialVersionUID = 0L;
     return roles_ == null ? com.cms.client.network.gpro.DBUserRoles.getDefaultInstance() : roles_;
   }
   /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.DBUserRolesOrBuilder getRolesOrBuilder() {
@@ -174,11 +133,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (roles_ != null) {
-      output.writeMessage(2, getRoles());
+      output.writeMessage(1, getRoles());
     }
     unknownFields.writeTo(output);
   }
@@ -189,13 +145,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (roles_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getRoles());
+        .computeMessageSize(1, getRoles());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -212,11 +164,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.User_RoleList_ack other = (com.cms.client.network.gpro.User_RoleList_ack) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (hasRoles() != other.hasRoles()) return false;
     if (hasRoles()) {
       if (!getRoles()
@@ -233,10 +180,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     if (hasRoles()) {
       hash = (37 * hash) + ROLES_FIELD_NUMBER;
       hash = (53 * hash) + getRoles().hashCode();
@@ -369,18 +312,11 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       if (rolesBuilder_ == null) {
         roles_ = null;
       } else {
@@ -413,22 +349,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.User_RoleList_ack buildPartial() {
       com.cms.client.network.gpro.User_RoleList_ack result = new com.cms.client.network.gpro.User_RoleList_ack(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       if (rolesBuilder_ == null) {
         result.roles_ = roles_;
       } else {
         result.roles_ = rolesBuilder_.build();
       }
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -477,9 +402,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.User_RoleList_ack other) {
       if (other == com.cms.client.network.gpro.User_RoleList_ack.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.hasRoles()) {
         mergeRoles(other.getRoles());
       }
@@ -511,140 +433,19 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
-
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
 
     private com.cms.client.network.gpro.DBUserRoles roles_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.cms.client.network.gpro.DBUserRoles, com.cms.client.network.gpro.DBUserRoles.Builder, com.cms.client.network.gpro.DBUserRolesOrBuilder> rolesBuilder_;
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      * @return Whether the roles field is set.
      */
     public boolean hasRoles() {
       return rolesBuilder_ != null || roles_ != null;
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      * @return The roles.
      */
     public com.cms.client.network.gpro.DBUserRoles getRoles() {
@@ -655,7 +456,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public Builder setRoles(com.cms.client.network.gpro.DBUserRoles value) {
       if (rolesBuilder_ == null) {
@@ -671,7 +472,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public Builder setRoles(
         com.cms.client.network.gpro.DBUserRoles.Builder builderForValue) {
@@ -685,7 +486,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public Builder mergeRoles(com.cms.client.network.gpro.DBUserRoles value) {
       if (rolesBuilder_ == null) {
@@ -703,7 +504,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public Builder clearRoles() {
       if (rolesBuilder_ == null) {
@@ -717,7 +518,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public com.cms.client.network.gpro.DBUserRoles.Builder getRolesBuilder() {
       
@@ -725,7 +526,7 @@ private static final long serialVersionUID = 0L;
       return getRolesFieldBuilder().getBuilder();
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     public com.cms.client.network.gpro.DBUserRolesOrBuilder getRolesOrBuilder() {
       if (rolesBuilder_ != null) {
@@ -736,7 +537,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.PRO.DBUserRoles roles = 2;</code>
+     * <code>.PRO.DBUserRoles roles = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.cms.client.network.gpro.DBUserRoles, com.cms.client.network.gpro.DBUserRoles.Builder, com.cms.client.network.gpro.DBUserRolesOrBuilder> 

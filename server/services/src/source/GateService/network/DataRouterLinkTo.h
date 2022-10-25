@@ -1,18 +1,18 @@
-#ifndef __HOMESERVICELINKTO_H__
-#define __HOMESERVICELINKTO_H__
+#ifndef __DATAROUTERLINKTO_H__
+#define __DATAROUTERLINKTO_H__
 
 #include <cmsLib/net/LinkToBase.h>
 #include <gameLib/eureka/ServiceNodeInfo.h>
 
-class HomeServiceLinkTo : public LinkToBase
+class DataRouterLinkTo : public LinkToBase
 {
 public:
-	HomeServiceLinkTo();
-	HomeServiceLinkTo(ServiceNodeInfo* pnode);
+	DataRouterLinkTo();
+	DataRouterLinkTo(ServiceNodeInfo* pnode);
 
 	virtual void connect();
 
-	void reset(ServiceNodeInfo* pnode, S_INT_64 bindtoken);
+	void reset(ServiceNodeInfo* pnode);
 	virtual S_INT_64 get_iid() { return node_->iid; }
 	virtual S_TIMESTAMP get_token() { return node_->token; }
 
@@ -21,7 +21,11 @@ public:
 
 	virtual void force_linkclose();
 
-	void bind_home_confirm();
+	virtual void init_protocolhead();
+	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
+
+	void send_netprotocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
+	void send_netprotocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 
 public:
 	//---------------implement NetSessionBindEvent---------------
@@ -29,8 +33,8 @@ public:
 	virtual void on_connectedto_done();
 
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
-	virtual BasicProtocol* get_livekeep_msg();
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
+	virtual NetProtocol* get_livekeep_msg();
 
 public:
     void on_connected( bool success);
@@ -40,7 +44,8 @@ public:
 protected:
 	std::shared_ptr<ServiceNodeInfo>	node_;
 
-	S_INT_64 bind_token_;
+	//–≠“ÈÕ∑
+	SProtocolHead	s_head_;
 };
 
-#endif	//__HOMESERVICELINKTO_H__
+#endif	//__DATAROUTERLINKTO_H__

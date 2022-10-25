@@ -50,33 +50,20 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 16: {
-            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+          case 8: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               taskIids_ = newIntList();
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000001;
             }
             taskIids_.addInt(input.readInt32());
             break;
           }
-          case 18: {
+          case 10: {
             int length = input.readRawVarint32();
             int limit = input.pushLimit(length);
-            if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
               taskIids_ = newIntList();
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000001;
             }
             while (input.getBytesUntilLimit() > 0) {
               taskIids_.addInt(input.readInt32());
@@ -99,7 +86,7 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
         taskIids_.makeImmutable(); // C
       }
       this.unknownFields = unknownFields.build();
@@ -119,37 +106,10 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Task_WaitList_ack.class, com.cms.client.network.gpro.Task_WaitList_ack.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int TASK_IIDS_FIELD_NUMBER = 2;
+  public static final int TASK_IIDS_FIELD_NUMBER = 1;
   private com.google.protobuf.Internal.IntList taskIids_;
   /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @return A list containing the taskIids.
    */
   @java.lang.Override
@@ -158,14 +118,14 @@ private static final long serialVersionUID = 0L;
     return taskIids_;
   }
   /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @return The count of taskIids.
    */
   public int getTaskIidsCount() {
     return taskIids_.size();
   }
   /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @param index The index of the element to return.
    * @return The taskIids at the given index.
    */
@@ -189,11 +149,8 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     getSerializedSize();
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (getTaskIidsList().size() > 0) {
-      output.writeUInt32NoTag(18);
+      output.writeUInt32NoTag(10);
       output.writeUInt32NoTag(taskIidsMemoizedSerializedSize);
     }
     for (int i = 0; i < taskIids_.size(); i++) {
@@ -208,10 +165,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     {
       int dataSize = 0;
       for (int i = 0; i < taskIids_.size(); i++) {
@@ -241,11 +194,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Task_WaitList_ack other = (com.cms.client.network.gpro.Task_WaitList_ack) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (!getTaskIidsList()
         .equals(other.getTaskIidsList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -259,10 +207,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     if (getTaskIidsCount() > 0) {
       hash = (37 * hash) + TASK_IIDS_FIELD_NUMBER;
       hash = (53 * hash) + getTaskIidsList().hashCode();
@@ -395,20 +339,13 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       taskIids_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -436,21 +373,11 @@ private static final long serialVersionUID = 0L;
     public com.cms.client.network.gpro.Task_WaitList_ack buildPartial() {
       com.cms.client.network.gpro.Task_WaitList_ack result = new com.cms.client.network.gpro.Task_WaitList_ack(this);
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         taskIids_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.taskIids_ = taskIids_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -499,13 +426,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Task_WaitList_ack other) {
       if (other == com.cms.client.network.gpro.Task_WaitList_ack.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (!other.taskIids_.isEmpty()) {
         if (taskIids_.isEmpty()) {
           taskIids_ = other.taskIids_;
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           ensureTaskIidsIsMutable();
           taskIids_.addAll(other.taskIids_);
@@ -542,151 +466,31 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
-
     private com.google.protobuf.Internal.IntList taskIids_ = emptyIntList();
     private void ensureTaskIidsIsMutable() {
-      if (!((bitField0_ & 0x00000002) != 0)) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         taskIids_ = mutableCopy(taskIids_);
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
        }
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @return A list containing the taskIids.
      */
     public java.util.List<java.lang.Integer>
         getTaskIidsList() {
-      return ((bitField0_ & 0x00000002) != 0) ?
+      return ((bitField0_ & 0x00000001) != 0) ?
                java.util.Collections.unmodifiableList(taskIids_) : taskIids_;
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @return The count of taskIids.
      */
     public int getTaskIidsCount() {
       return taskIids_.size();
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @param index The index of the element to return.
      * @return The taskIids at the given index.
      */
@@ -694,7 +498,7 @@ private static final long serialVersionUID = 0L;
       return taskIids_.getInt(index);
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @param index The index to set the value at.
      * @param value The taskIids to set.
      * @return This builder for chaining.
@@ -707,7 +511,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @param value The taskIids to add.
      * @return This builder for chaining.
      */
@@ -718,7 +522,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @param values The taskIids to add.
      * @return This builder for chaining.
      */
@@ -731,12 +535,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 task_iids = 2;</code>
+     * <code>repeated int32 task_iids = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearTaskIids() {
       taskIids_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }

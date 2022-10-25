@@ -19,14 +19,17 @@ public:
 
 	virtual void registinfo_tolog( bool bregist =true);
 
+	virtual void init_protocolhead();
+	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
 
 public:
 	//-----------------NetSessionBindEvent-------------------------------
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
 
 	//---------------IEurekaNodeLink-----------------------------
-	virtual void send_protocol(BasicProtocol* pro) { NetLinkFromBase<EurekaSession>::send_protocol(pro); }
+	virtual void send_to_eureka(BasicProtocol* pro);
+
 	virtual bool is_ready() { return NetLinkFromBase::is_valid(); }
 	virtual bool is_link_to() { return false; }
 	virtual void force_linkclose();
@@ -37,6 +40,9 @@ public:
 
 protected:
 	std::shared_ptr<EurekaNodeInfo>	node_;
+
+	//协议头缺省
+	SProtocolHead	s_head_;
 };
 
 #endif	//__EUREKALINKFROM_H__

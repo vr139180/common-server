@@ -2,6 +2,7 @@
 
 #include <cmsLib/base/OSSystem.h>
 #include <gameLib/LogExt.h>
+#include <gameLib/global_const.h>
 
 GamePlayerCtrl& GamePlayerCtrl::instance()
 {
@@ -20,7 +21,7 @@ GamePlayerCtrl::GamePlayerCtrl():base()
 
 void GamePlayerCtrl::init_gameplayerctrl( int maxplayers)
 {
-	this->init_separate(maxplayers, 1000);
+	this->init_separate(maxplayers, GATE_PIECE_NUM_MAX);
 
 	this->channel_nums_ = this->get_max_piece();
 	this->all_channels_.reset(new PlayerChannel[channel_nums_]);
@@ -65,7 +66,7 @@ void GamePlayerCtrl::stop()
 	}
 }
 
-int GamePlayerCtrl::ask_free_slot()
+GamePlayer* GamePlayerCtrl::ask_free_slot()
 {
 	ThreadLockWrapper tl(lock_);
 
@@ -73,7 +74,7 @@ int GamePlayerCtrl::ask_free_slot()
 	last_freeslot_ask_ = OSSystem::mOS->GetTimestamp();
 	
 	if (free_slots_.size() == 0)
-		return -1;
+		return 0;
 
 	GamePlayer *gp = 0;
 	for (std::set<GamePlayer*>::iterator iter = free_slots_.begin(); iter != free_slots_.end();)
@@ -90,16 +91,16 @@ int GamePlayerCtrl::ask_free_slot()
 
 	if (gp != 0)
 	{
-		S_INT_64 token = OSSystem::mOS->GetTimestamp();
-		gp->set_proxystamp(token);
-
 		wait_auth_slots_queue_.push_back(gp);
 		wait_auth_slot_num_ = wait_auth_slots_queue_.size();
 
-		return gp->get_userslot();
+		//记录等待开始验证的时间
+		gp->proxy();
+
+		return gp;
 	}
 
-	return -1;
+	return 0;
 }
 
 void GamePlayerCtrl::return_slot_to_free(int slot)
@@ -157,7 +158,7 @@ void GamePlayerCtrl::post_slot_cmd(CommandBase* cmd, int slot)
 	all_channels_[pindex].regist_syscmd(cmd);
 }
 
-void GamePlayerCtrl::route_msg_to_player(BasicProtocol* msg, int slot)
+void GamePlayerCtrl::route_msg_to_player(NetProtocol* msg, int slot)
 {
 	int pindex = get_pieceindex_from_slot(slot);
 	if (pindex == -1)

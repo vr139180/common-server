@@ -38,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -50,19 +49,6 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 18: {
             com.cms.client.network.gpro.ChatMessageItems.Builder subBuilder = null;
             if (msgs_ != null) {
               subBuilder = msgs_.toBuilder();
@@ -107,41 +93,14 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Chat_GlobalMsg_ntf.class, com.cms.client.network.gpro.Chat_GlobalMsg_ntf.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int MSGS_FIELD_NUMBER = 2;
+  public static final int MSGS_FIELD_NUMBER = 1;
   private com.cms.client.network.gpro.ChatMessageItems msgs_;
   /**
    * <pre>
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    * @return Whether the msgs field is set.
    */
   @java.lang.Override
@@ -153,7 +112,7 @@ private static final long serialVersionUID = 0L;
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    * @return The msgs.
    */
   @java.lang.Override
@@ -165,7 +124,7 @@ private static final long serialVersionUID = 0L;
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.ChatMessageItemsOrBuilder getMsgsOrBuilder() {
@@ -186,11 +145,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (msgs_ != null) {
-      output.writeMessage(2, getMsgs());
+      output.writeMessage(1, getMsgs());
     }
     unknownFields.writeTo(output);
   }
@@ -201,13 +157,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (msgs_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getMsgs());
+        .computeMessageSize(1, getMsgs());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -224,11 +176,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Chat_GlobalMsg_ntf other = (com.cms.client.network.gpro.Chat_GlobalMsg_ntf) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (hasMsgs() != other.hasMsgs()) return false;
     if (hasMsgs()) {
       if (!getMsgs()
@@ -245,10 +192,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     if (hasMsgs()) {
       hash = (37 * hash) + MSGS_FIELD_NUMBER;
       hash = (53 * hash) + getMsgs().hashCode();
@@ -381,18 +324,11 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       if (msgsBuilder_ == null) {
         msgs_ = null;
       } else {
@@ -425,22 +361,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Chat_GlobalMsg_ntf buildPartial() {
       com.cms.client.network.gpro.Chat_GlobalMsg_ntf result = new com.cms.client.network.gpro.Chat_GlobalMsg_ntf(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       if (msgsBuilder_ == null) {
         result.msgs_ = msgs_;
       } else {
         result.msgs_ = msgsBuilder_.build();
       }
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -489,9 +414,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Chat_GlobalMsg_ntf other) {
       if (other == com.cms.client.network.gpro.Chat_GlobalMsg_ntf.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.hasMsgs()) {
         mergeMsgs(other.getMsgs());
       }
@@ -523,127 +445,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
-
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
 
     private com.cms.client.network.gpro.ChatMessageItems msgs_;
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -653,7 +454,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      * @return Whether the msgs field is set.
      */
     public boolean hasMsgs() {
@@ -664,7 +465,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      * @return The msgs.
      */
     public com.cms.client.network.gpro.ChatMessageItems getMsgs() {
@@ -679,7 +480,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public Builder setMsgs(com.cms.client.network.gpro.ChatMessageItems value) {
       if (msgsBuilder_ == null) {
@@ -699,7 +500,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public Builder setMsgs(
         com.cms.client.network.gpro.ChatMessageItems.Builder builderForValue) {
@@ -717,7 +518,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public Builder mergeMsgs(com.cms.client.network.gpro.ChatMessageItems value) {
       if (msgsBuilder_ == null) {
@@ -739,7 +540,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public Builder clearMsgs() {
       if (msgsBuilder_ == null) {
@@ -757,7 +558,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public com.cms.client.network.gpro.ChatMessageItems.Builder getMsgsBuilder() {
       
@@ -769,7 +570,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     public com.cms.client.network.gpro.ChatMessageItemsOrBuilder getMsgsOrBuilder() {
       if (msgsBuilder_ != null) {
@@ -784,7 +585,7 @@ private static final long serialVersionUID = 0L;
      *max 50 msgs
      * </pre>
      *
-     * <code>.PRO.ChatMessageItems msgs = 2;</code>
+     * <code>.PRO.ChatMessageItems msgs = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.cms.client.network.gpro.ChatMessageItems, com.cms.client.network.gpro.ChatMessageItems.Builder, com.cms.client.network.gpro.ChatMessageItemsOrBuilder> 

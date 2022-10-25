@@ -8,67 +8,6 @@ option csharp_namespace = "com.cms.client.network.gpro";
 option java_multiple_files = true;
 option java_package = "com.cms.client.network.gpro";
 
-//res服务器 用户登陆资源请求
-message Res_UserSlot_req{
-  //login service iid
-  int64 lsno = 1;
-  //序列号
-  int64 sequence = 2;
-  //user iid
-  int64 user_iid = 3;
-}
-
-message Res_UserSlot_ack{
-  //0:成功 1:失败 2:system error
-  int32 result = 1;
-  //资源位
-  optional int32 slot = 2;
-  optional string proxyip = 3;
-  optional int32 proxyport = 4;
-  //用户token
-  optional int64 slottoken = 5;
-  //userslotreq附带信息
-  int64 lsno = 20;
-  int64 sequence = 21;
-  int64 user_iid = 22;
-}
-
-//res服务器和gate,确认资源协议
-message Res_ProxyUserSlot_req{
-  //proxytoken
-  string proxytoken = 10;
-  //homeiid gateiid用来在home,gate节点判断资源组合是否发生了变化
-  int64 homeiid = 11;
-  int64 gateiid = 12;
-  int32 hgtype = 13;
-  //userslotreq附带信息
-  int64 lsno = 20;
-  int64 sequence = 21;
-  int64 user_iid = 22;
-}
-
-message Res_ProxyUserSlot_ack{
-  //0:成功 1:homeid不正确 2:gateid不正确 3:gate资源不足
-  int32 result = 1;
-  //资源位
-  optional int32 slot = 2;
-  optional string proxyip = 3;
-  optional int32 proxyport = 4;
-  //用户token
-  optional int64 slottoken = 5;
-  
-  //proxytoken
-  string proxytoken = 10;
-  //homeiid gateiid用来在home,gate节点判断资源组合是否发生了变化
-  int64 homeiid = 11;
-  int64 gateiid = 12;
-  int32 hgtype = 13;
-  //userslotreq附带信息
-  int64 lsno = 20;
-  int64 sequence = 21;
-  int64 user_iid = 22;
-}
-
 //同步gate slot到res
 message Res_SyncGateSlot_ntf{
   //可用slot数量

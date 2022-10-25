@@ -2,7 +2,7 @@
 #define __DTASKREDIS_H__
 
 #include <string>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/redis/RedisClient.h>
 
 class DTaskRedis : public IRedisSerializer

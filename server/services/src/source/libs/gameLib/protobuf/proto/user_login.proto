@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "global_internal.proto";
 import "db_internal.proto";
 
 package PRO;
@@ -35,9 +34,8 @@ message User_Login_ack {
   optional string logintoken = 4;
   //proxytoken
   optional int64 proxytoken = 10;
-  optional int32 slot = 11;
-  optional string proxyip = 12;
-  optional int32 proxyport = 13;
+  optional string proxyip = 11;
+  optional int32 proxyport = 12;
 }
 
 //用户在gate登录
@@ -46,61 +44,54 @@ message User_ProxyLogin_req{
   int64 user_iid = 1;
   //proxytoken
   int64 proxytoken = 2;
-  int32 slot = 3;
 }
 
 message User_ProxyLogin_ack{
   //0:成功 1:失败
   int32 result = 1;
+  //用户iid
+  optional int64 user_iid = 2;
+  //proxytoken
+  optional int64 proxytoken = 3;
 }
 
 //user logout
 message User_Logout_ntf{
-  optional UserToken utoken = 1;
 }
 
 message User_RoleList_ack{
-  optional UserToken utoken = 1;
-  DBUserRoles roles = 2;
+  DBUserRoles roles = 1;
 }
 
 message User_RoleCreate_req{
-  optional UserToken utoken = 1;
-  string nickname = 2;
+  string nickname = 1;
 }
 
 message User_RoleCreate_ack{
-  optional UserToken utoken = 1;
   //0:成功 1:不允许创建角色 2:创建角色失败
-  int32 result = 2;
-  optional int64 role_iid = 3;
+  int32 result = 1;
+  optional int64 role_iid = 2;
 }
 
 message User_RoleSelect_req{
-  optional UserToken utoken = 1;
-  int64 role_iid = 2;
+  int64 role_iid = 1;
 }
 
 message User_RoleSelect_ack{
-  optional UserToken utoken = 1;
   //0:成功 1:role不存在 2:角色已选择
-  int32 result = 2;
-  int64 role_iid = 3;
+  int32 result = 1;
+  int64 role_iid = 2;
 }
 
 //role detail info
 message User_RoleDetailA_ntf{
-  optional UserToken utoken = 1;
-  
-  DBUserHome home = 2;
-  DBUserHomeStructure homeitems = 3;
+  DBUserHome home = 1;
+  DBUserHomeStructure homeitems = 2;
 }
 
 message User_RoleDetailB_ntf{
-  optional UserToken utoken = 1;
-  DBUserPets pets = 2;
+  DBUserPets pets = 1;
 }
 
 message User_RoleDetailEnd_ntf{
-  optional UserToken utoken = 1;
 }

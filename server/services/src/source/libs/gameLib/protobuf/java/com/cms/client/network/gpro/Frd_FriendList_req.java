@@ -39,7 +39,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -50,35 +49,22 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 16: {
+          case 8: {
 
             lastInvite_ = input.readInt64();
             break;
           }
-          case 24: {
+          case 16: {
 
             friendindex_ = input.readInt32();
             break;
           }
-          case 32: {
+          case 24: {
 
             next_ = input.readBool();
             break;
           }
-          case 40: {
+          case 32: {
 
             num_ = input.readInt32();
             break;
@@ -121,41 +107,14 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Frd_FriendList_req.class, com.cms.client.network.gpro.Frd_FriendList_req.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int LAST_INVITE_FIELD_NUMBER = 2;
+  public static final int LAST_INVITE_FIELD_NUMBER = 1;
   private long lastInvite_;
   /**
    * <pre>
    *最大的一个invite的iid，会获取新的邀请
    * </pre>
    *
-   * <code>int64 last_invite = 2;</code>
+   * <code>int64 last_invite = 1;</code>
    * @return The lastInvite.
    */
   @java.lang.Override
@@ -163,14 +122,14 @@ private static final long serialVersionUID = 0L;
     return lastInvite_;
   }
 
-  public static final int FRIENDINDEX_FIELD_NUMBER = 3;
+  public static final int FRIENDINDEX_FIELD_NUMBER = 2;
   private int friendindex_;
   /**
    * <pre>
    *根据活跃度排行的索引 0开始
    * </pre>
    *
-   * <code>int32 friendindex = 3;</code>
+   * <code>int32 friendindex = 2;</code>
    * @return The friendindex.
    */
   @java.lang.Override
@@ -178,14 +137,14 @@ private static final long serialVersionUID = 0L;
     return friendindex_;
   }
 
-  public static final int NEXT_FIELD_NUMBER = 4;
+  public static final int NEXT_FIELD_NUMBER = 3;
   private boolean next_;
   /**
    * <pre>
    *true 小到大 获取下一批好友信息, false 大到小获取
    * </pre>
    *
-   * <code>bool next = 4;</code>
+   * <code>bool next = 3;</code>
    * @return The next.
    */
   @java.lang.Override
@@ -193,14 +152,14 @@ private static final long serialVersionUID = 0L;
     return next_;
   }
 
-  public static final int NUM_FIELD_NUMBER = 5;
+  public static final int NUM_FIELD_NUMBER = 4;
   private int num_;
   /**
    * <pre>
    *每批的长度，不超过20
    * </pre>
    *
-   * <code>int32 num = 5;</code>
+   * <code>int32 num = 4;</code>
    * @return The num.
    */
   @java.lang.Override
@@ -268,20 +227,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (lastInvite_ != 0L) {
-      output.writeInt64(2, lastInvite_);
+      output.writeInt64(1, lastInvite_);
     }
     if (friendindex_ != 0) {
-      output.writeInt32(3, friendindex_);
+      output.writeInt32(2, friendindex_);
     }
     if (next_ != false) {
-      output.writeBool(4, next_);
+      output.writeBool(3, next_);
     }
     if (num_ != 0) {
-      output.writeInt32(5, num_);
+      output.writeInt32(4, num_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nickname_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, nickname_);
@@ -295,25 +251,21 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (lastInvite_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, lastInvite_);
+        .computeInt64Size(1, lastInvite_);
     }
     if (friendindex_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, friendindex_);
+        .computeInt32Size(2, friendindex_);
     }
     if (next_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(4, next_);
+        .computeBoolSize(3, next_);
     }
     if (num_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, num_);
+        .computeInt32Size(4, num_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nickname_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, nickname_);
@@ -333,11 +285,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Frd_FriendList_req other = (com.cms.client.network.gpro.Frd_FriendList_req) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (getLastInvite()
         != other.getLastInvite()) return false;
     if (getFriendindex()
@@ -359,10 +306,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     hash = (37 * hash) + LAST_INVITE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getLastInvite());
@@ -503,18 +446,11 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       lastInvite_ = 0L;
 
       friendindex_ = 0;
@@ -551,22 +487,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Frd_FriendList_req buildPartial() {
       com.cms.client.network.gpro.Frd_FriendList_req result = new com.cms.client.network.gpro.Frd_FriendList_req(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       result.lastInvite_ = lastInvite_;
       result.friendindex_ = friendindex_;
       result.next_ = next_;
       result.num_ = num_;
       result.nickname_ = nickname_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -615,9 +540,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Frd_FriendList_req other) {
       if (other == com.cms.client.network.gpro.Frd_FriendList_req.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.getLastInvite() != 0L) {
         setLastInvite(other.getLastInvite());
       }
@@ -662,127 +584,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
-
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
 
     private long lastInvite_ ;
     /**
@@ -790,7 +591,7 @@ private static final long serialVersionUID = 0L;
      *最大的一个invite的iid，会获取新的邀请
      * </pre>
      *
-     * <code>int64 last_invite = 2;</code>
+     * <code>int64 last_invite = 1;</code>
      * @return The lastInvite.
      */
     @java.lang.Override
@@ -802,7 +603,7 @@ private static final long serialVersionUID = 0L;
      *最大的一个invite的iid，会获取新的邀请
      * </pre>
      *
-     * <code>int64 last_invite = 2;</code>
+     * <code>int64 last_invite = 1;</code>
      * @param value The lastInvite to set.
      * @return This builder for chaining.
      */
@@ -817,7 +618,7 @@ private static final long serialVersionUID = 0L;
      *最大的一个invite的iid，会获取新的邀请
      * </pre>
      *
-     * <code>int64 last_invite = 2;</code>
+     * <code>int64 last_invite = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearLastInvite() {
@@ -833,7 +634,7 @@ private static final long serialVersionUID = 0L;
      *根据活跃度排行的索引 0开始
      * </pre>
      *
-     * <code>int32 friendindex = 3;</code>
+     * <code>int32 friendindex = 2;</code>
      * @return The friendindex.
      */
     @java.lang.Override
@@ -845,7 +646,7 @@ private static final long serialVersionUID = 0L;
      *根据活跃度排行的索引 0开始
      * </pre>
      *
-     * <code>int32 friendindex = 3;</code>
+     * <code>int32 friendindex = 2;</code>
      * @param value The friendindex to set.
      * @return This builder for chaining.
      */
@@ -860,7 +661,7 @@ private static final long serialVersionUID = 0L;
      *根据活跃度排行的索引 0开始
      * </pre>
      *
-     * <code>int32 friendindex = 3;</code>
+     * <code>int32 friendindex = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearFriendindex() {
@@ -876,7 +677,7 @@ private static final long serialVersionUID = 0L;
      *true 小到大 获取下一批好友信息, false 大到小获取
      * </pre>
      *
-     * <code>bool next = 4;</code>
+     * <code>bool next = 3;</code>
      * @return The next.
      */
     @java.lang.Override
@@ -888,7 +689,7 @@ private static final long serialVersionUID = 0L;
      *true 小到大 获取下一批好友信息, false 大到小获取
      * </pre>
      *
-     * <code>bool next = 4;</code>
+     * <code>bool next = 3;</code>
      * @param value The next to set.
      * @return This builder for chaining.
      */
@@ -903,7 +704,7 @@ private static final long serialVersionUID = 0L;
      *true 小到大 获取下一批好友信息, false 大到小获取
      * </pre>
      *
-     * <code>bool next = 4;</code>
+     * <code>bool next = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearNext() {
@@ -919,7 +720,7 @@ private static final long serialVersionUID = 0L;
      *每批的长度，不超过20
      * </pre>
      *
-     * <code>int32 num = 5;</code>
+     * <code>int32 num = 4;</code>
      * @return The num.
      */
     @java.lang.Override
@@ -931,7 +732,7 @@ private static final long serialVersionUID = 0L;
      *每批的长度，不超过20
      * </pre>
      *
-     * <code>int32 num = 5;</code>
+     * <code>int32 num = 4;</code>
      * @param value The num to set.
      * @return This builder for chaining.
      */
@@ -946,7 +747,7 @@ private static final long serialVersionUID = 0L;
      *每批的长度，不超过20
      * </pre>
      *
-     * <code>int32 num = 5;</code>
+     * <code>int32 num = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearNum() {

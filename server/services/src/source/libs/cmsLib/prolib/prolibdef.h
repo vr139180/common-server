@@ -12,7 +12,7 @@
 //#define PROLIB_USED_BY_SERVERSIDE	1
 
 #if PROLIB_USED_BY_SERVERSIDE
-	#include "corelib/memory/CoreMemory.h"
+	#include "cmsLib/memory/CoreMemory.h"
 	#define PRO_NEW_EX	PROTOCOL_NEW
 
 	#define PROLIB_ASSERT( x)	assert( x)

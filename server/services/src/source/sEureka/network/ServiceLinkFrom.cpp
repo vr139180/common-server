@@ -11,7 +11,30 @@
 ServiceLinkFrom::ServiceLinkFrom():NetLinkFromBase<EurekaSession>()
 , node_(0)
 {
+	this->init_protocolhead();
+}
 
+void ServiceLinkFrom::init_protocolhead()
+{
+	//设置通用协议头
+	s_head_.router_balance_ = false;
+	s_head_.hashkey_ = 0;
+	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_broadcast_ = false;
+	s_head_.unpack_protocol_ = true;
+}
+
+void ServiceLinkFrom::set_node(ServiceNodeInfo* pnode)
+{
+	node_.reset(pnode);
+	if( pnode != 0)
+		s_head_.to_type_ = (S_INT_8)pnode->type;
+}
+
+void ServiceLinkFrom::send_to_service(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	NetLinkFromBase<EurekaSession>::send_protocol(pro);
 }
 
 void ServiceLinkFrom::reset()
@@ -32,12 +55,12 @@ void ServiceLinkFrom::on_connect_lost_netthread()
 	svrApp.regist_syscmd( cmd);
 }
 
-void ServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void ServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<NetProtocol> p_msg(pro);
 
 	//需要主线程处理的，在这里明确定义处理函数
-	if (proiid == ERK_PROTYPE::ERK_SERVICEREGIST_CONFIRM)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICEREGIST_CONFIRM)
 	{
 		NETCMD_FUN_MAP fun = boost::bind(&ServiceRegisterCtrl::on_mth_serviceregist_confirm, svrApp.get_servicectrl(),
 			boost::placeholders::_1, boost::placeholders::_2);
@@ -45,9 +68,9 @@ void ServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol
 
 		svrApp.regist_syscmd(pcmd);
 	}
-	else if (proiid == ERK_PROTYPE::ERK_EUREKA_SYNC)
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKA_SYNC)
 	{
-		Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(pro);
+		Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(pro->msg_);
 		syn->set_myiid(this->get_iid());
 
 		NETCMD_FUN_MAP fun = boost::bind(&EurekaClusterCtrl::on_service_eureka_sync, svrApp.get_eurekactrl(),
@@ -56,7 +79,7 @@ void ServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol
 
 		svrApp.regist_syscmd(pcmd);
 	}
-	else if (proiid == ERK_PROTYPE::ERK_SERVICESUBSCRIBE_REQ)
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICESUBSCRIBE_REQ)
 	{
 		NETCMD_FUN_MAP fun = boost::bind(&ServiceRegisterCtrl::on_mth_servicesubscribe_req, svrApp.get_servicectrl(),
 			boost::placeholders::_1, boost::placeholders::_2);
@@ -67,11 +90,10 @@ void ServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol
 	else
 	{
 		//缺省处理都在servie线程池中进行
-		NETCMD_FUN_MAP2 fun = boost::bind(
-			&ServiceRegisterCtrl::NetProcessMessage, svrApp.get_servicectrl(), 
-			boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);
+		NETCMD_FUN_MAP fun = boost::bind(
+			&ServiceRegisterCtrl::NetProcessMessage, svrApp.get_servicectrl(), boost::placeholders::_1, boost::placeholders::_2);
 
-		NetCommand *pcmd = new NetCommand(p_msg.release(), fun ,(int)proiid);
+		NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
 		svrApp.regist_netcmd(pcmd);
 	}
 }

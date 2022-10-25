@@ -1,7 +1,7 @@
 #ifndef __IEUREKANODELINK_H__
 #define __IEUREKANODELINK_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 
 class IEurekaNodeLink
 {
@@ -11,7 +11,7 @@ public:
 	virtual S_INT_64 get_iid() = 0;
 	virtual S_INT_64 get_token() = 0;
 
-	virtual void send_protocol(BasicProtocol* pro) = 0;
+	virtual void send_to_eureka(BasicProtocol* pro) = 0;
 	virtual bool is_ready() = 0;
 
 	virtual bool is_link_to() = 0;

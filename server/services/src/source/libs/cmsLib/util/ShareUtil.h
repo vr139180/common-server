@@ -4,7 +4,7 @@
 #include <list>
 #include <vector>
 #include <cmsLib/GlobalSettings.h>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <time.h>
 
 /**
@@ -54,6 +54,7 @@ public:
 
 	static void SplitString( const char* cmd, stringSet_t& strSet, const char splitor, bool IgnoreSpace = false );
 
+	template<int BUF_LEN=128>
 	static std::string str_format(const char* fmt, ...);
 
 	static void encrypt_mask( c8* buf, int len, S_UINT_64 mask);
@@ -72,5 +73,19 @@ public:
     // 返回1-7表示周一到周日 
     static int getTodayWeekday();
 };
+
+template<int BUF_LEN>
+std::string ShareUtil::str_format(const char* fmt, ...)
+{
+	char buf[BUF_LEN] = { 0 };
+
+	va_list vaList;
+
+	va_start(vaList, fmt);
+	::vsnprintf(buf, sizeof(buf) - 1, fmt, vaList);
+	va_end(vaList);
+
+	return buf;
+}
 
 #endif	//__SHAREUTIL__H__

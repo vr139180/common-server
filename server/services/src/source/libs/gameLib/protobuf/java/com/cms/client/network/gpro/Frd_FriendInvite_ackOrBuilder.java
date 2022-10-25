@@ -8,26 +8,11 @@ public interface Frd_FriendInvite_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *被邀请人
    * </pre>
    *
-   * <code>int64 invite_iid = 2;</code>
+   * <code>int64 invite_iid = 1;</code>
    * @return The inviteIid.
    */
   long getInviteIid();
@@ -37,7 +22,7 @@ public interface Frd_FriendInvite_ackOrBuilder extends
    *0 成功 1 system error 2 already friend 3 invite not exist
    * </pre>
    *
-   * <code>int32 result = 3;</code>
+   * <code>int32 result = 2;</code>
    * @return The result.
    */
   int getResult();
@@ -47,7 +32,7 @@ public interface Frd_FriendInvite_ackOrBuilder extends
    *成功包含invite信息
    * </pre>
    *
-   * <code>optional .PRO.FriendInviteItem invite = 4;</code>
+   * <code>optional .PRO.FriendInviteItem invite = 3;</code>
    * @return Whether the invite field is set.
    */
   boolean hasInvite();
@@ -56,7 +41,7 @@ public interface Frd_FriendInvite_ackOrBuilder extends
    *成功包含invite信息
    * </pre>
    *
-   * <code>optional .PRO.FriendInviteItem invite = 4;</code>
+   * <code>optional .PRO.FriendInviteItem invite = 3;</code>
    * @return The invite.
    */
   com.cms.client.network.gpro.FriendInviteItem getInvite();
@@ -65,7 +50,7 @@ public interface Frd_FriendInvite_ackOrBuilder extends
    *成功包含invite信息
    * </pre>
    *
-   * <code>optional .PRO.FriendInviteItem invite = 4;</code>
+   * <code>optional .PRO.FriendInviteItem invite = 3;</code>
    */
   com.cms.client.network.gpro.FriendInviteItemOrBuilder getInviteOrBuilder();
 }

@@ -8,32 +8,17 @@ public interface User_RoleSelect_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *0:成功 1:role不存在 2:角色已选择
    * </pre>
    *
-   * <code>int32 result = 2;</code>
+   * <code>int32 result = 1;</code>
    * @return The result.
    */
   int getResult();
 
   /**
-   * <code>int64 role_iid = 3;</code>
+   * <code>int64 role_iid = 2;</code>
    * @return The roleIid.
    */
   long getRoleIid();

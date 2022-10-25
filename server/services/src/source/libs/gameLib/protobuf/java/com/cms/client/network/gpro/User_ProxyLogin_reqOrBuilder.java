@@ -26,10 +26,4 @@ public interface User_ProxyLogin_reqOrBuilder extends
    * @return The proxytoken.
    */
   long getProxytoken();
-
-  /**
-   * <code>int32 slot = 3;</code>
-   * @return The slot.
-   */
-  int getSlot();
 }

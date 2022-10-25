@@ -27,65 +27,55 @@ message MailUserBox {
 }
 
 message Mail_NewMail_ntf {
-  optional UserToken utoken = 1;
 }
 
 message Mail_MailGet_req {
-  optional UserToken utoken = 1;
   //当前最大的邮件iid, == 0 获取最新的邮件列表 50个
   // > 0 获取比这个iid小的50个邮件信息
-  int64 mailiid = 2;
+  int64 mailiid = 1;
   //true 从大到小翻页 false 从小到大
-  bool next = 3;
-  int32 num = 4;
+  bool next = 2;
+  int32 num = 3;
 }
 
 message Mail_MailGet_ack {
-  optional UserToken utoken = 1;
-  repeated MailNormalItem mails = 2;
-  int32 totle = 3;
+  repeated MailNormalItem mails = 1;
+  int32 totle = 2;
 }
 
 message Mail_UserOnline_active {
-  optional UserToken utoken = 1;
   //客户端本地保存的最大mailiid
-  int64 last_mailiid = 2;
+  int64 last_mailiid = 1;
   //登陆成功后第一发送设置为true
-  bool 	firstactive = 3;
+  bool 	firstactive = 2;
 }
 
 message Mail_ReadMail_req {
-  optional UserToken utoken = 1;
-  int64 mail_iid = 2;
+  int64 mail_iid = 1;
 }
 
 message Mail_ReadMail_ack {
-  optional UserToken utoken = 1;
   //0:success 1:system error 2:not exist 3:already read
-  int32 result = 2;
-  int64 mail_iid = 3;
+  int32 result = 1;
+  int64 mail_iid = 2;
 }
 
 message Mail_DeleteMail_req {
-  optional UserToken utoken = 1;
-  int64 mail_iid = 2;
+  int64 mail_iid = 1;
 }
 
 message Mail_DeleteMail_ack {
-  optional UserToken utoken = 1;
   //0:success 1:system error 2:not exist
-  int32 result = 2;
-  int64 mail_iid = 3;
-}
-
-message Mail_UnBindAttachs_req {
-  optional UserToken utoken = 1;
+  int32 result = 1;
   int64 mail_iid = 2;
 }
 
+message Mail_UnBindAttachs_req {
+  int64 mail_iid = 1;
+}
+
 message Mail_UnBindAttachs_ack {
-  optional UserToken utoken = 1;
   //0:success 1:not exist 2:already unbinded
-  int32 result = 2;
-  int64 mail_iid = 3;
+  int32 result = 1;
+  int64 mail_iid = 2;
 }

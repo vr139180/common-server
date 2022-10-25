@@ -8,26 +8,11 @@ public interface Frd_FriendDelete_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *好友
    * </pre>
    *
-   * <code>int64 friendiid = 2;</code>
+   * <code>int64 friendiid = 1;</code>
    * @return The friendiid.
    */
   long getFriendiid();

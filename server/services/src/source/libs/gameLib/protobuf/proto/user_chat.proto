@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "global_internal.proto";
-
 package PRO;
 
 //option optimize_for = LITE_RUNTIME;
@@ -46,37 +44,31 @@ message ChatChannelInfo{
 }
 
 message Chat_GlobalMsg_ntf{
-  optional UserToken utoken = 1;
   //max 50 msgs
-  ChatMessageItems msgs = 2;
+  ChatMessageItems msgs = 1;
 }
 
 message Chat_UserChannels_active{
-  optional UserToken utoken = 1;
-  repeated ChatChannelInfo channels = 2;
+  repeated ChatChannelInfo channels = 1;
 }
 
 message Chat_CustomChannelId_req{
-  optional UserToken utoken = 1;
 }
 
 message Chat_CustomChannelId_ack{
-  optional UserToken utoken = 1;
   //0:success 1:failed
-  int32 result = 2;
-  optional ChatChannelInfo channel = 3;
+  int32 result = 1;
+  optional ChatChannelInfo channel = 2;
 }
 
 message Chat_UserMsg_say{
-  optional UserToken utoken = 1;
-  ChatChannelInfo channel = 2;
-  string nickname = 3;
+  ChatChannelInfo channel = 1;
+  string nickname = 2;
   //max len 216
-  string msg_content = 4;
+  string msg_content = 3;
 }
 
 message Chat_ChatMsg_ntf{
-  optional UserToken utoken = 1;
-  ChatChannelInfo channel = 2;
-  ChatMessageItems msgs = 3;
+  ChatChannelInfo channel = 1;
+  ChatMessageItems msgs = 2;
 }

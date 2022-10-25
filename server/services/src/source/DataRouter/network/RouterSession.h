@@ -1,5 +1,5 @@
-#ifndef __GATESESSION_H__
-#define __GATESESSION_H__
+#ifndef __ROUTERSESSION_H__
+#define __ROUTERSESSION_H__
 
 #include <cmsLib/net/NetSession.h>
 #include <cmsLib/net/NetSessionBindEvent.h>
@@ -13,15 +13,15 @@ enum SessionState
 	SessionState_Authed,
 };
 
-class GateSession : public NetSessionBindEvent
+class RouterSession : public NetSessionBindEvent
 {
 public:
-	GateSession();
-	virtual ~GateSession();
+	RouterSession();
+	virtual ~RouterSession();
 
 	boost::shared_ptr<NetSession> get_session() { return session_; }
 
-	void set_netlinkbase(NetLinkFromBase<GateSession>* p) { parent_ = p; }
+	void set_netlinkbase(NetLinkFromBase<RouterSession>* p) { parent_ = p; }
 
 	void send_protocol(BasicProtocol* pro);
 
@@ -39,8 +39,6 @@ public:
 			session_->heart_beat();
 	}
 
-	void user_login(BasicProtocol* msg);
-
 public:
 	//---------------implement NetSessionBindEvent---------------
 	virtual void on_cant_connectedto() {}
@@ -55,7 +53,7 @@ protected:
 	S_TIMESTAMP						auth_timestamp_;
 
 	boost::shared_ptr<NetSession>	session_;
-	NetLinkFromBase<GateSession>*	parent_;
+	NetLinkFromBase<RouterSession>*	parent_;
 };
 
-#endif //__GATESESSION_H__
+#endif //__ROUTERSESSION_H__

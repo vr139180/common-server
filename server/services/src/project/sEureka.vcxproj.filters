@@ -10,9 +10,6 @@
     <Filter Include="services">
       <UniqueIdentifier>{1be959ac-bee3-4667-ab9e-28de083e87d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="rediscript">
-      <UniqueIdentifier>{2e21ac40-446f-4396-8f12-cb7f71fff10c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\sEureka\sEurekaApp.cpp" />
@@ -56,9 +53,6 @@
     <ClCompile Include="..\source\sEureka\services\ServiceRegisterCtrl_Maintnce.cpp">
       <Filter>services</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\sEureka\rediscript\homegate_script.cpp">
-      <Filter>rediscript</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\sEureka\EurekaService.cpp" />
     <ClCompile Include="..\source\sEureka\network\ServiceLinkFrom.cpp">
       <Filter>network</Filter>
@@ -83,9 +77,6 @@
     </ClInclude>
     <ClInclude Include="..\source\sEureka\services\ServiceRegisterCtrl.h">
       <Filter>services</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\sEureka\rediscript\homegate_script.h">
-      <Filter>rediscript</Filter>
     </ClInclude>
     <ClInclude Include="..\source\sEureka\EurekaService.h" />
     <ClInclude Include="..\source\sEureka\network\ServiceLinkFrom.h">

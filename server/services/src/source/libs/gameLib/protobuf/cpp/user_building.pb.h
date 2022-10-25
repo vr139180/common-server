@@ -31,7 +31,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "global_internal.pb.h"
 #include "db_internal.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -201,13 +200,12 @@ class Build_AddItem_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLookAtFieldNumber = 4,
-    kBuildingPosFieldNumber = 5,
-    kUtokenFieldNumber = 1,
-    kParentBuildingFieldNumber = 2,
-    kBuildingResidFieldNumber = 3,
+    kLookAtFieldNumber = 3,
+    kBuildingPosFieldNumber = 4,
+    kParentBuildingFieldNumber = 1,
+    kBuildingResidFieldNumber = 2,
   };
-  // string look_at = 4;
+  // string look_at = 3;
   void clear_look_at();
   const std::string& look_at() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -221,7 +219,7 @@ class Build_AddItem_req final :
   std::string* _internal_mutable_look_at();
   public:
 
-  // string building_pos = 5;
+  // string building_pos = 4;
   void clear_building_pos();
   const std::string& building_pos() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -235,25 +233,7 @@ class Build_AddItem_req final :
   std::string* _internal_mutable_building_pos();
   public:
 
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 parent_building = 2;
+  // int64 parent_building = 1;
   void clear_parent_building();
   int64_t parent_building() const;
   void set_parent_building(int64_t value);
@@ -262,7 +242,7 @@ class Build_AddItem_req final :
   void _internal_set_parent_building(int64_t value);
   public:
 
-  // int64 building_resid = 3;
+  // int64 building_resid = 2;
   void clear_building_resid();
   int64_t building_resid() const;
   void set_building_resid(int64_t value);
@@ -278,13 +258,11 @@ class Build_AddItem_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr look_at_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr building_pos_;
-  ::PRO::UserToken* utoken_;
   int64_t parent_building_;
   int64_t building_resid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fbuilding_2eproto;
 };
 // -------------------------------------------------------------------
@@ -411,29 +389,10 @@ class Build_AddItem_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kItemFieldNumber = 3,
-    kResultFieldNumber = 2,
+    kItemFieldNumber = 2,
+    kResultFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // optional .PRO.DBUserHomeStructureItem item = 3;
+  // optional .PRO.DBUserHomeStructureItem item = 2;
   bool has_item() const;
   private:
   bool _internal_has_item() const;
@@ -451,7 +410,7 @@ class Build_AddItem_ack final :
       ::PRO::DBUserHomeStructureItem* item);
   ::PRO::DBUserHomeStructureItem* unsafe_arena_release_item();
 
-  // int32 result = 2;
+  // int32 result = 1;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -469,7 +428,6 @@ class Build_AddItem_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   ::PRO::DBUserHomeStructureItem* item_;
   int32_t result_;
   friend struct ::TableStruct_user_5fbuilding_2eproto;
@@ -598,28 +556,9 @@ class Build_DelItem_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kBuildingIidFieldNumber = 2,
+    kBuildingIidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   void clear_building_iid();
   int64_t building_iid() const;
   void set_building_iid(int64_t value);
@@ -635,10 +574,8 @@ class Build_DelItem_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t building_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fbuilding_2eproto;
 };
 // -------------------------------------------------------------------
@@ -765,29 +702,10 @@ class Build_DelItem_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kBuildingIidFieldNumber = 2,
-    kResultFieldNumber = 3,
+    kBuildingIidFieldNumber = 1,
+    kResultFieldNumber = 2,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   void clear_building_iid();
   int64_t building_iid() const;
   void set_building_iid(int64_t value);
@@ -796,7 +714,7 @@ class Build_DelItem_ack final :
   void _internal_set_building_iid(int64_t value);
   public:
 
-  // int32 result = 3;
+  // int32 result = 2;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -812,11 +730,9 @@ class Build_DelItem_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t building_iid_;
   int32_t result_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fbuilding_2eproto;
 };
 // ===================================================================
@@ -830,95 +746,7 @@ class Build_DelItem_ack final :
 #endif  // __GNUC__
 // Build_AddItem_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Build_AddItem_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Build_AddItem_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Build_AddItem_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Build_AddItem_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Build_AddItem_req.utoken)
-  return _internal_utoken();
-}
-inline void Build_AddItem_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Build_AddItem_req.utoken)
-}
-inline ::PRO::UserToken* Build_AddItem_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Build_AddItem_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Build_AddItem_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Build_AddItem_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Build_AddItem_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Build_AddItem_req.utoken)
-  return _msg;
-}
-inline void Build_AddItem_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Build_AddItem_req.utoken)
-}
-
-// int64 parent_building = 2;
+// int64 parent_building = 1;
 inline void Build_AddItem_req::clear_parent_building() {
   parent_building_ = int64_t{0};
 }
@@ -938,7 +766,7 @@ inline void Build_AddItem_req::set_parent_building(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Build_AddItem_req.parent_building)
 }
 
-// int64 building_resid = 3;
+// int64 building_resid = 2;
 inline void Build_AddItem_req::clear_building_resid() {
   building_resid_ = int64_t{0};
 }
@@ -958,7 +786,7 @@ inline void Build_AddItem_req::set_building_resid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Build_AddItem_req.building_resid)
 }
 
-// string look_at = 4;
+// string look_at = 3;
 inline void Build_AddItem_req::clear_look_at() {
   look_at_.ClearToEmpty();
 }
@@ -1009,7 +837,7 @@ inline void Build_AddItem_req::set_allocated_look_at(std::string* look_at) {
   // @@protoc_insertion_point(field_set_allocated:PRO.Build_AddItem_req.look_at)
 }
 
-// string building_pos = 5;
+// string building_pos = 4;
 inline void Build_AddItem_req::clear_building_pos() {
   building_pos_.ClearToEmpty();
 }
@@ -1064,95 +892,7 @@ inline void Build_AddItem_req::set_allocated_building_pos(std::string* building_
 
 // Build_AddItem_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Build_AddItem_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Build_AddItem_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Build_AddItem_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Build_AddItem_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Build_AddItem_ack.utoken)
-  return _internal_utoken();
-}
-inline void Build_AddItem_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Build_AddItem_ack.utoken)
-}
-inline ::PRO::UserToken* Build_AddItem_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Build_AddItem_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Build_AddItem_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Build_AddItem_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Build_AddItem_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Build_AddItem_ack.utoken)
-  return _msg;
-}
-inline void Build_AddItem_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Build_AddItem_ack.utoken)
-}
-
-// int32 result = 2;
+// int32 result = 1;
 inline void Build_AddItem_ack::clear_result() {
   result_ = 0;
 }
@@ -1172,9 +912,9 @@ inline void Build_AddItem_ack::set_result(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Build_AddItem_ack.result)
 }
 
-// optional .PRO.DBUserHomeStructureItem item = 3;
+// optional .PRO.DBUserHomeStructureItem item = 2;
 inline bool Build_AddItem_ack::_internal_has_item() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || item_ != nullptr);
   return value;
 }
@@ -1197,14 +937,14 @@ inline void Build_AddItem_ack::unsafe_arena_set_allocated_item(
   }
   item_ = item;
   if (item) {
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Build_AddItem_ack.item)
 }
 inline ::PRO::DBUserHomeStructureItem* Build_AddItem_ack::release_item() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::DBUserHomeStructureItem* temp = item_;
   item_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -1220,13 +960,13 @@ inline ::PRO::DBUserHomeStructureItem* Build_AddItem_ack::release_item() {
 }
 inline ::PRO::DBUserHomeStructureItem* Build_AddItem_ack::unsafe_arena_release_item() {
   // @@protoc_insertion_point(field_release:PRO.Build_AddItem_ack.item)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::DBUserHomeStructureItem* temp = item_;
   item_ = nullptr;
   return temp;
 }
 inline ::PRO::DBUserHomeStructureItem* Build_AddItem_ack::_internal_mutable_item() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   if (item_ == nullptr) {
     auto* p = CreateMaybeMessage<::PRO::DBUserHomeStructureItem>(GetArenaForAllocation());
     item_ = p;
@@ -1252,9 +992,9 @@ inline void Build_AddItem_ack::set_allocated_item(::PRO::DBUserHomeStructureItem
       item = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, item, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   item_ = item;
   // @@protoc_insertion_point(field_set_allocated:PRO.Build_AddItem_ack.item)
@@ -1264,95 +1004,7 @@ inline void Build_AddItem_ack::set_allocated_item(::PRO::DBUserHomeStructureItem
 
 // Build_DelItem_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Build_DelItem_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Build_DelItem_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Build_DelItem_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Build_DelItem_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Build_DelItem_req.utoken)
-  return _internal_utoken();
-}
-inline void Build_DelItem_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Build_DelItem_req.utoken)
-}
-inline ::PRO::UserToken* Build_DelItem_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Build_DelItem_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Build_DelItem_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Build_DelItem_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Build_DelItem_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Build_DelItem_req.utoken)
-  return _msg;
-}
-inline void Build_DelItem_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Build_DelItem_req.utoken)
-}
-
-// int64 building_iid = 2;
+// int64 building_iid = 1;
 inline void Build_DelItem_req::clear_building_iid() {
   building_iid_ = int64_t{0};
 }
@@ -1376,95 +1028,7 @@ inline void Build_DelItem_req::set_building_iid(int64_t value) {
 
 // Build_DelItem_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Build_DelItem_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Build_DelItem_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Build_DelItem_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Build_DelItem_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Build_DelItem_ack.utoken)
-  return _internal_utoken();
-}
-inline void Build_DelItem_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Build_DelItem_ack.utoken)
-}
-inline ::PRO::UserToken* Build_DelItem_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Build_DelItem_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Build_DelItem_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Build_DelItem_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Build_DelItem_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Build_DelItem_ack.utoken)
-  return _msg;
-}
-inline void Build_DelItem_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Build_DelItem_ack.utoken)
-}
-
-// int64 building_iid = 2;
+// int64 building_iid = 1;
 inline void Build_DelItem_ack::clear_building_iid() {
   building_iid_ = int64_t{0};
 }
@@ -1484,7 +1048,7 @@ inline void Build_DelItem_ack::set_building_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Build_DelItem_ack.building_iid)
 }
 
-// int32 result = 3;
+// int32 result = 2;
 inline void Build_DelItem_ack::clear_result() {
   result_ = 0;
 }

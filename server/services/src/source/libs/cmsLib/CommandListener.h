@@ -12,7 +12,7 @@
 #include <cmsLib/GlobalSettings.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 
-typedef boost::function< void( BasicProtocol*, bool&)>		NETMSG_FUN_MAP;
+typedef boost::function< void(NetProtocol*, bool&)>		NETMSG_FUN_MAP;
 
 #define REGISTERMSG( msgid, msgfun, cpoint)	RegistMessage((int)msgid,boost::bind( msgfun, cpoint, boost::placeholders::_1, boost::placeholders::_2));
 
@@ -20,11 +20,11 @@ class MessageProcess
 {
 public:
 	virtual void    InitNetMessage() = 0;
-	virtual void    NetProcessMessage( BasicProtocol* message, bool& autorelease, int msgid);
+	virtual void    NetProcessMessage(NetProtocol* message, bool& autorelease);
 
 protected:
 
-	virtual void    ProcessMessage(BasicProtocol* message, bool& autorelease, int msgid) = 0;
+	virtual void    ProcessMessage(NetProtocol* message, bool& autorelease) = 0;
 
 	void RegistMessage( int msgid, NETMSG_FUN_MAP fun);
 
@@ -37,16 +37,16 @@ EW_INLINE void MessageProcess::RegistMessage( int msgid, NETMSG_FUN_MAP fun)
 	funs_[msgid] = fun;
 }
 
-EW_INLINE void MessageProcess::NetProcessMessage(BasicProtocol* message, bool& autorelease, int msgid)
+EW_INLINE void MessageProcess::NetProcessMessage(NetProtocol* message, bool& autorelease)
 {
 	if( message == 0)
 		return;
 
-	std::map< int, NETMSG_FUN_MAP>::iterator it = funs_.find( msgid);
+	std::map< int, NETMSG_FUN_MAP>::iterator it = funs_.find( (int)message->get_msg());
 	if( it != funs_.end())
 		it->second( message, autorelease);
 	else
-		ProcessMessage( message, autorelease, msgid);
+		ProcessMessage( message, autorelease);
 }
 
 #endif //__COMMANDLISTENER_H__

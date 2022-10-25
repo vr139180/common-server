@@ -19,8 +19,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
 constexpr GHS_UserInit_req::GHS_UserInit_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , gateiid_(int64_t{0}){}
+  : gateiid_(int64_t{0}){}
 struct GHS_UserInit_reqDefaultTypeInternal {
   constexpr GHS_UserInit_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -32,7 +31,7 @@ struct GHS_UserInit_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GHS_UserInit_reqDefaultTypeInternal _GHS_UserInit_req_default_instance_;
 constexpr GHS_UserLogout_ntf::GHS_UserLogout_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  : roleiid_(int64_t{0}){}
 struct GHS_UserLogout_ntfDefaultTypeInternal {
   constexpr GHS_UserLogout_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -44,7 +43,7 @@ struct GHS_UserLogout_ntfDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GHS_UserLogout_ntfDefaultTypeInternal _GHS_UserLogout_ntf_default_instance_;
 constexpr GHS_RoleDetail_ask::GHS_RoleDetail_ask(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  : roleiid_(int64_t{0}){}
 struct GHS_RoleDetail_askDefaultTypeInternal {
   constexpr GHS_RoleDetail_askDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -60,37 +59,32 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_gatehome_5finternal_2eproto = nullptr;
 
 const uint32_t TableStruct_gatehome_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserInit_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserInit_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserInit_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserInit_req, gateiid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserLogout_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserLogout_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserLogout_ntf, utoken_),
-  0,
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_RoleDetail_ask, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::GHS_UserLogout_ntf, roleiid_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::GHS_RoleDetail_ask, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::GHS_RoleDetail_ask, utoken_),
-  0,
+  PROTOBUF_FIELD_OFFSET(::PRO::GHS_RoleDetail_ask, roleiid_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::PRO::GHS_UserInit_req)},
-  { 10, 17, -1, sizeof(::PRO::GHS_UserLogout_ntf)},
-  { 18, 25, -1, sizeof(::PRO::GHS_RoleDetail_ask)},
+  { 0, -1, -1, sizeof(::PRO::GHS_UserInit_req)},
+  { 7, -1, -1, sizeof(::PRO::GHS_UserLogout_ntf)},
+  { 14, -1, -1, sizeof(::PRO::GHS_RoleDetail_ask)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -100,24 +94,17 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_gatehome_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\027gatehome_internal.proto\022\003PRO\032\025global_i"
-  "nternal.proto\"S\n\020GHS_UserInit_req\022#\n\006uto"
-  "ken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\017\n\007gateii"
-  "d\030\002 \001(\003B\t\n\007_utoken\"D\n\022GHS_UserLogout_ntf"
-  "\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n"
-  "\007_utoken\"D\n\022GHS_RoleDetail_ask\022#\n\006utoken"
-  "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n\007_utokenBT"
-  "\n\033com.cms.client.network.gproP\001Z\025gamelib"
-  "/protobuf/gpro\252\002\033com.cms.client.network."
-  "gprob\006proto3"
+  "\n\027gatehome_internal.proto\022\003PRO\"#\n\020GHS_Us"
+  "erInit_req\022\017\n\007gateiid\030\001 \001(\003\"%\n\022GHS_UserL"
+  "ogout_ntf\022\017\n\007roleiid\030\001 \001(\003\"%\n\022GHS_RoleDe"
+  "tail_ask\022\017\n\007roleiid\030\001 \001(\003BT\n\033com.cms.cli"
+  "ent.network.gproP\001Z\025gamelib/protobuf/gpr"
+  "o\252\002\033com.cms.client.network.gprob\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_gatehome_5finternal_2eproto_deps[1] = {
-  &::descriptor_table_global_5finternal_2eproto,
-};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_gatehome_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_gatehome_5finternal_2eproto = {
-  false, false, 372, descriptor_table_protodef_gatehome_5finternal_2eproto, "gatehome_internal.proto", 
-  &descriptor_table_gatehome_5finternal_2eproto_once, descriptor_table_gatehome_5finternal_2eproto_deps, 1, 3,
+  false, false, 239, descriptor_table_protodef_gatehome_5finternal_2eproto, "gatehome_internal.proto", 
+  &descriptor_table_gatehome_5finternal_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_gatehome_5finternal_2eproto::offsets,
   file_level_metadata_gatehome_5finternal_2eproto, file_level_enum_descriptors_gatehome_5finternal_2eproto, file_level_service_descriptors_gatehome_5finternal_2eproto,
 };
@@ -133,21 +120,8 @@ namespace PRO {
 
 class GHS_UserInit_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<GHS_UserInit_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const GHS_UserInit_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-GHS_UserInit_req::_Internal::utoken(const GHS_UserInit_req* msg) {
-  return *msg->utoken_;
-}
-void GHS_UserInit_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 GHS_UserInit_req::GHS_UserInit_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -158,23 +132,14 @@ GHS_UserInit_req::GHS_UserInit_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.GHS_UserInit_req)
 }
 GHS_UserInit_req::GHS_UserInit_req(const GHS_UserInit_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   gateiid_ = from.gateiid_;
   // @@protoc_insertion_point(copy_constructor:PRO.GHS_UserInit_req)
 }
 
 inline void GHS_UserInit_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&gateiid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(gateiid_));
+gateiid_ = int64_t{0};
 }
 
 GHS_UserInit_req::~GHS_UserInit_req() {
@@ -186,7 +151,6 @@ GHS_UserInit_req::~GHS_UserInit_req() {
 
 inline void GHS_UserInit_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void GHS_UserInit_req::ArenaDtor(void* object) {
@@ -205,34 +169,19 @@ void GHS_UserInit_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   gateiid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* GHS_UserInit_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 gateiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 gateiid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           gateiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -254,7 +203,6 @@ const char* GHS_UserInit_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -268,18 +216,10 @@ uint8_t* GHS_UserInit_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 gateiid = 2;
+  // int64 gateiid = 1;
   if (this->_internal_gateiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_gateiid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_gateiid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -298,15 +238,7 @@ size_t GHS_UserInit_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 gateiid = 2;
+  // int64 gateiid = 1;
   if (this->_internal_gateiid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_gateiid());
   }
@@ -333,9 +265,6 @@ void GHS_UserInit_req::MergeFrom(const GHS_UserInit_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_gateiid() != 0) {
     _internal_set_gateiid(from._internal_gateiid());
   }
@@ -356,13 +285,7 @@ bool GHS_UserInit_req::IsInitialized() const {
 void GHS_UserInit_req::InternalSwap(GHS_UserInit_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(GHS_UserInit_req, gateiid_)
-      + sizeof(GHS_UserInit_req::gateiid_)
-      - PROTOBUF_FIELD_OFFSET(GHS_UserInit_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(gateiid_, other->gateiid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GHS_UserInit_req::GetMetadata() const {
@@ -375,21 +298,8 @@ void GHS_UserInit_req::InternalSwap(GHS_UserInit_req* other) {
 
 class GHS_UserLogout_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<GHS_UserLogout_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const GHS_UserLogout_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-GHS_UserLogout_ntf::_Internal::utoken(const GHS_UserLogout_ntf* msg) {
-  return *msg->utoken_;
-}
-void GHS_UserLogout_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 GHS_UserLogout_ntf::GHS_UserLogout_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -400,19 +310,14 @@ GHS_UserLogout_ntf::GHS_UserLogout_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.GHS_UserLogout_ntf)
 }
 GHS_UserLogout_ntf::GHS_UserLogout_ntf(const GHS_UserLogout_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
+  roleiid_ = from.roleiid_;
   // @@protoc_insertion_point(copy_constructor:PRO.GHS_UserLogout_ntf)
 }
 
 inline void GHS_UserLogout_ntf::SharedCtor() {
-utoken_ = nullptr;
+roleiid_ = int64_t{0};
 }
 
 GHS_UserLogout_ntf::~GHS_UserLogout_ntf() {
@@ -424,7 +329,6 @@ GHS_UserLogout_ntf::~GHS_UserLogout_ntf() {
 
 inline void GHS_UserLogout_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void GHS_UserLogout_ntf::ArenaDtor(void* object) {
@@ -443,26 +347,20 @@ void GHS_UserLogout_ntf::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
+  roleiid_ = int64_t{0};
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* GHS_UserLogout_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 roleiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          roleiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -483,7 +381,6 @@ const char* GHS_UserLogout_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -497,12 +394,10 @@ uint8_t* GHS_UserLogout_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_roleiid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -521,12 +416,9 @@ size_t GHS_UserLogout_ntf::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_roleiid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -551,8 +443,8 @@ void GHS_UserLogout_ntf::MergeFrom(const GHS_UserLogout_ntf& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  if (from._internal_roleiid() != 0) {
+    _internal_set_roleiid(from._internal_roleiid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -571,8 +463,7 @@ bool GHS_UserLogout_ntf::IsInitialized() const {
 void GHS_UserLogout_ntf::InternalSwap(GHS_UserLogout_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
+  swap(roleiid_, other->roleiid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GHS_UserLogout_ntf::GetMetadata() const {
@@ -585,21 +476,8 @@ void GHS_UserLogout_ntf::InternalSwap(GHS_UserLogout_ntf* other) {
 
 class GHS_RoleDetail_ask::_Internal {
  public:
-  using HasBits = decltype(std::declval<GHS_RoleDetail_ask>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const GHS_RoleDetail_ask* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-GHS_RoleDetail_ask::_Internal::utoken(const GHS_RoleDetail_ask* msg) {
-  return *msg->utoken_;
-}
-void GHS_RoleDetail_ask::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 GHS_RoleDetail_ask::GHS_RoleDetail_ask(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -610,19 +488,14 @@ GHS_RoleDetail_ask::GHS_RoleDetail_ask(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.GHS_RoleDetail_ask)
 }
 GHS_RoleDetail_ask::GHS_RoleDetail_ask(const GHS_RoleDetail_ask& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
+  roleiid_ = from.roleiid_;
   // @@protoc_insertion_point(copy_constructor:PRO.GHS_RoleDetail_ask)
 }
 
 inline void GHS_RoleDetail_ask::SharedCtor() {
-utoken_ = nullptr;
+roleiid_ = int64_t{0};
 }
 
 GHS_RoleDetail_ask::~GHS_RoleDetail_ask() {
@@ -634,7 +507,6 @@ GHS_RoleDetail_ask::~GHS_RoleDetail_ask() {
 
 inline void GHS_RoleDetail_ask::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void GHS_RoleDetail_ask::ArenaDtor(void* object) {
@@ -653,26 +525,20 @@ void GHS_RoleDetail_ask::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
+  roleiid_ = int64_t{0};
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* GHS_RoleDetail_ask::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 roleiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          roleiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -693,7 +559,6 @@ const char* GHS_RoleDetail_ask::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -707,12 +572,10 @@ uint8_t* GHS_RoleDetail_ask::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_roleiid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -731,12 +594,9 @@ size_t GHS_RoleDetail_ask::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_roleiid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -761,8 +621,8 @@ void GHS_RoleDetail_ask::MergeFrom(const GHS_RoleDetail_ask& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
+  if (from._internal_roleiid() != 0) {
+    _internal_set_roleiid(from._internal_roleiid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -781,8 +641,7 @@ bool GHS_RoleDetail_ask::IsInitialized() const {
 void GHS_RoleDetail_ask::InternalSwap(GHS_RoleDetail_ask* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
+  swap(roleiid_, other->roleiid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GHS_RoleDetail_ask::GetMetadata() const {

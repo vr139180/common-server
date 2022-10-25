@@ -8,26 +8,11 @@ public interface Frd_InviteConfirm_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *invite的编号
    * </pre>
    *
-   * <code>int64 iid = 2;</code>
+   * <code>int64 iid = 1;</code>
    * @return The iid.
    */
   long getIid();
@@ -37,7 +22,7 @@ public interface Frd_InviteConfirm_reqOrBuilder extends
    *true 同意 false 拒绝
    * </pre>
    *
-   * <code>bool agree = 3;</code>
+   * <code>bool agree = 2;</code>
    * @return The agree.
    */
   boolean getAgree();

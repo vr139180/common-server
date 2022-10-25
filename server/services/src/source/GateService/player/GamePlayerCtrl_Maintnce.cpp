@@ -22,7 +22,6 @@ void GamePlayerCtrl::on_mth_gateslot_sync(void*)
 	++slot_sequence_;
 	ntf->set_syncsequence(slot_sequence_);
 	ntf->set_gateiid(EurekaClusterClient::instance().get_myiid());
-	ntf->set_homeiid(svrApp.get_homeholder()->get_iid());
 	
 	{
 		ThreadLockWrapper tl(lock_);
@@ -30,14 +29,11 @@ void GamePlayerCtrl::on_mth_gateslot_sync(void*)
 		ntf->set_freeslots(free_slot_num_);
 	}
 
-	svrApp.send_to_homeservice(ntf);
+	//svrApp.send_to_homeservice(ntf);
 }
 
 void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish)
 {
-	if (svrApp.is_bindhome() == false)
-		return;
-
 	bool bsync = false;
 	{
 		ThreadLockWrapper tl(lock_);
@@ -47,7 +43,7 @@ void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, 
 			GamePlayer *p = (*iter);
 
 			//15s µÇÂ½³¬Ê±
-			if ((p->get_proxystamp() + 15 * 1000) > tnow)
+			if ((p->get_starttime() + 15 * 1000) > tnow)
 				break;
 
 			iter = wait_auth_slots_queue_.erase(iter);

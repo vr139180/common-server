@@ -8,40 +8,25 @@ public interface Chat_UserChannels_activeOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>repeated .PRO.ChatChannelInfo channels = 2;</code>
+   * <code>repeated .PRO.ChatChannelInfo channels = 1;</code>
    */
   java.util.List<com.cms.client.network.gpro.ChatChannelInfo> 
       getChannelsList();
   /**
-   * <code>repeated .PRO.ChatChannelInfo channels = 2;</code>
+   * <code>repeated .PRO.ChatChannelInfo channels = 1;</code>
    */
   com.cms.client.network.gpro.ChatChannelInfo getChannels(int index);
   /**
-   * <code>repeated .PRO.ChatChannelInfo channels = 2;</code>
+   * <code>repeated .PRO.ChatChannelInfo channels = 1;</code>
    */
   int getChannelsCount();
   /**
-   * <code>repeated .PRO.ChatChannelInfo channels = 2;</code>
+   * <code>repeated .PRO.ChatChannelInfo channels = 1;</code>
    */
   java.util.List<? extends com.cms.client.network.gpro.ChatChannelInfoOrBuilder> 
       getChannelsOrBuilderList();
   /**
-   * <code>repeated .PRO.ChatChannelInfo channels = 2;</code>
+   * <code>repeated .PRO.ChatChannelInfo channels = 1;</code>
    */
   com.cms.client.network.gpro.ChatChannelInfoOrBuilder getChannelsOrBuilder(
       int index);

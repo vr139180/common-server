@@ -3,7 +3,7 @@
 
 #include <string>
 #include <boost/json.hpp>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 
 class JSONUtil
 {

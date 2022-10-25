@@ -43,26 +43,19 @@ public final class UserPet {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016user_pet.proto\022\003PRO\032\025global_internal.p" +
-      "roto\032\021db_internal.proto\"S\n\020Pet_AdoptOne_" +
-      "req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001" +
-      "\022\017\n\007pet_iid\030\002 \001(\003B\t\n\007_utoken\"\200\001\n\020Pet_Ado" +
-      "ptOne_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToke" +
-      "nH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022$\n\003pet\030\003 \001(\0132\022.PR" +
-      "O.DBUserPetItemH\001\210\001\001B\t\n\007_utokenB\006\n\004_pet\"" +
-      "W\n\022Pet_ReleaseOne_req\022#\n\006utoken\030\001 \001(\0132\016." +
-      "PRO.UserTokenH\000\210\001\001\022\021\n\tmypet_iid\030\002 \001(\003B\t\n" +
-      "\007_utoken\"g\n\022Pet_ReleaseOne_ack\022#\n\006utoken" +
-      "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\021\n\tmypet_iid" +
-      "\030\002 \001(\003\022\016\n\006result\030\003 \001(\005B\t\n\007_utokenBT\n\033com" +
-      ".cms.client.network.gproP\001Z\025gamelib/prot" +
-      "obuf/gpro\252\002\033com.cms.client.network.gprob" +
-      "\006proto3"
+      "\n\016user_pet.proto\022\003PRO\032\021db_internal.proto" +
+      "\"#\n\020Pet_AdoptOne_req\022\017\n\007pet_iid\030\001 \001(\003\"P\n" +
+      "\020Pet_AdoptOne_ack\022\016\n\006result\030\001 \001(\005\022$\n\003pet" +
+      "\030\002 \001(\0132\022.PRO.DBUserPetItemH\000\210\001\001B\006\n\004_pet\"" +
+      "\'\n\022Pet_ReleaseOne_req\022\021\n\tmypet_iid\030\001 \001(\003" +
+      "\"7\n\022Pet_ReleaseOne_ack\022\021\n\tmypet_iid\030\001 \001(" +
+      "\003\022\016\n\006result\030\002 \001(\005BT\n\033com.cms.client.netw" +
+      "ork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com." +
+      "cms.client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.cms.client.network.gpro.GlobalInternal.getDescriptor(),
           com.cms.client.network.gpro.DbInternal.getDescriptor(),
         });
     internal_static_PRO_Pet_AdoptOne_req_descriptor =
@@ -70,26 +63,25 @@ public final class UserPet {
     internal_static_PRO_Pet_AdoptOne_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Pet_AdoptOne_req_descriptor,
-        new java.lang.String[] { "Utoken", "PetIid", "Utoken", });
+        new java.lang.String[] { "PetIid", });
     internal_static_PRO_Pet_AdoptOne_ack_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_Pet_AdoptOne_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Pet_AdoptOne_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Result", "Pet", "Utoken", "Pet", });
+        new java.lang.String[] { "Result", "Pet", "Pet", });
     internal_static_PRO_Pet_ReleaseOne_req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_Pet_ReleaseOne_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Pet_ReleaseOne_req_descriptor,
-        new java.lang.String[] { "Utoken", "MypetIid", "Utoken", });
+        new java.lang.String[] { "MypetIid", });
     internal_static_PRO_Pet_ReleaseOne_ack_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_Pet_ReleaseOne_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Pet_ReleaseOne_ack_descriptor,
-        new java.lang.String[] { "Utoken", "MypetIid", "Result", "Utoken", });
-    com.cms.client.network.gpro.GlobalInternal.getDescriptor();
+        new java.lang.String[] { "MypetIid", "Result", });
     com.cms.client.network.gpro.DbInternal.getDescriptor();
   }
 

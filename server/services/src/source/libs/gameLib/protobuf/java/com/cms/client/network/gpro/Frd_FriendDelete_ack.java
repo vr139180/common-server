@@ -38,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -49,25 +48,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 16: {
+          case 8: {
 
             friendiid_ = input.readInt64();
             break;
           }
-          case 24: {
+          case 16: {
 
             result_ = input.readInt32();
             break;
@@ -104,41 +90,14 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Frd_FriendDelete_ack.class, com.cms.client.network.gpro.Frd_FriendDelete_ack.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int FRIENDIID_FIELD_NUMBER = 2;
+  public static final int FRIENDIID_FIELD_NUMBER = 1;
   private long friendiid_;
   /**
    * <pre>
    *好友
    * </pre>
    *
-   * <code>int64 friendiid = 2;</code>
+   * <code>int64 friendiid = 1;</code>
    * @return The friendiid.
    */
   @java.lang.Override
@@ -146,14 +105,14 @@ private static final long serialVersionUID = 0L;
     return friendiid_;
   }
 
-  public static final int RESULT_FIELD_NUMBER = 3;
+  public static final int RESULT_FIELD_NUMBER = 2;
   private int result_;
   /**
    * <pre>
    *0 success 1 system err 2: friend not exist
    * </pre>
    *
-   * <code>int32 result = 3;</code>
+   * <code>int32 result = 2;</code>
    * @return The result.
    */
   @java.lang.Override
@@ -175,14 +134,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (friendiid_ != 0L) {
-      output.writeInt64(2, friendiid_);
+      output.writeInt64(1, friendiid_);
     }
     if (result_ != 0) {
-      output.writeInt32(3, result_);
+      output.writeInt32(2, result_);
     }
     unknownFields.writeTo(output);
   }
@@ -193,17 +149,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (friendiid_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, friendiid_);
+        .computeInt64Size(1, friendiid_);
     }
     if (result_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, result_);
+        .computeInt32Size(2, result_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -220,11 +172,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Frd_FriendDelete_ack other = (com.cms.client.network.gpro.Frd_FriendDelete_ack) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (getFriendiid()
         != other.getFriendiid()) return false;
     if (getResult()
@@ -240,10 +187,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     hash = (37 * hash) + FRIENDIID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getFriendiid());
@@ -377,18 +320,11 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       friendiid_ = 0L;
 
       result_ = 0;
@@ -419,19 +355,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Frd_FriendDelete_ack buildPartial() {
       com.cms.client.network.gpro.Frd_FriendDelete_ack result = new com.cms.client.network.gpro.Frd_FriendDelete_ack(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       result.friendiid_ = friendiid_;
       result.result_ = result_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -480,9 +405,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Frd_FriendDelete_ack other) {
       if (other == com.cms.client.network.gpro.Frd_FriendDelete_ack.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.getFriendiid() != 0L) {
         setFriendiid(other.getFriendiid());
       }
@@ -517,127 +439,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
-
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
 
     private long friendiid_ ;
     /**
@@ -645,7 +446,7 @@ private static final long serialVersionUID = 0L;
      *好友
      * </pre>
      *
-     * <code>int64 friendiid = 2;</code>
+     * <code>int64 friendiid = 1;</code>
      * @return The friendiid.
      */
     @java.lang.Override
@@ -657,7 +458,7 @@ private static final long serialVersionUID = 0L;
      *好友
      * </pre>
      *
-     * <code>int64 friendiid = 2;</code>
+     * <code>int64 friendiid = 1;</code>
      * @param value The friendiid to set.
      * @return This builder for chaining.
      */
@@ -672,7 +473,7 @@ private static final long serialVersionUID = 0L;
      *好友
      * </pre>
      *
-     * <code>int64 friendiid = 2;</code>
+     * <code>int64 friendiid = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearFriendiid() {
@@ -688,7 +489,7 @@ private static final long serialVersionUID = 0L;
      *0 success 1 system err 2: friend not exist
      * </pre>
      *
-     * <code>int32 result = 3;</code>
+     * <code>int32 result = 2;</code>
      * @return The result.
      */
     @java.lang.Override
@@ -700,7 +501,7 @@ private static final long serialVersionUID = 0L;
      *0 success 1 system err 2: friend not exist
      * </pre>
      *
-     * <code>int32 result = 3;</code>
+     * <code>int32 result = 2;</code>
      * @param value The result to set.
      * @return This builder for chaining.
      */
@@ -715,7 +516,7 @@ private static final long serialVersionUID = 0L;
      *0 success 1 system err 2: friend not exist
      * </pre>
      *
-     * <code>int32 result = 3;</code>
+     * <code>int32 result = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearResult() {

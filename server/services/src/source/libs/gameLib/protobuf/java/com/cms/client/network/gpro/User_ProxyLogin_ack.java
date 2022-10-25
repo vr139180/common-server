@@ -38,6 +38,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -51,6 +52,16 @@ private static final long serialVersionUID = 0L;
           case 8: {
 
             result_ = input.readInt32();
+            break;
+          }
+          case 16: {
+            bitField0_ |= 0x00000001;
+            userIid_ = input.readInt64();
+            break;
+          }
+          case 24: {
+            bitField0_ |= 0x00000002;
+            proxytoken_ = input.readInt64();
             break;
           }
           default: {
@@ -85,6 +96,7 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.User_ProxyLogin_ack.class, com.cms.client.network.gpro.User_ProxyLogin_ack.Builder.class);
   }
 
+  private int bitField0_;
   public static final int RESULT_FIELD_NUMBER = 1;
   private int result_;
   /**
@@ -98,6 +110,60 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getResult() {
     return result_;
+  }
+
+  public static final int USER_IID_FIELD_NUMBER = 2;
+  private long userIid_;
+  /**
+   * <pre>
+   *用户iid
+   * </pre>
+   *
+   * <code>optional int64 user_iid = 2;</code>
+   * @return Whether the userIid field is set.
+   */
+  @java.lang.Override
+  public boolean hasUserIid() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <pre>
+   *用户iid
+   * </pre>
+   *
+   * <code>optional int64 user_iid = 2;</code>
+   * @return The userIid.
+   */
+  @java.lang.Override
+  public long getUserIid() {
+    return userIid_;
+  }
+
+  public static final int PROXYTOKEN_FIELD_NUMBER = 3;
+  private long proxytoken_;
+  /**
+   * <pre>
+   *proxytoken
+   * </pre>
+   *
+   * <code>optional int64 proxytoken = 3;</code>
+   * @return Whether the proxytoken field is set.
+   */
+  @java.lang.Override
+  public boolean hasProxytoken() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <pre>
+   *proxytoken
+   * </pre>
+   *
+   * <code>optional int64 proxytoken = 3;</code>
+   * @return The proxytoken.
+   */
+  @java.lang.Override
+  public long getProxytoken() {
+    return proxytoken_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -117,6 +183,12 @@ private static final long serialVersionUID = 0L;
     if (result_ != 0) {
       output.writeInt32(1, result_);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeInt64(2, userIid_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeInt64(3, proxytoken_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -129,6 +201,14 @@ private static final long serialVersionUID = 0L;
     if (result_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, result_);
+    }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(2, userIid_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(3, proxytoken_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -147,6 +227,16 @@ private static final long serialVersionUID = 0L;
 
     if (getResult()
         != other.getResult()) return false;
+    if (hasUserIid() != other.hasUserIid()) return false;
+    if (hasUserIid()) {
+      if (getUserIid()
+          != other.getUserIid()) return false;
+    }
+    if (hasProxytoken() != other.hasProxytoken()) return false;
+    if (hasProxytoken()) {
+      if (getProxytoken()
+          != other.getProxytoken()) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -160,6 +250,16 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + RESULT_FIELD_NUMBER;
     hash = (53 * hash) + getResult();
+    if (hasUserIid()) {
+      hash = (37 * hash) + USER_IID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserIid());
+    }
+    if (hasProxytoken()) {
+      hash = (37 * hash) + PROXYTOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getProxytoken());
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -295,6 +395,10 @@ private static final long serialVersionUID = 0L;
       super.clear();
       result_ = 0;
 
+      userIid_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      proxytoken_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -321,7 +425,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.User_ProxyLogin_ack buildPartial() {
       com.cms.client.network.gpro.User_ProxyLogin_ack result = new com.cms.client.network.gpro.User_ProxyLogin_ack(this);
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.result_ = result_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.userIid_ = userIid_;
+        to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.proxytoken_ = proxytoken_;
+        to_bitField0_ |= 0x00000002;
+      }
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -373,6 +488,12 @@ private static final long serialVersionUID = 0L;
       if (other.getResult() != 0) {
         setResult(other.getResult());
       }
+      if (other.hasUserIid()) {
+        setUserIid(other.getUserIid());
+      }
+      if (other.hasProxytoken()) {
+        setProxytoken(other.getProxytoken());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -401,6 +522,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private int result_ ;
     /**
@@ -441,6 +563,116 @@ private static final long serialVersionUID = 0L;
     public Builder clearResult() {
       
       result_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long userIid_ ;
+    /**
+     * <pre>
+     *用户iid
+     * </pre>
+     *
+     * <code>optional int64 user_iid = 2;</code>
+     * @return Whether the userIid field is set.
+     */
+    @java.lang.Override
+    public boolean hasUserIid() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     *用户iid
+     * </pre>
+     *
+     * <code>optional int64 user_iid = 2;</code>
+     * @return The userIid.
+     */
+    @java.lang.Override
+    public long getUserIid() {
+      return userIid_;
+    }
+    /**
+     * <pre>
+     *用户iid
+     * </pre>
+     *
+     * <code>optional int64 user_iid = 2;</code>
+     * @param value The userIid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserIid(long value) {
+      bitField0_ |= 0x00000001;
+      userIid_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *用户iid
+     * </pre>
+     *
+     * <code>optional int64 user_iid = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUserIid() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      userIid_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long proxytoken_ ;
+    /**
+     * <pre>
+     *proxytoken
+     * </pre>
+     *
+     * <code>optional int64 proxytoken = 3;</code>
+     * @return Whether the proxytoken field is set.
+     */
+    @java.lang.Override
+    public boolean hasProxytoken() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     *proxytoken
+     * </pre>
+     *
+     * <code>optional int64 proxytoken = 3;</code>
+     * @return The proxytoken.
+     */
+    @java.lang.Override
+    public long getProxytoken() {
+      return proxytoken_;
+    }
+    /**
+     * <pre>
+     *proxytoken
+     * </pre>
+     *
+     * <code>optional int64 proxytoken = 3;</code>
+     * @param value The proxytoken to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProxytoken(long value) {
+      bitField0_ |= 0x00000002;
+      proxytoken_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *proxytoken
+     * </pre>
+     *
+     * <code>optional int64 proxytoken = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearProxytoken() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      proxytoken_ = 0L;
       onChanged();
       return this;
     }

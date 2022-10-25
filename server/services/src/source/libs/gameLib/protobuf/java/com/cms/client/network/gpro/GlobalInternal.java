@@ -15,11 +15,6 @@ public final class GlobalInternal {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_UserToken_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_UserToken_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PRO_MailSystemItem_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -63,81 +58,73 @@ public final class GlobalInternal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\025global_internal.proto\022\003PRO\".\n\tUserToke" +
-      "n\022\016\n\006giduid\030\001 \001(\003\022\021\n\tslottoken\030\002 \001(\003\"\216\001\n" +
-      "\016MailSystemItem\022\013\n\003iid\030\001 \001(\003\022\022\n\nsender_i" +
-      "id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\022\020\n\010contents\030\004 \001(" +
-      "\t\022\022\n\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001(" +
-      "\t\022\022\n\ncreatetime\030\007 \001(\005\"5\n\017MailSystemItems" +
-      "\022\"\n\005mails\030\001 \003(\0132\023.PRO.MailSystemItem\"\305\001\n" +
-      "\016MailNormalItem\022\013\n\003iid\030\001 \001(\003\022\r\n\005stype\030\002 " +
-      "\001(\005\022\022\n\nsender_iid\030\003 \001(\003\022\024\n\014receiver_iid\030" +
-      "\004 \001(\003\022\022\n\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030" +
-      "\006 \001(\t\022\r\n\005title\030\007 \001(\t\022\020\n\010contents\030\010 \001(\t\022\022" +
-      "\n\ncreatetime\030\t \001(\005\022\020\n\010readtime\030\n \001(\005\"5\n\017" +
-      "MailNormalItems\022\"\n\005mails\030\001 \003(\0132\023.PRO.Mai" +
-      "lNormalItem\"W\n\020FriendInviteItem\022\013\n\003iid\030\001" +
-      " \001(\003\022\020\n\010from_iid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t" +
-      "\022\022\n\ninvitetime\030\004 \001(\005\"R\n\016FriendRelation\022\013" +
-      "\n\003iid\030\001 \001(\003\022\021\n\tfriendiid\030\002 \001(\003\022\020\n\010nickna" +
-      "me\030\003 \001(\t\022\016\n\006online\030\004 \001(\010\"/\n\016FriendUserIn" +
-      "fo\022\035\n\005token\030\001 \001(\0132\016.PRO.UserTokenBT\n\033com" +
-      ".cms.client.network.gproP\001Z\025gamelib/prot" +
-      "obuf/gpro\252\002\033com.cms.client.network.gprob" +
-      "\006proto3"
+      "\n\025global_internal.proto\022\003PRO\"\216\001\n\016MailSys" +
+      "temItem\022\013\n\003iid\030\001 \001(\003\022\022\n\nsender_iid\030\002 \001(\003" +
+      "\022\r\n\005title\030\003 \001(\t\022\020\n\010contents\030\004 \001(\t\022\022\n\natt" +
+      "achment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001(\t\022\022\n\ncre" +
+      "atetime\030\007 \001(\005\"5\n\017MailSystemItems\022\"\n\005mail" +
+      "s\030\001 \003(\0132\023.PRO.MailSystemItem\"\305\001\n\016MailNor" +
+      "malItem\022\013\n\003iid\030\001 \001(\003\022\r\n\005stype\030\002 \001(\005\022\022\n\ns" +
+      "ender_iid\030\003 \001(\003\022\024\n\014receiver_iid\030\004 \001(\003\022\022\n" +
+      "\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001(\t\022\r\n" +
+      "\005title\030\007 \001(\t\022\020\n\010contents\030\010 \001(\t\022\022\n\ncreate" +
+      "time\030\t \001(\005\022\020\n\010readtime\030\n \001(\005\"5\n\017MailNorm" +
+      "alItems\022\"\n\005mails\030\001 \003(\0132\023.PRO.MailNormalI" +
+      "tem\"W\n\020FriendInviteItem\022\013\n\003iid\030\001 \001(\003\022\020\n\010" +
+      "from_iid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t\022\022\n\ninvi" +
+      "tetime\030\004 \001(\005\"R\n\016FriendRelation\022\013\n\003iid\030\001 " +
+      "\001(\003\022\021\n\tfriendiid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t" +
+      "\022\016\n\006online\030\004 \001(\010\"!\n\016FriendUserInfo\022\017\n\007ro" +
+      "leiid\030\001 \001(\003BT\n\033com.cms.client.network.gp" +
+      "roP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.cl" +
+      "ient.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_PRO_UserToken_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_PRO_UserToken_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_UserToken_descriptor,
-        new java.lang.String[] { "Giduid", "Slottoken", });
     internal_static_PRO_MailSystemItem_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_PRO_MailSystemItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MailSystemItem_descriptor,
         new java.lang.String[] { "Iid", "SenderIid", "Title", "Contents", "Attachment", "Attachinfo", "Createtime", });
     internal_static_PRO_MailSystemItems_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_MailSystemItems_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MailSystemItems_descriptor,
         new java.lang.String[] { "Mails", });
     internal_static_PRO_MailNormalItem_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_MailNormalItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MailNormalItem_descriptor,
         new java.lang.String[] { "Iid", "Stype", "SenderIid", "ReceiverIid", "Attachment", "Attachinfo", "Title", "Contents", "Createtime", "Readtime", });
     internal_static_PRO_MailNormalItems_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_MailNormalItems_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MailNormalItems_descriptor,
         new java.lang.String[] { "Mails", });
     internal_static_PRO_FriendInviteItem_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_PRO_FriendInviteItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_FriendInviteItem_descriptor,
         new java.lang.String[] { "Iid", "FromIid", "Nickname", "Invitetime", });
     internal_static_PRO_FriendRelation_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_PRO_FriendRelation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_FriendRelation_descriptor,
         new java.lang.String[] { "Iid", "Friendiid", "Nickname", "Online", });
     internal_static_PRO_FriendUserInfo_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_PRO_FriendUserInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_FriendUserInfo_descriptor,
-        new java.lang.String[] { "Token", });
+        new java.lang.String[] { "Roleiid", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

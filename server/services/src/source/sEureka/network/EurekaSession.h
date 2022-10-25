@@ -23,8 +23,6 @@ public:
 
 	void set_netlinkbase(NetLinkFromBase<EurekaSession>* p) { parent_ = p; }
 
-	void send_protocol(BasicProtocol* pro);
-
 	void reset();
 	void force_close();
 
@@ -39,14 +37,18 @@ public:
 			session_->heart_beat();
 	}
 
+	void send_protocol(NetProtocol* pro) { session_->send_protocol(pro); }
+
+	void send_to_service(const SProtocolHead& head, BasicProtocol* msg);
+
 public:
 	//---------------implement NetSessionBindEvent---------------
 	virtual void on_cant_connectedto() {}
 	virtual void on_connectedto_done() {}
 
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
-	virtual BasicProtocol* get_livekeep_msg();
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
+	virtual NetProtocol* get_livekeep_msg();
 
 protected:
 	SessionState					state_;

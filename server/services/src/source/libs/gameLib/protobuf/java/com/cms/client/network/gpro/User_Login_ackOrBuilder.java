@@ -95,40 +95,29 @@ public interface User_Login_ackOrBuilder extends
   long getProxytoken();
 
   /**
-   * <code>optional int32 slot = 11;</code>
-   * @return Whether the slot field is set.
-   */
-  boolean hasSlot();
-  /**
-   * <code>optional int32 slot = 11;</code>
-   * @return The slot.
-   */
-  int getSlot();
-
-  /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return Whether the proxyip field is set.
    */
   boolean hasProxyip();
   /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return The proxyip.
    */
   java.lang.String getProxyip();
   /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return The bytes for proxyip.
    */
   com.google.protobuf.ByteString
       getProxyipBytes();
 
   /**
-   * <code>optional int32 proxyport = 13;</code>
+   * <code>optional int32 proxyport = 12;</code>
    * @return Whether the proxyport field is set.
    */
   boolean hasProxyport();
   /**
-   * <code>optional int32 proxyport = 13;</code>
+   * <code>optional int32 proxyport = 12;</code>
    * @return The proxyport.
    */
   int getProxyport();

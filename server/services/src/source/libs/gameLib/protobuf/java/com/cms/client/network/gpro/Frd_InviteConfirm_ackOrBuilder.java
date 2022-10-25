@@ -8,26 +8,11 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *invite的编号
    * </pre>
    *
-   * <code>int64 iid = 2;</code>
+   * <code>int64 iid = 1;</code>
    * @return The iid.
    */
   long getIid();
@@ -37,7 +22,7 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
    *true 同意 false 拒绝
    * </pre>
    *
-   * <code>bool agree = 3;</code>
+   * <code>bool agree = 2;</code>
    * @return The agree.
    */
   boolean getAgree();
@@ -47,7 +32,7 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
    *0 ok 1 system error 2 invite no exist
    * </pre>
    *
-   * <code>int32 result = 4;</code>
+   * <code>int32 result = 3;</code>
    * @return The result.
    */
   int getResult();
@@ -57,7 +42,7 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
    *成功 并且同意 返回好友关系
    * </pre>
    *
-   * <code>optional .PRO.FriendRelation friend = 5;</code>
+   * <code>optional .PRO.FriendRelation friend = 4;</code>
    * @return Whether the friend field is set.
    */
   boolean hasFriend();
@@ -66,7 +51,7 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
    *成功 并且同意 返回好友关系
    * </pre>
    *
-   * <code>optional .PRO.FriendRelation friend = 5;</code>
+   * <code>optional .PRO.FriendRelation friend = 4;</code>
    * @return The friend.
    */
   com.cms.client.network.gpro.FriendRelation getFriend();
@@ -75,7 +60,7 @@ public interface Frd_InviteConfirm_ackOrBuilder extends
    *成功 并且同意 返回好友关系
    * </pre>
    *
-   * <code>optional .PRO.FriendRelation friend = 5;</code>
+   * <code>optional .PRO.FriendRelation friend = 4;</code>
    */
   com.cms.client.network.gpro.FriendRelationOrBuilder getFriendOrBuilder();
 }

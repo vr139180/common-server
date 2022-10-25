@@ -8,32 +8,17 @@ public interface Task_WaitList_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @return A list containing the taskIids.
    */
   java.util.List<java.lang.Integer> getTaskIidsList();
   /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @return The count of taskIids.
    */
   int getTaskIidsCount();
   /**
-   * <code>repeated int32 task_iids = 2;</code>
+   * <code>repeated int32 task_iids = 1;</code>
    * @param index The index of the element to return.
    * @return The taskIids at the given index.
    */

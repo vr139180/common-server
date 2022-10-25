@@ -21,7 +21,6 @@ constexpr Build_AddItem_req::Build_AddItem_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : look_at_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , building_pos_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , utoken_(nullptr)
   , parent_building_(int64_t{0})
   , building_resid_(int64_t{0}){}
 struct Build_AddItem_reqDefaultTypeInternal {
@@ -35,8 +34,7 @@ struct Build_AddItem_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Build_AddItem_reqDefaultTypeInternal _Build_AddItem_req_default_instance_;
 constexpr Build_AddItem_ack::Build_AddItem_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , item_(nullptr)
+  : item_(nullptr)
   , result_(0){}
 struct Build_AddItem_ackDefaultTypeInternal {
   constexpr Build_AddItem_ackDefaultTypeInternal()
@@ -49,8 +47,7 @@ struct Build_AddItem_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Build_AddItem_ackDefaultTypeInternal _Build_AddItem_ack_default_instance_;
 constexpr Build_DelItem_req::Build_DelItem_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , building_iid_(int64_t{0}){}
+  : building_iid_(int64_t{0}){}
 struct Build_DelItem_reqDefaultTypeInternal {
   constexpr Build_DelItem_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -62,8 +59,7 @@ struct Build_DelItem_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Build_DelItem_reqDefaultTypeInternal _Build_DelItem_req_default_instance_;
 constexpr Build_DelItem_ack::Build_DelItem_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , building_iid_(int64_t{0})
+  : building_iid_(int64_t{0})
   , result_(0){}
 struct Build_DelItem_ackDefaultTypeInternal {
   constexpr Build_DelItem_ackDefaultTypeInternal()
@@ -80,62 +76,47 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_user_5fbuilding_2eproto = nullptr;
 
 const uint32_t TableStruct_user_5fbuilding_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, parent_building_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, building_resid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, look_at_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_req, building_pos_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_AddItem_ack, item_),
-  0,
   ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_req, _has_bits_),
+  0,
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_req, building_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_ack, building_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Build_DelItem_ack, result_),
-  0,
-  ~0u,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 11, -1, sizeof(::PRO::Build_AddItem_req)},
-  { 16, 25, -1, sizeof(::PRO::Build_AddItem_ack)},
-  { 28, 36, -1, sizeof(::PRO::Build_DelItem_req)},
-  { 38, 47, -1, sizeof(::PRO::Build_DelItem_ack)},
+  { 0, -1, -1, sizeof(::PRO::Build_AddItem_req)},
+  { 10, 18, -1, sizeof(::PRO::Build_AddItem_ack)},
+  { 20, -1, -1, sizeof(::PRO::Build_DelItem_req)},
+  { 27, -1, -1, sizeof(::PRO::Build_DelItem_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -146,32 +127,26 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_user_5fbuilding_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\023user_building.proto\022\003PRO\032\025global_inter"
-  "nal.proto\032\021db_internal.proto\"\233\001\n\021Build_A"
-  "ddItem_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTok"
-  "enH\000\210\001\001\022\027\n\017parent_building\030\002 \001(\003\022\026\n\016buil"
-  "ding_resid\030\003 \001(\003\022\017\n\007look_at\030\004 \001(\t\022\024\n\014bui"
-  "lding_pos\030\005 \001(\tB\t\n\007_utoken\"\215\001\n\021Build_Add"
-  "Item_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToken"
-  "H\000\210\001\001\022\016\n\006result\030\002 \001(\005\022/\n\004item\030\003 \001(\0132\034.PR"
-  "O.DBUserHomeStructureItemH\001\210\001\001B\t\n\007_utoke"
-  "nB\007\n\005_item\"Y\n\021Build_DelItem_req\022#\n\006utoke"
-  "n\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\024\n\014building"
-  "_iid\030\002 \001(\003B\t\n\007_utoken\"i\n\021Build_DelItem_a"
-  "ck\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022"
-  "\024\n\014building_iid\030\002 \001(\003\022\016\n\006result\030\003 \001(\005B\t\n"
-  "\007_utokenBT\n\033com.cms.client.network.gproP"
-  "\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clien"
-  "t.network.gprob\006proto3"
+  "\n\023user_building.proto\022\003PRO\032\021db_internal."
+  "proto\"k\n\021Build_AddItem_req\022\027\n\017parent_bui"
+  "lding\030\001 \001(\003\022\026\n\016building_resid\030\002 \001(\003\022\017\n\007l"
+  "ook_at\030\003 \001(\t\022\024\n\014building_pos\030\004 \001(\t\"]\n\021Bu"
+  "ild_AddItem_ack\022\016\n\006result\030\001 \001(\005\022/\n\004item\030"
+  "\002 \001(\0132\034.PRO.DBUserHomeStructureItemH\000\210\001\001"
+  "B\007\n\005_item\")\n\021Build_DelItem_req\022\024\n\014buildi"
+  "ng_iid\030\001 \001(\003\"9\n\021Build_DelItem_ack\022\024\n\014bui"
+  "lding_iid\030\001 \001(\003\022\016\n\006result\030\002 \001(\005BT\n\033com.c"
+  "ms.client.network.gproP\001Z\025gamelib/protob"
+  "uf/gpro\252\002\033com.cms.client.network.gprob\006p"
+  "roto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5fbuilding_2eproto_deps[2] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5fbuilding_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
-  &::descriptor_table_global_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5fbuilding_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5fbuilding_2eproto = {
-  false, false, 662, descriptor_table_protodef_user_5fbuilding_2eproto, "user_building.proto", 
-  &descriptor_table_user_5fbuilding_2eproto_once, descriptor_table_user_5fbuilding_2eproto_deps, 2, 4,
+  false, false, 445, descriptor_table_protodef_user_5fbuilding_2eproto, "user_building.proto", 
+  &descriptor_table_user_5fbuilding_2eproto_once, descriptor_table_user_5fbuilding_2eproto_deps, 1, 4,
   schemas, file_default_instances, TableStruct_user_5fbuilding_2eproto::offsets,
   file_level_metadata_user_5fbuilding_2eproto, file_level_enum_descriptors_user_5fbuilding_2eproto, file_level_service_descriptors_user_5fbuilding_2eproto,
 };
@@ -187,21 +162,8 @@ namespace PRO {
 
 class Build_AddItem_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Build_AddItem_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Build_AddItem_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Build_AddItem_req::_Internal::utoken(const Build_AddItem_req* msg) {
-  return *msg->utoken_;
-}
-void Build_AddItem_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Build_AddItem_req::Build_AddItem_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -212,8 +174,7 @@ Build_AddItem_req::Build_AddItem_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Build_AddItem_req)
 }
 Build_AddItem_req::Build_AddItem_req(const Build_AddItem_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   look_at_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -231,11 +192,6 @@ Build_AddItem_req::Build_AddItem_req(const Build_AddItem_req& from)
     building_pos_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_building_pos(), 
       GetArenaForAllocation());
   }
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&parent_building_, &from.parent_building_,
     static_cast<size_t>(reinterpret_cast<char*>(&building_resid_) -
     reinterpret_cast<char*>(&parent_building_)) + sizeof(building_resid_));
@@ -252,9 +208,9 @@ building_pos_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStrin
   building_pos_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&parent_building_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&building_resid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(building_resid_));
+    reinterpret_cast<char*>(&parent_building_)) + sizeof(building_resid_));
 }
 
 Build_AddItem_req::~Build_AddItem_req() {
@@ -268,7 +224,6 @@ inline void Build_AddItem_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   look_at_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   building_pos_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Build_AddItem_req::ArenaDtor(void* object) {
@@ -289,52 +244,37 @@ void Build_AddItem_req::Clear() {
 
   look_at_.ClearToEmpty();
   building_pos_.ClearToEmpty();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&parent_building_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&building_resid_) -
       reinterpret_cast<char*>(&parent_building_)) + sizeof(building_resid_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Build_AddItem_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 parent_building = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 parent_building = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           parent_building_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int64 building_resid = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int64 building_resid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           building_resid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string look_at = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // string look_at = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_look_at();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.Build_AddItem_req.look_at"));
@@ -342,9 +282,9 @@ const char* Build_AddItem_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
         } else
           goto handle_unusual;
         continue;
-      // string building_pos = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+      // string building_pos = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_building_pos();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.Build_AddItem_req.building_pos"));
@@ -368,7 +308,6 @@ const char* Build_AddItem_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -382,44 +321,36 @@ uint8_t* Build_AddItem_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 parent_building = 2;
+  // int64 parent_building = 1;
   if (this->_internal_parent_building() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_parent_building(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_parent_building(), target);
   }
 
-  // int64 building_resid = 3;
+  // int64 building_resid = 2;
   if (this->_internal_building_resid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_building_resid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_building_resid(), target);
   }
 
-  // string look_at = 4;
+  // string look_at = 3;
   if (!this->_internal_look_at().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_look_at().data(), static_cast<int>(this->_internal_look_at().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.Build_AddItem_req.look_at");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_look_at(), target);
+        3, this->_internal_look_at(), target);
   }
 
-  // string building_pos = 5;
+  // string building_pos = 4;
   if (!this->_internal_building_pos().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_building_pos().data(), static_cast<int>(this->_internal_building_pos().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.Build_AddItem_req.building_pos");
     target = stream->WriteStringMaybeAliased(
-        5, this->_internal_building_pos(), target);
+        4, this->_internal_building_pos(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -438,34 +369,26 @@ size_t Build_AddItem_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string look_at = 4;
+  // string look_at = 3;
   if (!this->_internal_look_at().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_look_at());
   }
 
-  // string building_pos = 5;
+  // string building_pos = 4;
   if (!this->_internal_building_pos().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_building_pos());
   }
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 parent_building = 2;
+  // int64 parent_building = 1;
   if (this->_internal_parent_building() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_parent_building());
   }
 
-  // int64 building_resid = 3;
+  // int64 building_resid = 2;
   if (this->_internal_building_resid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_building_resid());
   }
@@ -498,9 +421,6 @@ void Build_AddItem_req::MergeFrom(const Build_AddItem_req& from) {
   if (!from._internal_building_pos().empty()) {
     _internal_set_building_pos(from._internal_building_pos());
   }
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_parent_building() != 0) {
     _internal_set_parent_building(from._internal_parent_building());
   }
@@ -526,7 +446,6 @@ void Build_AddItem_req::InternalSwap(Build_AddItem_req* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &look_at_, lhs_arena,
@@ -540,9 +459,9 @@ void Build_AddItem_req::InternalSwap(Build_AddItem_req* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Build_AddItem_req, building_resid_)
       + sizeof(Build_AddItem_req::building_resid_)
-      - PROTOBUF_FIELD_OFFSET(Build_AddItem_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Build_AddItem_req, parent_building_)>(
+          reinterpret_cast<char*>(&parent_building_),
+          reinterpret_cast<char*>(&other->parent_building_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Build_AddItem_req::GetMetadata() const {
@@ -556,31 +475,19 @@ void Build_AddItem_req::InternalSwap(Build_AddItem_req* other) {
 class Build_AddItem_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<Build_AddItem_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Build_AddItem_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::DBUserHomeStructureItem& item(const Build_AddItem_ack* msg);
   static void set_has_item(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-Build_AddItem_ack::_Internal::utoken(const Build_AddItem_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::DBUserHomeStructureItem&
 Build_AddItem_ack::_Internal::item(const Build_AddItem_ack* msg) {
   return *msg->item_;
 }
-void Build_AddItem_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Build_AddItem_ack::clear_item() {
   if (item_ != nullptr) item_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 Build_AddItem_ack::Build_AddItem_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -595,11 +502,6 @@ Build_AddItem_ack::Build_AddItem_ack(const Build_AddItem_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_item()) {
     item_ = new ::PRO::DBUserHomeStructureItem(*from.item_);
   } else {
@@ -611,9 +513,9 @@ Build_AddItem_ack::Build_AddItem_ack(const Build_AddItem_ack& from)
 
 inline void Build_AddItem_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&item_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&item_)) + sizeof(result_));
 }
 
 Build_AddItem_ack::~Build_AddItem_ack() {
@@ -625,7 +527,6 @@ Build_AddItem_ack::~Build_AddItem_ack() {
 
 inline void Build_AddItem_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete item_;
 }
 
@@ -646,15 +547,9 @@ void Build_AddItem_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(utoken_ != nullptr);
-      utoken_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(item_ != nullptr);
-      item_->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(item_ != nullptr);
+    item_->Clear();
   }
   result_ = 0;
   _has_bits_.Clear();
@@ -668,25 +563,17 @@ const char* Build_AddItem_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PRO.DBUserHomeStructureItem item = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // optional .PRO.DBUserHomeStructureItem item = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_item(), ptr);
           CHK_(ptr);
         } else
@@ -722,26 +609,18 @@ uint8_t* Build_AddItem_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // optional .PRO.DBUserHomeStructureItem item = 3;
+  // optional .PRO.DBUserHomeStructureItem item = 2;
   if (_internal_has_item()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::item(this), target, stream);
+        2, _Internal::item(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -760,24 +639,15 @@ size_t Build_AddItem_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional .PRO.DBUserHomeStructureItem item = 2;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional .PRO.DBUserHomeStructureItem item = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *item_);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *item_);
   }
-  // int32 result = 2;
+
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -804,14 +674,8 @@ void Build_AddItem_ack::MergeFrom(const Build_AddItem_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_item()->::PRO::DBUserHomeStructureItem::MergeFrom(from._internal_item());
-    }
+  if (from._internal_has_item()) {
+    _internal_mutable_item()->::PRO::DBUserHomeStructureItem::MergeFrom(from._internal_item());
   }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
@@ -837,9 +701,9 @@ void Build_AddItem_ack::InternalSwap(Build_AddItem_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Build_AddItem_ack, result_)
       + sizeof(Build_AddItem_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Build_AddItem_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Build_AddItem_ack, item_)>(
+          reinterpret_cast<char*>(&item_),
+          reinterpret_cast<char*>(&other->item_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Build_AddItem_ack::GetMetadata() const {
@@ -852,21 +716,8 @@ void Build_AddItem_ack::InternalSwap(Build_AddItem_ack* other) {
 
 class Build_DelItem_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Build_DelItem_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Build_DelItem_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Build_DelItem_req::_Internal::utoken(const Build_DelItem_req* msg) {
-  return *msg->utoken_;
-}
-void Build_DelItem_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Build_DelItem_req::Build_DelItem_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -877,23 +728,14 @@ Build_DelItem_req::Build_DelItem_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Build_DelItem_req)
 }
 Build_DelItem_req::Build_DelItem_req(const Build_DelItem_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   building_iid_ = from.building_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Build_DelItem_req)
 }
 
 inline void Build_DelItem_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&building_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(building_iid_));
+building_iid_ = int64_t{0};
 }
 
 Build_DelItem_req::~Build_DelItem_req() {
@@ -905,7 +747,6 @@ Build_DelItem_req::~Build_DelItem_req() {
 
 inline void Build_DelItem_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Build_DelItem_req::ArenaDtor(void* object) {
@@ -924,34 +765,19 @@ void Build_DelItem_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   building_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Build_DelItem_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 building_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 building_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           building_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -973,7 +799,6 @@ const char* Build_DelItem_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -987,18 +812,10 @@ uint8_t* Build_DelItem_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   if (this->_internal_building_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_building_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_building_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1017,15 +834,7 @@ size_t Build_DelItem_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   if (this->_internal_building_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_building_iid());
   }
@@ -1052,9 +861,6 @@ void Build_DelItem_req::MergeFrom(const Build_DelItem_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_building_iid() != 0) {
     _internal_set_building_iid(from._internal_building_iid());
   }
@@ -1075,13 +881,7 @@ bool Build_DelItem_req::IsInitialized() const {
 void Build_DelItem_req::InternalSwap(Build_DelItem_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Build_DelItem_req, building_iid_)
-      + sizeof(Build_DelItem_req::building_iid_)
-      - PROTOBUF_FIELD_OFFSET(Build_DelItem_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(building_iid_, other->building_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Build_DelItem_req::GetMetadata() const {
@@ -1094,21 +894,8 @@ void Build_DelItem_req::InternalSwap(Build_DelItem_req* other) {
 
 class Build_DelItem_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Build_DelItem_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Build_DelItem_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Build_DelItem_ack::_Internal::utoken(const Build_DelItem_ack* msg) {
-  return *msg->utoken_;
-}
-void Build_DelItem_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Build_DelItem_ack::Build_DelItem_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1119,14 +906,8 @@ Build_DelItem_ack::Build_DelItem_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Build_DelItem_ack)
 }
 Build_DelItem_ack::Build_DelItem_ack(const Build_DelItem_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&building_iid_, &from.building_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&building_iid_)) + sizeof(result_));
@@ -1135,9 +916,9 @@ Build_DelItem_ack::Build_DelItem_ack(const Build_DelItem_ack& from)
 
 inline void Build_DelItem_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&building_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&building_iid_)) + sizeof(result_));
 }
 
 Build_DelItem_ack::~Build_DelItem_ack() {
@@ -1149,7 +930,6 @@ Build_DelItem_ack::~Build_DelItem_ack() {
 
 inline void Build_DelItem_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Build_DelItem_ack::ArenaDtor(void* object) {
@@ -1168,44 +948,29 @@ void Build_DelItem_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&building_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&building_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Build_DelItem_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 building_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 building_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           building_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 result = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 result = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -1227,7 +992,6 @@ const char* Build_DelItem_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESP
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1241,24 +1005,16 @@ uint8_t* Build_DelItem_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   if (this->_internal_building_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_building_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_building_iid(), target);
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1277,20 +1033,12 @@ size_t Build_DelItem_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 building_iid = 2;
+  // int64 building_iid = 1;
   if (this->_internal_building_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_building_iid());
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -1317,9 +1065,6 @@ void Build_DelItem_ack::MergeFrom(const Build_DelItem_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_building_iid() != 0) {
     _internal_set_building_iid(from._internal_building_iid());
   }
@@ -1343,13 +1088,12 @@ bool Build_DelItem_ack::IsInitialized() const {
 void Build_DelItem_ack::InternalSwap(Build_DelItem_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Build_DelItem_ack, result_)
       + sizeof(Build_DelItem_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Build_DelItem_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Build_DelItem_ack, building_iid_)>(
+          reinterpret_cast<char*>(&building_iid_),
+          reinterpret_cast<char*>(&other->building_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Build_DelItem_ack::GetMetadata() const {

@@ -24,271 +24,40 @@ namespace com.cms.client.network.gpro {
     static GlobalInternalReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVnbG9iYWxfaW50ZXJuYWwucHJvdG8SA1BSTyIuCglVc2VyVG9rZW4SDgoG",
-            "Z2lkdWlkGAEgASgDEhEKCXNsb3R0b2tlbhgCIAEoAyKOAQoOTWFpbFN5c3Rl",
-            "bUl0ZW0SCwoDaWlkGAEgASgDEhIKCnNlbmRlcl9paWQYAiABKAMSDQoFdGl0",
-            "bGUYAyABKAkSEAoIY29udGVudHMYBCABKAkSEgoKYXR0YWNobWVudBgFIAEo",
-            "BRISCgphdHRhY2hpbmZvGAYgASgJEhIKCmNyZWF0ZXRpbWUYByABKAUiNQoP",
-            "TWFpbFN5c3RlbUl0ZW1zEiIKBW1haWxzGAEgAygLMhMuUFJPLk1haWxTeXN0",
-            "ZW1JdGVtIsUBCg5NYWlsTm9ybWFsSXRlbRILCgNpaWQYASABKAMSDQoFc3R5",
-            "cGUYAiABKAUSEgoKc2VuZGVyX2lpZBgDIAEoAxIUCgxyZWNlaXZlcl9paWQY",
-            "BCABKAMSEgoKYXR0YWNobWVudBgFIAEoBRISCgphdHRhY2hpbmZvGAYgASgJ",
-            "Eg0KBXRpdGxlGAcgASgJEhAKCGNvbnRlbnRzGAggASgJEhIKCmNyZWF0ZXRp",
-            "bWUYCSABKAUSEAoIcmVhZHRpbWUYCiABKAUiNQoPTWFpbE5vcm1hbEl0ZW1z",
-            "EiIKBW1haWxzGAEgAygLMhMuUFJPLk1haWxOb3JtYWxJdGVtIlcKEEZyaWVu",
-            "ZEludml0ZUl0ZW0SCwoDaWlkGAEgASgDEhAKCGZyb21faWlkGAIgASgDEhAK",
-            "CG5pY2tuYW1lGAMgASgJEhIKCmludml0ZXRpbWUYBCABKAUiUgoORnJpZW5k",
-            "UmVsYXRpb24SCwoDaWlkGAEgASgDEhEKCWZyaWVuZGlpZBgCIAEoAxIQCghu",
-            "aWNrbmFtZRgDIAEoCRIOCgZvbmxpbmUYBCABKAgiLwoORnJpZW5kVXNlcklu",
-            "Zm8SHQoFdG9rZW4YASABKAsyDi5QUk8uVXNlclRva2VuQlQKG2NvbS5jbXMu",
-            "Y2xpZW50Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3Byb3RvYnVmL2dwcm+q",
-            "Ahtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnByb3RvMw=="));
+            "ChVnbG9iYWxfaW50ZXJuYWwucHJvdG8SA1BSTyKOAQoOTWFpbFN5c3RlbUl0",
+            "ZW0SCwoDaWlkGAEgASgDEhIKCnNlbmRlcl9paWQYAiABKAMSDQoFdGl0bGUY",
+            "AyABKAkSEAoIY29udGVudHMYBCABKAkSEgoKYXR0YWNobWVudBgFIAEoBRIS",
+            "CgphdHRhY2hpbmZvGAYgASgJEhIKCmNyZWF0ZXRpbWUYByABKAUiNQoPTWFp",
+            "bFN5c3RlbUl0ZW1zEiIKBW1haWxzGAEgAygLMhMuUFJPLk1haWxTeXN0ZW1J",
+            "dGVtIsUBCg5NYWlsTm9ybWFsSXRlbRILCgNpaWQYASABKAMSDQoFc3R5cGUY",
+            "AiABKAUSEgoKc2VuZGVyX2lpZBgDIAEoAxIUCgxyZWNlaXZlcl9paWQYBCAB",
+            "KAMSEgoKYXR0YWNobWVudBgFIAEoBRISCgphdHRhY2hpbmZvGAYgASgJEg0K",
+            "BXRpdGxlGAcgASgJEhAKCGNvbnRlbnRzGAggASgJEhIKCmNyZWF0ZXRpbWUY",
+            "CSABKAUSEAoIcmVhZHRpbWUYCiABKAUiNQoPTWFpbE5vcm1hbEl0ZW1zEiIK",
+            "BW1haWxzGAEgAygLMhMuUFJPLk1haWxOb3JtYWxJdGVtIlcKEEZyaWVuZElu",
+            "dml0ZUl0ZW0SCwoDaWlkGAEgASgDEhAKCGZyb21faWlkGAIgASgDEhAKCG5p",
+            "Y2tuYW1lGAMgASgJEhIKCmludml0ZXRpbWUYBCABKAUiUgoORnJpZW5kUmVs",
+            "YXRpb24SCwoDaWlkGAEgASgDEhEKCWZyaWVuZGlpZBgCIAEoAxIQCghuaWNr",
+            "bmFtZRgDIAEoCRIOCgZvbmxpbmUYBCABKAgiIQoORnJpZW5kVXNlckluZm8S",
+            "DwoHcm9sZWlpZBgBIAEoA0JUChtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdw",
+            "cm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQu",
+            "bmV0d29yay5ncHJvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.UserToken), global::com.cms.client.network.gpro.UserToken.Parser, new[]{ "Giduid", "Slottoken" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.MailSystemItem), global::com.cms.client.network.gpro.MailSystemItem.Parser, new[]{ "Iid", "SenderIid", "Title", "Contents", "Attachment", "Attachinfo", "Createtime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.MailSystemItems), global::com.cms.client.network.gpro.MailSystemItems.Parser, new[]{ "Mails" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.MailNormalItem), global::com.cms.client.network.gpro.MailNormalItem.Parser, new[]{ "Iid", "Stype", "SenderIid", "ReceiverIid", "Attachment", "Attachinfo", "Title", "Contents", "Createtime", "Readtime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.MailNormalItems), global::com.cms.client.network.gpro.MailNormalItems.Parser, new[]{ "Mails" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.FriendInviteItem), global::com.cms.client.network.gpro.FriendInviteItem.Parser, new[]{ "Iid", "FromIid", "Nickname", "Invitetime" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.FriendRelation), global::com.cms.client.network.gpro.FriendRelation.Parser, new[]{ "Iid", "Friendiid", "Nickname", "Online" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.FriendUserInfo), global::com.cms.client.network.gpro.FriendUserInfo.Parser, new[]{ "Token" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.FriendUserInfo), global::com.cms.client.network.gpro.FriendUserInfo.Parser, new[]{ "Roleiid" }, null, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class UserToken : pb::IMessage<UserToken>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<UserToken> _parser = new pb::MessageParser<UserToken>(() => new UserToken());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<UserToken> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[0]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UserToken() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UserToken(UserToken other) : this() {
-      giduid_ = other.giduid_;
-      slottoken_ = other.slottoken_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UserToken Clone() {
-      return new UserToken(this);
-    }
-
-    /// <summary>Field number for the "giduid" field.</summary>
-    public const int GiduidFieldNumber = 1;
-    private long giduid_;
-    /// <summary>
-    ///20bit gateid+43bit userid
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Giduid {
-      get { return giduid_; }
-      set {
-        giduid_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "slottoken" field.</summary>
-    public const int SlottokenFieldNumber = 2;
-    private long slottoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Slottoken {
-      get { return slottoken_; }
-      set {
-        slottoken_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as UserToken);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(UserToken other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Giduid != other.Giduid) return false;
-      if (Slottoken != other.Slottoken) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Giduid != 0L) hash ^= Giduid.GetHashCode();
-      if (Slottoken != 0L) hash ^= Slottoken.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Giduid != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Giduid);
-      }
-      if (Slottoken != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(Slottoken);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Giduid != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Giduid);
-      }
-      if (Slottoken != 0L) {
-        output.WriteRawTag(16);
-        output.WriteInt64(Slottoken);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Giduid != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Giduid);
-      }
-      if (Slottoken != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Slottoken);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(UserToken other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Giduid != 0L) {
-        Giduid = other.Giduid;
-      }
-      if (other.Slottoken != 0L) {
-        Slottoken = other.Slottoken;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Giduid = input.ReadInt64();
-            break;
-          }
-          case 16: {
-            Slottoken = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            Giduid = input.ReadInt64();
-            break;
-          }
-          case 16: {
-            Slottoken = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
   /// <summary>
   ///系统邮件信息
   /// </summary>
@@ -306,7 +75,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[1]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -726,7 +495,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[2]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -907,7 +676,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[3]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1441,7 +1210,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[4]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1622,7 +1391,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[5]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1931,7 +1700,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[6]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2237,7 +2006,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[7]; }
+      get { return global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2257,7 +2026,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FriendUserInfo(FriendUserInfo other) : this() {
-      token_ = other.token_ != null ? other.token_.Clone() : null;
+      roleiid_ = other.roleiid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2267,15 +2036,15 @@ namespace com.cms.client.network.gpro {
       return new FriendUserInfo(this);
     }
 
-    /// <summary>Field number for the "token" field.</summary>
-    public const int TokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken token_;
+    /// <summary>Field number for the "roleiid" field.</summary>
+    public const int RoleiidFieldNumber = 1;
+    private long roleiid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Token {
-      get { return token_; }
+    public long Roleiid {
+      get { return roleiid_; }
       set {
-        token_ = value;
+        roleiid_ = value;
       }
     }
 
@@ -2294,7 +2063,7 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Token, other.Token)) return false;
+      if (Roleiid != other.Roleiid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2302,7 +2071,7 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (token_ != null) hash ^= Token.GetHashCode();
+      if (Roleiid != 0L) hash ^= Roleiid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2321,9 +2090,9 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (token_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Token);
+      if (Roleiid != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Roleiid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2335,9 +2104,9 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (token_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Token);
+      if (Roleiid != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Roleiid);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2349,8 +2118,8 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (token_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Token);
+      if (Roleiid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Roleiid);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2364,11 +2133,8 @@ namespace com.cms.client.network.gpro {
       if (other == null) {
         return;
       }
-      if (other.token_ != null) {
-        if (token_ == null) {
-          Token = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Token.MergeFrom(other.Token);
+      if (other.Roleiid != 0L) {
+        Roleiid = other.Roleiid;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2385,11 +2151,8 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (token_ == null) {
-              Token = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Token);
+          case 8: {
+            Roleiid = input.ReadInt64();
             break;
           }
         }
@@ -2407,11 +2170,8 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (token_ == null) {
-              Token = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Token);
+          case 8: {
+            Roleiid = input.ReadInt64();
             break;
           }
         }

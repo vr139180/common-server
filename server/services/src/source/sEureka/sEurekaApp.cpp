@@ -43,27 +43,7 @@ bool sEurekaApp::load_config()
     }
 	this->conf_.reset(cf);
 
-	load_redisscript();
-
 	return true;
-}
-
-#include "rediscript/homegate_script.h"
-void sEurekaApp::load_redisscript()
-{
-	std::string fstr;
-	fstr = "/system/eureka/gatebindhome_request.lua";
-	HomeGateConst::gatebindhome_request = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
-
-	fstr = "/system/eureka/gatebindhome_confirm.lua";
-	HomeGateConst::gatebindhome_confirm = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
-
-	fstr = "/system/eureka/gatebindhome_maintnce.lua";
-	HomeGateConst::gatebindhome_maintnce = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
-
-	fstr = "/system/eureka/gatebindhome_authtimeout.lua";
-	HomeGateConst::gatebindhome_authtimeout = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
-
 }
 
 bool sEurekaApp::pre_init()

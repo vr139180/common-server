@@ -62,11 +62,6 @@ private static final long serialVersionUID = 0L;
             proxytoken_ = input.readInt64();
             break;
           }
-          case 24: {
-
-            slot_ = input.readInt32();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -129,17 +124,6 @@ private static final long serialVersionUID = 0L;
     return proxytoken_;
   }
 
-  public static final int SLOT_FIELD_NUMBER = 3;
-  private int slot_;
-  /**
-   * <code>int32 slot = 3;</code>
-   * @return The slot.
-   */
-  @java.lang.Override
-  public int getSlot() {
-    return slot_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -160,9 +144,6 @@ private static final long serialVersionUID = 0L;
     if (proxytoken_ != 0L) {
       output.writeInt64(2, proxytoken_);
     }
-    if (slot_ != 0) {
-      output.writeInt32(3, slot_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -179,10 +160,6 @@ private static final long serialVersionUID = 0L;
     if (proxytoken_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(2, proxytoken_);
-    }
-    if (slot_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, slot_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -203,8 +180,6 @@ private static final long serialVersionUID = 0L;
         != other.getUserIid()) return false;
     if (getProxytoken()
         != other.getProxytoken()) return false;
-    if (getSlot()
-        != other.getSlot()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -222,8 +197,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + PROXYTOKEN_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getProxytoken());
-    hash = (37 * hash) + SLOT_FIELD_NUMBER;
-    hash = (53 * hash) + getSlot();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -365,8 +338,6 @@ private static final long serialVersionUID = 0L;
 
       proxytoken_ = 0L;
 
-      slot_ = 0;
-
       return this;
     }
 
@@ -395,7 +366,6 @@ private static final long serialVersionUID = 0L;
       com.cms.client.network.gpro.User_ProxyLogin_req result = new com.cms.client.network.gpro.User_ProxyLogin_req(this);
       result.userIid_ = userIid_;
       result.proxytoken_ = proxytoken_;
-      result.slot_ = slot_;
       onBuilt();
       return result;
     }
@@ -449,9 +419,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getProxytoken() != 0L) {
         setProxytoken(other.getProxytoken());
-      }
-      if (other.getSlot() != 0) {
-        setSlot(other.getSlot());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -564,37 +531,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearProxytoken() {
       
       proxytoken_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private int slot_ ;
-    /**
-     * <code>int32 slot = 3;</code>
-     * @return The slot.
-     */
-    @java.lang.Override
-    public int getSlot() {
-      return slot_;
-    }
-    /**
-     * <code>int32 slot = 3;</code>
-     * @param value The slot to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSlot(int value) {
-      
-      slot_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 slot = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearSlot() {
-      
-      slot_ = 0;
       onChanged();
       return this;
     }

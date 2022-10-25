@@ -11,11 +11,30 @@
 EurekaLinkFrom::EurekaLinkFrom():NetLinkFromBase<EurekaSession>()
 ,node_( 0)
 {
+	this->init_protocolhead();
 }
 
 EurekaLinkFrom::EurekaLinkFrom(EurekaNodeInfo* pnode) : NetLinkFromBase<EurekaSession>()
 ,node_( pnode)
 {
+	this->init_protocolhead();
+}
+
+void EurekaLinkFrom::init_protocolhead()
+{
+	//设置通用协议头
+	s_head_.router_balance_ = false;
+	s_head_.hashkey_ = 0;
+	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_broadcast_ = false;
+	s_head_.unpack_protocol_ = true;
+}
+
+void EurekaLinkFrom::send_to_eureka(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	NetLinkFromBase<EurekaSession>::send_protocol(pro);
 }
 
 void EurekaLinkFrom::reset()
@@ -36,14 +55,14 @@ void EurekaLinkFrom::on_connect_lost_netthread()
 	svrApp.regist_syscmd( cmd);
 }
 
-void EurekaLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void EurekaLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<NetProtocol> p_msg(pro);
 
-	NETCMD_FUN_MAP2 fun = boost::bind(&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), 
-		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);
+	NETCMD_FUN_MAP fun = boost::bind(&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), 
+		boost::placeholders::_1, boost::placeholders::_2);
 
-	NetCommand *pcmd = new NetCommand(p_msg.release(), fun, (int)proiid);
+	NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
 	svrApp.regist_syscmd(pcmd);
 }
 

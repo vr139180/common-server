@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "global_internal.proto";
 import "db_internal.proto";
 
 package PRO;
@@ -57,69 +56,58 @@ message TaskRewardItems{
 }
 
 message Task_WaitList_req {
-  optional UserToken utoken = 1;
 }
 
 message Task_WaitList_ack {
-  optional UserToken utoken = 1;
-  repeated int32 task_iids = 2;
+  repeated int32 task_iids = 1;
 }
 
 message Task_MyTaskList_req {
-  optional UserToken utoken = 1;
 }
 
 message Task_MyTaskList_ack {
-  optional UserToken utoken = 1;
-  DBUserTaskGroups groups = 2;
-  DBUserTasks tasks = 3;
+  DBUserTaskGroups groups = 1;
+  DBUserTasks tasks = 2;
 }
 
 message Task_GetTask_req {
-  optional UserToken utoken = 1;
   //任务iid
-  int32 task_iid = 2;
+  int32 task_iid = 1;
 }
 
 message Task_GetTask_ack {
-  optional UserToken utoken = 1;
-  int32 task_iid = 2;
+  int32 task_iid = 1;
   //0:success 1:failed
-  int32 result = 3;
+  int32 result = 2;
   //result = 0,包含任务信息
-  optional DBUserTaskItem task = 4;
+  optional DBUserTaskItem task = 3;
 }
 
 message Task_SubmitTask_req {
-  optional UserToken utoken = 1;
   //任务iid
-  int32 task_iid = 2;
+  int32 task_iid = 1;
 }
 
 message Task_SubmitTask_ack {
-  optional UserToken utoken = 1;
-  int32 task_iid = 2;
+  int32 task_iid = 1;
   //0:success 1:task not exist 2:system error 3:condition error
-  int32 result = 3;
+  int32 result = 2;
 }
 
 message Task_ObtainReward_ntf {
-  optional UserToken utoken = 1;
-  int32 task_iid = 2;
-  TaskRewardItems reward = 3;
+  int32 task_iid = 1;
+  TaskRewardItems reward = 2;
 }
 
 message Task_GiveupTask_req {
-  optional UserToken utoken = 1;
   //放弃的任务iid
-  int32 task_iid = 2;
+  int32 task_iid = 1;
 }
 
 message Task_GiveupTask_ack {
-  optional UserToken utoken = 1;
-  int32 task_iid = 2;
+  int32 task_iid = 1;
   //0:success 
-  int32 result = 3;
+  int32 result = 2;
   //result = 0,包含任务信息
-  optional DBUserTaskItem task = 4;
+  optional DBUserTaskItem task = 3;
 }

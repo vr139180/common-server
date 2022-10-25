@@ -7,7 +7,7 @@
 #include <boost/unordered_map.hpp>
 #include <google/protobuf/message.h>
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
 
 using namespace sw::redis;

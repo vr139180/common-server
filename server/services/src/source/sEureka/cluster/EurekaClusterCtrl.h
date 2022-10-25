@@ -2,7 +2,7 @@
 #define __EUREKACLUSTERCTRL_H__
 
 #include <boost/unordered_map.hpp>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/ThreadLock.h>
 #include <cmsLib/CommandListener.h>
 
@@ -69,14 +69,14 @@ protected:
 
 	//---------------------- MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
-	virtual void ProcessMessage(BasicProtocol* message, bool& autorelease, int msgid){}
+	virtual void ProcessMessage(NetProtocol* message, bool& autorelease){}
 
 public:
 	//protocal process function
-	void on_eurekabind_req(BasicProtocol* pro, bool& autorelease, void* session);
+	void on_eurekabind_req(NetProtocol* pro, bool& autorelease, void* session);
 
 	//servie发送的eureka节点同步请求
-	void on_service_eureka_sync(BasicProtocol* message, bool& autorelease);
+	void on_service_eureka_sync(NetProtocol* message, bool& autorelease);
 
 	//---------------------------system command--------------------------------
 	void on_disconnected_with_linkto(EurekaLinkTo* plink);

@@ -8,22 +8,7 @@ public interface Task_GiveupTask_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>int32 task_iid = 2;</code>
+   * <code>int32 task_iid = 1;</code>
    * @return The taskIid.
    */
   int getTaskIid();
@@ -33,7 +18,7 @@ public interface Task_GiveupTask_ackOrBuilder extends
    *0:success 
    * </pre>
    *
-   * <code>int32 result = 3;</code>
+   * <code>int32 result = 2;</code>
    * @return The result.
    */
   int getResult();
@@ -43,7 +28,7 @@ public interface Task_GiveupTask_ackOrBuilder extends
    *result = 0,包含任务信息
    * </pre>
    *
-   * <code>optional .PRO.DBUserTaskItem task = 4;</code>
+   * <code>optional .PRO.DBUserTaskItem task = 3;</code>
    * @return Whether the task field is set.
    */
   boolean hasTask();
@@ -52,7 +37,7 @@ public interface Task_GiveupTask_ackOrBuilder extends
    *result = 0,包含任务信息
    * </pre>
    *
-   * <code>optional .PRO.DBUserTaskItem task = 4;</code>
+   * <code>optional .PRO.DBUserTaskItem task = 3;</code>
    * @return The task.
    */
   com.cms.client.network.gpro.DBUserTaskItem getTask();
@@ -61,7 +46,7 @@ public interface Task_GiveupTask_ackOrBuilder extends
    *result = 0,包含任务信息
    * </pre>
    *
-   * <code>optional .PRO.DBUserTaskItem task = 4;</code>
+   * <code>optional .PRO.DBUserTaskItem task = 3;</code>
    */
   com.cms.client.network.gpro.DBUserTaskItemOrBuilder getTaskOrBuilder();
 }

@@ -17,6 +17,24 @@ EurekaLinkTo::~EurekaLinkTo()
 	reset(0);
 }
 
+void EurekaLinkTo::init_protocolhead()
+{
+	//设置通用协议头
+	s_head_.router_balance_ = false;
+	s_head_.hashkey_ = 0;
+	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_broadcast_ = false;
+	s_head_.unpack_protocol_ = true;
+}
+
+void EurekaLinkTo::send_to_eureka(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	
+	LinkToBase::send_protocol(pro);
+}
+
 void EurekaLinkTo::reset(EurekaNodeInfo* pnode)
 {
 	fail_num_ = 0;
@@ -77,13 +95,13 @@ void EurekaLinkTo::on_connect_lost_netthread()
     svrApp.regist_syscmd( cmd);
 }
 
-void EurekaLinkTo::on_recv_protocol_netthread( S_UINT_16 proiid, BasicProtocol* pro)
+void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<NetProtocol> p_msg(pro);
 	
-	if (proiid == ERK_PROTYPE::ERK_EUREKABIND_ACK)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_ACK)
     {
-        PRO::Erk_EurekaBind_ack* ack =dynamic_cast<Erk_EurekaBind_ack*>(pro);
+        PRO::Erk_EurekaBind_ack* ack =dynamic_cast<Erk_EurekaBind_ack*>(pro->msg_);
 
         bool bauth =(ack->result() == 0);
         SystemCommand2<bool>* cmd =new SystemCommand2<bool>(
@@ -93,7 +111,7 @@ void EurekaLinkTo::on_recv_protocol_netthread( S_UINT_16 proiid, BasicProtocol* 
     else
     {
 		NETCMD_FUN_MAP fun = boost::bind(
-			&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), boost::placeholders::_1, boost::placeholders::_2,(int)proiid);
+			&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), boost::placeholders::_1, boost::placeholders::_2);
 
 		NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
 		svrApp.regist_syscmd(pcmd);
@@ -113,7 +131,7 @@ void EurekaLinkTo::on_connected( bool success)
 		req->set_ip(myself.ip);
 		req->set_port(myself.port);
 
-		this->send_protocol( req);
+		this->send_to_eureka( req);
     }
     else
     {
@@ -173,8 +191,10 @@ void EurekaLinkTo::heart_beat()
 	LinkToBase::heart_beat();
 }
 
-BasicProtocol* EurekaLinkTo::get_livekeep_msg()
+NetProtocol* EurekaLinkTo::get_livekeep_msg()
 {
 	PRO::Svr_LiveTick_ntf* ntf = new PRO::Svr_LiveTick_ntf();
-	return ntf;
+	NetProtocol* msg = new NetProtocol(get_protocolhead(), ntf);
+
+	return msg;
 }

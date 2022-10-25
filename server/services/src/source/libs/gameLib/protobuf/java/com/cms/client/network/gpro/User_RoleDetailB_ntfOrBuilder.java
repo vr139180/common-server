@@ -8,32 +8,17 @@ public interface User_RoleDetailB_ntfOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>.PRO.DBUserPets pets = 2;</code>
+   * <code>.PRO.DBUserPets pets = 1;</code>
    * @return Whether the pets field is set.
    */
   boolean hasPets();
   /**
-   * <code>.PRO.DBUserPets pets = 2;</code>
+   * <code>.PRO.DBUserPets pets = 1;</code>
    * @return The pets.
    */
   com.cms.client.network.gpro.DBUserPets getPets();
   /**
-   * <code>.PRO.DBUserPets pets = 2;</code>
+   * <code>.PRO.DBUserPets pets = 1;</code>
    */
   com.cms.client.network.gpro.DBUserPetsOrBuilder getPetsOrBuilder();
 }

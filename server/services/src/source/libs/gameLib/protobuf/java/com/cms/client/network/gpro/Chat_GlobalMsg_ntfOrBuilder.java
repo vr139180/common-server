@@ -8,26 +8,11 @@ public interface Chat_GlobalMsg_ntfOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    * @return Whether the msgs field is set.
    */
   boolean hasMsgs();
@@ -36,7 +21,7 @@ public interface Chat_GlobalMsg_ntfOrBuilder extends
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    * @return The msgs.
    */
   com.cms.client.network.gpro.ChatMessageItems getMsgs();
@@ -45,7 +30,7 @@ public interface Chat_GlobalMsg_ntfOrBuilder extends
    *max 50 msgs
    * </pre>
    *
-   * <code>.PRO.ChatMessageItems msgs = 2;</code>
+   * <code>.PRO.ChatMessageItems msgs = 1;</code>
    */
   com.cms.client.network.gpro.ChatMessageItemsOrBuilder getMsgsOrBuilder();
 }

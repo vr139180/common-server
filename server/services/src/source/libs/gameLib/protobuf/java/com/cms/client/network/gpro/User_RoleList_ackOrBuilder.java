@@ -8,32 +8,17 @@ public interface User_RoleList_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    * @return Whether the roles field is set.
    */
   boolean hasRoles();
   /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    * @return The roles.
    */
   com.cms.client.network.gpro.DBUserRoles getRoles();
   /**
-   * <code>.PRO.DBUserRoles roles = 2;</code>
+   * <code>.PRO.DBUserRoles roles = 1;</code>
    */
   com.cms.client.network.gpro.DBUserRolesOrBuilder getRolesOrBuilder();
 }

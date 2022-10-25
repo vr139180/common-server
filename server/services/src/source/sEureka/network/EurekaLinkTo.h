@@ -16,11 +16,15 @@ public:
 	void reset( EurekaNodeInfo* pnode);
 
 	virtual void connect();
-	virtual void send_protocol(BasicProtocol* pro) { LinkToBase::send_protocol(pro); }
+	virtual void send_to_eureka(BasicProtocol* pro);
+
 	virtual bool is_ready() { return LinkToBase::is_authed(); }
 	virtual std::string get_ext_bykey(const char* key) { return ""; }
 
 	virtual void force_linkclose();
+
+	virtual void init_protocolhead();
+	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
 
 public:
 	//---------------implement NetSessionBindEvent---------------
@@ -28,8 +32,8 @@ public:
 	virtual void on_connectedto_done();
 
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
-	virtual BasicProtocol* get_livekeep_msg();
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
+	virtual NetProtocol* get_livekeep_msg();
 
 	//---------------IEurekaNodeLink-----------------------------
 	virtual S_INT_64 get_iid() { return node_->iid; }
@@ -48,6 +52,9 @@ protected:
 
 	//连接错误次数
 	int		fail_num_;
+
+	//协议头缺省
+	SProtocolHead	s_head_;
 };
 
 #endif	//__EUREKALINKTO_H__

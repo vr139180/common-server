@@ -4,7 +4,7 @@
 #include <string>
 #include <boost/unordered_map.hpp>
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/redis/RedisClient.h>
 #include <gameLib/service_type.h>
 

@@ -8,42 +8,27 @@ public interface Chat_UserMsg_sayOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>.PRO.ChatChannelInfo channel = 2;</code>
+   * <code>.PRO.ChatChannelInfo channel = 1;</code>
    * @return Whether the channel field is set.
    */
   boolean hasChannel();
   /**
-   * <code>.PRO.ChatChannelInfo channel = 2;</code>
+   * <code>.PRO.ChatChannelInfo channel = 1;</code>
    * @return The channel.
    */
   com.cms.client.network.gpro.ChatChannelInfo getChannel();
   /**
-   * <code>.PRO.ChatChannelInfo channel = 2;</code>
+   * <code>.PRO.ChatChannelInfo channel = 1;</code>
    */
   com.cms.client.network.gpro.ChatChannelInfoOrBuilder getChannelOrBuilder();
 
   /**
-   * <code>string nickname = 3;</code>
+   * <code>string nickname = 2;</code>
    * @return The nickname.
    */
   java.lang.String getNickname();
   /**
-   * <code>string nickname = 3;</code>
+   * <code>string nickname = 2;</code>
    * @return The bytes for nickname.
    */
   com.google.protobuf.ByteString
@@ -54,7 +39,7 @@ public interface Chat_UserMsg_sayOrBuilder extends
    *max len 216
    * </pre>
    *
-   * <code>string msg_content = 4;</code>
+   * <code>string msg_content = 3;</code>
    * @return The msgContent.
    */
   java.lang.String getMsgContent();
@@ -63,7 +48,7 @@ public interface Chat_UserMsg_sayOrBuilder extends
    *max len 216
    * </pre>
    *
-   * <code>string msg_content = 4;</code>
+   * <code>string msg_content = 3;</code>
    * @return The bytes for msgContent.
    */
   com.google.protobuf.ByteString

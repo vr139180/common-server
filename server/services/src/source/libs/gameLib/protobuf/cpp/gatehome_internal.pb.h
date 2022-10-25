@@ -31,7 +31,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "global_internal.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_gatehome_5finternal_2eproto
@@ -196,28 +195,9 @@ class GHS_UserInit_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kGateiidFieldNumber = 2,
+    kGateiidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 gateiid = 2;
+  // int64 gateiid = 1;
   void clear_gateiid();
   int64_t gateiid() const;
   void set_gateiid(int64_t value);
@@ -233,10 +213,8 @@ class GHS_UserInit_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t gateiid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_gatehome_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
@@ -363,25 +341,16 @@ class GHS_UserLogout_ntf final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
+    kRoleiidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
+  // int64 roleiid = 1;
+  void clear_roleiid();
+  int64_t roleiid() const;
+  void set_roleiid(int64_t value);
   private:
-  bool _internal_has_utoken() const;
+  int64_t _internal_roleiid() const;
+  void _internal_set_roleiid(int64_t value);
   public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
 
   // @@protoc_insertion_point(class_scope:PRO.GHS_UserLogout_ntf)
  private:
@@ -390,9 +359,8 @@ class GHS_UserLogout_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  int64_t roleiid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   friend struct ::TableStruct_gatehome_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
@@ -519,25 +487,16 @@ class GHS_RoleDetail_ask final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
+    kRoleiidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
+  // int64 roleiid = 1;
+  void clear_roleiid();
+  int64_t roleiid() const;
+  void set_roleiid(int64_t value);
   private:
-  bool _internal_has_utoken() const;
+  int64_t _internal_roleiid() const;
+  void _internal_set_roleiid(int64_t value);
   public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
 
   // @@protoc_insertion_point(class_scope:PRO.GHS_RoleDetail_ask)
  private:
@@ -546,9 +505,8 @@ class GHS_RoleDetail_ask final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  int64_t roleiid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   friend struct ::TableStruct_gatehome_5finternal_2eproto;
 };
 // ===================================================================
@@ -562,95 +520,7 @@ class GHS_RoleDetail_ask final :
 #endif  // __GNUC__
 // GHS_UserInit_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool GHS_UserInit_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool GHS_UserInit_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& GHS_UserInit_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& GHS_UserInit_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.GHS_UserInit_req.utoken)
-  return _internal_utoken();
-}
-inline void GHS_UserInit_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.GHS_UserInit_req.utoken)
-}
-inline ::PRO::UserToken* GHS_UserInit_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* GHS_UserInit_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.GHS_UserInit_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* GHS_UserInit_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* GHS_UserInit_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.GHS_UserInit_req.utoken)
-  return _msg;
-}
-inline void GHS_UserInit_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.GHS_UserInit_req.utoken)
-}
-
-// int64 gateiid = 2;
+// int64 gateiid = 1;
 inline void GHS_UserInit_req::clear_gateiid() {
   gateiid_ = int64_t{0};
 }
@@ -674,184 +544,48 @@ inline void GHS_UserInit_req::set_gateiid(int64_t value) {
 
 // GHS_UserLogout_ntf
 
-// optional .PRO.UserToken utoken = 1;
-inline bool GHS_UserLogout_ntf::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
+// int64 roleiid = 1;
+inline void GHS_UserLogout_ntf::clear_roleiid() {
+  roleiid_ = int64_t{0};
 }
-inline bool GHS_UserLogout_ntf::has_utoken() const {
-  return _internal_has_utoken();
+inline int64_t GHS_UserLogout_ntf::_internal_roleiid() const {
+  return roleiid_;
 }
-inline const ::PRO::UserToken& GHS_UserLogout_ntf::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
+inline int64_t GHS_UserLogout_ntf::roleiid() const {
+  // @@protoc_insertion_point(field_get:PRO.GHS_UserLogout_ntf.roleiid)
+  return _internal_roleiid();
 }
-inline const ::PRO::UserToken& GHS_UserLogout_ntf::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.GHS_UserLogout_ntf.utoken)
-  return _internal_utoken();
+inline void GHS_UserLogout_ntf::_internal_set_roleiid(int64_t value) {
+  
+  roleiid_ = value;
 }
-inline void GHS_UserLogout_ntf::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.GHS_UserLogout_ntf.utoken)
-}
-inline ::PRO::UserToken* GHS_UserLogout_ntf::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* GHS_UserLogout_ntf::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.GHS_UserLogout_ntf.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* GHS_UserLogout_ntf::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* GHS_UserLogout_ntf::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.GHS_UserLogout_ntf.utoken)
-  return _msg;
-}
-inline void GHS_UserLogout_ntf::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.GHS_UserLogout_ntf.utoken)
+inline void GHS_UserLogout_ntf::set_roleiid(int64_t value) {
+  _internal_set_roleiid(value);
+  // @@protoc_insertion_point(field_set:PRO.GHS_UserLogout_ntf.roleiid)
 }
 
 // -------------------------------------------------------------------
 
 // GHS_RoleDetail_ask
 
-// optional .PRO.UserToken utoken = 1;
-inline bool GHS_RoleDetail_ask::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
+// int64 roleiid = 1;
+inline void GHS_RoleDetail_ask::clear_roleiid() {
+  roleiid_ = int64_t{0};
 }
-inline bool GHS_RoleDetail_ask::has_utoken() const {
-  return _internal_has_utoken();
+inline int64_t GHS_RoleDetail_ask::_internal_roleiid() const {
+  return roleiid_;
 }
-inline const ::PRO::UserToken& GHS_RoleDetail_ask::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
+inline int64_t GHS_RoleDetail_ask::roleiid() const {
+  // @@protoc_insertion_point(field_get:PRO.GHS_RoleDetail_ask.roleiid)
+  return _internal_roleiid();
 }
-inline const ::PRO::UserToken& GHS_RoleDetail_ask::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.GHS_RoleDetail_ask.utoken)
-  return _internal_utoken();
+inline void GHS_RoleDetail_ask::_internal_set_roleiid(int64_t value) {
+  
+  roleiid_ = value;
 }
-inline void GHS_RoleDetail_ask::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.GHS_RoleDetail_ask.utoken)
-}
-inline ::PRO::UserToken* GHS_RoleDetail_ask::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* GHS_RoleDetail_ask::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.GHS_RoleDetail_ask.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* GHS_RoleDetail_ask::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* GHS_RoleDetail_ask::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.GHS_RoleDetail_ask.utoken)
-  return _msg;
-}
-inline void GHS_RoleDetail_ask::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.GHS_RoleDetail_ask.utoken)
+inline void GHS_RoleDetail_ask::set_roleiid(int64_t value) {
+  _internal_set_roleiid(value);
+  // @@protoc_insertion_point(field_set:PRO.GHS_RoleDetail_ask.roleiid)
 }
 
 #ifdef __GNUC__

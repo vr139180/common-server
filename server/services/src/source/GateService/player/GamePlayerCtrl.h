@@ -8,7 +8,7 @@
 #include <boost/scoped_array.hpp>
 #include <cmsLib/ThreadLock.h>
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 
 #include <gameLib/gatehome/GHUsersSeparate.h>
@@ -28,25 +28,24 @@ public:
 	void start();
 	void stop();
 
-	void route_msg_to_player(BasicProtocol* msg, int slot);
+	void route_msg_to_player(NetProtocol* msg, int slot);
+
 	void post_slot_cmd(CommandBase* cmd, int slot);
 	PlayerChannel* get_channel_by_slot(int slot);
 
-	int ask_free_slot();
+	GamePlayer* ask_free_slot();
 	void return_slot_to_free(int slot);
 	bool auth_wait_slot(int slot);
 
 public:
 	//聊天模块，全局聊天
-	void chat_globalmsg_notify(BasicProtocol* msg);
+	void chat_globalmsg_notify(NetProtocol* msg);
 
 public:
 	void ask_gateslot_sync();
 	//登陆维护定时器
 	void maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish);
 	void on_mth_gateslot_sync(void*);
-
-	void on_res_proxyuserslot_req(BasicProtocol* message, bool& autorelease, void* p);
 
 protected:
 	//lobby service

@@ -11,11 +11,30 @@ EurekaClusterLink::EurekaClusterLink(EurekaClusterClient* p, EurekaNodeInfo* inf
 , parent_(p)
 , node_( info)
 {
+	this->init_protocolhead();
 }
 
 EurekaClusterLink::~EurekaClusterLink()
 {
 	reset(0);
+}
+
+void EurekaClusterLink::init_protocolhead()
+{
+	//设置通用协议头
+	s_head_.router_balance_ = false;
+	s_head_.hashkey_ = 0;
+	s_head_.from_type_ = (S_INT_8)parent_->get_svrtype();
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_broadcast_ = false;
+	s_head_.unpack_protocol_ = true;
+}
+
+void EurekaClusterLink::send_to_eureka(BasicProtocol* msg)
+{
+	NetProtocol *pro = new NetProtocol(get_protocolhead(), msg);
+
+	this->send_protocol(pro);
 }
 
 void EurekaClusterLink::reset(EurekaNodeInfo* pnode)
@@ -75,11 +94,11 @@ void EurekaClusterLink::on_connect_lost_netthread()
 	parent_->regist_command(cmd);
 }
 
-void EurekaClusterLink::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void EurekaClusterLink::on_recv_protocol_netthread(NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	std::unique_ptr<NetProtocol> p_msg(pro);
 
-	if (proiid == ERK_PROTYPE::ERK_SERVICEREGIST_ACK)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICEREGIST_ACK)
 	{
 		NETCMD_FUN_MAP fun = boost::bind(
 			&EurekaClusterLink::on_regist_result, this, boost::placeholders::_1, boost::placeholders::_2);
@@ -87,9 +106,9 @@ void EurekaClusterLink::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtoc
 		NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
 		parent_->regist_command(pcmd);
 	}
-	else if (proiid == ERK_PROTYPE::ERK_SERVICEBIND_ACK)
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_SERVICEBIND_ACK)
 	{
-		Erk_ServiceBind_ack* ack = dynamic_cast<Erk_ServiceBind_ack*>(pro);
+		Erk_ServiceBind_ack* ack = dynamic_cast<Erk_ServiceBind_ack*>(pro->msg_);
 
 		bool bsucc = (ack->result() == 0);
 		SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -99,11 +118,11 @@ void EurekaClusterLink::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtoc
 	}
 	else
 	{
-		NETCMD_FUN_MAP2 fun = boost::bind(
+		NETCMD_FUN_MAP fun = boost::bind(
 			&EurekaClusterClient::NetProcessMessage, parent_, 
-			boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);
+			boost::placeholders::_1, boost::placeholders::_2);
 
-		NetCommand *pcmd = new NetCommand( p_msg.release(), fun, (int)proiid);
+		NetCommand *pcmd = new NetCommand( p_msg.release(), fun, (int)pro->get_msg());
 		parent_->regist_command(pcmd);
 	}
 }
@@ -121,7 +140,7 @@ void EurekaClusterLink::on_connected(bool success)
 			req->set_iid(parent_->get_myiid());
 			req->set_token( parent_->get_token());
 
-			this->send_protocol(req);
+			this->send_to_eureka(req);
 		}
 		else
 		{
@@ -141,7 +160,7 @@ void EurekaClusterLink::on_connected(bool success)
 				}
 			}
 
-			this->send_protocol(req);
+			this->send_to_eureka(req);
 		}
 	}
 	else
@@ -168,9 +187,9 @@ void EurekaClusterLink::on_disconnected()
 	parent_->on_link_disconnected(this);
 }
 
-void EurekaClusterLink::on_regist_result(BasicProtocol* message, bool& autorelease)
+void EurekaClusterLink::on_regist_result(NetProtocol* message, bool& autorelease)
 {
-	Erk_ServiceRegist_ack* ack = dynamic_cast<Erk_ServiceRegist_ack*>(message);
+	Erk_ServiceRegist_ack* ack = dynamic_cast<Erk_ServiceRegist_ack*>(message->msg_);
 	bool success = (ack->result() == 0);
 
 	if( success)

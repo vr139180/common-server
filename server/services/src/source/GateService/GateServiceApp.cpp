@@ -24,8 +24,6 @@ GateServiceApp& GateServiceApp::getInstance()
 GateServiceApp::GateServiceApp(): ServerAppBase()
 ,acceptor_( 0)
 ,conf_( 0)
-,bind_home_step(GateBindHome_Waiting)
-, home_linkto_(0)
 {
 }
 
@@ -75,22 +73,19 @@ GateConfig* GateServiceApp::load_gateconfig()
 
 bool GateServiceApp::pre_init()
 {
-	this->session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
-
-	home_linkto_.reset(new HomeServiceLinkTo());
-
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_ROUTER);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
 		gopt.eip.c_str(), gopt.eport, subscribe_types);
 
-	GamePlayerCtrl::instance().init_gameplayerctrl(GATEHOME_GROUP_NUM);
+	GamePlayerCtrl::instance().init_gameplayerctrl( GATE_PLAYER_MAX);
 
 	return true;
 }
@@ -98,7 +93,7 @@ bool GateServiceApp::pre_init()
 bool GateServiceApp::init_network()
 {
 	int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator(500);
+	//MutexAllocator::getInstance().init_allocator(1000);
 
 	cpu =cpu*2+2;
 	if( !NetDriverX::getInstance().initNetDriver(cpu))
@@ -122,8 +117,7 @@ bool GateServiceApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
 
-	int maxsvr = cf.get_globaloption().svrnum_min;
-    if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), maxsvr))
+    if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), GATE_PLAYER_MAX))
     {
 		logInfo(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
     }
@@ -152,9 +146,8 @@ void GateServiceApp::uninit_network()
 		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
-	session_from_.unint_sessions();
-	router_link_mth_.free_all();
-	home_linkto_.reset();
+	datarouter_link_mth_.free_all();
+	svrrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
 	GamePlayerCtrl::instance().uninit_gameplayerctrl();
@@ -170,9 +163,6 @@ void GateServiceApp::register_timer()
 	//regist timer for system
 	//auto connect
 	this->add_apptimer( 1000*15, boost::BOOST_BIND( &GateServiceApp::auto_connect_timer, this,
-		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
-
-	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&GateServiceApp::service_maintnce_check, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	//5秒维护一次 登陆超时
@@ -229,105 +219,81 @@ NetAcceptorEvent::NetSessionPtr GateServiceApp::ask_free_netsession()
 	*/
 
 	//logDebug(out_runtime, "gate service listen a client connection request.....");
+	GamePlayer* player = GamePlayerCtrl::instance().ask_free_slot();
+	if (player == 0)
+	{
+		NetAcceptorEvent::NetSessionPtr new_session;
+		return new_session;
+	}
 
-	ThreadLockWrapper guard(lock_);
-	return session_from_.ask_free_netsession_mth();
+	return player->get_session();
 }
 
 void GateServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
 {
-	GateSession *pointer = session_from_.get_sessionlink_by_session(session);
-	if (pointer == 0)
+	GamePlayer* player = dynamic_cast<GamePlayer*>(session->get_bindevent());
+	if (player == 0)
 		return;
 
 	if (refuse)
-		pointer->reset();
-
-	ThreadLockWrapper guard(lock_);
+		player->reuse();
 
 	//remove from waiting list
 	if (refuse)
 	{
 		logError(out_runtime, "me(GateService) listen a connected request, but refused by system");
 
-		session_from_.free_from_wait_mth(pointer);
+		GamePlayerCtrl::instance().return_slot_to_free(player->get_userslot());
 	}
 	else
 	{
-		session_from_.ask_free_netsession_mth_confirm(pointer);
 		logInfo(out_runtime, "me(GateService) listen a connected request, and create a connection successfully");
 	}
 }
 
-void GateServiceApp::send_protocol_to_router(BasicProtocol* pro)
+void GateServiceApp::send_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
-	router_link_mth_.send_mth_protocol(pro);
+	datarouter_link_mth_.send_mth_protocol(to, pro);
+}
+
+void GateServiceApp::send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
+{
+	datarouter_link_mth_.send_mth_protocol(to, msg);
+}
+
+void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+{
+	svrrouter_link_mth_.send_mth_protocol(to, pro);
+}
+
+void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
+{
+	svrrouter_link_mth_.send_mth_protocol(to, msg);
 }
 
 void GateServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
-	//bind
-	if (bind_home_step == GateBindHomeStep::GateBindHome_CanAskBind)
-	{
-		//请求资源分配
-		Svr_GateBindHome_req *req = new Svr_GateBindHome_req();
-		req->set_gateiid(EurekaClusterClient::instance().get_myiid());
-		req->set_gatetoken(EurekaClusterClient::instance().get_token());
-
-		EurekaClusterClient::instance().send_mth_protocol(req);
-
-		bind_home_step = GateBindHomeStep::GateBindHome_AskBind;
-
-		logDebug(out_runtime, "send gate bind home request.........");
-	}
-
 	//connect to router
-	router_link_mth_.connect_to();
+	datarouter_link_mth_.connect_to();
+	svrrouter_link_mth_.connect_to();
 }
 
-void GateServiceApp::on_homeservice_regist_result( HomeServiceLinkTo* plink)
+void GateServiceApp::on_datarouter_regist_result( DataRouterLinkTo* plink)
 {
-	if (bind_home_step == GateBindHomeStep::GateBindHome_Confirm)
-	{
-		bind_home_step = GateBindHomeStep::GateBindHome_Done;
-		plink->bind_home_confirm();
-	}
+	datarouter_link_mth_.on_linkto_regist_result( plink);
 }
 
-void GateServiceApp::on_connection_timeout(GateSession* session)
+void GateServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 {
-	ThreadLockWrapper guard(lock_);
-
-	session->reset();
-
-	session_from_.free_from_wait_mth(session);
-
-	logError(out_runtime, "GateService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	datarouter_link_mth_.on_linkto_disconnected(plink);
 }
 
-void GateServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
+void GateServiceApp::on_svrrouter_regist_result(ServiceRouterLinkTo* plink)
 {
-	ThreadLockWrapper guard(lock_);
-
-	session_from_.sessions_maintnce(tnow);
+	svrrouter_link_mth_.on_linkto_regist_result(plink);
 }
 
-void GateServiceApp::on_disconnected_with_homeservice(HomeServiceLinkTo* plink)
+void GateServiceApp::on_disconnected_with_svrrouter(ServiceRouterLinkTo* plink)
 {
-	bind_home_step = GateBindHomeStep::GateBindHome_CanAskBind;
-}
-
-void GateServiceApp::on_routerservice_regist_result( RouterServiceLinkTo* plink)
-{
-	router_link_mth_.on_linkto_regist_result( plink);
-}
-
-void GateServiceApp::on_disconnected_with_routerservice(RouterServiceLinkTo* plink)
-{
-	router_link_mth_.on_linkto_disconnected(plink);
-}
-
-void GateServiceApp::on_disconnected_with_gameservice(GameServiceLinkTo* plink)
-{
-
+	svrrouter_link_mth_.on_linkto_disconnected(plink);
 }

@@ -8,26 +8,11 @@ public interface Mail_UserOnline_activeOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *客户端本地保存的最大mailiid
    * </pre>
    *
-   * <code>int64 last_mailiid = 2;</code>
+   * <code>int64 last_mailiid = 1;</code>
    * @return The lastMailiid.
    */
   long getLastMailiid();
@@ -37,7 +22,7 @@ public interface Mail_UserOnline_activeOrBuilder extends
    *登陆成功后第一发送设置为true
    * </pre>
    *
-   * <code>bool firstactive = 3;</code>
+   * <code>bool firstactive = 2;</code>
    * @return The firstactive.
    */
   boolean getFirstactive();

@@ -8,12 +8,6 @@ option csharp_namespace = "com.cms.client.network.gpro";
 option java_multiple_files = true;
 option java_package = "com.cms.client.network.gpro";
 
-message UserToken{
-  //20bit gateid+43bit userid
-  int64 giduid = 1;
-  int64 slottoken = 2;
-}
-
 //系统邮件信息
 message MailSystemItem {
   int64 iid = 1;
@@ -75,5 +69,5 @@ message FriendRelation {
 
 //好友系统的用户数据
 message FriendUserInfo {
-  UserToken token = 1;
+  int64 roleiid = 1;
 }

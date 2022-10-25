@@ -1,6 +1,4 @@
 ﻿/**
-* protocol module
-* 
 * 重定义了协议使用的数据类型
 *
 * @category		

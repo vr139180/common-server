@@ -8,27 +8,12 @@ public interface Mail_MailGet_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *当前最大的邮件iid, == 0 获取最新的邮件列表 50个
    * &gt; 0 获取比这个iid小的50个邮件信息
    * </pre>
    *
-   * <code>int64 mailiid = 2;</code>
+   * <code>int64 mailiid = 1;</code>
    * @return The mailiid.
    */
   long getMailiid();
@@ -38,13 +23,13 @@ public interface Mail_MailGet_reqOrBuilder extends
    *true 从大到小翻页 false 从小到大
    * </pre>
    *
-   * <code>bool next = 3;</code>
+   * <code>bool next = 2;</code>
    * @return The next.
    */
   boolean getNext();
 
   /**
-   * <code>int32 num = 4;</code>
+   * <code>int32 num = 3;</code>
    * @return The num.
    */
   int getNum();

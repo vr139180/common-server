@@ -2,15 +2,8 @@
 
 #include <cmsLib/base/OSSystem.h>
 
+#include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
-#include <gameLib/protobuf/ProtoUtil.h>
-
-GamePlayer::GamePlayer():NetLinkFromBase<GateSession>()
-, slot_(-1)
-, cur_state_(PlayerState::PlayerState_Free)
-, role_iid_(0)
-{
-}
 
 void GamePlayer::init(int s)
 {
@@ -29,23 +22,29 @@ void GamePlayer::force_linkclose()
 	force_close();
 }
 
-void GamePlayer::preuse(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid)
+void GamePlayer::proxy()
 {
-	this->set_linkbase_info(uid, token);
-	this->slottoken_ = ProtoTokenUtil::build_usertoken(slot_, token);
-	this->giduid_ = ProtoTokenUtil::build_usergate( gateiid, uid);
-
+	cur_state_ = PlayerState::PlayerState_Loginning;
 	this->start_timestamp_ = OSSystem::mOS->GetTimestamp();
+}
+
+void GamePlayer::auth(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid)
+{
+	cur_state_ = PlayerState_Logon;
+
+	s_head_.set_token_slottoken(slot_, token);
+	s_head_.set_token_gidrid(gateiid, uid);
 }
 
 void GamePlayer::role_selected_done(S_INT_64 rid, S_INT_64 gateiid)
 {
 	cur_state_ = PlayerState::PlayerState_RoleReady;
 	role_iid_ = rid;
-	this->giduid_ = ProtoTokenUtil::build_usergate(gateiid, this->role_iid_);
+	s_head_.set_token_gidrid(gateiid, this->role_iid_);
 }
 
-bool GamePlayer::set_usertoken(BasicProtocol* msg)
+void GamePlayer::send_netprotocol(BasicProtocol* msg)
 {
-	return ProtoUtil::set_usertokenx(msg, giduid_, slottoken_);
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	session_->send_protocol(pro);
 }

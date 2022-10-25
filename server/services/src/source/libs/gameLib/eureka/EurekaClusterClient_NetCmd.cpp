@@ -10,12 +10,11 @@ void EurekaClusterClient::InitNetMessage()
 {
 	REGISTERMSG(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF, &EurekaClusterClient::on_eurekaupdate_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_ACK, &EurekaClusterClient::on_service_subscribe_ack, this);
-	REGISTERMSG(ERK_PROTYPE::SVR_GATEBINDHOME_ACK, &EurekaClusterClient::on_gatebindhome_ack, this);
 }
 
-void EurekaClusterClient::on_eurekaupdate_ntf(BasicProtocol* message, bool& autorelease)
+void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease)
 {
-	Erk_EurekaUpdate_ntf *ntf = dynamic_cast<Erk_EurekaUpdate_ntf*>(message);
+	Erk_EurekaUpdate_ntf *ntf = dynamic_cast<Erk_EurekaUpdate_ntf*>(message->msg_);
 
 	//新增增量
 	for (int ind = 0; ind < ntf->online_size(); ++ind)
@@ -74,9 +73,9 @@ void EurekaClusterClient::on_eurekaupdate_ntf(BasicProtocol* message, bool& auto
 	}
 }
 
-void EurekaClusterClient::on_service_subscribe_ack(BasicProtocol* message, bool& autorelease)
+void EurekaClusterClient::on_service_subscribe_ack(NetProtocol* message, bool& autorelease)
 {
-	Erk_ServiceSubscribe_ack* ack = dynamic_cast<Erk_ServiceSubscribe_ack*>(message);
+	Erk_ServiceSubscribe_ack* ack = dynamic_cast<Erk_ServiceSubscribe_ack*>(message->msg_);
 
 	NETSERVICE_TYPE type = (NETSERVICE_TYPE)ack->svr_type();
 	SERVICENODE_TYPE& s_nodes = get_servicenodes_by_type( type);
@@ -146,25 +145,4 @@ void EurekaClusterClient::on_service_subscribe_ack(BasicProtocol* message, bool&
 		if (app_proxy_)
 			app_proxy_->mth_service_registed(service_iid_);
 	}
-}
-
-void EurekaClusterClient::on_gatebindhome_ack(BasicProtocol* message, bool& autorelease)
-{
-	logDebug(out_runtime, "recv gate bind home response.........");
-	if (app_proxy_ == 0)
-		return;
-
-	Svr_GateBindHome_ack* ack = dynamic_cast<Svr_GateBindHome_ack*>(message);
-	ServiceNodeInfo *pnode = 0;
-	if (ack->result() == 0)
-	{
-		pnode = new ServiceNodeInfo();
-		pnode->type = NETSERVICE_TYPE::ERK_SERVICE_HOME;
-		pnode->iid = ack->homeiid();
-		pnode->token = ack->hometoken();
-		pnode->ip = ack->homeip();
-		pnode->port = ack->homeport();
-	}
-
-	app_proxy_->on_mth_gatebindhome_ack(ack->result() == 0, pnode, ack->gateiid(), ack->bindtoken());
 }

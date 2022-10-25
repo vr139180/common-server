@@ -11,76 +11,68 @@ option java_multiple_files = true;
 option java_package = "com.cms.client.network.gpro";
 
 message Frd_FriendList_req {
-  optional UserToken utoken = 1;
   //最大的一个invite的iid，会获取新的邀请
-  int64 last_invite = 2;
+  int64 last_invite = 1;
   //根据活跃度排行的索引 0开始
-  int32 friendindex = 3;
+  int32 friendindex = 2;
   //true 小到大 获取下一批好友信息, false 大到小获取
-  bool next = 4;
+  bool next = 3;
   //每批的长度，不超过20
-  int32 num = 5;
+  int32 num = 4;
   //附加的用户信息，可能有其他扩展
   string nickname = 10;
 }
 
 message Frd_FriendList_ack {
-  optional UserToken utoken = 1;
   //iid从小到大
-  repeated FriendInviteItem invites = 2;
-  int32 totleinvite = 3;
-  repeated FriendRelation friends = 4;
-  int32 totlefriend = 5;
-  bool next = 6;
+  repeated FriendInviteItem invites = 1;
+  int32 totleinvite = 2;
+  repeated FriendRelation friends = 3;
+  int32 totlefriend = 4;
+  bool next = 5;
 }
 
 message Frd_FriendInvite_req {
-  optional UserToken utoken = 1;
   //被邀请人
-  int64 invite_iid = 2;
+  int64 invite_iid = 1;
 }
 
 message Frd_FriendInvite_ack {
-  optional UserToken utoken = 1;
   //被邀请人
-  int64 invite_iid = 2;
+  int64 invite_iid = 1;
   //0 成功 1 system error 2 already friend 3 invite not exist
-  int32 result = 3;
+  int32 result = 2;
   //成功包含invite信息
-  optional FriendInviteItem invite = 4;
+  optional FriendInviteItem invite = 3;
 }
 
 message Frd_InviteConfirm_req {
-  optional UserToken utoken = 1;
   //invite的编号
-  int64 iid = 2;
+  int64 iid = 1;
   //true 同意 false 拒绝
-  bool agree = 3;
+  bool agree = 2;
 }
 
 message Frd_InviteConfirm_ack {
-  optional UserToken utoken = 1;
   //invite的编号
-  int64 iid = 2;
+  int64 iid = 1;
   //true 同意 false 拒绝
-  bool agree = 3;
+  bool agree = 2;
   //0 ok 1 system error 2 invite no exist
-  int32 result = 4;
+  int32 result = 3;
   //成功 并且同意 返回好友关系
-  optional FriendRelation friend = 5;
+  optional FriendRelation friend = 4;
 }
 
 message Frd_FriendDelete_req {
-  optional UserToken utoken = 1;
   //好友
-  int64 friendiid = 2;
+  int64 friendiid = 1;
 }
 
 message Frd_FriendDelete_ack {
-  optional UserToken utoken = 1;
   //好友
-  int64 friendiid = 2;
+  int64 friendiid = 1;
   //0 success 1 system err 2: friend not exist
-  int32 result = 3;
+  int32 result = 2;
 }
 

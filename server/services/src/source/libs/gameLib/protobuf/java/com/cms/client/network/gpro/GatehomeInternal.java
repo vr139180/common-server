@@ -38,41 +38,35 @@ public final class GatehomeInternal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027gatehome_internal.proto\022\003PRO\032\025global_i" +
-      "nternal.proto\"S\n\020GHS_UserInit_req\022#\n\006uto" +
-      "ken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\017\n\007gateii" +
-      "d\030\002 \001(\003B\t\n\007_utoken\"D\n\022GHS_UserLogout_ntf" +
-      "\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n" +
-      "\007_utoken\"D\n\022GHS_RoleDetail_ask\022#\n\006utoken" +
-      "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001B\t\n\007_utokenBT" +
-      "\n\033com.cms.client.network.gproP\001Z\025gamelib" +
-      "/protobuf/gpro\252\002\033com.cms.client.network." +
-      "gprob\006proto3"
+      "\n\027gatehome_internal.proto\022\003PRO\"#\n\020GHS_Us" +
+      "erInit_req\022\017\n\007gateiid\030\001 \001(\003\"%\n\022GHS_UserL" +
+      "ogout_ntf\022\017\n\007roleiid\030\001 \001(\003\"%\n\022GHS_RoleDe" +
+      "tail_ask\022\017\n\007roleiid\030\001 \001(\003BT\n\033com.cms.cli" +
+      "ent.network.gproP\001Z\025gamelib/protobuf/gpr" +
+      "o\252\002\033com.cms.client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.cms.client.network.gpro.GlobalInternal.getDescriptor(),
         });
     internal_static_PRO_GHS_UserInit_req_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_PRO_GHS_UserInit_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_GHS_UserInit_req_descriptor,
-        new java.lang.String[] { "Utoken", "Gateiid", "Utoken", });
+        new java.lang.String[] { "Gateiid", });
     internal_static_PRO_GHS_UserLogout_ntf_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_GHS_UserLogout_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_GHS_UserLogout_ntf_descriptor,
-        new java.lang.String[] { "Utoken", "Utoken", });
+        new java.lang.String[] { "Roleiid", });
     internal_static_PRO_GHS_RoleDetail_ask_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_GHS_RoleDetail_ask_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_GHS_RoleDetail_ask_descriptor,
-        new java.lang.String[] { "Utoken", "Utoken", });
-    com.cms.client.network.gpro.GlobalInternal.getDescriptor();
+        new java.lang.String[] { "Roleiid", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

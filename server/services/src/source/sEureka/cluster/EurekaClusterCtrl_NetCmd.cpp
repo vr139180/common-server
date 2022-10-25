@@ -15,18 +15,13 @@ void EurekaClusterCtrl::InitNetMessage()
 {
 }
 
-void EurekaClusterCtrl::on_eurekabind_req(BasicProtocol* pro, bool& autorelease, void* session)
+void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, void* session)
 {
 	EurekaSession* pes = reinterpret_cast<EurekaSession*>(session);
-	Erk_EurekaBind_req* req = reinterpret_cast<Erk_EurekaBind_req*>(pro);
+	Erk_EurekaBind_req* req = reinterpret_cast<Erk_EurekaBind_req*>(pro->msg_);
 
 	if (is_eureka_exist(req->iid()) || (!is_boosted()))
 	{
-		//服务已经注册,或者eureka启动未完成
-		Erk_EurekaBind_ack *ack = new Erk_EurekaBind_ack();
-		ack->set_result(1);
-		pes->send_protocol(ack);
-
 		//强制挂断
 		pes->force_close();
 
@@ -76,13 +71,13 @@ void EurekaClusterCtrl::on_eurekabind_req(BasicProtocol* pro, bool& autorelease,
 
 		Erk_EurekaBind_ack *ack = new Erk_EurekaBind_ack();
 		ack->set_result(0);
-		pfrom->send_protocol(ack);
+		pfrom->send_to_eureka(ack);
 	}
 }
 
-void EurekaClusterCtrl::on_service_eureka_sync(BasicProtocol* message, bool& autorelease)
+void EurekaClusterCtrl::on_service_eureka_sync(NetProtocol* message, bool& autorelease)
 {
-	Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(message);
+	Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(message->msg_);
 
 	//根据同步数据提供增量服务信息
 	std::set<S_INT_64> offlines;
@@ -126,9 +121,15 @@ void EurekaClusterCtrl::on_service_eureka_sync(BasicProtocol* message, bool& aut
 	}
 
 	//解耦,路由到service
-	NETCMD_FUN_MAP2 fun = boost::bind(&ServiceRegisterCtrl::on_mth_message_route_to_service, svrApp.get_servicectrl(), 
-		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);
-	NetCommand *pcmd = new NetCommand(ntf, fun, (int)syn->myiid());
+	NETCMD_FUN_MAP fun = boost::bind(&ServiceRegisterCtrl::on_mth_message_route_to_service, svrApp.get_servicectrl(), 
+		boost::placeholders::_1, boost::placeholders::_2);
+
+	SProtocolHead head = message->head_;
+	head.from_type_ = head.to_type_;
+	head.to_type_ = message->head_.from_type_;
+	NetProtocol *pro = new NetProtocol(head, ntf);
+
+	NetCommand *pcmd = new NetCommand(pro, fun);
 
 	svrApp.regist_syscmd(pcmd);
 }

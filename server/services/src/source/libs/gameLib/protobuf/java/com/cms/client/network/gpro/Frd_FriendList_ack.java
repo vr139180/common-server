@@ -52,47 +52,34 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 18: {
-            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               invites_ = new java.util.ArrayList<com.cms.client.network.gpro.FriendInviteItem>();
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000001;
             }
             invites_.add(
                 input.readMessage(com.cms.client.network.gpro.FriendInviteItem.parser(), extensionRegistry));
             break;
           }
-          case 24: {
+          case 16: {
 
             totleinvite_ = input.readInt32();
             break;
           }
-          case 34: {
-            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+          case 26: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
               friends_ = new java.util.ArrayList<com.cms.client.network.gpro.FriendRelation>();
-              mutable_bitField0_ |= 0x00000004;
+              mutable_bitField0_ |= 0x00000002;
             }
             friends_.add(
                 input.readMessage(com.cms.client.network.gpro.FriendRelation.parser(), extensionRegistry));
             break;
           }
-          case 40: {
+          case 32: {
 
             totlefriend_ = input.readInt32();
             break;
           }
-          case 48: {
+          case 40: {
 
             next_ = input.readBool();
             break;
@@ -112,10 +99,10 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
         invites_ = java.util.Collections.unmodifiableList(invites_);
       }
-      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
         friends_ = java.util.Collections.unmodifiableList(friends_);
       }
       this.unknownFields = unknownFields.build();
@@ -135,41 +122,14 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Frd_FriendList_ack.class, com.cms.client.network.gpro.Frd_FriendList_ack.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int INVITES_FIELD_NUMBER = 2;
+  public static final int INVITES_FIELD_NUMBER = 1;
   private java.util.List<com.cms.client.network.gpro.FriendInviteItem> invites_;
   /**
    * <pre>
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   @java.lang.Override
   public java.util.List<com.cms.client.network.gpro.FriendInviteItem> getInvitesList() {
@@ -180,7 +140,7 @@ private static final long serialVersionUID = 0L;
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   @java.lang.Override
   public java.util.List<? extends com.cms.client.network.gpro.FriendInviteItemOrBuilder> 
@@ -192,7 +152,7 @@ private static final long serialVersionUID = 0L;
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   @java.lang.Override
   public int getInvitesCount() {
@@ -203,7 +163,7 @@ private static final long serialVersionUID = 0L;
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.FriendInviteItem getInvites(int index) {
@@ -214,7 +174,7 @@ private static final long serialVersionUID = 0L;
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.FriendInviteItemOrBuilder getInvitesOrBuilder(
@@ -222,10 +182,10 @@ private static final long serialVersionUID = 0L;
     return invites_.get(index);
   }
 
-  public static final int TOTLEINVITE_FIELD_NUMBER = 3;
+  public static final int TOTLEINVITE_FIELD_NUMBER = 2;
   private int totleinvite_;
   /**
-   * <code>int32 totleinvite = 3;</code>
+   * <code>int32 totleinvite = 2;</code>
    * @return The totleinvite.
    */
   @java.lang.Override
@@ -233,17 +193,17 @@ private static final long serialVersionUID = 0L;
     return totleinvite_;
   }
 
-  public static final int FRIENDS_FIELD_NUMBER = 4;
+  public static final int FRIENDS_FIELD_NUMBER = 3;
   private java.util.List<com.cms.client.network.gpro.FriendRelation> friends_;
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   @java.lang.Override
   public java.util.List<com.cms.client.network.gpro.FriendRelation> getFriendsList() {
     return friends_;
   }
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   @java.lang.Override
   public java.util.List<? extends com.cms.client.network.gpro.FriendRelationOrBuilder> 
@@ -251,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return friends_;
   }
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   @java.lang.Override
   public int getFriendsCount() {
     return friends_.size();
   }
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.FriendRelation getFriends(int index) {
     return friends_.get(index);
   }
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.FriendRelationOrBuilder getFriendsOrBuilder(
@@ -273,10 +233,10 @@ private static final long serialVersionUID = 0L;
     return friends_.get(index);
   }
 
-  public static final int TOTLEFRIEND_FIELD_NUMBER = 5;
+  public static final int TOTLEFRIEND_FIELD_NUMBER = 4;
   private int totlefriend_;
   /**
-   * <code>int32 totlefriend = 5;</code>
+   * <code>int32 totlefriend = 4;</code>
    * @return The totlefriend.
    */
   @java.lang.Override
@@ -284,10 +244,10 @@ private static final long serialVersionUID = 0L;
     return totlefriend_;
   }
 
-  public static final int NEXT_FIELD_NUMBER = 6;
+  public static final int NEXT_FIELD_NUMBER = 5;
   private boolean next_;
   /**
-   * <code>bool next = 6;</code>
+   * <code>bool next = 5;</code>
    * @return The next.
    */
   @java.lang.Override
@@ -309,23 +269,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     for (int i = 0; i < invites_.size(); i++) {
-      output.writeMessage(2, invites_.get(i));
+      output.writeMessage(1, invites_.get(i));
     }
     if (totleinvite_ != 0) {
-      output.writeInt32(3, totleinvite_);
+      output.writeInt32(2, totleinvite_);
     }
     for (int i = 0; i < friends_.size(); i++) {
-      output.writeMessage(4, friends_.get(i));
+      output.writeMessage(3, friends_.get(i));
     }
     if (totlefriend_ != 0) {
-      output.writeInt32(5, totlefriend_);
+      output.writeInt32(4, totlefriend_);
     }
     if (next_ != false) {
-      output.writeBool(6, next_);
+      output.writeBool(5, next_);
     }
     unknownFields.writeTo(output);
   }
@@ -336,29 +293,25 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     for (int i = 0; i < invites_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, invites_.get(i));
+        .computeMessageSize(1, invites_.get(i));
     }
     if (totleinvite_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, totleinvite_);
+        .computeInt32Size(2, totleinvite_);
     }
     for (int i = 0; i < friends_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, friends_.get(i));
+        .computeMessageSize(3, friends_.get(i));
     }
     if (totlefriend_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, totlefriend_);
+        .computeInt32Size(4, totlefriend_);
     }
     if (next_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(6, next_);
+        .computeBoolSize(5, next_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -375,11 +328,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Frd_FriendList_ack other = (com.cms.client.network.gpro.Frd_FriendList_ack) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (!getInvitesList()
         .equals(other.getInvitesList())) return false;
     if (getTotleinvite()
@@ -401,10 +349,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     if (getInvitesCount() > 0) {
       hash = (37 * hash) + INVITES_FIELD_NUMBER;
       hash = (53 * hash) + getInvitesList().hashCode();
@@ -548,7 +492,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
         getInvitesFieldBuilder();
         getFriendsFieldBuilder();
       }
@@ -556,15 +499,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       if (invitesBuilder_ == null) {
         invites_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
       } else {
         invitesBuilder_.clear();
       }
@@ -572,7 +509,7 @@ private static final long serialVersionUID = 0L;
 
       if (friendsBuilder_ == null) {
         friends_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
       } else {
         friendsBuilder_.clear();
       }
@@ -607,19 +544,10 @@ private static final long serialVersionUID = 0L;
     public com.cms.client.network.gpro.Frd_FriendList_ack buildPartial() {
       com.cms.client.network.gpro.Frd_FriendList_ack result = new com.cms.client.network.gpro.Frd_FriendList_ack(this);
       int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       if (invitesBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0)) {
+        if (((bitField0_ & 0x00000001) != 0)) {
           invites_ = java.util.Collections.unmodifiableList(invites_);
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.invites_ = invites_;
       } else {
@@ -627,9 +555,9 @@ private static final long serialVersionUID = 0L;
       }
       result.totleinvite_ = totleinvite_;
       if (friendsBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000002) != 0)) {
           friends_ = java.util.Collections.unmodifiableList(friends_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.friends_ = friends_;
       } else {
@@ -637,7 +565,6 @@ private static final long serialVersionUID = 0L;
       }
       result.totlefriend_ = totlefriend_;
       result.next_ = next_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -686,14 +613,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Frd_FriendList_ack other) {
       if (other == com.cms.client.network.gpro.Frd_FriendList_ack.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (invitesBuilder_ == null) {
         if (!other.invites_.isEmpty()) {
           if (invites_.isEmpty()) {
             invites_ = other.invites_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           } else {
             ensureInvitesIsMutable();
             invites_.addAll(other.invites_);
@@ -706,7 +630,7 @@ private static final long serialVersionUID = 0L;
             invitesBuilder_.dispose();
             invitesBuilder_ = null;
             invites_ = other.invites_;
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
             invitesBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getInvitesFieldBuilder() : null;
@@ -722,7 +646,7 @@ private static final long serialVersionUID = 0L;
         if (!other.friends_.isEmpty()) {
           if (friends_.isEmpty()) {
             friends_ = other.friends_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureFriendsIsMutable();
             friends_.addAll(other.friends_);
@@ -735,7 +659,7 @@ private static final long serialVersionUID = 0L;
             friendsBuilder_.dispose();
             friendsBuilder_ = null;
             friends_ = other.friends_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
             friendsBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getFriendsFieldBuilder() : null;
@@ -780,132 +704,12 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
-
     private java.util.List<com.cms.client.network.gpro.FriendInviteItem> invites_ =
       java.util.Collections.emptyList();
     private void ensureInvitesIsMutable() {
-      if (!((bitField0_ & 0x00000002) != 0)) {
+      if (!((bitField0_ & 0x00000001) != 0)) {
         invites_ = new java.util.ArrayList<com.cms.client.network.gpro.FriendInviteItem>(invites_);
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
        }
     }
 
@@ -917,7 +721,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public java.util.List<com.cms.client.network.gpro.FriendInviteItem> getInvitesList() {
       if (invitesBuilder_ == null) {
@@ -931,7 +735,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public int getInvitesCount() {
       if (invitesBuilder_ == null) {
@@ -945,7 +749,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public com.cms.client.network.gpro.FriendInviteItem getInvites(int index) {
       if (invitesBuilder_ == null) {
@@ -959,7 +763,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder setInvites(
         int index, com.cms.client.network.gpro.FriendInviteItem value) {
@@ -980,7 +784,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder setInvites(
         int index, com.cms.client.network.gpro.FriendInviteItem.Builder builderForValue) {
@@ -998,7 +802,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder addInvites(com.cms.client.network.gpro.FriendInviteItem value) {
       if (invitesBuilder_ == null) {
@@ -1018,7 +822,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder addInvites(
         int index, com.cms.client.network.gpro.FriendInviteItem value) {
@@ -1039,7 +843,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder addInvites(
         com.cms.client.network.gpro.FriendInviteItem.Builder builderForValue) {
@@ -1057,7 +861,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder addInvites(
         int index, com.cms.client.network.gpro.FriendInviteItem.Builder builderForValue) {
@@ -1075,7 +879,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder addAllInvites(
         java.lang.Iterable<? extends com.cms.client.network.gpro.FriendInviteItem> values) {
@@ -1094,12 +898,12 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder clearInvites() {
       if (invitesBuilder_ == null) {
         invites_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
         invitesBuilder_.clear();
@@ -1111,7 +915,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public Builder removeInvites(int index) {
       if (invitesBuilder_ == null) {
@@ -1128,7 +932,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public com.cms.client.network.gpro.FriendInviteItem.Builder getInvitesBuilder(
         int index) {
@@ -1139,7 +943,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public com.cms.client.network.gpro.FriendInviteItemOrBuilder getInvitesOrBuilder(
         int index) {
@@ -1153,7 +957,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public java.util.List<? extends com.cms.client.network.gpro.FriendInviteItemOrBuilder> 
          getInvitesOrBuilderList() {
@@ -1168,7 +972,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public com.cms.client.network.gpro.FriendInviteItem.Builder addInvitesBuilder() {
       return getInvitesFieldBuilder().addBuilder(
@@ -1179,7 +983,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public com.cms.client.network.gpro.FriendInviteItem.Builder addInvitesBuilder(
         int index) {
@@ -1191,7 +995,7 @@ private static final long serialVersionUID = 0L;
      *iid从小到大
      * </pre>
      *
-     * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+     * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
      */
     public java.util.List<com.cms.client.network.gpro.FriendInviteItem.Builder> 
          getInvitesBuilderList() {
@@ -1204,7 +1008,7 @@ private static final long serialVersionUID = 0L;
         invitesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             com.cms.client.network.gpro.FriendInviteItem, com.cms.client.network.gpro.FriendInviteItem.Builder, com.cms.client.network.gpro.FriendInviteItemOrBuilder>(
                 invites_,
-                ((bitField0_ & 0x00000002) != 0),
+                ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
         invites_ = null;
@@ -1214,7 +1018,7 @@ private static final long serialVersionUID = 0L;
 
     private int totleinvite_ ;
     /**
-     * <code>int32 totleinvite = 3;</code>
+     * <code>int32 totleinvite = 2;</code>
      * @return The totleinvite.
      */
     @java.lang.Override
@@ -1222,7 +1026,7 @@ private static final long serialVersionUID = 0L;
       return totleinvite_;
     }
     /**
-     * <code>int32 totleinvite = 3;</code>
+     * <code>int32 totleinvite = 2;</code>
      * @param value The totleinvite to set.
      * @return This builder for chaining.
      */
@@ -1233,7 +1037,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 totleinvite = 3;</code>
+     * <code>int32 totleinvite = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTotleinvite() {
@@ -1246,9 +1050,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<com.cms.client.network.gpro.FriendRelation> friends_ =
       java.util.Collections.emptyList();
     private void ensureFriendsIsMutable() {
-      if (!((bitField0_ & 0x00000004) != 0)) {
+      if (!((bitField0_ & 0x00000002) != 0)) {
         friends_ = new java.util.ArrayList<com.cms.client.network.gpro.FriendRelation>(friends_);
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
        }
     }
 
@@ -1256,7 +1060,7 @@ private static final long serialVersionUID = 0L;
         com.cms.client.network.gpro.FriendRelation, com.cms.client.network.gpro.FriendRelation.Builder, com.cms.client.network.gpro.FriendRelationOrBuilder> friendsBuilder_;
 
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public java.util.List<com.cms.client.network.gpro.FriendRelation> getFriendsList() {
       if (friendsBuilder_ == null) {
@@ -1266,7 +1070,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public int getFriendsCount() {
       if (friendsBuilder_ == null) {
@@ -1276,7 +1080,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public com.cms.client.network.gpro.FriendRelation getFriends(int index) {
       if (friendsBuilder_ == null) {
@@ -1286,7 +1090,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder setFriends(
         int index, com.cms.client.network.gpro.FriendRelation value) {
@@ -1303,7 +1107,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder setFriends(
         int index, com.cms.client.network.gpro.FriendRelation.Builder builderForValue) {
@@ -1317,7 +1121,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder addFriends(com.cms.client.network.gpro.FriendRelation value) {
       if (friendsBuilder_ == null) {
@@ -1333,7 +1137,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder addFriends(
         int index, com.cms.client.network.gpro.FriendRelation value) {
@@ -1350,7 +1154,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder addFriends(
         com.cms.client.network.gpro.FriendRelation.Builder builderForValue) {
@@ -1364,7 +1168,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder addFriends(
         int index, com.cms.client.network.gpro.FriendRelation.Builder builderForValue) {
@@ -1378,7 +1182,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder addAllFriends(
         java.lang.Iterable<? extends com.cms.client.network.gpro.FriendRelation> values) {
@@ -1393,12 +1197,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder clearFriends() {
       if (friendsBuilder_ == null) {
         friends_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
       } else {
         friendsBuilder_.clear();
@@ -1406,7 +1210,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public Builder removeFriends(int index) {
       if (friendsBuilder_ == null) {
@@ -1419,14 +1223,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public com.cms.client.network.gpro.FriendRelation.Builder getFriendsBuilder(
         int index) {
       return getFriendsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public com.cms.client.network.gpro.FriendRelationOrBuilder getFriendsOrBuilder(
         int index) {
@@ -1436,7 +1240,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public java.util.List<? extends com.cms.client.network.gpro.FriendRelationOrBuilder> 
          getFriendsOrBuilderList() {
@@ -1447,14 +1251,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public com.cms.client.network.gpro.FriendRelation.Builder addFriendsBuilder() {
       return getFriendsFieldBuilder().addBuilder(
           com.cms.client.network.gpro.FriendRelation.getDefaultInstance());
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public com.cms.client.network.gpro.FriendRelation.Builder addFriendsBuilder(
         int index) {
@@ -1462,7 +1266,7 @@ private static final long serialVersionUID = 0L;
           index, com.cms.client.network.gpro.FriendRelation.getDefaultInstance());
     }
     /**
-     * <code>repeated .PRO.FriendRelation friends = 4;</code>
+     * <code>repeated .PRO.FriendRelation friends = 3;</code>
      */
     public java.util.List<com.cms.client.network.gpro.FriendRelation.Builder> 
          getFriendsBuilderList() {
@@ -1475,7 +1279,7 @@ private static final long serialVersionUID = 0L;
         friendsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             com.cms.client.network.gpro.FriendRelation, com.cms.client.network.gpro.FriendRelation.Builder, com.cms.client.network.gpro.FriendRelationOrBuilder>(
                 friends_,
-                ((bitField0_ & 0x00000004) != 0),
+                ((bitField0_ & 0x00000002) != 0),
                 getParentForChildren(),
                 isClean());
         friends_ = null;
@@ -1485,7 +1289,7 @@ private static final long serialVersionUID = 0L;
 
     private int totlefriend_ ;
     /**
-     * <code>int32 totlefriend = 5;</code>
+     * <code>int32 totlefriend = 4;</code>
      * @return The totlefriend.
      */
     @java.lang.Override
@@ -1493,7 +1297,7 @@ private static final long serialVersionUID = 0L;
       return totlefriend_;
     }
     /**
-     * <code>int32 totlefriend = 5;</code>
+     * <code>int32 totlefriend = 4;</code>
      * @param value The totlefriend to set.
      * @return This builder for chaining.
      */
@@ -1504,7 +1308,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 totlefriend = 5;</code>
+     * <code>int32 totlefriend = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearTotlefriend() {
@@ -1516,7 +1320,7 @@ private static final long serialVersionUID = 0L;
 
     private boolean next_ ;
     /**
-     * <code>bool next = 6;</code>
+     * <code>bool next = 5;</code>
      * @return The next.
      */
     @java.lang.Override
@@ -1524,7 +1328,7 @@ private static final long serialVersionUID = 0L;
       return next_;
     }
     /**
-     * <code>bool next = 6;</code>
+     * <code>bool next = 5;</code>
      * @param value The next to set.
      * @return This builder for chaining.
      */
@@ -1535,7 +1339,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bool next = 6;</code>
+     * <code>bool next = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearNext() {

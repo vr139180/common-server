@@ -77,19 +77,14 @@ private static final long serialVersionUID = 0L;
             proxytoken_ = input.readInt64();
             break;
           }
-          case 88: {
-            bitField0_ |= 0x00000008;
-            slot_ = input.readInt32();
-            break;
-          }
-          case 98: {
+          case 90: {
             java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000010;
+            bitField0_ |= 0x00000008;
             proxyip_ = s;
             break;
           }
-          case 104: {
-            bitField0_ |= 0x00000020;
+          case 96: {
+            bitField0_ |= 0x00000010;
             proxyport_ = input.readInt32();
             break;
           }
@@ -268,37 +263,18 @@ private static final long serialVersionUID = 0L;
     return proxytoken_;
   }
 
-  public static final int SLOT_FIELD_NUMBER = 11;
-  private int slot_;
-  /**
-   * <code>optional int32 slot = 11;</code>
-   * @return Whether the slot field is set.
-   */
-  @java.lang.Override
-  public boolean hasSlot() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <code>optional int32 slot = 11;</code>
-   * @return The slot.
-   */
-  @java.lang.Override
-  public int getSlot() {
-    return slot_;
-  }
-
-  public static final int PROXYIP_FIELD_NUMBER = 12;
+  public static final int PROXYIP_FIELD_NUMBER = 11;
   private volatile java.lang.Object proxyip_;
   /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return Whether the proxyip field is set.
    */
   @java.lang.Override
   public boolean hasProxyip() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return The proxyip.
    */
   @java.lang.Override
@@ -315,7 +291,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>optional string proxyip = 12;</code>
+   * <code>optional string proxyip = 11;</code>
    * @return The bytes for proxyip.
    */
   @java.lang.Override
@@ -333,18 +309,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PROXYPORT_FIELD_NUMBER = 13;
+  public static final int PROXYPORT_FIELD_NUMBER = 12;
   private int proxyport_;
   /**
-   * <code>optional int32 proxyport = 13;</code>
+   * <code>optional int32 proxyport = 12;</code>
    * @return Whether the proxyport field is set.
    */
   @java.lang.Override
   public boolean hasProxyport() {
-    return ((bitField0_ & 0x00000020) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
-   * <code>optional int32 proxyport = 13;</code>
+   * <code>optional int32 proxyport = 12;</code>
    * @return The proxyport.
    */
   @java.lang.Override
@@ -382,13 +358,10 @@ private static final long serialVersionUID = 0L;
       output.writeInt64(10, proxytoken_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(11, slot_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, proxyip_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, proxyip_);
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
-      output.writeInt32(13, proxyport_);
+      output.writeInt32(12, proxyport_);
     }
     unknownFields.writeTo(output);
   }
@@ -419,15 +392,11 @@ private static final long serialVersionUID = 0L;
         .computeInt64Size(10, proxytoken_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(11, slot_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, proxyip_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, proxyip_);
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(13, proxyport_);
+        .computeInt32Size(12, proxyport_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -462,11 +431,6 @@ private static final long serialVersionUID = 0L;
     if (hasProxytoken()) {
       if (getProxytoken()
           != other.getProxytoken()) return false;
-    }
-    if (hasSlot() != other.hasSlot()) return false;
-    if (hasSlot()) {
-      if (getSlot()
-          != other.getSlot()) return false;
     }
     if (hasProxyip() != other.hasProxyip()) return false;
     if (hasProxyip()) {
@@ -506,10 +470,6 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + PROXYTOKEN_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getProxytoken());
-    }
-    if (hasSlot()) {
-      hash = (37 * hash) + SLOT_FIELD_NUMBER;
-      hash = (53 * hash) + getSlot();
     }
     if (hasProxyip()) {
       hash = (37 * hash) + PROXYIP_FIELD_NUMBER;
@@ -662,12 +622,10 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000002);
       proxytoken_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
-      slot_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000008);
       proxyip_ = "";
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000008);
       proxyport_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
@@ -711,16 +669,12 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000004;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.slot_ = slot_;
         to_bitField0_ |= 0x00000008;
       }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        to_bitField0_ |= 0x00000010;
-      }
       result.proxyip_ = proxyip_;
-      if (((from_bitField0_ & 0x00000020) != 0)) {
+      if (((from_bitField0_ & 0x00000010) != 0)) {
         result.proxyport_ = proxyport_;
-        to_bitField0_ |= 0x00000020;
+        to_bitField0_ |= 0x00000010;
       }
       result.bitField0_ = to_bitField0_;
       onBuilt();
@@ -788,11 +742,8 @@ private static final long serialVersionUID = 0L;
       if (other.hasProxytoken()) {
         setProxytoken(other.getProxytoken());
       }
-      if (other.hasSlot()) {
-        setSlot(other.getSlot());
-      }
       if (other.hasProxyip()) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         proxyip_ = other.proxyip_;
         onChanged();
       }
@@ -1132,55 +1083,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int slot_ ;
-    /**
-     * <code>optional int32 slot = 11;</code>
-     * @return Whether the slot field is set.
-     */
-    @java.lang.Override
-    public boolean hasSlot() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional int32 slot = 11;</code>
-     * @return The slot.
-     */
-    @java.lang.Override
-    public int getSlot() {
-      return slot_;
-    }
-    /**
-     * <code>optional int32 slot = 11;</code>
-     * @param value The slot to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSlot(int value) {
-      bitField0_ |= 0x00000008;
-      slot_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 slot = 11;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearSlot() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      slot_ = 0;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object proxyip_ = "";
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @return Whether the proxyip field is set.
      */
     public boolean hasProxyip() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @return The proxyip.
      */
     public java.lang.String getProxyip() {
@@ -1196,7 +1108,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @return The bytes for proxyip.
      */
     public com.google.protobuf.ByteString
@@ -1213,7 +1125,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @param value The proxyip to set.
      * @return This builder for chaining.
      */
@@ -1222,23 +1134,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000008;
       proxyip_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @return This builder for chaining.
      */
     public Builder clearProxyip() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000008);
       proxyip_ = getDefaultInstance().getProxyip();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string proxyip = 12;</code>
+     * <code>optional string proxyip = 11;</code>
      * @param value The bytes for proxyip to set.
      * @return This builder for chaining.
      */
@@ -1248,7 +1160,7 @@ private static final long serialVersionUID = 0L;
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       proxyip_ = value;
       onChanged();
       return this;
@@ -1256,15 +1168,15 @@ private static final long serialVersionUID = 0L;
 
     private int proxyport_ ;
     /**
-     * <code>optional int32 proxyport = 13;</code>
+     * <code>optional int32 proxyport = 12;</code>
      * @return Whether the proxyport field is set.
      */
     @java.lang.Override
     public boolean hasProxyport() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional int32 proxyport = 13;</code>
+     * <code>optional int32 proxyport = 12;</code>
      * @return The proxyport.
      */
     @java.lang.Override
@@ -1272,22 +1184,22 @@ private static final long serialVersionUID = 0L;
       return proxyport_;
     }
     /**
-     * <code>optional int32 proxyport = 13;</code>
+     * <code>optional int32 proxyport = 12;</code>
      * @param value The proxyport to set.
      * @return This builder for chaining.
      */
     public Builder setProxyport(int value) {
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000010;
       proxyport_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int32 proxyport = 13;</code>
+     * <code>optional int32 proxyport = 12;</code>
      * @return This builder for chaining.
      */
     public Builder clearProxyport() {
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000010);
       proxyport_ = 0;
       onChanged();
       return this;

@@ -14,6 +14,9 @@ public:
 		std::string ret = "";
 		switch (t)
 		{
+		case NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER:
+			ret = "datarouter";
+			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_RES:
 			ret = "res";
 			break;
@@ -26,17 +29,11 @@ public:
 		case NETSERVICE_TYPE::ERK_SERVICE_LOGIN:
 			ret = "login";
 			break;
+		case NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER:
+			ret = "svrrouter";
+			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_UNION:
 			ret = "union";
-			break;
-		case NETSERVICE_TYPE::ERK_SERVICE_GAME:
-			ret = "game";
-			break;
-		case NETSERVICE_TYPE::ERK_SERVICE_DATASYNC:
-			ret = "datasync";
-			break;
-		case NETSERVICE_TYPE::ERK_SERVICE_ROUTER:
-			ret = "router";
 			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_CHAT:
 			ret = "chat";
@@ -50,8 +47,14 @@ public:
 		case NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER:
 			ret = "ftrouter";
 			break;
+		case NETSERVICE_TYPE::ERK_SERVICE_GAME:
+			ret = "game";
+			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING:
 			ret = "matchmaking";
+			break;
+		case NETSERVICE_TYPE::ERK_SERVICE_DATASYNC:
+			ret = "datasync";
 			break;
 		}
 

@@ -19,8 +19,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
 constexpr Pet_AdoptOne_req::Pet_AdoptOne_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , pet_iid_(int64_t{0}){}
+  : pet_iid_(int64_t{0}){}
 struct Pet_AdoptOne_reqDefaultTypeInternal {
   constexpr Pet_AdoptOne_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -32,8 +31,7 @@ struct Pet_AdoptOne_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Pet_AdoptOne_reqDefaultTypeInternal _Pet_AdoptOne_req_default_instance_;
 constexpr Pet_AdoptOne_ack::Pet_AdoptOne_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , pet_(nullptr)
+  : pet_(nullptr)
   , result_(0){}
 struct Pet_AdoptOne_ackDefaultTypeInternal {
   constexpr Pet_AdoptOne_ackDefaultTypeInternal()
@@ -46,8 +44,7 @@ struct Pet_AdoptOne_ackDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Pet_AdoptOne_ackDefaultTypeInternal _Pet_AdoptOne_ack_default_instance_;
 constexpr Pet_ReleaseOne_req::Pet_ReleaseOne_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mypet_iid_(int64_t{0}){}
+  : mypet_iid_(int64_t{0}){}
 struct Pet_ReleaseOne_reqDefaultTypeInternal {
   constexpr Pet_ReleaseOne_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -59,8 +56,7 @@ struct Pet_ReleaseOne_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Pet_ReleaseOne_reqDefaultTypeInternal _Pet_ReleaseOne_req_default_instance_;
 constexpr Pet_ReleaseOne_ack::Pet_ReleaseOne_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , mypet_iid_(int64_t{0})
+  : mypet_iid_(int64_t{0})
   , result_(0){}
 struct Pet_ReleaseOne_ackDefaultTypeInternal {
   constexpr Pet_ReleaseOne_ackDefaultTypeInternal()
@@ -77,56 +73,44 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_user_5fpet_2eproto = nullptr;
 
 const uint32_t TableStruct_user_5fpet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_req, pet_iid_),
-  0,
-  ~0u,
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_AdoptOne_ack, pet_),
-  0,
   ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_req, _has_bits_),
+  0,
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_req, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_req, mypet_iid_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_ack, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_ack, mypet_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Pet_ReleaseOne_ack, result_),
-  0,
-  ~0u,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::PRO::Pet_AdoptOne_req)},
-  { 10, 19, -1, sizeof(::PRO::Pet_AdoptOne_ack)},
-  { 22, 30, -1, sizeof(::PRO::Pet_ReleaseOne_req)},
-  { 32, 41, -1, sizeof(::PRO::Pet_ReleaseOne_ack)},
+  { 0, -1, -1, sizeof(::PRO::Pet_AdoptOne_req)},
+  { 7, 15, -1, sizeof(::PRO::Pet_AdoptOne_ack)},
+  { 17, -1, -1, sizeof(::PRO::Pet_ReleaseOne_req)},
+  { 24, -1, -1, sizeof(::PRO::Pet_ReleaseOne_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -137,30 +121,23 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_user_5fpet_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016user_pet.proto\022\003PRO\032\025global_internal.p"
-  "roto\032\021db_internal.proto\"S\n\020Pet_AdoptOne_"
-  "req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001"
-  "\022\017\n\007pet_iid\030\002 \001(\003B\t\n\007_utoken\"\200\001\n\020Pet_Ado"
-  "ptOne_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToke"
-  "nH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022$\n\003pet\030\003 \001(\0132\022.PR"
-  "O.DBUserPetItemH\001\210\001\001B\t\n\007_utokenB\006\n\004_pet\""
-  "W\n\022Pet_ReleaseOne_req\022#\n\006utoken\030\001 \001(\0132\016."
-  "PRO.UserTokenH\000\210\001\001\022\021\n\tmypet_iid\030\002 \001(\003B\t\n"
-  "\007_utoken\"g\n\022Pet_ReleaseOne_ack\022#\n\006utoken"
-  "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\021\n\tmypet_iid"
-  "\030\002 \001(\003\022\016\n\006result\030\003 \001(\005B\t\n\007_utokenBT\n\033com"
-  ".cms.client.network.gproP\001Z\025gamelib/prot"
-  "obuf/gpro\252\002\033com.cms.client.network.gprob"
-  "\006proto3"
+  "\n\016user_pet.proto\022\003PRO\032\021db_internal.proto"
+  "\"#\n\020Pet_AdoptOne_req\022\017\n\007pet_iid\030\001 \001(\003\"P\n"
+  "\020Pet_AdoptOne_ack\022\016\n\006result\030\001 \001(\005\022$\n\003pet"
+  "\030\002 \001(\0132\022.PRO.DBUserPetItemH\000\210\001\001B\006\n\004_pet\""
+  "\'\n\022Pet_ReleaseOne_req\022\021\n\tmypet_iid\030\001 \001(\003"
+  "\"7\n\022Pet_ReleaseOne_ack\022\021\n\tmypet_iid\030\001 \001("
+  "\003\022\016\n\006result\030\002 \001(\005BT\n\033com.cms.client.netw"
+  "ork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com."
+  "cms.client.network.gprob\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5fpet_2eproto_deps[2] = {
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5fpet_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
-  &::descriptor_table_global_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5fpet_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5fpet_2eproto = {
-  false, false, 567, descriptor_table_protodef_user_5fpet_2eproto, "user_pet.proto", 
-  &descriptor_table_user_5fpet_2eproto_once, descriptor_table_user_5fpet_2eproto_deps, 2, 4,
+  false, false, 351, descriptor_table_protodef_user_5fpet_2eproto, "user_pet.proto", 
+  &descriptor_table_user_5fpet_2eproto_once, descriptor_table_user_5fpet_2eproto_deps, 1, 4,
   schemas, file_default_instances, TableStruct_user_5fpet_2eproto::offsets,
   file_level_metadata_user_5fpet_2eproto, file_level_enum_descriptors_user_5fpet_2eproto, file_level_service_descriptors_user_5fpet_2eproto,
 };
@@ -176,21 +153,8 @@ namespace PRO {
 
 class Pet_AdoptOne_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Pet_AdoptOne_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Pet_AdoptOne_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Pet_AdoptOne_req::_Internal::utoken(const Pet_AdoptOne_req* msg) {
-  return *msg->utoken_;
-}
-void Pet_AdoptOne_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Pet_AdoptOne_req::Pet_AdoptOne_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -201,23 +165,14 @@ Pet_AdoptOne_req::Pet_AdoptOne_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Pet_AdoptOne_req)
 }
 Pet_AdoptOne_req::Pet_AdoptOne_req(const Pet_AdoptOne_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   pet_iid_ = from.pet_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Pet_AdoptOne_req)
 }
 
 inline void Pet_AdoptOne_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&pet_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(pet_iid_));
+pet_iid_ = int64_t{0};
 }
 
 Pet_AdoptOne_req::~Pet_AdoptOne_req() {
@@ -229,7 +184,6 @@ Pet_AdoptOne_req::~Pet_AdoptOne_req() {
 
 inline void Pet_AdoptOne_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Pet_AdoptOne_req::ArenaDtor(void* object) {
@@ -248,34 +202,19 @@ void Pet_AdoptOne_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   pet_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Pet_AdoptOne_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 pet_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 pet_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           pet_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -297,7 +236,6 @@ const char* Pet_AdoptOne_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -311,18 +249,10 @@ uint8_t* Pet_AdoptOne_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 pet_iid = 2;
+  // int64 pet_iid = 1;
   if (this->_internal_pet_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_pet_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_pet_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -341,15 +271,7 @@ size_t Pet_AdoptOne_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 pet_iid = 2;
+  // int64 pet_iid = 1;
   if (this->_internal_pet_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_pet_iid());
   }
@@ -376,9 +298,6 @@ void Pet_AdoptOne_req::MergeFrom(const Pet_AdoptOne_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_pet_iid() != 0) {
     _internal_set_pet_iid(from._internal_pet_iid());
   }
@@ -399,13 +318,7 @@ bool Pet_AdoptOne_req::IsInitialized() const {
 void Pet_AdoptOne_req::InternalSwap(Pet_AdoptOne_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Pet_AdoptOne_req, pet_iid_)
-      + sizeof(Pet_AdoptOne_req::pet_iid_)
-      - PROTOBUF_FIELD_OFFSET(Pet_AdoptOne_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(pet_iid_, other->pet_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Pet_AdoptOne_req::GetMetadata() const {
@@ -419,31 +332,19 @@ void Pet_AdoptOne_req::InternalSwap(Pet_AdoptOne_req* other) {
 class Pet_AdoptOne_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<Pet_AdoptOne_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Pet_AdoptOne_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::DBUserPetItem& pet(const Pet_AdoptOne_ack* msg);
   static void set_has_pet(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-Pet_AdoptOne_ack::_Internal::utoken(const Pet_AdoptOne_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::DBUserPetItem&
 Pet_AdoptOne_ack::_Internal::pet(const Pet_AdoptOne_ack* msg) {
   return *msg->pet_;
 }
-void Pet_AdoptOne_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 void Pet_AdoptOne_ack::clear_pet() {
   if (pet_ != nullptr) pet_->Clear();
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 Pet_AdoptOne_ack::Pet_AdoptOne_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -458,11 +359,6 @@ Pet_AdoptOne_ack::Pet_AdoptOne_ack(const Pet_AdoptOne_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_pet()) {
     pet_ = new ::PRO::DBUserPetItem(*from.pet_);
   } else {
@@ -474,9 +370,9 @@ Pet_AdoptOne_ack::Pet_AdoptOne_ack(const Pet_AdoptOne_ack& from)
 
 inline void Pet_AdoptOne_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&pet_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&pet_)) + sizeof(result_));
 }
 
 Pet_AdoptOne_ack::~Pet_AdoptOne_ack() {
@@ -488,7 +384,6 @@ Pet_AdoptOne_ack::~Pet_AdoptOne_ack() {
 
 inline void Pet_AdoptOne_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete pet_;
 }
 
@@ -509,15 +404,9 @@ void Pet_AdoptOne_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(utoken_ != nullptr);
-      utoken_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(pet_ != nullptr);
-      pet_->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(pet_ != nullptr);
+    pet_->Clear();
   }
   result_ = 0;
   _has_bits_.Clear();
@@ -531,25 +420,17 @@ const char* Pet_AdoptOne_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PRO.DBUserPetItem pet = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // optional .PRO.DBUserPetItem pet = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_pet(), ptr);
           CHK_(ptr);
         } else
@@ -585,26 +466,18 @@ uint8_t* Pet_AdoptOne_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // optional .PRO.DBUserPetItem pet = 3;
+  // optional .PRO.DBUserPetItem pet = 2;
   if (_internal_has_pet()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::pet(this), target, stream);
+        2, _Internal::pet(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -623,24 +496,15 @@ size_t Pet_AdoptOne_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional .PRO.DBUserPetItem pet = 2;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional .PRO.DBUserPetItem pet = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *pet_);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *pet_);
   }
-  // int32 result = 2;
+
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -667,14 +531,8 @@ void Pet_AdoptOne_ack::MergeFrom(const Pet_AdoptOne_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_pet()->::PRO::DBUserPetItem::MergeFrom(from._internal_pet());
-    }
+  if (from._internal_has_pet()) {
+    _internal_mutable_pet()->::PRO::DBUserPetItem::MergeFrom(from._internal_pet());
   }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
@@ -700,9 +558,9 @@ void Pet_AdoptOne_ack::InternalSwap(Pet_AdoptOne_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Pet_AdoptOne_ack, result_)
       + sizeof(Pet_AdoptOne_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Pet_AdoptOne_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Pet_AdoptOne_ack, pet_)>(
+          reinterpret_cast<char*>(&pet_),
+          reinterpret_cast<char*>(&other->pet_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Pet_AdoptOne_ack::GetMetadata() const {
@@ -715,21 +573,8 @@ void Pet_AdoptOne_ack::InternalSwap(Pet_AdoptOne_ack* other) {
 
 class Pet_ReleaseOne_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Pet_ReleaseOne_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Pet_ReleaseOne_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Pet_ReleaseOne_req::_Internal::utoken(const Pet_ReleaseOne_req* msg) {
-  return *msg->utoken_;
-}
-void Pet_ReleaseOne_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Pet_ReleaseOne_req::Pet_ReleaseOne_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -740,23 +585,14 @@ Pet_ReleaseOne_req::Pet_ReleaseOne_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Pet_ReleaseOne_req)
 }
 Pet_ReleaseOne_req::Pet_ReleaseOne_req(const Pet_ReleaseOne_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   mypet_iid_ = from.mypet_iid_;
   // @@protoc_insertion_point(copy_constructor:PRO.Pet_ReleaseOne_req)
 }
 
 inline void Pet_ReleaseOne_req::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&mypet_iid_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(mypet_iid_));
+mypet_iid_ = int64_t{0};
 }
 
 Pet_ReleaseOne_req::~Pet_ReleaseOne_req() {
@@ -768,7 +604,6 @@ Pet_ReleaseOne_req::~Pet_ReleaseOne_req() {
 
 inline void Pet_ReleaseOne_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Pet_ReleaseOne_req::ArenaDtor(void* object) {
@@ -787,34 +622,19 @@ void Pet_ReleaseOne_req::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   mypet_iid_ = int64_t{0};
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Pet_ReleaseOne_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 mypet_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mypet_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           mypet_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
@@ -836,7 +656,6 @@ const char* Pet_ReleaseOne_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -850,18 +669,10 @@ uint8_t* Pet_ReleaseOne_req::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   if (this->_internal_mypet_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mypet_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mypet_iid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -880,15 +691,7 @@ size_t Pet_ReleaseOne_req::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   if (this->_internal_mypet_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mypet_iid());
   }
@@ -915,9 +718,6 @@ void Pet_ReleaseOne_req::MergeFrom(const Pet_ReleaseOne_req& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mypet_iid() != 0) {
     _internal_set_mypet_iid(from._internal_mypet_iid());
   }
@@ -938,13 +738,7 @@ bool Pet_ReleaseOne_req::IsInitialized() const {
 void Pet_ReleaseOne_req::InternalSwap(Pet_ReleaseOne_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Pet_ReleaseOne_req, mypet_iid_)
-      + sizeof(Pet_ReleaseOne_req::mypet_iid_)
-      - PROTOBUF_FIELD_OFFSET(Pet_ReleaseOne_req, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(mypet_iid_, other->mypet_iid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Pet_ReleaseOne_req::GetMetadata() const {
@@ -957,21 +751,8 @@ void Pet_ReleaseOne_req::InternalSwap(Pet_ReleaseOne_req* other) {
 
 class Pet_ReleaseOne_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<Pet_ReleaseOne_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Pet_ReleaseOne_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Pet_ReleaseOne_ack::_Internal::utoken(const Pet_ReleaseOne_ack* msg) {
-  return *msg->utoken_;
-}
-void Pet_ReleaseOne_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Pet_ReleaseOne_ack::Pet_ReleaseOne_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -982,14 +763,8 @@ Pet_ReleaseOne_ack::Pet_ReleaseOne_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Pet_ReleaseOne_ack)
 }
 Pet_ReleaseOne_ack::Pet_ReleaseOne_ack(const Pet_ReleaseOne_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   ::memcpy(&mypet_iid_, &from.mypet_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&mypet_iid_)) + sizeof(result_));
@@ -998,9 +773,9 @@ Pet_ReleaseOne_ack::Pet_ReleaseOne_ack(const Pet_ReleaseOne_ack& from)
 
 inline void Pet_ReleaseOne_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&mypet_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&mypet_iid_)) + sizeof(result_));
 }
 
 Pet_ReleaseOne_ack::~Pet_ReleaseOne_ack() {
@@ -1012,7 +787,6 @@ Pet_ReleaseOne_ack::~Pet_ReleaseOne_ack() {
 
 inline void Pet_ReleaseOne_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Pet_ReleaseOne_ack::ArenaDtor(void* object) {
@@ -1031,44 +805,29 @@ void Pet_ReleaseOne_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   ::memset(&mypet_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&mypet_iid_)) + sizeof(result_));
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Pet_ReleaseOne_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int64 mypet_iid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 mypet_iid = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           mypet_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int32 result = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+      // int32 result = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
@@ -1090,7 +849,6 @@ const char* Pet_ReleaseOne_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1104,24 +862,16 @@ uint8_t* Pet_ReleaseOne_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   if (this->_internal_mypet_iid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_mypet_iid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_mypet_iid(), target);
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1140,20 +890,12 @@ size_t Pet_ReleaseOne_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   if (this->_internal_mypet_iid() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_mypet_iid());
   }
 
-  // int32 result = 3;
+  // int32 result = 2;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -1180,9 +922,6 @@ void Pet_ReleaseOne_ack::MergeFrom(const Pet_ReleaseOne_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_mypet_iid() != 0) {
     _internal_set_mypet_iid(from._internal_mypet_iid());
   }
@@ -1206,13 +945,12 @@ bool Pet_ReleaseOne_ack::IsInitialized() const {
 void Pet_ReleaseOne_ack::InternalSwap(Pet_ReleaseOne_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Pet_ReleaseOne_ack, result_)
       + sizeof(Pet_ReleaseOne_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Pet_ReleaseOne_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Pet_ReleaseOne_ack, mypet_iid_)>(
+          reinterpret_cast<char*>(&mypet_iid_),
+          reinterpret_cast<char*>(&other->mypet_iid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Pet_ReleaseOne_ack::GetMetadata() const {

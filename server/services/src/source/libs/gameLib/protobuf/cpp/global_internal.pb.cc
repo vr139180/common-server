@@ -17,19 +17,6 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
-constexpr UserToken::UserToken(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : giduid_(int64_t{0})
-  , slottoken_(int64_t{0}){}
-struct UserTokenDefaultTypeInternal {
-  constexpr UserTokenDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~UserTokenDefaultTypeInternal() {}
-  union {
-    UserToken _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UserTokenDefaultTypeInternal _UserToken_default_instance_;
 constexpr MailSystemItem::MailSystemItem(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : title_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -125,7 +112,7 @@ struct FriendRelationDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FriendRelationDefaultTypeInternal _FriendRelation_default_instance_;
 constexpr FriendUserInfo::FriendUserInfo(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : token_(nullptr){}
+  : roleiid_(int64_t{0}){}
 struct FriendUserInfoDefaultTypeInternal {
   constexpr FriendUserInfoDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -136,19 +123,11 @@ struct FriendUserInfoDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FriendUserInfoDefaultTypeInternal _FriendUserInfo_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_global_5finternal_2eproto[8];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_global_5finternal_2eproto[7];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_global_5finternal_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_global_5finternal_2eproto = nullptr;
 
 const uint32_t TableStruct_global_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PRO::UserToken, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::UserToken, giduid_),
-  PROTOBUF_FIELD_OFFSET(::PRO::UserToken, slottoken_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::MailSystemItem, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -218,21 +197,19 @@ const uint32_t TableStruct_global_5finternal_2eproto::offsets[] PROTOBUF_SECTION
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::FriendUserInfo, token_),
+  PROTOBUF_FIELD_OFFSET(::PRO::FriendUserInfo, roleiid_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::PRO::UserToken)},
-  { 8, -1, -1, sizeof(::PRO::MailSystemItem)},
-  { 21, -1, -1, sizeof(::PRO::MailSystemItems)},
-  { 28, -1, -1, sizeof(::PRO::MailNormalItem)},
-  { 44, -1, -1, sizeof(::PRO::MailNormalItems)},
-  { 51, -1, -1, sizeof(::PRO::FriendInviteItem)},
-  { 61, -1, -1, sizeof(::PRO::FriendRelation)},
-  { 71, -1, -1, sizeof(::PRO::FriendUserInfo)},
+  { 0, -1, -1, sizeof(::PRO::MailSystemItem)},
+  { 13, -1, -1, sizeof(::PRO::MailSystemItems)},
+  { 20, -1, -1, sizeof(::PRO::MailNormalItem)},
+  { 36, -1, -1, sizeof(::PRO::MailNormalItems)},
+  { 43, -1, -1, sizeof(::PRO::FriendInviteItem)},
+  { 53, -1, -1, sizeof(::PRO::FriendRelation)},
+  { 63, -1, -1, sizeof(::PRO::FriendUserInfo)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_UserToken_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_MailSystemItem_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_MailSystemItems_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_MailNormalItem_default_instance_),
@@ -243,33 +220,31 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_global_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\025global_internal.proto\022\003PRO\".\n\tUserToke"
-  "n\022\016\n\006giduid\030\001 \001(\003\022\021\n\tslottoken\030\002 \001(\003\"\216\001\n"
-  "\016MailSystemItem\022\013\n\003iid\030\001 \001(\003\022\022\n\nsender_i"
-  "id\030\002 \001(\003\022\r\n\005title\030\003 \001(\t\022\020\n\010contents\030\004 \001("
-  "\t\022\022\n\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001("
-  "\t\022\022\n\ncreatetime\030\007 \001(\005\"5\n\017MailSystemItems"
-  "\022\"\n\005mails\030\001 \003(\0132\023.PRO.MailSystemItem\"\305\001\n"
-  "\016MailNormalItem\022\013\n\003iid\030\001 \001(\003\022\r\n\005stype\030\002 "
-  "\001(\005\022\022\n\nsender_iid\030\003 \001(\003\022\024\n\014receiver_iid\030"
-  "\004 \001(\003\022\022\n\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030"
-  "\006 \001(\t\022\r\n\005title\030\007 \001(\t\022\020\n\010contents\030\010 \001(\t\022\022"
-  "\n\ncreatetime\030\t \001(\005\022\020\n\010readtime\030\n \001(\005\"5\n\017"
-  "MailNormalItems\022\"\n\005mails\030\001 \003(\0132\023.PRO.Mai"
-  "lNormalItem\"W\n\020FriendInviteItem\022\013\n\003iid\030\001"
-  " \001(\003\022\020\n\010from_iid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t"
-  "\022\022\n\ninvitetime\030\004 \001(\005\"R\n\016FriendRelation\022\013"
-  "\n\003iid\030\001 \001(\003\022\021\n\tfriendiid\030\002 \001(\003\022\020\n\010nickna"
-  "me\030\003 \001(\t\022\016\n\006online\030\004 \001(\010\"/\n\016FriendUserIn"
-  "fo\022\035\n\005token\030\001 \001(\0132\016.PRO.UserTokenBT\n\033com"
-  ".cms.client.network.gproP\001Z\025gamelib/prot"
-  "obuf/gpro\252\002\033com.cms.client.network.gprob"
-  "\006proto3"
+  "\n\025global_internal.proto\022\003PRO\"\216\001\n\016MailSys"
+  "temItem\022\013\n\003iid\030\001 \001(\003\022\022\n\nsender_iid\030\002 \001(\003"
+  "\022\r\n\005title\030\003 \001(\t\022\020\n\010contents\030\004 \001(\t\022\022\n\natt"
+  "achment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001(\t\022\022\n\ncre"
+  "atetime\030\007 \001(\005\"5\n\017MailSystemItems\022\"\n\005mail"
+  "s\030\001 \003(\0132\023.PRO.MailSystemItem\"\305\001\n\016MailNor"
+  "malItem\022\013\n\003iid\030\001 \001(\003\022\r\n\005stype\030\002 \001(\005\022\022\n\ns"
+  "ender_iid\030\003 \001(\003\022\024\n\014receiver_iid\030\004 \001(\003\022\022\n"
+  "\nattachment\030\005 \001(\005\022\022\n\nattachinfo\030\006 \001(\t\022\r\n"
+  "\005title\030\007 \001(\t\022\020\n\010contents\030\010 \001(\t\022\022\n\ncreate"
+  "time\030\t \001(\005\022\020\n\010readtime\030\n \001(\005\"5\n\017MailNorm"
+  "alItems\022\"\n\005mails\030\001 \003(\0132\023.PRO.MailNormalI"
+  "tem\"W\n\020FriendInviteItem\022\013\n\003iid\030\001 \001(\003\022\020\n\010"
+  "from_iid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t\022\022\n\ninvi"
+  "tetime\030\004 \001(\005\"R\n\016FriendRelation\022\013\n\003iid\030\001 "
+  "\001(\003\022\021\n\tfriendiid\030\002 \001(\003\022\020\n\010nickname\030\003 \001(\t"
+  "\022\016\n\006online\030\004 \001(\010\"!\n\016FriendUserInfo\022\017\n\007ro"
+  "leiid\030\001 \001(\003BT\n\033com.cms.client.network.gp"
+  "roP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.cl"
+  "ient.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_global_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_global_5finternal_2eproto = {
-  false, false, 847, descriptor_table_protodef_global_5finternal_2eproto, "global_internal.proto", 
-  &descriptor_table_global_5finternal_2eproto_once, nullptr, 0, 8,
+  false, false, 785, descriptor_table_protodef_global_5finternal_2eproto, "global_internal.proto", 
+  &descriptor_table_global_5finternal_2eproto_once, nullptr, 0, 7,
   schemas, file_default_instances, TableStruct_global_5finternal_2eproto::offsets,
   file_level_metadata_global_5finternal_2eproto, file_level_enum_descriptors_global_5finternal_2eproto, file_level_service_descriptors_global_5finternal_2eproto,
 };
@@ -280,218 +255,6 @@ PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_global_5finternal_2eproto(&descriptor_table_global_5finternal_2eproto);
 namespace PRO {
-
-// ===================================================================
-
-class UserToken::_Internal {
- public:
-};
-
-UserToken::UserToken(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
-  // @@protoc_insertion_point(arena_constructor:PRO.UserToken)
-}
-UserToken::UserToken(const UserToken& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&giduid_, &from.giduid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&slottoken_) -
-    reinterpret_cast<char*>(&giduid_)) + sizeof(slottoken_));
-  // @@protoc_insertion_point(copy_constructor:PRO.UserToken)
-}
-
-inline void UserToken::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&giduid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&slottoken_) -
-    reinterpret_cast<char*>(&giduid_)) + sizeof(slottoken_));
-}
-
-UserToken::~UserToken() {
-  // @@protoc_insertion_point(destructor:PRO.UserToken)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-inline void UserToken::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void UserToken::ArenaDtor(void* object) {
-  UserToken* _this = reinterpret_cast< UserToken* >(object);
-  (void)_this;
-}
-void UserToken::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void UserToken::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void UserToken::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.UserToken)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&giduid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&slottoken_) -
-      reinterpret_cast<char*>(&giduid_)) + sizeof(slottoken_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* UserToken::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int64 giduid = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          giduid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int64 slottoken = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          slottoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* UserToken::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.UserToken)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int64 giduid = 1;
-  if (this->_internal_giduid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_giduid(), target);
-  }
-
-  // int64 slottoken = 2;
-  if (this->_internal_slottoken() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_slottoken(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.UserToken)
-  return target;
-}
-
-size_t UserToken::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.UserToken)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // int64 giduid = 1;
-  if (this->_internal_giduid() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_giduid());
-  }
-
-  // int64 slottoken = 2;
-  if (this->_internal_slottoken() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_slottoken());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserToken::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    UserToken::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserToken::GetClassData() const { return &_class_data_; }
-
-void UserToken::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<UserToken *>(to)->MergeFrom(
-      static_cast<const UserToken &>(from));
-}
-
-
-void UserToken::MergeFrom(const UserToken& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.UserToken)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (from._internal_giduid() != 0) {
-    _internal_set_giduid(from._internal_giduid());
-  }
-  if (from._internal_slottoken() != 0) {
-    _internal_set_slottoken(from._internal_slottoken());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void UserToken::CopyFrom(const UserToken& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.UserToken)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool UserToken::IsInitialized() const {
-  return true;
-}
-
-void UserToken::InternalSwap(UserToken* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UserToken, slottoken_)
-      + sizeof(UserToken::slottoken_)
-      - PROTOBUF_FIELD_OFFSET(UserToken, giduid_)>(
-          reinterpret_cast<char*>(&giduid_),
-          reinterpret_cast<char*>(&other->giduid_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata UserToken::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
-      &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[0]);
-}
 
 // ===================================================================
 
@@ -895,7 +658,7 @@ void MailSystemItem::InternalSwap(MailSystemItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MailSystemItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[1]);
+      file_level_metadata_global_5finternal_2eproto[0]);
 }
 
 // ===================================================================
@@ -1080,7 +843,7 @@ void MailSystemItems::InternalSwap(MailSystemItems* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MailSystemItems::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[2]);
+      file_level_metadata_global_5finternal_2eproto[1]);
 }
 
 // ===================================================================
@@ -1551,7 +1314,7 @@ void MailNormalItem::InternalSwap(MailNormalItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MailNormalItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[3]);
+      file_level_metadata_global_5finternal_2eproto[2]);
 }
 
 // ===================================================================
@@ -1736,7 +1499,7 @@ void MailNormalItems::InternalSwap(MailNormalItems* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata MailNormalItems::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[4]);
+      file_level_metadata_global_5finternal_2eproto[3]);
 }
 
 // ===================================================================
@@ -2021,7 +1784,7 @@ void FriendInviteItem::InternalSwap(FriendInviteItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendInviteItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[5]);
+      file_level_metadata_global_5finternal_2eproto[4]);
 }
 
 // ===================================================================
@@ -2306,20 +2069,15 @@ void FriendRelation::InternalSwap(FriendRelation* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendRelation::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[6]);
+      file_level_metadata_global_5finternal_2eproto[5]);
 }
 
 // ===================================================================
 
 class FriendUserInfo::_Internal {
  public:
-  static const ::PRO::UserToken& token(const FriendUserInfo* msg);
 };
 
-const ::PRO::UserToken&
-FriendUserInfo::_Internal::token(const FriendUserInfo* msg) {
-  return *msg->token_;
-}
 FriendUserInfo::FriendUserInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -2332,16 +2090,12 @@ FriendUserInfo::FriendUserInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 FriendUserInfo::FriendUserInfo(const FriendUserInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_token()) {
-    token_ = new ::PRO::UserToken(*from.token_);
-  } else {
-    token_ = nullptr;
-  }
+  roleiid_ = from.roleiid_;
   // @@protoc_insertion_point(copy_constructor:PRO.FriendUserInfo)
 }
 
 inline void FriendUserInfo::SharedCtor() {
-token_ = nullptr;
+roleiid_ = int64_t{0};
 }
 
 FriendUserInfo::~FriendUserInfo() {
@@ -2353,7 +2107,6 @@ FriendUserInfo::~FriendUserInfo() {
 
 inline void FriendUserInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete token_;
 }
 
 void FriendUserInfo::ArenaDtor(void* object) {
@@ -2372,10 +2125,7 @@ void FriendUserInfo::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (GetArenaForAllocation() == nullptr && token_ != nullptr) {
-    delete token_;
-  }
-  token_ = nullptr;
+  roleiid_ = int64_t{0};
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2385,10 +2135,10 @@ const char* FriendUserInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .PRO.UserToken token = 1;
+      // int64 roleiid = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_token(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          roleiid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2422,12 +2172,10 @@ uint8_t* FriendUserInfo::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .PRO.UserToken token = 1;
-  if (this->_internal_has_token()) {
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::token(this), target, stream);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_roleiid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2446,11 +2194,9 @@ size_t FriendUserInfo::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .PRO.UserToken token = 1;
-  if (this->_internal_has_token()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *token_);
+  // int64 roleiid = 1;
+  if (this->_internal_roleiid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_roleiid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -2475,8 +2221,8 @@ void FriendUserInfo::MergeFrom(const FriendUserInfo& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_token()) {
-    _internal_mutable_token()->::PRO::UserToken::MergeFrom(from._internal_token());
+  if (from._internal_roleiid() != 0) {
+    _internal_set_roleiid(from._internal_roleiid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2495,21 +2241,18 @@ bool FriendUserInfo::IsInitialized() const {
 void FriendUserInfo::InternalSwap(FriendUserInfo* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(token_, other->token_);
+  swap(roleiid_, other->roleiid_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendUserInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_global_5finternal_2eproto_getter, &descriptor_table_global_5finternal_2eproto_once,
-      file_level_metadata_global_5finternal_2eproto[7]);
+      file_level_metadata_global_5finternal_2eproto[6]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::PRO::UserToken* Arena::CreateMaybeMessage< ::PRO::UserToken >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::UserToken >(arena);
-}
 template<> PROTOBUF_NOINLINE ::PRO::MailSystemItem* Arena::CreateMaybeMessage< ::PRO::MailSystemItem >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::MailSystemItem >(arena);
 }

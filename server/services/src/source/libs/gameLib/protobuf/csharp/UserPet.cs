@@ -24,26 +24,21 @@ namespace com.cms.client.network.gpro {
     static UserPetReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg51c2VyX3BldC5wcm90bxIDUFJPGhVnbG9iYWxfaW50ZXJuYWwucHJvdG8a",
-            "EWRiX2ludGVybmFsLnByb3RvIlMKEFBldF9BZG9wdE9uZV9yZXESIwoGdXRv",
-            "a2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEg8KB3BldF9paWQYAiAB",
-            "KANCCQoHX3V0b2tlbiKAAQoQUGV0X0Fkb3B0T25lX2FjaxIjCgZ1dG9rZW4Y",
-            "ASABKAsyDi5QUk8uVXNlclRva2VuSACIAQESDgoGcmVzdWx0GAIgASgFEiQK",
-            "A3BldBgDIAEoCzISLlBSTy5EQlVzZXJQZXRJdGVtSAGIAQFCCQoHX3V0b2tl",
-            "bkIGCgRfcGV0IlcKElBldF9SZWxlYXNlT25lX3JlcRIjCgZ1dG9rZW4YASAB",
-            "KAsyDi5QUk8uVXNlclRva2VuSACIAQESEQoJbXlwZXRfaWlkGAIgASgDQgkK",
-            "B191dG9rZW4iZwoSUGV0X1JlbGVhc2VPbmVfYWNrEiMKBnV0b2tlbhgBIAEo",
-            "CzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIRCglteXBldF9paWQYAiABKAMSDgoG",
-            "cmVzdWx0GAMgASgFQgkKB191dG9rZW5CVAobY29tLmNtcy5jbGllbnQubmV0",
-            "d29yay5ncHJvUAFaFWdhbWVsaWIvcHJvdG9idWYvZ3Byb6oCG2NvbS5jbXMu",
-            "Y2xpZW50Lm5ldHdvcmsuZ3Byb2IGcHJvdG8z"));
+            "Cg51c2VyX3BldC5wcm90bxIDUFJPGhFkYl9pbnRlcm5hbC5wcm90byIjChBQ",
+            "ZXRfQWRvcHRPbmVfcmVxEg8KB3BldF9paWQYASABKAMiUAoQUGV0X0Fkb3B0",
+            "T25lX2FjaxIOCgZyZXN1bHQYASABKAUSJAoDcGV0GAIgASgLMhIuUFJPLkRC",
+            "VXNlclBldEl0ZW1IAIgBAUIGCgRfcGV0IicKElBldF9SZWxlYXNlT25lX3Jl",
+            "cRIRCglteXBldF9paWQYASABKAMiNwoSUGV0X1JlbGVhc2VPbmVfYWNrEhEK",
+            "CW15cGV0X2lpZBgBIAEoAxIOCgZyZXN1bHQYAiABKAVCVAobY29tLmNtcy5j",
+            "bGllbnQubmV0d29yay5ncHJvUAFaFWdhbWVsaWIvcHJvdG9idWYvZ3Byb6oC",
+            "G2NvbS5jbXMuY2xpZW50Lm5ldHdvcmsuZ3Byb2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_AdoptOne_req), global::com.cms.client.network.gpro.Pet_AdoptOne_req.Parser, new[]{ "Utoken", "PetIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_AdoptOne_ack), global::com.cms.client.network.gpro.Pet_AdoptOne_ack.Parser, new[]{ "Utoken", "Result", "Pet" }, new[]{ "Utoken", "Pet" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_ReleaseOne_req), global::com.cms.client.network.gpro.Pet_ReleaseOne_req.Parser, new[]{ "Utoken", "MypetIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_ReleaseOne_ack), global::com.cms.client.network.gpro.Pet_ReleaseOne_ack.Parser, new[]{ "Utoken", "MypetIid", "Result" }, new[]{ "Utoken" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_AdoptOne_req), global::com.cms.client.network.gpro.Pet_AdoptOne_req.Parser, new[]{ "PetIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_AdoptOne_ack), global::com.cms.client.network.gpro.Pet_AdoptOne_ack.Parser, new[]{ "Result", "Pet" }, new[]{ "Pet" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_ReleaseOne_req), global::com.cms.client.network.gpro.Pet_ReleaseOne_req.Parser, new[]{ "MypetIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Pet_ReleaseOne_ack), global::com.cms.client.network.gpro.Pet_ReleaseOne_ack.Parser, new[]{ "MypetIid", "Result" }, null, null, null, null)
           }));
     }
     #endregion
@@ -84,7 +79,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Pet_AdoptOne_req(Pet_AdoptOne_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       petIid_ = other.petIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -95,20 +89,8 @@ namespace com.cms.client.network.gpro {
       return new Pet_AdoptOne_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "pet_iid" field.</summary>
-    public const int PetIidFieldNumber = 2;
+    public const int PetIidFieldNumber = 1;
     private long petIid_;
     /// <summary>
     ///宠物id
@@ -137,7 +119,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (PetIid != other.PetIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -146,7 +127,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (PetIid != 0L) hash ^= PetIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -166,12 +146,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (PetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(PetIid);
       }
       if (_unknownFields != null) {
@@ -184,12 +160,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (PetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(PetIid);
       }
       if (_unknownFields != null) {
@@ -202,9 +174,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (PetIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(PetIid);
       }
@@ -219,12 +188,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Pet_AdoptOne_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.PetIid != 0L) {
         PetIid = other.PetIid;
@@ -244,14 +207,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             PetIid = input.ReadInt64();
             break;
           }
@@ -270,14 +226,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             PetIid = input.ReadInt64();
             break;
           }
@@ -322,7 +271,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Pet_AdoptOne_ack(Pet_AdoptOne_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       result_ = other.result_;
       pet_ = other.pet_ != null ? other.pet_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -334,20 +282,8 @@ namespace com.cms.client.network.gpro {
       return new Pet_AdoptOne_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 2;
+    public const int ResultFieldNumber = 1;
     private int result_;
     /// <summary>
     ///0 success 1 资源不存在
@@ -362,7 +298,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "pet" field.</summary>
-    public const int PetFieldNumber = 3;
+    public const int PetFieldNumber = 2;
     private global::com.cms.client.network.gpro.DBUserPetItem pet_;
     /// <summary>
     ///success 返回pet对象
@@ -391,7 +327,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Result != other.Result) return false;
       if (!object.Equals(Pet, other.Pet)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -401,7 +336,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (pet_ != null) hash ^= Pet.GetHashCode();
       if (_unknownFields != null) {
@@ -422,16 +356,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (pet_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Pet);
       }
       if (_unknownFields != null) {
@@ -444,16 +374,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (pet_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Pet);
       }
       if (_unknownFields != null) {
@@ -466,9 +392,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Result != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
@@ -486,12 +409,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Pet_AdoptOne_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Result != 0) {
         Result = other.Result;
@@ -517,18 +434,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (pet_ == null) {
               Pet = new global::com.cms.client.network.gpro.DBUserPetItem();
             }
@@ -550,18 +460,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (pet_ == null) {
               Pet = new global::com.cms.client.network.gpro.DBUserPetItem();
             }
@@ -609,7 +512,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Pet_ReleaseOne_req(Pet_ReleaseOne_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mypetIid_ = other.mypetIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -620,20 +522,8 @@ namespace com.cms.client.network.gpro {
       return new Pet_ReleaseOne_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mypet_iid" field.</summary>
-    public const int MypetIidFieldNumber = 2;
+    public const int MypetIidFieldNumber = 1;
     private long mypetIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -659,7 +549,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (MypetIid != other.MypetIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -668,7 +557,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (MypetIid != 0L) hash ^= MypetIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -688,12 +576,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MypetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MypetIid);
       }
       if (_unknownFields != null) {
@@ -706,12 +590,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MypetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MypetIid);
       }
       if (_unknownFields != null) {
@@ -724,9 +604,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (MypetIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MypetIid);
       }
@@ -741,12 +618,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Pet_ReleaseOne_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.MypetIid != 0L) {
         MypetIid = other.MypetIid;
@@ -766,14 +637,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MypetIid = input.ReadInt64();
             break;
           }
@@ -792,14 +656,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MypetIid = input.ReadInt64();
             break;
           }
@@ -844,7 +701,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Pet_ReleaseOne_ack(Pet_ReleaseOne_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mypetIid_ = other.mypetIid_;
       result_ = other.result_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -856,20 +712,8 @@ namespace com.cms.client.network.gpro {
       return new Pet_ReleaseOne_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mypet_iid" field.</summary>
-    public const int MypetIidFieldNumber = 2;
+    public const int MypetIidFieldNumber = 1;
     private long mypetIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -881,7 +725,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0 success 1 fail
@@ -910,7 +754,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (MypetIid != other.MypetIid) return false;
       if (Result != other.Result) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -920,7 +763,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (MypetIid != 0L) hash ^= MypetIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (_unknownFields != null) {
@@ -941,16 +783,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MypetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MypetIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -963,16 +801,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MypetIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MypetIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -985,9 +819,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (MypetIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MypetIid);
       }
@@ -1005,12 +836,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Pet_ReleaseOne_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.MypetIid != 0L) {
         MypetIid = other.MypetIid;
@@ -1033,18 +858,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MypetIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
@@ -1063,18 +881,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MypetIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }

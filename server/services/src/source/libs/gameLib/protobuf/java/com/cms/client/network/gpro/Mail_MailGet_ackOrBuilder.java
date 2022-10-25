@@ -8,46 +8,31 @@ public interface Mail_MailGet_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
-   * <code>repeated .PRO.MailNormalItem mails = 2;</code>
+   * <code>repeated .PRO.MailNormalItem mails = 1;</code>
    */
   java.util.List<com.cms.client.network.gpro.MailNormalItem> 
       getMailsList();
   /**
-   * <code>repeated .PRO.MailNormalItem mails = 2;</code>
+   * <code>repeated .PRO.MailNormalItem mails = 1;</code>
    */
   com.cms.client.network.gpro.MailNormalItem getMails(int index);
   /**
-   * <code>repeated .PRO.MailNormalItem mails = 2;</code>
+   * <code>repeated .PRO.MailNormalItem mails = 1;</code>
    */
   int getMailsCount();
   /**
-   * <code>repeated .PRO.MailNormalItem mails = 2;</code>
+   * <code>repeated .PRO.MailNormalItem mails = 1;</code>
    */
   java.util.List<? extends com.cms.client.network.gpro.MailNormalItemOrBuilder> 
       getMailsOrBuilderList();
   /**
-   * <code>repeated .PRO.MailNormalItem mails = 2;</code>
+   * <code>repeated .PRO.MailNormalItem mails = 1;</code>
    */
   com.cms.client.network.gpro.MailNormalItemOrBuilder getMailsOrBuilder(
       int index);
 
   /**
-   * <code>int32 totle = 3;</code>
+   * <code>int32 totle = 2;</code>
    * @return The totle.
    */
   int getTotle();

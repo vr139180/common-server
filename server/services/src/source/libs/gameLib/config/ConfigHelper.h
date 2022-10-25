@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include "gameLib/config/GlobalOption.h"
 #include "gameLib/config/EurekaConfig.h"
 #include <gameLib/service_type.h>

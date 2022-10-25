@@ -89,12 +89,6 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\libs\gameLib\protobuf\ProtoUtil.h">
-      <Filter>protobuf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.h">
-      <Filter>gatehome</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\libs\gameLib\redis\user_redis_const.h">
       <Filter>redis</Filter>
     </ClInclude>
@@ -233,12 +227,6 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.cc">
       <Filter>protobuf\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\gameLib\protobuf\ProtoUtil.cpp">
-      <Filter>protobuf</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\gameLib\gatehome\ProtoTokenUtil.cpp">
-      <Filter>gatehome</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\db_internal.pb.cc">
       <Filter>protobuf\cpp</Filter>

@@ -65,23 +65,9 @@ REDIS_KEYDEFINED(SERVICE_MAINTNCE, "_SVRS:%s:QUEUE");
 //服务注册定时
 #define TIMER_SERVICE_UPDATSYNC_STEP		4000
 //service节点每 3s更新一个lastupdate, 6s回溯queue
-#define TIMER_SERVICE_QUEUE_STEP				6000
+#define TIMER_SERVICE_QUEUE_STEP			6000
 
 //---------------------Home+Gate匹配数据项--------------------------------
-//待配对的home服务 set结构
-REDIS_KEYDEFINED(HOMEGATE_HOME_WAIT, "_HOMEGATE:wait:home");
-//待配对的gate服务 set结构
-REDIS_KEYDEFINED(HOMEGATE_GATE_WAIT, "_HOMEGATE:wait:gate");
-//已配对的gate服务 set结构
-REDIS_KEYDEFINED(HOMEGATE_MIX, "_HOMEGATE:mix");
-//配对中的 hset结构 member: homeid#gateid, score: 配对开始的时间戳
-REDIS_KEYDEFINED(HOMEGATE_AUTHING, "_HOMEGATE:auth");
-
-//用户userslot资源分配结构
-//系统支持的最少人数 hset结构 member:gateid#lobbyid score:可用的slot数量
-REDIS_KEYDEFINED(HOMEGATE_WATERSLOT, "_HOMEGATE:waterslot");
-//系统扩展的资源 hset结构 member:gateid#homeid score:可用的slot数量
-REDIS_KEYDEFINED(HOMEGATE_FLEXSLOT, "_HOMEGATE:flexslot");
 
 //每组gate+home的用户资源
 //homeid#gateid

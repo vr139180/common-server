@@ -13,13 +13,11 @@ USED_REDISKEY_GLOBAL_NS
 
 void ServiceRegisterCtrl::InitNetMessage()
 {
-	REGISTERMSG(ERK_PROTYPE::SVR_GATEBINDHOME_REQ, &ServiceRegisterCtrl::on_mth_gatebindhome_req, this);
-	REGISTERMSG(ERK_PROTYPE::SVR_GATEBINDHOME_CONFIRM, &ServiceRegisterCtrl::on_mth_gatebindhome_confirm, this);
 }
 
-void ServiceRegisterCtrl::on_mth_serviceregist_req(BasicProtocol* pro, bool& autorelease, void* session)
+void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autorelease, void* session)
 {
-	Erk_ServiceRegist_req* req = dynamic_cast<Erk_ServiceRegist_req*>(pro);
+	Erk_ServiceRegist_req* req = dynamic_cast<Erk_ServiceRegist_req*>(pro->msg_);
 	EurekaSession* psession = reinterpret_cast<EurekaSession*>(session);
 
 	NETSERVICE_TYPE ctype = (NETSERVICE_TYPE)req->svr_type();
@@ -27,7 +25,12 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(BasicProtocol* pro, bool& aut
 	{
 		Erk_ServiceRegist_ack* ack = new Erk_ServiceRegist_ack();
 		ack->set_result(1);
-		psession->send_protocol(ack);
+		
+		SProtocolHead head = pro->head_;
+		head.from_type_ = head.to_type_;
+		head.to_type_ = pro->head_.from_type_;
+
+		psession->send_to_service( head, ack);
 
 		//参数错误强制关闭
 		psession->force_close();
@@ -85,19 +88,19 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(BasicProtocol* pro, bool& aut
 	ack->set_eurekaiid(svrApp.get_eurekactrl()->get_myself().iid);
 	ack->set_eurekatoken(svrApp.get_eurekactrl()->get_myself().token);
 
-	pLink->send_protocol(ack);
+	pLink->send_to_service(ack);
 }
 
-void ServiceRegisterCtrl::on_mth_serviceregist_confirm(BasicProtocol* pro, bool& autorelease)
+void ServiceRegisterCtrl::on_mth_serviceregist_confirm(NetProtocol* pro, bool& autorelease)
 {
-	Erk_ServiceRegist_Confirm* req = dynamic_cast<Erk_ServiceRegist_Confirm*>(pro);
+	Erk_ServiceRegist_Confirm* req = dynamic_cast<Erk_ServiceRegist_Confirm*>(pro->msg_);
 	
 	redis_serviceregist_do2( req->iid());
 }
 
-void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autorelease, void* session)
+void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorelease, void* session)
 {
-	Erk_ServiceBind_req* req = reinterpret_cast<Erk_ServiceBind_req*>(pro);
+	Erk_ServiceBind_req* req = reinterpret_cast<Erk_ServiceBind_req*>(pro->msg_);
 	EurekaSession* psession = reinterpret_cast<EurekaSession*>(session);
 
 	std::string siid = std::to_string(req->iid());
@@ -109,7 +112,11 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autor
 	if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE)
 	{
 		ack->set_result(1);
-		psession->send_protocol(ack);
+
+		SProtocolHead head = pro->head_;
+		head.from_type_ = head.to_type_;
+		head.to_type_ = pro->head_.from_type_;
+		psession->send_to_service( head, ack);
 
 		psession->force_close();
 		return;
@@ -124,7 +131,11 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autor
 		delete pnode;
 
 		ack->set_result(1);
-		psession->send_protocol(ack);
+
+		SProtocolHead head = pro->head_;
+		head.from_type_ = head.to_type_;
+		head.to_type_ = pro->head_.from_type_;
+		psession->send_to_service(head, ack);
 
 		psession->force_close();
 		return;
@@ -137,7 +148,11 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autor
 	if (req->token() != token)
 	{
 		ack->set_result(1);
-		psession->send_protocol(ack);
+		
+		SProtocolHead head = pro->head_;
+		head.from_type_ = head.to_type_;
+		head.to_type_ = pro->head_.from_type_;
+		psession->send_to_service(head, ack);
 
 		psession->force_close();
 		return;
@@ -151,7 +166,12 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autor
 		if (service_mth_links_.get_servicelink_byiid(req->iid()) != 0)
 		{
 			ack->set_result(1);
-			psession->send_protocol(ack);
+			
+			SProtocolHead head = pro->head_;
+			head.from_type_ = head.to_type_;
+			head.to_type_ = pro->head_.from_type_;
+			psession->send_to_service(head, ack);
+
 			psession->force_close();
 			return;
 		}
@@ -175,12 +195,13 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(BasicProtocol* pro, bool& autor
 	redis->add_set(skey.c_str(), siid.c_str());
 
 	pLink->registinfo_tolog(true);
-	pLink->send_protocol(ack);
+	pLink->send_to_service(ack);
 }
 
-void ServiceRegisterCtrl::on_mth_message_route_to_service( BasicProtocol* pro, bool& autorelease, int sid)
+void ServiceRegisterCtrl::on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease)
 {
-	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(sid);
+	Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(pro->msg_);
+	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid( syn->myiid());
 	if (plink == 0)
 		return;
 
@@ -190,9 +211,9 @@ void ServiceRegisterCtrl::on_mth_message_route_to_service( BasicProtocol* pro, b
 	plink->send_protocol(pro);
 }
 
-void ServiceRegisterCtrl::on_mth_servicesubscribe_req(BasicProtocol* pro, bool& autorelease)
+void ServiceRegisterCtrl::on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease)
 {
-	Erk_ServiceSubscribe_req* req = dynamic_cast<Erk_ServiceSubscribe_req*>(pro);
+	Erk_ServiceSubscribe_req* req = dynamic_cast<Erk_ServiceSubscribe_req*>(pro->msg_);
 
 	//更新redis心跳信息
 	S_TIMESTAMP tnow = OSSystem::mOS->GetTimestamp();
@@ -220,7 +241,7 @@ void ServiceRegisterCtrl::on_mth_servicesubscribe_req(BasicProtocol* pro, bool& 
 		ack->set_myiid(req->myiid());
 		ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_NONE);
 
-		plink->send_protocol(ack);
+		plink->send_to_service(ack);
 
 		return;
 	}
@@ -292,46 +313,6 @@ void ServiceRegisterCtrl::on_mth_servicesubscribe_req(BasicProtocol* pro, bool& 
 			}
 		}
 
-		plink->send_protocol(ack);
+		plink->send_to_service(ack);
 	}
-}
-
-void ServiceRegisterCtrl::on_mth_gatebindhome_req(BasicProtocol* pro, bool& autorelease)
-{
-	Svr_GateBindHome_req* req = dynamic_cast<Svr_GateBindHome_req*>(pro);
-	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->gateiid());
-
-	logDebug(out_runtime, "recevie gate bind home request....");
-
-	if (plink == 0 || plink->get_token() != req->gatetoken()) {
-		logWarn(out_runtime, "gate service[%ld:%ld] not exist", req->gateiid(), req->gatetoken());
-		return;
-	}
-
-	Svr_GateBindHome_ack* ack = new Svr_GateBindHome_ack();
-	ack->set_result(1);
-	ack->set_gateiid(req->gateiid());
-
-	int ret = 0;
-	S_INT_64 bindtoken = OSSystem::mOS->GetTimestamp();
-	ServiceNodeInfo node;
-	ret = redis_gatebindhome_do(req->gateiid(), req->gatetoken(), bindtoken, node);
-	ack->set_result(ret);
-	if (ret == 0)
-	{
-		ack->set_homeiid(node.iid);
-		ack->set_hometoken(node.token);
-		ack->set_homeip(node.ip.c_str());
-		ack->set_homeport(node.port);
-		ack->set_bindtoken(bindtoken);
-	}
-
-	plink->send_protocol(ack);
-}
-
-void ServiceRegisterCtrl::on_mth_gatebindhome_confirm(BasicProtocol* pro, bool& autorelease)
-{
-	Svr_GateBindHome_confirm* confirm = dynamic_cast<Svr_GateBindHome_confirm*>(pro);
-	
-	redis_gatebindhome_confirm(confirm->gateiid(), confirm->homeiid(), confirm->bindtoken());
 }

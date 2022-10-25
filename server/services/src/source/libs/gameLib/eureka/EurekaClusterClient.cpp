@@ -91,7 +91,7 @@ void EurekaClusterClient::send_mth_protocol(BasicProtocol* pro, bool balance)
 	else if (cur_link_index_ < 0)
 		cur_link_index_ = 0;
 
-	online_links_[cur_link_index_]->send_protocol(pro);
+	online_links_[cur_link_index_]->send_to_eureka(pro);
 
 	if( balance)
 		++cur_link_index_;

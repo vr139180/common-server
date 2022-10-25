@@ -8,26 +8,11 @@ public interface Build_AddItem_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *0 success 1 资源不存在
    * </pre>
    *
-   * <code>int32 result = 2;</code>
+   * <code>int32 result = 1;</code>
    * @return The result.
    */
   int getResult();
@@ -37,7 +22,7 @@ public interface Build_AddItem_ackOrBuilder extends
    *success 返回建筑对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserHomeStructureItem item = 3;</code>
+   * <code>optional .PRO.DBUserHomeStructureItem item = 2;</code>
    * @return Whether the item field is set.
    */
   boolean hasItem();
@@ -46,7 +31,7 @@ public interface Build_AddItem_ackOrBuilder extends
    *success 返回建筑对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserHomeStructureItem item = 3;</code>
+   * <code>optional .PRO.DBUserHomeStructureItem item = 2;</code>
    * @return The item.
    */
   com.cms.client.network.gpro.DBUserHomeStructureItem getItem();
@@ -55,7 +40,7 @@ public interface Build_AddItem_ackOrBuilder extends
    *success 返回建筑对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserHomeStructureItem item = 3;</code>
+   * <code>optional .PRO.DBUserHomeStructureItem item = 2;</code>
    */
   com.cms.client.network.gpro.DBUserHomeStructureItemOrBuilder getItemOrBuilder();
 }

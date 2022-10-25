@@ -64,36 +64,27 @@ public final class FriendSystem {
   static {
     java.lang.String[] descriptorData = {
       "\n\023friend_system.proto\022\003PRO\032\025global_inter" +
-      "nal.proto\"\233\001\n\022Frd_FriendList_req\022#\n\006utok" +
-      "en\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\023\n\013last_in" +
-      "vite\030\002 \001(\003\022\023\n\013friendindex\030\003 \001(\005\022\014\n\004next\030" +
-      "\004 \001(\010\022\013\n\003num\030\005 \001(\005\022\020\n\010nickname\030\n \001(\tB\t\n\007" +
-      "_utoken\"\312\001\n\022Frd_FriendList_ack\022#\n\006utoken" +
-      "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022&\n\007invites\030\002" +
-      " \003(\0132\025.PRO.FriendInviteItem\022\023\n\013totleinvi" +
-      "te\030\003 \001(\005\022$\n\007friends\030\004 \003(\0132\023.PRO.FriendRe" +
-      "lation\022\023\n\013totlefriend\030\005 \001(\005\022\014\n\004next\030\006 \001(" +
-      "\010B\t\n\007_utoken\"Z\n\024Frd_FriendInvite_req\022#\n\006" +
-      "utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\022\n\ninv" +
-      "ite_iid\030\002 \001(\003B\t\n\007_utoken\"\241\001\n\024Frd_FriendI" +
-      "nvite_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToke" +
-      "nH\000\210\001\001\022\022\n\ninvite_iid\030\002 \001(\003\022\016\n\006result\030\003 \001" +
-      "(\005\022*\n\006invite\030\004 \001(\0132\025.PRO.FriendInviteIte" +
-      "mH\001\210\001\001B\t\n\007_utokenB\t\n\007_invite\"c\n\025Frd_Invi" +
-      "teConfirm_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.User" +
-      "TokenH\000\210\001\001\022\013\n\003iid\030\002 \001(\003\022\r\n\005agree\030\003 \001(\010B\t" +
-      "\n\007_utoken\"\250\001\n\025Frd_InviteConfirm_ack\022#\n\006u" +
-      "token\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\013\n\003iid\030" +
-      "\002 \001(\003\022\r\n\005agree\030\003 \001(\010\022\016\n\006result\030\004 \001(\005\022(\n\006" +
-      "friend\030\005 \001(\0132\023.PRO.FriendRelationH\001\210\001\001B\t" +
-      "\n\007_utokenB\t\n\007_friend\"Y\n\024Frd_FriendDelete" +
-      "_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001" +
-      "\001\022\021\n\tfriendiid\030\002 \001(\003B\t\n\007_utoken\"i\n\024Frd_F" +
-      "riendDelete_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.Us" +
-      "erTokenH\000\210\001\001\022\021\n\tfriendiid\030\002 \001(\003\022\016\n\006resul" +
-      "t\030\003 \001(\005B\t\n\007_utokenBT\n\033com.cms.client.net" +
-      "work.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com" +
-      ".cms.client.network.gprob\006proto3"
+      "nal.proto\"k\n\022Frd_FriendList_req\022\023\n\013last_" +
+      "invite\030\001 \001(\003\022\023\n\013friendindex\030\002 \001(\005\022\014\n\004nex" +
+      "t\030\003 \001(\010\022\013\n\003num\030\004 \001(\005\022\020\n\010nickname\030\n \001(\t\"\232" +
+      "\001\n\022Frd_FriendList_ack\022&\n\007invites\030\001 \003(\0132\025" +
+      ".PRO.FriendInviteItem\022\023\n\013totleinvite\030\002 \001" +
+      "(\005\022$\n\007friends\030\003 \003(\0132\023.PRO.FriendRelation" +
+      "\022\023\n\013totlefriend\030\004 \001(\005\022\014\n\004next\030\005 \001(\010\"*\n\024F" +
+      "rd_FriendInvite_req\022\022\n\ninvite_iid\030\001 \001(\003\"" +
+      "q\n\024Frd_FriendInvite_ack\022\022\n\ninvite_iid\030\001 " +
+      "\001(\003\022\016\n\006result\030\002 \001(\005\022*\n\006invite\030\003 \001(\0132\025.PR" +
+      "O.FriendInviteItemH\000\210\001\001B\t\n\007_invite\"3\n\025Fr" +
+      "d_InviteConfirm_req\022\013\n\003iid\030\001 \001(\003\022\r\n\005agre" +
+      "e\030\002 \001(\010\"x\n\025Frd_InviteConfirm_ack\022\013\n\003iid\030" +
+      "\001 \001(\003\022\r\n\005agree\030\002 \001(\010\022\016\n\006result\030\003 \001(\005\022(\n\006" +
+      "friend\030\004 \001(\0132\023.PRO.FriendRelationH\000\210\001\001B\t" +
+      "\n\007_friend\")\n\024Frd_FriendDelete_req\022\021\n\tfri" +
+      "endiid\030\001 \001(\003\"9\n\024Frd_FriendDelete_ack\022\021\n\t" +
+      "friendiid\030\001 \001(\003\022\016\n\006result\030\002 \001(\005BT\n\033com.c" +
+      "ms.client.network.gproP\001Z\025gamelib/protob" +
+      "uf/gpro\252\002\033com.cms.client.network.gprob\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -105,49 +96,49 @@ public final class FriendSystem {
     internal_static_PRO_Frd_FriendList_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendList_req_descriptor,
-        new java.lang.String[] { "Utoken", "LastInvite", "Friendindex", "Next", "Num", "Nickname", "Utoken", });
+        new java.lang.String[] { "LastInvite", "Friendindex", "Next", "Num", "Nickname", });
     internal_static_PRO_Frd_FriendList_ack_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_Frd_FriendList_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendList_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Invites", "Totleinvite", "Friends", "Totlefriend", "Next", "Utoken", });
+        new java.lang.String[] { "Invites", "Totleinvite", "Friends", "Totlefriend", "Next", });
     internal_static_PRO_Frd_FriendInvite_req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_Frd_FriendInvite_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendInvite_req_descriptor,
-        new java.lang.String[] { "Utoken", "InviteIid", "Utoken", });
+        new java.lang.String[] { "InviteIid", });
     internal_static_PRO_Frd_FriendInvite_ack_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_Frd_FriendInvite_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendInvite_ack_descriptor,
-        new java.lang.String[] { "Utoken", "InviteIid", "Result", "Invite", "Utoken", "Invite", });
+        new java.lang.String[] { "InviteIid", "Result", "Invite", "Invite", });
     internal_static_PRO_Frd_InviteConfirm_req_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_PRO_Frd_InviteConfirm_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_InviteConfirm_req_descriptor,
-        new java.lang.String[] { "Utoken", "Iid", "Agree", "Utoken", });
+        new java.lang.String[] { "Iid", "Agree", });
     internal_static_PRO_Frd_InviteConfirm_ack_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_PRO_Frd_InviteConfirm_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_InviteConfirm_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Iid", "Agree", "Result", "Friend", "Utoken", "Friend", });
+        new java.lang.String[] { "Iid", "Agree", "Result", "Friend", "Friend", });
     internal_static_PRO_Frd_FriendDelete_req_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_PRO_Frd_FriendDelete_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendDelete_req_descriptor,
-        new java.lang.String[] { "Utoken", "Friendiid", "Utoken", });
+        new java.lang.String[] { "Friendiid", });
     internal_static_PRO_Frd_FriendDelete_ack_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_PRO_Frd_FriendDelete_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Frd_FriendDelete_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Friendiid", "Result", "Utoken", });
+        new java.lang.String[] { "Friendiid", "Result", });
     com.cms.client.network.gpro.GlobalInternal.getDescriptor();
   }
 

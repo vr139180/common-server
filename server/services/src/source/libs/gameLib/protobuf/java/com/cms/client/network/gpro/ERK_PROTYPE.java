@@ -81,41 +81,13 @@ public enum ERK_PROTYPE
    */
   SVR_SERVICEBINDSERVICE_ACK(51),
   /**
-   * <code>SVR_GATEBINDHOME_REQ = 52;</code>
-   */
-  SVR_GATEBINDHOME_REQ(52),
-  /**
-   * <code>SVR_GATEBINDHOME_ACK = 53;</code>
-   */
-  SVR_GATEBINDHOME_ACK(53),
-  /**
-   * <code>SVR_GATEBINDHOME_CONFIRM = 54;</code>
-   */
-  SVR_GATEBINDHOME_CONFIRM(54),
-  /**
    * <pre>
    *资源服务
    * </pre>
    *
-   * <code>RES_USERSLOT_REQ = 100;</code>
+   * <code>RES_SYNCGATESLOT_NTF = 100;</code>
    */
-  RES_USERSLOT_REQ(100),
-  /**
-   * <code>RES_USERSLOT_ACK = 101;</code>
-   */
-  RES_USERSLOT_ACK(101),
-  /**
-   * <code>RES_PROXYUSERSLOT_REQ = 102;</code>
-   */
-  RES_PROXYUSERSLOT_REQ(102),
-  /**
-   * <code>RES_PROXYUSERSLOT_ACK = 103;</code>
-   */
-  RES_PROXYUSERSLOT_ACK(103),
-  /**
-   * <code>RES_SYNCGATESLOT_NTF = 104;</code>
-   */
-  RES_SYNCGATESLOT_NTF(104),
+  RES_SYNCGATESLOT_NTF(100),
   UNRECOGNIZED(-1),
   ;
 
@@ -188,41 +160,13 @@ public enum ERK_PROTYPE
    */
   public static final int SVR_SERVICEBINDSERVICE_ACK_VALUE = 51;
   /**
-   * <code>SVR_GATEBINDHOME_REQ = 52;</code>
-   */
-  public static final int SVR_GATEBINDHOME_REQ_VALUE = 52;
-  /**
-   * <code>SVR_GATEBINDHOME_ACK = 53;</code>
-   */
-  public static final int SVR_GATEBINDHOME_ACK_VALUE = 53;
-  /**
-   * <code>SVR_GATEBINDHOME_CONFIRM = 54;</code>
-   */
-  public static final int SVR_GATEBINDHOME_CONFIRM_VALUE = 54;
-  /**
    * <pre>
    *资源服务
    * </pre>
    *
-   * <code>RES_USERSLOT_REQ = 100;</code>
+   * <code>RES_SYNCGATESLOT_NTF = 100;</code>
    */
-  public static final int RES_USERSLOT_REQ_VALUE = 100;
-  /**
-   * <code>RES_USERSLOT_ACK = 101;</code>
-   */
-  public static final int RES_USERSLOT_ACK_VALUE = 101;
-  /**
-   * <code>RES_PROXYUSERSLOT_REQ = 102;</code>
-   */
-  public static final int RES_PROXYUSERSLOT_REQ_VALUE = 102;
-  /**
-   * <code>RES_PROXYUSERSLOT_ACK = 103;</code>
-   */
-  public static final int RES_PROXYUSERSLOT_ACK_VALUE = 103;
-  /**
-   * <code>RES_SYNCGATESLOT_NTF = 104;</code>
-   */
-  public static final int RES_SYNCGATESLOT_NTF_VALUE = 104;
+  public static final int RES_SYNCGATESLOT_NTF_VALUE = 100;
 
 
   public final int getNumber() {
@@ -265,14 +209,7 @@ public enum ERK_PROTYPE
       case 49: return SVR_LIVETICK_NTF;
       case 50: return SVR_SERVICEBINDSERVICE_REQ;
       case 51: return SVR_SERVICEBINDSERVICE_ACK;
-      case 52: return SVR_GATEBINDHOME_REQ;
-      case 53: return SVR_GATEBINDHOME_ACK;
-      case 54: return SVR_GATEBINDHOME_CONFIRM;
-      case 100: return RES_USERSLOT_REQ;
-      case 101: return RES_USERSLOT_ACK;
-      case 102: return RES_PROXYUSERSLOT_REQ;
-      case 103: return RES_PROXYUSERSLOT_ACK;
-      case 104: return RES_SYNCGATESLOT_NTF;
+      case 100: return RES_SYNCGATESLOT_NTF;
       default: return null;
     }
   }

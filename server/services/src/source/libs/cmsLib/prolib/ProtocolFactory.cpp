@@ -37,7 +37,7 @@ S_UINT_16 ProtocolFactory::proto_to_iid(BasicProtocol* pro)
 	return fiter->second;
 }
 
-BasicProtocol* ProtocolFactory::iid_to_proto(S_UINT_16 proiid, char *pdata, S_UINT_16 len)
+BasicProtocol* ProtocolFactory::iid_to_proto(S_UINT_16 proiid, void *pdata, S_UINT_16 len)
 {
 	boost::unordered_map<S_UINT_16, const BasicProtocol*>::iterator fiter = iid_2_proto.find(proiid);
 	if (fiter == iid_2_proto.end())

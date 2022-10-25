@@ -60,8 +60,7 @@ struct ChatChannelInfoDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ChatChannelInfoDefaultTypeInternal _ChatChannelInfo_default_instance_;
 constexpr Chat_GlobalMsg_ntf::Chat_GlobalMsg_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , msgs_(nullptr){}
+  : msgs_(nullptr){}
 struct Chat_GlobalMsg_ntfDefaultTypeInternal {
   constexpr Chat_GlobalMsg_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -73,8 +72,7 @@ struct Chat_GlobalMsg_ntfDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Chat_GlobalMsg_ntfDefaultTypeInternal _Chat_GlobalMsg_ntf_default_instance_;
 constexpr Chat_UserChannels_active::Chat_UserChannels_active(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : channels_()
-  , utoken_(nullptr){}
+  : channels_(){}
 struct Chat_UserChannels_activeDefaultTypeInternal {
   constexpr Chat_UserChannels_activeDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -85,8 +83,7 @@ struct Chat_UserChannels_activeDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Chat_UserChannels_activeDefaultTypeInternal _Chat_UserChannels_active_default_instance_;
 constexpr Chat_CustomChannelId_req::Chat_CustomChannelId_req(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
 struct Chat_CustomChannelId_reqDefaultTypeInternal {
   constexpr Chat_CustomChannelId_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -98,8 +95,7 @@ struct Chat_CustomChannelId_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Chat_CustomChannelId_reqDefaultTypeInternal _Chat_CustomChannelId_req_default_instance_;
 constexpr Chat_CustomChannelId_ack::Chat_CustomChannelId_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , channel_(nullptr)
+  : channel_(nullptr)
   , result_(0){}
 struct Chat_CustomChannelId_ackDefaultTypeInternal {
   constexpr Chat_CustomChannelId_ackDefaultTypeInternal()
@@ -114,7 +110,6 @@ constexpr Chat_UserMsg_say::Chat_UserMsg_say(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , msg_content_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , utoken_(nullptr)
   , channel_(nullptr){}
 struct Chat_UserMsg_sayDefaultTypeInternal {
   constexpr Chat_UserMsg_sayDefaultTypeInternal()
@@ -127,8 +122,7 @@ struct Chat_UserMsg_sayDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Chat_UserMsg_sayDefaultTypeInternal _Chat_UserMsg_say_default_instance_;
 constexpr Chat_ChatMsg_ntf::Chat_ChatMsg_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : utoken_(nullptr)
-  , channel_(nullptr)
+  : channel_(nullptr)
   , msgs_(nullptr){}
 struct Chat_ChatMsg_ntfDefaultTypeInternal {
   constexpr Chat_ChatMsg_ntfDefaultTypeInternal()
@@ -170,83 +164,64 @@ const uint32_t TableStruct_user_5fchat_2eproto::offsets[] PROTOBUF_SECTION_VARIA
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PRO::ChatChannelInfo, type_),
   PROTOBUF_FIELD_OFFSET(::PRO::ChatChannelInfo, channeldid_),
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_GlobalMsg_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_GlobalMsg_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_GlobalMsg_ntf, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_GlobalMsg_ntf, msgs_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserChannels_active, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserChannels_active, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserChannels_active, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserChannels_active, channels_),
-  0,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_req, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_req, utoken_),
-  0,
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_ack, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_ack, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_CustomChannelId_ack, channel_),
-  0,
   ~0u,
-  1,
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, _has_bits_),
+  0,
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, channel_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, nickname_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_UserMsg_say, msg_content_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_ChatMsg_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_ChatMsg_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Chat_ChatMsg_ntf, utoken_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_ChatMsg_ntf, channel_),
   PROTOBUF_FIELD_OFFSET(::PRO::Chat_ChatMsg_ntf, msgs_),
-  0,
-  ~0u,
-  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::PRO::ChatMessageItem)},
   { 10, -1, -1, sizeof(::PRO::ChatMessageItems)},
   { 17, -1, -1, sizeof(::PRO::ChatChannelInfo)},
-  { 25, 33, -1, sizeof(::PRO::Chat_GlobalMsg_ntf)},
-  { 35, 43, -1, sizeof(::PRO::Chat_UserChannels_active)},
-  { 45, 52, -1, sizeof(::PRO::Chat_CustomChannelId_req)},
-  { 53, 62, -1, sizeof(::PRO::Chat_CustomChannelId_ack)},
-  { 65, 75, -1, sizeof(::PRO::Chat_UserMsg_say)},
-  { 79, 88, -1, sizeof(::PRO::Chat_ChatMsg_ntf)},
+  { 25, -1, -1, sizeof(::PRO::Chat_GlobalMsg_ntf)},
+  { 32, -1, -1, sizeof(::PRO::Chat_UserChannels_active)},
+  { 39, -1, -1, sizeof(::PRO::Chat_CustomChannelId_req)},
+  { 45, 53, -1, sizeof(::PRO::Chat_CustomChannelId_ack)},
+  { 55, -1, -1, sizeof(::PRO::Chat_UserMsg_say)},
+  { 64, -1, -1, sizeof(::PRO::Chat_ChatMsg_ntf)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -262,47 +237,36 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_user_5fchat_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017user_chat.proto\022\003PRO\032\025global_internal."
-  "proto\"g\n\017ChatMessageItem\022\025\n\rsend_user_ii"
-  "d\030\001 \001(\003\022\025\n\rsend_nickname\030\002 \001(\t\022\021\n\tsend_t"
-  "ime\030\003 \001(\005\022\023\n\013msg_content\030\005 \001(\t\"6\n\020ChatMe"
-  "ssageItems\022\"\n\004msgs\030\001 \003(\0132\024.PRO.ChatMessa"
-  "geItem\"I\n\017ChatChannelInfo\022\"\n\004type\030\001 \001(\0162"
-  "\024.PRO.ChatChannelType\022\022\n\nchanneldid\030\002 \001("
-  "\003\"i\n\022Chat_GlobalMsg_ntf\022#\n\006utoken\030\001 \001(\0132"
-  "\016.PRO.UserTokenH\000\210\001\001\022#\n\004msgs\030\002 \001(\0132\025.PRO"
-  ".ChatMessageItemsB\t\n\007_utoken\"r\n\030Chat_Use"
-  "rChannels_active\022#\n\006utoken\030\001 \001(\0132\016.PRO.U"
-  "serTokenH\000\210\001\001\022&\n\010channels\030\002 \003(\0132\024.PRO.Ch"
-  "atChannelInfoB\t\n\007_utoken\"J\n\030Chat_CustomC"
-  "hannelId_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserT"
-  "okenH\000\210\001\001B\t\n\007_utoken\"\222\001\n\030Chat_CustomChan"
-  "nelId_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserToke"
-  "nH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022*\n\007channel\030\003 \001(\0132"
-  "\024.PRO.ChatChannelInfoH\001\210\001\001B\t\n\007_utokenB\n\n"
-  "\010_channel\"\220\001\n\020Chat_UserMsg_say\022#\n\006utoken"
-  "\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022%\n\007channel\030\002"
-  " \001(\0132\024.PRO.ChatChannelInfo\022\020\n\010nickname\030\003"
-  " \001(\t\022\023\n\013msg_content\030\004 \001(\tB\t\n\007_utoken\"\216\001\n"
-  "\020Chat_ChatMsg_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO."
-  "UserTokenH\000\210\001\001\022%\n\007channel\030\002 \001(\0132\024.PRO.Ch"
-  "atChannelInfo\022#\n\004msgs\030\003 \001(\0132\025.PRO.ChatMe"
-  "ssageItemsB\t\n\007_utoken*\273\001\n\017ChatChannelTyp"
-  "e\022\025\n\021ChatChannelT_Init\020\000\022\027\n\023ChatChannelT"
-  "_Global\020\001\022\030\n\024ChatChannelT_Channel\020\002\022\026\n\022C"
-  "hatChannelT_Union\020\003\022\027\n\023ChatChannelT_Sing"
-  "le\020\004\022\027\n\023ChatChannelT_Custom\020\005\022\024\n\020ChatCha"
-  "nnelT_Max\020\006BT\n\033com.cms.client.network.gp"
-  "roP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.cl"
-  "ient.network.gprob\006proto3"
+  "\n\017user_chat.proto\022\003PRO\"g\n\017ChatMessageIte"
+  "m\022\025\n\rsend_user_iid\030\001 \001(\003\022\025\n\rsend_nicknam"
+  "e\030\002 \001(\t\022\021\n\tsend_time\030\003 \001(\005\022\023\n\013msg_conten"
+  "t\030\005 \001(\t\"6\n\020ChatMessageItems\022\"\n\004msgs\030\001 \003("
+  "\0132\024.PRO.ChatMessageItem\"I\n\017ChatChannelIn"
+  "fo\022\"\n\004type\030\001 \001(\0162\024.PRO.ChatChannelType\022\022"
+  "\n\nchanneldid\030\002 \001(\003\"9\n\022Chat_GlobalMsg_ntf"
+  "\022#\n\004msgs\030\001 \001(\0132\025.PRO.ChatMessageItems\"B\n"
+  "\030Chat_UserChannels_active\022&\n\010channels\030\001 "
+  "\003(\0132\024.PRO.ChatChannelInfo\"\032\n\030Chat_Custom"
+  "ChannelId_req\"b\n\030Chat_CustomChannelId_ac"
+  "k\022\016\n\006result\030\001 \001(\005\022*\n\007channel\030\002 \001(\0132\024.PRO"
+  ".ChatChannelInfoH\000\210\001\001B\n\n\010_channel\"`\n\020Cha"
+  "t_UserMsg_say\022%\n\007channel\030\001 \001(\0132\024.PRO.Cha"
+  "tChannelInfo\022\020\n\010nickname\030\002 \001(\t\022\023\n\013msg_co"
+  "ntent\030\003 \001(\t\"^\n\020Chat_ChatMsg_ntf\022%\n\007chann"
+  "el\030\001 \001(\0132\024.PRO.ChatChannelInfo\022#\n\004msgs\030\002"
+  " \001(\0132\025.PRO.ChatMessageItems*\273\001\n\017ChatChan"
+  "nelType\022\025\n\021ChatChannelT_Init\020\000\022\027\n\023ChatCh"
+  "annelT_Global\020\001\022\030\n\024ChatChannelT_Channel\020"
+  "\002\022\026\n\022ChatChannelT_Union\020\003\022\027\n\023ChatChannel"
+  "T_Single\020\004\022\027\n\023ChatChannelT_Custom\020\005\022\024\n\020C"
+  "hatChannelT_Max\020\006BT\n\033com.cms.client.netw"
+  "ork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com."
+  "cms.client.network.gprob\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5fchat_2eproto_deps[1] = {
-  &::descriptor_table_global_5finternal_2eproto,
-};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5fchat_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5fchat_2eproto = {
-  false, false, 1305, descriptor_table_protodef_user_5fchat_2eproto, "user_chat.proto", 
-  &descriptor_table_user_5fchat_2eproto_once, descriptor_table_user_5fchat_2eproto_deps, 1, 9,
+  false, false, 991, descriptor_table_protodef_user_5fchat_2eproto, "user_chat.proto", 
+  &descriptor_table_user_5fchat_2eproto_once, nullptr, 0, 9,
   schemas, file_default_instances, TableStruct_user_5fchat_2eproto::offsets,
   file_level_metadata_user_5fchat_2eproto, file_level_enum_descriptors_user_5fchat_2eproto, file_level_service_descriptors_user_5fchat_2eproto,
 };
@@ -1049,25 +1013,12 @@ void ChatChannelInfo::InternalSwap(ChatChannelInfo* other) {
 
 class Chat_GlobalMsg_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<Chat_GlobalMsg_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_GlobalMsg_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::ChatMessageItems& msgs(const Chat_GlobalMsg_ntf* msg);
 };
 
-const ::PRO::UserToken&
-Chat_GlobalMsg_ntf::_Internal::utoken(const Chat_GlobalMsg_ntf* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::ChatMessageItems&
 Chat_GlobalMsg_ntf::_Internal::msgs(const Chat_GlobalMsg_ntf* msg) {
   return *msg->msgs_;
-}
-void Chat_GlobalMsg_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 Chat_GlobalMsg_ntf::Chat_GlobalMsg_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1079,14 +1030,8 @@ Chat_GlobalMsg_ntf::Chat_GlobalMsg_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Chat_GlobalMsg_ntf)
 }
 Chat_GlobalMsg_ntf::Chat_GlobalMsg_ntf(const Chat_GlobalMsg_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_msgs()) {
     msgs_ = new ::PRO::ChatMessageItems(*from.msgs_);
   } else {
@@ -1096,10 +1041,7 @@ Chat_GlobalMsg_ntf::Chat_GlobalMsg_ntf(const Chat_GlobalMsg_ntf& from)
 }
 
 inline void Chat_GlobalMsg_ntf::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&msgs_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(msgs_));
+msgs_ = nullptr;
 }
 
 Chat_GlobalMsg_ntf::~Chat_GlobalMsg_ntf() {
@@ -1111,7 +1053,6 @@ Chat_GlobalMsg_ntf::~Chat_GlobalMsg_ntf() {
 
 inline void Chat_GlobalMsg_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete msgs_;
 }
 
@@ -1131,37 +1072,22 @@ void Chat_GlobalMsg_ntf::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && msgs_ != nullptr) {
     delete msgs_;
   }
   msgs_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Chat_GlobalMsg_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.ChatMessageItems msgs = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.ChatMessageItems msgs = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_msgs(), ptr);
           CHK_(ptr);
         } else
@@ -1183,7 +1109,6 @@ const char* Chat_GlobalMsg_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMES
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1197,20 +1122,12 @@ uint8_t* Chat_GlobalMsg_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.ChatMessageItems msgs = 2;
+  // .PRO.ChatMessageItems msgs = 1;
   if (this->_internal_has_msgs()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::msgs(this), target, stream);
+        1, _Internal::msgs(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1229,15 +1146,7 @@ size_t Chat_GlobalMsg_ntf::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.ChatMessageItems msgs = 2;
+  // .PRO.ChatMessageItems msgs = 1;
   if (this->_internal_has_msgs()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -1266,9 +1175,6 @@ void Chat_GlobalMsg_ntf::MergeFrom(const Chat_GlobalMsg_ntf& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_msgs()) {
     _internal_mutable_msgs()->::PRO::ChatMessageItems::MergeFrom(from._internal_msgs());
   }
@@ -1289,13 +1195,7 @@ bool Chat_GlobalMsg_ntf::IsInitialized() const {
 void Chat_GlobalMsg_ntf::InternalSwap(Chat_GlobalMsg_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Chat_GlobalMsg_ntf, msgs_)
-      + sizeof(Chat_GlobalMsg_ntf::msgs_)
-      - PROTOBUF_FIELD_OFFSET(Chat_GlobalMsg_ntf, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(msgs_, other->msgs_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_GlobalMsg_ntf::GetMetadata() const {
@@ -1308,21 +1208,8 @@ void Chat_GlobalMsg_ntf::InternalSwap(Chat_GlobalMsg_ntf* other) {
 
 class Chat_UserChannels_active::_Internal {
  public:
-  using HasBits = decltype(std::declval<Chat_UserChannels_active>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_UserChannels_active* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Chat_UserChannels_active::_Internal::utoken(const Chat_UserChannels_active* msg) {
-  return *msg->utoken_;
-}
-void Chat_UserChannels_active::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Chat_UserChannels_active::Chat_UserChannels_active(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
@@ -1335,19 +1222,12 @@ Chat_UserChannels_active::Chat_UserChannels_active(::PROTOBUF_NAMESPACE_ID::Aren
 }
 Chat_UserChannels_active::Chat_UserChannels_active(const Chat_UserChannels_active& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
       channels_(from.channels_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.Chat_UserChannels_active)
 }
 
 inline void Chat_UserChannels_active::SharedCtor() {
-utoken_ = nullptr;
 }
 
 Chat_UserChannels_active::~Chat_UserChannels_active() {
@@ -1359,7 +1239,6 @@ Chat_UserChannels_active::~Chat_UserChannels_active() {
 
 inline void Chat_UserChannels_active::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
 }
 
 void Chat_UserChannels_active::ArenaDtor(void* object) {
@@ -1379,40 +1258,25 @@ void Chat_UserChannels_active::Clear() {
   (void) cached_has_bits;
 
   channels_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Chat_UserChannels_active::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // repeated .PRO.ChatChannelInfo channels = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated .PRO.ChatChannelInfo channels = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
           do {
             ptr += 1;
             ptr = ctx->ParseMessage(_internal_add_channels(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1432,7 +1296,6 @@ const char* Chat_UserChannels_active::_InternalParse(const char* ptr, ::PROTOBUF
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1446,20 +1309,12 @@ uint8_t* Chat_UserChannels_active::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // repeated .PRO.ChatChannelInfo channels = 2;
+  // repeated .PRO.ChatChannelInfo channels = 1;
   for (unsigned int i = 0,
       n = static_cast<unsigned int>(this->_internal_channels_size()); i < n; i++) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, this->_internal_channels(i), target, stream);
+      InternalWriteMessage(1, this->_internal_channels(i), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1478,19 +1333,11 @@ size_t Chat_UserChannels_active::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .PRO.ChatChannelInfo channels = 2;
+  // repeated .PRO.ChatChannelInfo channels = 1;
   total_size += 1UL * this->_internal_channels_size();
   for (const auto& msg : this->channels_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
-  }
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1516,9 +1363,6 @@ void Chat_UserChannels_active::MergeFrom(const Chat_UserChannels_active& from) {
   (void) cached_has_bits;
 
   channels_.MergeFrom(from.channels_);
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1536,9 +1380,7 @@ bool Chat_UserChannels_active::IsInitialized() const {
 void Chat_UserChannels_active::InternalSwap(Chat_UserChannels_active* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   channels_.InternalSwap(&other->channels_);
-  swap(utoken_, other->utoken_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_UserChannels_active::GetMetadata() const {
@@ -1551,205 +1393,34 @@ void Chat_UserChannels_active::InternalSwap(Chat_UserChannels_active* other) {
 
 class Chat_CustomChannelId_req::_Internal {
  public:
-  using HasBits = decltype(std::declval<Chat_CustomChannelId_req>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_CustomChannelId_req* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::UserToken&
-Chat_CustomChannelId_req::_Internal::utoken(const Chat_CustomChannelId_req* msg) {
-  return *msg->utoken_;
-}
-void Chat_CustomChannelId_req::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Chat_CustomChannelId_req::Chat_CustomChannelId_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:PRO.Chat_CustomChannelId_req)
 }
 Chat_CustomChannelId_req::Chat_CustomChannelId_req(const Chat_CustomChannelId_req& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   // @@protoc_insertion_point(copy_constructor:PRO.Chat_CustomChannelId_req)
 }
 
-inline void Chat_CustomChannelId_req::SharedCtor() {
-utoken_ = nullptr;
-}
 
-Chat_CustomChannelId_req::~Chat_CustomChannelId_req() {
-  // @@protoc_insertion_point(destructor:PRO.Chat_CustomChannelId_req)
-  if (GetArenaForAllocation() != nullptr) return;
-  SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
 
-inline void Chat_CustomChannelId_req::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
-}
 
-void Chat_CustomChannelId_req::ArenaDtor(void* object) {
-  Chat_CustomChannelId_req* _this = reinterpret_cast< Chat_CustomChannelId_req* >(object);
-  (void)_this;
-}
-void Chat_CustomChannelId_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
-void Chat_CustomChannelId_req::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void Chat_CustomChannelId_req::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.Chat_CustomChannelId_req)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* Chat_CustomChannelId_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  _has_bits_.Or(has_bits);
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* Chat_CustomChannelId_req::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.Chat_CustomChannelId_req)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.Chat_CustomChannelId_req)
-  return target;
-}
-
-size_t Chat_CustomChannelId_req::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.Chat_CustomChannelId_req)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Chat_CustomChannelId_req::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Chat_CustomChannelId_req::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Chat_CustomChannelId_req::GetClassData() const { return &_class_data_; }
 
-void Chat_CustomChannelId_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<Chat_CustomChannelId_req *>(to)->MergeFrom(
-      static_cast<const Chat_CustomChannelId_req &>(from));
-}
 
 
-void Chat_CustomChannelId_req::MergeFrom(const Chat_CustomChannelId_req& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Chat_CustomChannelId_req)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void Chat_CustomChannelId_req::CopyFrom(const Chat_CustomChannelId_req& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Chat_CustomChannelId_req)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool Chat_CustomChannelId_req::IsInitialized() const {
-  return true;
-}
-
-void Chat_CustomChannelId_req::InternalSwap(Chat_CustomChannelId_req* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  swap(utoken_, other->utoken_);
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_CustomChannelId_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
@@ -1762,27 +1433,15 @@ void Chat_CustomChannelId_req::InternalSwap(Chat_CustomChannelId_req* other) {
 class Chat_CustomChannelId_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<Chat_CustomChannelId_ack>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_CustomChannelId_ack* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::ChatChannelInfo& channel(const Chat_CustomChannelId_ack* msg);
   static void set_has_channel(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
 };
 
-const ::PRO::UserToken&
-Chat_CustomChannelId_ack::_Internal::utoken(const Chat_CustomChannelId_ack* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::ChatChannelInfo&
 Chat_CustomChannelId_ack::_Internal::channel(const Chat_CustomChannelId_ack* msg) {
   return *msg->channel_;
-}
-void Chat_CustomChannelId_ack::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 Chat_CustomChannelId_ack::Chat_CustomChannelId_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1797,11 +1456,6 @@ Chat_CustomChannelId_ack::Chat_CustomChannelId_ack(const Chat_CustomChannelId_ac
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_channel()) {
     channel_ = new ::PRO::ChatChannelInfo(*from.channel_);
   } else {
@@ -1813,9 +1467,9 @@ Chat_CustomChannelId_ack::Chat_CustomChannelId_ack(const Chat_CustomChannelId_ac
 
 inline void Chat_CustomChannelId_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&channel_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(result_));
+    reinterpret_cast<char*>(&channel_)) + sizeof(result_));
 }
 
 Chat_CustomChannelId_ack::~Chat_CustomChannelId_ack() {
@@ -1827,7 +1481,6 @@ Chat_CustomChannelId_ack::~Chat_CustomChannelId_ack() {
 
 inline void Chat_CustomChannelId_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete channel_;
 }
 
@@ -1848,15 +1501,9 @@ void Chat_CustomChannelId_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(utoken_ != nullptr);
-      utoken_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(channel_ != nullptr);
-      channel_->Clear();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    GOOGLE_DCHECK(channel_ != nullptr);
+    channel_->Clear();
   }
   result_ = 0;
   _has_bits_.Clear();
@@ -1870,25 +1517,17 @@ const char* Chat_CustomChannelId_ack::_InternalParse(const char* ptr, ::PROTOBUF
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // int32 result = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 result = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           result_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .PRO.ChatChannelInfo channel = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // optional .PRO.ChatChannelInfo channel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_channel(), ptr);
           CHK_(ptr);
         } else
@@ -1924,26 +1563,18 @@ uint8_t* Chat_CustomChannelId_ack::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // int32 result = 2;
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_result(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_result(), target);
   }
 
-  // optional .PRO.ChatChannelInfo channel = 3;
+  // optional .PRO.ChatChannelInfo channel = 2;
   if (_internal_has_channel()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::channel(this), target, stream);
+        2, _Internal::channel(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1962,24 +1593,15 @@ size_t Chat_CustomChannelId_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional .PRO.ChatChannelInfo channel = 2;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional .PRO.UserToken utoken = 1;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *utoken_);
-    }
-
-    // optional .PRO.ChatChannelInfo channel = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *channel_);
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *channel_);
   }
-  // int32 result = 2;
+
+  // int32 result = 1;
   if (this->_internal_result() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
@@ -2006,14 +1628,8 @@ void Chat_CustomChannelId_ack::MergeFrom(const Chat_CustomChannelId_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_channel()->::PRO::ChatChannelInfo::MergeFrom(from._internal_channel());
-    }
+  if (from._internal_has_channel()) {
+    _internal_mutable_channel()->::PRO::ChatChannelInfo::MergeFrom(from._internal_channel());
   }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
@@ -2039,9 +1655,9 @@ void Chat_CustomChannelId_ack::InternalSwap(Chat_CustomChannelId_ack* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Chat_CustomChannelId_ack, result_)
       + sizeof(Chat_CustomChannelId_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(Chat_CustomChannelId_ack, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Chat_CustomChannelId_ack, channel_)>(
+          reinterpret_cast<char*>(&channel_),
+          reinterpret_cast<char*>(&other->channel_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_CustomChannelId_ack::GetMetadata() const {
@@ -2054,25 +1670,12 @@ void Chat_CustomChannelId_ack::InternalSwap(Chat_CustomChannelId_ack* other) {
 
 class Chat_UserMsg_say::_Internal {
  public:
-  using HasBits = decltype(std::declval<Chat_UserMsg_say>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_UserMsg_say* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::ChatChannelInfo& channel(const Chat_UserMsg_say* msg);
 };
 
-const ::PRO::UserToken&
-Chat_UserMsg_say::_Internal::utoken(const Chat_UserMsg_say* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::ChatChannelInfo&
 Chat_UserMsg_say::_Internal::channel(const Chat_UserMsg_say* msg) {
   return *msg->channel_;
-}
-void Chat_UserMsg_say::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 Chat_UserMsg_say::Chat_UserMsg_say(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -2084,8 +1687,7 @@ Chat_UserMsg_say::Chat_UserMsg_say(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Chat_UserMsg_say)
 }
 Chat_UserMsg_say::Chat_UserMsg_say(const Chat_UserMsg_say& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -2102,11 +1704,6 @@ Chat_UserMsg_say::Chat_UserMsg_say(const Chat_UserMsg_say& from)
   if (!from._internal_msg_content().empty()) {
     msg_content_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_msg_content(), 
       GetArenaForAllocation());
-  }
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
   }
   if (from._internal_has_channel()) {
     channel_ = new ::PRO::ChatChannelInfo(*from.channel_);
@@ -2125,10 +1722,7 @@ msg_content_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   msg_content_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&channel_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(channel_));
+channel_ = nullptr;
 }
 
 Chat_UserMsg_say::~Chat_UserMsg_say() {
@@ -2142,7 +1736,6 @@ inline void Chat_UserMsg_say::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   msg_content_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete channel_;
 }
 
@@ -2164,45 +1757,30 @@ void Chat_UserMsg_say::Clear() {
 
   nickname_.ClearToEmpty();
   msg_content_.ClearToEmpty();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && channel_ != nullptr) {
     delete channel_;
   }
   channel_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Chat_UserMsg_say::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.ChatChannelInfo channel = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.ChatChannelInfo channel = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_channel(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // string nickname = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // string nickname = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_nickname();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.Chat_UserMsg_say.nickname"));
@@ -2210,9 +1788,9 @@ const char* Chat_UserMsg_say::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         } else
           goto handle_unusual;
         continue;
-      // string msg_content = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+      // string msg_content = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_msg_content();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.Chat_UserMsg_say.msg_content"));
@@ -2236,7 +1814,6 @@ const char* Chat_UserMsg_say::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2250,40 +1827,32 @@ uint8_t* Chat_UserMsg_say::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.ChatChannelInfo channel = 2;
+  // .PRO.ChatChannelInfo channel = 1;
   if (this->_internal_has_channel()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::channel(this), target, stream);
+        1, _Internal::channel(this), target, stream);
   }
 
-  // string nickname = 3;
+  // string nickname = 2;
   if (!this->_internal_nickname().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.Chat_UserMsg_say.nickname");
     target = stream->WriteStringMaybeAliased(
-        3, this->_internal_nickname(), target);
+        2, this->_internal_nickname(), target);
   }
 
-  // string msg_content = 4;
+  // string msg_content = 3;
   if (!this->_internal_msg_content().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_msg_content().data(), static_cast<int>(this->_internal_msg_content().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "PRO.Chat_UserMsg_say.msg_content");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_msg_content(), target);
+        3, this->_internal_msg_content(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2302,29 +1871,21 @@ size_t Chat_UserMsg_say::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string nickname = 3;
+  // string nickname = 2;
   if (!this->_internal_nickname().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_nickname());
   }
 
-  // string msg_content = 4;
+  // string msg_content = 3;
   if (!this->_internal_msg_content().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_msg_content());
   }
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.ChatChannelInfo channel = 2;
+  // .PRO.ChatChannelInfo channel = 1;
   if (this->_internal_has_channel()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2359,9 +1920,6 @@ void Chat_UserMsg_say::MergeFrom(const Chat_UserMsg_say& from) {
   if (!from._internal_msg_content().empty()) {
     _internal_set_msg_content(from._internal_msg_content());
   }
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_channel()) {
     _internal_mutable_channel()->::PRO::ChatChannelInfo::MergeFrom(from._internal_channel());
   }
@@ -2384,7 +1942,6 @@ void Chat_UserMsg_say::InternalSwap(Chat_UserMsg_say* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &nickname_, lhs_arena,
@@ -2395,12 +1952,7 @@ void Chat_UserMsg_say::InternalSwap(Chat_UserMsg_say* other) {
       &msg_content_, lhs_arena,
       &other->msg_content_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Chat_UserMsg_say, channel_)
-      + sizeof(Chat_UserMsg_say::channel_)
-      - PROTOBUF_FIELD_OFFSET(Chat_UserMsg_say, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+  swap(channel_, other->channel_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_UserMsg_say::GetMetadata() const {
@@ -2413,19 +1965,10 @@ void Chat_UserMsg_say::InternalSwap(Chat_UserMsg_say* other) {
 
 class Chat_ChatMsg_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<Chat_ChatMsg_ntf>()._has_bits_);
-  static const ::PRO::UserToken& utoken(const Chat_ChatMsg_ntf* msg);
-  static void set_has_utoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
   static const ::PRO::ChatChannelInfo& channel(const Chat_ChatMsg_ntf* msg);
   static const ::PRO::ChatMessageItems& msgs(const Chat_ChatMsg_ntf* msg);
 };
 
-const ::PRO::UserToken&
-Chat_ChatMsg_ntf::_Internal::utoken(const Chat_ChatMsg_ntf* msg) {
-  return *msg->utoken_;
-}
 const ::PRO::ChatChannelInfo&
 Chat_ChatMsg_ntf::_Internal::channel(const Chat_ChatMsg_ntf* msg) {
   return *msg->channel_;
@@ -2433,10 +1976,6 @@ Chat_ChatMsg_ntf::_Internal::channel(const Chat_ChatMsg_ntf* msg) {
 const ::PRO::ChatMessageItems&
 Chat_ChatMsg_ntf::_Internal::msgs(const Chat_ChatMsg_ntf* msg) {
   return *msg->msgs_;
-}
-void Chat_ChatMsg_ntf::clear_utoken() {
-  if (utoken_ != nullptr) utoken_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
 }
 Chat_ChatMsg_ntf::Chat_ChatMsg_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -2448,14 +1987,8 @@ Chat_ChatMsg_ntf::Chat_ChatMsg_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:PRO.Chat_ChatMsg_ntf)
 }
 Chat_ChatMsg_ntf::Chat_ChatMsg_ntf(const Chat_ChatMsg_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_utoken()) {
-    utoken_ = new ::PRO::UserToken(*from.utoken_);
-  } else {
-    utoken_ = nullptr;
-  }
   if (from._internal_has_channel()) {
     channel_ = new ::PRO::ChatChannelInfo(*from.channel_);
   } else {
@@ -2471,9 +2004,9 @@ Chat_ChatMsg_ntf::Chat_ChatMsg_ntf(const Chat_ChatMsg_ntf& from)
 
 inline void Chat_ChatMsg_ntf::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utoken_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&channel_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&msgs_) -
-    reinterpret_cast<char*>(&utoken_)) + sizeof(msgs_));
+    reinterpret_cast<char*>(&channel_)) + sizeof(msgs_));
 }
 
 Chat_ChatMsg_ntf::~Chat_ChatMsg_ntf() {
@@ -2485,7 +2018,6 @@ Chat_ChatMsg_ntf::~Chat_ChatMsg_ntf() {
 
 inline void Chat_ChatMsg_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete utoken_;
   if (this != internal_default_instance()) delete channel_;
   if (this != internal_default_instance()) delete msgs_;
 }
@@ -2506,11 +2038,6 @@ void Chat_ChatMsg_ntf::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(utoken_ != nullptr);
-    utoken_->Clear();
-  }
   if (GetArenaForAllocation() == nullptr && channel_ != nullptr) {
     delete channel_;
   }
@@ -2519,36 +2046,26 @@ void Chat_ChatMsg_ntf::Clear() {
     delete msgs_;
   }
   msgs_ = nullptr;
-  _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Chat_ChatMsg_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.UserToken utoken = 1;
+      // .PRO.ChatChannelInfo channel = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_utoken(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // .PRO.ChatChannelInfo channel = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_channel(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // .PRO.ChatMessageItems msgs = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+      // .PRO.ChatMessageItems msgs = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_msgs(), ptr);
           CHK_(ptr);
         } else
@@ -2570,7 +2087,6 @@ const char* Chat_ChatMsg_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -2584,28 +2100,20 @@ uint8_t* Chat_ChatMsg_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  if (_internal_has_utoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::utoken(this), target, stream);
-  }
-
-  // .PRO.ChatChannelInfo channel = 2;
+  // .PRO.ChatChannelInfo channel = 1;
   if (this->_internal_has_channel()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        2, _Internal::channel(this), target, stream);
+        1, _Internal::channel(this), target, stream);
   }
 
-  // .PRO.ChatMessageItems msgs = 3;
+  // .PRO.ChatMessageItems msgs = 2;
   if (this->_internal_has_msgs()) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(
-        3, _Internal::msgs(this), target, stream);
+        2, _Internal::msgs(this), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2624,22 +2132,14 @@ size_t Chat_ChatMsg_ntf::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional .PRO.UserToken utoken = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *utoken_);
-  }
-
-  // .PRO.ChatChannelInfo channel = 2;
+  // .PRO.ChatChannelInfo channel = 1;
   if (this->_internal_has_channel()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
         *channel_);
   }
 
-  // .PRO.ChatMessageItems msgs = 3;
+  // .PRO.ChatMessageItems msgs = 2;
   if (this->_internal_has_msgs()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -2668,9 +2168,6 @@ void Chat_ChatMsg_ntf::MergeFrom(const Chat_ChatMsg_ntf& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_utoken()) {
-    _internal_mutable_utoken()->::PRO::UserToken::MergeFrom(from._internal_utoken());
-  }
   if (from._internal_has_channel()) {
     _internal_mutable_channel()->::PRO::ChatChannelInfo::MergeFrom(from._internal_channel());
   }
@@ -2694,13 +2191,12 @@ bool Chat_ChatMsg_ntf::IsInitialized() const {
 void Chat_ChatMsg_ntf::InternalSwap(Chat_ChatMsg_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Chat_ChatMsg_ntf, msgs_)
       + sizeof(Chat_ChatMsg_ntf::msgs_)
-      - PROTOBUF_FIELD_OFFSET(Chat_ChatMsg_ntf, utoken_)>(
-          reinterpret_cast<char*>(&utoken_),
-          reinterpret_cast<char*>(&other->utoken_));
+      - PROTOBUF_FIELD_OFFSET(Chat_ChatMsg_ntf, channel_)>(
+          reinterpret_cast<char*>(&channel_),
+          reinterpret_cast<char*>(&other->channel_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Chat_ChatMsg_ntf::GetMetadata() const {

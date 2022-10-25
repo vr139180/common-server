@@ -31,7 +31,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include "global_internal.pb.h"
 #include "db_internal.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -201,28 +200,9 @@ class Pet_AdoptOne_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kPetIidFieldNumber = 2,
+    kPetIidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 pet_iid = 2;
+  // int64 pet_iid = 1;
   void clear_pet_iid();
   int64_t pet_iid() const;
   void set_pet_iid(int64_t value);
@@ -238,10 +218,8 @@ class Pet_AdoptOne_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t pet_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fpet_2eproto;
 };
 // -------------------------------------------------------------------
@@ -368,29 +346,10 @@ class Pet_AdoptOne_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kPetFieldNumber = 3,
-    kResultFieldNumber = 2,
+    kPetFieldNumber = 2,
+    kResultFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // optional .PRO.DBUserPetItem pet = 3;
+  // optional .PRO.DBUserPetItem pet = 2;
   bool has_pet() const;
   private:
   bool _internal_has_pet() const;
@@ -408,7 +367,7 @@ class Pet_AdoptOne_ack final :
       ::PRO::DBUserPetItem* pet);
   ::PRO::DBUserPetItem* unsafe_arena_release_pet();
 
-  // int32 result = 2;
+  // int32 result = 1;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -426,7 +385,6 @@ class Pet_AdoptOne_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   ::PRO::DBUserPetItem* pet_;
   int32_t result_;
   friend struct ::TableStruct_user_5fpet_2eproto;
@@ -555,28 +513,9 @@ class Pet_ReleaseOne_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kMypetIidFieldNumber = 2,
+    kMypetIidFieldNumber = 1,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   void clear_mypet_iid();
   int64_t mypet_iid() const;
   void set_mypet_iid(int64_t value);
@@ -592,10 +531,8 @@ class Pet_ReleaseOne_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t mypet_iid_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fpet_2eproto;
 };
 // -------------------------------------------------------------------
@@ -722,29 +659,10 @@ class Pet_ReleaseOne_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUtokenFieldNumber = 1,
-    kMypetIidFieldNumber = 2,
-    kResultFieldNumber = 3,
+    kMypetIidFieldNumber = 1,
+    kResultFieldNumber = 2,
   };
-  // optional .PRO.UserToken utoken = 1;
-  bool has_utoken() const;
-  private:
-  bool _internal_has_utoken() const;
-  public:
-  void clear_utoken();
-  const ::PRO::UserToken& utoken() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_utoken();
-  ::PRO::UserToken* mutable_utoken();
-  void set_allocated_utoken(::PRO::UserToken* utoken);
-  private:
-  const ::PRO::UserToken& _internal_utoken() const;
-  ::PRO::UserToken* _internal_mutable_utoken();
-  public:
-  void unsafe_arena_set_allocated_utoken(
-      ::PRO::UserToken* utoken);
-  ::PRO::UserToken* unsafe_arena_release_utoken();
-
-  // int64 mypet_iid = 2;
+  // int64 mypet_iid = 1;
   void clear_mypet_iid();
   int64_t mypet_iid() const;
   void set_mypet_iid(int64_t value);
@@ -753,7 +671,7 @@ class Pet_ReleaseOne_ack final :
   void _internal_set_mypet_iid(int64_t value);
   public:
 
-  // int32 result = 3;
+  // int32 result = 2;
   void clear_result();
   int32_t result() const;
   void set_result(int32_t value);
@@ -769,11 +687,9 @@ class Pet_ReleaseOne_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PRO::UserToken* utoken_;
   int64_t mypet_iid_;
   int32_t result_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5fpet_2eproto;
 };
 // ===================================================================
@@ -787,95 +703,7 @@ class Pet_ReleaseOne_ack final :
 #endif  // __GNUC__
 // Pet_AdoptOne_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Pet_AdoptOne_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Pet_AdoptOne_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Pet_AdoptOne_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Pet_AdoptOne_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Pet_AdoptOne_req.utoken)
-  return _internal_utoken();
-}
-inline void Pet_AdoptOne_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Pet_AdoptOne_req.utoken)
-}
-inline ::PRO::UserToken* Pet_AdoptOne_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Pet_AdoptOne_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Pet_AdoptOne_req.utoken)
-  return _msg;
-}
-inline void Pet_AdoptOne_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Pet_AdoptOne_req.utoken)
-}
-
-// int64 pet_iid = 2;
+// int64 pet_iid = 1;
 inline void Pet_AdoptOne_req::clear_pet_iid() {
   pet_iid_ = int64_t{0};
 }
@@ -899,95 +727,7 @@ inline void Pet_AdoptOne_req::set_pet_iid(int64_t value) {
 
 // Pet_AdoptOne_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Pet_AdoptOne_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Pet_AdoptOne_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Pet_AdoptOne_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Pet_AdoptOne_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Pet_AdoptOne_ack.utoken)
-  return _internal_utoken();
-}
-inline void Pet_AdoptOne_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Pet_AdoptOne_ack.utoken)
-}
-inline ::PRO::UserToken* Pet_AdoptOne_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Pet_AdoptOne_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Pet_AdoptOne_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Pet_AdoptOne_ack.utoken)
-  return _msg;
-}
-inline void Pet_AdoptOne_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Pet_AdoptOne_ack.utoken)
-}
-
-// int32 result = 2;
+// int32 result = 1;
 inline void Pet_AdoptOne_ack::clear_result() {
   result_ = 0;
 }
@@ -1007,9 +747,9 @@ inline void Pet_AdoptOne_ack::set_result(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Pet_AdoptOne_ack.result)
 }
 
-// optional .PRO.DBUserPetItem pet = 3;
+// optional .PRO.DBUserPetItem pet = 2;
 inline bool Pet_AdoptOne_ack::_internal_has_pet() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
   PROTOBUF_ASSUME(!value || pet_ != nullptr);
   return value;
 }
@@ -1032,14 +772,14 @@ inline void Pet_AdoptOne_ack::unsafe_arena_set_allocated_pet(
   }
   pet_ = pet;
   if (pet) {
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Pet_AdoptOne_ack.pet)
 }
 inline ::PRO::DBUserPetItem* Pet_AdoptOne_ack::release_pet() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::DBUserPetItem* temp = pet_;
   pet_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -1055,13 +795,13 @@ inline ::PRO::DBUserPetItem* Pet_AdoptOne_ack::release_pet() {
 }
 inline ::PRO::DBUserPetItem* Pet_AdoptOne_ack::unsafe_arena_release_pet() {
   // @@protoc_insertion_point(field_release:PRO.Pet_AdoptOne_ack.pet)
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
   ::PRO::DBUserPetItem* temp = pet_;
   pet_ = nullptr;
   return temp;
 }
 inline ::PRO::DBUserPetItem* Pet_AdoptOne_ack::_internal_mutable_pet() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   if (pet_ == nullptr) {
     auto* p = CreateMaybeMessage<::PRO::DBUserPetItem>(GetArenaForAllocation());
     pet_ = p;
@@ -1087,9 +827,9 @@ inline void Pet_AdoptOne_ack::set_allocated_pet(::PRO::DBUserPetItem* pet) {
       pet = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, pet, submessage_arena);
     }
-    _has_bits_[0] |= 0x00000002u;
+    _has_bits_[0] |= 0x00000001u;
   } else {
-    _has_bits_[0] &= ~0x00000002u;
+    _has_bits_[0] &= ~0x00000001u;
   }
   pet_ = pet;
   // @@protoc_insertion_point(field_set_allocated:PRO.Pet_AdoptOne_ack.pet)
@@ -1099,95 +839,7 @@ inline void Pet_AdoptOne_ack::set_allocated_pet(::PRO::DBUserPetItem* pet) {
 
 // Pet_ReleaseOne_req
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Pet_ReleaseOne_req::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Pet_ReleaseOne_req::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Pet_ReleaseOne_req::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Pet_ReleaseOne_req::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Pet_ReleaseOne_req.utoken)
-  return _internal_utoken();
-}
-inline void Pet_ReleaseOne_req::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Pet_ReleaseOne_req.utoken)
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_req::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_req::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Pet_ReleaseOne_req.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_req::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_req::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Pet_ReleaseOne_req.utoken)
-  return _msg;
-}
-inline void Pet_ReleaseOne_req::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Pet_ReleaseOne_req.utoken)
-}
-
-// int64 mypet_iid = 2;
+// int64 mypet_iid = 1;
 inline void Pet_ReleaseOne_req::clear_mypet_iid() {
   mypet_iid_ = int64_t{0};
 }
@@ -1211,95 +863,7 @@ inline void Pet_ReleaseOne_req::set_mypet_iid(int64_t value) {
 
 // Pet_ReleaseOne_ack
 
-// optional .PRO.UserToken utoken = 1;
-inline bool Pet_ReleaseOne_ack::_internal_has_utoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || utoken_ != nullptr);
-  return value;
-}
-inline bool Pet_ReleaseOne_ack::has_utoken() const {
-  return _internal_has_utoken();
-}
-inline const ::PRO::UserToken& Pet_ReleaseOne_ack::_internal_utoken() const {
-  const ::PRO::UserToken* p = utoken_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& Pet_ReleaseOne_ack::utoken() const {
-  // @@protoc_insertion_point(field_get:PRO.Pet_ReleaseOne_ack.utoken)
-  return _internal_utoken();
-}
-inline void Pet_ReleaseOne_ack::unsafe_arena_set_allocated_utoken(
-    ::PRO::UserToken* utoken) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  utoken_ = utoken;
-  if (utoken) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Pet_ReleaseOne_ack.utoken)
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_ack::release_utoken() {
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_ack::unsafe_arena_release_utoken() {
-  // @@protoc_insertion_point(field_release:PRO.Pet_ReleaseOne_ack.utoken)
-  _has_bits_[0] &= ~0x00000001u;
-  ::PRO::UserToken* temp = utoken_;
-  utoken_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_ack::_internal_mutable_utoken() {
-  _has_bits_[0] |= 0x00000001u;
-  if (utoken_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    utoken_ = p;
-  }
-  return utoken_;
-}
-inline ::PRO::UserToken* Pet_ReleaseOne_ack::mutable_utoken() {
-  ::PRO::UserToken* _msg = _internal_mutable_utoken();
-  // @@protoc_insertion_point(field_mutable:PRO.Pet_ReleaseOne_ack.utoken)
-  return _msg;
-}
-inline void Pet_ReleaseOne_ack::set_allocated_utoken(::PRO::UserToken* utoken) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken_);
-  }
-  if (utoken) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(utoken));
-    if (message_arena != submessage_arena) {
-      utoken = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, utoken, submessage_arena);
-    }
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  utoken_ = utoken;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Pet_ReleaseOne_ack.utoken)
-}
-
-// int64 mypet_iid = 2;
+// int64 mypet_iid = 1;
 inline void Pet_ReleaseOne_ack::clear_mypet_iid() {
   mypet_iid_ = int64_t{0};
 }
@@ -1319,7 +883,7 @@ inline void Pet_ReleaseOne_ack::set_mypet_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Pet_ReleaseOne_ack.mypet_iid)
 }
 
-// int32 result = 3;
+// int32 result = 2;
 inline void Pet_ReleaseOne_ack::clear_result() {
   result_ = 0;
 }

@@ -110,6 +110,7 @@
     <ClCompile Include="..\source\libs\cmsLib\base\OSSystem.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\base\Profile.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\encryption\rsa\RSAUtil.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\hash\HashUtil.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpClient.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\httpcurl\HTTPCurlRequest.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\httpcurl\HttpUrl.cpp" />
@@ -154,9 +155,12 @@
     <ClCompile Include="..\source\libs\cmsLib\lua_src\lvm.c" />
     <ClCompile Include="..\source\libs\cmsLib\lua_src\lzio.c" />
     <ClCompile Include="..\source\libs\cmsLib\net\LinkToBase.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\net\NetSessionBindEvent.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\OSDriver.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\os\win32\OSDriverWin32.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\prolib\BasicProtocol.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\prolib\BasicProtocol_Code.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\prolib\ProtocolFactory.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\redis\RedisClient.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\system\AppStateMonitor.cpp" />
@@ -187,7 +191,10 @@
     <ClInclude Include="..\source\libs\cmsLib\base\Hierarchy.h" />
     <ClInclude Include="..\source\libs\cmsLib\base\OSSystem.h" />
     <ClInclude Include="..\source\libs\cmsLib\base\Profile.h" />
+    <ClInclude Include="..\source\libs\cmsLib\common_result.h" />
+    <ClInclude Include="..\source\libs\cmsLib\core_type.h" />
     <ClInclude Include="..\source\libs\cmsLib\encryption\rsa\RSAUtil.h" />
+    <ClInclude Include="..\source\libs\cmsLib\hash\HashUtil.h" />
     <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPBinData.h" />
     <ClInclude Include="..\source\libs\cmsLib\httpcurl\HTTPBinWrite.h" />
     <ClInclude Include="..\source\libs\cmsLib\httpcurl\HttpClient.h" />
@@ -212,6 +219,7 @@
     <ClInclude Include="..\source\libs\cmsLib\log\WSSinkBackend.h" />
     <ClInclude Include="..\source\libs\cmsLib\lua\ScriptContext.h" />
     <ClInclude Include="..\source\libs\cmsLib\net\LinkToBase.h" />
+    <ClInclude Include="..\source\libs\cmsLib\net\NetHashingWithVNode.h" />
     <ClInclude Include="..\source\libs\cmsLib\OSDriver.h" />
     <ClInclude Include="..\source\libs\cmsLib\os\win32\OSDriverWin32.h" />
     <ClInclude Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.h" />
@@ -221,7 +229,6 @@
     <ClInclude Include="..\source\libs\cmsLib\system\AppStateMonitor.h" />
     <ClInclude Include="..\source\libs\cmsLib\system\VirtualMainThread.h" />
     <ClInclude Include="..\source\libs\cmsLib\GlobalSettings.h" />
-    <ClInclude Include="..\source\libs\cmsLib\prolib\core_type.h" />
     <ClInclude Include="..\source\libs\cmsLib\prolib\prolibdef.h" />
     <ClInclude Include="..\source\libs\cmsLib\prolib\ProtocolFactory.h" />
     <ClInclude Include="..\source\libs\cmsLib\prolib\SingletonT.h" />

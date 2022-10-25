@@ -8,26 +8,11 @@ public interface Pet_AdoptOne_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *0 success 1 资源不存在
    * </pre>
    *
-   * <code>int32 result = 2;</code>
+   * <code>int32 result = 1;</code>
    * @return The result.
    */
   int getResult();
@@ -37,7 +22,7 @@ public interface Pet_AdoptOne_ackOrBuilder extends
    *success 返回pet对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserPetItem pet = 3;</code>
+   * <code>optional .PRO.DBUserPetItem pet = 2;</code>
    * @return Whether the pet field is set.
    */
   boolean hasPet();
@@ -46,7 +31,7 @@ public interface Pet_AdoptOne_ackOrBuilder extends
    *success 返回pet对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserPetItem pet = 3;</code>
+   * <code>optional .PRO.DBUserPetItem pet = 2;</code>
    * @return The pet.
    */
   com.cms.client.network.gpro.DBUserPetItem getPet();
@@ -55,7 +40,7 @@ public interface Pet_AdoptOne_ackOrBuilder extends
    *success 返回pet对象
    * </pre>
    *
-   * <code>optional .PRO.DBUserPetItem pet = 3;</code>
+   * <code>optional .PRO.DBUserPetItem pet = 2;</code>
    */
   com.cms.client.network.gpro.DBUserPetItemOrBuilder getPetOrBuilder();
 }

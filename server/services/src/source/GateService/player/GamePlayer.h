@@ -1,80 +1,120 @@
 #ifndef __GAMEPLAYER_H__
 #define __GAMEPLAYER_H__
 
-#include <cmsLib/prolib/core_type.h>
-#include <gameLib/commons/NetLinkFromBase.h>
-#include <gameLib/gatehome/ProtoTokenUtil.h>
-
-#include "network/GateSession.h"
+#include <cmsLib/core_type.h>
+#include <cmsLib/net/NetSession.h>
+#include <cmsLib/net/NetSessionBindEvent.h>
 
 typedef enum tagPlayerState {
 	PlayerState_Free = 0,
-	PlayerState_Login,
+	PlayerState_Closing,
+	PlayerState_Loginning,
+	PlayerState_Logon,
 	PlayerState_RoleSel,
 	PlayerState_RoleReady,
 }PlayerState;
 
-class GamePlayer : public NetLinkFromBase<GateSession>
+class GamePlayer : public NetSessionBindEvent
 {
 public:
 	GamePlayer();
-	void init(int s);
+	virtual ~GamePlayer();
 
-	void reuse();
-	void preuse(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid);
+	void init(int s);
+	void reset();
+	void force_close();
 
 	bool is_samesession(S_INT_64 utoken);
 	bool is_samesession(S_INT_64 uid, S_INT_64 utoken);
-
-	bool set_usertoken(BasicProtocol* msg);
+	bool is_samesession(const SProtocolHead& head);
 
 	int get_userslot() { return slot_; }
 	void set_userslot(int s) { slot_ = s; }
-	S_INT_64 get_slottoken() { return slottoken_; }
-	S_INT_64 get_giduid() { return giduid_; }
-	void set_proxystamp(S_INT_64 st) { proxy_stamp_ = st; }
-	S_INT_64 get_proxystamp() { return proxy_stamp_; }
 
-	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Login && cur_state_ < PlayerState::PlayerState_RoleReady); }
+	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Logon && cur_state_ < PlayerState::PlayerState_RoleReady); }
 	bool is_roleready() { return cur_state_ >= PlayerState::PlayerState_RoleReady; }
 	S_INT_64 get_roleiid() { return this->role_iid_; }
 	//角色选择确定后切换giduid为gateid+role_iid_
 	void role_selected_done(S_INT_64 rid, S_INT_64 gateiid);
 
-public:
-	virtual void force_linkclose();
+	virtual void init_protocolhead();
+	virtual const SProtocolHead& get_protocolhead() { return s_head_;}
 
+	void send_netprotocol(NetProtocol* pro) { session_->send_protocol(pro); }
+	void send_netprotocol(BasicProtocol* msg);
+
+	S_INT_64 get_iid() { return role_iid_; }
+
+public:
+	boost::shared_ptr<NetSession> get_session() { return session_; }
+
+	void send_protocol(NetProtocol* pro) { session_->send_protocol(pro); }
+
+	virtual void force_linkclose();
 	virtual void registinfo_tolog(bool bregist = true);
-	//---------------implement NetSessionBindEvent---------------
-	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
+
+	void heart_beat() {
+		if (session_.get() != 0)
+			session_->heart_beat();
+	}
+
+	void reuse();
+	//建立连接
+	void proxy();
+	S_INT_64 get_starttime() { return start_timestamp_;}
+	//完成验证
+	void auth(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid);
+	bool is_auth() { return cur_state_ > PlayerState_Loginning; }
+
+	void update(u64 tnow);
 
 protected:
 	PlayerState	cur_state_;
 	S_INT_64	role_iid_;
 	//开始使用时间
 	S_INT_64	start_timestamp_;
-	//加密后的token
-	S_INT_64	slottoken_;
-	//gidui在角色选择成功后需要重新构建
-	S_INT_64	giduid_;
 
 private:
+	CProtocolHead	c_head_;
+	SProtocolHead	s_head_;
+
 	//所在的slot
 	int			slot_;
-	S_INT_64	proxy_stamp_;
+	boost::shared_ptr<NetSession>	session_;
+
+public:
+	//---------------implement NetSessionBindEvent---------------
+	virtual void on_cant_connectedto() {}
+	virtual void on_connectedto_done() {}
+
+	virtual void on_connect_lost_netthread();
+	virtual void on_recv_protocol_netthread(NetProtocol* pro);
+	virtual NetProtocol* get_livekeep_msg();
+
+	virtual NetProtocol* unpack_protocol(S_UINT_8 *pbuf, S_UINT_32 prolen);
+	virtual bool pack_protocol(S_UINT_8 *pbuf, S_UINT_32 maxlen, NetProtocol* pro, S_UINT_32& prolen);
+	virtual bool is_need_unpack_protocol(S_UINT_16 msgid);
+
+public:
+	void user_login(NetProtocol* msg);
 };
 
 inline 
 bool GamePlayer::is_samesession(S_INT_64 utoken)
 {
-	return (this->slottoken_ == utoken);
+	return (this->s_head_.get_token_token() == utoken);
 }
 
 inline
 bool GamePlayer::is_samesession(S_INT_64 uid, S_INT_64 stoken)
 {
-	return this->get_iid() == uid && this->slottoken_ == stoken;
+	return get_iid() == uid && this->s_head_.get_token_token() == stoken;
+}
+
+inline
+bool GamePlayer::is_samesession(const SProtocolHead& head)
+{
+	return s_head_.is_same_session( head);
 }
 
 #endif //__GAMEPLAYER_H__

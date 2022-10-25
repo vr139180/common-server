@@ -10,7 +10,6 @@
 
 #include <google/protobuf/message.h>
 
-#include <cmsLib/prolib/ProtocolFactory.h>
 #include <cmsLib/net/NetSessionBindEvent.h>
 #include <cmsLib/ThreadLock.h>
 
@@ -25,8 +24,8 @@ class NetSession
 	friend class NetAcceptor;
 	friend class NetConnector;
 public:
-	typedef std::deque<BasicProtocol*>				BasicProtocolQueue_t;
-	typedef std::deque<BasicProtocol*>::iterator	BasicProtocolQueueIt_t;
+	typedef std::deque<NetProtocol*>				NetProtocolQueue_t;
+	typedef std::deque<NetProtocol*>::iterator		NetProtocolQueueIt_t;
 
 	typedef boost::shared_ptr< boost::asio::ip::tcp::socket >	SocketPtr_t;
 
@@ -36,7 +35,7 @@ public:
 
 	void force_reset();
 
-	void send_protocol( BasicProtocol* message);
+	void send_protocol( NetProtocol* message);
 
 	void heart_beat();
 	
@@ -45,6 +44,8 @@ public:
 	bool is_socket_valid(){
 		return socket_ != 0;
 	}
+
+	NetSessionBindEvent* get_bindevent() { return bind_event_cb_; }
 
 public:
 
@@ -59,12 +60,11 @@ protected:
 	void on_connectto_result(bool success);
 	void on_connectfrom_result(bool success);
 
-	bool try_read_nomutext( int alreadyrecvsize, 
-		std::list<S_UINT_16>& readproiids, std::list<BasicProtocol*>& readpro);
+	bool try_read_nomutext( int alreadyrecvsize, std::list<NetProtocol*>& readpro);
 	void try_write_nomutext( int alreadysendsize);
 
 	void fill_writebuffer_nomutex( int alreadysendsize);
-	int analy_package_nomutex(std::list<S_UINT_16>& readproiids, std::list<BasicProtocol*>& readpro);
+	int analy_package_nomutex(std::list<NetProtocol*>& readpro);
 
 	void on_connect_lost_netthread();
 
@@ -83,17 +83,15 @@ private:
 	boost::asio::io_service*    io_service_;
 
 	//waiting to send messages queue
-	BasicProtocolQueue_t        send_queue_;
+	NetProtocolQueue_t			send_queue_;
 	ThreadLock*                 lock_;
 	ThreadLock*					queue_lock_;
 	bool						lock_delete_;
 
-	ProtocolFactory*            pro_factory_;
-
-	c8				recv_buff_[NET_RECVBUFF_SIZE_MAX];
+	S_UINT_8		recv_buff_[NET_RECVBUFF_SIZE_MAX];
 	volatile  int	recv_buff_pos_;
 
-	c8				send_buff_[NET_SENDBUFF_SIZE_MAX];
+	S_UINT_8		send_buff_[NET_SENDBUFF_SIZE_MAX];
 	volatile  int	send_buff_pos_;
 	volatile  bool	is_sending_;
 };

@@ -8,26 +8,11 @@ public interface Frd_FriendList_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *最大的一个invite的iid，会获取新的邀请
    * </pre>
    *
-   * <code>int64 last_invite = 2;</code>
+   * <code>int64 last_invite = 1;</code>
    * @return The lastInvite.
    */
   long getLastInvite();
@@ -37,7 +22,7 @@ public interface Frd_FriendList_reqOrBuilder extends
    *根据活跃度排行的索引 0开始
    * </pre>
    *
-   * <code>int32 friendindex = 3;</code>
+   * <code>int32 friendindex = 2;</code>
    * @return The friendindex.
    */
   int getFriendindex();
@@ -47,7 +32,7 @@ public interface Frd_FriendList_reqOrBuilder extends
    *true 小到大 获取下一批好友信息, false 大到小获取
    * </pre>
    *
-   * <code>bool next = 4;</code>
+   * <code>bool next = 3;</code>
    * @return The next.
    */
   boolean getNext();
@@ -57,7 +42,7 @@ public interface Frd_FriendList_reqOrBuilder extends
    *每批的长度，不超过20
    * </pre>
    *
-   * <code>int32 num = 5;</code>
+   * <code>int32 num = 4;</code>
    * @return The num.
    */
   int getNum();

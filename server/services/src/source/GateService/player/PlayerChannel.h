@@ -23,25 +23,17 @@ public:
 	void init_channel(GamePlayerCtrl* p, int pindex, int nums, std::vector<GamePlayer*>& lus);
 	void reset_syscmd();
 
-	void send_msg_to_player(BasicProtocol* msg, int slot);
-
-	GamePlayer* ask_free_slot(int slot, S_INT_64 token, S_INT_64 uid);
+	void send_msg_to_player(NetProtocol* msg, int slot);
 
 	GamePlayer* get_player_byslot(int slot);
 	GamePlayer* get_player_byslot(int slot, S_INT_64 token);
-	GamePlayer* get_player_frommsg(BasicProtocol* msg);
+	GamePlayer* get_player_frommsg(NetProtocol* pro);
 	void force_pc_close_player(GamePlayer* puser);
 
 public:
 	//---------------------------MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
-	virtual void ProcessMessage(BasicProtocol* message, bool& autorelease, int msgid) {}
-
-public:
-	void on_cth_freeslot_req(BasicProtocol* msg, bool& autorelease, int slot);
-	void on_cth_userproxylogin_req(BasicProtocol* message, bool& autorelease, void* p);
-
-	void on_disconnected_with_player(GamePlayer* p);
+	virtual void ProcessMessage(NetProtocol* message, bool& autorelease) {}
 
 protected:
 	void reset_channel(void*);
@@ -62,13 +54,21 @@ private:
 
 	GamePlayerCtrl*				parent_;
 
+public:
+	void on_connection_timeout(GamePlayer* player);
+
+	void on_disconnected_with_player(GamePlayer* player);
+	void on_player_login(GamePlayer* player);
+
 	//net command
 public:
-	void on_pc_userlogout_ntf(BasicProtocol* pro, bool& autorelease);
-	void on_pc_roleselect_ack(BasicProtocol* pro, bool& autorelease);
+	void on_cth_userproxylogin_req(NetProtocol* message, bool& autorelease, void* p);
+
+	void on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease);
+	void on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease);
 
 	//聊天系统，全局聊天嵌入
-	void on_pc_broadcast_chat_globalmsg(BasicProtocol* pro, bool& autorelease);
+	void on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autorelease);
 };
 
 #endif //__PLAYERCHANNEL_H__

@@ -46,7 +46,7 @@ struct TableStruct_global_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -75,9 +75,6 @@ extern MailSystemItemDefaultTypeInternal _MailSystemItem_default_instance_;
 class MailSystemItems;
 struct MailSystemItemsDefaultTypeInternal;
 extern MailSystemItemsDefaultTypeInternal _MailSystemItems_default_instance_;
-class UserToken;
-struct UserTokenDefaultTypeInternal;
-extern UserTokenDefaultTypeInternal _UserToken_default_instance_;
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PRO::FriendInviteItem* Arena::CreateMaybeMessage<::PRO::FriendInviteItem>(Arena*);
@@ -87,168 +84,10 @@ template<> ::PRO::MailNormalItem* Arena::CreateMaybeMessage<::PRO::MailNormalIte
 template<> ::PRO::MailNormalItems* Arena::CreateMaybeMessage<::PRO::MailNormalItems>(Arena*);
 template<> ::PRO::MailSystemItem* Arena::CreateMaybeMessage<::PRO::MailSystemItem>(Arena*);
 template<> ::PRO::MailSystemItems* Arena::CreateMaybeMessage<::PRO::MailSystemItems>(Arena*);
-template<> ::PRO::UserToken* Arena::CreateMaybeMessage<::PRO::UserToken>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PRO {
 
 // ===================================================================
-
-class UserToken final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.UserToken) */ {
- public:
-  inline UserToken() : UserToken(nullptr) {}
-  ~UserToken() override;
-  explicit constexpr UserToken(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  UserToken(const UserToken& from);
-  UserToken(UserToken&& from) noexcept
-    : UserToken() {
-    *this = ::std::move(from);
-  }
-
-  inline UserToken& operator=(const UserToken& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline UserToken& operator=(UserToken&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const UserToken& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const UserToken* internal_default_instance() {
-    return reinterpret_cast<const UserToken*>(
-               &_UserToken_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(UserToken& a, UserToken& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(UserToken* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(UserToken* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  UserToken* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<UserToken>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const UserToken& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const UserToken& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(UserToken* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.UserToken";
-  }
-  protected:
-  explicit UserToken(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kGiduidFieldNumber = 1,
-    kSlottokenFieldNumber = 2,
-  };
-  // int64 giduid = 1;
-  void clear_giduid();
-  int64_t giduid() const;
-  void set_giduid(int64_t value);
-  private:
-  int64_t _internal_giduid() const;
-  void _internal_set_giduid(int64_t value);
-  public:
-
-  // int64 slottoken = 2;
-  void clear_slottoken();
-  int64_t slottoken() const;
-  void set_slottoken(int64_t value);
-  private:
-  int64_t _internal_slottoken() const;
-  void _internal_set_slottoken(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.UserToken)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int64_t giduid_;
-  int64_t slottoken_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_global_5finternal_2eproto;
-};
-// -------------------------------------------------------------------
 
 class MailSystemItem final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.MailSystemItem) */ {
@@ -298,7 +137,7 @@ class MailSystemItem final :
                &_MailSystemItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    0;
 
   friend void swap(MailSystemItem& a, MailSystemItem& b) {
     a.Swap(&b);
@@ -525,7 +364,7 @@ class MailSystemItems final :
                &_MailSystemItems_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    1;
 
   friend void swap(MailSystemItems& a, MailSystemItems& b) {
     a.Swap(&b);
@@ -680,7 +519,7 @@ class MailNormalItem final :
                &_MailNormalItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    2;
 
   friend void swap(MailNormalItem& a, MailNormalItem& b) {
     a.Swap(&b);
@@ -940,7 +779,7 @@ class MailNormalItems final :
                &_MailNormalItems_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    3;
 
   friend void swap(MailNormalItems& a, MailNormalItems& b) {
     a.Swap(&b);
@@ -1095,7 +934,7 @@ class FriendInviteItem final :
                &_FriendInviteItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    4;
 
   friend void swap(FriendInviteItem& a, FriendInviteItem& b) {
     a.Swap(&b);
@@ -1279,7 +1118,7 @@ class FriendRelation final :
                &_FriendRelation_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    5;
 
   friend void swap(FriendRelation& a, FriendRelation& b) {
     a.Swap(&b);
@@ -1463,7 +1302,7 @@ class FriendUserInfo final :
                &_FriendUserInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    6;
 
   friend void swap(FriendUserInfo& a, FriendUserInfo& b) {
     a.Swap(&b);
@@ -1537,25 +1376,16 @@ class FriendUserInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTokenFieldNumber = 1,
+    kRoleiidFieldNumber = 1,
   };
-  // .PRO.UserToken token = 1;
-  bool has_token() const;
+  // int64 roleiid = 1;
+  void clear_roleiid();
+  int64_t roleiid() const;
+  void set_roleiid(int64_t value);
   private:
-  bool _internal_has_token() const;
+  int64_t _internal_roleiid() const;
+  void _internal_set_roleiid(int64_t value);
   public:
-  void clear_token();
-  const ::PRO::UserToken& token() const;
-  PROTOBUF_NODISCARD ::PRO::UserToken* release_token();
-  ::PRO::UserToken* mutable_token();
-  void set_allocated_token(::PRO::UserToken* token);
-  private:
-  const ::PRO::UserToken& _internal_token() const;
-  ::PRO::UserToken* _internal_mutable_token();
-  public:
-  void unsafe_arena_set_allocated_token(
-      ::PRO::UserToken* token);
-  ::PRO::UserToken* unsafe_arena_release_token();
 
   // @@protoc_insertion_point(class_scope:PRO.FriendUserInfo)
  private:
@@ -1564,7 +1394,7 @@ class FriendUserInfo final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PRO::UserToken* token_;
+  int64_t roleiid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_global_5finternal_2eproto;
 };
@@ -1577,50 +1407,6 @@ class FriendUserInfo final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// UserToken
-
-// int64 giduid = 1;
-inline void UserToken::clear_giduid() {
-  giduid_ = int64_t{0};
-}
-inline int64_t UserToken::_internal_giduid() const {
-  return giduid_;
-}
-inline int64_t UserToken::giduid() const {
-  // @@protoc_insertion_point(field_get:PRO.UserToken.giduid)
-  return _internal_giduid();
-}
-inline void UserToken::_internal_set_giduid(int64_t value) {
-  
-  giduid_ = value;
-}
-inline void UserToken::set_giduid(int64_t value) {
-  _internal_set_giduid(value);
-  // @@protoc_insertion_point(field_set:PRO.UserToken.giduid)
-}
-
-// int64 slottoken = 2;
-inline void UserToken::clear_slottoken() {
-  slottoken_ = int64_t{0};
-}
-inline int64_t UserToken::_internal_slottoken() const {
-  return slottoken_;
-}
-inline int64_t UserToken::slottoken() const {
-  // @@protoc_insertion_point(field_get:PRO.UserToken.slottoken)
-  return _internal_slottoken();
-}
-inline void UserToken::_internal_set_slottoken(int64_t value) {
-  
-  slottoken_ = value;
-}
-inline void UserToken::set_slottoken(int64_t value) {
-  _internal_set_slottoken(value);
-  // @@protoc_insertion_point(field_set:PRO.UserToken.slottoken)
-}
-
-// -------------------------------------------------------------------
-
 // MailSystemItem
 
 // int64 iid = 1;
@@ -2475,101 +2261,29 @@ inline void FriendRelation::set_online(bool value) {
 
 // FriendUserInfo
 
-// .PRO.UserToken token = 1;
-inline bool FriendUserInfo::_internal_has_token() const {
-  return this != internal_default_instance() && token_ != nullptr;
+// int64 roleiid = 1;
+inline void FriendUserInfo::clear_roleiid() {
+  roleiid_ = int64_t{0};
 }
-inline bool FriendUserInfo::has_token() const {
-  return _internal_has_token();
+inline int64_t FriendUserInfo::_internal_roleiid() const {
+  return roleiid_;
 }
-inline void FriendUserInfo::clear_token() {
-  if (GetArenaForAllocation() == nullptr && token_ != nullptr) {
-    delete token_;
-  }
-  token_ = nullptr;
+inline int64_t FriendUserInfo::roleiid() const {
+  // @@protoc_insertion_point(field_get:PRO.FriendUserInfo.roleiid)
+  return _internal_roleiid();
 }
-inline const ::PRO::UserToken& FriendUserInfo::_internal_token() const {
-  const ::PRO::UserToken* p = token_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::UserToken&>(
-      ::PRO::_UserToken_default_instance_);
-}
-inline const ::PRO::UserToken& FriendUserInfo::token() const {
-  // @@protoc_insertion_point(field_get:PRO.FriendUserInfo.token)
-  return _internal_token();
-}
-inline void FriendUserInfo::unsafe_arena_set_allocated_token(
-    ::PRO::UserToken* token) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(token_);
-  }
-  token_ = token;
-  if (token) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.FriendUserInfo.token)
-}
-inline ::PRO::UserToken* FriendUserInfo::release_token() {
+inline void FriendUserInfo::_internal_set_roleiid(int64_t value) {
   
-  ::PRO::UserToken* temp = token_;
-  token_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
+  roleiid_ = value;
 }
-inline ::PRO::UserToken* FriendUserInfo::unsafe_arena_release_token() {
-  // @@protoc_insertion_point(field_release:PRO.FriendUserInfo.token)
-  
-  ::PRO::UserToken* temp = token_;
-  token_ = nullptr;
-  return temp;
-}
-inline ::PRO::UserToken* FriendUserInfo::_internal_mutable_token() {
-  
-  if (token_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::UserToken>(GetArenaForAllocation());
-    token_ = p;
-  }
-  return token_;
-}
-inline ::PRO::UserToken* FriendUserInfo::mutable_token() {
-  ::PRO::UserToken* _msg = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:PRO.FriendUserInfo.token)
-  return _msg;
-}
-inline void FriendUserInfo::set_allocated_token(::PRO::UserToken* token) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete token_;
-  }
-  if (token) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::UserToken>::GetOwningArena(token);
-    if (message_arena != submessage_arena) {
-      token = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, token, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  token_ = token;
-  // @@protoc_insertion_point(field_set_allocated:PRO.FriendUserInfo.token)
+inline void FriendUserInfo::set_roleiid(int64_t value) {
+  _internal_set_roleiid(value);
+  // @@protoc_insertion_point(field_set:PRO.FriendUserInfo.roleiid)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

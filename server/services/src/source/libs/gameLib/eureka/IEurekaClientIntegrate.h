@@ -6,7 +6,7 @@
 #include <boost/function.hpp>
 #pragma  pack( pop)
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/ThreadLock.h>
 #include <cmsLib/system/CommandBase.h>
 #include <cmsLib/system/TimerContainer.h>
@@ -32,9 +32,6 @@ public:
 	virtual void mth_service_registed(S_INT_64 sid) = 0;
 	//和eureka所有的链接丢失，应用退出
 	virtual void mth_eureka_losted() = 0;
-
-	//succ == true pnode 如果 !=0 需要接收方负责释放
-	virtual void on_mth_gatebindhome_ack( bool succ, ServiceNodeInfo* pnode, S_INT_64 gateid, S_INT_64 bindtoken){}
 };
 
 #endif //__IEUREKACLIENTINTEGRATE_H__

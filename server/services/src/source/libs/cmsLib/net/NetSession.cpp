@@ -2,12 +2,6 @@
 #include <cmsLib/Log.h>
 #include <cmsLib/base/Profile.h>
 
-#define NET_HEAD_MASK_ZERO_H	0x0000FFFF
-#define NET_HEAD_MASK_ZERO_L	0xFFFF0000
-
-#define MAKE_NETHEAD( VAL, PROID, LENS) { VAL = LENS; VAL = (VAL << 16)&NET_HEAD_MASK_ZERO_L; VAL = VAL|(PROID&NET_HEAD_MASK_ZERO_H);}
-#define GET_NETHEAD( VAL, PROID, LENS) { LENS = (S_UINT_16)((VAL&NET_HEAD_MASK_ZERO_L)>>16); PROID = (S_UINT_16)(VAL&NET_HEAD_MASK_ZERO_H);}
-
 NetSession::NetSession( ThreadLock* lock, ThreadLock* queuelock, NetSessionBindEvent* cb):
 lock_(lock),
 queue_lock_( queuelock),
@@ -15,8 +9,6 @@ lock_delete_( false),
 bind_event_cb_( cb),
 is_initialized( false)
 {
-	pro_factory_ = ProtocolFactory::instance();
-
 	if( lock_ == 0)
 	{
 		lock_ =new ThreadLock();
@@ -106,9 +98,9 @@ void NetSession::freeSendQueue()
 {
 	ThreadLockWrapper guard( *queue_lock_);
 
-	for (BasicProtocolQueueIt_t it = send_queue_.begin(); it != send_queue_.end(); ++it)
+	for (NetProtocolQueueIt_t it = send_queue_.begin(); it != send_queue_.end(); ++it)
 	{
-		BasicProtocol* pMessage = (*it);
+		NetProtocol* pMessage = (*it);
 		if (pMessage != NULL)
 			delete pMessage;
 	}
@@ -136,8 +128,7 @@ void NetSession::on_connectfrom_result(bool success)
 
 void NetSession::dealwith_connect_result(bool success)
 {
-	std::list<BasicProtocol*> recvs;
-	std::list<S_UINT_16> recvsiid;
+	std::list<NetProtocol*> recvs;
 	{
 		ThreadLockWrapper guard(*lock_);
 
@@ -149,7 +140,7 @@ void NetSession::dealwith_connect_result(bool success)
 			boost::system::error_code err;
 			socket_->set_option(option, err);
 
-			try_read_nomutext(0, recvsiid, recvs);
+			try_read_nomutext(0, recvs);
 		}
 		else
 		{
@@ -163,19 +154,16 @@ void NetSession::dealwith_connect_result(bool success)
 
 	if (success)
 	{
-		std::list<BasicProtocol*>::iterator iter = recvs.begin(), eiter = recvs.end();
-		std::list<S_UINT_16>::iterator iteriid = recvsiid.begin();
-		for (; iter != eiter; ++iter, ++iteriid)
+		std::list<NetProtocol*>::iterator iter = recvs.begin(), eiter = recvs.end();
+		for (; iter != eiter; ++iter)
 		{
-			BasicProtocol* pr = (*iter);
-			S_UINT_16 iid = (*iteriid);
+			NetProtocol* pr = (*iter);
 			if (bind_event_cb_)
-				bind_event_cb_->on_recv_protocol_netthread(iid, pr);
+				bind_event_cb_->on_recv_protocol_netthread( pr);
 			else
 				delete pr;
 		}
 		recvs.clear();
-		recvsiid.clear();
 	}
 }
 
@@ -193,7 +181,7 @@ void NetSession::on_connect_lost_netthread()
 		bind_event_cb_->on_connect_lost_netthread();
 }
 
-bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<S_UINT_16>& readproiids, std::list<BasicProtocol*>& readpro)
+bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<NetProtocol*>& readpro)
 {
 	if( !is_initialized)
 		return true;
@@ -201,13 +189,13 @@ bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<S_UINT_16>& r
 	//move tail point to free space begin position
 	recv_buff_pos_ += alreadyrecvsize;
 
-	int len =analy_package_nomutex( readproiids, readpro);
+	int len =analy_package_nomutex( readpro);
 	if( len < 0)
 		return false;
 
 	if( len > 0)
 	{
-		c8 *pdata =recv_buff_ + len;
+		S_UINT_8 *pdata =recv_buff_ + len;
 		int movelen =recv_buff_pos_ - len;
 		if( movelen > 0)
 			memmove( recv_buff_, pdata, movelen);
@@ -219,7 +207,7 @@ bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<S_UINT_16>& r
 	if( freespace > NET_SINGLE_PACKAGE_SIZE_MAX)
 		freespace =NET_SINGLE_PACKAGE_SIZE_MAX;
 
-	c8* pbuf =recv_buff_ + recv_buff_pos_;
+	S_UINT_8* pbuf =recv_buff_ + recv_buff_pos_;
 	
 	socket_->async_read_some(
 		boost::asio::buffer( pbuf, freespace),
@@ -228,7 +216,7 @@ bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<S_UINT_16>& r
 	return true;
 }
 
-int NetSession::analy_package_nomutex(std::list<S_UINT_16>& readproiids, std::list<BasicProtocol*>& readpro)
+int NetSession::analy_package_nomutex( std::list<NetProtocol*>& readpro)
 {
 	int reduce_len =0;
 
@@ -238,51 +226,41 @@ int NetSession::analy_package_nomutex(std::list<S_UINT_16>& readproiids, std::li
 	int len =recv_buff_pos_;
 	do
 	{
-		c8 *pdata =recv_buff_ + reduce_len;
+		S_UINT_8 *pdata =recv_buff_ + reduce_len;
 
 		if( len < sizeof(S_UINT_32))
 			break;
 		
-		S_UINT_32 hd = *((S_UINT_32*)pdata);
+		S_UINT_32 len2 = *((S_UINT_32*)pdata);
+		{
+			S_UINT_32 offset = 0;
+			CProtoHeadBase::Decode(pdata, (S_UINT_32)len, offset, len2);
+		}
 		
-		S_UINT_16 len2 =0;
-		S_UINT_16 proid = 0;
-		GET_NETHEAD(hd, proid, len2);
-
-		if( len2 + sizeof(S_UINT_32) > NET_SINGLE_PACKAGE_SIZE_MAX)
+		if( len2 > NET_SINGLE_PACKAGE_SIZE_MAX)
 			return -1;
 
-		len -= (len2 + sizeof(S_UINT_32));
+		len -= len2;
 		if( len < 0)
 			break;
 
-		pdata =pdata + sizeof(S_UINT_32);
-
-		BasicProtocol *protocol =0;
-
-		try{
-			protocol =pro_factory_->iid_to_proto( proid, pdata, len2);
-		}
-		catch(...){
-		}
+		NetProtocol* protocol = bind_event_cb_->unpack_protocol(pdata, len2);
 
 		if( protocol == 0)
 		{
-			std::list<BasicProtocol*>::iterator iter =readpro.begin(), eiter =readpro.end();
+			std::list<NetProtocol*>::iterator iter =readpro.begin(), eiter =readpro.end();
 			for( ; iter != eiter; ++iter)
 				delete *iter;
 			readpro.clear();
-			readproiids.clear();
 
 			return -1;
 		}
 		else
 		{
-			readproiids.push_back(proid);
 			readpro.push_back( protocol);
 		}
 
-		reduce_len += (len2 + sizeof( S_UINT_32));
+		reduce_len += (int)len2;
 	}
 	while( len > 0);
 
@@ -317,7 +295,7 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 
 		if( needmove > 0)
 		{
-			c8 *pbuf =(send_buff_+alreadysendsize);
+			S_UINT_8 *pbuf =(send_buff_+alreadysendsize);
 			memmove( send_buff_, pbuf, needmove);
 		}
 
@@ -332,12 +310,11 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 		freespace = NET_SINGLE_PACKAGE_SIZE_MAX;
 
 	int len =0;
-	while( (len =( freespace - sizeof(S_UINT_32))) > 0 && send_queue_.size() > 0)
+	while( (len =( freespace)) > 0 && send_queue_.size() > 0)
 	{
-		c8 *pdata =(send_buff_ + send_buff_pos_);
-		c8 *pbuf =(send_buff_ + send_buff_pos_ + sizeof(S_UINT_32));
+		S_UINT_8 *pdata =(send_buff_ + send_buff_pos_);
 
-		BasicProtocol* msg =0;
+		NetProtocol* msg =0;
 
 		{
 			ThreadLockWrapper guard( *queue_lock_);
@@ -346,66 +323,24 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 			send_queue_.pop_front();
 		}
 
-		std::unique_ptr<BasicProtocol> p_msg( msg);
+		if (msg == 0) continue;
+		std::unique_ptr<NetProtocol> p_msg( msg);
 
-		if( msg == 0) continue;
-
-		S_INT_32 len2 =(S_INT_32)msg->ByteSizeLong();
-		S_UINT_16 proiid = pro_factory_->proto_to_iid(msg);
-
-		if (proiid == 0)
+		S_UINT_32 len2 = 0;
+		if (!bind_event_cb_->pack_protocol(pdata, (S_UINT_32)len, msg, len2))
 		{
-			//protocal not found
-			logError(out_runtime, "NetSession::fill_writebuffer_nomutex pro_factory_->proto_to_iid failed, protocol not found or too long");
+			ThreadLockWrapper guard(*queue_lock_);
+			send_queue_.push_front(p_msg.release());
 			break;
 		}
 
-		if (len2 > (NET_SINGLE_PACKAGE_SIZE_MAX - sizeof(S_UINT_32))) {
+		if (len2 > NET_SINGLE_PACKAGE_SIZE_MAX) {
 			logError(out_runtime, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) failed, maxsize=%d prosize=%d", len, len2);
 		}
 
-		if (len < len2)
-		{
-			ThreadLockWrapper guard(*queue_lock_);
-			send_queue_.push_front( p_msg.release());
+		send_buff_pos_ += (S_INT_32)len2;
 
-			break;
-		}
-
-		try
-		{
-			if( !msg->SerializeToArray(pbuf, len))
-			{
-				{
-					ThreadLockWrapper guard( *queue_lock_);
-					send_queue_.push_front( p_msg.release());
-				}
-
-				break;
-			}
-		}
-		catch (...)
-		{
-			logError(out_runtime, "NetSession::fill_writebuffer_nomutex msg->SerializeToArray( pbuf, len) exception, maxsize=%d prosize=%d",
-				len, len2);
-
-			{
-				ThreadLockWrapper guard( *queue_lock_);
-				send_queue_.push_front( p_msg.release());
-			}
-
-			break;
-		}
-
-		//fill package size
-		S_UINT_32 pro_head = 0;
-		MAKE_NETHEAD(pro_head, proiid, len2);
-
-		*((S_UINT_32*)pdata) = pro_head;
-
-		send_buff_pos_ += (sizeof(S_UINT_32) + len2);
-
-		freespace -= (sizeof(S_UINT_32) + len2);
+		freespace -= (S_INT_32)len2;
 	}
 }
 
@@ -415,8 +350,7 @@ void NetSession::handle_read( boost::system::error_code error, size_t bytes_tran
 		on_connect_lost_netthread();
 	else
 	{
-		std::list<BasicProtocol*> recvs;
-		std::list<S_UINT_16>	recvsiid;
+		std::list<NetProtocol*> recvs;
 		bool read_err =false;
 		{
 			ThreadLockWrapper guard( *lock_);
@@ -424,26 +358,23 @@ void NetSession::handle_read( boost::system::error_code error, size_t bytes_tran
 			if( !is_initialized)
 				return;
 
-			read_err = (!try_read_nomutext( bytes_transferred, recvsiid, recvs));
+			read_err = (!try_read_nomutext( bytes_transferred, recvs));
 		}
 
 		if( read_err)
 			on_connect_lost_netthread();
 		else
 		{
-			std::list<BasicProtocol*>::iterator iter =recvs.begin(), eiter =recvs.end();
-			std::list<S_UINT_16>::iterator iteriid = recvsiid.begin();
-			for( ; iter != eiter; ++iter, ++iteriid)
+			std::list<NetProtocol*>::iterator iter =recvs.begin(), eiter =recvs.end();
+			for( ; iter != eiter; ++iter)
 			{
-				BasicProtocol* pr =(*iter);
-				S_UINT_16 iid = (*iteriid);
+				NetProtocol* pr =(*iter);
 				if( bind_event_cb_)
-					bind_event_cb_->on_recv_protocol_netthread( iid, pr);
+					bind_event_cb_->on_recv_protocol_netthread( pr);
 				else
 					delete pr;
 			}
 			recvs.clear();
-			recvsiid.clear();
 		}
 	}
 }
@@ -465,9 +396,9 @@ void NetSession::handle_write( boost::system::error_code error, size_t bytes_tra
 	}
 }
 
-void NetSession::send_protocol( BasicProtocol* message)
+void NetSession::send_protocol(NetProtocol* message)
 {
-	std::unique_ptr<BasicProtocol> pMsg( message);
+	std::unique_ptr<NetProtocol> pMsg( message);
 
 	if( !is_initialized)
 		return;
@@ -497,7 +428,7 @@ void NetSession::heart_beat()
 
 	if (bind_event_cb_ != 0)
 	{
-		BasicProtocol *msg = bind_event_cb_->get_livekeep_msg();
+		NetProtocol *msg = bind_event_cb_->get_livekeep_msg();
 		if (msg != 0)
 		{
 			send_protocol(msg);

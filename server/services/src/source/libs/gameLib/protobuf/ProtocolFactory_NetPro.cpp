@@ -27,9 +27,6 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Svr_LiveTick_ntf>(ERK_PROTYPE::SVR_LIVETICK_NTF);
 	regist_protocal<Svr_ServiceBindService_req>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ);
 	regist_protocal<Svr_ServiceBindService_ack>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK);
-	regist_protocal<Svr_GateBindHome_req>(ERK_PROTYPE::SVR_GATEBINDHOME_REQ);
-	regist_protocal<Svr_GateBindHome_ack>(ERK_PROTYPE::SVR_GATEBINDHOME_ACK);
-	regist_protocal<Svr_GateBindHome_confirm>(ERK_PROTYPE::SVR_GATEBINDHOME_CONFIRM);
 
 	//robot_test_internal.proto
 	regist_protocal<Robot_Config_Req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_REQ);
@@ -40,10 +37,6 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Robot_State_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_ACK);
 
 	//res_internal.proto
-	regist_protocal<Res_UserSlot_req>(ERK_PROTYPE::RES_USERSLOT_REQ);
-	regist_protocal<Res_UserSlot_req>(ERK_PROTYPE::RES_USERSLOT_ACK);
-	regist_protocal<Res_ProxyUserSlot_req>(ERK_PROTYPE::RES_PROXYUSERSLOT_REQ);
-	regist_protocal<Res_ProxyUserSlot_ack>(ERK_PROTYPE::RES_PROXYUSERSLOT_ACK);
 	regist_protocal<Res_SyncGateSlot_ntf>(ERK_PROTYPE::RES_SYNCGATESLOT_NTF);
 
 	//gatehome_internal.proto

@@ -88,51 +88,40 @@ public final class UserLogin {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020user_login.proto\022\003PRO\032\025global_internal" +
-      ".proto\032\021db_internal.proto\"\230\001\n\016User_Login" +
-      "_req\022\014\n\004type\030\001 \001(\005\022\024\n\007account\030\002 \001(\tH\000\210\001\001" +
-      "\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005token\030\004 \001(\tH\002\210\001\001\022\023" +
-      "\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010_accountB\006\n\004_pwdB" +
-      "\010\n\006_tokenB\t\n\007_userid\"\206\002\n\016User_Login_ack\022" +
-      "\014\n\004type\030\001 \001(\005\022\016\n\006result\030\002 \001(\005\022\025\n\010user_ii" +
-      "d\030\003 \001(\003H\000\210\001\001\022\027\n\nlogintoken\030\004 \001(\tH\001\210\001\001\022\027\n" +
-      "\nproxytoken\030\n \001(\003H\002\210\001\001\022\021\n\004slot\030\013 \001(\005H\003\210\001" +
-      "\001\022\024\n\007proxyip\030\014 \001(\tH\004\210\001\001\022\026\n\tproxyport\030\r \001" +
-      "(\005H\005\210\001\001B\013\n\t_user_iidB\r\n\013_logintokenB\r\n\013_" +
-      "proxytokenB\007\n\005_slotB\n\n\010_proxyipB\014\n\n_prox" +
-      "yport\"I\n\023User_ProxyLogin_req\022\020\n\010user_iid" +
-      "\030\001 \001(\003\022\022\n\nproxytoken\030\002 \001(\003\022\014\n\004slot\030\003 \001(\005" +
-      "\"%\n\023User_ProxyLogin_ack\022\016\n\006result\030\001 \001(\005\"" +
-      "A\n\017User_Logout_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO" +
-      ".UserTokenH\000\210\001\001B\t\n\007_utoken\"d\n\021User_RoleL" +
-      "ist_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH" +
-      "\000\210\001\001\022\037\n\005roles\030\002 \001(\0132\020.PRO.DBUserRolesB\t\n" +
-      "\007_utoken\"W\n\023User_RoleCreate_req\022#\n\006utoke" +
-      "n\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\020\n\010nickname" +
-      "\030\002 \001(\tB\t\n\007_utoken\"y\n\023User_RoleCreate_ack" +
-      "\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\016\n" +
-      "\006result\030\002 \001(\005\022\025\n\010role_iid\030\003 \001(\003H\001\210\001\001B\t\n\007" +
-      "_utokenB\013\n\t_role_iid\"W\n\023User_RoleSelect_" +
-      "req\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001" +
-      "\022\020\n\010role_iid\030\002 \001(\003B\t\n\007_utoken\"g\n\023User_Ro" +
-      "leSelect_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserT" +
-      "okenH\000\210\001\001\022\016\n\006result\030\002 \001(\005\022\020\n\010role_iid\030\003 " +
-      "\001(\003B\t\n\007_utoken\"\222\001\n\024User_RoleDetailA_ntf\022" +
-      "#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001\001\022\035\n\004" +
-      "home\030\002 \001(\0132\017.PRO.DBUserHome\022+\n\thomeitems" +
-      "\030\003 \001(\0132\030.PRO.DBUserHomeStructureB\t\n\007_uto" +
-      "ken\"e\n\024User_RoleDetailB_ntf\022#\n\006utoken\030\001 " +
-      "\001(\0132\016.PRO.UserTokenH\000\210\001\001\022\035\n\004pets\030\002 \001(\0132\017" +
-      ".PRO.DBUserPetsB\t\n\007_utoken\"H\n\026User_RoleD" +
-      "etailEnd_ntf\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserT" +
-      "okenH\000\210\001\001B\t\n\007_utokenBT\n\033com.cms.client.n" +
-      "etwork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033c" +
-      "om.cms.client.network.gprob\006proto3"
+      "\n\020user_login.proto\022\003PRO\032\021db_internal.pro" +
+      "to\"\230\001\n\016User_Login_req\022\014\n\004type\030\001 \001(\005\022\024\n\007a" +
+      "ccount\030\002 \001(\tH\000\210\001\001\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005t" +
+      "oken\030\004 \001(\tH\002\210\001\001\022\023\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010" +
+      "_accountB\006\n\004_pwdB\010\n\006_tokenB\t\n\007_userid\"\352\001" +
+      "\n\016User_Login_ack\022\014\n\004type\030\001 \001(\005\022\016\n\006result" +
+      "\030\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nloginto" +
+      "ken\030\004 \001(\tH\001\210\001\001\022\027\n\nproxytoken\030\n \001(\003H\002\210\001\001\022" +
+      "\024\n\007proxyip\030\013 \001(\tH\003\210\001\001\022\026\n\tproxyport\030\014 \001(\005" +
+      "H\004\210\001\001B\013\n\t_user_iidB\r\n\013_logintokenB\r\n\013_pr" +
+      "oxytokenB\n\n\010_proxyipB\014\n\n_proxyport\";\n\023Us" +
+      "er_ProxyLogin_req\022\020\n\010user_iid\030\001 \001(\003\022\022\n\np" +
+      "roxytoken\030\002 \001(\003\"q\n\023User_ProxyLogin_ack\022\016" +
+      "\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027\n" +
+      "\nproxytoken\030\003 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013_" +
+      "proxytoken\"\021\n\017User_Logout_ntf\"4\n\021User_Ro" +
+      "leList_ack\022\037\n\005roles\030\001 \001(\0132\020.PRO.DBUserRo" +
+      "les\"\'\n\023User_RoleCreate_req\022\020\n\010nickname\030\001" +
+      " \001(\t\"I\n\023User_RoleCreate_ack\022\016\n\006result\030\001 " +
+      "\001(\005\022\025\n\010role_iid\030\002 \001(\003H\000\210\001\001B\013\n\t_role_iid\"" +
+      "\'\n\023User_RoleSelect_req\022\020\n\010role_iid\030\001 \001(\003" +
+      "\"7\n\023User_RoleSelect_ack\022\016\n\006result\030\001 \001(\005\022" +
+      "\020\n\010role_iid\030\002 \001(\003\"b\n\024User_RoleDetailA_nt" +
+      "f\022\035\n\004home\030\001 \001(\0132\017.PRO.DBUserHome\022+\n\thome" +
+      "items\030\002 \001(\0132\030.PRO.DBUserHomeStructure\"5\n" +
+      "\024User_RoleDetailB_ntf\022\035\n\004pets\030\001 \001(\0132\017.PR" +
+      "O.DBUserPets\"\030\n\026User_RoleDetailEnd_ntfBT" +
+      "\n\033com.cms.client.network.gproP\001Z\025gamelib" +
+      "/protobuf/gpro\252\002\033com.cms.client.network." +
+      "gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.cms.client.network.gpro.GlobalInternal.getDescriptor(),
           com.cms.client.network.gpro.DbInternal.getDescriptor(),
         });
     internal_static_PRO_User_Login_req_descriptor =
@@ -146,74 +135,73 @@ public final class UserLogin {
     internal_static_PRO_User_Login_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_Login_ack_descriptor,
-        new java.lang.String[] { "Type", "Result", "UserIid", "Logintoken", "Proxytoken", "Slot", "Proxyip", "Proxyport", "UserIid", "Logintoken", "Proxytoken", "Slot", "Proxyip", "Proxyport", });
+        new java.lang.String[] { "Type", "Result", "UserIid", "Logintoken", "Proxytoken", "Proxyip", "Proxyport", "UserIid", "Logintoken", "Proxytoken", "Proxyip", "Proxyport", });
     internal_static_PRO_User_ProxyLogin_req_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_User_ProxyLogin_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_ProxyLogin_req_descriptor,
-        new java.lang.String[] { "UserIid", "Proxytoken", "Slot", });
+        new java.lang.String[] { "UserIid", "Proxytoken", });
     internal_static_PRO_User_ProxyLogin_ack_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PRO_User_ProxyLogin_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_ProxyLogin_ack_descriptor,
-        new java.lang.String[] { "Result", });
+        new java.lang.String[] { "Result", "UserIid", "Proxytoken", "UserIid", "Proxytoken", });
     internal_static_PRO_User_Logout_ntf_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_PRO_User_Logout_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_Logout_ntf_descriptor,
-        new java.lang.String[] { "Utoken", "Utoken", });
+        new java.lang.String[] { });
     internal_static_PRO_User_RoleList_ack_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_PRO_User_RoleList_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleList_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Roles", "Utoken", });
+        new java.lang.String[] { "Roles", });
     internal_static_PRO_User_RoleCreate_req_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_PRO_User_RoleCreate_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleCreate_req_descriptor,
-        new java.lang.String[] { "Utoken", "Nickname", "Utoken", });
+        new java.lang.String[] { "Nickname", });
     internal_static_PRO_User_RoleCreate_ack_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_PRO_User_RoleCreate_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleCreate_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Result", "RoleIid", "Utoken", "RoleIid", });
+        new java.lang.String[] { "Result", "RoleIid", "RoleIid", });
     internal_static_PRO_User_RoleSelect_req_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_PRO_User_RoleSelect_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleSelect_req_descriptor,
-        new java.lang.String[] { "Utoken", "RoleIid", "Utoken", });
+        new java.lang.String[] { "RoleIid", });
     internal_static_PRO_User_RoleSelect_ack_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_PRO_User_RoleSelect_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleSelect_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Result", "RoleIid", "Utoken", });
+        new java.lang.String[] { "Result", "RoleIid", });
     internal_static_PRO_User_RoleDetailA_ntf_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_PRO_User_RoleDetailA_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleDetailA_ntf_descriptor,
-        new java.lang.String[] { "Utoken", "Home", "Homeitems", "Utoken", });
+        new java.lang.String[] { "Home", "Homeitems", });
     internal_static_PRO_User_RoleDetailB_ntf_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_PRO_User_RoleDetailB_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleDetailB_ntf_descriptor,
-        new java.lang.String[] { "Utoken", "Pets", "Utoken", });
+        new java.lang.String[] { "Pets", });
     internal_static_PRO_User_RoleDetailEnd_ntf_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_PRO_User_RoleDetailEnd_ntf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_User_RoleDetailEnd_ntf_descriptor,
-        new java.lang.String[] { "Utoken", "Utoken", });
-    com.cms.client.network.gpro.GlobalInternal.getDescriptor();
+        new java.lang.String[] { });
     com.cms.client.network.gpro.DbInternal.getDescriptor();
   }
 

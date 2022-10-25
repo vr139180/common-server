@@ -16,4 +16,42 @@ public interface User_ProxyLogin_ackOrBuilder extends
    * @return The result.
    */
   int getResult();
+
+  /**
+   * <pre>
+   *用户iid
+   * </pre>
+   *
+   * <code>optional int64 user_iid = 2;</code>
+   * @return Whether the userIid field is set.
+   */
+  boolean hasUserIid();
+  /**
+   * <pre>
+   *用户iid
+   * </pre>
+   *
+   * <code>optional int64 user_iid = 2;</code>
+   * @return The userIid.
+   */
+  long getUserIid();
+
+  /**
+   * <pre>
+   *proxytoken
+   * </pre>
+   *
+   * <code>optional int64 proxytoken = 3;</code>
+   * @return Whether the proxytoken field is set.
+   */
+  boolean hasProxytoken();
+  /**
+   * <pre>
+   *proxytoken
+   * </pre>
+   *
+   * <code>optional int64 proxytoken = 3;</code>
+   * @return The proxytoken.
+   */
+  long getProxytoken();
 }

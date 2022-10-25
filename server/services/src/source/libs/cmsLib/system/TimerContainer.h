@@ -2,7 +2,7 @@
 #define __TIMERCONTAINER__H__
 
 #include <cmsLib/GlobalSettings.h>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/base/OSSystem.h>
 
 #pragma pack( push, 8)

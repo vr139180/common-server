@@ -6,6 +6,7 @@
 #include <cmsLib/wincrash/crashhandler.h>
 #include <cmsLib/cmsLib.h>
 
+
 #ifdef EW_PLATFORM_WINDOWS
 	int wmain( s32 argc, char* argv[] )
 #else
@@ -19,6 +20,7 @@
 		svrApp.SetCmdLine( argc, argv );
 
 		ServerAppWrapper app( &svrApp);
+
 		app.run();
 
 		return 0;

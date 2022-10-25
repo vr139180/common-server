@@ -20,9 +20,13 @@ public:
 	
 	void connect_to( const char* ip, int port);
 
-	virtual void send_protocol( BasicProtocol* pro){ session_->send_protocol( pro); }
+	void send_protocol( NetProtocol* pro){ session_->send_protocol( pro); }
+
 	virtual std::string get_ext_bykey(const char* key) = 0;
 	virtual void force_linkclose() = 0;
+	//初始化协议头
+	virtual void init_protocolhead() = 0;
+	virtual const SProtocolHead& get_protocolhead() = 0;
 
 	void force_close();
 
@@ -37,7 +41,7 @@ public:
 	virtual void on_connectedto_done();
 
 	virtual void on_connect_lost_netthread() = 0;
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro) = 0;
+	virtual void on_recv_protocol_netthread(NetProtocol* pro) = 0;
 
 private:
 	//physical link success

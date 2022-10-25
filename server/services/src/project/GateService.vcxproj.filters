@@ -28,13 +28,10 @@
     <ClCompile Include="..\source\GateService\player\GamePlayerCtrl_Maintnce.cpp">
       <Filter>player</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GateService\network\GameServiceLinkTo.cpp">
+    <ClCompile Include="..\source\GateService\network\DataRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GateService\network\HomeServiceLinkTo.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GateService\network\RouterServiceLinkTo.cpp">
+    <ClCompile Include="..\source\GateService\network\ServiceRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,13 +52,10 @@
     <ClInclude Include="..\source\GateService\player\PlayerChannel.h">
       <Filter>player</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GateService\network\GameServiceLinkTo.h">
+    <ClInclude Include="..\source\GateService\network\DataRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GateService\network\HomeServiceLinkTo.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GateService\network\RouterServiceLinkTo.h">
+    <ClInclude Include="..\source\GateService\network\ServiceRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,7 +10,7 @@
 
 #include <boost/unordered_map.hpp>
 #include <string>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 
 /**
@@ -33,7 +33,7 @@ public:
 
 public:
 	S_UINT_16 proto_to_iid( BasicProtocol* pro);
-	BasicProtocol* iid_to_proto(S_UINT_16 proiid, char *pdata, S_UINT_16 len);
+	BasicProtocol* iid_to_proto(S_UINT_16 proiid, void *pdata, S_UINT_16 len);
 
 protected:
 	void release();

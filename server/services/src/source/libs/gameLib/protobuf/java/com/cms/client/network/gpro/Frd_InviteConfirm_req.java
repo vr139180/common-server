@@ -38,7 +38,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -49,25 +48,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 16: {
+          case 8: {
 
             iid_ = input.readInt64();
             break;
           }
-          case 24: {
+          case 16: {
 
             agree_ = input.readBool();
             break;
@@ -104,41 +90,14 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Frd_InviteConfirm_req.class, com.cms.client.network.gpro.Frd_InviteConfirm_req.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int IID_FIELD_NUMBER = 2;
+  public static final int IID_FIELD_NUMBER = 1;
   private long iid_;
   /**
    * <pre>
    *invite的编号
    * </pre>
    *
-   * <code>int64 iid = 2;</code>
+   * <code>int64 iid = 1;</code>
    * @return The iid.
    */
   @java.lang.Override
@@ -146,14 +105,14 @@ private static final long serialVersionUID = 0L;
     return iid_;
   }
 
-  public static final int AGREE_FIELD_NUMBER = 3;
+  public static final int AGREE_FIELD_NUMBER = 2;
   private boolean agree_;
   /**
    * <pre>
    *true 同意 false 拒绝
    * </pre>
    *
-   * <code>bool agree = 3;</code>
+   * <code>bool agree = 2;</code>
    * @return The agree.
    */
   @java.lang.Override
@@ -175,14 +134,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (iid_ != 0L) {
-      output.writeInt64(2, iid_);
+      output.writeInt64(1, iid_);
     }
     if (agree_ != false) {
-      output.writeBool(3, agree_);
+      output.writeBool(2, agree_);
     }
     unknownFields.writeTo(output);
   }
@@ -193,17 +149,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (iid_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, iid_);
+        .computeInt64Size(1, iid_);
     }
     if (agree_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(3, agree_);
+        .computeBoolSize(2, agree_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -220,11 +172,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Frd_InviteConfirm_req other = (com.cms.client.network.gpro.Frd_InviteConfirm_req) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (getIid()
         != other.getIid()) return false;
     if (getAgree()
@@ -240,10 +187,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     hash = (37 * hash) + IID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getIid());
@@ -378,18 +321,11 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       iid_ = 0L;
 
       agree_ = false;
@@ -420,19 +356,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Frd_InviteConfirm_req buildPartial() {
       com.cms.client.network.gpro.Frd_InviteConfirm_req result = new com.cms.client.network.gpro.Frd_InviteConfirm_req(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       result.iid_ = iid_;
       result.agree_ = agree_;
-      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -481,9 +406,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Frd_InviteConfirm_req other) {
       if (other == com.cms.client.network.gpro.Frd_InviteConfirm_req.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.getIid() != 0L) {
         setIid(other.getIid());
       }
@@ -518,127 +440,6 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-    private int bitField0_;
-
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
 
     private long iid_ ;
     /**
@@ -646,7 +447,7 @@ private static final long serialVersionUID = 0L;
      *invite的编号
      * </pre>
      *
-     * <code>int64 iid = 2;</code>
+     * <code>int64 iid = 1;</code>
      * @return The iid.
      */
     @java.lang.Override
@@ -658,7 +459,7 @@ private static final long serialVersionUID = 0L;
      *invite的编号
      * </pre>
      *
-     * <code>int64 iid = 2;</code>
+     * <code>int64 iid = 1;</code>
      * @param value The iid to set.
      * @return This builder for chaining.
      */
@@ -673,7 +474,7 @@ private static final long serialVersionUID = 0L;
      *invite的编号
      * </pre>
      *
-     * <code>int64 iid = 2;</code>
+     * <code>int64 iid = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearIid() {
@@ -689,7 +490,7 @@ private static final long serialVersionUID = 0L;
      *true 同意 false 拒绝
      * </pre>
      *
-     * <code>bool agree = 3;</code>
+     * <code>bool agree = 2;</code>
      * @return The agree.
      */
     @java.lang.Override
@@ -701,7 +502,7 @@ private static final long serialVersionUID = 0L;
      *true 同意 false 拒绝
      * </pre>
      *
-     * <code>bool agree = 3;</code>
+     * <code>bool agree = 2;</code>
      * @param value The agree to set.
      * @return This builder for chaining.
      */
@@ -716,7 +517,7 @@ private static final long serialVersionUID = 0L;
      *true 同意 false 拒绝
      * </pre>
      *
-     * <code>bool agree = 3;</code>
+     * <code>bool agree = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearAgree() {

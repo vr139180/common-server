@@ -8,26 +8,11 @@ public interface Frd_FriendDelete_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *好友
    * </pre>
    *
-   * <code>int64 friendiid = 2;</code>
+   * <code>int64 friendiid = 1;</code>
    * @return The friendiid.
    */
   long getFriendiid();
@@ -37,7 +22,7 @@ public interface Frd_FriendDelete_ackOrBuilder extends
    *0 success 1 system err 2: friend not exist
    * </pre>
    *
-   * <code>int32 result = 3;</code>
+   * <code>int32 result = 2;</code>
    * @return The result.
    */
   int getResult();

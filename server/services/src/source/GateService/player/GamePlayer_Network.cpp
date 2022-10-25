@@ -4,7 +4,6 @@
 
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
-#include <gameLib/gatehome/ProtoTokenUtil.h>
 
 #include "player/GamePlayerCtrl.h"
 #include "GateServiceApp.h"
@@ -18,80 +17,56 @@ void GamePlayer::on_connect_lost_netthread()
 	pchannel->regist_syscmd(cmd);
 }
 
-void GamePlayer::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+bool GamePlayer::is_need_unpack_protocol(S_UINT_16 msgid)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	return true;
+}
 
-	if (proiid == PRO::USER_ROLECREATE_REQ || proiid == PRO::USER_ROLESELECT_REQ)
+void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> p_msg(pro);
+
+	S_UINT_16 msgid = pro->get_msg();
+	if (msgid == PRO::USER_PROXYLOGIN_REQ)
+	{
+		user_login(pro);
+	}
+	else if (msgid == PRO::USER_ROLECREATE_REQ || msgid == PRO::USER_ROLESELECT_REQ)
 	{
 		if( !is_in_rolerange())
 			return;
 
-		if( set_usertoken( pro))
-		{
-			svrApp.send_to_homeservice(p_msg.release());
-		}
+		svrApp.send_to_datarouter( PRO::ERK_SERVICE_HOME, p_msg.release());
 	}
 	else
 	{
 		if( !is_roleready())
 			return;
 
-		if(proiid > PRO::CHAT_PROTYPE::CHAT_MSG_BEGIN && proiid < PRO::CHAT_PROTYPE::CHAT_MSG_END)
+		if(msgid > PRO::CHAT_PROTYPE::CHAT_MSG_BEGIN && msgid < PRO::CHAT_PROTYPE::CHAT_MSG_END)
 		{
-			//设置用户协议头
-			set_usertoken(pro);
-
-			svrApp.send_protocol_to_router(p_msg.release());
+			svrApp.send_to_datarouter(PRO::ERK_SERVICE_CHAT, p_msg.release());
 			return;
 		}
-		else if (proiid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && proiid < PRO::MAIL_PROTYPE::MAIL_MSG_END)
+		else if (msgid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && msgid < PRO::MAIL_PROTYPE::MAIL_MSG_END)
 		{
-			//设置用户协议头
-			set_usertoken(pro);
-
-			svrApp.send_protocol_to_router(p_msg.release());
+			svrApp.send_to_datarouter(PRO::ERK_SERVICE_MAIL, p_msg.release());
 			return;
 		}
-		else if (proiid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && proiid < PRO::FRIEND_PROTYPE::FRIEND_MSG_END)
+		else if (msgid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && msgid < PRO::FRIEND_PROTYPE::FRIEND_MSG_END)
 		{
-			//设置用户协议头
-			set_usertoken(pro);
-
-			svrApp.send_protocol_to_router(p_msg.release());
+			svrApp.send_to_datarouter(PRO::ERK_SERVICE_FRIEND, p_msg.release());
 			return;
 		}
-		else if (proiid > PRO::TASK_PROTYPE::TASK_MSG_BEGIN && proiid < PRO::TASK_PROTYPE::TASK_MSG_END)
+		else if (msgid > PRO::TASK_PROTYPE::TASK_MSG_BEGIN && msgid < PRO::TASK_PROTYPE::TASK_MSG_END)
 		{
-			//设置用户协议头
-			set_usertoken(pro);
-
-			svrApp.send_to_homeservice(p_msg.release());
+			svrApp.send_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 			return;
 		}
 		else
 		{
-			if (set_usertoken(pro))
-			{
-				svrApp.send_to_homeservice(p_msg.release());
-			}
+			svrApp.send_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 		}
-
-		/*
-		//设置缺省协议
-		if (ProtoUtil::set_usertoken(pro, get_iid(), proto_token_))
-		{
-			PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_slot(this->slot_);
-			if (pchannel != 0)
-			{
-				NETCMD_FUN_MAP2 fun = boost::bind(&PlayerChannel::NetProcessMessage, pchannel,
-					boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3);
-
-				NetCommand *pcmd = new NetCommand(p_msg.release(), fun, (int)proiid);
-				pchannel->regist_netcmd(pcmd);
-			}
-		}
-		*/
 	}
 }
 
@@ -102,9 +77,24 @@ void GamePlayer::registinfo_tolog(bool bregist)
 		logInfo(out_runtime, "Player[%d] regist to me(GateService)", get_iid());
 
 		//set login flag
-		cur_state_ = PlayerState::PlayerState_Login;
+		cur_state_ = PlayerState::PlayerState_Loginning;
 	}
 	else
 		logInfo(out_runtime, "Player[%d] disconnect from me(GateService)", get_iid());
 }
 
+void GamePlayer::user_login(NetProtocol* msg)
+{
+	this->cur_state_ = PlayerState::PlayerState_Loginning;
+
+	PRO::User_ProxyLogin_req* req = dynamic_cast<PRO::User_ProxyLogin_req*>(msg->msg_);
+	logDebug(out_runtime, "user login request slot:%d utoken:%lld", slot_, req->proxytoken());
+
+	PlayerChannel *pchannel = GamePlayerCtrl::instance().get_channel_by_slot(slot_);
+
+	NETCMD_FUN_MAP3 fun = boost::bind(&PlayerChannel::on_cth_userproxylogin_req, pchannel,
+		boost::placeholders::_1, boost::placeholders::_2, this);
+	NetCommandV *pcmd = new NetCommandV(msg, fun);
+
+	pchannel->regist_syscmd(pcmd);
+}

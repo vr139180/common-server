@@ -11,25 +11,13 @@
 
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/LinkToHolder.h>
-#include <gameLib/commons/SessionMthHolder.h>
 
 #include "config/GateConfig.h"
 
-#include "network/GateSession.h"
-
-#include "network/HomeServiceLinkTo.h"
-#include "network/GameServiceLinkTo.h"
-#include "network/RouterServiceLinkTo.h"
+#include "network/DataRouterLinkTo.h"
+#include "network/ServiceRouterLinkTo.h"
 
 #include "player/GamePlayer.h"
-
-typedef enum tagGateBindHomeStep {
-	GateBindHome_Waiting,
-	GateBindHome_CanAskBind,
-	GateBindHome_AskBind,
-	GateBindHome_Confirm,
-	GateBindHome_Done
-}GateBindHomeStep;
 
 class GateServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -43,12 +31,11 @@ public:
 	virtual void main_loop();
 
 public:
-	HomeServiceLinkTo* get_homeholder() { return home_linkto_.get(); }
-	void send_to_homeservice(BasicProtocol* msg) { home_linkto_->send_protocol(msg); }
+	void send_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 
-	bool is_bindhome() { return bind_home_step == GateBindHomeStep::GateBindHome_Done; }
-
-	void send_protocol_to_router(BasicProtocol* pro);
+	void send_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 	
 public:
 
@@ -68,8 +55,6 @@ public:
 	virtual void mth_service_registed(S_INT_64 sid);
 	virtual void mth_eureka_losted();
 
-	virtual void on_mth_gatebindhome_ack(bool succ, ServiceNodeInfo* pnode, S_INT_64 gateid, S_INT_64 bindtoken);
-
 protected:
 	virtual bool load_config();
 	virtual bool pre_init();
@@ -86,34 +71,24 @@ protected:
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
-	void service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
-	//link to home
-	std::shared_ptr<HomeServiceLinkTo>	home_linkto_;
-	GateBindHomeStep	bind_home_step;
-
 	//network
 	std::shared_ptr<NetAcceptor>	acceptor_;
-	SessionMthHolder<GateSession>	session_from_;
 
-	LinkToHolder<RouterServiceLinkTo>	router_link_mth_;
+	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
+	LinkToHolder<ServiceRouterLinkTo>	svrrouter_link_mth_;
 
 	boost::scoped_ptr<GateConfig>	conf_;
 public:
-	void on_connection_timeout(GateSession* session);
+	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
+	void on_datarouter_regist_result(DataRouterLinkTo* plink);
 
-	void on_disconnected_with_homeservice(HomeServiceLinkTo* plink);
-	void on_homeservice_regist_result( HomeServiceLinkTo* plink);
-
-	void on_disconnected_with_routerservice(RouterServiceLinkTo* plink);
-	void on_routerservice_regist_result( RouterServiceLinkTo* plink);
-
-	void on_disconnected_with_gameservice(GameServiceLinkTo* plink);
+	void on_disconnected_with_svrrouter(ServiceRouterLinkTo* plink);
+	void on_svrrouter_regist_result(ServiceRouterLinkTo* plink);
 
 public:
-	void on_disconnected_with_player(GateSession* psession);
-	void on_player_login(GateSession* psession);
+	
 };
 
 #define svrApp (GateServiceApp::getInstance())

@@ -8,26 +8,11 @@ public interface Frd_FriendList_ackOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   java.util.List<com.cms.client.network.gpro.FriendInviteItem> 
       getInvitesList();
@@ -36,7 +21,7 @@ public interface Frd_FriendList_ackOrBuilder extends
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   com.cms.client.network.gpro.FriendInviteItem getInvites(int index);
   /**
@@ -44,7 +29,7 @@ public interface Frd_FriendList_ackOrBuilder extends
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   int getInvitesCount();
   /**
@@ -52,7 +37,7 @@ public interface Frd_FriendList_ackOrBuilder extends
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   java.util.List<? extends com.cms.client.network.gpro.FriendInviteItemOrBuilder> 
       getInvitesOrBuilderList();
@@ -61,49 +46,49 @@ public interface Frd_FriendList_ackOrBuilder extends
    *iid从小到大
    * </pre>
    *
-   * <code>repeated .PRO.FriendInviteItem invites = 2;</code>
+   * <code>repeated .PRO.FriendInviteItem invites = 1;</code>
    */
   com.cms.client.network.gpro.FriendInviteItemOrBuilder getInvitesOrBuilder(
       int index);
 
   /**
-   * <code>int32 totleinvite = 3;</code>
+   * <code>int32 totleinvite = 2;</code>
    * @return The totleinvite.
    */
   int getTotleinvite();
 
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   java.util.List<com.cms.client.network.gpro.FriendRelation> 
       getFriendsList();
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   com.cms.client.network.gpro.FriendRelation getFriends(int index);
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   int getFriendsCount();
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   java.util.List<? extends com.cms.client.network.gpro.FriendRelationOrBuilder> 
       getFriendsOrBuilderList();
   /**
-   * <code>repeated .PRO.FriendRelation friends = 4;</code>
+   * <code>repeated .PRO.FriendRelation friends = 3;</code>
    */
   com.cms.client.network.gpro.FriendRelationOrBuilder getFriendsOrBuilder(
       int index);
 
   /**
-   * <code>int32 totlefriend = 5;</code>
+   * <code>int32 totlefriend = 4;</code>
    * @return The totlefriend.
    */
   int getTotlefriend();
 
   /**
-   * <code>bool next = 6;</code>
+   * <code>bool next = 5;</code>
    * @return The next.
    */
   boolean getNext();

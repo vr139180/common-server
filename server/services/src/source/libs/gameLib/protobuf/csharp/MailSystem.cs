@@ -27,47 +27,36 @@ namespace com.cms.client.network.gpro {
             "ChFtYWlsX3N5c3RlbS5wcm90bxIDUFJPGhVnbG9iYWxfaW50ZXJuYWwucHJv",
             "dG8iWgoLTWFpbFVzZXJCb3gSDAoEdmVyXxgBIAEoBRIQCghyb2xlX2lpZBgC",
             "IAEoAxIUCgxzeXNtYWlsX3N5bmMYAyABKAMSFQoNbGFzdGxpc3RfbWFpbBgE",
-            "IAEoAyJCChBNYWlsX05ld01haWxfbnRmEiMKBnV0b2tlbhgBIAEoCzIOLlBS",
-            "Ty5Vc2VyVG9rZW5IAIgBAUIJCgdfdXRva2VuIm4KEE1haWxfTWFpbEdldF9y",
-            "ZXESIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEg8KB21h",
-            "aWxpaWQYAiABKAMSDAoEbmV4dBgDIAEoCBILCgNudW0YBCABKAVCCQoHX3V0",
-            "b2tlbiJ1ChBNYWlsX01haWxHZXRfYWNrEiMKBnV0b2tlbhgBIAEoCzIOLlBS",
-            "Ty5Vc2VyVG9rZW5IAIgBARIiCgVtYWlscxgCIAMoCzITLlBSTy5NYWlsTm9y",
-            "bWFsSXRlbRINCgV0b3RsZRgDIAEoBUIJCgdfdXRva2VuInMKFk1haWxfVXNl",
-            "ck9ubGluZV9hY3RpdmUSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tl",
-            "bkgAiAEBEhQKDGxhc3RfbWFpbGlpZBgCIAEoAxITCgtmaXJzdGFjdGl2ZRgD",
-            "IAEoCEIJCgdfdXRva2VuIlUKEU1haWxfUmVhZE1haWxfcmVxEiMKBnV0b2tl",
-            "bhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCghtYWlsX2lpZBgCIAEo",
-            "A0IJCgdfdXRva2VuImUKEU1haWxfUmVhZE1haWxfYWNrEiMKBnV0b2tlbhgB",
-            "IAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIOCgZyZXN1bHQYAiABKAUSEAoI",
-            "bWFpbF9paWQYAyABKANCCQoHX3V0b2tlbiJXChNNYWlsX0RlbGV0ZU1haWxf",
-            "cmVxEiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIQCght",
-            "YWlsX2lpZBgCIAEoA0IJCgdfdXRva2VuImcKE01haWxfRGVsZXRlTWFpbF9h",
-            "Y2sSIwoGdXRva2VuGAEgASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEg4KBnJl",
-            "c3VsdBgCIAEoBRIQCghtYWlsX2lpZBgDIAEoA0IJCgdfdXRva2VuIloKFk1h",
-            "aWxfVW5CaW5kQXR0YWNoc19yZXESIwoGdXRva2VuGAEgASgLMg4uUFJPLlVz",
-            "ZXJUb2tlbkgAiAEBEhAKCG1haWxfaWlkGAIgASgDQgkKB191dG9rZW4iagoW",
-            "TWFpbF9VbkJpbmRBdHRhY2hzX2FjaxIjCgZ1dG9rZW4YASABKAsyDi5QUk8u",
-            "VXNlclRva2VuSACIAQESDgoGcmVzdWx0GAIgASgFEhAKCG1haWxfaWlkGAMg",
-            "ASgDQgkKB191dG9rZW4qWAoITWFpbFR5cGUSEQoNTWFpbFR5cGVfSW5pdBAA",
-            "EhMKD01haWxUeXBlX1N5c3RlbRABEhIKDk1haWxUeXBlX1VuaW9uEAISEAoM",
-            "TWFpbFR5cGVfTWF4EANCVAobY29tLmNtcy5jbGllbnQubmV0d29yay5ncHJv",
-            "UAFaFWdhbWVsaWIvcHJvdG9idWYvZ3Byb6oCG2NvbS5jbXMuY2xpZW50Lm5l",
-            "dHdvcmsuZ3Byb2IGcHJvdG8z"));
+            "IAEoAyISChBNYWlsX05ld01haWxfbnRmIj4KEE1haWxfTWFpbEdldF9yZXES",
+            "DwoHbWFpbGlpZBgBIAEoAxIMCgRuZXh0GAIgASgIEgsKA251bRgDIAEoBSJF",
+            "ChBNYWlsX01haWxHZXRfYWNrEiIKBW1haWxzGAEgAygLMhMuUFJPLk1haWxO",
+            "b3JtYWxJdGVtEg0KBXRvdGxlGAIgASgFIkMKFk1haWxfVXNlck9ubGluZV9h",
+            "Y3RpdmUSFAoMbGFzdF9tYWlsaWlkGAEgASgDEhMKC2ZpcnN0YWN0aXZlGAIg",
+            "ASgIIiUKEU1haWxfUmVhZE1haWxfcmVxEhAKCG1haWxfaWlkGAEgASgDIjUK",
+            "EU1haWxfUmVhZE1haWxfYWNrEg4KBnJlc3VsdBgBIAEoBRIQCghtYWlsX2lp",
+            "ZBgCIAEoAyInChNNYWlsX0RlbGV0ZU1haWxfcmVxEhAKCG1haWxfaWlkGAEg",
+            "ASgDIjcKE01haWxfRGVsZXRlTWFpbF9hY2sSDgoGcmVzdWx0GAEgASgFEhAK",
+            "CG1haWxfaWlkGAIgASgDIioKFk1haWxfVW5CaW5kQXR0YWNoc19yZXESEAoI",
+            "bWFpbF9paWQYASABKAMiOgoWTWFpbF9VbkJpbmRBdHRhY2hzX2FjaxIOCgZy",
+            "ZXN1bHQYASABKAUSEAoIbWFpbF9paWQYAiABKAMqWAoITWFpbFR5cGUSEQoN",
+            "TWFpbFR5cGVfSW5pdBAAEhMKD01haWxUeXBlX1N5c3RlbRABEhIKDk1haWxU",
+            "eXBlX1VuaW9uEAISEAoMTWFpbFR5cGVfTWF4EANCVAobY29tLmNtcy5jbGll",
+            "bnQubmV0d29yay5ncHJvUAFaFWdhbWVsaWIvcHJvdG9idWYvZ3Byb6oCG2Nv",
+            "bS5jbXMuY2xpZW50Lm5ldHdvcmsuZ3Byb2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::com.cms.client.network.gpro.MailType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.MailUserBox), global::com.cms.client.network.gpro.MailUserBox.Parser, new[]{ "Ver", "RoleIid", "SysmailSync", "LastlistMail" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_NewMail_ntf), global::com.cms.client.network.gpro.Mail_NewMail_ntf.Parser, new[]{ "Utoken" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_MailGet_req), global::com.cms.client.network.gpro.Mail_MailGet_req.Parser, new[]{ "Utoken", "Mailiid", "Next", "Num" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_MailGet_ack), global::com.cms.client.network.gpro.Mail_MailGet_ack.Parser, new[]{ "Utoken", "Mails", "Totle" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UserOnline_active), global::com.cms.client.network.gpro.Mail_UserOnline_active.Parser, new[]{ "Utoken", "LastMailiid", "Firstactive" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_ReadMail_req), global::com.cms.client.network.gpro.Mail_ReadMail_req.Parser, new[]{ "Utoken", "MailIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_ReadMail_ack), global::com.cms.client.network.gpro.Mail_ReadMail_ack.Parser, new[]{ "Utoken", "Result", "MailIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_DeleteMail_req), global::com.cms.client.network.gpro.Mail_DeleteMail_req.Parser, new[]{ "Utoken", "MailIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_DeleteMail_ack), global::com.cms.client.network.gpro.Mail_DeleteMail_ack.Parser, new[]{ "Utoken", "Result", "MailIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UnBindAttachs_req), global::com.cms.client.network.gpro.Mail_UnBindAttachs_req.Parser, new[]{ "Utoken", "MailIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UnBindAttachs_ack), global::com.cms.client.network.gpro.Mail_UnBindAttachs_ack.Parser, new[]{ "Utoken", "Result", "MailIid" }, new[]{ "Utoken" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_NewMail_ntf), global::com.cms.client.network.gpro.Mail_NewMail_ntf.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_MailGet_req), global::com.cms.client.network.gpro.Mail_MailGet_req.Parser, new[]{ "Mailiid", "Next", "Num" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_MailGet_ack), global::com.cms.client.network.gpro.Mail_MailGet_ack.Parser, new[]{ "Mails", "Totle" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UserOnline_active), global::com.cms.client.network.gpro.Mail_UserOnline_active.Parser, new[]{ "LastMailiid", "Firstactive" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_ReadMail_req), global::com.cms.client.network.gpro.Mail_ReadMail_req.Parser, new[]{ "MailIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_ReadMail_ack), global::com.cms.client.network.gpro.Mail_ReadMail_ack.Parser, new[]{ "Result", "MailIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_DeleteMail_req), global::com.cms.client.network.gpro.Mail_DeleteMail_req.Parser, new[]{ "MailIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_DeleteMail_ack), global::com.cms.client.network.gpro.Mail_DeleteMail_ack.Parser, new[]{ "Result", "MailIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UnBindAttachs_req), global::com.cms.client.network.gpro.Mail_UnBindAttachs_req.Parser, new[]{ "MailIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Mail_UnBindAttachs_ack), global::com.cms.client.network.gpro.Mail_UnBindAttachs_ack.Parser, new[]{ "Result", "MailIid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -424,7 +413,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_NewMail_ntf(Mail_NewMail_ntf other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -432,18 +420,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_NewMail_ntf Clone() {
       return new Mail_NewMail_ntf(this);
-    }
-
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -461,7 +437,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -469,7 +444,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -488,10 +462,6 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -502,10 +472,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -516,9 +482,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -530,12 +493,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_NewMail_ntf other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -552,13 +509,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     #endif
@@ -574,13 +524,6 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
         }
       }
     }
@@ -622,7 +565,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_MailGet_req(Mail_MailGet_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mailiid_ = other.mailiid_;
       next_ = other.next_;
       num_ = other.num_;
@@ -635,20 +577,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_MailGet_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mailiid" field.</summary>
-    public const int MailiidFieldNumber = 2;
+    public const int MailiidFieldNumber = 1;
     private long mailiid_;
     /// <summary>
     ///当前最大的邮件iid, == 0 获取最新的邮件列表 50个
@@ -664,7 +594,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "next" field.</summary>
-    public const int NextFieldNumber = 3;
+    public const int NextFieldNumber = 2;
     private bool next_;
     /// <summary>
     ///true 从大到小翻页 false 从小到大
@@ -679,7 +609,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "num" field.</summary>
-    public const int NumFieldNumber = 4;
+    public const int NumFieldNumber = 3;
     private int num_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -705,7 +635,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Mailiid != other.Mailiid) return false;
       if (Next != other.Next) return false;
       if (Num != other.Num) return false;
@@ -716,7 +645,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Mailiid != 0L) hash ^= Mailiid.GetHashCode();
       if (Next != false) hash ^= Next.GetHashCode();
       if (Num != 0) hash ^= Num.GetHashCode();
@@ -738,20 +666,16 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Mailiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Mailiid);
       }
       if (Next != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Next);
       }
       if (Num != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(Num);
       }
       if (_unknownFields != null) {
@@ -764,20 +688,16 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Mailiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(Mailiid);
       }
       if (Next != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Next);
       }
       if (Num != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(24);
         output.WriteInt32(Num);
       }
       if (_unknownFields != null) {
@@ -790,9 +710,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Mailiid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Mailiid);
       }
@@ -813,12 +730,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_MailGet_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Mailiid != 0L) {
         Mailiid = other.Mailiid;
@@ -844,22 +755,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Mailiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Next = input.ReadBool();
             break;
           }
-          case 32: {
+          case 24: {
             Num = input.ReadInt32();
             break;
           }
@@ -878,22 +782,15 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Mailiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Next = input.ReadBool();
             break;
           }
-          case 32: {
+          case 24: {
             Num = input.ReadInt32();
             break;
           }
@@ -938,7 +835,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_MailGet_ack(Mail_MailGet_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mails_ = other.mails_.Clone();
       totle_ = other.totle_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -950,22 +846,10 @@ namespace com.cms.client.network.gpro {
       return new Mail_MailGet_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mails" field.</summary>
-    public const int MailsFieldNumber = 2;
+    public const int MailsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::com.cms.client.network.gpro.MailNormalItem> _repeated_mails_codec
-        = pb::FieldCodec.ForMessage(18, global::com.cms.client.network.gpro.MailNormalItem.Parser);
+        = pb::FieldCodec.ForMessage(10, global::com.cms.client.network.gpro.MailNormalItem.Parser);
     private readonly pbc::RepeatedField<global::com.cms.client.network.gpro.MailNormalItem> mails_ = new pbc::RepeatedField<global::com.cms.client.network.gpro.MailNormalItem>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -974,7 +858,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "totle" field.</summary>
-    public const int TotleFieldNumber = 3;
+    public const int TotleFieldNumber = 2;
     private int totle_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1000,7 +884,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if(!mails_.Equals(other.mails_)) return false;
       if (Totle != other.Totle) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1010,7 +893,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       hash ^= mails_.GetHashCode();
       if (Totle != 0) hash ^= Totle.GetHashCode();
       if (_unknownFields != null) {
@@ -1031,13 +913,9 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       mails_.WriteTo(output, _repeated_mails_codec);
       if (Totle != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Totle);
       }
       if (_unknownFields != null) {
@@ -1050,13 +928,9 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       mails_.WriteTo(ref output, _repeated_mails_codec);
       if (Totle != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Totle);
       }
       if (_unknownFields != null) {
@@ -1069,9 +943,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       size += mails_.CalculateSize(_repeated_mails_codec);
       if (Totle != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Totle);
@@ -1087,12 +958,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_MailGet_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       mails_.Add(other.mails_);
       if (other.Totle != 0) {
@@ -1114,17 +979,10 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             mails_.AddEntriesFrom(input, _repeated_mails_codec);
             break;
           }
-          case 24: {
+          case 16: {
             Totle = input.ReadInt32();
             break;
           }
@@ -1144,17 +1002,10 @@ namespace com.cms.client.network.gpro {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 18: {
             mails_.AddEntriesFrom(ref input, _repeated_mails_codec);
             break;
           }
-          case 24: {
+          case 16: {
             Totle = input.ReadInt32();
             break;
           }
@@ -1199,7 +1050,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_UserOnline_active(Mail_UserOnline_active other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       lastMailiid_ = other.lastMailiid_;
       firstactive_ = other.firstactive_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1211,20 +1061,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_UserOnline_active(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "last_mailiid" field.</summary>
-    public const int LastMailiidFieldNumber = 2;
+    public const int LastMailiidFieldNumber = 1;
     private long lastMailiid_;
     /// <summary>
     ///客户端本地保存的最大mailiid
@@ -1239,7 +1077,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "firstactive" field.</summary>
-    public const int FirstactiveFieldNumber = 3;
+    public const int FirstactiveFieldNumber = 2;
     private bool firstactive_;
     /// <summary>
     ///登陆成功后第一发送设置为true
@@ -1268,7 +1106,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (LastMailiid != other.LastMailiid) return false;
       if (Firstactive != other.Firstactive) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1278,7 +1115,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (LastMailiid != 0L) hash ^= LastMailiid.GetHashCode();
       if (Firstactive != false) hash ^= Firstactive.GetHashCode();
       if (_unknownFields != null) {
@@ -1299,16 +1135,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (LastMailiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(LastMailiid);
       }
       if (Firstactive != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Firstactive);
       }
       if (_unknownFields != null) {
@@ -1321,16 +1153,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (LastMailiid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(LastMailiid);
       }
       if (Firstactive != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteBool(Firstactive);
       }
       if (_unknownFields != null) {
@@ -1343,9 +1171,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (LastMailiid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(LastMailiid);
       }
@@ -1363,12 +1188,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_UserOnline_active other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.LastMailiid != 0L) {
         LastMailiid = other.LastMailiid;
@@ -1391,18 +1210,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             LastMailiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Firstactive = input.ReadBool();
             break;
           }
@@ -1421,18 +1233,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             LastMailiid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Firstactive = input.ReadBool();
             break;
           }
@@ -1477,7 +1282,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_ReadMail_req(Mail_ReadMail_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1488,20 +1292,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_ReadMail_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 2;
+    public const int MailIidFieldNumber = 1;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1527,7 +1319,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1536,7 +1327,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1556,12 +1346,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -1574,12 +1360,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -1592,9 +1374,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (MailIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MailIid);
       }
@@ -1609,12 +1388,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_ReadMail_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.MailIid != 0L) {
         MailIid = other.MailIid;
@@ -1634,14 +1407,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -1660,14 +1426,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -1712,7 +1471,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_ReadMail_ack(Mail_ReadMail_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       result_ = other.result_;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1724,20 +1482,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_ReadMail_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 2;
+    public const int ResultFieldNumber = 1;
     private int result_;
     /// <summary>
     ///0:success 1:system error 2:not exist 3:already read
@@ -1752,7 +1498,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 3;
+    public const int MailIidFieldNumber = 2;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1778,7 +1524,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Result != other.Result) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1788,7 +1533,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
@@ -1809,16 +1553,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -1831,16 +1571,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -1853,9 +1589,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Result != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
@@ -1873,12 +1606,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_ReadMail_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Result != 0) {
         Result = other.Result;
@@ -1901,18 +1628,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -1931,18 +1651,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -1987,7 +1700,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_DeleteMail_req(Mail_DeleteMail_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1998,20 +1710,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_DeleteMail_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 2;
+    public const int MailIidFieldNumber = 1;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2037,7 +1737,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2046,7 +1745,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2066,12 +1764,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2084,12 +1778,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2102,9 +1792,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (MailIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MailIid);
       }
@@ -2119,12 +1806,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_DeleteMail_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.MailIid != 0L) {
         MailIid = other.MailIid;
@@ -2144,14 +1825,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2170,14 +1844,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2222,7 +1889,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_DeleteMail_ack(Mail_DeleteMail_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       result_ = other.result_;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2234,20 +1900,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_DeleteMail_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 2;
+    public const int ResultFieldNumber = 1;
     private int result_;
     /// <summary>
     ///0:success 1:system error 2:not exist
@@ -2262,7 +1916,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 3;
+    public const int MailIidFieldNumber = 2;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2288,7 +1942,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Result != other.Result) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2298,7 +1951,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
@@ -2319,16 +1971,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2341,16 +1989,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2363,9 +2007,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Result != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
@@ -2383,12 +2024,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_DeleteMail_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Result != 0) {
         Result = other.Result;
@@ -2411,18 +2046,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2441,18 +2069,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2497,7 +2118,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_UnBindAttachs_req(Mail_UnBindAttachs_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2508,20 +2128,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_UnBindAttachs_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 2;
+    public const int MailIidFieldNumber = 1;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2547,7 +2155,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2556,7 +2163,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2576,12 +2182,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2594,12 +2196,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (MailIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2612,9 +2210,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (MailIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MailIid);
       }
@@ -2629,12 +2224,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_UnBindAttachs_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.MailIid != 0L) {
         MailIid = other.MailIid;
@@ -2654,14 +2243,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2680,14 +2262,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2732,7 +2307,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Mail_UnBindAttachs_ack(Mail_UnBindAttachs_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       result_ = other.result_;
       mailIid_ = other.mailIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -2744,20 +2318,8 @@ namespace com.cms.client.network.gpro {
       return new Mail_UnBindAttachs_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 2;
+    public const int ResultFieldNumber = 1;
     private int result_;
     /// <summary>
     ///0:success 1:not exist 2:already unbinded
@@ -2772,7 +2334,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "mail_iid" field.</summary>
-    public const int MailIidFieldNumber = 3;
+    public const int MailIidFieldNumber = 2;
     private long mailIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2798,7 +2360,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Result != other.Result) return false;
       if (MailIid != other.MailIid) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2808,7 +2369,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (MailIid != 0L) hash ^= MailIid.GetHashCode();
       if (_unknownFields != null) {
@@ -2829,16 +2389,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2851,16 +2407,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (MailIid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(MailIid);
       }
       if (_unknownFields != null) {
@@ -2873,9 +2425,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Result != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
@@ -2893,12 +2442,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Mail_UnBindAttachs_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Result != 0) {
         Result = other.Result;
@@ -2921,18 +2464,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }
@@ -2951,18 +2487,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 24: {
+          case 16: {
             MailIid = input.ReadInt64();
             break;
           }

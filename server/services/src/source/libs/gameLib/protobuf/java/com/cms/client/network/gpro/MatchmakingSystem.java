@@ -33,20 +33,16 @@ public final class MatchmakingSystem {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030matchmaking_system.proto\022\003PRO\032\025global_" +
-      "internal.proto\032\021db_internal.proto\"j\n\023MMS" +
-      "_MatchMaking_req\022#\n\006utoken\030\001 \001(\0132\016.PRO.U" +
-      "serTokenH\000\210\001\001\022#\n\007battles\030\002 \001(\0132\022.PRO.DBU" +
-      "serBattlesB\t\n\007_utoken\"E\n\023MMS_MatchMaking" +
-      "_ack\022#\n\006utoken\030\001 \001(\0132\016.PRO.UserTokenH\000\210\001" +
-      "\001B\t\n\007_utokenBT\n\033com.cms.client.network.g" +
-      "proP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.c" +
-      "lient.network.gprob\006proto3"
+      "\n\030matchmaking_system.proto\022\003PRO\032\021db_inte" +
+      "rnal.proto\":\n\023MMS_MatchMaking_req\022#\n\007bat" +
+      "tles\030\001 \001(\0132\022.PRO.DBUserBattles\"\025\n\023MMS_Ma" +
+      "tchMaking_ackBT\n\033com.cms.client.network." +
+      "gproP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms." +
+      "client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.cms.client.network.gpro.GlobalInternal.getDescriptor(),
           com.cms.client.network.gpro.DbInternal.getDescriptor(),
         });
     internal_static_PRO_MMS_MatchMaking_req_descriptor =
@@ -54,14 +50,13 @@ public final class MatchmakingSystem {
     internal_static_PRO_MMS_MatchMaking_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MMS_MatchMaking_req_descriptor,
-        new java.lang.String[] { "Utoken", "Battles", "Utoken", });
+        new java.lang.String[] { "Battles", });
     internal_static_PRO_MMS_MatchMaking_ack_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_PRO_MMS_MatchMaking_ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_MMS_MatchMaking_ack_descriptor,
-        new java.lang.String[] { "Utoken", "Utoken", });
-    com.cms.client.network.gpro.GlobalInternal.getDescriptor();
+        new java.lang.String[] { });
     com.cms.client.network.gpro.DbInternal.getDescriptor();
   }
 

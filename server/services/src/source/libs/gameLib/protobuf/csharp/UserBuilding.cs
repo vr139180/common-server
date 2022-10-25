@@ -24,28 +24,23 @@ namespace com.cms.client.network.gpro {
     static UserBuildingReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChN1c2VyX2J1aWxkaW5nLnByb3RvEgNQUk8aFWdsb2JhbF9pbnRlcm5hbC5w",
-            "cm90bxoRZGJfaW50ZXJuYWwucHJvdG8imwEKEUJ1aWxkX0FkZEl0ZW1fcmVx",
-            "EiMKBnV0b2tlbhgBIAEoCzIOLlBSTy5Vc2VyVG9rZW5IAIgBARIXCg9wYXJl",
-            "bnRfYnVpbGRpbmcYAiABKAMSFgoOYnVpbGRpbmdfcmVzaWQYAyABKAMSDwoH",
-            "bG9va19hdBgEIAEoCRIUCgxidWlsZGluZ19wb3MYBSABKAlCCQoHX3V0b2tl",
-            "biKNAQoRQnVpbGRfQWRkSXRlbV9hY2sSIwoGdXRva2VuGAEgASgLMg4uUFJP",
-            "LlVzZXJUb2tlbkgAiAEBEg4KBnJlc3VsdBgCIAEoBRIvCgRpdGVtGAMgASgL",
-            "MhwuUFJPLkRCVXNlckhvbWVTdHJ1Y3R1cmVJdGVtSAGIAQFCCQoHX3V0b2tl",
-            "bkIHCgVfaXRlbSJZChFCdWlsZF9EZWxJdGVtX3JlcRIjCgZ1dG9rZW4YASAB",
-            "KAsyDi5QUk8uVXNlclRva2VuSACIAQESFAoMYnVpbGRpbmdfaWlkGAIgASgD",
-            "QgkKB191dG9rZW4iaQoRQnVpbGRfRGVsSXRlbV9hY2sSIwoGdXRva2VuGAEg",
-            "ASgLMg4uUFJPLlVzZXJUb2tlbkgAiAEBEhQKDGJ1aWxkaW5nX2lpZBgCIAEo",
-            "AxIOCgZyZXN1bHQYAyABKAVCCQoHX3V0b2tlbkJUChtjb20uY21zLmNsaWVu",
-            "dC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90b2J1Zi9ncHJvqgIbY29t",
-            "LmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90bzM="));
+            "ChN1c2VyX2J1aWxkaW5nLnByb3RvEgNQUk8aEWRiX2ludGVybmFsLnByb3Rv",
+            "ImsKEUJ1aWxkX0FkZEl0ZW1fcmVxEhcKD3BhcmVudF9idWlsZGluZxgBIAEo",
+            "AxIWCg5idWlsZGluZ19yZXNpZBgCIAEoAxIPCgdsb29rX2F0GAMgASgJEhQK",
+            "DGJ1aWxkaW5nX3BvcxgEIAEoCSJdChFCdWlsZF9BZGRJdGVtX2FjaxIOCgZy",
+            "ZXN1bHQYASABKAUSLwoEaXRlbRgCIAEoCzIcLlBSTy5EQlVzZXJIb21lU3Ry",
+            "dWN0dXJlSXRlbUgAiAEBQgcKBV9pdGVtIikKEUJ1aWxkX0RlbEl0ZW1fcmVx",
+            "EhQKDGJ1aWxkaW5nX2lpZBgBIAEoAyI5ChFCdWlsZF9EZWxJdGVtX2FjaxIU",
+            "CgxidWlsZGluZ19paWQYASABKAMSDgoGcmVzdWx0GAIgASgFQlQKG2NvbS5j",
+            "bXMuY2xpZW50Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3Byb3RvYnVmL2dw",
+            "cm+qAhtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.GlobalInternalReflection.Descriptor, global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_AddItem_req), global::com.cms.client.network.gpro.Build_AddItem_req.Parser, new[]{ "Utoken", "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_AddItem_ack), global::com.cms.client.network.gpro.Build_AddItem_ack.Parser, new[]{ "Utoken", "Result", "Item" }, new[]{ "Utoken", "Item" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_DelItem_req), global::com.cms.client.network.gpro.Build_DelItem_req.Parser, new[]{ "Utoken", "BuildingIid" }, new[]{ "Utoken" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_DelItem_ack), global::com.cms.client.network.gpro.Build_DelItem_ack.Parser, new[]{ "Utoken", "BuildingIid", "Result" }, new[]{ "Utoken" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_AddItem_req), global::com.cms.client.network.gpro.Build_AddItem_req.Parser, new[]{ "ParentBuilding", "BuildingResid", "LookAt", "BuildingPos" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_AddItem_ack), global::com.cms.client.network.gpro.Build_AddItem_ack.Parser, new[]{ "Result", "Item" }, new[]{ "Item" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_DelItem_req), global::com.cms.client.network.gpro.Build_DelItem_req.Parser, new[]{ "BuildingIid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.Build_DelItem_ack), global::com.cms.client.network.gpro.Build_DelItem_ack.Parser, new[]{ "BuildingIid", "Result" }, null, null, null, null)
           }));
     }
     #endregion
@@ -86,7 +81,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Build_AddItem_req(Build_AddItem_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       parentBuilding_ = other.parentBuilding_;
       buildingResid_ = other.buildingResid_;
       lookAt_ = other.lookAt_;
@@ -100,20 +94,8 @@ namespace com.cms.client.network.gpro {
       return new Build_AddItem_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "parent_building" field.</summary>
-    public const int ParentBuildingFieldNumber = 2;
+    public const int ParentBuildingFieldNumber = 1;
     private long parentBuilding_;
     /// <summary>
     ///父建筑 0表示没有
@@ -128,7 +110,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "building_resid" field.</summary>
-    public const int BuildingResidFieldNumber = 3;
+    public const int BuildingResidFieldNumber = 2;
     private long buildingResid_;
     /// <summary>
     ///资源id
@@ -143,7 +125,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "look_at" field.</summary>
-    public const int LookAtFieldNumber = 4;
+    public const int LookAtFieldNumber = 3;
     private string lookAt_ = "";
     /// <summary>
     ///朝向
@@ -158,7 +140,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "building_pos" field.</summary>
-    public const int BuildingPosFieldNumber = 5;
+    public const int BuildingPosFieldNumber = 4;
     private string buildingPos_ = "";
     /// <summary>
     ///相对父建筑位置
@@ -187,7 +169,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (ParentBuilding != other.ParentBuilding) return false;
       if (BuildingResid != other.BuildingResid) return false;
       if (LookAt != other.LookAt) return false;
@@ -199,7 +180,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (ParentBuilding != 0L) hash ^= ParentBuilding.GetHashCode();
       if (BuildingResid != 0L) hash ^= BuildingResid.GetHashCode();
       if (LookAt.Length != 0) hash ^= LookAt.GetHashCode();
@@ -222,24 +202,20 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (ParentBuilding != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(ParentBuilding);
       }
       if (BuildingResid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(BuildingResid);
       }
       if (LookAt.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteString(LookAt);
       }
       if (BuildingPos.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteString(BuildingPos);
       }
       if (_unknownFields != null) {
@@ -252,24 +228,20 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (ParentBuilding != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(ParentBuilding);
       }
       if (BuildingResid != 0L) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt64(BuildingResid);
       }
       if (LookAt.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(26);
         output.WriteString(LookAt);
       }
       if (BuildingPos.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteString(BuildingPos);
       }
       if (_unknownFields != null) {
@@ -282,9 +254,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (ParentBuilding != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(ParentBuilding);
       }
@@ -308,12 +277,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Build_AddItem_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.ParentBuilding != 0L) {
         ParentBuilding = other.ParentBuilding;
@@ -342,26 +305,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             ParentBuilding = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             BuildingResid = input.ReadInt64();
             break;
           }
-          case 34: {
+          case 26: {
             LookAt = input.ReadString();
             break;
           }
-          case 42: {
+          case 34: {
             BuildingPos = input.ReadString();
             break;
           }
@@ -380,26 +336,19 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             ParentBuilding = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             BuildingResid = input.ReadInt64();
             break;
           }
-          case 34: {
+          case 26: {
             LookAt = input.ReadString();
             break;
           }
-          case 42: {
+          case 34: {
             BuildingPos = input.ReadString();
             break;
           }
@@ -444,7 +393,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Build_AddItem_ack(Build_AddItem_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       result_ = other.result_;
       item_ = other.item_ != null ? other.item_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -456,20 +404,8 @@ namespace com.cms.client.network.gpro {
       return new Build_AddItem_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 2;
+    public const int ResultFieldNumber = 1;
     private int result_;
     /// <summary>
     ///0 success 1 资源不存在
@@ -484,7 +420,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "item" field.</summary>
-    public const int ItemFieldNumber = 3;
+    public const int ItemFieldNumber = 2;
     private global::com.cms.client.network.gpro.DBUserHomeStructureItem item_;
     /// <summary>
     ///success 返回建筑对象
@@ -513,7 +449,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (Result != other.Result) return false;
       if (!object.Equals(Item, other.Item)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -523,7 +458,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (item_ != null) hash ^= Item.GetHashCode();
       if (_unknownFields != null) {
@@ -544,16 +478,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (item_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Item);
       }
       if (_unknownFields != null) {
@@ -566,16 +496,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (Result != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt32(Result);
       }
       if (item_ != null) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(18);
         output.WriteMessage(Item);
       }
       if (_unknownFields != null) {
@@ -588,9 +514,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (Result != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Result);
       }
@@ -608,12 +531,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Build_AddItem_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.Result != 0) {
         Result = other.Result;
@@ -639,18 +556,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (item_ == null) {
               Item = new global::com.cms.client.network.gpro.DBUserHomeStructureItem();
             }
@@ -672,18 +582,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             Result = input.ReadInt32();
             break;
           }
-          case 26: {
+          case 18: {
             if (item_ == null) {
               Item = new global::com.cms.client.network.gpro.DBUserHomeStructureItem();
             }
@@ -731,7 +634,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Build_DelItem_req(Build_DelItem_req other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       buildingIid_ = other.buildingIid_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -742,20 +644,8 @@ namespace com.cms.client.network.gpro {
       return new Build_DelItem_req(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "building_iid" field.</summary>
-    public const int BuildingIidFieldNumber = 2;
+    public const int BuildingIidFieldNumber = 1;
     private long buildingIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -781,7 +671,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (BuildingIid != other.BuildingIid) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -790,7 +679,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (BuildingIid != 0L) hash ^= BuildingIid.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -810,12 +698,8 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (BuildingIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(BuildingIid);
       }
       if (_unknownFields != null) {
@@ -828,12 +712,8 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (BuildingIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(BuildingIid);
       }
       if (_unknownFields != null) {
@@ -846,9 +726,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (BuildingIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(BuildingIid);
       }
@@ -863,12 +740,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Build_DelItem_req other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.BuildingIid != 0L) {
         BuildingIid = other.BuildingIid;
@@ -888,14 +759,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             BuildingIid = input.ReadInt64();
             break;
           }
@@ -914,14 +778,7 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             BuildingIid = input.ReadInt64();
             break;
           }
@@ -966,7 +823,6 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Build_DelItem_ack(Build_DelItem_ack other) : this() {
-      utoken_ = other.utoken_ != null ? other.utoken_.Clone() : null;
       buildingIid_ = other.buildingIid_;
       result_ = other.result_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -978,20 +834,8 @@ namespace com.cms.client.network.gpro {
       return new Build_DelItem_ack(this);
     }
 
-    /// <summary>Field number for the "utoken" field.</summary>
-    public const int UtokenFieldNumber = 1;
-    private global::com.cms.client.network.gpro.UserToken utoken_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::com.cms.client.network.gpro.UserToken Utoken {
-      get { return utoken_; }
-      set {
-        utoken_ = value;
-      }
-    }
-
     /// <summary>Field number for the "building_iid" field.</summary>
-    public const int BuildingIidFieldNumber = 2;
+    public const int BuildingIidFieldNumber = 1;
     private long buildingIid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1003,7 +847,7 @@ namespace com.cms.client.network.gpro {
     }
 
     /// <summary>Field number for the "result" field.</summary>
-    public const int ResultFieldNumber = 3;
+    public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
     ///0 success 1 fail
@@ -1032,7 +876,6 @@ namespace com.cms.client.network.gpro {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Utoken, other.Utoken)) return false;
       if (BuildingIid != other.BuildingIid) return false;
       if (Result != other.Result) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1042,7 +885,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (utoken_ != null) hash ^= Utoken.GetHashCode();
       if (BuildingIid != 0L) hash ^= BuildingIid.GetHashCode();
       if (Result != 0) hash ^= Result.GetHashCode();
       if (_unknownFields != null) {
@@ -1063,16 +905,12 @@ namespace com.cms.client.network.gpro {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (BuildingIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(BuildingIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -1085,16 +923,12 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (utoken_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Utoken);
-      }
       if (BuildingIid != 0L) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(8);
         output.WriteInt64(BuildingIid);
       }
       if (Result != 0) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(16);
         output.WriteInt32(Result);
       }
       if (_unknownFields != null) {
@@ -1107,9 +941,6 @@ namespace com.cms.client.network.gpro {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (utoken_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Utoken);
-      }
       if (BuildingIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(BuildingIid);
       }
@@ -1127,12 +958,6 @@ namespace com.cms.client.network.gpro {
     public void MergeFrom(Build_DelItem_ack other) {
       if (other == null) {
         return;
-      }
-      if (other.utoken_ != null) {
-        if (utoken_ == null) {
-          Utoken = new global::com.cms.client.network.gpro.UserToken();
-        }
-        Utoken.MergeFrom(other.Utoken);
       }
       if (other.BuildingIid != 0L) {
         BuildingIid = other.BuildingIid;
@@ -1155,18 +980,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             BuildingIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }
@@ -1185,18 +1003,11 @@ namespace com.cms.client.network.gpro {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (utoken_ == null) {
-              Utoken = new global::com.cms.client.network.gpro.UserToken();
-            }
-            input.ReadMessage(Utoken);
-            break;
-          }
-          case 16: {
+          case 8: {
             BuildingIid = input.ReadInt64();
             break;
           }
-          case 24: {
+          case 16: {
             Result = input.ReadInt32();
             break;
           }

@@ -8,26 +8,11 @@ public interface Build_AddItem_reqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  boolean hasUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  com.cms.client.network.gpro.UserToken getUtoken();
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder();
-
-  /**
    * <pre>
    *父建筑 0表示没有
    * </pre>
    *
-   * <code>int64 parent_building = 2;</code>
+   * <code>int64 parent_building = 1;</code>
    * @return The parentBuilding.
    */
   long getParentBuilding();
@@ -37,7 +22,7 @@ public interface Build_AddItem_reqOrBuilder extends
    *资源id
    * </pre>
    *
-   * <code>int64 building_resid = 3;</code>
+   * <code>int64 building_resid = 2;</code>
    * @return The buildingResid.
    */
   long getBuildingResid();
@@ -47,7 +32,7 @@ public interface Build_AddItem_reqOrBuilder extends
    *朝向
    * </pre>
    *
-   * <code>string look_at = 4;</code>
+   * <code>string look_at = 3;</code>
    * @return The lookAt.
    */
   java.lang.String getLookAt();
@@ -56,7 +41,7 @@ public interface Build_AddItem_reqOrBuilder extends
    *朝向
    * </pre>
    *
-   * <code>string look_at = 4;</code>
+   * <code>string look_at = 3;</code>
    * @return The bytes for lookAt.
    */
   com.google.protobuf.ByteString
@@ -67,7 +52,7 @@ public interface Build_AddItem_reqOrBuilder extends
    *相对父建筑位置
    * </pre>
    *
-   * <code>string building_pos = 5;</code>
+   * <code>string building_pos = 4;</code>
    * @return The buildingPos.
    */
   java.lang.String getBuildingPos();
@@ -76,7 +61,7 @@ public interface Build_AddItem_reqOrBuilder extends
    *相对父建筑位置
    * </pre>
    *
-   * <code>string building_pos = 5;</code>
+   * <code>string building_pos = 4;</code>
    * @return The bytes for buildingPos.
    */
   com.google.protobuf.ByteString

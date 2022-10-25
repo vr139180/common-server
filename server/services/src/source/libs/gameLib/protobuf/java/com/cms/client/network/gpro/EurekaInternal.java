@@ -119,21 +119,6 @@ public final class EurekaInternal {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_Svr_ServiceBindService_ack_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Svr_GateBindHome_req_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Svr_GateBindHome_req_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Svr_GateBindHome_ack_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Svr_GateBindHome_ack_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Svr_GateBindHome_confirm_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Svr_GateBindHome_confirm_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -186,29 +171,20 @@ public final class EurekaInternal {
       "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"^\n\032Sv" +
       "r_ServiceBindService_ack\022\016\n\006result\030\001 \001(\005" +
       "\022\020\n\010svr_type\030\002 \001(\005\022\r\n\005toiid\030\003 \001(\003\022\017\n\007tot" +
-      "oken\030\004 \001(\003\":\n\024Svr_GateBindHome_req\022\017\n\007ga" +
-      "teiid\030\001 \001(\003\022\021\n\tgatetoken\030\002 \001(\003\"\372\001\n\024Svr_G" +
-      "ateBindHome_ack\022\016\n\006result\030\001 \001(\005\022\024\n\007gatei" +
-      "id\030\002 \001(\003H\000\210\001\001\022\024\n\007homeiid\030\003 \001(\003H\001\210\001\001\022\026\n\th" +
-      "ometoken\030\004 \001(\003H\002\210\001\001\022\023\n\006homeip\030\005 \001(\tH\003\210\001\001" +
-      "\022\025\n\010homeport\030\006 \001(\005H\004\210\001\001\022\026\n\tbindtoken\030\007 \001" +
-      "(\003H\005\210\001\001B\n\n\010_gateiidB\n\n\010_homeiidB\014\n\n_home" +
-      "tokenB\t\n\007_homeipB\013\n\t_homeportB\014\n\n_bindto" +
-      "ken\"b\n\030Svr_GateBindHome_confirm\022\017\n\007gatei" +
-      "id\030\001 \001(\003\022\017\n\007homeiid\030\002 \001(\003\022\021\n\thometoken\030\003" +
-      " \001(\003\022\021\n\tbindtoken\030\004 \001(\003*\211\003\n\017ERK_SERVICET" +
-      "YPE\022\024\n\020ERK_SERVICE_NONE\020\000\022\026\n\022ERK_SERVICE" +
-      "_EUREKA\020\001\022\023\n\017ERK_SERVICE_RES\020\002\022\024\n\020ERK_SE" +
-      "RVICE_GATE\020\003\022\024\n\020ERK_SERVICE_HOME\020\004\022\025\n\021ER" +
-      "K_SERVICE_LOGIN\020\005\022\025\n\021ERK_SERVICE_UNION\020\006" +
-      "\022\024\n\020ERK_SERVICE_GAME\020\007\022\030\n\024ERK_SERVICE_DA" +
-      "TASYNC\020\010\022\026\n\022ERK_SERVICE_ROUTER\020\t\022\024\n\020ERK_" +
-      "SERVICE_CHAT\020\n\022\024\n\020ERK_SERVICE_MAIL\020\013\022\026\n\022" +
-      "ERK_SERVICE_FRIEND\020\014\022\033\n\027ERK_SERVICE_FIGH" +
-      "TROUTER\020\r\022\033\n\027ERK_SERVICE_MATCHMAKING\020\016\022\023" +
-      "\n\017ERK_SERVICE_MAX\020\017BT\n\033com.cms.client.ne" +
-      "twork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033co" +
-      "m.cms.client.network.gprob\006proto3"
+      "oken\030\004 \001(\003*\250\003\n\017ERK_SERVICETYPE\022\024\n\020ERK_SE" +
+      "RVICE_NONE\020\000\022\026\n\022ERK_SERVICE_EUREKA\020\001\022\032\n\026" +
+      "ERK_SERVICE_DATAROUTER\020\002\022\023\n\017ERK_SERVICE_" +
+      "RES\020\003\022\024\n\020ERK_SERVICE_GATE\020\004\022\024\n\020ERK_SERVI" +
+      "CE_HOME\020\005\022\025\n\021ERK_SERVICE_LOGIN\020\006\022\031\n\025ERK_" +
+      "SERVICE_SVRROUTER\020\007\022\025\n\021ERK_SERVICE_UNION" +
+      "\020\010\022\024\n\020ERK_SERVICE_CHAT\020\t\022\024\n\020ERK_SERVICE_" +
+      "MAIL\020\n\022\026\n\022ERK_SERVICE_FRIEND\020\013\022\033\n\027ERK_SE" +
+      "RVICE_FIGHTROUTER\020\014\022\033\n\027ERK_SERVICE_MATCH" +
+      "MAKING\020\r\022\024\n\020ERK_SERVICE_GAME\020\016\022\030\n\024ERK_SE" +
+      "RVICE_DATASYNC\020\017\022\023\n\017ERK_SERVICE_MAX\020\020BT\n" +
+      "\033com.cms.client.network.gproP\001Z\025gamelib/" +
+      "protobuf/gpro\252\002\033com.cms.client.network.g" +
+      "prob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -340,24 +316,6 @@ public final class EurekaInternal {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Svr_ServiceBindService_ack_descriptor,
         new java.lang.String[] { "Result", "SvrType", "Toiid", "Totoken", });
-    internal_static_PRO_Svr_GateBindHome_req_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_PRO_Svr_GateBindHome_req_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Svr_GateBindHome_req_descriptor,
-        new java.lang.String[] { "Gateiid", "Gatetoken", });
-    internal_static_PRO_Svr_GateBindHome_ack_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_PRO_Svr_GateBindHome_ack_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Svr_GateBindHome_ack_descriptor,
-        new java.lang.String[] { "Result", "Gateiid", "Homeiid", "Hometoken", "Homeip", "Homeport", "Bindtoken", "Gateiid", "Homeiid", "Hometoken", "Homeip", "Homeport", "Bindtoken", });
-    internal_static_PRO_Svr_GateBindHome_confirm_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_PRO_Svr_GateBindHome_confirm_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Svr_GateBindHome_confirm_descriptor,
-        new java.lang.String[] { "Gateiid", "Homeiid", "Hometoken", "Bindtoken", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

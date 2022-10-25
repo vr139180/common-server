@@ -8,17 +8,8 @@ public interface FriendUserInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.PRO.UserToken token = 1;</code>
-   * @return Whether the token field is set.
+   * <code>int64 roleiid = 1;</code>
+   * @return The roleiid.
    */
-  boolean hasToken();
-  /**
-   * <code>.PRO.UserToken token = 1;</code>
-   * @return The token.
-   */
-  com.cms.client.network.gpro.UserToken getToken();
-  /**
-   * <code>.PRO.UserToken token = 1;</code>
-   */
-  com.cms.client.network.gpro.UserTokenOrBuilder getTokenOrBuilder();
+  long getRoleiid();
 }

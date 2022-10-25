@@ -49,27 +49,14 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            com.cms.client.network.gpro.UserToken.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000001) != 0)) {
-              subBuilder = utoken_.toBuilder();
-            }
-            utoken_ = input.readMessage(com.cms.client.network.gpro.UserToken.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(utoken_);
-              utoken_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000001;
-            break;
-          }
-          case 16: {
+          case 8: {
 
             result_ = input.readInt32();
             break;
           }
-          case 26: {
+          case 18: {
             com.cms.client.network.gpro.ChatChannelInfo.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000002) != 0)) {
+            if (((bitField0_ & 0x00000001) != 0)) {
               subBuilder = channel_.toBuilder();
             }
             channel_ = input.readMessage(com.cms.client.network.gpro.ChatChannelInfo.parser(), extensionRegistry);
@@ -77,7 +64,7 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom(channel_);
               channel_ = subBuilder.buildPartial();
             }
-            bitField0_ |= 0x00000002;
+            bitField0_ |= 0x00000001;
             break;
           }
           default: {
@@ -113,40 +100,14 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
-  public static final int UTOKEN_FIELD_NUMBER = 1;
-  private com.cms.client.network.gpro.UserToken utoken_;
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return Whether the utoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasUtoken() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   * @return The utoken.
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserToken getUtoken() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-  /**
-   * <code>optional .PRO.UserToken utoken = 1;</code>
-   */
-  @java.lang.Override
-  public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-    return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-  }
-
-  public static final int RESULT_FIELD_NUMBER = 2;
+  public static final int RESULT_FIELD_NUMBER = 1;
   private int result_;
   /**
    * <pre>
    *0:success 1:failed
    * </pre>
    *
-   * <code>int32 result = 2;</code>
+   * <code>int32 result = 1;</code>
    * @return The result.
    */
   @java.lang.Override
@@ -154,18 +115,18 @@ private static final long serialVersionUID = 0L;
     return result_;
   }
 
-  public static final int CHANNEL_FIELD_NUMBER = 3;
+  public static final int CHANNEL_FIELD_NUMBER = 2;
   private com.cms.client.network.gpro.ChatChannelInfo channel_;
   /**
-   * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+   * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
    * @return Whether the channel field is set.
    */
   @java.lang.Override
   public boolean hasChannel() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+   * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
    * @return The channel.
    */
   @java.lang.Override
@@ -173,7 +134,7 @@ private static final long serialVersionUID = 0L;
     return channel_ == null ? com.cms.client.network.gpro.ChatChannelInfo.getDefaultInstance() : channel_;
   }
   /**
-   * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+   * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.ChatChannelInfoOrBuilder getChannelOrBuilder() {
@@ -194,14 +155,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(1, getUtoken());
-    }
     if (result_ != 0) {
-      output.writeInt32(2, result_);
+      output.writeInt32(1, result_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeMessage(3, getChannel());
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeMessage(2, getChannel());
     }
     unknownFields.writeTo(output);
   }
@@ -212,17 +170,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getUtoken());
-    }
     if (result_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, result_);
+        .computeInt32Size(1, result_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getChannel());
+        .computeMessageSize(2, getChannel());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -239,11 +193,6 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Chat_CustomChannelId_ack other = (com.cms.client.network.gpro.Chat_CustomChannelId_ack) obj;
 
-    if (hasUtoken() != other.hasUtoken()) return false;
-    if (hasUtoken()) {
-      if (!getUtoken()
-          .equals(other.getUtoken())) return false;
-    }
     if (getResult()
         != other.getResult()) return false;
     if (hasChannel() != other.hasChannel()) return false;
@@ -262,10 +211,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasUtoken()) {
-      hash = (37 * hash) + UTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getUtoken().hashCode();
-    }
     hash = (37 * hash) + RESULT_FIELD_NUMBER;
     hash = (53 * hash) + getResult();
     if (hasChannel()) {
@@ -400,19 +345,12 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getUtokenFieldBuilder();
         getChannelFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
       result_ = 0;
 
       if (channelBuilder_ == null) {
@@ -420,7 +358,7 @@ private static final long serialVersionUID = 0L;
       } else {
         channelBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -449,22 +387,14 @@ private static final long serialVersionUID = 0L;
       com.cms.client.network.gpro.Chat_CustomChannelId_ack result = new com.cms.client.network.gpro.Chat_CustomChannelId_ack(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        if (utokenBuilder_ == null) {
-          result.utoken_ = utoken_;
-        } else {
-          result.utoken_ = utokenBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000001;
-      }
       result.result_ = result_;
-      if (((from_bitField0_ & 0x00000002) != 0)) {
+      if (((from_bitField0_ & 0x00000001) != 0)) {
         if (channelBuilder_ == null) {
           result.channel_ = channel_;
         } else {
           result.channel_ = channelBuilder_.build();
         }
-        to_bitField0_ |= 0x00000002;
+        to_bitField0_ |= 0x00000001;
       }
       result.bitField0_ = to_bitField0_;
       onBuilt();
@@ -515,9 +445,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Chat_CustomChannelId_ack other) {
       if (other == com.cms.client.network.gpro.Chat_CustomChannelId_ack.getDefaultInstance()) return this;
-      if (other.hasUtoken()) {
-        mergeUtoken(other.getUtoken());
-      }
       if (other.getResult() != 0) {
         setResult(other.getResult());
       }
@@ -554,133 +481,13 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.cms.client.network.gpro.UserToken utoken_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> utokenBuilder_;
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return Whether the utoken field is set.
-     */
-    public boolean hasUtoken() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     * @return The utoken.
-     */
-    public com.cms.client.network.gpro.UserToken getUtoken() {
-      if (utokenBuilder_ == null) {
-        return utoken_ == null ? com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      } else {
-        return utokenBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        utoken_ = value;
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder setUtoken(
-        com.cms.client.network.gpro.UserToken.Builder builderForValue) {
-      if (utokenBuilder_ == null) {
-        utoken_ = builderForValue.build();
-        onChanged();
-      } else {
-        utokenBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder mergeUtoken(com.cms.client.network.gpro.UserToken value) {
-      if (utokenBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-            utoken_ != null &&
-            utoken_ != com.cms.client.network.gpro.UserToken.getDefaultInstance()) {
-          utoken_ =
-            com.cms.client.network.gpro.UserToken.newBuilder(utoken_).mergeFrom(value).buildPartial();
-        } else {
-          utoken_ = value;
-        }
-        onChanged();
-      } else {
-        utokenBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000001;
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public Builder clearUtoken() {
-      if (utokenBuilder_ == null) {
-        utoken_ = null;
-        onChanged();
-      } else {
-        utokenBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000001);
-      return this;
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserToken.Builder getUtokenBuilder() {
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return getUtokenFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    public com.cms.client.network.gpro.UserTokenOrBuilder getUtokenOrBuilder() {
-      if (utokenBuilder_ != null) {
-        return utokenBuilder_.getMessageOrBuilder();
-      } else {
-        return utoken_ == null ?
-            com.cms.client.network.gpro.UserToken.getDefaultInstance() : utoken_;
-      }
-    }
-    /**
-     * <code>optional .PRO.UserToken utoken = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder> 
-        getUtokenFieldBuilder() {
-      if (utokenBuilder_ == null) {
-        utokenBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.cms.client.network.gpro.UserToken, com.cms.client.network.gpro.UserToken.Builder, com.cms.client.network.gpro.UserTokenOrBuilder>(
-                getUtoken(),
-                getParentForChildren(),
-                isClean());
-        utoken_ = null;
-      }
-      return utokenBuilder_;
-    }
-
     private int result_ ;
     /**
      * <pre>
      *0:success 1:failed
      * </pre>
      *
-     * <code>int32 result = 2;</code>
+     * <code>int32 result = 1;</code>
      * @return The result.
      */
     @java.lang.Override
@@ -692,7 +499,7 @@ private static final long serialVersionUID = 0L;
      *0:success 1:failed
      * </pre>
      *
-     * <code>int32 result = 2;</code>
+     * <code>int32 result = 1;</code>
      * @param value The result to set.
      * @return This builder for chaining.
      */
@@ -707,7 +514,7 @@ private static final long serialVersionUID = 0L;
      *0:success 1:failed
      * </pre>
      *
-     * <code>int32 result = 2;</code>
+     * <code>int32 result = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearResult() {
@@ -721,14 +528,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.cms.client.network.gpro.ChatChannelInfo, com.cms.client.network.gpro.ChatChannelInfo.Builder, com.cms.client.network.gpro.ChatChannelInfoOrBuilder> channelBuilder_;
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      * @return Whether the channel field is set.
      */
     public boolean hasChannel() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      * @return The channel.
      */
     public com.cms.client.network.gpro.ChatChannelInfo getChannel() {
@@ -739,7 +546,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public Builder setChannel(com.cms.client.network.gpro.ChatChannelInfo value) {
       if (channelBuilder_ == null) {
@@ -751,11 +558,11 @@ private static final long serialVersionUID = 0L;
       } else {
         channelBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return this;
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public Builder setChannel(
         com.cms.client.network.gpro.ChatChannelInfo.Builder builderForValue) {
@@ -765,15 +572,15 @@ private static final long serialVersionUID = 0L;
       } else {
         channelBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return this;
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public Builder mergeChannel(com.cms.client.network.gpro.ChatChannelInfo value) {
       if (channelBuilder_ == null) {
-        if (((bitField0_ & 0x00000002) != 0) &&
+        if (((bitField0_ & 0x00000001) != 0) &&
             channel_ != null &&
             channel_ != com.cms.client.network.gpro.ChatChannelInfo.getDefaultInstance()) {
           channel_ =
@@ -785,11 +592,11 @@ private static final long serialVersionUID = 0L;
       } else {
         channelBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return this;
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public Builder clearChannel() {
       if (channelBuilder_ == null) {
@@ -798,19 +605,19 @@ private static final long serialVersionUID = 0L;
       } else {
         channelBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public com.cms.client.network.gpro.ChatChannelInfo.Builder getChannelBuilder() {
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       onChanged();
       return getChannelFieldBuilder().getBuilder();
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     public com.cms.client.network.gpro.ChatChannelInfoOrBuilder getChannelOrBuilder() {
       if (channelBuilder_ != null) {
@@ -821,7 +628,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional .PRO.ChatChannelInfo channel = 3;</code>
+     * <code>optional .PRO.ChatChannelInfo channel = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.cms.client.network.gpro.ChatChannelInfo, com.cms.client.network.gpro.ChatChannelInfo.Builder, com.cms.client.network.gpro.ChatChannelInfoOrBuilder> 

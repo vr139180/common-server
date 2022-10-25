@@ -57,7 +57,7 @@ public:
 
 protected:
 	virtual bool load_config();
-	void load_redisscript();
+
 	virtual bool pre_init();
 	virtual bool init_network();
 	virtual void uninit_network();

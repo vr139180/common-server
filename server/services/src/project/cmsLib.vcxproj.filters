@@ -70,6 +70,9 @@
     <Filter Include="json">
       <UniqueIdentifier>{07f99716-d3ef-4a18-8667-8f350b6c752e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="hash">
+      <UniqueIdentifier>{87ad7007-6d07-4ac9-a8a5-0d560e818ba8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\libs\cmsLib\base\Profile.cpp">
@@ -289,6 +292,18 @@
     <ClCompile Include="..\source\libs\cmsLib\log\WSSinkBackend.cpp">
       <Filter>log</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\hash\HashUtil.cpp">
+      <Filter>hash</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\prolib\BasicProtocol.cpp">
+      <Filter>prolib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\prolib\BasicProtocol_Code.cpp">
+      <Filter>prolib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\cmsLib\net\NetSessionBindEvent.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\libs\cmsLib\base\HashTable.h">
@@ -308,9 +323,6 @@
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.h">
       <Filter>os\linux</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\libs\cmsLib\prolib\core_type.h">
-      <Filter>prolib</Filter>
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\prolib\prolibdef.h">
       <Filter>prolib</Filter>
@@ -493,5 +505,13 @@
     <ClInclude Include="..\source\libs\cmsLib\log\WSSinkBackend.h">
       <Filter>log</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\hash\HashUtil.h">
+      <Filter>hash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\net\NetHashingWithVNode.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\cmsLib\core_type.h" />
+    <ClInclude Include="..\source\libs\cmsLib\common_result.h" />
   </ItemGroup>
 </Project>
