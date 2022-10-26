@@ -8,6 +8,7 @@
 #pragma  pack( pop)
 
 typedef boost::function< void( NetProtocol*, bool&)>			NETCMD_FUN_MAP;
+typedef boost::function< void(NetProtocol*, bool&, S_INT_64)>	NETCMD_FUN_MAP2;
 typedef boost::function< void( NetProtocol*, bool&, void*)>		NETCMD_FUN_MAP3;
 
 class CommandBase
@@ -47,6 +48,19 @@ public:
 
 private:
 	NETCMD_FUN_MAP3	fun_;
+	NetProtocol*	pro_;
+};
+
+class NetCommandV2 : public CommandBase
+{
+public:
+	NetCommandV2(NetProtocol *d2, NETCMD_FUN_MAP2 fun, bool autorelease = true);
+	virtual ~NetCommandV2();
+
+	virtual void run();
+
+private:
+	NETCMD_FUN_MAP2	fun_;
 	NetProtocol*	pro_;
 };
 

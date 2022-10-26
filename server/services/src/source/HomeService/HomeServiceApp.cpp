@@ -24,10 +24,8 @@ HomeServiceApp& HomeServiceApp::getInstance()
 }
 
 HomeServiceApp::HomeServiceApp(): ServerAppBase()
-,acceptor_( 0)
 ,conf_(0)
 ,is_ready_(false)
-,lobby_nums_(0)
 {
 }
 
@@ -76,7 +74,6 @@ HomeConfig* HomeServiceApp::load_homeconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 	config->db_thread_nums_ = XmlUtil::GetXmlAttrInt(root, "dbs", 2);
 
 	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
@@ -94,28 +91,26 @@ HomeConfig* HomeServiceApp::load_homeconfig()
 	return xptr.release();
 }
 
+HomeConfig* HomeServiceApp::get_config()
+{
+	return conf_.get();
+}
+
 bool HomeServiceApp::pre_init()
 {
-	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
-
-	all_lobby_users_.init_separate(GATEHOME_GROUP_NUM, GATEHOME_PIECE_NUM);
-	this->lobby_nums_ = all_lobby_users_.get_max_piece();
-	this->all_lobbys_.reset(new LobbyService[lobby_nums_]);
-	for (int ii = 0; ii < lobby_nums_; ++ii)
+	this->all_lobbys_.reset(new LobbyService[HOME_LOBBY_THREADNUM]);
+	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 	{
-		std::vector<LobbyUser*> us;
-		all_lobby_users_.get_piece_data(ii, us);
-		all_lobbys_[ii].init_lobby(ii, all_lobby_users_.get_piece_slotnum(), us);
+		all_lobbys_[ii].init_lobby(ii);
 	}
-
-	gate_link_map_.init_holder();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_RES);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_HOME,
@@ -137,14 +132,6 @@ bool HomeServiceApp::init_network()
 		return false;
 	}
 
-	if( acceptor_.get() != 0)
-	{
-		logFatal( out_runtime, ("HomeService init network failed"));
-		return false;
-	}
-
-	acceptor_.reset( new NetAcceptor( *this));
-
 	return true;
 }
 
@@ -152,19 +139,9 @@ bool HomeServiceApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
 
-    if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
-    {
-		logInfo(out_runtime, ("<<<<<<<<<<<<HomeService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
-    }
-    else
-    {
-		logFatal(out_runtime, ("<<<<<<<<<<<<HomeService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
-		return false;
-    }
-
 	dbsStore->init_dbsctrl();
 
-	for (int ii = 0; ii < lobby_nums_; ++ii)
+	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 	{
 		all_lobbys_[ii].init(100);
 		all_lobbys_[ii].start();
@@ -183,15 +160,12 @@ void HomeServiceApp::uninit_network()
 {
 	dbsStore->uninit_dbsctrl();
 
-	if (acceptor_.get())
-		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
-	for (int ii = 0; ii < lobby_nums_; ++ii)
+	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 		all_lobbys_[ii].stop();
 
-	gate_link_map_.uninit_holder();
-	session_from_.unint_sessions();
+	datarouter_link_mth_.free_all();
 	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
@@ -199,7 +173,6 @@ void HomeServiceApp::uninit_network()
 
 void HomeServiceApp::uninit()
 {
-	acceptor_.reset();
 }
 
 void HomeServiceApp::register_timer()
@@ -208,18 +181,8 @@ void HomeServiceApp::register_timer()
 	//auto connect
 	this->add_apptimer( 1000*5, boost::BOOST_BIND( &HomeServiceApp::auto_connect_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
-	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&HomeServiceApp::service_maintnce_check, this,
-		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	EurekaClusterClient::instance().regist_timer();
-}
-
-LobbyService* HomeServiceApp::get_lobbysvr_by_slot(int slot)
-{
-	int ind = all_lobby_users_.get_pieceindex_from_slot(slot);
-	if (ind == -1)
-		return 0;
-	return &(all_lobbys_[ind]);
 }
 
 void HomeServiceApp::main_loop()
@@ -258,204 +221,43 @@ void HomeServiceApp::main_loop()
 	}
 }
 
-NetAcceptorEvent::NetSessionPtr HomeServiceApp::ask_free_netsession()
+void HomeServiceApp::send_protocol_to_fightrouter( PRO::ERK_SERVICETYPE to, BasicProtocol* pro)
 {
-	if (!is_ready_)
-	{
-		NetAcceptorEvent::NetSessionPtr new_session;
-		return new_session;
-	}
-
-	ThreadLockWrapper guard(lock_);
-
-	return session_from_.ask_free_netsession_mth();
-}
-
-void HomeServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
-{
-	HomeSession *pointer = session_from_.get_sessionlink_by_session(session);
-	if (pointer == 0)
-		return;
-
-	if (refuse)
-		pointer->reset();
-
-	ThreadLockWrapper guard(lock_);
-
-	//remove from waiting list
-	if (refuse)
-	{
-		logError(out_runtime, "me(HomeService) listen a connected request, but refused by system");
-
-		session_from_.free_from_wait_mth(pointer);
-	}
-	else
-	{
-		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_runtime, "me(HomeService) listen a connected request, and create a connection successfully");
-	}
-}
-
-void HomeServiceApp::send_protocol_to_fightrouter(BasicProtocol* pro)
-{
-	fightrouter_link_mth_.send_mth_protocol(pro);
-}
-
-void HomeServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
-{
-	//connect ro res service
-	res_link_mth_.connect_to();
-	fightrouter_link_mth_.connect_to();
-}
-
-void HomeServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
-{
-	ThreadLockWrapper guard(lock_);
-
-	session_from_.sessions_maintnce(tnow);
-}
-
-void HomeServiceApp::on_connection_timeout(HomeSession* session)
-{
-	ThreadLockWrapper guard(lock_);
-
-	session->reset();
-
-	session_from_.free_from_wait_mth(session);
-
-	logError(out_runtime, "HomeService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
-}
-
-void HomeServiceApp::on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session)
-{
-	Svr_ServiceBindService_req* req = dynamic_cast<Svr_ServiceBindService_req*>(pro);
-	HomeSession* psession = reinterpret_cast<HomeSession*>(session);
-
-	Svr_ServiceBindService_ack* ack = new Svr_ServiceBindService_ack();
-	ack->set_result(1);
-	ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_HOME);
-	ack->set_toiid(req->toiid());
-	ack->set_totoken(req->totoken());
-
-	//service没有变化
-	if (req->toiid() != EurekaClusterClient::instance().get_myiid()
-		|| req->totoken() != EurekaClusterClient::instance().get_token())
-	{
-		ack->set_result(1);
-		psession->send_protocol(ack);
-		return;
-	}
-
-	NETSERVICE_TYPE ctype = (NETSERVICE_TYPE)req->svr_type();
-	if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE)
-	{
-		ack->set_result(1);
-		psession->send_protocol(ack);
-		return;
-	}
-
-	//来自gate的注册
-	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GATE)
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		session_from_.remove_waitsession_mth(psession);
-		GateServiceLinkFrom *pLink = gate_link_map_.ask_free_link();
-
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
-
-		//设置当前gatelinke
-		gate_link_ = gate_link_map_.regist_onlinelink(pLink);
-
-		pLink->registinfo_tolog(true);
-
-		ack->set_result(0);
-	}
-	else // other sevices
-	{
-
-	}
-
-	psession->send_protocol(ack);
-}
-
-void HomeServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
-{
-	HomeSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		gate_link_map_.return_freelink(plink);
-		if (plink == gate_link_)
-			gate_link_ = 0;
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-	}
+	fightrouter_link_mth_.send_mth_protocol(to, pro);
 }
 
 void HomeServiceApp::send_protocol_to_res(BasicProtocol* pro)
 {
-	res_link_mth_.send_mth_protocol(pro);
+	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_RES, pro);
 }
 
 void HomeServiceApp::send_protocol_to_gate(BasicProtocol* pro)
 {
-	if (gate_link_ != 0)
-		gate_link_->send_protocol(pro);
-	else
-	{
-		delete pro;
-	}
+	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
 }
 
-void HomeServiceApp::on_resservice_regist_result( ResClusterLinkTo* plink)
+void HomeServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
-	res_link_mth_.on_linkto_regist_result( plink);
+	datarouter_link_mth_.connect_to();
+	fightrouter_link_mth_.connect_to();
 }
 
-void HomeServiceApp::on_disconnected_with_resservice(ResClusterLinkTo* plink)
-{
-	res_link_mth_.on_linkto_disconnected(plink);
-}
-
-void HomeServiceApp::on_disconnected_with_unionservice(UnionClusterLinkTo* plink)
-{
-
-}
-
-void HomeServiceApp::post_syscmd_2_lobbyservice(S_INT_64 token, CommandBase* pcmd)
-{
-	int slot = 0;
-	ProtoTokenUtil::parse_usertoken2(token, slot);
-	LobbyService* pls = get_lobbysvr_by_slot(slot);
-	if (pls == 0)
-	{
-		delete pcmd;
-		return;
-	}
-
-	pls->regist_syscmd(pcmd);
-}
-
-void HomeServiceApp::on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink)
+void HomeServiceApp::on_fightrouterservice_regist_result(FightRouterLinkTo* plink)
 {
 	fightrouter_link_mth_.on_linkto_regist_result(plink);
 }
 
-void HomeServiceApp::on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink)
+void HomeServiceApp::on_disconnected_with_fightrouterservice(FightRouterLinkTo* plink)
 {
 	fightrouter_link_mth_.on_linkto_disconnected(plink);
+}
+
+void HomeServiceApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void HomeServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_disconnected(plink);
 }

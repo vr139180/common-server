@@ -4,34 +4,16 @@
     <ClCompile Include="..\source\UnionService\UnionServiceApp.cpp" />
     <ClCompile Include="..\source\UnionService\sMain.cpp" />
     <ClCompile Include="..\source\UnionService\UnionServiceApp_NetCmd.cpp" />
-    <ClCompile Include="..\source\UnionService\network\UnionSession.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UnionService\network\GameServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UnionService\network\GateServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\UnionService\network\HomeServiceLinkFrom.cpp">
+    <ClCompile Include="..\source\UnionService\network\ServiceRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\UnionService\UnionServiceApp.h" />
-    <ClInclude Include="..\source\UnionService\network\UnionSession.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\UnionService\config\UnionConfig.h">
       <Filter>config</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\UnionService\network\GameServiceLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UnionService\network\GateServiceLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\UnionService\network\HomeServiceLinkFrom.h">
+    <ClInclude Include="..\source\UnionService\network\ServiceRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

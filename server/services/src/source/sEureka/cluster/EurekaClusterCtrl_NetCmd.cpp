@@ -121,15 +121,15 @@ void EurekaClusterCtrl::on_service_eureka_sync(NetProtocol* message, bool& autor
 	}
 
 	//解耦,路由到service
-	NETCMD_FUN_MAP fun = boost::bind(&ServiceRegisterCtrl::on_mth_message_route_to_service, svrApp.get_servicectrl(), 
-		boost::placeholders::_1, boost::placeholders::_2);
+	NETCMD_FUN_MAP2 fun = boost::bind(&ServiceRegisterCtrl::on_mth_message_route_to_service, svrApp.get_servicectrl(), 
+		boost::placeholders::_1, boost::placeholders::_2, ntf->myiid());
 
 	SProtocolHead head = message->head_;
 	head.from_type_ = head.to_type_;
 	head.to_type_ = message->head_.from_type_;
 	NetProtocol *pro = new NetProtocol(head, ntf);
 
-	NetCommand *pcmd = new NetCommand(pro, fun);
+	NetCommandV2 *pcmd = new NetCommandV2(pro, fun);
 
 	svrApp.regist_syscmd(pcmd);
 }

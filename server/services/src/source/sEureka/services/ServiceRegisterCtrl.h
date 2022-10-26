@@ -42,7 +42,7 @@ public:
 	void on_mth_serviceregist_confirm(NetProtocol* pro, bool& autorelease);
 	void on_mth_servicebind_req(NetProtocol* pro, bool& autorelease, void* session);
 	void on_mth_disconnected_with_service(ServiceLinkFrom* plink);
-	void on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease);
+	void on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease, S_INT_64 serviceid);
 
 	//服务订阅信息同步
 	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);

@@ -13,8 +13,6 @@ public:
 public:
 	//现成一次tick循环次数
 	int loopnum_;
-	//服务线程数量
-	int service_thread_num_;
 	//db线程数
 	int db_thread_nums_;
 

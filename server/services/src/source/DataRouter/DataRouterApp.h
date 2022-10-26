@@ -1,5 +1,5 @@
-#ifndef __ROUTERSERVICEAPP_H__
-#define __ROUTERSERVICEAPP_H__
+#ifndef __DATAROUTERAPP_H__
+#define __DATAROUTERAPP_H__
 
 #include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -18,14 +18,8 @@
 #include "network/RouterSession.h"
 
 #include "network/GateServiceLinkFrom.h"
-#include "network/ChatServiceLinkFrom.h"
 #include "network/HomeServiceLinkFrom.h"
-#include "network/MailServiceLinkFrom.h"
-#include "network/FriendServiceLinkFrom.h"
-
-#include "chatmodule/ChatLinkerHolder.h"
-#include "mailmodule/MailLinkerHolder.h"
-#include "friends/FriendLinkerHolder.h"
+#include "network/StateServiceLinkFrom.h"
 
 class DataRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -33,8 +27,8 @@ private:
 	DataRouterApp();
 
 public:
-	static RouterServiceApp& getInstance();
-	virtual ~RouterServiceApp();
+	static DataRouterApp& getInstance();
+	virtual ~DataRouterApp();
 
 	virtual void main_loop();
 
@@ -102,10 +96,6 @@ protected:
 
 	LinkFromHolder<GateServiceLinkFrom>	gate_links_from_;
 
-	ChatLinkerHolder				chat_links_from_;
-	MailLinkerHolder				mail_links_from_;
-	FriendLinkerHolder				friend_links_from_;
-
 	boost::scoped_ptr<RouterConfig>	conf_;
 
 public:
@@ -115,11 +105,8 @@ public:
 
 	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
-	void on_disconnected_with_chatservice(ChatServiceLinkFrom* plink);
-	void on_disconnected_with_mailservice(MailServiceLinkFrom* plink);
-	void on_disconnected_with_frdservice(FriendServiceLinkFrom* plink);
 };
 
-#define svrApp (RouterServiceApp::getInstance())
+#define svrApp (DataRouterApp::getInstance())
 
-#endif	//__ROUTERSERVICEAPP_H__
+#endif	//__DATAROUTERAPP_H__

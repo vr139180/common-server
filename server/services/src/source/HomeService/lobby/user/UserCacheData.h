@@ -4,7 +4,7 @@
 #include <boost/dynamic_bitset.hpp>
 
 #include <cmsLib/redis/RedisClient.h>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
 
 #include <taskLib/service/ITaskEnv.h>

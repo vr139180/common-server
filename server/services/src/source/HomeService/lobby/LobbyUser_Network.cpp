@@ -3,8 +3,6 @@
 #include <cmsLib/redis/RedisClient.h>
 #include <gameLib/redis/user_redis_const.h>
 #include <gameLib/protobuf/Proto_all.h>
-#include <gameLib/protobuf/ProtoUtil.h>
-#include <gameLib/gatehome/ProtoTokenUtil.h>
 
 #include "dbs/cmd/LoadUserInfoCmd.h"
 #include "dbs/cmd/CreateUserRoleCmd.h"
@@ -19,7 +17,7 @@ void LobbyUser::on_ls_rolelist_req()
 		return;
 
 	PRO::User_RoleList_ack *ack = new PRO::User_RoleList_ack();
-	set_usertoken(ack);
+
 	ack->set_allocated_roles(roles_data_.clone_data<PRO::DBUserRoles>());
 
 	svrApp.send_protocol_to_gate(ack);
@@ -30,7 +28,6 @@ void LobbyUser::on_ls_rolecreate_req(const char* nickname)
 	if (is_user_ready())
 	{
 		PRO::User_RoleCreate_ack* ack = new PRO::User_RoleCreate_ack();
-		set_usertoken(ack);
 
 		ack->set_result(1); //不允许创建角色
 		svrApp.send_protocol_to_gate(ack);
@@ -49,7 +46,6 @@ void LobbyUser::role_selected_done()
 	cur_state_ = UserState::UserState_Ready;
 
 	PRO::User_RoleSelect_ack* ack = new PRO::User_RoleSelect_ack();
-	set_usertoken(ack);
 
 	ack->set_role_iid(role_iid_);
 	ack->set_result(0);
@@ -57,8 +53,6 @@ void LobbyUser::role_selected_done()
 
 	//更新giduid，设置uid为role_iid
 	S_INT_64 gateid = 0;
-	ProtoTokenUtil::parse_usergate3(this->giduid_, gateid);
-	this->giduid_ = ProtoTokenUtil::build_usergate(gateid, this->role_iid_);
 }
 
 void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
@@ -72,7 +66,6 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 	if (r != 0)
 	{
 		PRO::User_RoleSelect_ack* ack = new PRO::User_RoleSelect_ack();
-		set_usertoken(ack);
 
 		ack->set_role_iid(roleid);
 		ack->set_result(r);
@@ -99,7 +92,6 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 void LobbyUser::notify_roledetail_to_user()
 {
 	PRO::User_RoleDetailA_ntf * na = new PRO::User_RoleDetailA_ntf();
-	set_usertoken(na);
 
 	na->set_allocated_home(home_data_.clone_data<PRO::DBUserHome>());
 	na->set_allocated_homeitems(building_data_.clone_data<PRO::DBUserHomeStructure>());
@@ -107,13 +99,12 @@ void LobbyUser::notify_roledetail_to_user()
 	svrApp.send_protocol_to_gate( na);
 
 	PRO::User_RoleDetailB_ntf* nb = new PRO::User_RoleDetailB_ntf();
-	set_usertoken( nb);
+
 	nb->set_allocated_pets(pet_data_.clone_data<PRO::DBUserPets>());
 
 	svrApp.send_protocol_to_gate(nb);
 
 	PRO::User_RoleDetailEnd_ntf *en = new PRO::User_RoleDetailEnd_ntf();
-	set_usertoken( en);
 
 	svrApp.send_protocol_to_gate(en);
 }

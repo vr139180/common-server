@@ -6,21 +6,14 @@
 #include <boost/thread/tss.hpp>
 
 #include <cmsLib/ServerAppBase.h>
-#include <cmsLib/net/NetAcceptor.h>
-#include <cmsLib/net/NetAcceptorEvent.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
-#include <gameLib/commons/SessionMthHolder.h>
 
 #include "config/UnionConfig.h"
 
-#include "network/UnionSession.h"
-#include "network/HomeServiceLinkFrom.h"
-#include "network/GateServiceLinkFrom.h"
-#include "network/GameServiceLinkFrom.h"
+#include "network/ServiceRouterLinkTo.h"
 
-
-class UnionServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
+class UnionServiceApp : public ServerAppBase, public IEurekaClientIntegrate
 {
 private:
 	UnionServiceApp();
@@ -32,10 +25,6 @@ public:
 	virtual void main_loop();
 
 public:
-
-	//------------------------------implement NetAcceptorEvent ------------------------------//
-	virtual NetAcceptorEvent::NetSessionPtr ask_free_netsession();
-	virtual void accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err);
 
 	//------------------------------implement IEurekaClientIntegrate-------------------------//
 	virtual ThreadLock& get_mth_threadlock() { return lock_; }
@@ -64,24 +53,14 @@ protected:
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
-	void service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
 	//注册成功之后标注为true
 	bool							is_ready_;
 
-	//network
-	std::shared_ptr<NetAcceptor>	acceptor_;
-	SessionMthHolder<UnionSession>	session_from_;
-
 	boost::scoped_ptr<UnionConfig>	conf_;
 
 public:
-	void on_connection_timeout(UnionSession* session);
-
-	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
-	void on_disconnected_with_gameservice(GameServiceLinkFrom* plink);
-	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 };
 
 #define svrApp (UnionServiceApp::getInstance())

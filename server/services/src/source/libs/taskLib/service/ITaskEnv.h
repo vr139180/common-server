@@ -1,7 +1,7 @@
 #ifndef __ITASKENV_H__
 #define __ITASKENV_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/lua/ScriptContext.h>
 #include <taskLib/task_const.h>
 #include <taskLib/meta/ConditionsMeta.h>

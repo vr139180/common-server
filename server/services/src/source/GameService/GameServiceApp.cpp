@@ -19,7 +19,6 @@ GameServiceApp& GameServiceApp::getInstance()
 }
 
 GameServiceApp::GameServiceApp(): ServerAppBase()
-,acceptor_( 0)
 ,conf_( 0)
 ,is_ready_(false)
 {
@@ -71,8 +70,6 @@ GameConfig* GameServiceApp::load_gameconfig()
 
 bool GameServiceApp::pre_init()
 {
-	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
-
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
@@ -99,30 +96,12 @@ bool GameServiceApp::init_network()
 		return false;
 	}
 
-	if( acceptor_.get() != 0)
-	{
-		logFatal( out_runtime, ("GameService init network failed"));
-		return false;
-	}
-
-	acceptor_.reset( new NetAcceptor( *this));
-
 	return true;
 }
 
 bool GameServiceApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
-
-	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
-	{
-		logInfo(out_runtime, ("<<<<<<<<<<<<GameService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
-	}
-	else
-	{
-		logFatal(out_runtime, ("<<<<<<<<<<<<GameService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
-		return false;
-	}
 
 	char app_title_[200];
 	sprintf(app_title_, "GameService VER: %s REV: %s PID: %d PORT: %d\n",
@@ -135,11 +114,8 @@ bool GameServiceApp::init_finish()
 
 void GameServiceApp::uninit_network()
 {
-	if (acceptor_.get())
-		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
-	session_from_.unint_sessions();
 	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
@@ -147,7 +123,6 @@ void GameServiceApp::uninit_network()
 
 void GameServiceApp::uninit()
 {
-	acceptor_.reset();
 }
 
 void GameServiceApp::register_timer()
@@ -155,8 +130,6 @@ void GameServiceApp::register_timer()
 	//regist timer for system
 	//auto connect
 	this->add_apptimer( 1000*15, boost::BOOST_BIND( &GameServiceApp::auto_connect_timer, this,
-		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
-	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&GameServiceApp::service_maintnce_check, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	EurekaClusterClient::instance().regist_timer();
@@ -198,38 +171,6 @@ void GameServiceApp::main_loop()
 	}
 }
 
-NetAcceptorEvent::NetSessionPtr GameServiceApp::ask_free_netsession()
-{
-	ThreadLockWrapper guard(lock_);
-
-	return session_from_.ask_free_netsession_mth();
-}
-
-void GameServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
-{
-	GameSession *pointer = session_from_.get_sessionlink_by_session(session);
-	if (pointer == 0)
-		return;
-
-	if (refuse)
-		pointer->reset();
-
-	ThreadLockWrapper guard(lock_);
-
-	//remove from waiting list
-	if (refuse)
-	{
-		logError(out_runtime, "me(GameService) listen a connected request, but refused by system");
-
-		session_from_.free_from_wait_mth(pointer);
-	}
-	else
-	{
-		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_runtime, "me(GameService) listen a connected request, and create a connection successfully");
-	}
-}
-
 void GameServiceApp::send_protocol_to_fightrouter(BasicProtocol* pro)
 {
 	fightrouter_link_mth_.send_mth_protocol(pro);
@@ -240,35 +181,12 @@ void GameServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& 
 	fightrouter_link_mth_.connect_to();
 }
 
-void GameServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
-{
-	ThreadLockWrapper guard(lock_);
-
-	session_from_.sessions_maintnce(tnow);
-}
-
-void GameServiceApp::on_connection_timeout(GameSession* session)
-{
-	ThreadLockWrapper guard(lock_);
-
-	session->reset();
-
-	session_from_.free_from_wait_mth(session);
-
-	logError(out_runtime, "GameService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
-}
-
-void GameServiceApp::on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink)
+void GameServiceApp::on_disconnected_with_fightrouter(FightRouterLinkTo* plink)
 {
 	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }
 
-void GameServiceApp::on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink)
+void GameServiceApp::on_fightrouter_regist_result(FightRouterLinkTo* plink)
 {
 	fightrouter_link_mth_.on_linkto_regist_result(plink);
-}
-
-void GameServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
-{
-	
 }

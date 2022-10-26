@@ -1,8 +1,6 @@
 #include "lobby/LobbyUser.h"
 
 #include <gameLib/protobuf/Proto_all.h>
-#include <gameLib/protobuf/ProtoUtil.h>
-#include <gameLib/gatehome/ProtoTokenUtil.h>
 
 #include "dbs/DBSCtrl.h"
 
@@ -34,7 +32,6 @@ void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
 	this->rest_user();
 
 	S_INT_64 uid = 0;
-	ProtoTokenUtil::parse_usergate2(giduid, uid);
 	this->set_user_iid(uid);
 	this->set_giduid(giduid);
 	this->set_slottoken(slottoken);
@@ -55,7 +52,6 @@ void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
 
 		//nootify user
 		PRO::User_RoleList_ack *ack = new PRO::User_RoleList_ack();
-		set_usertoken(ack);
 
 		ack->set_allocated_roles( roles_data_.clone_data<PRO::DBUserRoles>());
 
@@ -69,9 +65,4 @@ void LobbyUser::rest_user()
 	
 	this->roles_data_.reset_data();
 	this->reset_usercache();
-}
-
-bool LobbyUser::set_usertoken(BasicProtocol* msg)
-{
-	return ProtoUtil::set_usertokenx(msg, giduid_, slottoken_);
 }

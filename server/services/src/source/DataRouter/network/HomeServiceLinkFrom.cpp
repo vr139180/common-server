@@ -6,7 +6,7 @@
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
 
-#include "RouterServiceApp.h"
+#include "DataRouterApp.h"
 
 void HomeServiceLinkFrom::force_linkclose()
 {
@@ -16,7 +16,7 @@ void HomeServiceLinkFrom::force_linkclose()
 void HomeServiceLinkFrom::on_connect_lost_netthread()
 {
 	SystemCommand<HomeServiceLinkFrom>* cmd =
-		new SystemCommand<HomeServiceLinkFrom>( boost::bind( &RouterServiceApp::on_disconnected_with_homeservice, &svrApp, this));
+		new SystemCommand<HomeServiceLinkFrom>( boost::bind( &DataRouterApp::on_disconnected_with_homeservice, &svrApp, this));
 	svrApp.regist_syscmd( cmd);
 }
 

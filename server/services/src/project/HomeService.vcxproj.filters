@@ -4,9 +4,6 @@
     <ClCompile Include="..\source\HomeService\HomeServiceApp.cpp" />
     <ClCompile Include="..\source\HomeService\sMain.cpp" />
     <ClCompile Include="..\source\HomeService\HomeServiceApp_NetCmd.cpp" />
-    <ClCompile Include="..\source\HomeService\network\HomeSession.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\HomeService\lobby\LobbyService.cpp">
       <Filter>lobby</Filter>
     </ClCompile>
@@ -70,15 +67,6 @@
     <ClCompile Include="..\source\HomeService\lobby\user\UserCacheData_Pet.cpp">
       <Filter>lobby\user</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\HomeService\network\GateServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\HomeService\network\ResClusterLinkTo.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\HomeService\network\UnionClusterLinkTo.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\HomeService\lobby\LobbyUser_Task.cpp">
       <Filter>lobby</Filter>
     </ClCompile>
@@ -97,7 +85,10 @@
     <ClCompile Include="..\source\HomeService\lobby\LobbyService_Task.cpp">
       <Filter>lobby</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\HomeService\network\FightRouterServiceLinkTo.cpp">
+    <ClCompile Include="..\source\HomeService\network\DataRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\HomeService\network\FightRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -105,9 +96,6 @@
     <ClInclude Include="..\source\HomeService\HomeServiceApp.h" />
     <ClInclude Include="..\source\HomeService\config\HomeConfig.h">
       <Filter>config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\HomeSession.h">
-      <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\HomeService\lobby\LobbyService.h">
       <Filter>lobby</Filter>
@@ -154,19 +142,13 @@
     <ClInclude Include="..\source\HomeService\dbs\cmd\CreateUserRoleCmd.h">
       <Filter>dbs\cmd</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\GateServiceLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\ResClusterLinkTo.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\UnionClusterLinkTo.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\HomeService\lobby\user\UserTasks.h">
       <Filter>lobby\user</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\FightRouterServiceLinkTo.h">
+    <ClInclude Include="..\source\HomeService\network\DataRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\HomeService\network\FightRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

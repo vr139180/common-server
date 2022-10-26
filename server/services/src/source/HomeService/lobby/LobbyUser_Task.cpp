@@ -2,7 +2,6 @@
 
 #include <gameLib/redis/user_redis_const.h>
 #include <gameLib/protobuf/Proto_all.h>
-#include <gameLib/protobuf/ProtoUtil.h>
 
 #include <gameLib/LogExt.h>
 

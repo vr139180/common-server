@@ -33,7 +33,7 @@ void RouterSession::on_connect_lost_netthread()
 	else
 	{
 		SystemCommand<RouterSession>* pcmd = new SystemCommand<RouterSession>(
-			boost::bind(&RouterServiceApp::on_connection_timeout, &svrApp, this));
+			boost::bind(&DataRouterApp::on_connection_timeout, &svrApp, this));
 		svrApp.regist_syscmd(pcmd);
 	}
 }
@@ -42,7 +42,7 @@ void RouterSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 {
 	if (proiid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ)
 	{
-		NETCMD_FUN_MAP3 fun = boost::bind(&RouterServiceApp::on_mth_servicebindservice_req, &svrApp,
+		NETCMD_FUN_MAP3 fun = boost::bind(&DataRouterApp::on_mth_servicebindservice_req, &svrApp,
 			boost::placeholders::_1, boost::placeholders::_2, this);
 		NetCommandV *pcmd = new NetCommandV(pro, fun);
 
@@ -89,7 +89,7 @@ void RouterSession::update(u64 tnow)
 		{
 			state_ = SessionState_Closing;
 			SystemCommand<RouterSession>* pcmd = new SystemCommand<RouterSession>(
-				boost::bind(&RouterServiceApp::on_connection_timeout, &svrApp, this));
+				boost::bind(&DataRouterApp::on_connection_timeout, &svrApp, this));
 			svrApp.regist_syscmd(pcmd);
 		}
 	}

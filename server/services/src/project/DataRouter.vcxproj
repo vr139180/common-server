@@ -138,6 +138,7 @@
     <ClCompile Include="..\source\DataRouter\network\RouterSession.cpp" />
     <ClCompile Include="..\source\DataRouter\DataRouterApp.cpp" />
     <ClCompile Include="..\source\DataRouter\DataRouterApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\DataRouter\network\StateServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\DataRouter\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="..\source\DataRouter\network\HomeServiceLinkFrom.h" />
     <ClInclude Include="..\source\DataRouter\network\RouterSession.h" />
     <ClInclude Include="..\source\DataRouter\DataRouterApp.h" />
+    <ClInclude Include="..\source\DataRouter\network\StateServiceLinkFrom.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\DataRouter\ReadMe.txt" />

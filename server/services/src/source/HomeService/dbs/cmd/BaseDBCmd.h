@@ -11,7 +11,7 @@
 #include <mysqlc++/mysql_connection.h>
 
 #include <cmsLib/system/CommandBase.h>
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 
 class LobbyService;
 

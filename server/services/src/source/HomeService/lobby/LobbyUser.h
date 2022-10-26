@@ -1,11 +1,9 @@
 #ifndef __LOBBYUSER_H__
 #define __LOBBYUSER_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/redis/RedisClient.h>
 #include <cmsLib/lua/ScriptContext.h>
-
-#include <gameLib/gatehome/ProtoTokenUtil.h>
 
 #include "lobby/user/UserCacheData.h"
 #include "lobby/user/UserRoles.h"
@@ -36,7 +34,6 @@ public:
 	void rest_user();
 
 	bool is_samesession(S_INT_64 utoken);
-	bool set_usertoken(BasicProtocol* msg);
 
 	void set_userslot(int slot) { slot_ = slot; }
 	int get_userslot() { return slot_; }
@@ -95,7 +92,6 @@ bool LobbyUser::is_samesession(S_INT_64 utoken)
 {
 	int slot = -1;
 	S_INT_64 ptoken = 0;
-	ProtoTokenUtil::parse_usertoken(utoken, slot, ptoken);
 
 	return (this->slot_ == slot && slottoken_ == utoken);
 }

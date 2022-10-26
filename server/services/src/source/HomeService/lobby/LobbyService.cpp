@@ -1,8 +1,5 @@
 #include "lobby/LobbyService.h"
 
-#include <gameLib/gatehome/ProtoTokenUtil.h>
-#include <gameLib/protobuf/ProtoUtil.h>
-
 #include "config/HomeConfig.h"
 #include "HomeServiceApp.h"
 
@@ -58,19 +55,9 @@ void LobbyService::thread_worker()
 	svrApp.get_luacontext_thread().release();
 }
 
-void LobbyService::init_lobby(int pindex, int nums, std::vector<LobbyUser*>& lus)
+void LobbyService::init_lobby(int pindex)
 {
 	this->piece_index_ = pindex;
-	this->piece_start_ = pindex * nums;
-	this->piece_end_ = piece_start_ + lus.size() - 1;
-
-	this->users_.clear();
-	
-	for (int ii = 0; ii < lus.size(); ++ii)
-	{
-		lus[ii]->set_context(this);
-		users_.push_back(lus[ii]);
-	}
 
 	this->InitNetMessage();
 
@@ -96,10 +83,7 @@ void LobbyService::reset_syscmd()
 
 LobbyUser* LobbyService::get_user_byslot(int slot)
 {
-	if (slot < piece_start_ || slot > piece_end_)
-		return 0;
-
-	return users_[slot - piece_start_];
+	return 0;
 }
 
 LobbyUser* LobbyService::get_user_byslot(int slot, S_INT_64 token)
@@ -114,21 +98,18 @@ LobbyUser* LobbyService::get_user_byslot(int slot, S_INT_64 token)
 	return p;
 }
 
-LobbyUser* LobbyService::get_userbyslot_from_msg(BasicProtocol* msg)
+LobbyUser* LobbyService::get_userbyslot_from_msg(NetProtocol* msg)
 {
-	int slot = 0;
-	if (ProtoUtil::get_slot_from_tokenx(msg, slot) == false)
-		return 0;
-
-	return get_user_byslot(slot);
+	//return get_user_byslot(msg->head_.get_token_slot());
+	return 0;
 }
 
-LobbyUser* LobbyService::get_userofsame_from_msg(BasicProtocol* msg)
+LobbyUser* LobbyService::get_userofsame_from_msg(NetProtocol* msg)
 {
 	S_INT_64 uid = 0, tks = 0;
-	int slot = 0;
-	if (ProtoUtil::get_stuidtkm_from_tokenx(msg, slot, uid, tks) == false)
-		return 0;
+	uid = msg->head_.get_token_roleiid();
+	tks = msg->head_.get_token_token();
+	int slot = msg->head_.get_token_slot();
 
 	LobbyUser *puser = get_user_byslot(slot);
 	if (puser == 0)
@@ -141,7 +122,6 @@ LobbyUser* LobbyService::get_userofsame_from_msg(BasicProtocol* msg)
 LobbyUser* LobbyService::get_userofsame_from_x(S_INT_64 uid, S_INT_64 token)
 {
 	int slot = 0;
-	ProtoTokenUtil::parse_usertoken2(token, slot);
 
 	LobbyUser *puser = get_user_byslot(slot);
 	if (puser == 0)

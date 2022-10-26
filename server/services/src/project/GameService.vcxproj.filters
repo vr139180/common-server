@@ -4,28 +4,16 @@
     <ClCompile Include="..\source\GameService\GameServiceApp.cpp" />
     <ClCompile Include="..\source\GameService\sMain.cpp" />
     <ClCompile Include="..\source\GameService\GameServiceApp_NetCmd.cpp" />
-    <ClCompile Include="..\source\GameService\network\GameSession.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GameService\network\GateServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\GameService\network\FightRouterServiceLinkTo.cpp">
+    <ClCompile Include="..\source\GameService\network\FightRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GameService\GameServiceApp.h" />
-    <ClInclude Include="..\source\GameService\network\GameSession.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\GameService\config\GameConfig.h">
       <Filter>config</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\GameService\network\GateServiceLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\GameService\network\FightRouterServiceLinkTo.h">
+    <ClInclude Include="..\source\GameService\network\FightRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

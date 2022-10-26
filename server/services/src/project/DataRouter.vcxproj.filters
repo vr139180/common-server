@@ -13,6 +13,9 @@
     <ClCompile Include="..\source\DataRouter\network\HomeServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\DataRouter\network\StateServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\DataRouter\DataRouterApp.h" />
@@ -26,6 +29,9 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\DataRouter\network\HomeServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\DataRouter\network\StateServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

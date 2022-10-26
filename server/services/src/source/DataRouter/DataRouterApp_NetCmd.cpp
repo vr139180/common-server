@@ -14,7 +14,7 @@ void DataRouterApp::on_mth_servicebindservice_req(BasicProtocol* pro, bool& auto
 
 	Svr_ServiceBindService_ack* ack = new Svr_ServiceBindService_ack();
 	ack->set_result(1);
-	ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_ROUTER);
+	ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
 	ack->set_toiid(req->toiid());
 	ack->set_totoken(req->totoken());
 
@@ -56,66 +56,6 @@ void DataRouterApp::on_mth_servicebindservice_req(BasicProtocol* pro, bool& auto
 
 		ack->set_result(0);
 	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_CHAT)
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		session_from_.remove_waitsession_mth(psession);
-		ChatServiceLinkFrom *pLink = chat_links_from_.ask_free_link();
-
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
-
-		//设置当前gatelinke
-		chat_links_from_.regist_onlinelink(pLink);
-
-		pLink->registinfo_tolog(true);
-
-		ack->set_result(0);
-	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MAIL)
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		session_from_.remove_waitsession_mth(psession);
-		MailServiceLinkFrom *pLink = mail_links_from_.ask_free_link();
-
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
-
-		//设置当前gatelinke
-		mail_links_from_.regist_onlinelink(pLink);
-
-		pLink->registinfo_tolog(true);
-
-		ack->set_result(0);
-	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_FRIEND)
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		session_from_.remove_waitsession_mth(psession);
-		FriendServiceLinkFrom *pLink = friend_links_from_.ask_free_link();
-
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
-
-		//设置当前gatelinke
-		friend_links_from_.regist_onlinelink(pLink);
-
-		pLink->registinfo_tolog(true);
-
-		ack->set_result(0);
-	}
 	else // other sevices
 	{
 
@@ -125,25 +65,22 @@ void DataRouterApp::on_mth_servicebindservice_req(BasicProtocol* pro, bool& auto
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
-void RouterServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
+void DataRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
 
 }
 
-void RouterServiceApp::mth_service_registed(S_INT_64 sid)
+void DataRouterApp::mth_service_registed(S_INT_64 sid)
 {
 	logInfo(out_runtime, "<<<<<<<<<<<< router service node:%lld online to eureka >>>>>>>>>>>>", sid);
 	
 	this->is_ready_ = true;
 
 	//sid作为custom channel id的种子
-	ChatModule::instance().init_chatmodule(sid);
-	MailModule::instance().init_mailmodule(sid);
-	FriendModule::instance().init_friendmodule(sid);
 }
 
-void RouterServiceApp::mth_eureka_losted()
+void DataRouterApp::mth_eureka_losted()
 {
 	this->is_ready_ = false;
 

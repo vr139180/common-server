@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\ServiceRouter\ServiceRouterApp.cpp" />
+    <ClCompile Include="..\source\ServiceRouter\sMain.cpp" />
+    <ClCompile Include="..\source\ServiceRouter\ServiceRouterApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\ServiceRouter\network\RouterSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatModule.cpp">
+      <Filter>chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatModule_Network.cpp">
+      <Filter>chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.cpp">
+      <Filter>chat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.cpp">
+      <Filter>mail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule.cpp">
+      <Filter>mail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule_Network.cpp">
+      <Filter>mail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\friends\FriendLinkerHolder.cpp">
+      <Filter>friend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\friends\FriendModule.cpp">
+      <Filter>friend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\friends\FriendModule_Network.cpp">
+      <Filter>friend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\network\FriendServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\network\GateServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\ServiceRouter\network\MailServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\ServiceRouter\ServiceRouterApp.h" />
+    <ClInclude Include="..\source\ServiceRouter\network\RouterSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\config\RouterConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatModule.h">
+      <Filter>chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.h">
+      <Filter>chat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.h">
+      <Filter>mail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\mailmodule\MailModule.h">
+      <Filter>mail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\friends\FriendLinkerHolder.h">
+      <Filter>friend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\friends\FriendModule.h">
+      <Filter>friend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\network\FriendServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\network\GateServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\ServiceRouter\network\MailServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\ServiceRouter\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{491b1450-d94a-4186-9860-f912276ec899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chat">
+      <UniqueIdentifier>{19f8384e-2be7-4f89-af23-38426d46a9e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mail">
+      <UniqueIdentifier>{77b468b1-f523-4403-ac44-260de1a52db8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="friend">
+      <UniqueIdentifier>{43a97bb9-2600-43c2-9385-45be2f7117d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

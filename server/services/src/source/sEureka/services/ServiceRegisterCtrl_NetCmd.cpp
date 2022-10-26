@@ -198,10 +198,9 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 	pLink->send_to_service(ack);
 }
 
-void ServiceRegisterCtrl::on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease)
+void ServiceRegisterCtrl::on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease, S_INT_64 serviceid)
 {
-	Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(pro->msg_);
-	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid( syn->myiid());
+	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid( serviceid);
 	if (plink == 0)
 		return;
 

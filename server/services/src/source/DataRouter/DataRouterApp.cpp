@@ -18,20 +18,20 @@ DataRouterApp& DataRouterApp::getInstance()
 	return s_instance_;
 }
 
-RouterServiceApp::RouterServiceApp(): ServerAppBase()
+DataRouterApp::DataRouterApp(): ServerAppBase()
 ,acceptor_( 0)
 ,conf_( 0)
 ,is_ready_(false)
 {
 }
 
-RouterServiceApp::~RouterServiceApp()
+DataRouterApp::~DataRouterApp()
 {
 }
 
-bool RouterServiceApp::load_config()
+bool DataRouterApp::load_config()
 {
-	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_ROUTER))
+	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER))
 	{
 		logFatal(out_runtime, "RouterService load svr config file failed");
 		return false;
@@ -49,12 +49,12 @@ bool RouterServiceApp::load_config()
 	return true;
 }
 
-RouterConfig* RouterServiceApp::load_routerconfig()
+RouterConfig* DataRouterApp::load_routerconfig()
 {
 	RouterConfig* config = new RouterConfig();
 	std::unique_ptr<RouterConfig> xptr(config);
 
-	std::string fstr = "/system/router_config.xml";
+	std::string fstr = "/system/datarouter_config.xml";
 	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
 
 	tinyxml2::XMLDocument doc;
@@ -66,50 +66,28 @@ RouterConfig* RouterServiceApp::load_routerconfig()
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
 	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 
-	tinyxml2::XMLElement* ch = root->FirstChildElement("chathash");
-	if (ch == 0)
-		return 0;
-	config->chathash_plot_.chatmax = XmlUtil::GetXmlAttrInt(ch, "chatmax", 1);
-
-	ch = root->FirstChildElement("mailhash");
-	if (ch == 0)
-		return 0;
-	config->mailhash_plot_.mailmax = XmlUtil::GetXmlAttrInt(ch, "mailmax", 1);
-
-	ch = root->FirstChildElement("friendhash");
-	if (ch == 0)
-		return 0;
-	config->friendhash_plot_.frdmax = XmlUtil::GetXmlAttrInt(ch, "frdmax", 1);
-
-	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
-	if (rds == 0)
-		return 0;
-
 	config->redis_.load_from_xml(rds);
 
 	return xptr.release();
 }
 
-bool RouterServiceApp::pre_init()
+bool DataRouterApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 	gate_links_from_.init_holder();
-	chat_links_from_.init_holder();
-	mail_links_from_.init_holder();
-	friend_links_from_.init_holder();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_ROUTER,
+	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types);
 
 	return true;
 }
 
-bool RouterServiceApp::init_network()
+bool DataRouterApp::init_network()
 {
     int cpu = ConfigHelper::instance().get_cpunum();
 	//MutexAllocator::getInstance().init_allocator(500);
@@ -132,7 +110,7 @@ bool RouterServiceApp::init_network()
 	return true;
 }
 
-bool RouterServiceApp::init_finish()
+bool DataRouterApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
 
@@ -155,40 +133,37 @@ bool RouterServiceApp::init_finish()
 	return true;
 }
 
-void RouterServiceApp::uninit_network()
+void DataRouterApp::uninit_network()
 {
 	if (acceptor_.get())
 		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
 	gate_links_from_.uninit_holder();
-	chat_links_from_.uninit_holder();
-	mail_links_from_.uninit_holder();
-	friend_links_from_.uninit_holder();
 
 	session_from_.unint_sessions();
 
 	EurekaClusterClient::instance().uninit();
 }
 
-void RouterServiceApp::uninit()
+void DataRouterApp::uninit()
 {
 	acceptor_.reset();
 }
 
-void RouterServiceApp::register_timer()
+void DataRouterApp::register_timer()
 {
 	//regist timer for system
 	//auto connect
-	this->add_apptimer( 1000*15, boost::BOOST_BIND( &RouterServiceApp::auto_connect_timer, this,
+	this->add_apptimer( 1000*15, boost::BOOST_BIND( &DataRouterApp::auto_connect_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
-	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&RouterServiceApp::service_maintnce_check, this,
+	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&DataRouterApp::service_maintnce_check, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	EurekaClusterClient::instance().regist_timer();
 }
 
-void RouterServiceApp::main_loop()
+void DataRouterApp::main_loop()
 {
 	OSSystem::mOS->UpdateNowTick();
 	u64 st =OSSystem::mOS->GetTicks();
@@ -224,14 +199,14 @@ void RouterServiceApp::main_loop()
 	}
 }
 
-NetAcceptorEvent::NetSessionPtr RouterServiceApp::ask_free_netsession()
+NetAcceptorEvent::NetSessionPtr DataRouterApp::ask_free_netsession()
 {
 	ThreadLockWrapper guard(lock_);
 
 	return session_from_.ask_free_netsession_mth();
 }
 
-void RouterServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
+void DataRouterApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
 {
 	RouterSession *pointer = session_from_.get_sessionlink_by_session(session);
 	if (pointer == 0)
@@ -256,18 +231,18 @@ void RouterServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr sessio
 	}
 }
 
-void RouterServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
+void DataRouterApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
 }
 
-void RouterServiceApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
+void DataRouterApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
 {
 	ThreadLockWrapper guard(lock_);
 
 	session_from_.sessions_maintnce(tnow);
 }
 
-void RouterServiceApp::on_connection_timeout(RouterSession* session)
+void DataRouterApp::on_connection_timeout(RouterSession* session)
 {
 	ThreadLockWrapper guard(lock_);
 
@@ -278,7 +253,7 @@ void RouterServiceApp::on_connection_timeout(RouterSession* session)
 	logError(out_runtime, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
-void RouterServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
+void DataRouterApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
 {
 	RouterSession* psession = plink->get_session();
 	if (psession == 0)
@@ -299,29 +274,7 @@ void RouterServiceApp::on_disconnected_with_gateservice(GateServiceLinkFrom* pli
 	}
 }
 
-void RouterServiceApp::on_disconnected_with_chatservice(ChatServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		chat_links_from_.return_freelink(plink);
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-
-	}
-}
-
-void RouterServiceApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* msg)
+void DataRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* msg)
 {
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
 	if (plink == 0)
@@ -333,69 +286,7 @@ void RouterServiceApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* ms
 	plink->send_protocol(msg);
 }
 
-void RouterServiceApp::send_protocal_to_chat(int chathash, BasicProtocol* msg)
-{
-	chat_links_from_.send_mth_protocol(chathash, msg);
-}
-
-void RouterServiceApp::send_protocal_to_mail(int mailhash, BasicProtocol* msg)
-{
-	mail_links_from_.send_mth_protocol(mailhash, msg);
-}
-
-void RouterServiceApp::send_protocal_to_mail_circle(BasicProtocol* msg)
-{
-	mail_links_from_.send_mth_protocol_circle(msg);
-}
-
-void RouterServiceApp::send_protocal_to_friend(int frdhash, BasicProtocol* msg)
-{
-	friend_links_from_.send_mth_protocol(frdhash, msg);
-}
-
-void RouterServiceApp::on_disconnected_with_mailservice(MailServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		mail_links_from_.return_freelink(plink);
-
-		plink->reset();
-		psession->reset();
-
-		session_from_.return_freesession_mth(psession);
-	}
-}
-
-void RouterServiceApp::on_disconnected_with_frdservice(FriendServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		friend_links_from_.return_freelink(plink);
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-	}
-}
-
-void RouterServiceApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)
+void DataRouterApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)
 {
 
 }

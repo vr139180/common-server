@@ -6,20 +6,16 @@
 #include <boost/thread/tss.hpp>
 
 #include <cmsLib/ServerAppBase.h>
-#include <cmsLib/net/NetAcceptor.h>
-#include <cmsLib/net/NetAcceptorEvent.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/LinkToHolder.h>
 #include <gameLib/commons/SessionMthHolder.h>
 
+#include "network/FightRouterLinkTo.h"
+
 #include "config/GameConfig.h"
 
-#include "network/GameSession.h"
-#include "network/GateServiceLinkFrom.h"
-#include "network/FightRouterServiceLinkTo.h"
-
-class GameServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
+class GameServiceApp : public ServerAppBase, public IEurekaClientIntegrate
 {
 private:
 	GameServiceApp();
@@ -33,10 +29,6 @@ public:
 	void send_protocol_to_fightrouter(BasicProtocol* pro);
 
 public:
-
-	//------------------------------implement NetAcceptorEvent ------------------------------//
-	virtual NetAcceptorEvent::NetSessionPtr ask_free_netsession();
-	virtual void accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err);
 
 	//------------------------------implement IEurekaClientIntegrate-------------------------//
 	virtual ThreadLock& get_mth_threadlock() { return lock_; }
@@ -65,25 +57,17 @@ protected:
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
-	void service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
 	bool	is_ready_;
 	//network
-	std::shared_ptr<NetAcceptor>	acceptor_;
-	SessionMthHolder<GameSession>	session_from_;
-
-	LinkToHolder<FightRouterServiceLinkTo>	fightrouter_link_mth_;
+	LinkToHolder<FightRouterLinkTo>	fightrouter_link_mth_;
 
 	boost::scoped_ptr<GameConfig>	conf_;
 
 public:
-	void on_connection_timeout(GameSession* session);
-
-	void on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink);
-	void on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink);
-
-	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
+	void on_disconnected_with_fightrouter(FightRouterLinkTo* plink);
+	void on_fightrouter_regist_result(FightRouterLinkTo* plink);
 };
 
 #define svrApp (GameServiceApp::getInstance())

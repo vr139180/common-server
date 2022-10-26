@@ -4,7 +4,6 @@
 #include <gameLib/redis/global_redis_const.h>
 #include <gameLib/redis/user_redis_const.h>
 #include <gameLib/protobuf/Proto_all.h>
-#include <gameLib/protobuf/ProtoUtil.h>
 
 #include <gameLib/LogExt.h>
 #include "lobby/LobbyUser.h"
@@ -85,7 +84,6 @@ void CreateUserRoleCmd::run()
 	if (puser == 0) return;
 
 	PRO::User_RoleCreate_ack *ack = new PRO::User_RoleCreate_ack();
-	puser->set_usertoken(ack);
 
 	ack->set_result(0);
 	if (!success_)

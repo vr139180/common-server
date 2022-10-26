@@ -1,7 +1,7 @@
 #ifndef __LOADUSERROLESCMD_H__
 #define __LOADUSERROLESCMD_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
 
 #include "lobby/user/UserRoles.h"

@@ -1,7 +1,7 @@
 #ifndef __TASKRESULTLUA_H__
 #define __TASKRESULTLUA_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/lua/ScriptContext.h>
 
 class TaskResultLua

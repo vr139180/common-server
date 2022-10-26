@@ -1,7 +1,7 @@
 #ifndef __TASKREWARDMETA_H__
 #define __TASKREWARDMETA_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/util/XmlUtil.h>
 #include <gameLib/protobuf/cpp/task_system.pb.h>
 

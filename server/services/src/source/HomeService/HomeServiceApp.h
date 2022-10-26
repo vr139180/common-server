@@ -12,23 +12,17 @@
 #include <cmsLib/lua/ScriptContext.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
-#include <gameLib/commons/SessionMthHolder.h>
-#include <gameLib/commons/LinkFromHolder.h>
 #include <gameLib/commons/LinkToHolder.h>
-#include <gameLib/gatehome/GHUsersSeparate.h>
 
 #include "config/HomeConfig.h"
 
-#include "network/HomeSession.h"
-#include "network/GateServiceLinkFrom.h"
-#include "network/UnionClusterLinkTo.h"
-#include "network/ResClusterLinkTo.h"
-#include "network/FightRouterServiceLinkTo.h"
+#include "network/FightRouterLinkTo.h"
+#include "network/DataRouterLinkTo.h"
 
 #include "lobby/LobbyUser.h"
 #include "lobby/LobbyService.h"
 
-class HomeServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
+class HomeServiceApp : public ServerAppBase, public IEurekaClientIntegrate
 {
 private:
 	HomeServiceApp();
@@ -37,16 +31,15 @@ public:
 	static HomeServiceApp& getInstance();
 	virtual ~HomeServiceApp();
 
-	HomeConfig* get_config() { return conf_.get(); }
+	HomeConfig* get_config();
 
 	virtual void main_loop();
 
 public:
-	SessionMthHolder<HomeSession>* get_session_from() { return &session_from_; }
 	void send_protocol_to_res(BasicProtocol* pro);
 	void send_protocol_to_gate(BasicProtocol* pro);
 
-	void send_protocol_to_fightrouter(BasicProtocol* pro);
+	void send_protocol_to_fightrouter(PRO::ERK_SERVICETYPE to, BasicProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }
@@ -56,14 +49,7 @@ public:
 	boost::thread_specific_ptr<ScriptContext>& get_luacontext_thread() { return this->lua_inthread_; }
 	ScriptContext* get_luacontext() { return lua_inthread_.get(); }
 
-	LobbyService* get_lobbysvr_by_slot(int slot);
-	void post_syscmd_2_lobbyservice(S_INT_64 token, CommandBase* pcmd);
-
 public:
-
-	//------------------------------implement NetAcceptorEvent ------------------------------//
-	virtual NetAcceptorEvent::NetSessionPtr ask_free_netsession();
-	virtual void accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err);
 
 	//------------------------------implement IEurekaClientIntegrate-------------------------//
 	virtual ThreadLock& get_mth_threadlock() { return lock_; }
@@ -93,53 +79,33 @@ protected:
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
-	void service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
 	//注册成功之后标注为true
 	bool								is_ready_;
 
-	//lobby users placeholder
-	GHUsersSeparate<LobbyUser>			all_lobby_users_;
 	//lobby service
 	boost::scoped_array<LobbyService>	all_lobbys_;
-	int									lobby_nums_;
 
-	//gate
-	LinkFromHolder<GateServiceLinkFrom>		gate_link_map_;
-	GateServiceLinkFrom*					gate_link_;
 	//run in main thread
-	LinkToHolder<ResClusterLinkTo>			res_link_mth_;
+	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
 	//fight router
-	LinkToHolder<FightRouterServiceLinkTo>	fightrouter_link_mth_;
+	LinkToHolder<FightRouterLinkTo>		fightrouter_link_mth_;
 
 	//network
-	std::shared_ptr<NetAcceptor>			acceptor_;
-	SessionMthHolder<HomeSession>			session_from_;
-
 	boost::thread_specific_ptr<RedisClient>					redis_inthread_;
 	boost::thread_specific_ptr<RedisProtoBufThreadCache>	rpcache_inthread_;
 
 	boost::thread_specific_ptr<ScriptContext>	lua_inthread_;
 
-	boost::scoped_ptr<HomeConfig>		conf_;
+	boost::scoped_ptr<HomeConfig>				conf_;
 
 public:
-	void on_connection_timeout(HomeSession* session);
+	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
+	void on_datarouter_regist_result(DataRouterLinkTo* plink);
 
-	void on_disconnected_with_resservice(ResClusterLinkTo* plink);
-	void on_resservice_regist_result( ResClusterLinkTo* plink);
-
-	void on_disconnected_with_unionservice(UnionClusterLinkTo* plink);
-	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
-
-	void on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session);
-	void on_mth_gatebindhome_confirm(BasicProtocol* message, bool& autorelease);
-
-	void on_mth_userproxyslot_req(BasicProtocol* message, bool& autorelease);
-
-	void on_disconnected_with_fightrouterservice(FightRouterServiceLinkTo* plink);
-	void on_fightrouterservice_regist_result(FightRouterServiceLinkTo* plink);
+	void on_disconnected_with_fightrouterservice(FightRouterLinkTo* plink);
+	void on_fightrouterservice_regist_result(FightRouterLinkTo* plink);
 
 };
 
