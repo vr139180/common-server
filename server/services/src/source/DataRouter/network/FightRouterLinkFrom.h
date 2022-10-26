@@ -1,14 +1,14 @@
-#ifndef __GATESERVICELINKFROM_H__
-#define __GATESERVICELINKFROM_H__
+#ifndef __FIGHTROUTERLINKFROM_H__
+#define __FIGHTROUTERLINKFROM_H__
 
 #include <gameLib/commons/NetLinkFromBase.h>
 #include "network/RouterSession.h"
 
-class GateServiceLinkFrom : public NetLinkFromBase<RouterSession>
+class FightRouterLinkFrom : public NetLinkFromBase<RouterSession>
 {
 public:
-	GateServiceLinkFrom();
-	virtual ~GateServiceLinkFrom();
+	FightRouterLinkFrom();
+	virtual ~FightRouterLinkFrom();
 
 	virtual void registinfo_tolog( bool bregist =true);
 
@@ -26,4 +26,4 @@ protected:
 	SProtocolHead	s_head_;
 };
 
-#endif	//__GATESERVICELINKFROM_H__
+#endif	//__FIGHTROUTERLINKFROM_H__

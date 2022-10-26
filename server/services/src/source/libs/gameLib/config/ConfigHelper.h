@@ -31,7 +31,7 @@ public:
 	S_INT_64 get_appsn(){ return appsn_;}
 	S_INT_64 get_token() { return token_; }
 
-	int get_cpunum(){ return cpunum_;}
+	int get_netthreads(){ return nets_;}
 	std::string get_ip() { return ip_; }
 	int get_port() { return port_; }
 
@@ -53,7 +53,8 @@ private:
 	S_INT_64	appsn_;
 	S_INT_64	token_;
 
-	int cpunum_;
+	//网络线程数
+	int nets_;
 	std::string ip_;
 	int port_;
 

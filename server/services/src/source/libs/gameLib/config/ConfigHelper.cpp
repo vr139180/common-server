@@ -56,7 +56,7 @@ bool ConfigHelper::load_svrno()
 
 	tinyxml2::XMLElement* root =doc.RootElement();
 
-	cpunum_ =XmlUtil::GetXmlAttrInt( root, "cpu", 1);
+	nets_ =XmlUtil::GetXmlAttrInt( root, "neths", 2);
 	this->ip_ = XmlUtil::GetXmlAttrStr(root, "ip", "127.0.0.1");
 	port_ = XmlUtil::GetXmlAttrInt(root, "port", 8888);
 
@@ -100,7 +100,7 @@ bool ConfigHelper::load_globaloption()
 		return false;
 
 	tinyxml2::XMLElement* root = doc.RootElement();
-	global_.svrnum_min = XmlUtil::GetXmlAttrInt(root, "svrnum_min", 88);
+	global_.svrnum_min = XmlUtil::GetXmlAttrInt(root, "svrnum_min", 1000);
 
 	global_.eip = XmlUtil::GetXmlAttrStr(root, "eip", "127.0.0.1");
 	global_.eport = XmlUtil::GetXmlAttrInt(root, "eport", 8888);

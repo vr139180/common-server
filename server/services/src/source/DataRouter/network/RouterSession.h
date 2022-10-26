@@ -23,7 +23,7 @@ public:
 
 	void set_netlinkbase(NetLinkFromBase<RouterSession>* p) { parent_ = p; }
 
-	void send_protocol(BasicProtocol* pro);
+	void send_protocol(NetProtocol* pro);
 
 	void reset();
 	void force_close();
@@ -45,8 +45,8 @@ public:
 	virtual void on_connectedto_done() {}
 
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
-	virtual BasicProtocol* get_livekeep_msg();
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
+	virtual NetProtocol* get_livekeep_msg();
 
 protected:
 	SessionState					state_;

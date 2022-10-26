@@ -4,6 +4,7 @@
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/Version.h>
 #include <cmsLib/util/XmlUtil.h>
+#include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
@@ -31,16 +32,16 @@ DataRouterApp::~DataRouterApp()
 
 bool DataRouterApp::load_config()
 {
-	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER))
+	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER))
 	{
-		logFatal(out_runtime, "RouterService load svr config file failed");
+		logFatal(out_runtime, "DataRouter load svr config file failed");
 		return false;
 	}
 
 	RouterConfig* cf = load_routerconfig();
 	if (cf == 0)
 	{
-		logFatal(out_runtime, "RouterService load config file failed");
+		logFatal(out_runtime, "DataRouter load config file failed");
 		return false;
 	}
 
@@ -64,7 +65,10 @@ RouterConfig* DataRouterApp::load_routerconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
+
+	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
+	if (rds == 0)
+		return 0;
 
 	config->redis_.load_from_xml(rds);
 
@@ -74,14 +78,19 @@ RouterConfig* DataRouterApp::load_routerconfig()
 bool DataRouterApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
+
 	gate_links_from_.init_holder();
+	home_links_from_.init_holder();
+	state_links_from_.init_holder();
+	fightrouter_links_from_.init_holder();
+	servicerouter_links_from_.init_holder();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER,
+	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types);
 
 	return true;
@@ -89,19 +98,16 @@ bool DataRouterApp::pre_init()
 
 bool DataRouterApp::init_network()
 {
-    int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator(500);
-
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+    int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
-		logFatal( out_runtime, ("RouterService init network failed"));
+		logFatal( out_runtime, ("DataRouter init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_runtime, ("RouterService init network failed"));
+		logFatal( out_runtime, ("DataRouter init network failed"));
 		return false;
 	}
 
@@ -116,19 +122,19 @@ bool DataRouterApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("<<<<<<<<<<<<RouterService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<DataRouter listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("<<<<<<<<<<<<RouterService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<DataRouter listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
-    char app_title_[200];
-    sprintf(app_title_, "RouterService VER: %s REV: %s PID: %d PORT: %d\n",
+	std::string verfmt = ShareUtil::str_format<128>(
+		"DataRouter VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
-    OSSystem::mOS->SetAppTitle( app_title_ );
+	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 
 	return true;
 }
@@ -140,6 +146,10 @@ void DataRouterApp::uninit_network()
 	NetDriverX::getInstance().uninitNetDriver();
 
 	gate_links_from_.uninit_holder();
+	home_links_from_.uninit_holder();
+	state_links_from_.uninit_holder();
+	fightrouter_links_from_.uninit_holder();
+	servicerouter_links_from_.uninit_holder();
 
 	session_from_.unint_sessions();
 
@@ -220,14 +230,14 @@ void DataRouterApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, 
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_runtime, "me(RouterService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(DataRouter) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_runtime, "me(RouterService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(DataRouter) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -250,7 +260,7 @@ void DataRouterApp::on_connection_timeout(RouterSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_runtime, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "DataRouter listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void DataRouterApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
@@ -274,22 +284,85 @@ void DataRouterApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
 	}
 }
 
-void DataRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* msg)
-{
-	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
-	if (plink == 0)
-	{
-		delete msg;
-		return;
-	}
-
-	plink->send_protocol(msg);
-}
-
 void DataRouterApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)
 {
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
 
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		home_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
 }
 
+void DataRouterApp::on_disconnected_with_stateservice(StateServiceLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
 
+	plink->registinfo_tolog(false);
 
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		state_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
+void DataRouterApp::on_disconnected_with_fightrouter(FightRouterLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		fightrouter_links_from_.return_freelink(plink);
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
+void DataRouterApp::on_disconnected_with_servicerouter(ServiceRouterLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		servicerouter_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}

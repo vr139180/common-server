@@ -16,7 +16,6 @@
 
 #include "config/HomeConfig.h"
 
-#include "network/FightRouterLinkTo.h"
 #include "network/DataRouterLinkTo.h"
 
 #include "lobby/LobbyUser.h"
@@ -36,10 +35,7 @@ public:
 	virtual void main_loop();
 
 public:
-	void send_protocol_to_res(BasicProtocol* pro);
 	void send_protocol_to_gate(BasicProtocol* pro);
-
-	void send_protocol_to_fightrouter(PRO::ERK_SERVICETYPE to, BasicProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }
@@ -89,8 +85,6 @@ protected:
 
 	//run in main thread
 	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
-	//fight router
-	LinkToHolder<FightRouterLinkTo>		fightrouter_link_mth_;
 
 	//network
 	boost::thread_specific_ptr<RedisClient>					redis_inthread_;
@@ -103,10 +97,6 @@ protected:
 public:
 	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
 	void on_datarouter_regist_result(DataRouterLinkTo* plink);
-
-	void on_disconnected_with_fightrouterservice(FightRouterLinkTo* plink);
-	void on_fightrouterservice_regist_result(FightRouterLinkTo* plink);
-
 };
 
 #define svrApp (HomeServiceApp::getInstance())

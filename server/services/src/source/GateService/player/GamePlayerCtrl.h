@@ -28,7 +28,7 @@ public:
 	void start();
 	void stop();
 
-	void route_msg_to_player(NetProtocol* msg, int slot);
+	void route_msg_to_player(NetProtocol* msg);
 
 	void post_slot_cmd(CommandBase* cmd, int slot);
 	PlayerChannel* get_channel_by_slot(int slot);

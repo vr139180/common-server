@@ -12,6 +12,7 @@
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/SessionMthHolder.h>
 #include <gameLib/commons/LinkFromHolder.h>
+#include <gameLib/commons/LinkToHolder.h>
 
 #include "config/RouterConfig.h"
 
@@ -19,9 +20,9 @@
 
 #include "network/GateServiceLinkFrom.h"
 #include "network/ChatServiceLinkFrom.h"
-#include "network/HomeServiceLinkFrom.h"
 #include "network/MailServiceLinkFrom.h"
 #include "network/FriendServiceLinkFrom.h"
+#include "network/DataRouterLinkTo.h"
 
 #include "chatmodule/ChatLinkerHolder.h"
 #include "mailmodule/MailLinkerHolder.h"
@@ -100,6 +101,8 @@ protected:
 	std::shared_ptr<NetAcceptor>		acceptor_;
 	SessionMthHolder<RouterSession>		session_from_;
 
+	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
+
 	LinkFromHolder<GateServiceLinkFrom>	gate_links_from_;
 
 	ChatLinkerHolder				chat_links_from_;
@@ -113,7 +116,7 @@ public:
 
 	void on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session);
 
-	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
+	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 	void on_disconnected_with_chatservice(ChatServiceLinkFrom* plink);
 	void on_disconnected_with_mailservice(MailServiceLinkFrom* plink);

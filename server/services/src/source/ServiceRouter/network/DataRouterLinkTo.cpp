@@ -4,7 +4,7 @@
 
 #include <gameLib/LogExt.h>
 
-#include "HomeServiceApp.h"
+#include "ServiceRouterApp.h"
 
 DataRouterLinkTo::DataRouterLinkTo() :LinkToBase()
 , node_(0)
@@ -22,7 +22,7 @@ void DataRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
 	s_head_.router_balance_ = true;
-	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_HOME;
+	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
 	s_head_.to_broadcast_ = false;
 	s_head_.unpack_protocol_ = true;
@@ -67,7 +67,7 @@ void DataRouterLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_runtime, "me(HomeService) try to connect to DataRouter(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(ServiceRouter) try to connect to DataRouter(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -77,7 +77,7 @@ void DataRouterLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_runtime, "------me(HomeService) cant connect to DataRouter(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(ServiceRouter) cant connect to DataRouter(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -89,7 +89,7 @@ void DataRouterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_runtime, "++++++me(HomeService) connected to DataRouter(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(ServiceRouter) connected to DataRouter(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -107,7 +107,6 @@ void DataRouterLinkTo::on_connect_lost_netthread()
 void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
-
 	S_UINT_16 msgid = pro->get_msg();
 	if (msgid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK)
 	{
@@ -126,7 +125,7 @@ void DataRouterLinkTo::on_connected( bool success)
     {
 		//注册到home
 		PRO::Svr_ServiceBindService_req *req = new PRO::Svr_ServiceBindService_req();
-		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_HOME);
+		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
 		req->set_myiid(EurekaClusterClient::instance().get_myiid());
 		req->set_mytoken(EurekaClusterClient::instance().get_token());
 		req->set_toiid(node_->iid);
@@ -136,7 +135,7 @@ void DataRouterLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_runtime, "me(HomeService) can't connect to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(ServiceRouter) can't connect to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 
 		svrApp.on_disconnected_with_datarouter(this);
     }
@@ -146,7 +145,7 @@ void DataRouterLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_runtime, "me(HomeService) connected to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(ServiceRouter) connected to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		this->set_authed( true);
 
 		//sync your regist service
@@ -154,7 +153,7 @@ void DataRouterLinkTo::on_authed( bool success)
 	}
     else
     {
-		logInfo(out_runtime, "me(HomeService) connect to DataRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(ServiceRouter) connect to DataRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 
 }
@@ -164,7 +163,7 @@ void DataRouterLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_runtime, "me(HomeService) disconnect from DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(ServiceRouter) disconnect from DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
 	svrApp.on_disconnected_with_datarouter(this);
@@ -182,6 +181,7 @@ NetProtocol* DataRouterLinkTo::get_livekeep_msg()
 
 	SProtocolHead& head = pro->write_head();
 	head.router_balance_ = false;
+	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_DATAROUTER;
 
 	return pro;
 }

@@ -15,13 +15,15 @@ void GateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 {
 	if (type == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
 	{
-		//logDebug(out_runtime, "eureka subscrite service change, type:%d, new:%d, del:%d", type, nodes.size(), deliids.size());
 		datarouter_link_mth_.sync_eureka_services(nodes, deliids);
 	}
 	else if (type == NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER)
 	{
-		//logDebug(out_runtime, "eureka subscrite service change, type:%d, new:%d, del:%d", type, nodes.size(), deliids.size());
 		svrrouter_link_mth_.sync_eureka_services(nodes, deliids);
+	}
+	else if (type == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
+	{
+		fightrouter_link_mth_.sync_eureka_services(nodes, deliids);
 	}
 }
 

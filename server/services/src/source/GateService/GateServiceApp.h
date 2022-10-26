@@ -16,6 +16,7 @@
 
 #include "network/DataRouterLinkTo.h"
 #include "network/ServiceRouterLinkTo.h"
+#include "network/FightRouterLinkTo.h"
 
 #include "player/GamePlayer.h"
 
@@ -31,12 +32,15 @@ public:
 	virtual void main_loop();
 
 public:
-	void send_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 
-	void send_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void route_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
-	
+
+	void route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
+	void send_to_fightrouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
+
 public:
 
 	//------------------------------implement NetAcceptorEvent ------------------------------//
@@ -78,6 +82,7 @@ protected:
 
 	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
 	LinkToHolder<ServiceRouterLinkTo>	svrrouter_link_mth_;
+	LinkToHolder<FightRouterLinkTo>		fightrouter_link_mth_;
 
 	boost::scoped_ptr<GateConfig>	conf_;
 public:
@@ -86,6 +91,9 @@ public:
 
 	void on_disconnected_with_svrrouter(ServiceRouterLinkTo* plink);
 	void on_svrrouter_regist_result(ServiceRouterLinkTo* plink);
+
+	void on_disconnected_with_fightrouter(FightRouterLinkTo* plink);
+	void on_fightrouter_regist_result(FightRouterLinkTo* plink);
 
 public:
 	

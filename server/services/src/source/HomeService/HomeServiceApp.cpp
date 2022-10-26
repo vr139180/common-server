@@ -4,6 +4,7 @@
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/Version.h>
 #include <cmsLib/util/XmlUtil.h>
+#include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
@@ -110,8 +111,6 @@ bool HomeServiceApp::pre_init()
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
-	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_HOME,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
@@ -122,11 +121,8 @@ bool HomeServiceApp::pre_init()
 
 bool HomeServiceApp::init_network()
 {
-	int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator(500);
-
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+	int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
 		logFatal( out_runtime, ("HomeService init network failed"));
 		return false;
@@ -147,11 +143,11 @@ bool HomeServiceApp::init_finish()
 		all_lobbys_[ii].start();
 	}
 
-    char app_title_[200];
-    sprintf(app_title_, "HomeService VER: %s REV: %s PID: %d PORT: %d\n",
+	std::string verfmt = ShareUtil::str_format<128>(
+		"HomeService VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
-    OSSystem::mOS->SetAppTitle( app_title_ );
+	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 
 	return true;
 }
@@ -166,7 +162,6 @@ void HomeServiceApp::uninit_network()
 		all_lobbys_[ii].stop();
 
 	datarouter_link_mth_.free_all();
-	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
 }
@@ -221,16 +216,6 @@ void HomeServiceApp::main_loop()
 	}
 }
 
-void HomeServiceApp::send_protocol_to_fightrouter( PRO::ERK_SERVICETYPE to, BasicProtocol* pro)
-{
-	fightrouter_link_mth_.send_mth_protocol(to, pro);
-}
-
-void HomeServiceApp::send_protocol_to_res(BasicProtocol* pro)
-{
-	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_RES, pro);
-}
-
 void HomeServiceApp::send_protocol_to_gate(BasicProtocol* pro)
 {
 	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
@@ -239,17 +224,6 @@ void HomeServiceApp::send_protocol_to_gate(BasicProtocol* pro)
 void HomeServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
 	datarouter_link_mth_.connect_to();
-	fightrouter_link_mth_.connect_to();
-}
-
-void HomeServiceApp::on_fightrouterservice_regist_result(FightRouterLinkTo* plink)
-{
-	fightrouter_link_mth_.on_linkto_regist_result(plink);
-}
-
-void HomeServiceApp::on_disconnected_with_fightrouterservice(FightRouterLinkTo* plink)
-{
-	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }
 
 void HomeServiceApp::on_datarouter_regist_result(DataRouterLinkTo* plink)

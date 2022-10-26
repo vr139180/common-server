@@ -17,8 +17,8 @@ public:
 		case NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER:
 			ret = "datarouter";
 			break;
-		case NETSERVICE_TYPE::ERK_SERVICE_RES:
-			ret = "res";
+		case NETSERVICE_TYPE::ERK_SERVICE_STATE:
+			ret = "state";
 			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_GATE:
 			ret = "gate";

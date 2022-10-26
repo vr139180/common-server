@@ -143,9 +143,9 @@
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule.cpp" />
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule_Network.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.cpp" />
+    <ClCompile Include="..\source\ServiceRouter\network\DataRouterLinkTo.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\FriendServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\GateServiceLinkFrom.cpp" />
-    <ClCompile Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\MailServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\RouterSession.cpp" />
     <ClCompile Include="..\source\ServiceRouter\ServiceRouterApp.cpp" />
@@ -161,9 +161,9 @@
     <ClInclude Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.h" />
     <ClInclude Include="..\source\ServiceRouter\mailmodule\MailModule.h" />
     <ClInclude Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.h" />
+    <ClInclude Include="..\source\ServiceRouter\network\DataRouterLinkTo.h" />
     <ClInclude Include="..\source\ServiceRouter\network\FriendServiceLinkFrom.h" />
     <ClInclude Include="..\source\ServiceRouter\network\GateServiceLinkFrom.h" />
-    <ClInclude Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.h" />
     <ClInclude Include="..\source\ServiceRouter\network\MailServiceLinkFrom.h" />
     <ClInclude Include="..\source\ServiceRouter\network\RouterSession.h" />
     <ClInclude Include="..\source\ServiceRouter\ServiceRouterApp.h" />

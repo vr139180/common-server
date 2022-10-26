@@ -24,6 +24,7 @@ void ServiceRouterLinkTo::init_protocolhead()
 	//设置通用协议头
 	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
 	s_head_.to_broadcast_ = false;
 	s_head_.unpack_protocol_ = true;
 }
@@ -89,7 +90,7 @@ void ServiceRouterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_runtime, "++++++me(GateService) connected to Router Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to ServiceRouter(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -124,8 +125,7 @@ void ServiceRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 	}
 	else
 	{
-		int slot = pro->head_.get_token_slot();
-		GamePlayerCtrl::instance().route_msg_to_player(p_msg.release(), slot);
+		GamePlayerCtrl::instance().route_msg_to_player(p_msg.release());
 	}
 }
 
@@ -145,7 +145,7 @@ void ServiceRouterLinkTo::on_connected( bool success)
     }
     else
     {
-		logError(out_runtime, "me(GateService) can't connect to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(GateService) can't connect to ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 
 		svrApp.on_disconnected_with_svrrouter(this);
     }
@@ -155,7 +155,7 @@ void ServiceRouterLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_runtime, "me(GateService) connected to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connected to ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		this->set_authed( true);
 
 		//sync your regist service
@@ -163,7 +163,7 @@ void ServiceRouterLinkTo::on_authed( bool success)
 	}
     else
     {
-		logInfo(out_runtime, "me(GateService) connect to DataRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) connect to ServiceRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 
 }
@@ -173,7 +173,7 @@ void ServiceRouterLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_runtime, "me(GateService) disconnect from DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(GateService) disconnect from ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
 	svrApp.on_disconnected_with_svrrouter(this);

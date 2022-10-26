@@ -16,6 +16,12 @@
     <ClCompile Include="..\source\DataRouter\network\StateServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\DataRouter\network\FightRouterLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\DataRouter\network\ServiceRouterLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\DataRouter\DataRouterApp.h" />
@@ -32,6 +38,12 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\DataRouter\network\StateServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\DataRouter\network\FightRouterLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\DataRouter\network\ServiceRouterLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/Version.h>
 #include <cmsLib/util/XmlUtil.h>
+#include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
@@ -66,7 +67,6 @@ GateConfig* GateServiceApp::load_gateconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 
 	return xptr.release();
 }
@@ -80,6 +80,7 @@ bool GateServiceApp::pre_init()
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
@@ -92,11 +93,11 @@ bool GateServiceApp::pre_init()
 
 bool GateServiceApp::init_network()
 {
-	int cpu = ConfigHelper::instance().get_cpunum();
 	//MutexAllocator::getInstance().init_allocator(1000);
+	//int cpu = boost::thread::hardware_concurrency();
 
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+	int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
 		logFatal( out_runtime, ("GateService init network failed"));
 		return false;
@@ -129,11 +130,11 @@ bool GateServiceApp::init_finish()
 
 	GamePlayerCtrl::instance().start();
 
-    char app_title_[200];
-    sprintf(app_title_, "GateService VER: %s REV: %s PID: %d PORT: %d\n",
+	std::string verfmt = ShareUtil::str_format<128>(
+		"GateService VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
-    OSSystem::mOS->SetAppTitle( app_title_ );
+    OSSystem::mOS->SetAppTitle( verfmt.c_str());
 
 	return true;
 }
@@ -148,6 +149,7 @@ void GateServiceApp::uninit_network()
 
 	datarouter_link_mth_.free_all();
 	svrrouter_link_mth_.free_all();
+	fightrouter_link_mth_.free_all();
 
 	EurekaClusterClient::instance().uninit();
 	GamePlayerCtrl::instance().uninit_gameplayerctrl();
@@ -210,15 +212,6 @@ void GateServiceApp::main_loop()
 
 NetAcceptorEvent::NetSessionPtr GateServiceApp::ask_free_netsession()
 {
-	/*
-	if (is_bindhome() == false)
-	{
-		NetAcceptorEvent::NetSessionPtr new_session;
-		return new_session;
-	}
-	*/
-
-	//logDebug(out_runtime, "gate service listen a client connection request.....");
 	GamePlayer* player = GamePlayerCtrl::instance().ask_free_slot();
 	if (player == 0)
 	{
@@ -251,7 +244,7 @@ void GateServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	}
 }
 
-void GateServiceApp::send_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+void GateServiceApp::route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
 	datarouter_link_mth_.send_mth_protocol(to, pro);
 }
@@ -261,7 +254,7 @@ void GateServiceApp::send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* 
 	datarouter_link_mth_.send_mth_protocol(to, msg);
 }
 
-void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+void GateServiceApp::route_to_servicerouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
 	svrrouter_link_mth_.send_mth_protocol(to, pro);
 }
@@ -271,11 +264,22 @@ void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtoco
 	svrrouter_link_mth_.send_mth_protocol(to, msg);
 }
 
+void GateServiceApp::route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+{
+	fightrouter_link_mth_.send_mth_protocol(to, pro);
+}
+
+void GateServiceApp::send_to_fightrouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
+{
+	fightrouter_link_mth_.send_mth_protocol(to, msg);
+}
+
 void GateServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
 	//connect to router
 	datarouter_link_mth_.connect_to();
 	svrrouter_link_mth_.connect_to();
+	fightrouter_link_mth_.connect_to();
 }
 
 void GateServiceApp::on_datarouter_regist_result( DataRouterLinkTo* plink)
@@ -296,4 +300,14 @@ void GateServiceApp::on_svrrouter_regist_result(ServiceRouterLinkTo* plink)
 void GateServiceApp::on_disconnected_with_svrrouter(ServiceRouterLinkTo* plink)
 {
 	svrrouter_link_mth_.on_linkto_disconnected(plink);
+}
+
+void GateServiceApp::on_disconnected_with_fightrouter(FightRouterLinkTo* plink)
+{
+	fightrouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void GateServiceApp::on_fightrouter_regist_result(FightRouterLinkTo* plink)
+{
+	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }

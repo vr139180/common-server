@@ -43,10 +43,10 @@
     <ClCompile Include="..\source\ServiceRouter\network\GateServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.cpp">
+    <ClCompile Include="..\source\ServiceRouter\network\MailServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\ServiceRouter\network\MailServiceLinkFrom.cpp">
+    <ClCompile Include="..\source\ServiceRouter\network\DataRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,10 +85,10 @@
     <ClInclude Include="..\source\ServiceRouter\network\GateServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\ServiceRouter\network\HomeServiceLinkFrom.h">
+    <ClInclude Include="..\source\ServiceRouter\network\MailServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\ServiceRouter\network\MailServiceLinkFrom.h">
+    <ClInclude Include="..\source\ServiceRouter\network\DataRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

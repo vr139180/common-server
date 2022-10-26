@@ -15,7 +15,7 @@ enum ERK_SERVICETYPE{
 	//数据网关 ,gate,home,login的负载均衡
 	ERK_SERVICE_DATAROUTER = 2;
 	//资源分配
-	ERK_SERVICE_RES = 3;
+	ERK_SERVICE_STATE = 3;
 	//客户端直连网关
 	ERK_SERVICE_GATE = 4;
 	//部署任务系统，购买等逻辑

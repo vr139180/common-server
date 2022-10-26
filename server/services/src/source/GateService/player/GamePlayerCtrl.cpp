@@ -158,8 +158,9 @@ void GamePlayerCtrl::post_slot_cmd(CommandBase* cmd, int slot)
 	all_channels_[pindex].regist_syscmd(cmd);
 }
 
-void GamePlayerCtrl::route_msg_to_player(NetProtocol* msg, int slot)
+void GamePlayerCtrl::route_msg_to_player(NetProtocol* msg)
 {
+	int slot = msg->head_.get_token_slot();
 	int pindex = get_pieceindex_from_slot(slot);
 	if (pindex == -1)
 	{

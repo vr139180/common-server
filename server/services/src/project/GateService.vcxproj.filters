@@ -4,9 +4,6 @@
     <ClCompile Include="..\source\GateService\GateServiceApp.cpp" />
     <ClCompile Include="..\source\GateService\GateServiceApp_NetCmd.cpp" />
     <ClCompile Include="..\source\GateService\sMain.cpp" />
-    <ClCompile Include="..\source\GateService\network\GateSession.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\GateService\player\GamePlayer.cpp">
       <Filter>player</Filter>
     </ClCompile>
@@ -34,11 +31,14 @@
     <ClCompile Include="..\source\GateService\network\ServiceRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\GateService\network\FightRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GateService\player\GamePlayer_NetSession.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\GateService\network\GateSession.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\GateService\GateServiceApp.h" />
     <ClInclude Include="..\source\GateService\config\GateConfig.h">
       <Filter>config</Filter>
@@ -56,6 +56,9 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\GateService\network\ServiceRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GateService\network\FightRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

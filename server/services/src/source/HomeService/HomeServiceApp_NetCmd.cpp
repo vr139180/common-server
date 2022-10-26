@@ -15,11 +15,6 @@ void HomeServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	{
 		datarouter_link_mth_.sync_eureka_services(nodes, deliids);
 	}
-	else if (type == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
-	{
-		//logDebug(out_runtime, "eureka subscrite service change, type:%d, new:%d, del:%d", type, nodes.size(), deliids.size());
-		fightrouter_link_mth_.sync_eureka_services(nodes, deliids);
-	}
 }
 
 void HomeServiceApp::mth_service_registed(S_INT_64 sid)

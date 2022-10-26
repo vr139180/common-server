@@ -33,9 +33,9 @@ public enum ERK_SERVICETYPE
    *资源分配
    * </pre>
    *
-   * <code>ERK_SERVICE_RES = 3;</code>
+   * <code>ERK_SERVICE_STATE = 3;</code>
    */
-  ERK_SERVICE_RES(3),
+  ERK_SERVICE_STATE(3),
   /**
    * <pre>
    *客户端直连网关
@@ -160,9 +160,9 @@ public enum ERK_SERVICETYPE
    *资源分配
    * </pre>
    *
-   * <code>ERK_SERVICE_RES = 3;</code>
+   * <code>ERK_SERVICE_STATE = 3;</code>
    */
-  public static final int ERK_SERVICE_RES_VALUE = 3;
+  public static final int ERK_SERVICE_STATE_VALUE = 3;
   /**
    * <pre>
    *客户端直连网关
@@ -292,7 +292,7 @@ public enum ERK_SERVICETYPE
       case 0: return ERK_SERVICE_NONE;
       case 1: return ERK_SERVICE_EUREKA;
       case 2: return ERK_SERVICE_DATAROUTER;
-      case 3: return ERK_SERVICE_RES;
+      case 3: return ERK_SERVICE_STATE;
       case 4: return ERK_SERVICE_GATE;
       case 5: return ERK_SERVICE_HOME;
       case 6: return ERK_SERVICE_LOGIN;

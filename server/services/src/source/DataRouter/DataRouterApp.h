@@ -20,6 +20,8 @@
 #include "network/GateServiceLinkFrom.h"
 #include "network/HomeServiceLinkFrom.h"
 #include "network/StateServiceLinkFrom.h"
+#include "network/ServiceRouterLinkFrom.h"
+#include "network/FightRouterLinkFrom.h"
 
 class DataRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -35,21 +37,10 @@ public:
 	RouterConfig* get_config() { return conf_.get(); }
 
 public:
-	void send_protocal_to_gate( S_INT_64 gateiid, BasicProtocol* msg);
 	template<class T>
 	void broad_protocal_to_gate(T* msg) {
 		gate_links_from_.broadcast<T>(msg);
 	}
-
-	void send_protocal_to_chat(int chathash, BasicProtocol* msg);
-	void send_protocal_to_mail(int mailhash, BasicProtocol* msg);
-	void send_protocal_to_mail_circle( BasicProtocol* msg);
-	template<class T>
-	void broad_protocal_to_mails(T* msg) {
-		mail_links_from_.broadcast<T>(msg);
-	}
-
-	void send_protocal_to_friend(int frdhash, BasicProtocol* msg);
 
 public:
 
@@ -88,23 +79,30 @@ protected:
 
 protected:
 	//注册成功之后标注为true
-	bool							is_ready_;
+	bool								is_ready_;
 
 	//network
 	std::shared_ptr<NetAcceptor>		acceptor_;
 	SessionMthHolder<RouterSession>		session_from_;
 
-	LinkFromHolder<GateServiceLinkFrom>	gate_links_from_;
+	LinkFromHolder<GateServiceLinkFrom>		gate_links_from_;
+	LinkFromHolder<HomeServiceLinkFrom>		home_links_from_;
+	LinkFromHolder<StateServiceLinkFrom>	state_links_from_;
+	LinkFromHolder<FightRouterLinkFrom>		fightrouter_links_from_;
+	LinkFromHolder<ServiceRouterLinkFrom>	servicerouter_links_from_;
 
 	boost::scoped_ptr<RouterConfig>	conf_;
 
 public:
 	void on_connection_timeout(RouterSession* session);
 
-	void on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session);
+	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
 
 	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
+	void on_disconnected_with_stateservice(StateServiceLinkFrom* plink);
+	void on_disconnected_with_fightrouter(FightRouterLinkFrom* plink);
+	void on_disconnected_with_servicerouter(ServiceRouterLinkFrom* plink);
 };
 
 #define svrApp (DataRouterApp::getInstance())

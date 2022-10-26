@@ -164,7 +164,6 @@
     <ClCompile Include="..\source\HomeService\lobby\user\UserRoles.cpp" />
     <ClCompile Include="..\source\HomeService\lobby\user\UserTasks.cpp" />
     <ClCompile Include="..\source\HomeService\network\DataRouterLinkTo.cpp" />
-    <ClCompile Include="..\source\HomeService\network\FightRouterLinkTo.cpp" />
     <ClCompile Include="..\source\HomeService\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,7 +186,6 @@
     <ClInclude Include="..\source\HomeService\lobby\user\UserRoles.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserTasks.h" />
     <ClInclude Include="..\source\HomeService\network\DataRouterLinkTo.h" />
-    <ClInclude Include="..\source\HomeService\network\FightRouterLinkTo.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\HomeService\ReadMe.txt" />

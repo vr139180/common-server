@@ -24,6 +24,7 @@ void DataRouterLinkTo::init_protocolhead()
 	//设置通用协议头
 	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
 	s_head_.to_broadcast_ = false;
 	s_head_.unpack_protocol_ = true;
 }
@@ -67,7 +68,7 @@ void DataRouterLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_runtime, "me(GateService) try to connect to RouterService(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(GateService) try to connect to DataRouter(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -77,7 +78,7 @@ void DataRouterLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_runtime, "------me(GateService) cant connect to Router Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GateService) cant connect to DataRouter(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -89,7 +90,7 @@ void DataRouterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_runtime, "++++++me(GateService) connected to Router Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GateService) connected to DataRouter(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -119,8 +120,7 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 	}
 	else
 	{
-		int slot = pro->head_.get_token_slot();
-		GamePlayerCtrl::instance().route_msg_to_player(p_msg.release(), slot);
+		GamePlayerCtrl::instance().route_msg_to_player(p_msg.release());
 	}
 }
 
@@ -136,7 +136,7 @@ void DataRouterLinkTo::on_connected( bool success)
 		req->set_toiid(node_->iid);
 		req->set_totoken(node_->token);
 
-		this->send_netprotocol(PRO::ERK_SERVICE_EUREKA, req);
+		this->send_netprotocol(PRO::ERK_SERVICE_DATAROUTER, req);
     }
     else
     {

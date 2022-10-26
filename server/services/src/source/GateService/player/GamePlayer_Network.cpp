@@ -36,7 +36,7 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		if( !is_in_rolerange())
 			return;
 
-		svrApp.send_to_datarouter( PRO::ERK_SERVICE_HOME, p_msg.release());
+		svrApp.route_to_datarouter( PRO::ERK_SERVICE_HOME, p_msg.release());
 	}
 	else
 	{
@@ -45,27 +45,27 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 
 		if(msgid > PRO::CHAT_PROTYPE::CHAT_MSG_BEGIN && msgid < PRO::CHAT_PROTYPE::CHAT_MSG_END)
 		{
-			svrApp.send_to_datarouter(PRO::ERK_SERVICE_CHAT, p_msg.release());
+			svrApp.route_to_servicerouter(PRO::ERK_SERVICE_CHAT, p_msg.release());
 			return;
 		}
 		else if (msgid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && msgid < PRO::MAIL_PROTYPE::MAIL_MSG_END)
 		{
-			svrApp.send_to_datarouter(PRO::ERK_SERVICE_MAIL, p_msg.release());
+			svrApp.route_to_servicerouter(PRO::ERK_SERVICE_MAIL, p_msg.release());
 			return;
 		}
 		else if (msgid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && msgid < PRO::FRIEND_PROTYPE::FRIEND_MSG_END)
 		{
-			svrApp.send_to_datarouter(PRO::ERK_SERVICE_FRIEND, p_msg.release());
+			svrApp.route_to_servicerouter(PRO::ERK_SERVICE_FRIEND, p_msg.release());
 			return;
 		}
 		else if (msgid > PRO::TASK_PROTYPE::TASK_MSG_BEGIN && msgid < PRO::TASK_PROTYPE::TASK_MSG_END)
 		{
-			svrApp.send_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
+			svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 			return;
 		}
-		else
+		else //default, route to datarouter
 		{
-			svrApp.send_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
+			svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 		}
 	}
 }

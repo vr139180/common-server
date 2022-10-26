@@ -7,17 +7,23 @@
 class HomeServiceLinkFrom : public NetLinkFromBase<RouterSession>
 {
 public:
-	HomeServiceLinkFrom():NetLinkFromBase<RouterSession>(),sn_(0){}
+	HomeServiceLinkFrom();
+	virtual ~HomeServiceLinkFrom();
 
-	virtual int get_serverindex(){ return 0; }
 	virtual void registinfo_tolog( bool bregist =true);
 
 	virtual void on_connect_lost_netthread();
-	virtual void on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro);
+	virtual void on_recv_protocol_netthread( NetProtocol* pro);
 	virtual void force_linkclose();
 
+	virtual void init_protocolhead();
+	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
+
+public:
+	void send_netprotocol(BasicProtocol* msg);
+
 protected:
-	int sn_;
+	SProtocolHead	s_head_;
 };
 
 #endif	//__HOMESERVICELINKFROM_H__

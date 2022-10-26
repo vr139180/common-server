@@ -88,9 +88,6 @@
     <ClCompile Include="..\source\HomeService\network\DataRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\HomeService\network\FightRouterLinkTo.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\HomeService\HomeServiceApp.h" />
@@ -146,9 +143,6 @@
       <Filter>lobby\user</Filter>
     </ClInclude>
     <ClInclude Include="..\source\HomeService\network\DataRouterLinkTo.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\HomeService\network\FightRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

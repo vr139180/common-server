@@ -136,6 +136,7 @@
     <ClCompile Include="..\source\GateService\GateServiceApp.cpp" />
     <ClCompile Include="..\source\GateService\GateServiceApp_NetCmd.cpp" />
     <ClCompile Include="..\source\GateService\network\DataRouterLinkTo.cpp" />
+    <ClCompile Include="..\source\GateService\network\FightRouterLinkTo.cpp" />
     <ClCompile Include="..\source\GateService\network\ServiceRouterLinkTo.cpp" />
     <ClCompile Include="..\source\GateService\player\GamePlayer.cpp" />
     <ClCompile Include="..\source\GateService\player\GamePlayerCtrl.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="..\source\GateService\config\GateConfig.h" />
     <ClInclude Include="..\source\GateService\GateServiceApp.h" />
     <ClInclude Include="..\source\GateService\network\DataRouterLinkTo.h" />
+    <ClInclude Include="..\source\GateService\network\FightRouterLinkTo.h" />
     <ClInclude Include="..\source\GateService\network\ServiceRouterLinkTo.h" />
     <ClInclude Include="..\source\GateService\player\GamePlayer.h" />
     <ClInclude Include="..\source\GateService\player\GamePlayerCtrl.h" />

@@ -3,6 +3,7 @@
 #include <cmsLib/base/OSSystem.h>
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/Version.h>
+#include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/LogExt.h>
 #include <gameLib/config/ConfigHelper.h>
@@ -57,11 +58,8 @@ bool sEurekaApp::pre_init()
 
 bool sEurekaApp::init_network()
 {
-    int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator( cpu*10);
-
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+    int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
 		logFatal(out_runtime, ("sEureka init network failed"));
 		return false;
@@ -106,11 +104,11 @@ bool sEurekaApp::init_finish()
 		return false;
     }
 
-    char app_title_[200];
-    sprintf(app_title_, "sEureka VER: %s REV: %s PID: %d PORT: %d\n",
+	std::string verfmt = ShareUtil::str_format<128>(
+		"sEureka VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
-    OSSystem::mOS->SetAppTitle( app_title_ );
+	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 
 	return true;
 }
