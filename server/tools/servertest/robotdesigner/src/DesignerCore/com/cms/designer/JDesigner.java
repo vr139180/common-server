@@ -14,9 +14,9 @@ public class JDesigner
 
 	public JDesigner()
 	{
-		//入口
+		//鍏ュ彛
 		LogoWindow.showLogoWindow();
-		//加载资源s
+		//鍔犺浇璧勬簮s
 		ResourceUtil.init("com.cms.designer.resource");
 		showDesignerMainFrame();
 		LogoWindow.disposeLogoWindow();

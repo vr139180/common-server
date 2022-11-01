@@ -49,7 +49,7 @@ public class OBEWorkFlowFrame extends OBEInternalFrame
 
 	private OBEViewPopup viewPopup;
 	
-	//¼àÌıÆ÷
+	//ç›‘å¬å™¨
 	private CreateTargetListener targetListener =null;
 	private CreateLineTransitionListener lineListener =null;
 	private GraphEditListener editListener =null;
@@ -70,7 +70,7 @@ public class OBEWorkFlowFrame extends OBEInternalFrame
 	}
 
 	/**
-	 * ³õÊ¼»¯½çÃæ
+	 * åˆå§‹åŒ–ç•Œé¢
 	 */
 	private void init1()
 	{
@@ -79,7 +79,7 @@ public class OBEWorkFlowFrame extends OBEInternalFrame
 		handButton = new JButton();
 		handButton.setFocusPainted(false);
 		handButton.setIcon( iconManager.getIcon("hand.gif"));
-		//ËõÂÔÍ¼
+		//ç¼©ç•¥å›¾
 		handButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
@@ -94,11 +94,11 @@ public class OBEWorkFlowFrame extends OBEInternalFrame
 
 		this.getContentPane().add(scrollPane);
 		
-		//Ëõ·Å²Ëµ¥³õÊ¼»¯
+		//ç¼©æ”¾èœå•åˆå§‹åŒ–
 		viewPopup =
 			new OBEViewPopup( getDesignerParent(), this.getScrollPane().getViewport(), graph);
 		
-		//ÉèÖÃ¼àÌıÆ÷
+		//è®¾ç½®ç›‘å¬å™¨
 		targetListener =new CreateTargetListener( graph, getModule());
 		graph.addMouseListener( targetListener);
 		graph.addMouseMotionListener( targetListener);

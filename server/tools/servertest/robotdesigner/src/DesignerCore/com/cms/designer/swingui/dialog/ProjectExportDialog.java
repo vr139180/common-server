@@ -36,7 +36,7 @@ public class ProjectExportDialog extends JDialog
 
 	private int result = CANCEL_OPTION;
 
-	//��Ŀ�༭
+	//项目编辑
 	private ProjectExportEditor editor;
 
 	private JButton okButton;

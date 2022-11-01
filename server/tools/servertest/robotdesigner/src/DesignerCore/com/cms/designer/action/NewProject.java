@@ -14,7 +14,7 @@ import com.cms.designer.util.OBETreeData;
 
 /**
  * @author zagio
- * ´´½¨ĞÂµÄÏîÄ¿
+ * åˆ›å»ºæ–°çš„é¡¹ç›®
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
  */
@@ -33,7 +33,7 @@ public class NewProject extends OBEStandardAction
 			if (d.showDialog() == NewProjectDialog.APPROVE_OPTION)
 			{
 				ProjectData project =d.getProjectData();
-				//±£´æÏîÄ¿ĞÅÏ¢
+				//ä¿å­˜é¡¹ç›®ä¿¡æ¯
 				ProjectManager pm =OBEModuleManager.getInstance().getProjectManager();
 				OBEModuleData md =pm.newProject( project);
 
@@ -43,7 +43,7 @@ public class NewProject extends OBEStandardAction
 
 				parent.getTree().addProjectNode( td);
 				
-				//±£´æÏîÄ¿ĞÅÏ¢µ½ÊôĞÔÎÄ¼ş
+				//ä¿å­˜é¡¹ç›®ä¿¡æ¯åˆ°å±æ€§æ–‡ä»¶
 				parent.getWorkSpaceManager().saveProjects();
 			}
 		}

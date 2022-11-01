@@ -25,7 +25,7 @@ import com.cms.designer.util.ConstValue;
  */
 public class ButtonManager implements PropertyNames
 {
-	//Í¼±ê×ÊÔ´
+	//å›¾æ ‡èµ„æº
 	private IconManager iconManager = com.cms.designer.util.ResourceUtil.getIconManager();
 	public static String IDE_TOOLBAR ="wf.ide.basic.toolbar";
 
@@ -36,20 +36,20 @@ public class ButtonManager implements PropertyNames
 	
 	private Hashtable buttons =null;
 
-	//ÎÄ¼ş²Ëµ¥
+	//æ–‡ä»¶èœå•
 	private JButton newButton;
 	private JButton openButton;
 	private JButton saveButton;
 	private JButton saveAsButton;
 
-	//±à¼­²Ëµ¥
+	//ç¼–è¾‘èœå•
 	private JButton cutButton;
 	private JButton copyButton;
 	private JButton pasteButton;
 	private JButton redoButton;
 	private JButton undoButton;
 	
-	//ÊÓÍ¼²Ëµ¥
+	//è§†å›¾èœå•
 	private JButton zoomInButton;
 	private JButton zoomOutButton;
 	private JButton shapeAlignLeftButton;
@@ -59,7 +59,7 @@ public class ButtonManager implements PropertyNames
 	private JButton shapeAlignBottomButton;
 	private JButton shapeAlignMiddleButton;
 
-	//ÎÄ±¾²Ù×÷
+	//æ–‡æœ¬æ“ä½œ
 	private JButton textPositionLeftButton;
 	private JButton textPositionRightButton;
 	private JButton textPositionCenterButton;
@@ -71,20 +71,20 @@ public class ButtonManager implements PropertyNames
 	}
 	
 	/**
-	 * ³õÊ¼»¯¹¤¾ßÌõ
+	 * åˆå§‹åŒ–å·¥å…·æ¡
 	 */
 	private void init()
 	{
 		buttons = new Hashtable();
 		Map actions = parent.getActions();
 
-		//ÎÄ¼ş²Ëµ¥
+		//æ–‡ä»¶èœå•
 		newButton = createButton( ConstValue.CoreFileNew, actions.get( ConstValue.CoreFileNew));
 		openButton = createButton( ConstValue.CoreFileOpen, actions.get( ConstValue.CoreFileOpen));
 		saveButton = createButton( ConstValue.CoreFileSave, actions.get( ConstValue.CoreFileSave));
 		saveAsButton = createButton( ConstValue.CoreFileSaveas, actions.get( ConstValue.CoreFileSaveas));
 
-		//±à¼­²Ëµ¥
+		//ç¼–è¾‘èœå•
 		cutButton = createButton( ConstValue.CoreEditCut, actions.get( ConstValue.CoreEditCut));
 		copyButton = createButton( ConstValue.CoreEditCopy, actions.get( ConstValue.CoreEditCopy));
 		pasteButton = createButton( ConstValue.CoreEditPaste, actions.get( ConstValue.CoreEditPaste));
@@ -96,7 +96,7 @@ public class ButtonManager implements PropertyNames
 		copyButton.setEnabled(false);
 		pasteButton.setEnabled(false);
 		
-		//ÊÓÍ¼²Ëµ¥
+		//è§†å›¾èœå•
 		zoomInButton = createButton(ConstValue.CoreViewZoomin, actions.get(ConstValue.CoreViewZoomin));
 		zoomOutButton = createButton(ConstValue.CoreViewZoomout, actions.get(ConstValue.CoreViewZoomout));
 		shapeAlignLeftButton =
@@ -115,7 +115,7 @@ public class ButtonManager implements PropertyNames
 		zoomInButton.setEnabled(false);
 		zoomOutButton.setEnabled(false);
 		
-		//ÎÄ±¾²Ù×÷
+		//æ–‡æœ¬æ“ä½œ
 		textPositionLeftButton =
 			createButton(TEXTPOSITIONLEFT, actions.get("textPosition.left"));
 		textPositionCenterButton =
@@ -127,7 +127,7 @@ public class ButtonManager implements PropertyNames
 	}
 	
 	/**
-	 * ÉèÖÃ°´Å¥ÊôĞÔ
+	 * è®¾ç½®æŒ‰é’®å±æ€§
 	 */
 	public void loadResources()
 	{
@@ -192,7 +192,7 @@ public class ButtonManager implements PropertyNames
 	}
 	
 	/**
-	 * Îª¹¤¾ßÌõ°´Å¥ÉèÖÃÊôĞÔ
+	 * ä¸ºå·¥å…·æ¡æŒ‰é’®è®¾ç½®å±æ€§
 	 * @param button
 	 * @param iconName
 	 * @param toolTipText
@@ -210,7 +210,7 @@ public class ButtonManager implements PropertyNames
 	}
 	
 	/**
-	 * ´´½¨²Ëµ¥ºÍÊÂ¼şµÄ¹ØÁª
+	 * åˆ›å»ºèœå•å’Œäº‹ä»¶çš„å…³è”
 	 * @param name
 	 * @param obj
 	 * @return

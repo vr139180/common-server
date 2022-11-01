@@ -57,7 +57,7 @@ import com.cms.designer.swingui.OBEFrameBar;
 
 /**
  * the basicframeBarUI is inherited frome the toolbarUI.the toolbaruI is an abstract calss
- * ¸Ä±äÁËÔ­ÓĞµÄUIÊôĞÔºó,¿ÉÒÔÔÚÉÏÃæÌí¼ÓÆäËûµÄ×é¼ş,À´ÊµÏÖ´°¿ÚÍÏ¶¯ºÍ¸Ä±à´óĞ¡µÄ¹¦ÄÜ.
+ * æ”¹å˜äº†åŸæœ‰çš„UIå±æ€§å,å¯ä»¥åœ¨ä¸Šé¢æ·»åŠ å…¶ä»–çš„ç»„ä»¶,æ¥å®ç°çª—å£æ‹–åŠ¨å’Œæ”¹ç¼–å¤§å°çš„åŠŸèƒ½.
  */
 public class BasicFrameBarUI extends ToolBarUI implements SwingConstants
 {
@@ -775,7 +775,7 @@ public class BasicFrameBarUI extends ToolBarUI implements SwingConstants
 	}
 	
 	/**
-	 *setFloating ÖĞµÄdockingSource ÊÇ·ÅtoolBarµÄparent
+	 *setFloating ä¸­çš„dockingSource æ˜¯æ”¾toolBarçš„parent
 	 */
 	public void setFloating(boolean b, Point p)
 	{
@@ -966,7 +966,7 @@ public class BasicFrameBarUI extends ToolBarUI implements SwingConstants
 	}
 
 	/**
-	 * ÕâÀïÀ´¾ö¶¨toolbar·ÅµÄÎ»×Ó
+	 * è¿™é‡Œæ¥å†³å®štoolbaræ”¾çš„ä½å­
 	 */
 	private String calculateConstraint(Component c, Point p)
 	{
@@ -992,7 +992,7 @@ public class BasicFrameBarUI extends ToolBarUI implements SwingConstants
 	}
 
 	/**
-	 * À´ÅĞ¶Ï·ÅµÄÎ»×ÓÒÔ¼°·½Ïò
+	 * æ¥åˆ¤æ–­æ”¾çš„ä½å­ä»¥åŠæ–¹å‘
 	 */
 	private String getDockingConstraint(Component c, Point p)
 	{

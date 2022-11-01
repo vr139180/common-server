@@ -2,6 +2,7 @@ package eureka
 
 import (
 	"cmslib/gnet"
+	"cmslib/protocolx"
 	"cmslib/server"
 	"gamelib/protobuf/gpro"
 	"gamelib/service"
@@ -87,7 +88,7 @@ func (e *EurekaSession) registToEurekaCenter(t service.ServiceType) {
 		msg.Exts = e.parent.mynode.Exts
 	}
 
-	e.SendMessage(msg)
+	e.SendNetProtocol(msg)
 }
 
 func (e *EurekaSession) bindToEurekaCenter(t service.ServiceType) {
@@ -96,20 +97,23 @@ func (e *EurekaSession) bindToEurekaCenter(t service.ServiceType) {
 	msg.Iid = e.parent.mynode.Iid
 	msg.Token = e.parent.mynode.Token
 
-	e.SendMessage(msg)
+	e.SendNetProtocol(msg)
+}
+
+func (e *EurekaSession) SendNetProtocol(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	e.SendMessage(pro)
 }
 
 //--------------------gnet.NetSession interface-----------------------
-func (e *EurekaSession) OnRecvMessage(id int, pro proto.Message) {
+func (e *EurekaSession) OnRecvMessage(pro *protocolx.NetProtocol) {
 
-	switch m := pro.(type) {
-	default:
-		fun, err := e.GetMsgMapFun(id)
+	fun, err := e.GetMsgMapFun(int(pro.GetMsgId()))
 
-		if err == nil {
-			cmd := server.NewNormalNetCmd(e, id, m, fun)
-			e.parent.RegistNetCmd(cmd)
-		}
+	if err == nil {
+		cmd := server.NewNormalNetCmd(e, pro, fun)
+		e.parent.RegistNetCmd(cmd)
 	}
 }
 

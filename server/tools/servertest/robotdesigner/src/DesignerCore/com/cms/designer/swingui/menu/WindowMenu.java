@@ -26,20 +26,20 @@ public class WindowMenu extends JMenu
 	private OBEDesigner parent =null;
 	private OBEMenuBar menubar=null;
 	
-	//´°¿Ú²Ëµ¥Ïî
+	//çª—å£èœå•é¡¹
 	private JMenu windowMenu;
 	private JMenuItem cascadeItem,
 		horizontalItem,	verticalItem, closeItem, currentItem;
 
-	//×ÜÊı
+	//æ€»æ•°
 	private int count = 0, frameCount = 0;
 	
 	//the number of inframe to be displayed
 	private OBEInternalFrame inFrame;
 	private JDesktopPane desktopPane;
 
-	//frame_x,_y ÊÇgraphpanel(splitpane)µÄ×óÉÏ½ÇµÄ×ø±ê,deskWidthÊÇtabsplit
-	// µÄ¿í¶È,framewidthÊÇinframeµÄ¿í¶È
+	//frame_x,_y æ˜¯graphpanel(splitpane)çš„å·¦ä¸Šè§’çš„åæ ‡,deskWidthæ˜¯tabsplit
+	// çš„å®½åº¦,framewidthæ˜¯inframeçš„å®½åº¦
 	private int x = 50,	y = 50,	deskWidth = 0,	deskHeight = 0,	frameWidth = 0,
 		frameHeight = 0, frame_x = 0, frame_y = 0;
 
@@ -51,7 +51,7 @@ public class WindowMenu extends JMenu
 	}
 
 	/**
-	 * ³õÊ¼»¯´°¿Ú¹ÜÀí²Ëµ¥
+	 * åˆå§‹åŒ–çª—å£ç®¡ç†èœå•
 	 */
 	public void init()
 	{
@@ -61,7 +61,7 @@ public class WindowMenu extends JMenu
 		desktopPane.setOpaque(true);
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 
-		//²ãµş²Ëµ¥
+		//å±‚å èœå•
 		cascadeItem = new JMenuItem();
 		cascadeItem.setMnemonic('c');
 		cascadeItem.setIcon(iconManager.getIcon("cascade.gif"));
@@ -103,7 +103,7 @@ public class WindowMenu extends JMenu
 						inFrame.setSize(400, 300);
 						inFrame.setLocation(x, y);
 						x = x + 20;
-						y = y + 20; //----¸Ä¶¯Ê±ÒªÌí¼Ó:x, y Òª¹éÁã
+						y = y + 20; //----æ”¹åŠ¨æ—¶è¦æ·»åŠ :x, y è¦å½’é›¶
 					}
 
 					getDesignerParent().getDesktopPanel().getDesktopManager().activateFrame( inFrame);
@@ -222,7 +222,7 @@ public class WindowMenu extends JMenu
 					for (int i = 0; i < count; i++)
 					{
 						inFrame =(OBEInternalFrame)allframes[0];
-						//vector µ±ÓÃremoveÊ±,½ÚµãÊı×Ô¶¯µ÷Õû
+						//vector å½“ç”¨removeæ—¶,èŠ‚ç‚¹æ•°è‡ªåŠ¨è°ƒæ•´
 						/*
 						if (inFrame.getScrollPane().getViewport().getView()
 							== null)

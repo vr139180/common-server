@@ -7,7 +7,7 @@ import com.cms.designer.swingui.OBETreeNode;
 
 /**
  * @author Administrator
- * ±£´æ¸÷¸öÄ£¿éµÄÊı¾İĞÅÏ¢
+ * ä¿å­˜å„ä¸ªæ¨¡å—çš„æ•°æ®ä¿¡æ¯
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  * $Id: OBEModuleData.java,v 1.1 2004/06/30 06:36:48 jeffery Exp $
@@ -25,9 +25,9 @@ public abstract class OBEModuleData
 		this.projectID =projectID;
 	}
 	
-	//´´½¨¹¤×÷Ä¿Â¼
+	//åˆ›å»ºå·¥ä½œç›®å½•
 	public abstract void mkModuleDir( String parent);
-	//Ë¢ĞÂÄ£¿éÊı¾İÏÔÊ¾
+	//åˆ·æ–°æ¨¡å—æ•°æ®æ˜¾ç¤º
 	public abstract void refrushWorkspaceTree( OBETree tree, OBETreeNode parent);
 	
 	public abstract void defaultModuleInit( OBETree tree, OBETreeNode parent);

@@ -2,7 +2,7 @@ package com.cms.xworkflow;
 
 /**
  * @author Administrator
- * Ò³ÃæÉè¼ÆÊ±ÓÃÀ´Êä³öxmlÎÄ¼şµÄ
+ * é¡µé¢è®¾è®¡æ—¶ç”¨æ¥è¾“å‡ºxmlæ–‡ä»¶çš„
  */
 public class XWorkflowUtil
 {

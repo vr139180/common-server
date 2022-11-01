@@ -83,19 +83,19 @@ import com.cms.designer.workflow.action.NewWorkflowProcess;
  */
 public class OBEDesigner extends JFrame	implements PreferenceChangeListener, PropertyNames
 {
-	//ÓÃµ½µÄ×ÊÔ´
+	//ç”¨åˆ°çš„èµ„æº
 	public static ResourceBundle res =null;
 
-	//¹¤×÷Ä¿Â¼
+	//å·¥ä½œç›®å½•
 	private static String idepath =System.getProperty("ide.home");
 	private static File workingDirectory =new File( idepath);
 
-	//ÈÕ×Ó¹ÜÀí
+	//æ—¥å­ç®¡ç†
 	private static Log log = LogFactory.getLog(OBEDesigner.class);
-	//Í¼Æ¬×ÊÔ´
+	//å›¾ç‰‡èµ„æº
 	public static IconManager iconManager = com.cms.designer.util.ResourceUtil.getIconManager();
 
-	//Êó±ê×ÊÔ´
+	//é¼ æ ‡èµ„æº
 	public static Cursor cursor =null;
 	{
 		cursor =Toolkit.getDefaultToolkit().createCustomCursor(
@@ -103,7 +103,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 			new java.awt.Point(0, 0), "");
 	}
 	
-	//ÏÔÊ¾Ä£Ê½
+	//æ˜¾ç¤ºæ¨¡å¼
 	private static DisplayMode[] BEST_DISPLAY_MODES =
 		new DisplayMode[] {
 			new DisplayMode(640, 480, 32, 0),
@@ -112,54 +112,54 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 
 	private static int dividerSize =0;
 
-	//¸öĞÔ»¯ÉèÖÃ
+	//ä¸ªæ€§åŒ–è®¾ç½®
 	private Preferences preferences;
 
 	private Map actions =null;
 
 	private File currentFile =null;
 
-	//splitter´°¿Ú£¬·Ö¸îÎÄ±¾ÇøºÍÏîÄ¿¹ÜÀíÇø
+	//splitterçª—å£ï¼Œåˆ†å‰²æ–‡æœ¬åŒºå’Œé¡¹ç›®ç®¡ç†åŒº
 	public JSplitPane tabSplit;
-	//ÏîÄ¿¹ÜÀíÊ÷
+	//é¡¹ç›®ç®¡ç†æ ‘
 	private OBETree tree;
-	//xpdlÔ¤ÀÀ
+	//xpdlé¢„è§ˆ
 	private OBEXpdlView xpdlview;
-	//´íÎóĞÅÏ¢ÌáÊ¾À¸
+	//é”™è¯¯ä¿¡æ¯æç¤ºæ 
 	private OBECheckPanel checkPanel;
 
-	//×´Ì¬Ìõ
+	//çŠ¶æ€æ¡
 	private StatusPanel statusPanel;
-	//²Ëµ¥À¸
+	//èœå•æ 
 	private OBEMenuBar menuBar;
 
-	//ÏîÄ¿¹ÜÀíÊ÷
+	//é¡¹ç›®ç®¡ç†æ ‘
 	private OBETabBar tabBar;
 	
-	//internalframe ¹ÜÀí
+	//internalframe ç®¡ç†
 	private OBEDesktopPane desktopPane;
 	
-	//¸¡¶¯¹¤¾ßÌõ¹ÜÀí
+	//æµ®åŠ¨å·¥å…·æ¡ç®¡ç†
 	private DocingPanelManager docingPanelManager;
-	//°´Å¥¹ÜÀí
+	//æŒ‰é’®ç®¡ç†
 	private ButtonManager buttonManager;
-	//¹¤¾ßÌõ¹ÜÀí
+	//å·¥å…·æ¡ç®¡ç†
 	private ToolbarManager toolbarManager;
-	//¸½¼Ó¹¤¾ßÌõ¹ÜÀí
+	//é™„åŠ å·¥å…·æ¡ç®¡ç†
 	private ComponentBarManager componentbarManager;
 	private WorkSpaceManager workSpaceManager;
 
 	private ButtonGroup checkMenuGroup;
 	private Hashtable dataHashtable;
 
-	//TODO:±à¼­Ä£Ê½
+	//TODO:ç¼–è¾‘æ¨¡å¼
 	private EditMode editMode = EditMode.EDIT;
 
-	//ÓÃ»§ÁĞ±íºÍ²¿ÃÅÁĞ±í
+	//ç”¨æˆ·åˆ—è¡¨å’Œéƒ¨é—¨åˆ—è¡¨
 	private Vector userList = new Vector();
 	private Vector partyList = new Vector();
 	
-	//¼à²âĞÅÏ¢¼àÌıÆ÷
+	//ç›‘æµ‹ä¿¡æ¯ç›‘å¬å™¨
 	private List checkListener =new ArrayList();
 
 	public OBEDesigner()
@@ -170,15 +170,15 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		
 		updateLookAndFeel();
 
-		//³õÊ¼»¯
+		//åˆå§‹åŒ–
 		OBEModuleManager.getInstance();
 		OBEModuleManager.getInstance().initModules( this);
 
-		//³õÊ¼»¯½çÃæ
+		//åˆå§‹åŒ–ç•Œé¢
 		init();
-		//¼ÓÔØÏîÄ¿ĞÅÏ¢
+		//åŠ è½½é¡¹ç›®ä¿¡æ¯
 		workSpaceManager.loadWorkProjects();
-		//Ë¢ĞÂĞÅÏ¢Ê÷
+		//åˆ·æ–°ä¿¡æ¯æ ‘
 		workSpaceManager.refrushWorkspaceTree();
 	}
 
@@ -205,7 +205,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/*
-	 * ÉèÖÃÏÔÊ¾Ä£Ê½
+	 * è®¾ç½®æ˜¾ç¤ºæ¨¡å¼
 	 */
 	private static DisplayMode getBestDisplayMode(GraphicsDevice device)
 	{
@@ -299,7 +299,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/*
-	 * »ñÈ¡´°¿ÚÌØÕ÷
+	 * è·å–çª—å£ç‰¹å¾
 	 */
 	public Preferences getPreferences()
 	{
@@ -324,7 +324,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * Ôö¼ÓÊôĞÔ
+	 * å¢åŠ å±æ€§
 	 */
 	public void applyPreferences()
 	{
@@ -342,7 +342,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 	
 	/**
-	 * ÉèÖÃÍâ¹Û
+	 * è®¾ç½®å¤–è§‚
 	 */
 	public void updateLookAndFeel()
 	{
@@ -409,7 +409,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * µ¼ÈëÓ¦ÓÃµÄÌØÕ÷
+	 * å¯¼å…¥åº”ç”¨çš„ç‰¹å¾
 	 */
 	protected void loadApplicationPreferences()
 	{
@@ -427,7 +427,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/*
-	 * ±£´æÓ¦ÓÃÌØÕ÷
+	 * ä¿å­˜åº”ç”¨ç‰¹å¾
 	 */
 	protected void saveApplicationPreferences()
 	{
@@ -451,75 +451,75 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ³õÊ¼»¯¿ò¼Ü½çÃæ
+	 * åˆå§‹åŒ–æ¡†æ¶ç•Œé¢
 	 */
 	private void init()
 	{
-		//ÉèÖÃIDEÍ¼±ê
+		//è®¾ç½®IDEå›¾æ ‡
 		this.setFrameTitle( null);
 		
 		ImageIcon frameIcon = (ImageIcon)iconManager.getIcon("frameIcon.gif");
 		setIconImage(frameIcon.getImage());
 
-		//¿ò¼ÜÅÅ²¼Æ÷
+		//æ¡†æ¶æ’å¸ƒå™¨
 		getContentPane().setLayout(new BorderLayout());
 
 		dataHashtable = new Hashtable();
 		
-		//³õÊ¼»¯¶¯×÷ÊÂ¼ş
+		//åˆå§‹åŒ–åŠ¨ä½œäº‹ä»¶
 		initActions();
-		//³õÊ¼»¯¹¤¾ßÌõÓÃµ½µÄ°´Å¥
+		//åˆå§‹åŒ–å·¥å…·æ¡ç”¨åˆ°çš„æŒ‰é’®
 		buttonManager = new ButtonManager(this);
 
 		//-------------------------------------------//
-		//³õÊ¼»¯Ö÷²Ëµ¥
+		//åˆå§‹åŒ–ä¸»èœå•
 		menuBar = new OBEMenuBar(this);
 		setJMenuBar(menuBar);
 
-		//ÉèÖÃÖĞĞÄÇøÓò
+		//è®¾ç½®ä¸­å¿ƒåŒºåŸŸ
 		JPanel designerPanel = new JPanel(new BorderLayout());
 		getContentPane().add( designerPanel, BorderLayout.CENTER);
 		
-		//¹¤¾ßÌõÍÏ¶¯¹ÜÀí
+		//å·¥å…·æ¡æ‹–åŠ¨ç®¡ç†
 		docingPanelManager =new DocingPanelManager( this, designerPanel);
 		
-		//ÉèÖÃ¹¤¾ßÌõ
-		//·ÖÀëÍ¨ÓÃµÄ¹¤¾ßÌõ°´Å¥ºÍÄ£¿é¹¤¾ßÌõ°´Å¥
+		//è®¾ç½®å·¥å…·æ¡
+		//åˆ†ç¦»é€šç”¨çš„å·¥å…·æ¡æŒ‰é’®å’Œæ¨¡å—å·¥å…·æ¡æŒ‰é’®
 		toolbarManager = new ToolbarManager(this);
 		docingPanelManager.addOneToolBar( toolbarManager.getToolBar(), BorderLayout.NORTH);
 
-		//ÖĞĞÄ¿ØÖÆÇøÓò
+		//ä¸­å¿ƒæ§åˆ¶åŒºåŸŸ
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout( new BorderLayout());
 		designerPanel.add( centerPanel, BorderLayout.CENTER);
 
 		componentbarManager = new ComponentBarManager(this);
 
-		//·Ö¸î´°¿Ú°üº¬internalframeºÍÏîÄ¿¹ÜÀí´°¿Ú
-		//Ê÷ÖĞµÄtab¹ÜÀí
+		//åˆ†å‰²çª—å£åŒ…å«internalframeå’Œé¡¹ç›®ç®¡ç†çª—å£
+		//æ ‘ä¸­çš„tabç®¡ç†
 		xpdlview = new OBEXpdlView();
 		tree = new OBETree(this);
 		checkPanel =new OBECheckPanel();
 		workSpaceManager = new WorkSpaceManager(this);
 		tabBar = new OBETabBar(this);
 		
-		//ä¯ÀÀ
+		//æµè§ˆ
 		
 		
-		//frame´°¿Ú
+		//frameçª—å£
 		desktopPane = new OBEDesktopPane(this);
 		desktopPane.setOpaque(true);
 		desktopPane.setDragMode(1);
 
-		//·ÅÈësplitÖĞ
+		//æ”¾å…¥splitä¸­
 		tabSplit =new JSplitPane( JSplitPane.HORIZONTAL_SPLIT, desktopPane, tabBar);
 		centerPanel.add(tabSplit, BorderLayout.CENTER);
 
-		//ĞŞ¸ÄtabsplitµÄÊôĞÔ
+		//ä¿®æ”¹tabsplitçš„å±æ€§
 		dividerSize = tabSplit.getDividerSize();
 		tabSplit.setDividerLocation(650);
 
-		//ÉèÖÃ×´Ì¬Ìõ
+		//è®¾ç½®çŠ¶æ€æ¡
 		statusPanel = new StatusPanel();
 		getContentPane().add( statusPanel, BorderLayout.SOUTH);
 
@@ -530,7 +530,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		loadApplicationPreferences();
 		applyPreferences();
 
-		//¹Ø±ÕÓ¦ÓÃµÄÊÂ¼ş¼àÌıÆ÷
+		//å…³é—­åº”ç”¨çš„äº‹ä»¶ç›‘å¬å™¨
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent evt){
 				exitClient();
@@ -539,7 +539,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ÉèÖÃframeµÄ±êÌâ
+	 * è®¾ç½®frameçš„æ ‡é¢˜
 	 * @param title
 	 */
 	public void setFrameTitle(String title)
@@ -557,15 +557,15 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ²Ëµ¥ÊÂ¼ş³õÊ¼»¯
+	 * èœå•äº‹ä»¶åˆå§‹åŒ–
 	 */
 	private void initActions()
 	{
 		if( actions == null)
 			actions = new HashMap();
 		
-		//ÏµÍ³»ù±¾²Ù×÷
-		//ÎÄ¼ş²Ù×÷
+		//ç³»ç»ŸåŸºæœ¬æ“ä½œ
+		//æ–‡ä»¶æ“ä½œ
 		actions.put( ConstValue.CoreFileNew, new FileNew( this));
 		actions.put( ConstValue.CoreFileOpen, new FileOpen( this));
 		actions.put( ConstValue.CoreFileClose, new FileClose( this));
@@ -575,7 +575,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		actions.put( ConstValue.CoreFilePrint, new FilePrint( this));
 		actions.put( ConstValue.CoreSysQuit, new SystemQuit( this));
 
-		//±à¼­²Ù×÷
+		//ç¼–è¾‘æ“ä½œ
 		actions.put( ConstValue.CoreEditCut, new EditCut(this));
 		actions.put( ConstValue.CoreEditCopy, new EditCopy(this));
 		actions.put( ConstValue.CoreEditPaste, new EditPaste(this));
@@ -589,7 +589,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		actions.put( "edit.preferences",
 			new StandardAction(this, "editPreferences"));
 		
-		//ÊÓÍ¼²Ëµ¥
+		//è§†å›¾èœå•
 		actions.put(ConstValue.CoreViewZoomin, new StandardAction(this, ConstValue.CoreViewZoomin));
 		actions.put(ConstValue.CoreViewZoomout, new StandardAction(this, ConstValue.CoreViewZoomout));
 
@@ -602,11 +602,11 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		actions.put( "internalFrame.minimize",
 			new StandardAction(this, "minimizeInternalFrame"));
 
-		//°ïÖú²Ëµ¥
+		//å¸®åŠ©èœå•
 		actions.put(ConstValue.CoreHelpTopic, new HelpTopic(this));
 		actions.put(ConstValue.CoreHelpAbout, new HelpAbout(this));
 		
-		//¹¤³Ì¹ÜÀíÊÂ¼ş
+		//å·¥ç¨‹ç®¡ç†äº‹ä»¶
 		actions.put( ConstValue.ProjectNew, new NewProject(this));
 		actions.put( ConstValue.ProjectImport, new ProjectImport(this));
 		actions.put( ConstValue.ProjectExport, new ProjectExport(this));
@@ -615,7 +615,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ¸ù¾İ²»Í¨µÄÄ£Ê½´´½¨split
+	 * æ ¹æ®ä¸é€šçš„æ¨¡å¼åˆ›å»ºsplit
 	 * @param i
 	 */
 	public void createSplitPane(int i)
@@ -663,7 +663,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/*
-	 * TODO:ÓÃÀ´±£´æ´æÔÚµÄinternalframe²Ëµ¥Ïî£¬window menuÀïÃæÊ¹ÓÃ
+	 * TODO:ç”¨æ¥ä¿å­˜å­˜åœ¨çš„internalframeèœå•é¡¹ï¼Œwindow menué‡Œé¢ä½¿ç”¨
 	 */
 	public ButtonGroup getCheckMenuGroup()
 	{
@@ -671,7 +671,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * split×ó±ß¿Ø¼şµÄ¿í¶È
+	 * splitå·¦è¾¹æ§ä»¶çš„å®½åº¦
 	 * @return
 	 */
 	public int splitLeftPanelWidth()
@@ -680,7 +680,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * split×ó±ß¿Ø¼şµÄ¸ß¶È
+	 * splitå·¦è¾¹æ§ä»¶çš„é«˜åº¦
 	 * @return
 	 */
 	public int splitLeftPanelHeight()
@@ -689,7 +689,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * »ñÈ¡internalframeµÄ¸öÊı
+	 * è·å–internalframeçš„ä¸ªæ•°
 	 * @return
 	 */
 	public int vectorCount()
@@ -698,12 +698,12 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ÇĞ»»ÊÓÍ¼Ê±
+	 * åˆ‡æ¢è§†å›¾æ—¶
 	 * @param name
 	 */
 	public void changeView(String name)
 	{
-		//ÊÓÍ¼ÇĞ»»Ê±±ä»»TOOLBAR
+		//è§†å›¾åˆ‡æ¢æ—¶å˜æ¢TOOLBAR
 		ElementKey ek =new ElementKey();
 		ek.analyze( name);
 		ModuleManager mm =OBEModuleManager.getInstance().getModuleManager();
@@ -714,13 +714,13 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 			docingPanelManager.addOneToolBar( ms.getModuleToolbar(), BorderLayout.WEST);
 
 		docingPanelManager.updateUI();
-		//¸üĞÂÏµÍ³¹¤¾ßÌõÊÂ¼ş
+		//æ›´æ–°ç³»ç»Ÿå·¥å…·æ¡äº‹ä»¶
 		toolbarManager.updateToolbarActions( ms.getIDEAction());
 		toolbarManager.updateMenubarActions( ms.getIDEAction());
 	}
 	
 	/**
-	 * ÊÓÍ¼Ê§È¥½¹µãµÄÊ±ºò
+	 * è§†å›¾å¤±å»ç„¦ç‚¹çš„æ—¶å€™
 	 * @param name
 	 */
 	public void viewDeactivated( String name)
@@ -836,12 +836,12 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 
 	/**
-	 * ·µ»Ø¹¤×÷×éÁĞ±í
+	 * è¿”å›å·¥ä½œç»„åˆ—è¡¨
 	 * @return
 	 */
 	public Vector getPartyList()
 	{
-		//Í¬Ê±´ÓÊı¾İ¿âÖĞ¸üĞÂ
+		//åŒæ—¶ä»æ•°æ®åº“ä¸­æ›´æ–°
 		partyList.clear();
 		
 			
@@ -849,7 +849,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 	}
 	
 	/**
-	 * ·µ»ØÓÃ»§ÁĞ±í
+	 * è¿”å›ç”¨æˆ·åˆ—è¡¨
 	 * @return
 	 */
 	public Vector getUserList()
@@ -860,7 +860,7 @@ public class OBEDesigner extends JFrame	implements PreferenceChangeListener, Pro
 		return userList;
 	}
 	/**
-	 * ·µ»ØÓÃ»§ÁĞ±í2  ÓÃ»§°üÀ¨ Ñ¡¶¨²¿ÃÅÏÂµÄÓÃ»§
+	 * è¿”å›ç”¨æˆ·åˆ—è¡¨2  ç”¨æˆ·åŒ…æ‹¬ é€‰å®šéƒ¨é—¨ä¸‹çš„ç”¨æˆ·
 	 * @return
 	 */
 	public Vector getUser2List()

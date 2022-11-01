@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bhs id="none" n="player_lv1_lv11">
+  <bh s="1">
+    <s id="1" n="start">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="100"/>
+        </act>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="canStart" v="Y"/>
+        <ext n="bounds.y" v="16"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="16"/>
+        <ext n="activity.module" v="S"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="2" n="login">
+      <acts>
+        <act done="login"/>
+      </acts>
+      <fs def="4">
+        <f to="3">
+          <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="656"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="16"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="3" n="create character">
+      <acts>
+        <act done="createchr">
+          <pm n="faction" v="1"/>
+        </act>
+      </acts>
+      <fs def="4"/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="928"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="16"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="4" n="sel char">
+      <acts>
+        <act done="selchr"/>
+      </acts>
+      <fs def="8">
+        <f to="19">
+          <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="784"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="112"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="5" n="do lv1">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="100"/>
+        </act>
+      </acts>
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="16"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="6" n="do lv2">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="100"/>
+        </act>
+      </acts>
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="240"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="7" n="ready go">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="100"/>
+        </act>
+      </acts>
+      <fs def="18">
+        <f to="5">
+          <c><![CDATA[if vuser.level == 1 then result.ret=true end;]]></c>
+        </f>
+        <f to="6">
+          <c><![CDATA[if vuser.level == 2 then result.ret=true end;]]></c>
+        </f>
+        <f to="10">
+          <c><![CDATA[if vuser.level == 3 then result.ret=true end;]]></c>
+        </f>
+        <f to="11">
+          <c><![CDATA[if vuser.level == 4 then result.ret=true end;]]></c>
+        </f>
+        <f to="12">
+          <c><![CDATA[if vuser.level == 5 then result.ret=true end;]]></c>
+        </f>
+        <f to="13">
+          <c><![CDATA[if vuser.level == 6 then result.ret=true end;]]></c>
+        </f>
+        <f to="14">
+          <c><![CDATA[if vuser.level == 7 then result.ret=true end;]]></c>
+        </f>
+        <f to="15">
+          <c><![CDATA[if vuser.level == 8 then result.ret=true end;]]></c>
+        </f>
+        <f to="16">
+          <c><![CDATA[if vuser.level == 9 then result.ret=true end;]]></c>
+        </f>
+        <f to="17">
+          <c><![CDATA[if vuser.level == 10 then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="1054"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="274"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="8" n="logout">
+      <acts>
+        <act done="logout"/>
+      </acts>
+      <fs def="9"/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="1440"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="112"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="9" n="quit test case">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="200"/>
+        </act>
+      </acts>
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.y" v="1440"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.x" v="32"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="activity.module" v="N"/>
+      </exts>
+    </s>
+    <s id="10" n="do lv3">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="464"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="11" n="do lv4">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="656"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="12" n="do lv5">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="864"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="13" n="do lv6">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1052"/>
+        <ext n="bounds.x" v="722"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="14" n="do lv7">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1258"/>
+        <ext n="bounds.x" v="716"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="15" n="do lv8">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1495"/>
+        <ext n="bounds.x" v="722"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="16" n="do lv9">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1729"/>
+        <ext n="bounds.x" v="710"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="17" n="do lv10">
+      <fs/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1969"/>
+        <ext n="bounds.x" v="707"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="18" n="lv &gt; 10">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="8"/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="1824"/>
+        <ext n="bounds.x" v="304"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="19" n="get build list">
+      <acts>
+        <act done="buildlist"/>
+      </acts>
+      <fs def="20"/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="608"/>
+        <ext n="bounds.x" v="112"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="20" n="first levelup reward">
+      <acts>
+        <act done="levelupreward">
+          <pm n="level" v="1"/>
+        </act>
+      </acts>
+      <fs def="7">
+        <f to="21">
+          <c><![CDATA[if vuser:needgetlevelreward() then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="608"/>
+        <ext n="bounds.x" v="272"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="21" n="get level reward again">
+      <acts>
+        <act done="levelupreward">
+          <pm n="level" v="1"/>
+        </act>
+      </acts>
+      <fs def="7"/>
+      <exts>
+        <ext n="canStart" v="N"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.y" v="832"/>
+        <ext n="bounds.x" v="192"/>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+  </bh>
+  <tfs>
+    <tf id="1" f="1" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="2" f="2" t="3" n="need to create character">
+      <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+    </tf>
+    <tf id="3" f="2" t="4" n="">
+      <c/>
+    </tf>
+    <tf id="4" f="3" t="4" n="">
+      <c/>
+    </tf>
+    <tf id="7" f="7" t="5" n="lv1">
+      <c><![CDATA[if vuser.level == 1 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="8" f="7" t="6" n="lv2">
+      <c><![CDATA[if vuser.level == 2 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="10" f="4" t="8" n="failed">
+      <c/>
+    </tf>
+    <tf id="11" f="8" t="9" n="">
+      <c/>
+    </tf>
+    <tf id="12" f="7" t="10" n="lv3">
+      <c><![CDATA[if vuser.level == 3 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="13" f="7" t="11" n="lv4">
+      <c><![CDATA[if vuser.level == 4 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="14" f="7" t="12" n="lv5">
+      <c><![CDATA[if vuser.level == 5 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="15" f="7" t="13" n="lv6">
+      <c><![CDATA[if vuser.level == 6 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="16" f="7" t="14" n="lv7">
+      <c><![CDATA[if vuser.level == 7 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="17" f="7" t="15" n="lv8">
+      <c><![CDATA[if vuser.level == 8 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="18" f="7" t="16" n="lv9">
+      <c><![CDATA[if vuser.level == 9 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="19" f="7" t="17" n="lv10">
+      <c><![CDATA[if vuser.level == 10 then result.ret=true end;]]></c>
+    </tf>
+    <tf id="20" f="7" t="18" n="lv &gt; 10">
+      <c/>
+    </tf>
+    <tf id="21" f="18" t="8" n="will logout and disconnect">
+      <c/>
+    </tf>
+    <tf id="22" f="4" t="19" n="sel char succ">
+      <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+    </tf>
+    <tf id="24" f="19" t="20" n="">
+      <c/>
+    </tf>
+    <tf id="25" f="20" t="21" n="need get reward">
+      <c><![CDATA[if vuser:needgetlevelreward() then result.ret=true end;]]></c>
+    </tf>
+    <tf id="26" f="20" t="7" n="">
+      <c/>
+    </tf>
+    <tf id="27" f="21" t="7" n="">
+      <c/>
+    </tf>
+  </tfs>
+  <exts>
+    <ext n="auto.transition.autoid" v="27"/>
+    <ext n="auto.activity.autoid" v="21"/>
+  </exts>
+  <exts>
+    <ext n="auto.transition.autoid" v="11"/>
+    <ext n="auto.activity.autoid" v="9"/>
+  </exts>
+</bhs>

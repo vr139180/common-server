@@ -25,7 +25,7 @@ import org.dom4j.*;
 public class Util
 {
 
-	// 从文件读取XML，输入文件名，返回XML文档
+	// 浠庢枃浠惰鍙朮ML锛岃緭鍏ユ枃浠跺悕锛岃繑鍥瀀ML鏂囨。
 	public static Document read( String context)
 	throws MalformedURLException, DocumentException, IOException
 	{
@@ -46,7 +46,7 @@ public class Util
 		return document;
 	}
 
-	//取得Root节点
+	//鍙栧緱Root鑺傜偣
 	public static Element getRootElement( Document doc)
 	{
 		return doc.getRootElement();

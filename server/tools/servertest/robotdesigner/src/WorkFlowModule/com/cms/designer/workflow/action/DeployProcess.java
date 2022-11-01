@@ -28,7 +28,7 @@ import com.cms.designer.workflow.validate.Validator;
 
 /**
  * <p>Title: </p>
- * <p>Description: 打包action</p>
+ * <p>Description: 鎵撳寘action</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Company: </p>
  * @author zagio
@@ -61,7 +61,7 @@ public class DeployProcess extends OBEStandardAction
 		OBEWorkflowModule wmodule =( OBEWorkflowModule)mm.getModule( OBEWorkflowModule.MODULE_ID);
 		if( wmodule == null)
 			return;
-		//workflow模块数据
+		//workflow妯″潡鏁版嵁
 		WorkflowModuleData md =( WorkflowModuleData)wmodule.getModuleData( lid);
 		
 		if( md == null)
@@ -77,7 +77,7 @@ public class DeployProcess extends OBEStandardAction
 		if( jsave.showDialog() != JarSaveDialog.APPROVE_OPTION)
 			return;
 
-		//查找internalframe
+		//鏌ユ壘internalframe
 		OBEWorkFlowFrame frame =( OBEWorkFlowFrame)wmodule.newModuleFrame( data.getKey());
 		try
 		{

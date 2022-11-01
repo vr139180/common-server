@@ -9,26 +9,26 @@ import com.cms.designer.swingui.OBEDesigner;
 
 /**
  * @author Administrator
- * Ä£¿é¹ÜÀí
+ * æ¨¡å—ç®¡ç†
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class OBEModuleManager
 {
-	//Ä£¿éÂ·¾¶
+	//æ¨¡å—è·¯å¾„
 	public final static String modulepath =System.getProperty("ide.home")
 				+File.separator+"modules";
 	
 	private static OBEModuleManager instance =null;
 	private boolean moduleInitialized =false;
-	//ÓÃÓÚÄ£¿é¼ÓÔØµÄclassloader
+	//ç”¨äºæ¨¡å—åŠ è½½çš„classloader
 	private URLClassLoader classLoader =null;
 	
-	//´æ·ÅÄ£¿éĞÅÏ¢
+	//å­˜æ”¾æ¨¡å—ä¿¡æ¯
 	private HashMap modules =new HashMap();
-	//Ä£¿é¹ÜÀí
+	//æ¨¡å—ç®¡ç†
 	private ModuleManager moduleManager =new ModuleManager();
-	//ÏîÄ¿Êı¾İ¹ÜÀí
+	//é¡¹ç›®æ•°æ®ç®¡ç†
 	private ProjectManager projectManager =new ProjectManager();
 	
 	private OBEModuleManager(){
@@ -46,7 +46,7 @@ public class OBEModuleManager
 	}
 	
 	/**
-	 * ³õÊ¼»¯Ä£¿é
+	 * åˆå§‹åŒ–æ¨¡å—
 	 * @param designer
 	 */
 	public synchronized void initModules( OBEDesigner designer)
@@ -64,7 +64,7 @@ public class OBEModuleManager
 	}
 	
 	/**
-	 * ¼ÓÔØËùÓĞµÄÄ£¿é
+	 * åŠ è½½æ‰€æœ‰çš„æ¨¡å—
 	 */
 	private void loadModules()
 	{
@@ -98,7 +98,7 @@ public class OBEModuleManager
 	}
 
 	/**
-	 * »ñÈ¡Ä£¿é¹ÜÀíÆ÷
+	 * è·å–æ¨¡å—ç®¡ç†å™¨
 	 * @return
 	 */
 	public ModuleManager getModuleManager()
@@ -107,7 +107,7 @@ public class OBEModuleManager
 	}
 
 	/**
-	 * »ñÈ¡ÏîÄ¿Êı¾İ¹ÜÀíÆ÷
+	 * è·å–é¡¹ç›®æ•°æ®ç®¡ç†å™¨
 	 * @return
 	 */
 	public ProjectManager getProjectManager()

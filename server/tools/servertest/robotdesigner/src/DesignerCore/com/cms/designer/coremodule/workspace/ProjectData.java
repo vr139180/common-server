@@ -18,7 +18,7 @@ import com.cms.designer.swingui.OBETreeNode;
 
 /**
  * @author Administrator
- * ÏîÄ¿
+ * é¡¹ç›®
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  * $Id: ProjectData.java,v 1.8 2004/08/17 07:23:37 york Exp $
@@ -26,7 +26,7 @@ import com.cms.designer.swingui.OBETreeNode;
  */
 public class ProjectData
 {
-	//ÏîÄ¿ÎÄ¼ş
+	//é¡¹ç›®æ–‡ä»¶
 	public static String SUFFIX = "project.wpr";
 	
 	public final static String PJ_ROOT ="project";
@@ -34,15 +34,15 @@ public class ProjectData
 	public final static String PJ_ID ="moduleid";
 	public final static String PJ_NAME ="name";
 	
-	//±àºÅ
+	//ç¼–å·
 	private String projectID ="";
-	//Ä¿Â¼Ãû
+	//ç›®å½•å
 	private String projectName ="";
-	//Ä¿Â¼Î»ÖÃ
+	//ç›®å½•ä½ç½®
 	private String path ="";
 	private File file =null;
 	
-	//°üº¬µÄÄ£¿é
+	//åŒ…å«çš„æ¨¡å—
 	private HashMap moduleInfo =new HashMap();
 
 	public HashMap getmodules(){
@@ -61,7 +61,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * ¼ÓÔØ¹¤³ÌĞÅÏ¢
+	 * åŠ è½½å·¥ç¨‹ä¿¡æ¯
 	 * @param projectName
 	 * @param path
 	 * @return
@@ -92,19 +92,19 @@ public class ProjectData
 	}
 
 	/**
-	 * ¼ÓÔØÏîÄ¿Ïà¹ØĞÅÏ¢
+	 * åŠ è½½é¡¹ç›®ç›¸å…³ä¿¡æ¯
 	 */
 	public void loadProject()
 	{
 		try
 		{
-			//¼ÓÔØÄ£¿éÊı¾İ
+			//åŠ è½½æ¨¡å—æ•°æ®
 			SAXBuilder builder =new SAXBuilder();
 			Document doc =builder.build( file);
 			Element root =doc.getRootElement();
 			if( root != null)
 			{
-				//»ñÈ¡Ä£¿é¹ÜÀí
+				//è·å–æ¨¡å—ç®¡ç†
 				ModuleManager mm =OBEModuleManager.getInstance().getModuleManager();
 				
 				Iterator f =root.getChildren( PJ_MODULE).iterator();
@@ -114,12 +114,12 @@ public class ProjectData
 				{
 					r =( Element)f.next();
 					String id =r.getAttributeValue( PJ_ID);
-					//²éÕÒÄ£¿éĞÅÏ¢
+					//æŸ¥æ‰¾æ¨¡å—ä¿¡æ¯
 					ms =( OBEModuleStandard)mm.getModule( id);
 					if( ms == null)	continue;
 					OBEModuleData data =ms.loadModuleData( getProjectPath(), getProjectID());
 					if( data == null)	continue;
-					//½¨Á¢¹ØÁªĞÅÏ¢
+					//å»ºç«‹å…³è”ä¿¡æ¯
 					moduleInfo.put( id, data.getUuid());
 				}
 			}
@@ -137,7 +137,7 @@ public class ProjectData
 	}
 
 	/**
-	 * ´´½¨Ä¿Â¼
+	 * åˆ›å»ºç›®å½•
 	 */
 	protected void createPath()
 	{
@@ -151,7 +151,7 @@ public class ProjectData
 			if (!directory.exists())
 				directory.mkdir();
 
-			//´´½¨ÏîÄ¿ÃèÊöÎÄ¼ş
+			//åˆ›å»ºé¡¹ç›®æè¿°æ–‡ä»¶
 			file = new File( packagePath + File.separator + SUFFIX);
 			if (!file.exists())
 				file.createNewFile();
@@ -164,7 +164,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * ´´½¨ÃèÊöÎÄ¼ş
+	 * åˆ›å»ºæè¿°æ–‡ä»¶
 	 * @param f
 	 */
 	private void createDescriptionFile( File f)
@@ -190,7 +190,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * Ôö¼ÓÒ»¸öÄ£¿é
+	 * å¢åŠ ä¸€ä¸ªæ¨¡å—
 	 * @param mid
 	 * @param uuid
 	 * @return
@@ -202,14 +202,14 @@ public class ProjectData
 			return false;
 		moduleInfo.put( mid, uuid);
 		
-		//ĞŞ¸ÄÏîÄ¿ÃèÊöÎÄ¼ş
+		//ä¿®æ”¹é¡¹ç›®æè¿°æ–‡ä»¶
 		modifyDescriptionFile();
 		
 		return ret;
 	}
 	
 	/**
-	 * ĞŞ¸Ä¹¤³ÌÃèÊöÎÄ¼ş
+	 * ä¿®æ”¹å·¥ç¨‹æè¿°æ–‡ä»¶
 	 */
 	private void modifyDescriptionFile()
 	{
@@ -242,7 +242,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * »ñÈ¡ÏîÄ¿Â·¾¶
+	 * è·å–é¡¹ç›®è·¯å¾„
 	 * @return
 	 */
 	public String getProjectPath()
@@ -251,7 +251,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * Ä£¿éÊÇ·ñÒÑ¾­¼ÓÔØ
+	 * æ¨¡å—æ˜¯å¦å·²ç»åŠ è½½
 	 * @param mid
 	 * @return
 	 */
@@ -261,7 +261,7 @@ public class ProjectData
 	}
 	
 	/**
-	 * »ñÈ¡ÖÆ¶¨Ä£¿éµÄuuid
+	 * è·å–åˆ¶å®šæ¨¡å—çš„uuid
 	 * @param mid
 	 * @return
 	 */
@@ -315,7 +315,7 @@ public class ProjectData
 	}
 
 	/**
-	 * ÊôĞÔÏîÄ¿Êı¾İ
+	 * å±æ€§é¡¹ç›®æ•°æ®
 	 * @param tree
 	 * @param parent
 	 */
@@ -331,8 +331,8 @@ public class ProjectData
 			String uuid =( String)moduleInfo.get( id);
 			if( uuid == null)	continue;
 
-			//»ñÈ¡Ïà¹ØµÄÄ£¿éÊı¾İ
-			//²éÕÒÏà¹ØµÄÄ£¿é
+			//è·å–ç›¸å…³çš„æ¨¡å—æ•°æ®
+			//æŸ¥æ‰¾ç›¸å…³çš„æ¨¡å—
 			OBEModuleStandard ms =mm.getModule( id);
 			if( ms == null)	continue;
 			OBEModuleData data =ms.getModuleData( uuid);

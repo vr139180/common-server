@@ -12,16 +12,19 @@
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/SessionMthHolder.h>
 #include <gameLib/commons/LinkFromHolder.h>
+#include <gameLib/commons/LinkFromConsistentHash.h>
 
 #include "config/RouterConfig.h"
 
 #include "network/RouterSession.h"
 
 #include "network/GateServiceLinkFrom.h"
-#include "network/HomeServiceLinkFrom.h"
-#include "network/StateServiceLinkFrom.h"
 #include "network/ServiceRouterLinkFrom.h"
 #include "network/FightRouterLinkFrom.h"
+
+#include "network/HomeServiceLinkFrom.h"
+#include "network/StateServiceLinkFrom.h"
+#include "network/LoginServiceLinkFrom.h"
 
 class DataRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -86,10 +89,13 @@ protected:
 	SessionMthHolder<RouterSession>		session_from_;
 
 	LinkFromHolder<GateServiceLinkFrom>		gate_links_from_;
-	LinkFromHolder<HomeServiceLinkFrom>		home_links_from_;
-	LinkFromHolder<StateServiceLinkFrom>	state_links_from_;
 	LinkFromHolder<FightRouterLinkFrom>		fightrouter_links_from_;
 	LinkFromHolder<ServiceRouterLinkFrom>	servicerouter_links_from_;
+
+	//¸ºÔØ¾ùºâ
+	LinkFromConsistentHash<HomeServiceLinkFrom>		home_links_from_;
+	LinkFromConsistentHash<StateServiceLinkFrom>	state_links_from_;
+	LinkFromConsistentHash<LoginServiceLinkFrom>	login_links_from_;
 
 	boost::scoped_ptr<RouterConfig>	conf_;
 
@@ -98,11 +104,13 @@ public:
 
 	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
 
-	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
-	void on_disconnected_with_stateservice(StateServiceLinkFrom* plink);
 	void on_disconnected_with_fightrouter(FightRouterLinkFrom* plink);
 	void on_disconnected_with_servicerouter(ServiceRouterLinkFrom* plink);
+
+	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
+	void on_disconnected_with_stateservice(StateServiceLinkFrom* plink);
+	void on_disconnected_with_loginservice(LoginServiceLinkFrom* plink);
 };
 
 #define svrApp (DataRouterApp::getInstance())

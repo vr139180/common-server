@@ -25,6 +25,7 @@ import (
 	bbPool "cmslib/gnet/pkg/pool/bytebuffer"
 	rbPool "cmslib/gnet/pkg/pool/ringbuffer"
 	"cmslib/gnet/pkg/ringbuffer"
+	"cmslib/protocolx"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -56,8 +57,8 @@ type udpConn struct {
 // SH:Lujf:SH
 // integrate protobuf
 type protobufTask struct {
-	run func(proto.Message) (int, error)
-	pro proto.Message
+	run func(*protocolx.NetProtocol) (int, error)
+	pro *protocolx.NetProtocol
 }
 
 var (
@@ -169,32 +170,56 @@ func (c *stdConn) write(data []byte) (n int, err error) {
 
 // SH:Lujf:SH
 // eventloop 中写消息到tcp流
-func (c *stdConn) writeProtobuf(pro proto.Message) (int, error) {
+func (c *stdConn) writeProtobuf(pro *protocolx.NetProtocol) (int, error) {
 	if c.conn != nil && pro != nil {
 		pcode, ok := c.codec.(*ProtobufCodec)
 		if !ok {
 			return 0, errors.New("codec not support ProtobufCodec")
 		}
 
-		len := uint32(proto.Size(pro))
+		head := &pro.Head
 
-		id, err := pcode.Factory.ProtoToId(pro)
-		if err != nil {
-			return 0, err
+		if head.UnpackProtocol {
+			if pro.Msg == nil {
+				return 0, errors.New("pro.Msg == nil")
+			}
+
+			id, err := pcode.Factory.ProtoToId(pro.Msg)
+			if err != nil {
+				return 0, err
+			}
+
+			head.MsgId = id
 		}
-
-		var sid uint32 = uint32(id)
-		slen := len<<16 | sid
 
 		outFrame := bytes.NewBuffer([]byte{})
-		binary.Write(outFrame, binary.LittleEndian, slen)
 
-		data, err := proto.Marshal(pro)
-		if err != nil {
-			return 0, err
+		head.EncodeHead(outFrame)
+
+		if head.UnpackProtocol {
+			data, err := proto.Marshal(pro.Msg)
+			if err != nil {
+				return 0, err
+			}
+
+			err = binary.Write(outFrame, binary.BigEndian, data)
+			if err != nil {
+				return 0, err
+			}
+
+			datalen := uint32(len(data))
+
+			head.EncodeTotleLen(outFrame, datalen)
+		} else {
+			if pro.DataLen > 0 {
+				err := binary.Write(outFrame, binary.BigEndian, pro.MsgData)
+				if err != nil {
+					return 0, err
+				}
+
+				head.EncodeTotleLen(outFrame, uint32(pro.DataLen))
+			}
 		}
-
-		binary.Write(outFrame, binary.LittleEndian, data)
 
 		dats := outFrame.Bytes()
 
@@ -292,7 +317,7 @@ func (c *stdConn) RemoteAddr() net.Addr       { return c.remoteAddr }
 
 //+ SH:Lujf:SH
 // 发送protobuf协议，在发送时构造字节流
-func (c *stdConn) AsyncWriteProtobuf(pro proto.Message) error {
+func (c *stdConn) AsyncWriteProtobuf(pro *protocolx.NetProtocol) error {
 	task := protobufTaskPool.Get().(*protobufTask)
 	task.run = c.writeProtobuf
 	task.pro = pro

@@ -48,7 +48,7 @@ public class TreeNodeKey
 	}
 
 	/**
-	 * ´¦ÀíkeyÔªËØ
+	 * å¤„ç†keyå…ƒç´ 
 	 * @param t
 	 */
 	private void dealElement( String t)

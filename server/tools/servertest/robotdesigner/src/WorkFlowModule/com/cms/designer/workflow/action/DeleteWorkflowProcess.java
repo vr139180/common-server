@@ -48,7 +48,7 @@ public class DeleteWorkflowProcess extends OBEStandardAction
 		//return value:
 		//0,delete operation confirmed
 		//1,delete operation canceled
-	  	flag=JOptionPane.showConfirmDialog(null,"È·ÊµÒªÉ¾³ı:"+((OBETreeData)node.getUserObject()).getName()+"Âğ?","È·ÈÏÉ¾³ı",JOptionPane.YES_OPTION);
+	  	flag=JOptionPane.showConfirmDialog(null,"ç¡®å®è¦åˆ é™¤:"+((OBETreeData)node.getUserObject()).getName()+"å—?","ç¡®è®¤åˆ é™¤",JOptionPane.YES_OPTION);
 		if(flag>0)	return;
 		
 		removeThisNode(node,parent);
@@ -64,7 +64,7 @@ public class DeleteWorkflowProcess extends OBEStandardAction
 		TreeNodeKey tk =new TreeNodeKey();
 		tk.analyee( ek.getModuleExtAtt());
 		
-		//²Ù×÷¶ÔÓ¦µÄ°ü
+		//æ“ä½œå¯¹åº”çš„åŒ…
 		ModuleManager manager =OBEModuleManager.getInstance().getModuleManager();
 		OBEModuleStandard ms =manager.getModule( ek.getModuleID());
 		if( ms == null)	return;
@@ -78,8 +78,8 @@ public class DeleteWorkflowProcess extends OBEStandardAction
 		if( !wmd.removeOneProcess( tk.getProcessID()))
 			return;
 
-		//´ÓtreeÖĞÉ¾³ı£¬É¾³ıinternal frame
-		//´ÓinternalÖĞÉ¾³ı
+		//ä»treeä¸­åˆ é™¤ï¼Œåˆ é™¤internal frame
+		//ä»internalä¸­åˆ é™¤
 		OBEInternalFrame frame =parent.getDesktopPanel().getInternalFrame( data.getKey());
 		if( frame != null)
 		{

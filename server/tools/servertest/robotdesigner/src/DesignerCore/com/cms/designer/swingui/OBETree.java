@@ -45,15 +45,15 @@ public class OBETree extends JTree
 
 	private OBEDesigner parent = null;
 
-	//¸ù½Úµã
+	//æ ¹èŠ‚ç‚¹
 	private OBETreeNode rootNode =
 		new OBETreeNode(new OBETreeData(ResourceUtil.getRS("tree.root"), OBETreeNode.ROOT, "frameIcon.gif"));
 
-	//treeµÄÊı¾İÄ£Ê½
+	//treeçš„æ•°æ®æ¨¡å¼
 	private DefaultTreeModel treeModel;
 	private TreePath rootPath;
 
-	//µ±Ç°Ñ¡ÖĞµÄ½Úµã
+	//å½“å‰é€‰ä¸­çš„èŠ‚ç‚¹
 	private OBETreeNode curSelectedNode = null;
 
 	public OBETree(OBEDesigner parent)
@@ -73,7 +73,7 @@ public class OBETree extends JTree
 		{
 			public void valueChanged(TreeSelectionEvent e)
 			{
-				//Ñ¡Ôñ·¢ÉúÁË±ä»¯
+				//é€‰æ‹©å‘ç”Ÿäº†å˜åŒ–
 				TreePath oldT = e.getOldLeadSelectionPath();
 				TreePath newT = e.getNewLeadSelectionPath();
 				treeItemChange(oldT, newT);
@@ -92,7 +92,7 @@ public class OBETree extends JTree
 			}
 		});
 
-		//±£´æ¸ùpath
+		//ä¿å­˜æ ¹path
 		rootPath = new TreePath(getModel().getRoot());
 	}
 	
@@ -109,7 +109,7 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * ÔÚ
+	 * åœ¨
 	 * @param oldT
 	 * @param newT
 	 */
@@ -124,7 +124,7 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * ´¦ÀíÊó±êÊÍ·ÅÊÂ¼ş
+	 * å¤„ç†é¼ æ ‡é‡Šæ”¾äº‹ä»¶
 	 * @param evt
 	 */
 	private void dealMouseReleased(MouseEvent evt)
@@ -135,20 +135,20 @@ public class OBETree extends JTree
 
 		if (evt.getClickCount() == 2)
 		{
-			//Ë«»÷´ò¿ª
+			//åŒå‡»æ‰“å¼€
 			openModuleWindow(node);
 		}
 		else if (evt.isPopupTrigger())
 		{
-			//ÏÔÊ¾µ¯³öÊ½²Ëµ¥--´¦ÀíÓÒ¼üÊó±ê¶¯×÷
+			//æ˜¾ç¤ºå¼¹å‡ºå¼èœå•--å¤„ç†å³é”®é¼ æ ‡åŠ¨ä½œ
 			setCurSelectedNode(node);
-			//´¦Àíµ¯³öÊ½²Ëµ¥
+			//å¤„ç†å¼¹å‡ºå¼èœå•
 			showPopup(node, evt.getPoint());
 		}
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÄÜ¹»´ò¿ªview
+	 * åˆ¤æ–­æ˜¯å¦èƒ½å¤Ÿæ‰“å¼€view
 	 * @param key
 	 * @return
 	 */
@@ -167,28 +167,28 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * ´¦ÀíË«»÷tree½Úµã´ò¿ª´°¿Ú
+	 * å¤„ç†åŒå‡»treeèŠ‚ç‚¹æ‰“å¼€çª—å£
 	 * @param node
 	 */
 	public void openModuleWindow(OBETreeNode node)
 	{
-		//»ñÈ¡¸½¼ÓÊı¾İ
+		//è·å–é™„åŠ æ•°æ®
 		OBETreeData treeData = (OBETreeData)node.getUserObject();
 		String type = treeData.getType();
 		if (!type.equals(OBETreeNode.MODULE))
 			return;
-		//ÊÇ·ñÄÜ¹»´ò¿ªÒ»¸öview´°¿Ú
+		//æ˜¯å¦èƒ½å¤Ÿæ‰“å¼€ä¸€ä¸ªviewçª—å£
 		if (!canOpenView(treeData.getKey()))
 			return;
 		if (parent.getDesktopPanel().isOpen(treeData.getKey()))
 		{
-			//ÊÇ·ñÒÑ¾­´ò¿ªÁËÒ»¸ö´°¿Ú
+			//æ˜¯å¦å·²ç»æ‰“å¼€äº†ä¸€ä¸ªçª—å£
 			parent.getDesktopPanel().showFrame(treeData.getKey());
 		}
 		else
 		{
-			//´´½¨Ò»¸öĞÂµÄ
-			//»ñÈ¡°üĞÅÏ¢
+			//åˆ›å»ºä¸€ä¸ªæ–°çš„
+			//è·å–åŒ…ä¿¡æ¯
 			ElementKey ek = new ElementKey();
 			ek.analyze(treeData.getKey());
 			ModuleManager manager = OBEModuleManager.getInstance().getModuleManager();
@@ -221,7 +221,7 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * ²âÊÔÊÇ·ñ¿ÉÒÔ¸Ä±äÊÓÍ¼
+	 * æµ‹è¯•æ˜¯å¦å¯ä»¥æ”¹å˜è§†å›¾
 	 * @param type
 	 * @return
 	 */
@@ -273,7 +273,7 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * ´´½¨Ò»¸ö½Úµã
+	 * åˆ›å»ºä¸€ä¸ªèŠ‚ç‚¹
 	 * @param parentNode
 	 * @param name
 	 * @param type
@@ -288,7 +288,7 @@ public class OBETree extends JTree
 	}
 
 	/**
-	 * Ôö¼ÓÒ»¸ö½Úµã
+	 * å¢åŠ ä¸€ä¸ªèŠ‚ç‚¹
 	 * @param td
 	 */
 	public OBETreeNode addProjectNode(OBETreeData td)

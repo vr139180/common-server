@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bhs id="none" n="test1">
+  <bh s="1">
+    <s id="1" n="start">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="S"/>
+        <ext n="bounds.x" v="48"/>
+        <ext n="bounds.y" v="48"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="canStart" v="Y"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="2" n="php_login">
+      <acts>
+        <act done="phplogin"/>
+      </acts>
+      <fs def="4">
+        <f to="3">
+          <c><![CDATA[result.code = (vuser:is_phplogin() and vuser:get_serversize() > 0)]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="160"/>
+        <ext n="bounds.y" v="96"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="3" n="connect to server">
+      <acts>
+        <act done="serverconnect">
+          <pm n="sleep" v="2000"/>
+        </act>
+      </acts>
+      <fs def="5"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="288"/>
+        <ext n="bounds.y" v="16"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="4" n="wait 5 s">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="3000"/>
+        </act>
+      </acts>
+      <fs def="1"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="64"/>
+        <ext n="bounds.y" v="224"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="5" n="login">
+      <acts>
+        <act done="userlogin"/>
+      </acts>
+      <fs def="7">
+        <f to="8">
+          <c><![CDATA[result.code = vuser:islogin()]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="384"/>
+        <ext n="bounds.y" v="128"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="6" n="logout">
+      <acts>
+        <act done="userlogout"/>
+      </acts>
+      <fs def="4"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="64"/>
+        <ext n="bounds.y" v="352"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="7" n="wait 3s">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="3000"/>
+        </act>
+      </acts>
+      <fs def="6"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="352"/>
+        <ext n="bounds.y" v="432"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="8" n="get role info">
+      <acts>
+        <act done="roleget"/>
+      </acts>
+      <fs def="9">
+        <f to="7">
+          <c><![CDATA[result.code= not vuser:iscallsucc()]]></c>
+        </f>
+        <f to="10">
+          <c><![CDATA[result.code = vuser:hasrole()]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="576"/>
+        <ext n="bounds.y" v="64"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="9" n="create role">
+      <acts>
+        <act done="rolecreate">
+          <pm n="prefix" v="s"/>
+        </act>
+      </acts>
+      <fs def="10">
+        <f to="7">
+          <c><![CDATA[result.code= not vuser:iscallsucc()]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="768"/>
+        <ext n="bounds.y" v="96"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="10" n="enter game">
+      <acts>
+        <act done="entergame"/>
+      </acts>
+      <fs def="7"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="752"/>
+        <ext n="bounds.y" v="320"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+  </bh>
+  <tfs>
+    <tf id="1" f="1" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="2" f="2" t="3" n="serverlist &gt; 0">
+      <c><![CDATA[result.code = (vuser:is_phplogin() and vuser:get_serversize() > 0)]]></c>
+    </tf>
+    <tf id="3" f="2" t="4" n="default">
+      <c/>
+    </tf>
+    <tf id="6" f="4" t="1" n="">
+      <c/>
+    </tf>
+    <tf id="7" f="3" t="5" n="">
+      <c/>
+    </tf>
+    <tf id="8" f="6" t="4" n="">
+      <c/>
+    </tf>
+    <tf id="9" f="7" t="6" n="">
+      <c/>
+    </tf>
+    <tf id="11" f="5" t="8" n="success">
+      <c><![CDATA[result.code = vuser:islogin()]]></c>
+    </tf>
+    <tf id="13" f="8" t="7" n="call fail">
+      <c><![CDATA[result.code= not vuser:iscallsucc()]]></c>
+    </tf>
+    <tf id="14" f="5" t="7" n="default, login fail">
+      <c/>
+    </tf>
+    <tf id="15" f="8" t="9" n="not role, default">
+      <c/>
+    </tf>
+    <tf id="16" f="8" t="10" n="have role">
+      <c><![CDATA[result.code = vuser:hasrole()]]></c>
+    </tf>
+    <tf id="17" f="9" t="7" n="call fail">
+      <c><![CDATA[result.code= not vuser:iscallsucc()]]></c>
+    </tf>
+    <tf id="18" f="10" t="7" n="default">
+      <c/>
+    </tf>
+    <tf id="19" f="9" t="10" n="default, success">
+      <c/>
+    </tf>
+  </tfs>
+  <exts>
+    <ext n="auto.activity.autoid" v="10"/>
+    <ext n="auto.transition.autoid" v="19"/>
+  </exts>
+  <exts>
+    <ext n="auto.activity.autoid" v="7"/>
+    <ext n="auto.transition.autoid" v="10"/>
+  </exts>
+</bhs>

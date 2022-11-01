@@ -60,6 +60,54 @@ void DataRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autore
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER)
+	{
+		ServiceRouterLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
+
+			session_from_.remove_waitsession_mth(psession);
+			pLink = servicerouter_links_from_.ask_free_link();
+
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
+
+			//设置当前gatelinke
+			servicerouter_links_from_.regist_onlinelink(pLink);
+
+			pLink->registinfo_tolog(true);
+		}
+
+		ack->set_result(0);
+		pLink->send_netprotocol(ptr.release());
+	}
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
+	{
+		FightRouterLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
+
+			session_from_.remove_waitsession_mth(psession);
+			pLink = fightrouter_links_from_.ask_free_link();
+
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
+
+			//设置当前gatelinke
+			fightrouter_links_from_.regist_onlinelink(pLink);
+
+			pLink->registinfo_tolog(true);
+		}
+
+		ack->set_result(0);
+		pLink->send_netprotocol(ptr.release());
+	}
 	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_HOME)
 	{
 		HomeServiceLinkFrom *pLink = 0;
@@ -108,14 +156,14 @@ void DataRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autore
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER)
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_LOGIN)
 	{
-		ServiceRouterLinkFrom *pLink = 0;
+		LoginServiceLinkFrom *pLink = 0;
 		{
 			ThreadLockWrapper guard(get_threadlock());
 
 			session_from_.remove_waitsession_mth(psession);
-			pLink = servicerouter_links_from_.ask_free_link();
+			pLink = login_links_from_.ask_free_link();
 
 			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
@@ -124,31 +172,7 @@ void DataRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autore
 			psession->set_netlinkbase(pLink);
 
 			//设置当前gatelinke
-			servicerouter_links_from_.regist_onlinelink(pLink);
-
-			pLink->registinfo_tolog(true);
-		}
-
-		ack->set_result(0);
-		pLink->send_netprotocol(ptr.release());
-	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
-	{
-		FightRouterLinkFrom *pLink = 0;
-		{
-			ThreadLockWrapper guard(get_threadlock());
-
-			session_from_.remove_waitsession_mth(psession);
-			pLink = fightrouter_links_from_.ask_free_link();
-
-			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-			psession->auth();
-			pLink->set_session(psession);
-			psession->set_netlinkbase(pLink);
-
-			//设置当前gatelinke
-			fightrouter_links_from_.regist_onlinelink(pLink);
+			login_links_from_.regist_onlinelink(pLink);
 
 			pLink->registinfo_tolog(true);
 		}

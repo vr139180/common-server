@@ -11,7 +11,7 @@ public class InternalFrameButton extends JButton
 	private static int width = 16;
 	private static int height = 13;
 
-	//Œª÷√
+	//‰ΩçÁΩÆ
 	private Dimension dimension;
 
 	public InternalFrameButton()

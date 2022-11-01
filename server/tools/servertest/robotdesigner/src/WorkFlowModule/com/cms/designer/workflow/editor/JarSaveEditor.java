@@ -50,7 +50,7 @@ public class JarSaveEditor extends JPanel
 		return nameField.getText();
 	}
 	/**
-	 * 初始化对话框
+	 * 鍒濆鍖栧璇濇
 	 */
 	private void init()
 	{

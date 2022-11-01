@@ -72,7 +72,7 @@ public class OpenWorkflowThread extends Thread
 		catch( Exception e)
 		{
 			errorListenerSupport.fireError( e);
-			JOptionPane.showMessageDialog( null, "不能打开文件 " + file.getName(), "确定",
+			JOptionPane.showMessageDialog( null, "涓嶈兘鎵撳紑鏂囦欢 " + file.getName(), "纭畾",
 					JOptionPane.ERROR_MESSAGE);
 		}
 		finally

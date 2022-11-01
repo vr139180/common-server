@@ -36,6 +36,7 @@ public class Dom4JXPDLSerializer implements XPDLSerializer, ExtensionNames
 
 	/**
 	 * Serialize the package to the given output stream.
+	 * *.xpdl
 	 * 
 	 * @param pkg
 	 *            The Package
@@ -66,7 +67,8 @@ public class Dom4JXPDLSerializer implements XPDLSerializer, ExtensionNames
 		writer.write( document);
 		out.flush();
 	}
-	
+
+	//save .xml
 	public void serialize2( WorkflowPackage pkg, OutputStream out) throws IOException, XPDLSerializerException
 	{
 		DocumentFactory df = new DocumentFactory();
@@ -87,6 +89,10 @@ public class Dom4JXPDLSerializer implements XPDLSerializer, ExtensionNames
 			// write the document to the output stream
 			OutputFormat format = new OutputFormat( "  ", true);
 			format.setEncoding( "UTF-8");
+			format.setIndent( false);
+			format.setNewlines(false);
+			format.setTrimText(true);
+
 			XMLWriter writer = new XMLWriter( out, format);
 			writer.write( document);
 			out.flush();			

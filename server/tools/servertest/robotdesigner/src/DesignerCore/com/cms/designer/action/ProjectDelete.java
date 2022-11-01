@@ -44,8 +44,8 @@ public class ProjectDelete extends OBEStandardAction
 		//return value:
 		//0,delete operation confirmed
 		//1,delete operation canceled
-		flag = JOptionPane.showConfirmDialog( null, "ȷʵҪɾ��:"
-				+ ((OBETreeData) node.getUserObject()).getName() + "��?", "ȷ��ɾ��",
+		flag = JOptionPane.showConfirmDialog( null, "确实要删除:"
+				+ ((OBETreeData) node.getUserObject()).getName() + "吗?", "确认删除",
 				JOptionPane.YES_OPTION);
 		if( flag > 0)
 			return;

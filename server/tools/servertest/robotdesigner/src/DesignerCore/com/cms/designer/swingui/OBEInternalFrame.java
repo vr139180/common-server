@@ -23,7 +23,7 @@ import com.cms.designer.util.ResourceUtil;
  */
 public class OBEInternalFrame extends JInternalFrame
 {
-	//Í¼±ê¹ÜÀí
+	//å›¾æ ‡ç®¡ç†
 	public static IconManager iconManager =ResourceUtil.getIconManager();
 
 	private OBEDesigner parent =null;
@@ -56,12 +56,12 @@ public class OBEInternalFrame extends JInternalFrame
 	}
 
 	/**
-	 * ³õÊ¼»¯½çÃæ
+	 * åˆå§‹åŒ–ç•Œé¢
 	 */
 	private void init()
 	{
 		this.setIconifiable(true);
-		//ÉèÖÃframeµÄÍ¼±ê
+		//è®¾ç½®frameçš„å›¾æ ‡
 		this.setFrameIcon( (ImageIcon)iconManager.getIcon("workflow.gif"));
 
 		frameX += OBEDesktopPane.INCREASE;
@@ -69,12 +69,12 @@ public class OBEInternalFrame extends JInternalFrame
 		setBounds(frameX, frameY, frameWidth, frameHeight);
 //		menuBar.addCheckItem(this);
 
-		//Ôö¼Ó¼àÌıÆ÷
+		//å¢åŠ ç›‘å¬å™¨
 		this.addInternalFrameListener( new InternalFrameAdapter()
 		{
 			public void internalFrameClosed(InternalFrameEvent e)
 			{	
-				//ĞŞ¸Ä²Ëµ¥
+				//ä¿®æ”¹èœå•
 				parent.getDesktopPanel().setFrameSelected();
 				CheckMenuItem checkItem =
 					parent.getOBEMenuBar().getWindowMenu().getCheckMenuItem(title);
@@ -93,12 +93,12 @@ public class OBEInternalFrame extends JInternalFrame
 			}
 			public void internalFrameIconified(InternalFrameEvent e)
 			{
-				//×Ô¶¯Ñ¡ÖĞÏÂÒ»¸ö´°¿Ú
+				//è‡ªåŠ¨é€‰ä¸­ä¸‹ä¸€ä¸ªçª—å£
 				parent.getDesktopPanel().setFrameSelected();
 			}
 			public void internalFrameActivated(InternalFrameEvent e)
 			{
-				//±»¼¤»îµÄÊ±ºò ĞŞ¸Ä¿ò¼Ü²Ëµ¥ºÍ¹¤¾ßÌõ
+				//è¢«æ¿€æ´»çš„æ—¶å€™ ä¿®æ”¹æ¡†æ¶èœå•å’Œå·¥å…·æ¡
 				parent.setFrameTitle( getTitle());
 				if (title != null)
 				{
@@ -108,7 +108,7 @@ public class OBEInternalFrame extends JInternalFrame
 						checkItem.setSelected(true);
 				}
 				
-				//ĞŞ¸ÄÊÓÍ¼ºÍÏà¹ØµÄ²Ëµ¥£¬¹¤¾ßÌõ
+				//ä¿®æ”¹è§†å›¾å’Œç›¸å…³çš„èœå•ï¼Œå·¥å…·æ¡
 				changeView( e.getInternalFrame());
 				
 				if(getModule().getBeacon()!=null)
@@ -116,14 +116,14 @@ public class OBEInternalFrame extends JInternalFrame
 			}
 			public void internalFrameDeactivated(InternalFrameEvent e)
 			{
-				//ĞŞ¸Ä¿ò¼Ü²Ëµ¥ºÍ¹¤¾ßÌõ
+				//ä¿®æ”¹æ¡†æ¶èœå•å’Œå·¥å…·æ¡
 				viewDeactivated( e.getInternalFrame());
 			}
 		});
 	}
 
 	/**
-	 * ÊÓÍ¼·¢Éú±ä»»
+	 * è§†å›¾å‘ç”Ÿå˜æ¢
 	 * @param frame
 	 */
 	public void changeView( JInternalFrame frame)
@@ -132,7 +132,7 @@ public class OBEInternalFrame extends JInternalFrame
 	}
 	
 	/**
-	 * ÊÓÍ¼Ê§È¥½¹µã
+	 * è§†å›¾å¤±å»ç„¦ç‚¹
 	 * @param frame
 	 */
 	public final void viewDeactivated( JInternalFrame frame)
@@ -163,7 +163,7 @@ public class OBEInternalFrame extends JInternalFrame
 			pv.printStackTrace();
 		}
 		
-		//ÄÚ´°Ìå×î´óºó,ÔÙÔËĞĞ¾Í»á×îĞ¡»¯
+		//å†…çª—ä½“æœ€å¤§å,å†è¿è¡Œå°±ä¼šæœ€å°åŒ–
 		parent.getDesktopPanel().setCurrentInternalFrame(this.getName());
 		if (b == true)
 		{

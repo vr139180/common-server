@@ -6,13 +6,13 @@ import com.cms.designer.util.ConstValue;
 
 /**
  * @author Administrator
- * ÎÄ¼ş²Ëµ¥
+ * æ–‡ä»¶èœå•
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public abstract class IFileOperator extends Observable
 {
-	//²Ëµ¥Ïî×´Ì¬
+	//èœå•é¡¹çŠ¶æ€
 	private boolean m_new =false;
 	private boolean m_open =false;
 	private boolean m_close =false;

@@ -23,28 +23,28 @@ import com.cms.designer.util.ConstValue;
 
 /**
  * @author Administrator
- * ¸÷¸öÄ£¿éµÄÖ÷Èë¿Ú
+ * å„ä¸ªæ¨¡å—çš„ä¸»å…¥å£
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  * $Id: OBEModuleStandard.java,v 1.4 2004/08/23 02:36:10 york Exp $
  */
 public abstract class OBEModuleStandard
 {
-	//Í¼Æ¬×ÊÔ´
+	//å›¾ç‰‡èµ„æº
 	public static IconManager iconManager = com.cms.designer.util.ResourceUtil.getIconManager();
 
 	private OBEDesigner parent = null;
-	//Ä£¿éÃèÊö
+	//æ¨¡å—æè¿°
 	private OBEModule descriptions =null;
 	
 	private final Long lockOBJ =new Long( 0);
-	//´æ·ÅÏà¹ØµÄÄ£¿éÊı¾İ
+	//å­˜æ”¾ç›¸å…³çš„æ¨¡å—æ•°æ®
 	private final HashMap moduleDatas =new HashMap();
 	private long uuid =0;
 	
-	//´æ·Å¹¤¾ßÌõ°´Å¥
+	//å­˜æ”¾å·¥å…·æ¡æŒ‰é’®
 	private OBEComponentBar toolbar =null;
-	//´æ·ÅÏµÍ³²Ëµ¥¶¯×÷ÊµÏÖ
+	//å­˜æ”¾ç³»ç»Ÿèœå•åŠ¨ä½œå®ç°
 	private final HashMap ideActions =new HashMap();
 	
 	private EventObservable beacon;
@@ -60,38 +60,38 @@ public abstract class OBEModuleStandard
 			throw new NullPointerException( "OBEModule can't null");
 		descriptions =m;
 		parent =p;
-		//³õÊ¼»¯¹¤¾ßÌõ
+		//åˆå§‹åŒ–å·¥å…·æ¡
 		toolbar =new OBEComponentBar( parent);
 	}
 
-	//»ñÈ¡Ä£¿é²Ëµ¥
+	//è·å–æ¨¡å—èœå•
 	public abstract JMenu getModuleMenu();
-	//¸ù¾İ±êÊ¾ĞÅÏ¢»ñÈ¡µ¯³öÊ½²Ëµ¥
+	//æ ¹æ®æ ‡ç¤ºä¿¡æ¯è·å–å¼¹å‡ºå¼èœå•
 	public abstract boolean getPopupMenu( JPopupMenu root, String moduleExtAtt);
-	//»ñÈ¡¿ÕµÄÄ£¿éÊı¾İÃèÊö
+	//è·å–ç©ºçš„æ¨¡å—æ•°æ®æè¿°
 	public abstract OBEModuleData newModuleData( String projectID, String moduleID);
-	//»ñÈ¡Ä£¿éedit´°¿Ú
+	//è·å–æ¨¡å—editçª—å£
 	public abstract OBEInternalFrame newModuleFrame( String key);
-	//ÅĞ¶ÏÊÇ·ñºÍ´°¿ÚÏà¹ØÁª
+	//åˆ¤æ–­æ˜¯å¦å’Œçª—å£ç›¸å…³è”
 	public abstract boolean canOpenView( String moduleExtAtt);
-	//¼ÓÔØÖ¸¶¨Â·¾¶µÄÄ£¿éĞÅÏ¢
+	//åŠ è½½æŒ‡å®šè·¯å¾„çš„æ¨¡å—ä¿¡æ¯
 	public abstract OBEModuleData loadModuleData( String path, String projectID);
 
-	//»ñÈ¡¹¤¾ßÌõĞÅÏ¢
+	//è·å–å·¥å…·æ¡ä¿¡æ¯
 	public final OBEComponentBar getModuleToolbar()
 	{
 		return toolbar.getToolbar();
 	}
 
 	/**
-	 * Ôö¼ÓÒ»¸öÄ£¿éÊı¾İ
+	 * å¢åŠ ä¸€ä¸ªæ¨¡å—æ•°æ®
 	 * @param md
 	 * @return
 	 */
 	public final synchronized boolean addModuleData( OBEModuleData md)
 	{
 		boolean ret =true;
-		//´´½¨uuid
+		//åˆ›å»ºuuid
 		synchronized( lockOBJ)
 		{
 			++uuid;
@@ -103,7 +103,7 @@ public abstract class OBEModuleStandard
 	}
 	
 	/**
-	 * É¾³ıÄ£¿éÊı¾İ
+	 * åˆ é™¤æ¨¡å—æ•°æ®
 	 * @param uuid
 	 */
 	public final synchronized void removeModuleData( String uuid)
@@ -112,7 +112,7 @@ public abstract class OBEModuleStandard
 	}
 	
 	/**
-	 * ¸ù¾İuuid»ñÈ¡Êı¾İ
+	 * æ ¹æ®uuidè·å–æ•°æ®
 	 * @param uuid
 	 * @return
 	 */
@@ -125,13 +125,13 @@ public abstract class OBEModuleStandard
 		return moduleDatas.keySet().iterator();
 	}
 
-	//»ñÈ¡È±Ê¡µÄ½ÚµãÍ¼±ê
+	//è·å–ç¼ºçœçš„èŠ‚ç‚¹å›¾æ ‡
 	public ImageIcon getDefaultNodeImage()
 	{
 		return null;
 	}
 	
-	//»ñÈ¡ÖÆ¶¨Ãû³ÆµÄ½ÚµãÍ¼±ê
+	//è·å–åˆ¶å®šåç§°çš„èŠ‚ç‚¹å›¾æ ‡
 	public ImageIcon getNodeImage(int type)
 	{
 		return null;
@@ -148,7 +148,7 @@ public abstract class OBEModuleStandard
 	}
 
 	/**
-	 * ×¢²áÓÃµ½µÄ°´Å¥
+	 * æ³¨å†Œç”¨åˆ°çš„æŒ‰é’®
 	 * @param name
 	 * @param icon
 	 * @param selectedIcon
@@ -172,7 +172,7 @@ public abstract class OBEModuleStandard
 		button.setSelectedIcon( iconManager.getIcon(selectedIcon));
 		button.setToolTipText(tooltip);
 		
-		//Ôö¼Óµ½¹¤¾ßÌõ
+		//å¢åŠ åˆ°å·¥å…·æ¡
 		toolbar.addButton( name, button);
 		
 		return button;
@@ -199,14 +199,14 @@ public abstract class OBEModuleStandard
 		button.setSelectedIcon( iconManager.getIcon(selectedIcon));
 		button.setToolTipText(tooltip);
 			
-		//Ôö¼Óµ½¹¤¾ßÌõ
+		//å¢åŠ åˆ°å·¥å…·æ¡
 		toolbar.addButton( name, button);
 			
 		return button;
 	}
 	
 	/**
-	 * ×¢²áÏµÍ³µÄ¶¯×÷
+	 * æ³¨å†Œç³»ç»Ÿçš„åŠ¨ä½œ
 	 * @param ideact
 	 * @param action
 	 * @return
@@ -228,7 +228,7 @@ public abstract class OBEModuleStandard
 	}
 	
 	/**
-	 * »ñÈ¡ÏµÍ³¶¯×÷
+	 * è·å–ç³»ç»ŸåŠ¨ä½œ
 	 * @param ide
 	 * @return
 	 */

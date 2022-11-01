@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="login">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="3"/>
+  </s>
+  <s id="3" n="select player">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="51">
+      <f to="50">
+        <c><![CDATA[if vuser.level < 10 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="5" n="rest for async">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="36">
+      <f to="35">
+        <c><![CDATA[if vuser:ispvpteamset() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="6" n="unlock zone 9">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="9"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="44"/>
+  </s>
+  <s id="7" n="rest for zone 9">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="9">
+      <f to="8">
+        <c><![CDATA[if vuser:getbuildlevel(10) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="8" n="unlock zone 10">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="10"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="46"/>
+  </s>
+  <s id="9" n="rest for zone 10">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="11">
+      <f to="10">
+        <c><![CDATA[if vuser:getbuildlevel(11) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="10" n="unlock zone 11">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="11"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="47"/>
+  </s>
+  <s id="11" n="rest for zone 11">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="13">
+      <f to="12">
+        <c><![CDATA[if vuser:getbuildlevel(12) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="12" n="unlock zone 12">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="12"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="48"/>
+  </s>
+  <s id="13" n="rest for zone 12">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="17"/>
+  </s>
+  <s id="15" n="faction 1">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="19">
+      <f to="18">
+        <c><![CDATA[if vuser:hashero(101011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="16" n="faction 2">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="30">
+      <f to="26">
+        <c><![CDATA[if vuser:hashero(201011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="17" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add fame 500"/>
+      </act>
+    </acts>
+    <fs def="16">
+      <f to="15">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="18" n="buy hero 101011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="21">
+      <f to="20">
+        <c><![CDATA[if vuser:hashero(103011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="19" n="rest for hero 101011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="21">
+      <f to="20">
+        <c><![CDATA[if vuser:hashero(103011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="20" n="buy hero 103011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="103011"/>
+      </act>
+    </acts>
+    <fs def="23">
+      <f to="22">
+        <c><![CDATA[if vuser:hashero(109011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="21" n="rest for hero 103011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="23">
+      <f to="22">
+        <c><![CDATA[if vuser:hashero(109011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="22" n="buy hero 109011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="109011"/>
+      </act>
+    </acts>
+    <fs def="25">
+      <f to="24">
+        <c><![CDATA[if vuser:hashero(110011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="23" n="rest for hero 109011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="25">
+      <f to="24">
+        <c><![CDATA[if vuser:hashero(110011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="24" n="buy hero 110011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="110011"/>
+      </act>
+    </acts>
+    <fs def="34"/>
+  </s>
+  <s id="25" n="rest for hero 110011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="34"/>
+  </s>
+  <s id="26" n="buy hero 201011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="31">
+      <f to="27">
+        <c><![CDATA[if vuser:hashero(203011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="27" n="buy hero 203011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="203011"/>
+      </act>
+    </acts>
+    <fs def="32">
+      <f to="28">
+        <c><![CDATA[if vuser:hashero(209011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="28" n="buy hero 209011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="209011"/>
+      </act>
+    </acts>
+    <fs def="33">
+      <f to="29">
+        <c><![CDATA[if vuser:hashero(210011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="29" n="buy hero 210011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="210011"/>
+      </act>
+    </acts>
+    <fs def="34"/>
+  </s>
+  <s id="30" n="rest for hero 201011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="31">
+      <f to="27">
+        <c><![CDATA[if vuser:hashero(203011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="31" n="rest for hero 203011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="32">
+      <f to="28">
+        <c><![CDATA[if vuser:hashero(209011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="32" n="rest for hero 209011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="33">
+      <f to="29">
+        <c><![CDATA[if vuser:hashero(210011) == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="33" n="rest for hero 210011">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="34"/>
+  </s>
+  <s id="34" n="prepare for async battle">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="36">
+      <f to="35">
+        <c><![CDATA[if vuser:ispvpteamset() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="35" n="pvp team set">
+    <acts>
+      <act done="pvpteamset"/>
+    </acts>
+    <fs def="38">
+      <f to="37">
+        <c><![CDATA[if vuser:isasyncteamset() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="36" n="rest for pvp team set">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="38">
+      <f to="37">
+        <c><![CDATA[if vuser:isasyncteamset() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="37" n="async team set">
+    <acts>
+      <act done="asyncteamset">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="40">
+      <f to="39">
+        <c><![CDATA[if vuser.gold < 50 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="38" n="rest for async team set">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="40">
+      <f to="39">
+        <c><![CDATA[if vuser.gold < 50 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="39" n="cheat for gold">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add gold 999"/>
+      </act>
+    </acts>
+    <fs def="40"/>
+  </s>
+  <s id="40" n="async combat">
+    <acts>
+      <act done="asyncbattle"/>
+    </acts>
+    <fs def="42">
+      <f to="41">
+        <c><![CDATA[if vuser.isasyncbusy == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="41" n="rest for busy enemy">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="30000"/>
+      </act>
+    </acts>
+    <fs def="53"/>
+  </s>
+  <s id="42" n="rest for next battle">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="53"/>
+  </s>
+  <s id="44" n="finish upgrade zone 9">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="9">
+      <f to="8">
+        <c><![CDATA[if vuser:getbuildlevel(10) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="45" n="build list">
+    <acts>
+      <act done="buildlist"/>
+    </acts>
+    <fs def="52"/>
+  </s>
+  <s id="46" n="finish upgrade zone 3">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="11">
+      <f to="10">
+        <c><![CDATA[if vuser:getbuildlevel(11) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="47" n="finish upgrade zone 9">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="13">
+      <f to="12">
+        <c><![CDATA[if vuser:getbuildlevel(12) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="48" n="finish upgrade zone 10">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="17"/>
+  </s>
+  <s id="50" n="cheat for level">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add level 10"/>
+      </act>
+    </acts>
+    <fs def="51"/>
+  </s>
+  <s id="51" n="rest for level">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="5">
+      <f to="45">
+        <c><![CDATA[if vuser:nohero()==true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="52" n="finish upgrade">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="7">
+      <f to="6">
+        <c><![CDATA[if vuser:getbuildlevel(9) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="53" n="reset dailylimit">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="asyncreset dailylimit"/>
+      </act>
+    </acts>
+    <fs def="58"/>
+  </s>
+  <s id="54" n="reset cooldown">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="asyncreset cooldown"/>
+      </act>
+    </acts>
+    <fs def="56">
+      <f to="55">
+        <c><![CDATA[if vuser.battlepoint < 100 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="55" n="cheat for battlepoint">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add battlepoint 100"/>
+      </act>
+    </acts>
+    <fs def="56"/>
+  </s>
+  <s id="56" n="rest for battlepoint">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="57"/>
+  </s>
+  <s id="57" n="random pve">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1"/>
+      </act>
+    </acts>
+    <fs def="5"/>
+  </s>
+  <s id="58" n="cheat for campaign">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="campaignclearance"/>
+      </act>
+    </acts>
+    <fs def="59"/>
+  </s>
+  <s id="59" n="rest for cheat campaign">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+</bh>

@@ -20,7 +20,7 @@ public class OBEComponentBar extends OBEToolBar
 {
 	private static Insets NO_MARGIN = new Insets(0, 0, 0, 0);
 	private String eventType;
-	//��Ű�ť
+	//存放按钮
 	private Map hm;
 
 	public OBEComponentBar(OBEDesigner parent)

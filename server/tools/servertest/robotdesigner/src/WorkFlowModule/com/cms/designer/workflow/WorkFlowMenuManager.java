@@ -24,7 +24,7 @@ import com.cms.designer.workflow.action.ProcessPropertyAction;
  */
 public class WorkFlowMenuManager
 {
-	//ÓÃµ½µÄaction³£Á¿¶¨Òå
+	//ç”¨åˆ°çš„actionå¸¸é‡å®šä¹‰
 	public final static String ACT_NEWPROCESS ="wfact.newprocess";
 	public final static String ACT_DEPLOY ="wfact.deploy";
 	public final static String ACT_PROCESSPROPERTY ="wfact.property";
@@ -35,27 +35,27 @@ public class WorkFlowMenuManager
 
 	private OBEWorkflowModule parent =null;
 	
-	//ÏµÍ³²Ëµ¥
+	//ç³»ç»Ÿèœå•
 	private JMenu workflowMenu;
-	//±à¼­
+	//ç¼–è¾‘
 	private JMenuItem workflowEditItem;
-	//±êÇ©
+	//æ ‡ç­¾
 	private JMenuItem workflowTagItem;
-	//Ö±Ïß
+	//ç›´çº¿
 	private JMenuItem workflowLineItem;
 	
-	//µ¯³öÊ½²Ëµ¥
+	//å¼¹å‡ºå¼èœå•
 	private JMenu newMenu;
-	//·¢²¼
+	//å‘å¸ƒ
 	private JMenuItem deployItem;
-	//¹ı³ÌÊôĞÔ
+	//è¿‡ç¨‹å±æ€§
 	private JMenuItem processPropertyItem;
 	//delete form workflow group
 	private JMenuItem deleteGroupItem;
-	//É¾³ı¹ı³Ì
+	//åˆ é™¤è¿‡ç¨‹
 	private JMenuItem deleteProcessItem;
 	
-	//´æ·ÅÏìÓ¦µÄ¶¯×÷
+	//å­˜æ”¾å“åº”çš„åŠ¨ä½œ
 	private HashMap actions =new HashMap();
 	
 	public WorkFlowMenuManager( OBEWorkflowModule p)
@@ -63,17 +63,17 @@ public class WorkFlowMenuManager
 		super();
 		parent =p;
 		
-		//³õÊ¼»¯²Ëµ¥
+		//åˆå§‹åŒ–èœå•
 		init();
 	}
 	
 	/**
-	 * ³õÊ¼»¯²Ëµ¥ĞÅÏ¢
+	 * åˆå§‹åŒ–èœå•ä¿¡æ¯
 	 */
 	private void init()
 	{
 		OBEModule md =parent.getOBEModule();
-		//³õÊ¼»¯ÏµÍ³²Ëµ¥Ïî
+		//åˆå§‹åŒ–ç³»ç»Ÿèœå•é¡¹
 		workflowMenu =new JMenu();
 		workflowEditItem =new JMenuItem( );
 		workflowMenu.add( workflowEditItem);
@@ -82,24 +82,24 @@ public class WorkFlowMenuManager
 		workflowLineItem =new JMenuItem( );
 		workflowMenu.add( workflowLineItem);
 		
-		//³õÊ¼»¯´æ·ÅÏìÓ¦µÄ¶¯×÷
+		//åˆå§‹åŒ–å­˜æ”¾å“åº”çš„åŠ¨ä½œ
 		OBEStandardAction act =null;
-		//¹ı³ÌÊôĞÔ
+		//è¿‡ç¨‹å±æ€§
 		act =new ProcessPropertyAction( parent.getParent());
 		actions.put( ACT_PROCESSPROPERTY, act);
-		//·¢²¼¹ı³Ì
+		//å‘å¸ƒè¿‡ç¨‹
 		act =new DeployProcess( parent.getParent());
 		actions.put( ACT_DEPLOY, act);
 		//action to delete group
 		act =new DeleteWorkflowGroup( parent.getParent());
 		actions.put( ACT_DELETEGROUP, act);
-		//É¾³ı¹ı³Ì
+		//åˆ é™¤è¿‡ç¨‹
 		act =new DeleteWorkflowProcess( parent.getParent());
 		actions.put( ACT_DELETEPROCESS, act);
 	}
 	
 	/**
-	 * ¼ÓÔØ²Ëµ¥×ÊÔ´
+	 * åŠ è½½èœå•èµ„æº
 	 */
 	private void loadResource()
 	{
@@ -121,7 +121,7 @@ public class WorkFlowMenuManager
 	}
 	
 	/**
-	 * ÖØÖÃ×´Ì¬
+	 * é‡ç½®çŠ¶æ€
 	 */
 	private void resetMenuItem()
 	{
@@ -132,7 +132,7 @@ public class WorkFlowMenuManager
 	}
 
 	/**
-	 * »ñÈ¡ÏµÍ³²Ëµ¥
+	 * è·å–ç³»ç»Ÿèœå•
 	 * @return
 	 */
 	public JMenu getSystemMenu()
@@ -141,7 +141,7 @@ public class WorkFlowMenuManager
 	}
 	
 	/**
-	 * ¸ù¾İ²»Í¬µÄÇé¿ö»ñÈ¡²»Í¬µÄ²Ëµ¥
+	 * æ ¹æ®ä¸åŒçš„æƒ…å†µè·å–ä¸åŒçš„èœå•
 	 * @param d
 	 * @return
 	 */
@@ -156,7 +156,7 @@ public class WorkFlowMenuManager
 		
 		if( moduleExtAtt == null || moduleExtAtt.equals( ""))
 		{
-			//¸ù²Ëµ¥
+			//æ ¹èœå•
 			newMenu =new JMenu();
 			root.add( newMenu);
 			
@@ -168,7 +168,7 @@ public class WorkFlowMenuManager
 			tk.analyee( moduleExtAtt);
 			if( tk.getProcessID() != null && !tk.getProcessID().equals( ""))
 			{
-				//´¦ÀíÁ÷³ÌµÄ²Ëµ¥
+				//å¤„ç†æµç¨‹çš„èœå•
 				deployItem =root.add( ( Action)actions.get( ACT_DEPLOY));
 				root.addSeparator();
 				deleteProcessItem =root.add( ( Action)actions.get( ACT_DELETEPROCESS));
@@ -182,7 +182,7 @@ public class WorkFlowMenuManager
 	}
 	
 	/**
-	 * ¸ù¾İid»ñÈ¡ÏìÓ¦µÄ¶¯×÷
+	 * æ ¹æ®idè·å–å“åº”çš„åŠ¨ä½œ
 	 * @param id
 	 * @return
 	 */

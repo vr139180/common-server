@@ -19,8 +19,7 @@ public class WorkflowPackage extends AbstractElement
 	/**
 	 * @param id
 	 * @param name
-	 * @param packageHeader
-	 *            @roseuid 3DEC73660163
+	 * @roseuid 3DEC73660163
 	 */
 	public WorkflowPackage( String id, String name)
 	{

@@ -33,7 +33,7 @@ public class NewProjectDialog extends JDialog
 
 	private int result = CANCEL_OPTION;
 
-	//��Ŀ�༭
+	//项目编辑
 	private ProjectEditor editor;
 
 	private JButton okButton;

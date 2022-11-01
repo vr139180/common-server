@@ -48,7 +48,7 @@ public class ProjectEditor extends JPanel
 	}
 
 	/**
-	 * ³õÊ¼»¯¶Ô»°¿ò
+	 * åˆå§‹åŒ–å¯¹è¯æ¡†
 	 */
 	private void init()
 	{
@@ -75,7 +75,7 @@ public class ProjectEditor extends JPanel
 	}
 	
 	/**
-	 * ±£´æĞÂ½¨µÄÏîÄ¿
+	 * ä¿å­˜æ–°å»ºçš„é¡¹ç›®
 	 * @return
 	 */
 	public boolean save()
@@ -94,7 +94,7 @@ public class ProjectEditor extends JPanel
 		
 		if(name==null||name.trim().length()<=0)
 		{
-			JOptionPane.showConfirmDialog(null,"ÇëÌîĞ´Ãû³Æ.","Ãû³Æ²»ÄÜÎª¿Õ.",JOptionPane.DEFAULT_OPTION);
+			JOptionPane.showConfirmDialog(null,"è¯·å¡«å†™åç§°.","åç§°ä¸èƒ½ä¸ºç©º.",JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
 
@@ -103,7 +103,7 @@ public class ProjectEditor extends JPanel
 		
 		if(projectData!=null)
 		{
-		  	JOptionPane.showConfirmDialog(null,"ÇëÎª¸ÃÏîÄ¿ÁíÈ¡Ãû³Æ.","ÏîÄ¿:"+name+"ÒÑ´æÔÚ!",JOptionPane.DEFAULT_OPTION);
+		  	JOptionPane.showConfirmDialog(null,"è¯·ä¸ºè¯¥é¡¹ç›®å¦å–åç§°.","é¡¹ç›®:"+name+"å·²å­˜åœ¨!",JOptionPane.DEFAULT_OPTION);
 		  	return false;
 		}
 		else

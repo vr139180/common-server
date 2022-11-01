@@ -17,7 +17,7 @@ import com.cms.designer.workflow.WorkflowModuleData;
 import com.cms.designer.workflow.dialog.EditWorkflowProcessDialog;
 
 /**
- * Process±à¼­ÊôĞÔ
+ * Processç¼–è¾‘å±æ€§
  * @author today
  *
  * To change the template for this generated type comment go to
@@ -45,12 +45,12 @@ public class ProcessPropertyAction extends OBEStandardAction
 		ElementKey ek =new ElementKey();
 		ek.analyze( data.getKey());
 				
-		//»ñÈ¡°üÊôĞÔ
-		//»ñÈ¡°üĞÅÏ¢
+		//è·å–åŒ…å±æ€§
+		//è·å–åŒ…ä¿¡æ¯
 		ModuleManager manager =OBEModuleManager.getInstance().getModuleManager();
 		OBEModuleStandard ms =manager.getModule( ek.getModuleID());
 		if( ms == null)	return;
-		//±£´æ¹ı³ÌĞÅÏ¢
+		//ä¿å­˜è¿‡ç¨‹ä¿¡æ¯
 		WorkflowModuleData wmd =( WorkflowModuleData)ms.getModuleData( ek.getModuleExt());
 		if( wmd == null) return;
 		TreeNodeKey tk =new TreeNodeKey();
@@ -60,10 +60,10 @@ public class ProcessPropertyAction extends OBEStandardAction
 		WorkflowProcess wp =wpackage.getWorkflowProcess( tk.getProcessID());
 		if( wp == null) return;
 
-		EditWorkflowProcessDialog d = new EditWorkflowProcessDialog( parent, wp, data.getKey(), "±à¼­Á÷³Ì¶¨ÒåÊôĞÔ");
+		EditWorkflowProcessDialog d = new EditWorkflowProcessDialog( parent, wp, data.getKey(), "ç¼–è¾‘æµç¨‹å®šä¹‰å±æ€§");
 		if( d.showDialog() == EditWorkflowProcessDialog.APPROVE_OPTION)
 		{
-			//¸üĞÂtreeµÄnodeÏÔÊ¾
+			//æ›´æ–°treeçš„nodeæ˜¾ç¤º
 			OBETreeNode node =parent.getTree().getCurSelectedNode();
 			data.setName( wp.getName());
 			parent.getTree().updateUI();

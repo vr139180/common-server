@@ -14,7 +14,7 @@ import com.cms.designer.workflow.OBEGraphWorkflow;
 public class OBEGraphManager
 {
 	private OBEGraphWorkflow graph;
-	//»ØÍË¹ÜÀíÕß
+	//å›é€€ç®¡ç†è€…
 	private OBEUndoManager undoManager;
 	//
 	private OBEMarqueeHandler marqueeHandler;

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="logon">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="3"/>
+  </s>
+  <s id="3" n="select player">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="5">
+      <f to="4">
+        <c><![CDATA[if vuser:nohero()==true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="4" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="super hero"/>
+      </act>
+    </acts>
+    <fs def="13"/>
+  </s>
+  <s id="5" n="rest for hero">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="6"/>
+  </s>
+  <s id="6" n="campaign info">
+    <acts>
+      <act done="campaign"/>
+    </acts>
+    <fs def="7">
+      <f to="8">
+        <c><![CDATA[if vuser:canpvp()==false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="7" n="rest for condition">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="12"/>
+  </s>
+  <s id="8" n="cheat for combat">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="10">
+      <f to="9">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="9" n="cheat for faction 1">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="battledifficulty 10107 0 1 1 1"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+  <s id="10" n="cheat for faction 2">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="battledifficulty 20107 0 1 1 1"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+  <s id="11" n="pvp">
+    <acts>
+      <act done="pvpcombat">
+        <pm n="combattime" v="120000"/>
+        <pm n="pvp_type" v="0"/>
+      </act>
+    </acts>
+    <fs def="14"/>
+  </s>
+  <s id="12" n="pvp team set">
+    <acts>
+      <act done="pvpteamset"/>
+    </acts>
+    <fs def="11"/>
+  </s>
+  <s id="13" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="14" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="2"/>
+  </s>
+</bh>

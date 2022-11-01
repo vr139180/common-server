@@ -45,7 +45,7 @@ public interface PropertyNames
 	public static String SHAPEALIGNMIDDLE = "shapeAlignMiddle";
 	public static String SHAPEALIGNBOTTOM = "shapeAlignBottom";
 
-	//项目位置保存
+	//椤圭洰浣嶇疆淇濆瓨
 	public final static String WS_PROJECT ="workProjects";
 	public final static String WS_PROJECTE ="project";
 	public final static String WS_PROJECTNAME ="name";

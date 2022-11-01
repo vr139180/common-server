@@ -106,14 +106,14 @@ T* NetHashingWithVNode<T, VNODE_NUM>::get_netnode_byhash(S_INT_32 hash)
 template<class T, int VNODE_NUM>
 void NetHashingWithVNode<T, VNODE_NUM>::test()
 {
-	S_INT_64 iids[] = { 101,20,68};
-	NetHashingWithVNode<S_INT_64, 1024> vnodes;
+	S_INT_64 iids[] = { 101,20};
+	NetHashingWithVNode<S_INT_64, VNODE_NUM> vnodes;
 	for (int ii = 0; ii < sizeof(iids) / sizeof(S_INT_64); ++ii)
 		vnodes.add_realnode(iids[ii], &iids[ii]);
 	vnodes.build_nethashing();
 
 	std::map<S_INT_64, S_INT_32> hits;
-	S_INT_64 s_max = 100000;
+	S_INT_64 s_max = 1000;
 	for (S_INT_64 ii = 0; ii < s_max; ++ii)
 	{
 		S_INT_64* kid = vnodes.get_netnode_byval(ii);

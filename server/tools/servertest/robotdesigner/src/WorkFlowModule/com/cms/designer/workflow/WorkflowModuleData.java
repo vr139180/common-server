@@ -26,9 +26,9 @@ import com.cms.designer.util.OBETreeData;
  */
 public class WorkflowModuleData extends OBEModuleData
 {
-	//±£´æÁ÷³ÌµÄĞÅÏ¢
+	//ä¿å­˜æµç¨‹çš„ä¿¡æ¯
 	private HashMap packages =new HashMap();
-	//¹¤×÷Ä¿Â¼
+	//å·¥ä½œç›®å½•
 	private File workDir =null;
 
 	public WorkflowModuleData( String moduleID, String projectID)
@@ -46,7 +46,7 @@ public class WorkflowModuleData extends OBEModuleData
 	}
 	
 	/**
-	 * É¾³ıÒ»¸ö°ü
+	 * åˆ é™¤ä¸€ä¸ªåŒ…
 	 * @param id
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public class WorkflowModuleData extends OBEModuleData
 
 		packages.put( n, wpackage);
 		
-		//´´½¨Ò»¸öxpdlÎÄ¼ş
+		//åˆ›å»ºä¸€ä¸ªxpdlæ–‡ä»¶
 		try
 		{
 			File f =new File( workDir, n+".xpdl");
@@ -113,7 +113,7 @@ public class WorkflowModuleData extends OBEModuleData
 	}
 	
 	/**
-	 * ´ÓÒ»¸ö°üÀïÃæÈ¡³öÒ»¸ö¹ı³Ì
+	 * ä»ä¸€ä¸ªåŒ…é‡Œé¢å–å‡ºä¸€ä¸ªè¿‡ç¨‹
 	 * @param pid
 	 * @param process
 	 * @return
@@ -145,7 +145,7 @@ public class WorkflowModuleData extends OBEModuleData
 	 */
 	public void mkModuleDir(String parent)
 	{
-		//´´½¨Ä£¿éÊı¾İ±£´æ´ó¶îÄ¿Â¼
+		//åˆ›å»ºæ¨¡å—æ•°æ®ä¿å­˜å¤§é¢ç›®å½•
 		ModuleManager mm =OBEModuleManager.getInstance().getModuleManager();
 		OBEModuleStandard ms =mm.getModule( getModuleID());
 		String wp =ms.getOBEModule().getWorkDir();
@@ -154,7 +154,7 @@ public class WorkflowModuleData extends OBEModuleData
 	}
 	
 	/**
-	 * »ñÈ¡¹¤×÷Ä¿Â¼
+	 * è·å–å·¥ä½œç›®å½•
 	 * @return
 	 */
 	public File getWorkDir()
@@ -177,7 +177,7 @@ public class WorkflowModuleData extends OBEModuleData
 		{
 			wp =( WorkflowPackage)ff.next();
 
-			//Ôö¼Ó¹ı³ÌĞÅÏ¢
+			//å¢åŠ è¿‡ç¨‹ä¿¡æ¯
 			TreeNodeKey tk =new TreeNodeKey();
 			tk.setProcessID( wp.getName());
 			ek.setModuleExtAtt( tk.createKey());
@@ -209,7 +209,7 @@ public class WorkflowModuleData extends OBEModuleData
 	}
 	
 	/**
-	 * ²éÕÒ°üº¬¸Ã¹¤×÷Á÷µÄ°ü
+	 * æŸ¥æ‰¾åŒ…å«è¯¥å·¥ä½œæµçš„åŒ…
 	 * @param pross
 	 * @return
 	 */

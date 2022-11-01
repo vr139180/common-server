@@ -45,7 +45,7 @@ public class WorkSpaceManager implements PropertyNames
 	}
 	
 	/**
-	 * ±£´æ¹¤³ÌĞÅÏ¢
+	 * ä¿å­˜å·¥ç¨‹ä¿¡æ¯
 	 * @param p
 	 */
 	public void saveProjects()
@@ -86,7 +86,7 @@ public class WorkSpaceManager implements PropertyNames
 	}
 
 	/**
-	 * ¼ÓÔØÏîÄ¿ĞÅÏ¢
+	 * åŠ è½½é¡¹ç›®ä¿¡æ¯
 	 */
 	public void loadWorkProjects()
 	{
@@ -108,9 +108,9 @@ public class WorkSpaceManager implements PropertyNames
 				ProjectData pd =ProjectData.loadProject( n, p);
 				if( pd == null)
 					continue;
-				//±£´æÏîÄ¿ĞÅÏ¢
+				//ä¿å­˜é¡¹ç›®ä¿¡æ¯
 				pm.newProject( pd);
-				//¼ÓÔØÏîÄ¿ĞÅÏ¢
+				//åŠ è½½é¡¹ç›®ä¿¡æ¯
 				pd.loadProject();
 			}
 		}
@@ -120,11 +120,11 @@ public class WorkSpaceManager implements PropertyNames
 	}
 	
 	/**
-	 * ¸üĞÂĞÅÏ¢Ê÷
+	 * æ›´æ–°ä¿¡æ¯æ ‘
 	 */
 	public void refrushWorkspaceTree()
 	{
-		//»ñÈ¡ÏîÄ¿ĞÅÏ¢¹ÜÀíÆ÷
+		//è·å–é¡¹ç›®ä¿¡æ¯ç®¡ç†å™¨
 		ProjectManager pm =OBEModuleManager.getInstance().getProjectManager();
 		Iterator f =pm.getAllProjects().iterator();
 		ProjectData data =null;
@@ -138,19 +138,19 @@ public class WorkSpaceManager implements PropertyNames
 			
 			String mkey =data.getDefaultModuleKey();
 			String uuid =data.getModuleUUID( mkey);
-			//Ôö¼Ó½Úµã
+			//å¢åŠ èŠ‚ç‚¹
 			ElementKey ek =new ElementKey( data.getProjectID(), OBETreeNode.PROJECT, mkey, uuid);
 			OBETreeData td =new OBETreeData( data.getProjectName(), OBETreeNode.PROJECT,
 				"project.gif", ek.createKey());
 			node =tree.addProjectNode( td);
 			
-			//µİ¹é¼ÓÔØÄ£¿éÊı¾İ
+			//é€’å½’åŠ è½½æ¨¡å—æ•°æ®
 			if( node != null)
 				data.refrushWorkspaceTree( tree, node);
 			node =null;
 		}
 		
-		//¸üĞÂ½çÃæ
+		//æ›´æ–°ç•Œé¢
 		tree.updateUI();
 	}
 

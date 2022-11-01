@@ -33,19 +33,19 @@ public class OBEGraphActivityModePopup extends JPopupMenu
 
 	private AddActivityMenu addActivityMenu;
 
-	//É¾³ı
+	//åˆ é™¤
 	private JMenuItem deleteMenuItem;
 
-	//ÉèÖÃÊôĞÔ
+	//è®¾ç½®å±æ€§
 	private JMenuItem propertyMenuItem;
 
-	//Êµ¼Ê´óĞ¡
+	//å®é™…å¤§å°
 	private JMenuItem actualSizeMenuItem;
 
-	//·Å´ó
+	//æ”¾å¤§
 	private JMenuItem zoomInMenuItem;
 
-	//ËõĞ¡
+	//ç¼©å°
 	private JMenuItem zoomOutMenuItem;
 
 	public OBEGraphActivityModePopup( OBEDesigner app, OBEGraphWorkflow parent, Object object)
@@ -92,7 +92,7 @@ public class OBEGraphActivityModePopup extends JPopupMenu
 	}
 
 	/**
-	 * ³õÊ¼»¯²Ëµ¥
+	 * åˆå§‹åŒ–èœå•
 	 */
 	private void init()
 	{
@@ -102,14 +102,14 @@ public class OBEGraphActivityModePopup extends JPopupMenu
 
 		if( object == null)
 		{
-			//Ôö¼Ó·Å´óËõĞ¡²Ëµ¥
+			//å¢åŠ æ”¾å¤§ç¼©å°èœå•
 			addSeparator();
 			actualSizeMenuItem = add( (Action) actions.get( "graph.actualSize"));
 			zoomInMenuItem = add( (Action) actions.get( "graph.zoomIn"));
 			zoomOutMenuItem = add( (Action) actions.get( "graph.zoomOut"));
 //			addSeparator();
 
-			//Ôö¼Ó´´½¨½Úµã²Ëµ¥
+			//å¢åŠ åˆ›å»ºèŠ‚ç‚¹èœå•
 //			addActivityMenu = new AddActivityMenu( app, parent);
 //			add( addActivityMenu);
 		}

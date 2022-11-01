@@ -188,9 +188,9 @@ public class JarUtil
 			String fileName = fileNames[i];
 			if( fileName != null)
 			{
-				if( fileName.equalsIgnoreCase( jarFileName)){ throw new IOException( "ÎŞ·¨Ìí¼ÓÎÄ¼şµ½×ÔÉí"); }
+				if( fileName.equalsIgnoreCase( jarFileName)){ throw new IOException( "æ— æ³•æ·»åŠ æ–‡ä»¶åˆ°è‡ªèº«"); }
 				if( fileName.equalsIgnoreCase( jarFileName + ".tmp")){ throw new IOException( 
-						"ÎŞ·¨Ìí¼Ó³ÌĞò½«Òª´´½¨µÄÁÙÊ±ÎÄ¼ş"); }
+						"æ— æ³•æ·»åŠ ç¨‹åºå°†è¦åˆ›å»ºçš„ä¸´æ—¶æ–‡ä»¶"); }
 				filesMap.put( StringUtil.getEntryName( baseDir, fileName), fileName);
 			}
 		}
@@ -303,9 +303,9 @@ public class JarUtil
 		try
 		{
 			File addedFile = new File( dirToAdd);
-			if( !addedFile.isDirectory()){ throw new IOException( "´ËÎÄ¼ş²»ÊÇÄ¿Â¼"); }
+			if( !addedFile.isDirectory()){ throw new IOException( "æ­¤æ–‡ä»¶ä¸æ˜¯ç›®å½•"); }
 
-			if( !addedFile.exists()){ throw new IOException( "´ËÄ¿Â¼²»´æÔÚ"); }
+			if( !addedFile.exists()){ throw new IOException( "æ­¤ç›®å½•ä¸å­˜åœ¨"); }
 
 			// Get all the files
 			Map map = scanFilesInDir( dirToAdd, recurseSubFolders, null);
@@ -337,7 +337,7 @@ public class JarUtil
 	{
 		File base = new File( baseDir);
 		if( !base.exists())
-			throw new IOException( "Ä¿Â¼²»´æÔÚ!");
+			throw new IOException( "ç›®å½•ä¸å­˜åœ¨!");
 		String fileName = base.getCanonicalPath();
 
 		// Make sure the directory name ends with file separator
@@ -489,7 +489,7 @@ public class JarUtil
 				File f = new File( dir, e.getName().replace( '/', File.separatorChar));
 				if( e.isDirectory())
 				{
-					//½¨Á¢Ä¿Â¼
+					//å»ºç«‹ç›®å½•
 					if( !f.exists() && !f.mkdirs() || !f.isDirectory())
 						throw new IOException( "Can't create directory " + f.getPath());
 				}
@@ -502,7 +502,7 @@ public class JarUtil
 							throw new IOException( "Can't create directory " + d.getPath());
 					}
 	
-					//ÊÍ·ÅÎÄ¼ş
+					//é‡Šæ”¾æ–‡ä»¶
 					OutputStream os = new FileOutputStream( f);
 					byte[] b = new byte[512];
 					int len;
@@ -812,7 +812,7 @@ public class JarUtil
 		return vFile;
 	}
 	/**
-	 * Jar°üÖĞ´æÔÚ¸ÄÎÄ¼ş
+	 * JaråŒ…ä¸­å­˜åœ¨æ”¹æ–‡ä»¶
 	 * @param jarFileName
 	 * @param str
 	 * @return
@@ -831,7 +831,7 @@ public class JarUtil
 		return false;
 	}
 	/**
-	 * jarÖĞ´æÔÚ¸ÃÀà
+	 * jarä¸­å­˜åœ¨è¯¥ç±»
 	 * @param jarFileName
 	 * @param str
 	 * @return
@@ -840,7 +840,7 @@ public class JarUtil
 	public static boolean hasClassInJar(String jarFileName,String classname) throws IOException{
 		                                               
 		char a = ".".toCharArray()[0];
-		char b = "/".toCharArray()[0];//JARµÄÄ¿Â¼·Ö¸î·ûºÅÎª"/" ²»¿ÉÓÃ file.separator´úÌæ
+		char b = "/".toCharArray()[0];//JARçš„ç›®å½•åˆ†å‰²ç¬¦å·ä¸º"/" ä¸å¯ç”¨ file.separatorä»£æ›¿
 		classname = classname.replace(a,b);
 		classname = classname + ".class";
 		Map map = getJarFileEntries(jarFileName);

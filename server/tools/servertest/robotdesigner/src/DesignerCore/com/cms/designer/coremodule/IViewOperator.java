@@ -2,7 +2,7 @@ package com.cms.designer.coremodule;
 
 /**
  * @author Administrator
- * ÊÓÍ¼²Ëµ¥
+ * è§†å›¾èœå•
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */

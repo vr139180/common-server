@@ -29,23 +29,23 @@ import com.cms.designer.util.Utilities;
  */
 public class LogoWindow extends JFrame
 {
-	//Ò»¸öÊµÀı
+	//ä¸€ä¸ªå®ä¾‹
 	private static LogoWindow instance =null;
 
-	//logo´°ÌåµÄÌØÕ÷
+	//logoçª—ä½“çš„ç‰¹å¾
 	private final static int logoWidth = 432;
 	private final static int logoHeight = 225;
 
-	//ÏÔÊ¾µÄÍ¼Æ¬
+	//æ˜¾ç¤ºçš„å›¾ç‰‡
 	final Icon logoIcon = ResourceUtil.getIconManager().getIcon("splash.gif");
 	ImageIcon imageIcon = (ImageIcon)logoIcon;
 	final Image image = imageIcon.getImage();
 
-	//ÏÔÊ¾logoÍ¼Æ¬µÄ´°¿Ú
+	//æ˜¾ç¤ºlogoå›¾ç‰‡çš„çª—å£
 	JLabel lab = null; 
 
 	/**
-	 * ÏÔÊ¾logo´°¿Ú
+	 * æ˜¾ç¤ºlogoçª—å£
 	 */
 	public static synchronized void showLogoWindow()
 	{
@@ -58,7 +58,7 @@ public class LogoWindow extends JFrame
 	}
 	
 	/**
-	 * ³·Ïúlogo´°¿Ú
+	 * æ’¤é”€logoçª—å£
 	 */
 	public static synchronized void disposeLogoWindow()
 	{

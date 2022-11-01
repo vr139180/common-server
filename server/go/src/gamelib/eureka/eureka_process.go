@@ -3,11 +3,10 @@ package eureka
 import (
 	"cmslib/gnet"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/server"
 	"gamelib/protobuf/gpro"
 	"gamelib/service"
-
-	"google.golang.org/protobuf/proto"
 )
 
 func (ec *EurekaCluster) timerAutoConnect(now int64, interval int, tid int64) (finish bool) {
@@ -57,7 +56,7 @@ func (ec *EurekaCluster) timerSyncEureka(now int64, interval int, tid int64) (fi
 		eids = append(eids, i)
 	}
 	esync.Exists = eids
-	ec.SendMessage(esync, true)
+	ec.SendNetProtocol(esync, true)
 
 	//sync service
 	{
@@ -87,7 +86,7 @@ func (ec *EurekaCluster) timerSyncEureka(now int64, interval int, tid int64) (fi
 			sy.SvrType = sbs
 		}
 
-		ec.SendMessage(sy, false)
+		ec.SendNetProtocol(sy, false)
 	}
 
 	return
@@ -156,10 +155,10 @@ func (ec *EurekaCluster) onMthEurekaDisConnected(s gnet.NetSession) {
 	}
 }
 
-func (ec *EurekaCluster) onMthServiceRegistAck(ns gnet.NetSession, id int, msg proto.Message) {
+func (ec *EurekaCluster) onMthServiceRegistAck(ns gnet.NetSession, pro *protocolx.NetProtocol) {
 	es, _ := ns.(*EurekaSession)
 
-	ack, _ := msg.(*gpro.Erk_ServiceRegistAck)
+	ack, _ := pro.Msg.(*gpro.Erk_ServiceRegistAck)
 
 	node := es.node
 
@@ -195,9 +194,9 @@ func (ec *EurekaCluster) onMthServiceRegistAck(ns gnet.NetSession, id int, msg p
 	logx.Debugf("-------regist result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 }
 
-func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, id int, msg proto.Message) {
+func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, pro *protocolx.NetProtocol) {
 	es, _ := ns.(*EurekaSession)
-	ack, _ := msg.(*gpro.Erk_ServiceBindAck)
+	ack, _ := pro.Msg.(*gpro.Erk_ServiceBindAck)
 
 	node := es.node
 
@@ -225,8 +224,8 @@ func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, id int, msg pro
 	logx.Debugf("-------bind result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 }
 
-func (ec *EurekaCluster) onMthEurekaSync(ns gnet.NetSession, id int, msg proto.Message) {
-	ack, _ := msg.(*gpro.Erk_EurekaUpdateNtf)
+func (ec *EurekaCluster) onMthEurekaSync(ns gnet.NetSession, pro *protocolx.NetProtocol) {
+	ack, _ := pro.Msg.(*gpro.Erk_EurekaUpdateNtf)
 
 	for _, v := range ack.Online {
 		_, ok := ec.eurekaNodes[v.GetIid()]
@@ -261,8 +260,8 @@ func (ec *EurekaCluster) onMthEurekaSync(ns gnet.NetSession, id int, msg proto.M
 	}
 }
 
-func (ec *EurekaCluster) onMthServiceSubScribeAck(ns gnet.NetSession, id int, msg proto.Message) {
-	ack, _ := msg.(*gpro.Erk_ServiceSubscribeAck)
+func (ec *EurekaCluster) onMthServiceSubScribeAck(ns gnet.NetSession, pro *protocolx.NetProtocol) {
+	ack, _ := pro.Msg.(*gpro.Erk_ServiceSubscribeAck)
 
 	stype := int(ack.SvrType)
 	nodes := ec.getServiceNodesByType(stype)
@@ -310,7 +309,8 @@ func (ec *EurekaCluster) onMthServiceSubScribeAck(ns gnet.NetSession, id int, ms
 		confirm.Iid = ec.GetMyNode().Iid
 		confirm.Token = ec.GetMyNode().Token
 
-		ns.SendMessage(confirm)
+		ens, _ := ns.(*EurekaSession)
+		ens.SendNetProtocol(confirm)
 
 		ec.curState = eurekaReady
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="logon">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="3">
+      <f to="4">
+        <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="3" n="select player">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="5">
+      <f to="6">
+        <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="4" n="create player">
+    <acts>
+      <act done="createchr">
+        <pm n="faction" v="1"/>
+      </act>
+    </acts>
+    <fs def="5"/>
+  </s>
+  <s id="5" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="6" n="rest for action">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs/>
+  </s>
+</bh>

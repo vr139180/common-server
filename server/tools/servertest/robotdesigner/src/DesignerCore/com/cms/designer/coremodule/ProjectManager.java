@@ -9,20 +9,20 @@ import com.cms.designer.coremodule.workspace.OBEModuleData;
 import com.cms.designer.coremodule.workspace.ProjectData;
 
 /**
- * @author Administrator ÏîÄ¿Êı¾İ¹ÜÀí To change the template for this generated type
+ * @author Administrator é¡¹ç›®æ•°æ®ç®¡ç† To change the template for this generated type
  *         comment go to Window - Preferences - Java - Code Generation - Code
  *         and Comments $Id: ProjectManager.java,v 1.1.4.2 2004/06/08 02:59:28
  *         gaj Exp $
  */
 public class ProjectManager
 {
-	//±àºÅ¼ÆÊı
+	//ç¼–å·è®¡æ•°
 	private long projectID = 0;
 
 	private HashMap projects = new HashMap();
 
 	/**
-	 * Ôö¼ÓÒ»¸öĞÂµÄÏîÄ¿
+	 * å¢åŠ ä¸€ä¸ªæ–°çš„é¡¹ç›®
 	 * 
 	 * @param pe
 	 */
@@ -39,7 +39,7 @@ public class ProjectManager
 		
 		String moduleID =ms.getOBEModule().getModuleID();
 		OBEModuleData md =ms.newModuleData( pe.getProjectID(), moduleID);
-		//ÔÚÏîÄ¿Êı¾İÖĞ×¢²á
+		//åœ¨é¡¹ç›®æ•°æ®ä¸­æ³¨å†Œ
 		pe.appendModule( moduleID, md.getUuid());
 		md.mkModuleDir( pe.getProjectPath());
 		
@@ -47,7 +47,7 @@ public class ProjectManager
 	}
 
 	/**
-	 * ¸ù¾İÏîÄ¿id»ñÈ¡ÏîÄ¿ÃèÊö
+	 * æ ¹æ®é¡¹ç›®idè·å–é¡¹ç›®æè¿°
 	 * 
 	 * @param pid
 	 * @return
@@ -58,7 +58,7 @@ public class ProjectManager
 	}
 
 	/**
-	 * »ñÈ¡ËùÓĞµÄÏîÄ¿ĞÅÏ¢ projectdata¶ÔÏó
+	 * è·å–æ‰€æœ‰çš„é¡¹ç›®ä¿¡æ¯ projectdataå¯¹è±¡
 	 * 
 	 * @return
 	 */

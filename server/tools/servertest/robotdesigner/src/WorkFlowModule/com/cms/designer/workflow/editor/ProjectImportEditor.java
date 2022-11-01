@@ -46,7 +46,7 @@ public class ProjectImportEditor extends JPanel
 	}
 
 	/**
-	 * ³õÊ¼»¯¶Ô»°¿ò
+	 * åˆå§‹åŒ–å¯¹è¯æ¡†
 	 */
 	private void init()
 	{
@@ -104,7 +104,7 @@ public class ProjectImportEditor extends JPanel
 		rename =rename.trim();
 		if( rename.length() <= 0)
 		{
-			JOptionPane.showConfirmDialog( null, "ÏîÄ¿Ãû³Æ²»ÄÜÎª¿Õ.", "´íÎó",
+			JOptionPane.showConfirmDialog( null, "é¡¹ç›®åç§°ä¸èƒ½ä¸ºç©º.", "é”™è¯¯",
 					JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
@@ -113,7 +113,7 @@ public class ProjectImportEditor extends JPanel
 		File ff =new File( srcFile, "project.wpr");
 		if( !ff.exists())
 		{
-			JOptionPane.showConfirmDialog( null, "Ñ¡ÔñµÄÄ¿Â¼²»°üº¬ÏîÄ¿ĞÅÏ¢", "´íÎó",
+			JOptionPane.showConfirmDialog( null, "é€‰æ‹©çš„ç›®å½•ä¸åŒ…å«é¡¹ç›®ä¿¡æ¯", "é”™è¯¯",
 					JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
@@ -122,8 +122,8 @@ public class ProjectImportEditor extends JPanel
 		ProjectData projectData = pm.getOneProjectByName( nameField.getText());
 		if( projectData != null)
 		{
-			JOptionPane.showConfirmDialog( null, "ÇëÎª¸ÃÏîÄ¿ÁíÈ¡Ãû³Æ.",
-					"ÏîÄ¿:" + nameField.getText() + "ÒÑ´æÔÚ!", JOptionPane.DEFAULT_OPTION);
+			JOptionPane.showConfirmDialog( null, "è¯·ä¸ºè¯¥é¡¹ç›®å¦å–åç§°.",
+					"é¡¹ç›®:" + nameField.getText() + "å·²å­˜åœ¨!", JOptionPane.DEFAULT_OPTION);
 			return false;
 		}
 
@@ -131,7 +131,7 @@ public class ProjectImportEditor extends JPanel
 			+File.separator+ nameField.getText());
 		if( destFile.exists())
 		{
-			JOptionPane.showConfirmDialog( null, "ÇëÁíÑ¡ÏîÄ¿Ãû³Æ.", "ÏîÄ¿Ãû³ÆÒÑ¾­´æÔÚ!",
+			JOptionPane.showConfirmDialog( null, "è¯·å¦é€‰é¡¹ç›®åç§°.", "é¡¹ç›®åç§°å·²ç»å­˜åœ¨!",
 					JOptionPane.DEFAULT_OPTION);
 			return false;
 		}

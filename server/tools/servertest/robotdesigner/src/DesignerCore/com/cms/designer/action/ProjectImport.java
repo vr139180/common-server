@@ -31,7 +31,7 @@ public class ProjectImport extends OBEStandardAction
 		{
 			if( !dialog.save())
 			{
-				JOptionPane.showMessageDialog(parent, "µ¼ÈëÏîÄ¿Ê§°Ü", "¾¯¸æ", JOptionPane.OK_OPTION);
+				JOptionPane.showMessageDialog(parent, "å¯¼å…¥é¡¹ç›®å¤±è´¥", "è­¦å‘Š", JOptionPane.OK_OPTION);
 			}
 		}
 	}

@@ -1,0 +1,2584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="login">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="317">
+      <f to="232">
+        <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="4" n="unlock military academy">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="17"/>
+      </act>
+    </acts>
+    <fs def="5"/>
+  </s>
+  <s id="5" n="wait for unlock military academy">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="24"/>
+  </s>
+  <s id="7" n="unlock tank zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="9"/>
+      </act>
+    </acts>
+    <fs def="8"/>
+  </s>
+  <s id="8" n="wait for unlock tank zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="9"/>
+  </s>
+  <s id="9" n="unlock tank zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="9"/>
+      </act>
+    </acts>
+    <fs def="18">
+      <f to="15">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="12" n="recruit hero 101011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="17"/>
+  </s>
+  <s id="13" n="recruit hero 201011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="20"/>
+  </s>
+  <s id="14" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="2"/>
+      </act>
+    </acts>
+    <fs def="13">
+      <f to="12">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="15" n="accept quest 100401">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="100401"/>
+      </act>
+    </acts>
+    <fs def="16"/>
+  </s>
+  <s id="16" n="finish quest 100401">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="100401"/>
+      </act>
+    </acts>
+    <fs def="25"/>
+  </s>
+  <s id="17" n="accept quest 100402">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="100402"/>
+      </act>
+    </acts>
+    <fs def="21"/>
+  </s>
+  <s id="18" n="accept quest 200401">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="200401"/>
+      </act>
+    </acts>
+    <fs def="19"/>
+  </s>
+  <s id="19" n="finish quest 200401">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="200401"/>
+      </act>
+    </acts>
+    <fs def="26"/>
+  </s>
+  <s id="20" n="accept quest 200402">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="200402"/>
+      </act>
+    </acts>
+    <fs def="22"/>
+  </s>
+  <s id="21" n="finish quest 100402">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="100402"/>
+      </act>
+    </acts>
+    <fs def="27"/>
+  </s>
+  <s id="22" n="finish quest 200402">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="200402"/>
+      </act>
+    </acts>
+    <fs def="28"/>
+  </s>
+  <s id="23" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="3"/>
+      </act>
+    </acts>
+    <fs def="29"/>
+  </s>
+  <s id="24" n="unlock military academy finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="17"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+  <s id="25" n="submit quest 100401">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="100401"/>
+      </act>
+    </acts>
+    <fs def="14"/>
+  </s>
+  <s id="26" n="submit quest 200401">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="200401"/>
+      </act>
+    </acts>
+    <fs def="14"/>
+  </s>
+  <s id="27" n="submit quest 100402">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="100402"/>
+      </act>
+    </acts>
+    <fs def="23"/>
+  </s>
+  <s id="28" n="submit quest 200402">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="200402"/>
+      </act>
+    </acts>
+    <fs def="23"/>
+  </s>
+  <s id="29" n="unlock gunship zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="10"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="30" n="wait for unlock gunship zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="31"/>
+  </s>
+  <s id="31" n="unlock gunship zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="10"/>
+      </act>
+    </acts>
+    <fs def="33">
+      <f to="32">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="32" n="recruit hero 103011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="103011"/>
+      </act>
+    </acts>
+    <fs def="34"/>
+  </s>
+  <s id="33" n="recruit hero 203011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="203011"/>
+      </act>
+    </acts>
+    <fs def="35"/>
+  </s>
+  <s id="34" n="accept quest 100403">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="100403"/>
+      </act>
+    </acts>
+    <fs def="36"/>
+  </s>
+  <s id="35" n="accept quest 200403">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="200403"/>
+      </act>
+    </acts>
+    <fs def="37"/>
+  </s>
+  <s id="36" n="finish quest 100403">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="100403"/>
+      </act>
+    </acts>
+    <fs def="40"/>
+  </s>
+  <s id="37" n="finish quest 200403">
+    <acts>
+      <act done="questfinishtut">
+        <pm n="id" v="200403"/>
+      </act>
+    </acts>
+    <fs def="41"/>
+  </s>
+  <s id="40" n="submit quest 100403">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="100403"/>
+      </act>
+    </acts>
+    <fs def="42"/>
+  </s>
+  <s id="41" n="submit quest 200403">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="200403"/>
+      </act>
+    </acts>
+    <fs def="43"/>
+  </s>
+  <s id="42" n="accept quest 101114">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101114"/>
+      </act>
+    </acts>
+    <fs def="44"/>
+  </s>
+  <s id="43" n="accept quest 201114">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201114"/>
+      </act>
+    </acts>
+    <fs def="44"/>
+  </s>
+  <s id="44" n="unlock operations center">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="18"/>
+      </act>
+    </acts>
+    <fs def="45"/>
+  </s>
+  <s id="45" n="wait for unlock operation center">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="46"/>
+  </s>
+  <s id="46" n="unlock operations center finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="18"/>
+      </act>
+    </acts>
+    <fs def="48">
+      <f to="47">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="47" n="submit quest 101114">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101114"/>
+      </act>
+    </acts>
+    <fs def="49"/>
+  </s>
+  <s id="48" n="submit quest 201114">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201114"/>
+      </act>
+    </acts>
+    <fs def="49"/>
+  </s>
+  <s id="49" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="4"/>
+      </act>
+    </acts>
+    <fs def="51">
+      <f to="50">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="50" n="accept quest 101115">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101115"/>
+      </act>
+    </acts>
+    <fs def="52"/>
+  </s>
+  <s id="51" n="accept quest 201115">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201115"/>
+      </act>
+    </acts>
+    <fs def="53"/>
+  </s>
+  <s id="52" n="combat 1010101">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010101"/>
+      </act>
+    </acts>
+    <fs def="56"/>
+  </s>
+  <s id="53" n="combat 2010101">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010101"/>
+      </act>
+    </acts>
+    <fs def="57"/>
+  </s>
+  <s id="54" n="submit quest 101115">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101115"/>
+      </act>
+    </acts>
+    <fs def="58"/>
+  </s>
+  <s id="55" n="submit quest 201115">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201115"/>
+      </act>
+    </acts>
+    <fs def="58"/>
+  </s>
+  <s id="56" n="rest after combat 1010101">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+  <s id="57" n="rest after combat 2010101">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="55"/>
+  </s>
+  <s id="58" n="get level reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="5"/>
+      </act>
+    </acts>
+    <fs def="60">
+      <f to="59">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="59" n="accept quest 101116">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101116"/>
+      </act>
+    </acts>
+    <fs def="61"/>
+  </s>
+  <s id="60" n="accept quest 201116">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201116"/>
+      </act>
+    </acts>
+    <fs def="61"/>
+  </s>
+  <s id="61" n="gathering from paris">
+    <acts>
+      <act done="gather">
+        <pm n="area" v="0"/>
+        <pm n="city" v="0"/>
+      </act>
+    </acts>
+    <fs def="63">
+      <f to="62">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="62" n="submit quest 101116">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101116"/>
+      </act>
+    </acts>
+    <fs def="64"/>
+  </s>
+  <s id="63" n="submit quest 201116">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201116"/>
+      </act>
+    </acts>
+    <fs def="65"/>
+  </s>
+  <s id="64" n="accept quest 101117">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101117"/>
+      </act>
+    </acts>
+    <fs def="66"/>
+  </s>
+  <s id="65" n="accept quest 201117">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201117"/>
+      </act>
+    </acts>
+    <fs def="66"/>
+  </s>
+  <s id="66" n="unlock AAV zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="11"/>
+      </act>
+    </acts>
+    <fs def="67"/>
+  </s>
+  <s id="67" n="wait for unlock AAV zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="68"/>
+  </s>
+  <s id="68" n="unlock AAV zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="11"/>
+      </act>
+    </acts>
+    <fs def="70">
+      <f to="69">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="69" n="submit quest 101117">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101117"/>
+      </act>
+    </acts>
+    <fs def="71"/>
+  </s>
+  <s id="70" n="submit quest 201117">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201117"/>
+      </act>
+    </acts>
+    <fs def="72"/>
+  </s>
+  <s id="71" n="accept quest 101118">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101118"/>
+      </act>
+    </acts>
+    <fs def="73"/>
+  </s>
+  <s id="72" n="accept quest 201118">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201118"/>
+      </act>
+    </acts>
+    <fs def="74"/>
+  </s>
+  <s id="73" n="recruit hero 109011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="109011"/>
+      </act>
+    </acts>
+    <fs def="75"/>
+  </s>
+  <s id="74" n="recruit hero 209011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="209011"/>
+      </act>
+    </acts>
+    <fs def="76"/>
+  </s>
+  <s id="75" n="submit quest 101118">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101118"/>
+      </act>
+    </acts>
+    <fs def="77"/>
+  </s>
+  <s id="76" n="submit quest 201118">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201118"/>
+      </act>
+    </acts>
+    <fs def="78"/>
+  </s>
+  <s id="77" n="accept quest 101119">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101119"/>
+      </act>
+    </acts>
+    <fs def="98"/>
+  </s>
+  <s id="78" n="accept quest 201119">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201119"/>
+      </act>
+    </acts>
+    <fs def="99"/>
+  </s>
+  <s id="79" n="combat 1010201">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010201"/>
+      </act>
+    </acts>
+    <fs def="81"/>
+  </s>
+  <s id="80" n="combat 2010201">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010201"/>
+      </act>
+    </acts>
+    <fs def="82"/>
+  </s>
+  <s id="81" n="submit quest 101119">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101119"/>
+      </act>
+    </acts>
+    <fs def="83"/>
+  </s>
+  <s id="82" n="submit quest 201119">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201119"/>
+      </act>
+    </acts>
+    <fs def="83"/>
+  </s>
+  <s id="83" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="6"/>
+      </act>
+    </acts>
+    <fs def="85">
+      <f to="84">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="84" n="accept quest 101120">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101120"/>
+      </act>
+    </acts>
+    <fs def="86"/>
+  </s>
+  <s id="85" n="accept quest 201120">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201120"/>
+      </act>
+    </acts>
+    <fs def="86"/>
+  </s>
+  <s id="86" n="upgrade gunship zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="10"/>
+      </act>
+    </acts>
+    <fs def="87"/>
+  </s>
+  <s id="87" n="wait for upgrade gunship zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="3000"/>
+      </act>
+    </acts>
+    <fs def="88"/>
+  </s>
+  <s id="88" n="upgrade gunship zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="10"/>
+      </act>
+    </acts>
+    <fs def="90">
+      <f to="89">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="89" n="submit quest 101120">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101120"/>
+      </act>
+    </acts>
+    <fs def="91"/>
+  </s>
+  <s id="90" n="submit quest 201120">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201120"/>
+      </act>
+    </acts>
+    <fs def="92"/>
+  </s>
+  <s id="91" n="accept quest 101121">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101121"/>
+      </act>
+    </acts>
+    <fs def="103"/>
+  </s>
+  <s id="92" n="accept quest 201121">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201121"/>
+      </act>
+    </acts>
+    <fs def="102"/>
+  </s>
+  <s id="93" n="combat 1010301">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010301"/>
+      </act>
+    </acts>
+    <fs def="95"/>
+  </s>
+  <s id="94" n="combat 2010301">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010301"/>
+      </act>
+    </acts>
+    <fs def="96"/>
+  </s>
+  <s id="95" n="submit quest 101121">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101121"/>
+      </act>
+    </acts>
+    <fs def="97"/>
+  </s>
+  <s id="96" n="submit quest 201121">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201121"/>
+      </act>
+    </acts>
+    <fs def="97"/>
+  </s>
+  <s id="97" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="7"/>
+      </act>
+    </acts>
+    <fs def="107">
+      <f to="106">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="98" n="accept quest 101522">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101522"/>
+      </act>
+    </acts>
+    <fs def="100"/>
+  </s>
+  <s id="99" n="accept quest 201522">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201522"/>
+      </act>
+    </acts>
+    <fs def="101"/>
+  </s>
+  <s id="100" n="submit quest 101522">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101522"/>
+      </act>
+    </acts>
+    <fs def="79"/>
+  </s>
+  <s id="101" n="submit quest 201522">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201522"/>
+      </act>
+    </acts>
+    <fs def="80"/>
+  </s>
+  <s id="102" n="accept quest 201523">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201523"/>
+      </act>
+    </acts>
+    <fs def="105"/>
+  </s>
+  <s id="103" n="accept quest 101523">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101523"/>
+      </act>
+    </acts>
+    <fs def="104"/>
+  </s>
+  <s id="104" n="submit quest 101523">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101523"/>
+      </act>
+    </acts>
+    <fs def="93"/>
+  </s>
+  <s id="105" n="submit quest 201523">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201523"/>
+      </act>
+    </acts>
+    <fs def="94"/>
+  </s>
+  <s id="106" n="accept quest 101122">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101122"/>
+      </act>
+    </acts>
+    <fs def="110"/>
+  </s>
+  <s id="107" n="accept quest 201122">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201122"/>
+      </act>
+    </acts>
+    <fs def="110"/>
+  </s>
+  <s id="110" n="unlock air strike zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="12"/>
+      </act>
+    </acts>
+    <fs def="111"/>
+  </s>
+  <s id="111" n="wait for unlock air strike zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="112"/>
+  </s>
+  <s id="112" n="unlock air strike zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="12"/>
+      </act>
+    </acts>
+    <fs def="114">
+      <f to="113">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="113" n="submit quest 101122">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101122"/>
+      </act>
+    </acts>
+    <fs def="115"/>
+  </s>
+  <s id="114" n="submit quest 201122">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201122"/>
+      </act>
+    </acts>
+    <fs def="116"/>
+  </s>
+  <s id="115" n="accept quest 101123">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101123"/>
+      </act>
+    </acts>
+    <fs def="117"/>
+  </s>
+  <s id="116" n="accept quest 201123">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201123"/>
+      </act>
+    </acts>
+    <fs def="118"/>
+  </s>
+  <s id="117" n="recruit hero 110011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="110011"/>
+      </act>
+    </acts>
+    <fs def="119"/>
+  </s>
+  <s id="118" n="recruit hero 210011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="210011"/>
+      </act>
+    </acts>
+    <fs def="120"/>
+  </s>
+  <s id="119" n="submit quest 101123">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101123"/>
+      </act>
+    </acts>
+    <fs def="121"/>
+  </s>
+  <s id="120" n="submit quest 201123">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201123"/>
+      </act>
+    </acts>
+    <fs def="122"/>
+  </s>
+  <s id="121" n="accept quest 101124">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101124"/>
+      </act>
+    </acts>
+    <fs def="123"/>
+  </s>
+  <s id="122" n="accept quest 201124">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201124"/>
+      </act>
+    </acts>
+    <fs def="124"/>
+  </s>
+  <s id="123" n="accept quest 101524">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101524"/>
+      </act>
+    </acts>
+    <fs def="125"/>
+  </s>
+  <s id="124" n="accept quest 201524">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201524"/>
+      </act>
+    </acts>
+    <fs def="126"/>
+  </s>
+  <s id="125" n="submit quest 101524">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101524"/>
+      </act>
+    </acts>
+    <fs def="127"/>
+  </s>
+  <s id="126" n="submit quest 201524">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201524"/>
+      </act>
+    </acts>
+    <fs def="128"/>
+  </s>
+  <s id="127" n="combat 1010401">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010401"/>
+      </act>
+    </acts>
+    <fs def="129"/>
+  </s>
+  <s id="128" n="combat 2010401">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010401"/>
+      </act>
+    </acts>
+    <fs def="130"/>
+  </s>
+  <s id="129" n="rest after combat 1010401">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="131"/>
+  </s>
+  <s id="130" n="rest after 2010401">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="132"/>
+  </s>
+  <s id="131" n="submit quest 101124">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101124"/>
+      </act>
+    </acts>
+    <fs def="133"/>
+  </s>
+  <s id="132" n="submit quest 201124">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201124"/>
+      </act>
+    </acts>
+    <fs def="133"/>
+  </s>
+  <s id="133" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="8"/>
+      </act>
+    </acts>
+    <fs def="135">
+      <f to="134">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="134" n="accept quest 101127">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101127"/>
+      </act>
+    </acts>
+    <fs def="136"/>
+  </s>
+  <s id="135" n="accept quest 201127">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201127"/>
+      </act>
+    </acts>
+    <fs def="136"/>
+  </s>
+  <s id="136" n="unlock tech center">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="2"/>
+      </act>
+    </acts>
+    <fs def="137"/>
+  </s>
+  <s id="137" n="wait for unlock tech center">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="138"/>
+  </s>
+  <s id="138" n="unlock tech center finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="2"/>
+      </act>
+    </acts>
+    <fs def="140">
+      <f to="139">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="139" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="141"/>
+  </s>
+  <s id="140" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="142"/>
+  </s>
+  <s id="141" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="145"/>
+  </s>
+  <s id="142" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="146"/>
+  </s>
+  <s id="145" n="submit quest 101127">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101127"/>
+      </act>
+    </acts>
+    <fs def="147"/>
+  </s>
+  <s id="146" n="submit quest 201127">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201127"/>
+      </act>
+    </acts>
+    <fs def="148"/>
+  </s>
+  <s id="147" n="accept quest 101128">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101128"/>
+      </act>
+    </acts>
+    <fs def="149"/>
+  </s>
+  <s id="148" n="accept quest 201128">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201128"/>
+      </act>
+    </acts>
+    <fs def="150"/>
+  </s>
+  <s id="149" n="accept quest 101525">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101525"/>
+      </act>
+    </acts>
+    <fs def="151"/>
+  </s>
+  <s id="150" n="accept quest 201525">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201525"/>
+      </act>
+    </acts>
+    <fs def="152"/>
+  </s>
+  <s id="151" n="submit quest 101525">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101525"/>
+      </act>
+    </acts>
+    <fs def="153"/>
+  </s>
+  <s id="152" n="submit quest 201525">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201525"/>
+      </act>
+    </acts>
+    <fs def="154"/>
+  </s>
+  <s id="153" n="combat 1010501">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010501"/>
+      </act>
+    </acts>
+    <fs def="155"/>
+  </s>
+  <s id="154" n="combat 2010501">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010501"/>
+      </act>
+    </acts>
+    <fs def="156"/>
+  </s>
+  <s id="155" n="rest after combat 1010501">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="157"/>
+  </s>
+  <s id="156" n="rest after combat 2010501">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="158"/>
+  </s>
+  <s id="157" n="submit quest 101128">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101128"/>
+      </act>
+    </acts>
+    <fs def="159"/>
+  </s>
+  <s id="158" n="submit quest 201128">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201128"/>
+      </act>
+    </acts>
+    <fs def="160"/>
+  </s>
+  <s id="159" n="accept quest 101130">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101130"/>
+      </act>
+    </acts>
+    <fs def="161"/>
+  </s>
+  <s id="160" n="accept quest 201130">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201130"/>
+      </act>
+    </acts>
+    <fs def="161"/>
+  </s>
+  <s id="161" n="unlock artillery zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="13"/>
+      </act>
+    </acts>
+    <fs def="162"/>
+  </s>
+  <s id="162" n="wait for unlock artillery zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="163"/>
+  </s>
+  <s id="163" n="unlock artillery zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="13"/>
+      </act>
+    </acts>
+    <fs def="165">
+      <f to="164">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="164" n="submit quest 101130">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101130"/>
+      </act>
+    </acts>
+    <fs def="166"/>
+  </s>
+  <s id="165" n="submit quest 201130">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201130"/>
+      </act>
+    </acts>
+    <fs def="167"/>
+  </s>
+  <s id="166" n="accept quest 101131">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101131"/>
+      </act>
+    </acts>
+    <fs def="168"/>
+  </s>
+  <s id="167" n="accept quest 201131">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201131"/>
+      </act>
+    </acts>
+    <fs def="169"/>
+  </s>
+  <s id="168" n="recruit hero 108011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="108011"/>
+      </act>
+    </acts>
+    <fs def="170"/>
+  </s>
+  <s id="169" n="recruit hero 208011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="208011"/>
+      </act>
+    </acts>
+    <fs def="171"/>
+  </s>
+  <s id="170" n="submit quest 101131">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101131"/>
+      </act>
+    </acts>
+    <fs def="172"/>
+  </s>
+  <s id="171" n="submit quest 201131">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201131"/>
+      </act>
+    </acts>
+    <fs def="172"/>
+  </s>
+  <s id="172" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="9"/>
+      </act>
+    </acts>
+    <fs def="174">
+      <f to="173">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="173" n="accept quest 101134">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101134"/>
+      </act>
+    </acts>
+    <fs def="175"/>
+  </s>
+  <s id="174" n="accept quest 201134">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201134"/>
+      </act>
+    </acts>
+    <fs def="176"/>
+  </s>
+  <s id="175" n="change hero 101011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="101011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="101012"/>
+      </act>
+    </acts>
+    <fs def="177"/>
+  </s>
+  <s id="176" n="change hero 201011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="201011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="101012"/>
+      </act>
+    </acts>
+    <fs def="178"/>
+  </s>
+  <s id="177" n="submit quest 101134">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101134"/>
+      </act>
+    </acts>
+    <fs def="179"/>
+  </s>
+  <s id="178" n="submit quest 201134">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201134"/>
+      </act>
+    </acts>
+    <fs def="180"/>
+  </s>
+  <s id="179" n="accept quest 101135">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101135"/>
+      </act>
+    </acts>
+    <fs def="181"/>
+  </s>
+  <s id="180" n="accept quest 201135">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201135"/>
+      </act>
+    </acts>
+    <fs def="182"/>
+  </s>
+  <s id="181" n="accept quest 101526">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101526"/>
+      </act>
+    </acts>
+    <fs def="183"/>
+  </s>
+  <s id="182" n="accept quest 201526">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201526"/>
+      </act>
+    </acts>
+    <fs def="184"/>
+  </s>
+  <s id="183" n="submit quest 101526">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101526"/>
+      </act>
+    </acts>
+    <fs def="185"/>
+  </s>
+  <s id="184" n="submit quest 201526">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201526"/>
+      </act>
+    </acts>
+    <fs def="186"/>
+  </s>
+  <s id="185" n="combat 1010601">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010601"/>
+      </act>
+    </acts>
+    <fs def="187"/>
+  </s>
+  <s id="186" n="combat 2010601">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010601"/>
+      </act>
+    </acts>
+    <fs def="188"/>
+  </s>
+  <s id="187" n="submit quest 101135">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101135"/>
+      </act>
+    </acts>
+    <fs def="189"/>
+  </s>
+  <s id="188" n="submit quest 201135">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201135"/>
+      </act>
+    </acts>
+    <fs def="190"/>
+  </s>
+  <s id="189" n="accept quest 101136">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101136"/>
+      </act>
+    </acts>
+    <fs def="191"/>
+  </s>
+  <s id="190" n="accept quest 201136">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201136"/>
+      </act>
+    </acts>
+    <fs def="192"/>
+  </s>
+  <s id="191" n="change hero 101011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="1"/>
+        <pm n="targetunit" v="101011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="1"/>
+        <pm n="modid" v="201012"/>
+      </act>
+    </acts>
+    <fs def="193"/>
+  </s>
+  <s id="192" n="change hero 201011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="1"/>
+        <pm n="targetunit" v="201011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="1"/>
+        <pm n="modid" v="201012"/>
+      </act>
+    </acts>
+    <fs def="194"/>
+  </s>
+  <s id="193" n="submit quest 101136">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101136"/>
+      </act>
+    </acts>
+    <fs def="195"/>
+  </s>
+  <s id="194" n="submit quest 201136">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201136"/>
+      </act>
+    </acts>
+    <fs def="196"/>
+  </s>
+  <s id="195" n="accept quest 101141">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101141"/>
+      </act>
+    </acts>
+    <fs def="197"/>
+  </s>
+  <s id="196" n="accept quest 201141">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201141"/>
+      </act>
+    </acts>
+    <fs def="197"/>
+  </s>
+  <s id="197" n="unlock infantry zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="hq" v="1"/>
+        <pm n="zone" v="8"/>
+      </act>
+    </acts>
+    <fs def="198"/>
+  </s>
+  <s id="198" n="wait for unlock infantry zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="199"/>
+  </s>
+  <s id="199" n="unlock infantry zone finished">
+    <acts>
+      <act done="buildfinish">
+        <pm n="zone" v="8"/>
+      </act>
+    </acts>
+    <fs def="201">
+      <f to="200">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="200" n="submit quest 101141">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101141"/>
+      </act>
+    </acts>
+    <fs def="202"/>
+  </s>
+  <s id="201" n="submit quest 201141">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201141"/>
+      </act>
+    </acts>
+    <fs def="203"/>
+  </s>
+  <s id="202" n="accept quest 101142">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101142"/>
+      </act>
+    </acts>
+    <fs def="204"/>
+  </s>
+  <s id="203" n="accept quest 201142">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201142"/>
+      </act>
+    </acts>
+    <fs def="205"/>
+  </s>
+  <s id="204" n="recruit hero 102011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="102011"/>
+      </act>
+    </acts>
+    <fs def="206"/>
+  </s>
+  <s id="205" n="recruit hero 202011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="202011"/>
+      </act>
+    </acts>
+    <fs def="207"/>
+  </s>
+  <s id="206" n="submit quest 101142">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101142"/>
+      </act>
+    </acts>
+    <fs def="208"/>
+  </s>
+  <s id="207" n="submit quest 201142">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201142"/>
+      </act>
+    </acts>
+    <fs def="209"/>
+  </s>
+  <s id="208" n="accept quest 101137">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101137"/>
+      </act>
+    </acts>
+    <fs def="210"/>
+  </s>
+  <s id="209" n="accept quest 201137">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201137"/>
+      </act>
+    </acts>
+    <fs def="211"/>
+  </s>
+  <s id="210" n="accept quest 101527">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101527"/>
+      </act>
+    </acts>
+    <fs def="212"/>
+  </s>
+  <s id="211" n="accept quest 201527">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201527"/>
+      </act>
+    </acts>
+    <fs def="213"/>
+  </s>
+  <s id="212" n="submit quest 101527">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101527"/>
+      </act>
+    </acts>
+    <fs def="214"/>
+  </s>
+  <s id="213" n="submit quest 201527">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201527"/>
+      </act>
+    </acts>
+    <fs def="215"/>
+  </s>
+  <s id="214" n="combat 1010701">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010701"/>
+      </act>
+    </acts>
+    <fs def="216"/>
+  </s>
+  <s id="215" n="combat 2010701">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2010701"/>
+      </act>
+    </acts>
+    <fs def="217"/>
+  </s>
+  <s id="216" n="rest after combat 1010701">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="218"/>
+  </s>
+  <s id="217" n="rest after combat 2010701">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="219"/>
+  </s>
+  <s id="218" n="submit quest 101137">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101137"/>
+      </act>
+    </acts>
+    <fs def="220"/>
+  </s>
+  <s id="219" n="submit quest 201137">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201137"/>
+      </act>
+    </acts>
+    <fs def="221"/>
+  </s>
+  <s id="220" n="accept quest 101138">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101138"/>
+      </act>
+    </acts>
+    <fs def="222"/>
+  </s>
+  <s id="221" n="accept quest 201138">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201138"/>
+      </act>
+    </acts>
+    <fs def="223"/>
+  </s>
+  <s id="222" n="change hero 103011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="103011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="103012"/>
+      </act>
+    </acts>
+    <fs def="224"/>
+  </s>
+  <s id="223" n="change hero 203011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="203011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="103012"/>
+      </act>
+    </acts>
+    <fs def="225"/>
+  </s>
+  <s id="224" n="submit quest 101138">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101138"/>
+      </act>
+    </acts>
+    <fs def="226"/>
+  </s>
+  <s id="225" n="submit quest 201138">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201138"/>
+      </act>
+    </acts>
+    <fs def="226"/>
+  </s>
+  <s id="226" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="10"/>
+      </act>
+    </acts>
+    <fs def="234">
+      <f to="233">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="230" n="building list">
+    <acts>
+      <act done="buildlist"/>
+    </acts>
+    <fs def="4">
+      <f to="49">
+        <c><![CDATA[if vuser.level == 4 then result.ret=true end;]]></c>
+      </f>
+      <f to="23">
+        <c><![CDATA[if vuser.level == 3 then result.ret=true end;]]></c>
+      </f>
+      <f to="58">
+        <c><![CDATA[if vuser.level == 5 then result.ret=true end;]]></c>
+      </f>
+      <f to="83">
+        <c><![CDATA[if vuser.level == 6 then result.ret=true end;]]></c>
+      </f>
+      <f to="97">
+        <c><![CDATA[if vuser.level == 7 then result.ret=true end;]]></c>
+      </f>
+      <f to="133">
+        <c><![CDATA[if vuser.level == 8 then result.ret=true end;]]></c>
+      </f>
+      <f to="226">
+        <c><![CDATA[if vuser.level == 10 then result.ret=true end;]]></c>
+      </f>
+      <f to="172">
+        <c><![CDATA[if vuser.level == 9 then result.ret=true end;]]></c>
+      </f>
+      <f to="14">
+        <c><![CDATA[if vuser.level == 2 then result.ret=true end;]]></c>
+      </f>
+      <f to="254">
+        <c><![CDATA[if vuser.level == 11 then result.ret=true end;]]></c>
+      </f>
+      <f to="287">
+        <c><![CDATA[if vuser.level == 12 then result.ret=true end;]]></c>
+      </f>
+      <f to="304">
+        <c><![CDATA[if vuser.level == 13 then result.ret=true end;]]></c>
+      </f>
+      <f to="306">
+        <c><![CDATA[if vuser.level == 14 then result.ret=true end;]]></c>
+      </f>
+      <f to="307">
+        <c><![CDATA[if vuser.level >= 15 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="232" n="create player">
+    <acts>
+      <act done="createchr">
+        <pm n="faction" v="1"/>
+      </act>
+    </acts>
+    <fs def="317"/>
+  </s>
+  <s id="233" n="accept quest 101139">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101139"/>
+      </act>
+    </acts>
+    <fs def="235"/>
+  </s>
+  <s id="234" n="accept quest 201139">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201139"/>
+      </act>
+    </acts>
+    <fs def="236"/>
+  </s>
+  <s id="235" n="accept quest 102125">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102125"/>
+      </act>
+    </acts>
+    <fs def="309"/>
+  </s>
+  <s id="236" n="accept quest 202125">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202125"/>
+      </act>
+    </acts>
+    <fs def="309"/>
+  </s>
+  <s id="237" n="fortress">
+    <acts>
+      <act done="asyncbattle"/>
+    </acts>
+    <fs def="239">
+      <f to="238">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="238" n="submit quest 102125">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102125"/>
+      </act>
+    </acts>
+    <fs def="240"/>
+  </s>
+  <s id="239" n="submit quest 202125">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202125"/>
+      </act>
+    </acts>
+    <fs def="241"/>
+  </s>
+  <s id="240" n="accept quest 102504">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102504"/>
+      </act>
+    </acts>
+    <fs def="242"/>
+  </s>
+  <s id="241" n="accept quest 202504">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202504"/>
+      </act>
+    </acts>
+    <fs def="243"/>
+  </s>
+  <s id="242" n="submit quest 102504">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102504"/>
+      </act>
+    </acts>
+    <fs def="244"/>
+  </s>
+  <s id="243" n="submit quest 202504">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202504"/>
+      </act>
+    </acts>
+    <fs def="245"/>
+  </s>
+  <s id="244" n="combat 1020101">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020101"/>
+      </act>
+    </acts>
+    <fs def="246"/>
+  </s>
+  <s id="245" n="combat 2020101">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020101"/>
+      </act>
+    </acts>
+    <fs def="247"/>
+  </s>
+  <s id="246" n="submit quest 101139">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101139"/>
+      </act>
+    </acts>
+    <fs def="248"/>
+  </s>
+  <s id="247" n="submit quest 201139">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201139"/>
+      </act>
+    </acts>
+    <fs def="249"/>
+  </s>
+  <s id="248" n="accept quest 101140">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="101140"/>
+      </act>
+    </acts>
+    <fs def="250"/>
+  </s>
+  <s id="249" n="accept quest 201140">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="201140"/>
+      </act>
+    </acts>
+    <fs def="251"/>
+  </s>
+  <s id="250" n="change hero 109011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="109011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="109012"/>
+      </act>
+    </acts>
+    <fs def="252"/>
+  </s>
+  <s id="251" n="change hero 209011 mod">
+    <acts>
+      <act done="modchange">
+        <pm n="modtier" v="0"/>
+        <pm n="targetidx" v="0"/>
+        <pm n="targetunit" v="209011"/>
+        <pm n="originalunit" v="-1"/>
+        <pm n="originalidx" v="0"/>
+        <pm n="modid" v="109012"/>
+      </act>
+    </acts>
+    <fs def="253"/>
+  </s>
+  <s id="252" n="submit quest 101140">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="101140"/>
+      </act>
+    </acts>
+    <fs def="254"/>
+  </s>
+  <s id="253" n="submit quest 201140">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="201140"/>
+      </act>
+    </acts>
+    <fs def="254"/>
+  </s>
+  <s id="254" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="11"/>
+      </act>
+    </acts>
+    <fs def="256">
+      <f to="255">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="255" n="accept quest 102126">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102126"/>
+      </act>
+    </acts>
+    <fs def="257"/>
+  </s>
+  <s id="256" n="accept quest 202126">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202126"/>
+      </act>
+    </acts>
+    <fs def="258"/>
+  </s>
+  <s id="257" n="use training book">
+    <acts>
+      <act done="usetrainingbook">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="259"/>
+  </s>
+  <s id="258" n="use training book">
+    <acts>
+      <act done="usetrainingbook">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="260"/>
+  </s>
+  <s id="259" n="submit quest 102126">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102126"/>
+      </act>
+    </acts>
+    <fs def="261"/>
+  </s>
+  <s id="260" n="submit quest 202126">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202126"/>
+      </act>
+    </acts>
+    <fs def="262"/>
+  </s>
+  <s id="261" n="accept quest 102128">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102128"/>
+      </act>
+    </acts>
+    <fs def="263"/>
+  </s>
+  <s id="262" n="accept quest 202128">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202128"/>
+      </act>
+    </acts>
+    <fs def="268"/>
+  </s>
+  <s id="263" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="264"/>
+  </s>
+  <s id="264" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="265"/>
+  </s>
+  <s id="265" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="266"/>
+  </s>
+  <s id="266" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="267"/>
+  </s>
+  <s id="267" n="upgrade hero 101011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="275"/>
+  </s>
+  <s id="268" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="269"/>
+  </s>
+  <s id="269" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="270"/>
+  </s>
+  <s id="270" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="271"/>
+  </s>
+  <s id="271" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="272"/>
+  </s>
+  <s id="272" n="upgrade hero 201011 ability">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="276"/>
+  </s>
+  <s id="275" n="submit quest 102128">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102128"/>
+      </act>
+    </acts>
+    <fs def="277"/>
+  </s>
+  <s id="276" n="submit quest 202128">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202128"/>
+      </act>
+    </acts>
+    <fs def="278"/>
+  </s>
+  <s id="277" n="accept quest 102121">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102121"/>
+      </act>
+    </acts>
+    <fs def="279"/>
+  </s>
+  <s id="278" n="accept quest 202121">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202121"/>
+      </act>
+    </acts>
+    <fs def="280"/>
+  </s>
+  <s id="279" n="combat 1020201">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020201"/>
+      </act>
+    </acts>
+    <fs def="281"/>
+  </s>
+  <s id="280" n="combat 2020201">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020201"/>
+      </act>
+    </acts>
+    <fs def="282"/>
+  </s>
+  <s id="281" n="combat 1020301">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020301"/>
+      </act>
+    </acts>
+    <fs def="283"/>
+  </s>
+  <s id="282" n="combat 2020301">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020301"/>
+      </act>
+    </acts>
+    <fs def="284"/>
+  </s>
+  <s id="283" n="combat 1020401">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020401"/>
+      </act>
+    </acts>
+    <fs def="285"/>
+  </s>
+  <s id="284" n="combat 2020401">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020401"/>
+      </act>
+    </acts>
+    <fs def="286"/>
+  </s>
+  <s id="285" n="submit quest 102121">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102121"/>
+      </act>
+    </acts>
+    <fs def="287"/>
+  </s>
+  <s id="286" n="submit quest 202121">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202121"/>
+      </act>
+    </acts>
+    <fs def="287"/>
+  </s>
+  <s id="287" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="12"/>
+      </act>
+    </acts>
+    <fs def="289">
+      <f to="288">
+        <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="288" n="accept quest 102129">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102129"/>
+      </act>
+    </acts>
+    <fs def="290"/>
+  </s>
+  <s id="289" n="accept quest 202129">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202129"/>
+      </act>
+    </acts>
+    <fs def="291"/>
+  </s>
+  <s id="290" n="level up hero 101011 rank">
+    <acts>
+      <act done="upgradeherorank">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="292"/>
+  </s>
+  <s id="291" n="level up hero 201011 rank">
+    <acts>
+      <act done="upgradeherorank">
+        <pm n="heroid" v="201011"/>
+      </act>
+    </acts>
+    <fs def="293"/>
+  </s>
+  <s id="292" n="submit quest 102129">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102129"/>
+      </act>
+    </acts>
+    <fs def="294"/>
+  </s>
+  <s id="293" n="submit quest 202129">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202129"/>
+      </act>
+    </acts>
+    <fs def="295"/>
+  </s>
+  <s id="294" n="accept quest 102123">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="102123"/>
+      </act>
+    </acts>
+    <fs def="296"/>
+  </s>
+  <s id="295" n="accept quest 202123">
+    <acts>
+      <act done="questaccept">
+        <pm n="id" v="202123"/>
+      </act>
+    </acts>
+    <fs def="297"/>
+  </s>
+  <s id="296" n="combat 1020501">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020501"/>
+      </act>
+    </acts>
+    <fs def="298"/>
+  </s>
+  <s id="297" n="combat 2020501">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020501"/>
+      </act>
+    </acts>
+    <fs def="299"/>
+  </s>
+  <s id="298" n="combat 1020601">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020601"/>
+      </act>
+    </acts>
+    <fs def="300"/>
+  </s>
+  <s id="299" n="combat 2020601">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020601"/>
+      </act>
+    </acts>
+    <fs def="301"/>
+  </s>
+  <s id="300" n="combat 1020701">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1020701"/>
+      </act>
+    </acts>
+    <fs def="302"/>
+  </s>
+  <s id="301" n="combat 2020701">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="2020701"/>
+      </act>
+    </acts>
+    <fs def="303"/>
+  </s>
+  <s id="302" n="submit quest 102123">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="102123"/>
+      </act>
+    </acts>
+    <fs def="304"/>
+  </s>
+  <s id="303" n="submit quest 202123">
+    <acts>
+      <act done="questfinish">
+        <pm n="id" v="202123"/>
+      </act>
+    </acts>
+    <fs def="304"/>
+  </s>
+  <s id="304" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="13"/>
+      </act>
+    </acts>
+    <fs def="306"/>
+  </s>
+  <s id="305" n="fortress teamset">
+    <acts>
+      <act done="asyncteamset">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="237"/>
+  </s>
+  <s id="306" n="add level to level 15">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add level 2"/>
+      </act>
+    </acts>
+    <fs def="307"/>
+  </s>
+  <s id="307" n="get levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="15"/>
+      </act>
+    </acts>
+    <fs def="308"/>
+  </s>
+  <s id="308" n="campaign info">
+    <acts>
+      <act done="campaign"/>
+    </acts>
+    <fs def="311">
+      <f to="310">
+        <c><![CDATA[if vuser.battlepoint < 100 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="309" n="pvp team set">
+    <acts>
+      <act done="pvpteamset"/>
+    </acts>
+    <fs def="305"/>
+  </s>
+  <s id="310" n="cheat for battle point">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add battlepoint 100"/>
+      </act>
+    </acts>
+    <fs def="311"/>
+  </s>
+  <s id="311" n="random pve">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1"/>
+      </act>
+    </acts>
+    <fs def="312"/>
+  </s>
+  <s id="312" n="rest for a while">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="2000"/>
+      </act>
+    </acts>
+    <fs def="313"/>
+  </s>
+  <s id="313" n="reset dailylimit">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="asyncreset dailylimit"/>
+      </act>
+    </acts>
+    <fs def="314"/>
+  </s>
+  <s id="314" n="reset cooldown">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="asyncreset cooldown"/>
+      </act>
+    </acts>
+    <fs def="315"/>
+  </s>
+  <s id="315" n="async battle">
+    <acts>
+      <act done="asyncbattle"/>
+    </acts>
+    <fs def="316"/>
+  </s>
+  <s id="316" n="rest for a while">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="2000"/>
+      </act>
+    </acts>
+    <fs def="308"/>
+  </s>
+  <s id="317" n="select char">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="230"/>
+  </s>
+</bh>

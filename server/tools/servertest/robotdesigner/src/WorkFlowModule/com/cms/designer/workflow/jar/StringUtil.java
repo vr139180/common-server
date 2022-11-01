@@ -199,7 +199,7 @@ public class StringUtil
 		return filePath.endsWith( File.separator);
 	}
 	/**
-	 * ÑéÖ¤ÈÕÆÚ£¨´ı£©
+	 * éªŒè¯æ—¥æœŸï¼ˆå¾…ï¼‰
 	 * @param text
 	 * @param format
 	 * @return

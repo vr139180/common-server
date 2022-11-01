@@ -2,9 +2,8 @@ package gnet
 
 import (
 	"cmslib/gnet/pkg/errors"
+	"cmslib/protocolx"
 	"strings"
-
-	"google.golang.org/protobuf/proto"
 )
 
 // gnet Conn Context绑定用，用来标识连接
@@ -13,7 +12,7 @@ type NetSession interface {
 	SetConn(c Conn)
 
 	//发送消息
-	SendMessage(pro proto.Message)
+	SendMessage(pro *protocolx.NetProtocol)
 
 	// 主动关闭
 	Close()
@@ -22,7 +21,7 @@ type NetSession interface {
 	OnClose()
 
 	// 网络协议通知
-	OnRecvMessage(id int, pro proto.Message)
+	OnRecvMessage(pro *protocolx.NetProtocol)
 
 	//设置附加参数
 	SetExtParams(ext map[string]string)
@@ -30,7 +29,7 @@ type NetSession interface {
 	GetExtParamByKey(k string) (string, bool)
 }
 
-type NetCmdFunction = func(NetSession, int, proto.Message)
+type NetCmdFunction = func(NetSession, *protocolx.NetProtocol)
 
 // 基础结构，实现了几个通用函数
 type BaseNetSession struct {
@@ -85,7 +84,7 @@ func (s *BaseNetSession) SetConn(c Conn) {
 	s.TcpConn = c
 }
 
-func (s *BaseNetSession) SendMessage(pro proto.Message) {
+func (s *BaseNetSession) SendMessage(pro *protocolx.NetProtocol) {
 	if s.TcpConn == nil {
 		return
 	}
@@ -106,5 +105,5 @@ func (s *BaseNetSession) OnClose() {
 	s.TcpConn = nil
 }
 
-func (s *BaseNetSession) OnRecvMessage(id int, pro proto.Message) {
+func (s *BaseNetSession) OnRecvMessage(pro *protocolx.NetProtocol) {
 }

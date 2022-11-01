@@ -59,7 +59,7 @@ public class WorkflowFileNew extends OBEStandardAction
 
 		OBEWorkFlowFrame frame =( OBEWorkFlowFrame)parent.getDesktopPanel().getInternalFrame( key);
 		if( frame == null) return;
-		//±£´æ¸÷¸öÔªËØµÄÎ»ÖÃ
+		//ä¿å­˜å„ä¸ªå…ƒç´ çš„ä½ç½®
 		((OBEGraphWorkflow)frame.getGraph()).save( null);
 		pk.savePackageFile();
 		parent.setStatus("Saving workflow to " + pk.getFile().getAbsolutePath());*/

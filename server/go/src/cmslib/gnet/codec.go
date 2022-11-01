@@ -379,10 +379,9 @@ func (cc *ProtobufCodec) Decode(c Conn) ([]byte, error) {
 	var totlen int = 0
 
 	for {
-		var onelen int = 4
+		var onelen int = 0
 
-		len := binary.LittleEndian.Uint32(buf)
-		len = len >> 16
+		len := binary.BigEndian.Uint32(buf)
 		onelen += int(len)
 		// 单个协议长度不可能超过16k
 		if len > 16*1024 {

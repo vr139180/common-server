@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="logon">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="4">
+      <f to="3">
+        <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="3" n="create character">
+    <acts>
+      <act done="createchr">
+        <pm n="faction" v="2"/>
+      </act>
+    </acts>
+    <fs def="5">
+      <f to="4">
+        <c><![CDATA[if vuser:haschr() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="4" n="select character">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="5">
+      <f to="190">
+        <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="5" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="6"/>
+  </s>
+  <s id="6" n="sleep a moment">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="7" n="building list">
+    <acts>
+      <act done="buildlist"/>
+    </acts>
+    <fs def="74">
+      <f to="29">
+        <c><![CDATA[if vuser:hasbuilding() then result.ret=true end;]]></c>
+      </f>
+      <f to="72">
+        <c><![CDATA[if vuser:getbuildlevel(10) == 0 then result.ret=true end;]]></c>
+      </f>
+      <f to="28">
+        <c><![CDATA[if vuser:getbuildlevel(8) > 0 and vuser:getbuildlevel(9) > 0 and vuser:getbuildlevel(10) > 0 and vuser:getbuildlevel(13) >0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="8" n="rest">
+    <acts>
+      <act done="levelup">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="185">
+      <f to="9">
+        <c><![CDATA[if vuser.level < 15 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="9" n="TutorialQuest">
+    <acts>
+      <act done="tutorialquest">
+        <pm n="faction" v="2"/>
+      </act>
+    </acts>
+    <fs def="99"/>
+  </s>
+  <s id="11" n="pve gather">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="3"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="13" n="research">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="6"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="14" n="zone 8">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="8"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="16" n="zone 10">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="10"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="17" n="zone 11">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="11"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="22" n="zone 16">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="16"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="25" n="pvp gather">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="4"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="28" n="sleep 1s">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="30">
+      <f to="11">
+        <c><![CDATA[if vuser:getbuildlevel(3) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="25">
+        <c><![CDATA[if vuser:getbuildlevel(4) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="13">
+        <c><![CDATA[if vuser:getbuildlevel(6) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="14">
+        <c><![CDATA[if vuser:getbuildlevel(8) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="31">
+        <c><![CDATA[if vuser:getbuildlevel(9) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="16">
+        <c><![CDATA[if vuser:getbuildlevel(10) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="17">
+        <c><![CDATA[if vuser:getbuildlevel(11) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="22">
+        <c><![CDATA[if vuser:getbuildlevel(16) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="50">
+        <c><![CDATA[if vuser:getbuildlevel(12) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="51">
+        <c><![CDATA[if vuser:getbuildlevel(13) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="52">
+        <c><![CDATA[if vuser:getbuildlevel(14) < vuser.level then result.ret=true end;]]></c>
+      </f>
+      <f to="53">
+        <c><![CDATA[if vuser:getbuildlevel(15) < vuser.level then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="29" n="finish upgrade">
+    <acts>
+      <act done="buildfinish"/>
+    </acts>
+    <fs def="73">
+      <f to="7">
+        <c><![CDATA[if vuser:hasbuilding() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="30" n="sleep 1s">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+  <s id="31" n="zone 9">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="9"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="50" n="zone 12">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="12"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="51" n="zone 13">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="13"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="52" n="zone 14">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="14"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="53" n="zone 15">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="15"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="30"/>
+  </s>
+  <s id="54" n="sleep 2s buy hero">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="2000"/>
+      </act>
+    </acts>
+    <fs def="63">
+      <f to="181">
+        <c><![CDATA[if vuser:hashero(102011) == false and vuser:hasbuild(8) and vuser:getbuildlevel(8) >= 1 then result.ret=true end;]]></c>
+      </f>
+      <f to="182">
+        <c><![CDATA[if vuser:hashero(103011) == false and vuser:hasbuild(10) and vuser:getbuildlevel(10) >= 1 then result.ret=true end;]]></c>
+      </f>
+      <f to="183">
+        <c><![CDATA[if vuser:hashero(108011) == false and vuser:hasbuild(13) and vuser:getbuildlevel(13) >= 1 then result.ret=true end;]]></c>
+      </f>
+      <f to="184">
+        <c><![CDATA[if vuser:hashero(101011) == false and vuser:hasbuild(9) and vuser:getbuildlevel(9) >= 1 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="56" n="buy hero 101011  ">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="63"/>
+  </s>
+  <s id="63" n="sleep 1s after buy">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="1000"/>
+      </act>
+    </acts>
+    <fs def="69">
+      <f to="68">
+        <c><![CDATA[if vuser:nohero() == false and vuser.battlepoint < 999 then result.ret=true end;]]></c>
+      </f>
+      <f to="7">
+        <c><![CDATA[if vuser:nohero() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="68" n="prepare pve">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add battlepoint 999"/>
+      </act>
+    </acts>
+    <fs def="69"/>
+  </s>
+  <s id="69" n="campaign info">
+    <acts>
+      <act done="campaign"/>
+    </acts>
+    <fs def="203">
+      <f to="75">
+        <c><![CDATA[if vuser:getbuildlevel(9) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="72" n="unlock zone 10">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="10"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="73"/>
+  </s>
+  <s id="73" n="sleep 4s wait unlock finish">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="4000"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+  <s id="74" n="unlock other 3 zone">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="54">
+      <f to="76">
+        <c><![CDATA[if vuser:getbuildlevel(8) == 0 then result.ret=true end;]]></c>
+      </f>
+      <f to="75">
+        <c><![CDATA[if vuser:getbuildlevel(9) == 0 then result.ret=true end;]]></c>
+      </f>
+      <f to="77">
+        <c><![CDATA[if vuser:getbuildlevel(13) == 0 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="75" n="unlock 9">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="9"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+  <s id="76" n="unlock 8">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="8"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+  <s id="77" n="unlock 13 zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="13"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="54"/>
+  </s>
+  <s id="78" n="try again">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="190"/>
+  </s>
+  <s id="87" n="mod list">
+    <acts>
+      <act done="modlist"/>
+    </acts>
+    <fs def="95">
+      <f to="197">
+        <c><![CDATA[if vuser:modnum(101005, 0) > 0 and vuser:hashero(101011)==true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="88" n="recipe list">
+    <acts>
+      <act done="recipelist"/>
+    </acts>
+    <fs def="100">
+      <f to="91">
+        <c><![CDATA[if vuser:hasemptycraftingslot()==true and vuser:recipenum(101005)>=5 and vuser.level > 10 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="91" n="crafting">
+    <acts>
+      <act done="craft">
+        <pm n="modid" v="101005"/>
+      </act>
+    </acts>
+    <fs def="87"/>
+  </s>
+  <s id="94" n="maillist">
+    <acts>
+      <act done="maillist"/>
+    </acts>
+    <fs def="96">
+      <f to="97">
+        <c><![CDATA[if vuser:hasnoreadmail()== true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="95" n="sleep for mail">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="105">
+      <f to="94">
+        <c><![CDATA[if vuser.mailboxisready == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="96" n="mail action finished">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="105"/>
+  </s>
+  <s id="97" n="read mail">
+    <acts>
+      <act done="mailread"/>
+    </acts>
+    <fs def="96">
+      <f to="98">
+        <c><![CDATA[if vuser:hasmail() == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="98" n="delete mail">
+    <acts>
+      <act done="maildel"/>
+    </acts>
+    <fs def="96"/>
+  </s>
+  <s id="99" n="add 1 level with cheat">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add level 14"/>
+      </act>
+    </acts>
+    <fs def="8"/>
+  </s>
+  <s id="100" n="unlock research zone">
+    <acts>
+      <act done="buildupgrade">
+        <pm n="zone" v="6"/>
+        <pm n="hq" v="0"/>
+      </act>
+    </acts>
+    <fs def="87"/>
+  </s>
+  <s id="105" n="prepare for pve gathering">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="199"/>
+  </s>
+  <s id="110" n="prepare for monetization">
+    <acts>
+      <act done="monetization"/>
+    </acts>
+    <fs def="111">
+      <f to="112">
+        <c><![CDATA[if vuser.monetization_energy == 0 then result.ret = true end]]></c>
+      </f>
+      <f to="114">
+        <c><![CDATA[if vuser.monetization_battlepoint == 0 then result.ret = true end]]></c>
+      </f>
+      <f to="113">
+        <c><![CDATA[if vuser.monetization_pvpbonus == 0 then result.ret = true end]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="111" n="monetization finished">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="155"/>
+  </s>
+  <s id="112" n="buy energy">
+    <acts>
+      <act done="buyenergy"/>
+    </acts>
+    <fs def="111"/>
+  </s>
+  <s id="113" n="buy pvp bonus">
+    <acts>
+      <act done="buypvpbonus"/>
+    </acts>
+    <fs def="111"/>
+  </s>
+  <s id="114" n="buy battle point">
+    <acts>
+      <act done="buybattlepoint"/>
+    </acts>
+    <fs def="111"/>
+  </s>
+  <s id="122" n="daily reward">
+    <acts>
+      <act done="dailyreward"/>
+    </acts>
+    <fs def="123"/>
+  </s>
+  <s id="123" n="login reward">
+    <acts>
+      <act done="loginreward"/>
+    </acts>
+    <fs def="156"/>
+  </s>
+  <s id="124" n="signup reward">
+    <acts>
+      <act done="signupreward"/>
+    </acts>
+    <fs def="126"/>
+  </s>
+  <s id="126" n="get recommand friend">
+    <acts>
+      <act done="friendlist">
+        <pm n="type" v="3"/>
+      </act>
+    </acts>
+    <fs def="127"/>
+  </s>
+  <s id="127" n="add friend">
+    <acts>
+      <act done="friendadd"/>
+    </acts>
+    <fs def="128"/>
+  </s>
+  <s id="128" n="get invitor">
+    <acts>
+      <act done="friendlist">
+        <pm n="type" v="2"/>
+      </act>
+    </acts>
+    <fs def="129"/>
+  </s>
+  <s id="129" n="agree friend">
+    <acts>
+      <act done="friendagree"/>
+    </acts>
+    <fs def="130"/>
+  </s>
+  <s id="130" n="get friends">
+    <acts>
+      <act done="friendlist">
+        <pm n="type" v="1"/>
+      </act>
+    </acts>
+    <fs def="131"/>
+  </s>
+  <s id="131" n="delete friend">
+    <acts>
+      <act done="frienddel"/>
+    </acts>
+    <fs def="132"/>
+  </s>
+  <s id="132" n="Leaderboard">
+    <acts>
+      <act done="LBInfo">
+        <pm n="seasonid" v="0"/>
+      </act>
+    </acts>
+    <fs def="78"/>
+  </s>
+  <s id="134" n="guildlist">
+    <acts>
+      <act done="guildlist"/>
+    </acts>
+    <fs def="135"/>
+  </s>
+  <s id="135" n="guildinfo">
+    <acts>
+      <act done="guildinfo">
+        <pm n="querytype" v="0"/>
+      </act>
+    </acts>
+    <fs def="137">
+      <f to="202">
+        <c><![CDATA[if vuser:needcreateguild() == true then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="136" n="create guild">
+    <acts>
+      <act done="guildcreate"/>
+    </acts>
+    <fs def="139"/>
+  </s>
+  <s id="137" n="wait for creating guild">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="138"/>
+  </s>
+  <s id="138" n="guild apply join">
+    <acts>
+      <act done="guildapplyjoin">
+        <pm n="guildid" v="1"/>
+      </act>
+    </acts>
+    <fs def="144"/>
+  </s>
+  <s id="139" n="wait for application">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="140"/>
+  </s>
+  <s id="140" n="guild invite list">
+    <acts>
+      <act done="guildinvitelist"/>
+    </acts>
+    <fs def="141"/>
+  </s>
+  <s id="141" n="guild accept invite">
+    <acts>
+      <act done="guildaccept"/>
+    </acts>
+    <fs def="142"/>
+  </s>
+  <s id="142" n="guild kick member">
+    <acts>
+      <act done="guildkickmember"/>
+    </acts>
+    <fs def="143"/>
+  </s>
+  <s id="143" n="guild find invite">
+    <acts>
+      <act done="guildinvitejoin">
+        <pm n="playername" v="1_12"/>
+      </act>
+    </acts>
+    <fs def="147"/>
+  </s>
+  <s id="144" n="wait for inviting">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="145"/>
+  </s>
+  <s id="145" n="guild invite list">
+    <acts>
+      <act done="guildinvitelist"/>
+    </acts>
+    <fs def="146"/>
+  </s>
+  <s id="146" n="guild invite confirm">
+    <acts>
+      <act done="guildconfirm">
+        <pm n="type" v="0"/>
+      </act>
+    </acts>
+    <fs def="151"/>
+  </s>
+  <s id="147" n="wait for confirm">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="148"/>
+  </s>
+  <s id="148" n="guild update member">
+    <acts>
+      <act done="guildupdatemember"/>
+    </acts>
+    <fs def="149"/>
+  </s>
+  <s id="149" n="guild update desc">
+    <acts>
+      <act done="guildupdatedesc"/>
+    </acts>
+    <fs def="150"/>
+  </s>
+  <s id="150" n="guild chairman change">
+    <acts>
+      <act done="guildchairmanchg"/>
+    </acts>
+    <fs def="151"/>
+  </s>
+  <s id="151" n="wait for building">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+  <s id="155" n="consumable list">
+    <acts>
+      <act done="consumablelist"/>
+    </acts>
+    <fs def="122"/>
+  </s>
+  <s id="156" n="quest list">
+    <acts>
+      <act done="questlist"/>
+    </acts>
+    <fs def="157"/>
+  </s>
+  <s id="157" n="wait for quest">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="124"/>
+  </s>
+  <s id="179" n="buy hero 103011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="103011"/>
+      </act>
+    </acts>
+    <fs def="63"/>
+  </s>
+  <s id="180" n="buy hero 109011">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="109011"/>
+      </act>
+    </acts>
+    <fs def="63"/>
+  </s>
+  <s id="181" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add fame 200"/>
+      </act>
+    </acts>
+    <fs def="193"/>
+  </s>
+  <s id="182" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add fame 100"/>
+      </act>
+    </acts>
+    <fs def="179"/>
+  </s>
+  <s id="183" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add fame 100"/>
+      </act>
+    </acts>
+    <fs def="180"/>
+  </s>
+  <s id="184" n="cheat for hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add fame 100"/>
+      </act>
+    </acts>
+    <fs def="56"/>
+  </s>
+  <s id="185" n="vipshop info">
+    <acts>
+      <act done="vipshopinfo"/>
+    </acts>
+    <fs def="186"/>
+  </s>
+  <s id="186" n="vipshop buy">
+    <acts>
+      <act done="vipshopbuy"/>
+    </acts>
+    <fs def="187"/>
+  </s>
+  <s id="187" n="ppshop info">
+    <acts>
+      <act done="ppshopinfo"/>
+    </acts>
+    <fs def="188"/>
+  </s>
+  <s id="188" n="ppshop buy">
+    <acts>
+      <act done="ppshopbuy"/>
+    </acts>
+    <fs def="189"/>
+  </s>
+  <s id="189" n="ppshop refresh">
+    <acts>
+      <act done="ppshoprefresh"/>
+    </acts>
+    <fs def="134"/>
+  </s>
+  <s id="190" n="rest for logon">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="0"/>
+      </act>
+    </acts>
+    <fs def="8"/>
+  </s>
+  <s id="191" n="pve1010101">
+    <acts>
+      <act done="pvecombat">
+        <pm n="battle_dataid" v="1010101"/>
+      </act>
+    </acts>
+    <fs def="201"/>
+  </s>
+  <s id="193" n="buy hero 102011  ">
+    <acts>
+      <act done="buyhero">
+        <pm n="heroid" v="102011"/>
+      </act>
+    </acts>
+    <fs def="63"/>
+  </s>
+  <s id="194" n="upgrade hero rank 101011">
+    <acts>
+      <act done="upgradeherorank">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="195"/>
+  </s>
+  <s id="195" n="upgrade hero ability 101011">
+    <acts>
+      <act done="upgradeheroability">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="88"/>
+  </s>
+  <s id="196" n="cheat for upgrade hero">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add energy 1000"/>
+      </act>
+    </acts>
+    <fs def="194"/>
+  </s>
+  <s id="197" n="upgrade mod 101005">
+    <acts>
+      <act done="upgrademod">
+        <pm n="modid" v="101005"/>
+      </act>
+    </acts>
+    <fs def="95"/>
+  </s>
+  <s id="199" n="player extra action">
+    <acts>
+      <act done="playerextra"/>
+    </acts>
+    <fs def="200"/>
+  </s>
+  <s id="200" n="gather">
+    <acts>
+      <act done="gather"/>
+    </acts>
+    <fs def="110"/>
+  </s>
+  <s id="201" n="pvp action">
+    <acts>
+      <act done="pvpcombat">
+        <pm n="combattime" v="120000"/>
+        <pm n="pvp_type" v="0"/>
+      </act>
+    </acts>
+    <fs def="196"/>
+  </s>
+  <s id="202" n="cheat for create guild">
+    <acts>
+      <act done="cheat">
+        <pm n="cheat" v="add energy 99999"/>
+      </act>
+    </acts>
+    <fs def="136"/>
+  </s>
+  <s id="203" n="async teamset">
+    <acts>
+      <act done="asyncteamset">
+        <pm n="heroid" v="101011"/>
+      </act>
+    </acts>
+    <fs def="204"/>
+  </s>
+  <s id="204" n="async battle">
+    <acts>
+      <act done="asyncbattle"/>
+    </acts>
+    <fs def="205"/>
+  </s>
+  <s id="205" n="async battlehistory">
+    <acts>
+      <act done="asyncbattlehistory"/>
+    </acts>
+    <fs def="206"/>
+  </s>
+  <s id="206" n="async leaderboard">
+    <acts>
+      <act done="asyncleaderboard"/>
+    </acts>
+    <fs def="191"/>
+  </s>
+</bh>

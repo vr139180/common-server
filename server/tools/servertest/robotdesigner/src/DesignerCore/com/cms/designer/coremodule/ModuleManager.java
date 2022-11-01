@@ -8,17 +8,17 @@ import com.cms.designer.swingui.OBEDesigner;
 
 /**
  * @author Administrator
- * ³õÊ¼»¯¸÷¸öÄ£¿é£¬²¢ÇÒ½øĞĞ¹ÜÀí
+ * åˆå§‹åŒ–å„ä¸ªæ¨¡å—ï¼Œå¹¶ä¸”è¿›è¡Œç®¡ç†
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class ModuleManager
 {
-	//Ä£¿é¾²Ì¬Êı¾İ
+	//æ¨¡å—é™æ€æ•°æ®
 	private HashMap modules =new HashMap();
 	
 	/**
-	 * ×¢²áÒ»¸öÄ£¿é
+	 * æ³¨å†Œä¸€ä¸ªæ¨¡å—
 	 * @param m
 	 * @return
 	 */
@@ -45,9 +45,9 @@ public class ModuleManager
 	}
 	
 	/**
-	 * »ñÈ¡×ÊÔ´ĞÅÏ¢
-	 * @param mid Ä£¿éid
-	 * @param id ×ÊÔ´id
+	 * è·å–èµ„æºä¿¡æ¯
+	 * @param mid æ¨¡å—id
+	 * @param id èµ„æºid
 	 * @return
 	 */
 	public String getResource( String mid, String id)
@@ -61,7 +61,7 @@ public class ModuleManager
 	}
 	
 	/**
-	 * »ñÈ¡ËùÓĞÄ£¿éĞÅÏ¢OBEModuleStandard
+	 * è·å–æ‰€æœ‰æ¨¡å—ä¿¡æ¯OBEModuleStandard
 	 * @return
 	 */
 	public Iterator getAllModules()
@@ -70,7 +70,7 @@ public class ModuleManager
 	}
 	
 	/**
-	 * »ñÈ¡Ä£¿éĞÅÏ¢
+	 * è·å–æ¨¡å—ä¿¡æ¯
 	 * @param mid
 	 * @return
 	 */

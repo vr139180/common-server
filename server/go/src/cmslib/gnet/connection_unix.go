@@ -35,6 +35,7 @@ import (
 	bsPool "cmslib/gnet/pkg/pool/byteslice"
 	rbPool "cmslib/gnet/pkg/pool/ringbuffer"
 	"cmslib/gnet/pkg/ringbuffer"
+	"cmslib/protocolx"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -235,15 +236,15 @@ func (c *conn) writev(bs [][]byte) (err error) {
 
 // SH:Lujf:SH
 // eventloop 中写消息到tcp流
-func (c *conn) writeProtobuf(pro proto.Message) (int, error) {
+func (c *conn) writeProtobuf(pro protocolx.NetProtocol) (int, error) {
 	pcode, ok := c.codec.(*ProtobufCodec)
 	if !ok {
 		return 0, errors.New("codec not support ProtobufCodec")
 	}
 
-	len2 := uint32(proto.Size(pro))
+	len2 := uint32(proto.Size(pro.Msg))
 
-	id, err := pcode.Factory.ProtoToId(pro)
+	id, err := pcode.Factory.ProtoToId(pro.Msg)
 	if err != nil {
 		return 0, err
 	}
@@ -254,7 +255,7 @@ func (c *conn) writeProtobuf(pro proto.Message) (int, error) {
 	outFrame := bytes.NewBuffer([]byte{})
 	binary.Write(outFrame, binary.LittleEndian, slen)
 
-	data, err := proto.Marshal(pro)
+	data, err := proto.Marshal(pro.Msg)
 	if err != nil {
 		return 0, err
 	}
@@ -301,7 +302,7 @@ func (c *conn) asyncWriteProtobuf(itf interface{}) error {
 		return nil
 	}
 
-	_, err := c.writeProtobuf(itf.(proto.Message))
+	_, err := c.writeProtobuf(itf.(protocolx.NetProtocol))
 	return err
 }
 
@@ -409,7 +410,7 @@ func (c *conn) RemoteAddr() net.Addr       { return c.remoteAddr }
 // ==================================== Concurrency-safe API's ====================================
 //+ SH:Lujf:SH
 // 发送protobuf协议，在发送时构造字节流
-func (c *conn) AsyncWriteProtobuf(pro proto.Message) error {
+func (c *conn) AsyncWriteProtobuf(pro protocolx.NetProtocol) error {
 	c.loop.poller.Trigger(c.asyncWriteProtobuf, pro)
 	return nil
 }

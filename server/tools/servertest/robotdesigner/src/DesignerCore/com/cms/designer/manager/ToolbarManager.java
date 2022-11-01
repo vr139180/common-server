@@ -54,14 +54,14 @@ public class ToolbarManager implements PropertyNames
 		this.parent = parent;
 		toolbar =new OBEToolBar( parent);
 		
-		//³õÊ¼»¯ÏµÍ³°´Å¥
+		//åˆå§‹åŒ–ç³»ç»ŸæŒ‰é’®
 		initSysTools();
 		this.configFile =
 			new File(System.getProperty("ide.home") + "/conf/" + barConfig);
 	}
 	
 	/*
-	 * ³õÊ¼»¯IDE¿ò¼ÜµÄ¹¤¾ßÌõ
+	 * åˆå§‹åŒ–IDEæ¡†æ¶çš„å·¥å…·æ¡
 	 */
 	private void initSysTools()
 	{
@@ -126,7 +126,7 @@ public class ToolbarManager implements PropertyNames
 	}
 
 	/**
-	 * Ôö¼Ó°´Å¥µ½¹¤¾ßÌõ
+	 * å¢åŠ æŒ‰é’®åˆ°å·¥å…·æ¡
 	 * @param toolbarName
 	 * @param buttonName
 	 */
@@ -163,7 +163,7 @@ public class ToolbarManager implements PropertyNames
 	}
 	
 	/**
-	 * ¸üĞÂ
+	 * æ›´æ–°
 	 * @param actions
 	 */
 	//change the default toolbar actions into the special actions for special module
@@ -180,12 +180,12 @@ public class ToolbarManager implements PropertyNames
 
 			if( actions.containsKey( n))
 			{
-				//ÓÃĞÂµÄÌæ´ú¾ÉµÄ
+				//ç”¨æ–°çš„æ›¿ä»£æ—§çš„
 				jb.setAction( ( Action)actions.get( n));
 			}
 			else
 			{
-				//Ê¹ÓÃÏµÍ³È±Ê¡µÄ
+				//ä½¿ç”¨ç³»ç»Ÿç¼ºçœçš„
 				manager.setDefaultAction( n);
 			}
 		}

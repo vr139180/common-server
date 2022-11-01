@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bh s="1">
+  <s id="1" n="start">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs def="2"/>
+  </s>
+  <s id="2" n="login">
+    <acts>
+      <act done="login"/>
+    </acts>
+    <fs def="4">
+      <f to="3">
+        <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="3" n="create character">
+    <acts>
+      <act done="createchr">
+        <pm n="faction" v="1"/>
+      </act>
+    </acts>
+    <fs def="4"/>
+  </s>
+  <s id="4" n="sel char">
+    <acts>
+      <act done="selchr"/>
+    </acts>
+    <fs def="8">
+      <f to="19">
+        <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="5" n="do lv1">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs/>
+  </s>
+  <s id="6" n="do lv2">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs/>
+  </s>
+  <s id="7" n="ready go">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="100"/>
+      </act>
+    </acts>
+    <fs def="18">
+      <f to="5">
+        <c><![CDATA[if vuser.level == 1 then result.ret=true end;]]></c>
+      </f>
+      <f to="6">
+        <c><![CDATA[if vuser.level == 2 then result.ret=true end;]]></c>
+      </f>
+      <f to="10">
+        <c><![CDATA[if vuser.level == 3 then result.ret=true end;]]></c>
+      </f>
+      <f to="11">
+        <c><![CDATA[if vuser.level == 4 then result.ret=true end;]]></c>
+      </f>
+      <f to="12">
+        <c><![CDATA[if vuser.level == 5 then result.ret=true end;]]></c>
+      </f>
+      <f to="13">
+        <c><![CDATA[if vuser.level == 6 then result.ret=true end;]]></c>
+      </f>
+      <f to="14">
+        <c><![CDATA[if vuser.level == 7 then result.ret=true end;]]></c>
+      </f>
+      <f to="15">
+        <c><![CDATA[if vuser.level == 8 then result.ret=true end;]]></c>
+      </f>
+      <f to="16">
+        <c><![CDATA[if vuser.level == 9 then result.ret=true end;]]></c>
+      </f>
+      <f to="17">
+        <c><![CDATA[if vuser.level == 10 then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="8" n="logout">
+    <acts>
+      <act done="logout"/>
+    </acts>
+    <fs def="9"/>
+  </s>
+  <s id="9" n="quit test case">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="200"/>
+      </act>
+    </acts>
+    <fs/>
+  </s>
+  <s id="10" n="do lv3">
+    <fs/>
+  </s>
+  <s id="11" n="do lv4">
+    <fs/>
+  </s>
+  <s id="12" n="do lv5">
+    <fs/>
+  </s>
+  <s id="13" n="do lv6">
+    <fs/>
+  </s>
+  <s id="14" n="do lv7">
+    <fs/>
+  </s>
+  <s id="15" n="do lv8">
+    <fs/>
+  </s>
+  <s id="16" n="do lv9">
+    <fs/>
+  </s>
+  <s id="17" n="do lv10">
+    <fs/>
+  </s>
+  <s id="18" n="lv &gt; 10">
+    <acts>
+      <act done="idle">
+        <pm n="step" v="500"/>
+      </act>
+    </acts>
+    <fs def="8"/>
+  </s>
+  <s id="19" n="get build list">
+    <acts>
+      <act done="buildlist"/>
+    </acts>
+    <fs def="20"/>
+  </s>
+  <s id="20" n="first levelup reward">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="1"/>
+      </act>
+    </acts>
+    <fs def="7">
+      <f to="21">
+        <c><![CDATA[if vuser:needgetlevelreward() then result.ret=true end;]]></c>
+      </f>
+    </fs>
+  </s>
+  <s id="21" n="get level reward again">
+    <acts>
+      <act done="levelupreward">
+        <pm n="level" v="1"/>
+      </act>
+    </acts>
+    <fs def="7"/>
+  </s>
+</bh>

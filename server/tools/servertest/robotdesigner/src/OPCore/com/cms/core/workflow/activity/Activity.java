@@ -25,7 +25,7 @@ public class Activity extends AbstractElement implements Serializable
 		super(id, name);
 	}
 	/**
-	 * 获取活动类型
+	 * 鑾峰彇娲诲姩绫诲瀷
 	 * @return
 	 */
 	public int getActivityType()

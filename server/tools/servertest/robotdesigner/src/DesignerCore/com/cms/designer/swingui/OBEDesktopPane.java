@@ -13,7 +13,7 @@ import com.cms.designer.util.ResourceUtil;
 
 /**
  * @author Administrator
- * 管理childframe
+ * 绠＄悊childframe
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
@@ -22,7 +22,7 @@ public class OBEDesktopPane extends JDesktopPane
 	private static final Log log = LogFactory.getLog(OBEDesktopPane.class);
 	private static IconManager iconManager =ResourceUtil.getIconManager();
 
-	//缺省参数inernalframe
+	//缂虹渷鍙傛暟inernalframe
 	public static final int FRAME0_X = 0;
 	public static final int FRAME0_Y = 0;
 	public static final int FRAME0_WIDTH = 320;
@@ -31,7 +31,7 @@ public class OBEDesktopPane extends JDesktopPane
 	public static Dimension dim = new Dimension(100, 100);
 	public static boolean isMaxState = false;
 
-	//层数
+	//灞傛暟
 	public Integer PALETTE_LAYER = new Integer(3);
 	private OBEDesigner parent;
 
@@ -46,7 +46,7 @@ public class OBEDesktopPane extends JDesktopPane
 	}
 	
 	/**
-	 * 判断窗口是否打开
+	 * 鍒ゆ柇绐楀彛鏄惁鎵撳紑
 	 * @param key
 	 * @return
 	 */
@@ -178,7 +178,7 @@ public class OBEDesktopPane extends JDesktopPane
 	}
 	
 	/**
-	 * 显示制定名称的frame
+	 * 鏄剧ず鍒跺畾鍚嶇О鐨刦rame
 	 * @param name
 	 */
 	public void showFrame(String name)

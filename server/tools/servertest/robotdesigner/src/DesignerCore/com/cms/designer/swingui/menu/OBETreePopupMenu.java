@@ -19,7 +19,7 @@ import com.cms.designer.workflow.WorkFlowMenuManager;
 
 /**
  * @author Administrator
- * ÏîÄ¿¹ÜÀíÇøµÄµ¯³öÊ½²Ëµ¥¹ÜÀí
+ * é¡¹ç›®ç®¡ç†åŒºçš„å¼¹å‡ºå¼èœå•ç®¡ç†
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
  * $Id: OBETreePopupMenu.java,v 1.2 2004/08/12 02:47:37 jefferyd Exp $
@@ -27,19 +27,19 @@ import com.cms.designer.workflow.WorkFlowMenuManager;
 public class OBETreePopupMenu extends JPopupMenu
 {
 	private OBEDesigner parent =null;
-	//½ÚµãĞÅÏ¢
+	//èŠ‚ç‚¹ä¿¡æ¯
 	private OBETreeNode node =null;
 	private String type;
 	private String key;
 
-	//¸ù¾İÊÇ·ñÓĞ²Ëµ¥¾ö¶¨ÊÇ·ñÏÔÊ¾²Ëµ¥
+	//æ ¹æ®æ˜¯å¦æœ‰èœå•å†³å®šæ˜¯å¦æ˜¾ç¤ºèœå•
 	private boolean showit =false;
 
 	private JMenu newMenu;
-	//ÏîÄ¿²Ëµ¥
+	//é¡¹ç›®èœå•
 	private JMenuItem newProjectItem;
 	
-	//¹ı³Ì
+	//è¿‡ç¨‹
 	private JMenuItem newProcessItem;
 
 	private JMenuItem importItem;
@@ -59,7 +59,7 @@ public class OBETreePopupMenu extends JPopupMenu
 	}
 
 	/**
-	 * ¸ù¾İÀàĞÍ³õÊ¼»¯µ¯³öÊ½²Ëµ¥
+	 * æ ¹æ®ç±»å‹åˆå§‹åŒ–å¼¹å‡ºå¼èœå•
 	 */
 	private void init()
 	{
@@ -68,17 +68,17 @@ public class OBETreePopupMenu extends JPopupMenu
 
 		if (type.equals(OBETreeNode.ROOT))
 		{ 
-			//³õÊ¼»¯¸ù²Ëµ¥
+			//åˆå§‹åŒ–æ ¹èœå•
 			initRootPop(actions);
 		}
 		else if (type.equals(OBETreeNode.PROJECT))
 		{
-			//³õÊ¼»¯¹¤³Ì²Ëµ¥
+			//åˆå§‹åŒ–å·¥ç¨‹èœå•
 			initProjectPop(actions);
 		}
 		else if( type.equals( OBETreeNode.MODULE))
 		{
-			//´¦ÀíÄ£¿é²Ëµ¥
+			//å¤„ç†æ¨¡å—èœå•
 			dealModuleMenu();
 		}
 
@@ -86,7 +86,7 @@ public class OBETreePopupMenu extends JPopupMenu
 	}
 	
 	/**
-	 * ´¦Àí²Ëµ¥
+	 * å¤„ç†èœå•
 	 */
 	private void dealModuleMenu()
 	{
@@ -99,7 +99,7 @@ public class OBETreePopupMenu extends JPopupMenu
 	}
 
 	/**
-	 * µ¼Èë²Ëµ¥×ÊÔ´
+	 * å¯¼å…¥èœå•èµ„æº
 	 */
 	private void loadResources()
 	{
@@ -126,7 +126,7 @@ public class OBETreePopupMenu extends JPopupMenu
 	}
 
 	/**
-	 * ³õÊ¼»¯¸ù½Úµã
+	 * åˆå§‹åŒ–æ ¹èŠ‚ç‚¹
 	 * @param actions
 	 */
 	private void initRootPop(Map actions)
@@ -137,19 +137,19 @@ public class OBETreePopupMenu extends JPopupMenu
 		add(newMenu);
 		
 		addSeparator();
-		//µ¼ÈëÏîÄ¿
+		//å¯¼å…¥é¡¹ç›®
 		importItem = add((Action)actions.get( ConstValue.ProjectImport));
 	}
 
 	/**
-	 * ³õÊ¼»¯¹¤³Ì²Ëµ¥
+	 * åˆå§‹åŒ–å·¥ç¨‹èœå•
 	 * @param actions
 	 */
 	private void initProjectPop( Map actions)
 	{
 		newProcessItem =add((Action)actions.get( WorkFlowMenuManager.ACT_NEWPROCESS));
 
-		//µ¼³ö¹¤³Ì
+		//å¯¼å‡ºå·¥ç¨‹
 		exportItem = add((Action)actions.get( ConstValue.ProjectExport));
 		addSeparator();
 		deleteItem = add((Action)actions.get( ConstValue.ProjectDelete));

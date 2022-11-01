@@ -26,8 +26,7 @@ import (
 	"cmslib/gnet/pkg/errors"
 	"cmslib/gnet/pkg/logging"
 	"cmslib/gnet/pkg/ringbuffer"
-
-	"google.golang.org/protobuf/proto"
+	"cmslib/protocolx"
 )
 
 // Action is an action that occurs after the completion of an event.
@@ -146,7 +145,7 @@ type Conn interface {
 	AsyncWrite(buf []byte) error
 
 	// SH:Lujf:SH
-	AsyncWriteProtobuf(pro proto.Message) error
+	AsyncWriteProtobuf(pro *protocolx.NetProtocol) error
 	// SH:Lujf:SH
 
 	// AsyncWritev writes multiple byte slices to peer asynchronously, usually you would call it in individual goroutines

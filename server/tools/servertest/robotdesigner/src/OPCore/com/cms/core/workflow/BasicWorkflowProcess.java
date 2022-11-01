@@ -18,17 +18,17 @@ public class BasicWorkflowProcess extends AbstractWorkflowProcess
 	}
 
 	/**
-	 * ³õÊ¼»¯Á÷³Ì¶¨Òå£¬Ôö¼ÓÆğµãºÍÖÕµã
+	 * åˆå§‹åŒ–æµç¨‹å®šä¹‰ï¼Œå¢åŠ èµ·ç‚¹å’Œç»ˆç‚¹
 	 */
 	public void initBasicWorkflowProcess()
 	{
-		//ÉèÖÃÈ±Ê¡µÄÆğÊ¼½Úµã
-		Activity start = new Activity( getNextActivityId(), ResourceUtil.getRS( "default.start"));//¿ªÊ¼
+		//è®¾ç½®ç¼ºçœçš„èµ·å§‹èŠ‚ç‚¹
+		Activity start = new Activity( getNextActivityId(), ResourceUtil.getRS( "default.start"));//å¼€å§‹
 		start.setActivityType( Activity.START);
 
 		getActivities().add( start);
 
-		//ÉèÖÃÈ±Ê¡Î»ÖÃ
+		//è®¾ç½®ç¼ºçœä½ç½®
 		Map mp = start.getExtendedAttributes();
 		mp.put( ExtendedAttributeNames.BOUNDS_X, "50");
 		mp.put( ExtendedAttributeNames.BOUNDS_Y, "50");

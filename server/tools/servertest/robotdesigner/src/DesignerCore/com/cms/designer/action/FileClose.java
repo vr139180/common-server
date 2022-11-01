@@ -34,7 +34,7 @@ public class FileClose extends OBEStandardAction
 			int flag=-1;
 			//todo
 			//0:yes;1:no;2:cancel
-			flag=JOptionPane.showConfirmDialog(null,"Òª±£´æ¸ÃÎÄ¼şÂğ?","¸ÃÎÄ¼şÎ´±£´æ!",JOptionPane.YES_NO_CANCEL_OPTION);
+			flag=JOptionPane.showConfirmDialog(null,"è¦ä¿å­˜è¯¥æ–‡ä»¶å—?","è¯¥æ–‡ä»¶æœªä¿å­˜!",JOptionPane.YES_NO_CANCEL_OPTION);
 			if(flag==2) return;
 			if(flag==0) return;
 		}

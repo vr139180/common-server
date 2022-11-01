@@ -59,7 +59,7 @@ public class ProjectExportEditor extends JPanel
 	}
 
 	/**
-	 * ³õÊ¼»¯¶Ô»°¿ò
+	 * åˆå§‹åŒ–å¯¹è¯æ¡†
 	 */
 	private void init()
 	{
@@ -133,14 +133,14 @@ public class ProjectExportEditor extends JPanel
 		int flag = -1;
 		if( srcFile.equals( destFile))
 		{
-			JOptionPane.showConfirmDialog( null, "ÇëÁíÑ¡Ä¿±êÂ·¾¶.", "Ä¿±êÂ·¾¶ºÍÔ´Â·¾¶ÏàÍ¬!",
+			JOptionPane.showConfirmDialog( null, "è¯·å¦é€‰ç›®æ ‡è·¯å¾„.", "ç›®æ ‡è·¯å¾„å’Œæºè·¯å¾„ç›¸åŒ!",
 					JOptionPane.DEFAULT_OPTION);
 			//projectData=null;
 			return false;
 		}
 		else if( destFile.exists())
 		{
-			flag = JOptionPane.showConfirmDialog( null, "Òª½«Ä¿±êÂ·¾¶Çå¿ÕÂð?", "Ä¿±êÂ·¾¶²»Îª¿Õ!",
+			flag = JOptionPane.showConfirmDialog( null, "è¦å°†ç›®æ ‡è·¯å¾„æ¸…ç©ºå—?", "ç›®æ ‡è·¯å¾„ä¸ä¸ºç©º!",
 					JOptionPane.YES_OPTION);
 			//projectData=null;
 			if( flag > 0)

@@ -46,7 +46,7 @@ public class ElementKey
 	}
 	
 	/**
-	 * ´´½¨³õÒ»¸ökey×Ö·û´®
+	 * åˆ›å»ºåˆä¸€ä¸ªkeyå­—ç¬¦ä¸²
 	 * @return
 	 */
 	public String createKey()
@@ -100,7 +100,7 @@ public class ElementKey
 	}
 	
 	/**
-	 * ·ÖÎöÖÆ¶¨µÄ×Ö·û´´
+	 * åˆ†æåˆ¶å®šçš„å­—ç¬¦åˆ›
 	 * @param k
 	 */
 	public void analyze( String k)
@@ -121,7 +121,7 @@ public class ElementKey
 	}
 	
 	/**
-	 * ´¦ÀíkeyÔªËØ
+	 * å¤„ç†keyå…ƒç´ 
 	 * @param t
 	 */
 	private void dealElement( String t)

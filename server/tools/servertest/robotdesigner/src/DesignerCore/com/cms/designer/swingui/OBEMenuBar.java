@@ -26,7 +26,7 @@ import com.cms.designer.util.ConstValue;
 
 /**
  * @author Administrator
- * ¿ò¼Ü²Ëµ¥
+ * æ¡†æ¶èœå•
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  * $Id: OBEMenuBar.java,v 1.1 2004/06/30 06:36:48 jeffery Exp $
@@ -38,18 +38,18 @@ public class OBEMenuBar extends JMenuBar
 	private final static String _componentBarItem ="menuitem.componentBarItem";
 	private final static String _statusBarItem ="menuitem.statusBarItem";
 
-	//Í¼±ê¹ÜÀí
+	//å›¾æ ‡ç®¡ç†
 	public IconManager iconManager =com.cms.designer.util.ResourceUtil.getIconManager();
-	//Õ¼Î»Í¼
+	//å ä½å›¾
 	public final Icon tm = iconManager.getIcon("tm.gif");
 
 	private OBEDesigner parent =null;
 	
 	private HashMap menuMap;
-	//´°¿Ú¿ØÖÆ°´Å¥
+	//çª—å£æ§åˆ¶æŒ‰é’®
 	private WindowMenu windowMenu;
 	
-	//ÎÄ¼ş²Ëµ¥
+	//æ–‡ä»¶èœå•
 	private JMenu fileMenu;
 	private JMenuItem newMenuItem;
 	private JMenuItem openMenuItem;
@@ -60,7 +60,7 @@ public class OBEMenuBar extends JMenuBar
 	//private JMenuItem printMenuItem;
 	private JMenuItem quitMenuItem;
 
-	//±à¼­²Ëµ¥
+	//ç¼–è¾‘èœå•
 	private JMenu editMenu;
 //	private JMenuItem undoMenuItem;
 //	private JMenuItem redoMenuItem;
@@ -70,19 +70,19 @@ public class OBEMenuBar extends JMenuBar
 	private JMenuItem selectAllMenuItem;
 	private JMenuItem selectNoneMenuItem;
 
-	//ÊÓÍ¼²Ëµ¥
+	//è§†å›¾èœå•
 	private JMenu viewMenu;
 	private JCheckBoxMenuItem tabBarItem, toolBarItem, statusBarItem;
 
 //	private JMenu zoomMenu;
 	private JMenuItem magnifyMenuItem, minifyMenuItem;
 
-	//°ïÖú²Ëµ¥
+	//å¸®åŠ©èœå•
 	private JMenu helpMenu;
 	private JMenuItem topicMenuItem;
 	private JMenuItem aboutMenuItem;
 
-	//²Ù×÷internalframeµÄ²Ëµ¥
+	//æ“ä½œinternalframeçš„èœå•
 	private InternalFramePanel buttonPanel;
 	public InternalFrameButton minimizeButton;
 	public InternalFrameButton revertButton;
@@ -253,14 +253,14 @@ public class OBEMenuBar extends JMenuBar
 	}
 
 	/**
-	 * ³õÊ¼»¯²Ëµ¥
+	 * åˆå§‹åŒ–èœå•
 	 */
 	private void init()
 	{
 		menuMap=new HashMap();
 		Map actions = parent.getActions();
 
-		/*ÎÄ¼ş²Ëµ¥
+		/*æ–‡ä»¶èœå•
 		fileMenu = new JMenu();
 		newMenuItem = fileMenu.add((Action)actions.get( ConstValue.CoreFileNew));
 		openMenuItem = fileMenu.add((Action)actions.get( ConstValue.CoreFileOpen));
@@ -282,7 +282,7 @@ public class OBEMenuBar extends JMenuBar
 		quitMenuItem = createMenuItem(fileMenu,ConstValue.CoreSysQuit,(Action)actions.get( ConstValue.CoreSysQuit));
 		add(fileMenu);
 
-		/*±à¼­²Ù×÷
+		/*ç¼–è¾‘æ“ä½œ
 		editMenu = new JMenu();
 		cutMenuItem = editMenu.add((Action)actions.get( ConstValue.CoreEditCut));
 		copyMenuItem = editMenu.add((Action)actions.get( ConstValue.CoreEditCopy));
@@ -302,23 +302,23 @@ public class OBEMenuBar extends JMenuBar
 			createMenuItem(editMenu,ConstValue.CoreEditSelectNone,(Action)actions.get( ConstValue.CoreEditSelectNone));
 		add(editMenu);
 
-		//ÊÓÍ¼²Ëµ¥
+		//è§†å›¾èœå•
 		viewMenu = new JMenu();
-		//¹¤×÷Ì¨
+		//å·¥ä½œå°
 		tabBarItem = new JCheckBoxMenuItem();
 		tabBarItem.setState(true);
 		tabBarItem.setActionCommand( _tabBarItem);
 		tabBarItem.addActionListener( actionlnsr);
 		viewMenu.add(tabBarItem);
 
-		//¹¤¾ßÌõ
+		//å·¥å…·æ¡
 		toolBarItem = new JCheckBoxMenuItem();
 		toolBarItem.setState(true);
 		toolBarItem.setActionCommand( _toolBarItem);
 		toolBarItem.addActionListener( actionlnsr);
 		viewMenu.add(toolBarItem);
 
-		//×´Ì¬Ìõ
+		//çŠ¶æ€æ¡
 		statusBarItem = new JCheckBoxMenuItem();
 		statusBarItem.setState(true);
 		statusBarItem.setActionCommand( _statusBarItem);
@@ -337,11 +337,11 @@ public class OBEMenuBar extends JMenuBar
 		
 		add(viewMenu);
 
-		//´°¿Ú²Ëµ¥		
+		//çª—å£èœå•		
 		windowMenu = new WindowMenu(this.parent,this);
 		add(windowMenu);
 
-		/*°ïÖú²Ëµ¥
+		/*å¸®åŠ©èœå•
 		helpMenu = new JMenu();
 		topicMenuItem = helpMenu.add((Action)actions.get("help.topic"));
 		aboutMenuItem = helpMenu.add((Action)actions.get("help.about"));
@@ -351,7 +351,7 @@ public class OBEMenuBar extends JMenuBar
 		aboutMenuItem = createMenuItem(helpMenu,ConstValue.CoreHelpAbout,(Action)actions.get(ConstValue.CoreHelpAbout));
 		add(helpMenu);
 
-		//internal frame °´Å¥
+		//internal frame æŒ‰é’®
 		buttonPanel = new InternalFramePanel();
 		minimizeButton = new InternalFrameButton();
 		minimizeButton =
@@ -440,7 +440,7 @@ public class OBEMenuBar extends JMenuBar
 	}
 	
 	/**
-	 * ÔÚ´Ë´¦ÉèÖÃ ÄÚ´°Ìå×î´ó»¯Ê±ÓÒÉÏ½ÇµÄ°´Å¥ÊÇ·ñ¿É¼û
+	 * åœ¨æ­¤å¤„è®¾ç½® å†…çª—ä½“æœ€å¤§åŒ–æ—¶å³ä¸Šè§’çš„æŒ‰é’®æ˜¯å¦å¯è§
 	 */
 	public void addCheckItem(OBEInternalFrame inFrame)
 	{

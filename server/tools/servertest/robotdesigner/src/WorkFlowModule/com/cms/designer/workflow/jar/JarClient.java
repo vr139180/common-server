@@ -45,7 +45,7 @@ public class JarClient implements PluginNames
 	{
 		moduleKey =key;
 		
-		// ³õÊ¼»¯Êı¾İ
+		// åˆå§‹åŒ–æ•°æ®
 		deployDir = targetPath + File.separator + "__deploy";
 		this.targetFile = targetPath + File.separator + targetName;
 
@@ -63,22 +63,22 @@ public class JarClient implements PluginNames
 
 	public void doAll() throws IOException, Exception
 	{
-		//½¨Á¢Ïà¹ØÄ¿Â¼ÎÄ¼ş½á¹¹
+		//å»ºç«‹ç›¸å…³ç›®å½•æ–‡ä»¶ç»“æ„
 		jarCreateor.createAll();
 
 		writeXpdlFile();
 
-		//´ò°ü
+		//æ‰“åŒ…
 		jarCreateor.addAllEntry(targetFile);
 
-		//É¾³ıÎÄ¼şÄ¿Â¼ 
+		//åˆ é™¤æ–‡ä»¶ç›®å½• 
 		jarCreateor.delAll();
 	}
 
 	public void createStruct() throws IOException
 	{}
 
-	//	Éú³Éxpdl.xmlÎÄ¼ş
+	//	ç”Ÿæˆxpdl.xmlæ–‡ä»¶
 	public void writeXpdlFile() throws IOException
 	{
 		FileOutputStream out = null;

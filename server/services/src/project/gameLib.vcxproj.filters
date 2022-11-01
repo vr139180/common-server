@@ -140,6 +140,12 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\robot_test_internal.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\commons\LinkFromConsistentHash.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\commons\LinkToConsistentHash.h">
+      <Filter>commons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">

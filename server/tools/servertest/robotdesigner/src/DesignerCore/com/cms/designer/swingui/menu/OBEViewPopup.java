@@ -11,7 +11,7 @@ import com.cms.designer.workflow.OBEGraphWorkflow;
 
 /**
  * @author Administrator
- * viewµÄ±ÈÀıËõ·Å
+ * viewçš„æ¯”ä¾‹ç¼©æ”¾
  * To change the template for this generated type comment go to
  * Window>Preferences>Java>Code Generation>Code and Comments
  */
@@ -37,7 +37,7 @@ public class OBEViewPopup extends JPopupMenu
 	}
 
 	/**
-	 * ²Ëµ¥½çÃæ³õÊ¼»¯
+	 * èœå•ç•Œé¢åˆå§‹åŒ–
 	 */
 	public void init()
 	{

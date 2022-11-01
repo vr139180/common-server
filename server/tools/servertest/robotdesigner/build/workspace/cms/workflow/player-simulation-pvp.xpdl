@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bhs id="none" n="player-simulation-pvp">
+  <bh s="1">
+    <s id="1" n="ready go">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="S"/>
+        <ext n="bounds.x" v="224"/>
+        <ext n="bounds.y" v="224"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="canStart" v="Y"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="2" n="logon">
+      <acts>
+        <act done="login"/>
+      </acts>
+      <fs def="3"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="224"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="3" n="select player">
+      <acts>
+        <act done="selchr"/>
+      </acts>
+      <fs def="5">
+        <f to="4">
+          <c><![CDATA[if vuser:nohero()==true then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.y" v="16"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="4" n="cheat for hero">
+      <acts>
+        <act done="cheat">
+          <pm n="cheat" v="super hero"/>
+        </act>
+      </acts>
+      <fs def="13"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="16"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="5" n="rest for hero">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="6"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.y" v="224"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="6" n="campaign info">
+      <acts>
+        <act done="campaign"/>
+      </acts>
+      <fs def="7">
+        <f to="8">
+          <c><![CDATA[if vuser:canpvp()==false then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.y" v="448"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="7" n="rest for condition">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="12"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="720"/>
+        <ext n="bounds.y" v="704"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="8" n="cheat for combat">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="10">
+        <f to="9">
+          <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="960"/>
+        <ext n="bounds.y" v="448"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="9" n="cheat for faction 1">
+      <acts>
+        <act done="cheat">
+          <pm n="cheat" v="battledifficulty 10107 0 1 1 1"/>
+        </act>
+      </acts>
+      <fs def="7"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="848"/>
+        <ext n="bounds.y" v="576"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="10" n="cheat for faction 2">
+      <acts>
+        <act done="cheat">
+          <pm n="cheat" v="battledifficulty 20107 0 1 1 1"/>
+        </act>
+      </acts>
+      <fs def="7"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="960"/>
+        <ext n="bounds.y" v="704"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="11" n="pvp">
+      <acts>
+        <act done="pvpcombat">
+          <pm n="combattime" v="120000"/>
+          <pm n="pvp_type" v="0"/>
+        </act>
+      </acts>
+      <fs def="14"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="592"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="12" n="pvp team set">
+      <acts>
+        <act done="pvpteamset"/>
+      </acts>
+      <fs def="11"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="704"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="13" n="logout">
+      <acts>
+        <act done="logout"/>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="112"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="14" n="logout">
+      <acts>
+        <act done="logout"/>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="496"/>
+        <ext n="bounds.y" v="400"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+  </bh>
+  <tfs>
+    <tf id="1" f="1" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="2" f="2" t="3" n="">
+      <c/>
+    </tf>
+    <tf id="3" f="3" t="5" n="">
+      <c/>
+    </tf>
+    <tf id="4" f="3" t="4" n="no hero">
+      <c><![CDATA[if vuser:nohero()==true then result.ret=true end;]]></c>
+    </tf>
+    <tf id="6" f="5" t="6" n="">
+      <c/>
+    </tf>
+    <tf id="7" f="6" t="7" n="">
+      <c/>
+    </tf>
+    <tf id="8" f="6" t="8" n="can&apos;t pvp">
+      <c><![CDATA[if vuser:canpvp()==false then result.ret=true end;]]></c>
+    </tf>
+    <tf id="10" f="8" t="9" n="faction 1">
+      <c><![CDATA[if vuser:isfaction(1) == true then result.ret=true end;]]></c>
+    </tf>
+    <tf id="11" f="8" t="10" n="faction 2">
+      <c/>
+    </tf>
+    <tf id="12" f="9" t="7" n="">
+      <c/>
+    </tf>
+    <tf id="13" f="10" t="7" n="">
+      <c/>
+    </tf>
+    <tf id="16" f="7" t="12" n="">
+      <c/>
+    </tf>
+    <tf id="17" f="12" t="11" n="">
+      <c/>
+    </tf>
+    <tf id="18" f="4" t="13" n="">
+      <c/>
+    </tf>
+    <tf id="19" f="13" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="20" f="11" t="14" n="">
+      <c/>
+    </tf>
+    <tf id="21" f="14" t="2" n="">
+      <c/>
+    </tf>
+  </tfs>
+  <exts>
+    <ext n="auto.activity.autoid" v="14"/>
+    <ext n="auto.transition.autoid" v="21"/>
+  </exts>
+  <exts>
+    <ext n="auto.activity.autoid" v="11"/>
+    <ext n="auto.transition.autoid" v="15"/>
+  </exts>
+</bhs>

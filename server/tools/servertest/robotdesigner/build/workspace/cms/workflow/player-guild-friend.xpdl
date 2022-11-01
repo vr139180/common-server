@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bhs id="none" n="player-guild-friend">
+  <bh s="1">
+    <s id="1" n="ready go">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="S"/>
+        <ext n="bounds.x" v="48"/>
+        <ext n="bounds.y" v="48"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="canStart" v="Y"/>
+        <ext n="bounds.width" v="64"/>
+      </exts>
+    </s>
+    <s id="2" n="logon">
+      <acts>
+        <act done="login"/>
+      </acts>
+      <fs def="3">
+        <f to="4">
+          <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="160"/>
+        <ext n="bounds.y" v="48"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="3" n="select player">
+      <acts>
+        <act done="selchr"/>
+      </acts>
+      <fs def="5">
+        <f to="6">
+          <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+        </f>
+      </fs>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="352"/>
+        <ext n="bounds.y" v="48"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="4" n="create player">
+      <acts>
+        <act done="createchr">
+          <pm n="faction" v="1"/>
+        </act>
+      </acts>
+      <fs def="5"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="352"/>
+        <ext n="bounds.y" v="176"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="5" n="logout">
+      <acts>
+        <act done="logout"/>
+      </acts>
+      <fs def="2"/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="160"/>
+        <ext n="bounds.y" v="176"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+    <s id="6" n="rest for action">
+      <acts>
+        <act done="idle">
+          <pm n="step" v="500"/>
+        </act>
+      </acts>
+      <fs/>
+      <exts>
+        <ext n="activity.module" v="N"/>
+        <ext n="bounds.x" v="512"/>
+        <ext n="bounds.y" v="128"/>
+        <ext n="bounds.height" v="64"/>
+        <ext n="bounds.width" v="64"/>
+        <ext n="canStart" v="N"/>
+      </exts>
+    </s>
+  </bh>
+  <tfs>
+    <tf id="1" f="1" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="2" f="2" t="3" n="">
+      <c/>
+    </tf>
+    <tf id="3" f="2" t="4" n="has no character">
+      <c><![CDATA[if vuser:haschr() == false then result.ret=true end;]]></c>
+    </tf>
+    <tf id="4" f="4" t="5" n="">
+      <c/>
+    </tf>
+    <tf id="5" f="3" t="5" n="">
+      <c/>
+    </tf>
+    <tf id="6" f="5" t="2" n="">
+      <c/>
+    </tf>
+    <tf id="7" f="3" t="6" n="is ready">
+      <c><![CDATA[if vuser:isready() then result.ret=true end;]]></c>
+    </tf>
+  </tfs>
+  <exts>
+    <ext n="auto.activity.autoid" v="6"/>
+    <ext n="auto.transition.autoid" v="7"/>
+  </exts>
+</bhs>

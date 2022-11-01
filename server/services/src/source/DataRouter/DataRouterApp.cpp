@@ -80,10 +80,12 @@ bool DataRouterApp::pre_init()
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 
 	gate_links_from_.init_holder();
-	home_links_from_.init_holder();
-	state_links_from_.init_holder();
 	fightrouter_links_from_.init_holder();
 	servicerouter_links_from_.init_holder();
+
+	home_links_from_.init_holder(800);
+	state_links_from_.init_holder(800);
+	login_links_from_.init_holder(800);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -146,10 +148,12 @@ void DataRouterApp::uninit_network()
 	NetDriverX::getInstance().uninitNetDriver();
 
 	gate_links_from_.uninit_holder();
-	home_links_from_.uninit_holder();
-	state_links_from_.uninit_holder();
 	fightrouter_links_from_.uninit_holder();
 	servicerouter_links_from_.uninit_holder();
+
+	home_links_from_.uninit_holder();
+	state_links_from_.uninit_holder();
+	login_links_from_.uninit_holder();
 
 	session_from_.unint_sessions();
 
@@ -318,6 +322,27 @@ void DataRouterApp::on_disconnected_with_stateservice(StateServiceLinkFrom* plin
 
 		//断开映射关系
 		state_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
+void DataRouterApp::on_disconnected_with_loginservice(LoginServiceLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		login_links_from_.return_freelink(plink);
 
 		session_from_.return_freesession_mth(psession);
 

@@ -108,7 +108,7 @@ public class OBEToolBarUI extends BasicToolBarUI implements SwingConstants
 	{
 		this.parent = parent;
 
-		//³õÊ¼»¯
+		//åˆå§‹åŒ–
 		constraintBeforeFloating = BorderLayout.NORTH;
 	}
 
@@ -1368,7 +1368,7 @@ public class OBEToolBarUI extends BasicToolBarUI implements SwingConstants
 	}
 
 	/**
-	 * @author Administrator ÍÏ¶¯¹¤¾ßÌõÊ±ÏÔÊ¾³öÀ´µÄ´°¿Ú To change the template for this
+	 * @author Administrator æ‹–åŠ¨å·¥å…·æ¡æ—¶æ˜¾ç¤ºå‡ºæ¥çš„çª—å£ To change the template for this
 	 *         generated type comment go to Window - Preferences - Java - Code
 	 *         Generation - Code and Comments
 	 */

@@ -14,7 +14,7 @@ public class OBETreeNode extends DefaultMutableTreeNode
 	public final static String PROCESS = "process";
 	public final static String WORKFLOW = "workflow";
 
-	//ÏµÍ³¹ÌÓÐÊôÐÔ
+	//ç³»ç»Ÿå›ºæœ‰å±žæ€§
 	public final static String ROOT = "wp.root";
 	public final static String PROJECT = "wp.project";
 	public final static String MODULE ="wp.extmodule";

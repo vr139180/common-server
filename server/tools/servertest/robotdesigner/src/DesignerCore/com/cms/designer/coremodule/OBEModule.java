@@ -16,13 +16,13 @@ import com.cms.designer.util.ConstValue;
 
 /**
  * @author Administrator
- * Ä£¿éĞÅÏ¢
+ * æ¨¡å—ä¿¡æ¯
  * To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class OBEModule
 {
-	//Ä£¿éÃèÊöÎÄ¼ş
+	//æ¨¡å—æè¿°æ–‡ä»¶
 	public final static String descfile ="module.xml";
 	
 	private String moduleID ="";
@@ -30,23 +30,23 @@ public class OBEModule
 	private String moduleClass ="";
 	private String workDir ="";
 	
-	//Ä¿Â¼Î»ÖÃ
+	//ç›®å½•ä½ç½®
 	private String rootPath ="";
-	//ÓÃµ½µÄ×ÊÔ´ĞÅÏ¢
+	//ç”¨åˆ°çš„èµ„æºä¿¡æ¯
 	private Properties resource =new Properties();
-	//ÏµÍ³²Ëµ¥µÄ¶¯×÷ÊµÏÖ
+	//ç³»ç»Ÿèœå•çš„åŠ¨ä½œå®ç°
 	private HashMap	ideAction =new HashMap();
 	private HashSet singleActions =new HashSet();
 	
 	public OBEModule( File md) throws LoadModuleErrorException
 	{
 		rootPath =md.getPath();
-		//ÑéÖ¤ÕıÈ·ĞÔ
+		//éªŒè¯æ­£ç¡®æ€§
 		File ff =new File( md, descfile);
 		if( !ff.exists())
 			throw new LoadModuleErrorException();
 		
-		//³õÊ¼»¯Ä£¿éĞÅÏ¢
+		//åˆå§‹åŒ–æ¨¡å—ä¿¡æ¯
 		init( ff);
 		
 		if( !validateModule())
@@ -54,7 +54,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * »ñÈ¡×ÊÔ´
+	 * è·å–èµ„æº
 	 * @param id
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ³õÊ¼»¯Ä£¿éĞÅÏ¢
+	 * åˆå§‹åŒ–æ¨¡å—ä¿¡æ¯
 	 * @param f
 	 */
 	private void init( File f)
@@ -76,11 +76,11 @@ public class OBEModule
 			Element root =doc.getRootElement();
 			analyModuleInfo( root);
 			
-			//·ÖÎöÏµÍ³²Ëµ¥
+			//åˆ†æç³»ç»Ÿèœå•
 			Element ideE =root.getChild( "ide.menu");
 			analyIDEMenuAction( ideE);
 			
-			//¼ÓÔØ×ÊÔ´
+			//åŠ è½½èµ„æº
 			loadResource();
 		}
 		catch( Exception e){
@@ -89,7 +89,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ¼ÓÔØ×ÊÔ´
+	 * åŠ è½½èµ„æº
 	 */
 	private void loadResource()
 	{
@@ -109,7 +109,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ·ÖÎöÏµÍ³²Ëµ¥ÖØÔØÇé¿ö
+	 * åˆ†æç³»ç»Ÿèœå•é‡è½½æƒ…å†µ
 	 * @param e
 	 */
 	private void analyIDEMenuAction( Element e)
@@ -124,7 +124,7 @@ public class OBEModule
 			String t =ext.getAttributeValue( "point");
 			if( !ConstValue.containMenuType( t))
 				continue;
-			//±£´æaction
+			//ä¿å­˜action
 			HashSet v =new HashSet();
 			ideAction.put( t, v);
 			
@@ -150,7 +150,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ°üº¬¶¯×÷
+	 * åˆ¤æ–­æ˜¯å¦åŒ…å«åŠ¨ä½œ
 	 * @param id
 	 * @return
 	 */
@@ -160,7 +160,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ·ÖÎöÄ£¿éÃèÊöĞÅÏ¢
+	 * åˆ†ææ¨¡å—æè¿°ä¿¡æ¯
 	 * @param r
 	 */
 	private void analyModuleInfo( Element r)
@@ -172,7 +172,7 @@ public class OBEModule
 	}
 	
 	/**
-	 * ÑéÖ¤Ä£¿éµÄÊôĞÔºÏ·¨ĞÔ
+	 * éªŒè¯æ¨¡å—çš„å±æ€§åˆæ³•æ€§
 	 * @return
 	 */
 	private boolean validateModule()

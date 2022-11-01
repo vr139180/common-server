@@ -2,8 +2,7 @@ package server
 
 import (
 	"cmslib/gnet"
-
-	"google.golang.org/protobuf/proto"
+	"cmslib/protocolx"
 )
 
 // 系统命令
@@ -32,11 +31,11 @@ func (r *RegistConnectionCmd) Run() {
 
 type RegistServiceCmd struct {
 	conn gnet.Conn
-	msg  proto.Message
-	fun  func(gnet.Conn, proto.Message)
+	msg  *protocolx.NetProtocol
+	fun  func(gnet.Conn, *protocolx.NetProtocol)
 }
 
-func NewRegistServiceCmd(conn gnet.Conn, f func(gnet.Conn, proto.Message), msg proto.Message) (cmd *RegistServiceCmd) {
+func NewRegistServiceCmd(conn gnet.Conn, f func(gnet.Conn, *protocolx.NetProtocol), msg *protocolx.NetProtocol) (cmd *RegistServiceCmd) {
 	cmd = new(RegistServiceCmd)
 	cmd.conn = conn
 	cmd.fun = f
@@ -72,15 +71,13 @@ func (n *NetSessionCmd) Run() {
 
 type NormalNetCmd struct {
 	sess gnet.NetSession
-	id   int
-	msg  proto.Message
+	msg  *protocolx.NetProtocol
 	fun  gnet.NetCmdFunction
 }
 
-func NewNormalNetCmd(s gnet.NetSession, id int, m proto.Message, f gnet.NetCmdFunction) (cmd *NormalNetCmd) {
+func NewNormalNetCmd(s gnet.NetSession, m *protocolx.NetProtocol, f gnet.NetCmdFunction) (cmd *NormalNetCmd) {
 	cmd = new(NormalNetCmd)
 	cmd.sess = s
-	cmd.id = id
 	cmd.msg = m
 	cmd.fun = f
 
@@ -89,6 +86,6 @@ func NewNormalNetCmd(s gnet.NetSession, id int, m proto.Message, f gnet.NetCmdFu
 
 func (n *NormalNetCmd) Run() {
 	if n.sess != nil && n.msg != nil && n.fun != nil {
-		n.fun(n.sess, n.id, n.msg)
+		n.fun(n.sess, n.msg)
 	}
 }

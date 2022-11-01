@@ -2,6 +2,7 @@ package eureka
 
 import (
 	"cmslib/netx"
+	"cmslib/protocolx"
 	"cmslib/server"
 	"cmslib/timerx"
 	"cmslib/utilc"
@@ -215,7 +216,12 @@ func (ec *EurekaCluster) GetMyNode() *ServiceNodeInfo {
 	return ec.mynode
 }
 
-func (ec *EurekaCluster) SendMessage(msg proto.Message, balance bool) {
+func (ec *EurekaCluster) SendNetProtocol(msg proto.Message, balance bool) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+	ec.SendMessage(pro, balance)
+}
+
+func (ec *EurekaCluster) SendMessage(msg *protocolx.NetProtocol, balance bool) {
 	l := ec.eurekaVector.Size()
 	if l == 0 {
 		return

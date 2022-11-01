@@ -130,10 +130,10 @@ public class OBEGraphWorkflow extends JGraph
 
 	protected Map editors;
 
-	//ÒıÓÃ workflow process
+	//å¼•ç”¨ workflow process
 	private WorkflowProcess workflowProcess;
 
-	//ÒıÓÃ workflowPackage
+	//å¼•ç”¨ workflowPackage
 	private WorkflowPackage workflowPackage;
 	
 	private OBEInternalFrame frame =null;
@@ -175,7 +175,7 @@ public class OBEGraphWorkflow extends JGraph
 	}
 
 	/**
-	 * ¸÷ÖÖ¼àÌıÆ÷
+	 * å„ç§ç›‘å¬å™¨
 	 */
 	private void installListeners()
 	{
@@ -219,7 +219,7 @@ public class OBEGraphWorkflow extends JGraph
 		if( fromId == null || toId == null)
 			return;
 
-		//Ê×ÏÈÅĞ¶ÏÊÇ·ñÒÑ¾­´æÔÚÁ´½Óform to ½ÚµãµÄtransition
+		//é¦–å…ˆåˆ¤æ–­æ˜¯å¦å·²ç»å­˜åœ¨é“¾æ¥form to èŠ‚ç‚¹çš„transition
 		List ff = workflowProcess.getTransitions();
 		Transition tr = null;
 		for( int i = 0; i < ff.size(); ++i)
@@ -231,7 +231,7 @@ public class OBEGraphWorkflow extends JGraph
 			}
 		}
 
-		//»ñÈ¡transition id
+		//è·å–transition id
 		Transition transition = new BasicTransition( workflowProcess.getNextTransitionId(), "", fromId, toId);
 
 		Map tmp = transition.getExtendedAttributes();
@@ -477,7 +477,7 @@ public class OBEGraphWorkflow extends JGraph
 
 	protected void createPoints( Map attributes, List points)
 	{
-		points.add( new Point( 10, 10)); //±ØĞë
+		points.add( new Point( 10, 10)); //å¿…é¡»
 		try
 		{
 			Integer p_a_x = ExtendedAttributeTools.getInteger( attributes, POINT_A_X);
@@ -739,7 +739,7 @@ public class OBEGraphWorkflow extends JGraph
 		return false;
 	}
 
-	//³õÊ¼»¯ action map
+	//åˆå§‹åŒ– action map
 	private void initActions()
 	{
 		actions = new HashMap();
@@ -766,7 +766,7 @@ public class OBEGraphWorkflow extends JGraph
 		actions.put( "graph.addTransition", new StandardAction( this, "addTransition"));
 	}
 
-	//³õÊ¼»¯ editor map
+	//åˆå§‹åŒ– editor map
 	private void initEditors()
 	{
 		editors = new HashMap();
@@ -806,7 +806,7 @@ public class OBEGraphWorkflow extends JGraph
 		graphManager.paint( g);
 	}
 
-	//Ë®Æ½ÕÛÏß
+	//æ°´å¹³æŠ˜çº¿
 	public void snapHorizontal()
 	{
 		Map map = GraphConstants.createMap();
@@ -816,7 +816,7 @@ public class OBEGraphWorkflow extends JGraph
 		log.info( "snapHorizental");
 	}
 
-	//´¹Ö±ÕÛÏß
+	//å‚ç›´æŠ˜çº¿
 	public void snapVertical()
 	{
 		Map map = GraphConstants.createMap();
@@ -826,7 +826,7 @@ public class OBEGraphWorkflow extends JGraph
 		log.info( "snapVertical");
 	}
 
-	//×óÕÛÏß
+	//å·¦æŠ˜çº¿
 	public void snapLeft()
 	{
 		Map map = GraphConstants.createMap();
@@ -836,7 +836,7 @@ public class OBEGraphWorkflow extends JGraph
 		log.info( "snapLeft");
 	}
 
-	//ÓÒÕÛÏß
+	//å³æŠ˜çº¿
 	public void snapRight()
 	{
 		Map map = GraphConstants.createMap();
@@ -846,7 +846,7 @@ public class OBEGraphWorkflow extends JGraph
 		log.info( "snapRight");
 	}
 
-	//µ¥ÕÛÏß
+	//å•æŠ˜çº¿
 	public void snapSingle()
 	{
 		Object cell = getSelectionCell();
@@ -898,7 +898,7 @@ public class OBEGraphWorkflow extends JGraph
 		}
 	}
 
-	//×ÔÓÉÏßÂ·
+	//è‡ªç”±çº¿è·¯
 	public void snapFree()
 	{
 		Map map = GraphConstants.createMap();
@@ -915,7 +915,7 @@ public class OBEGraphWorkflow extends JGraph
 		log.info( "snapFree");
 	}
 
-	//·´Ïò
+	//åå‘
 	public void reverse()
 	{
 		if( getSelectionCount() == 1)
@@ -1004,7 +1004,7 @@ public class OBEGraphWorkflow extends JGraph
 	}
 
 	/*
-	 * (non-Javadoc) Ïò graph ÖĞÌí¼ÓÔªËØ
+	 * (non-Javadoc) å‘ graph ä¸­æ·»åŠ å…ƒç´ 
 	 * 
 	 * @see com.excenon.designer.workflow.graph.OBEGraphW#addComponent(java.lang.String)
 	 */
@@ -1013,14 +1013,14 @@ public class OBEGraphWorkflow extends JGraph
 		Activity act = null;
 		if( eventType.equals( OBEWorkflowModule.TOOLIMP))
 		{
-			//Ìí¼Óactivity
+			//æ·»åŠ activity
 			WorkflowEditor editor = new ToolSetEditor();
-			act = addDefaultActivity( "»î¶¯½Úµã", editor);
+			act = addDefaultActivity( "æ´»åŠ¨èŠ‚ç‚¹", editor);
 		}
 
-		//È¥³ıneedreplaceµÄÔªËØ
+		//å»é™¤needreplaceçš„å…ƒç´ 
 		ActivityView av =( ActivityView)elementViews.get( "needreplace");
-		//ÉèÖÃactµÄid
+		//è®¾ç½®actçš„id
 		if( act != null)
 		{
 			act.setId( workflowProcess.getNextActivityId());
@@ -1035,7 +1035,7 @@ public class OBEGraphWorkflow extends JGraph
 	 */
 	public Activity addDefaultActivity( String name, WorkflowEditor editor)
 	{
-		//³õÊ¼»¯Öµ
+		//åˆå§‹åŒ–å€¼
 		if( editor instanceof ToolSetEditor)
 			editor.setWorkflowPackage( workflowPackage);
 
@@ -1043,7 +1043,7 @@ public class OBEGraphWorkflow extends JGraph
 		if( act == null)
 			return act;
 
-		//Ìí¼ÓÈ±Ê¡ÉèÖÃ
+		//æ·»åŠ ç¼ºçœè®¾ç½®
 		if( editor instanceof ToolSetEditor)
 		{
 			act.initDefaultProperty();
@@ -1052,7 +1052,7 @@ public class OBEGraphWorkflow extends JGraph
 		return act;
 	}
 
-	//µ¯³ö²Ëµ¥
+	//å¼¹å‡ºèœå•
 	public void showPopup( Point p)
 	{
 		JPopupMenu popup = null;
@@ -1080,7 +1080,7 @@ public class OBEGraphWorkflow extends JGraph
 	}
 
 	/**
-	 * °ÑactivityÌí¼Óµ½jgraphÖĞÈ¥
+	 * æŠŠactivityæ·»åŠ åˆ°jgraphä¸­å»
 	 * 
 	 * @param activity
 	 * @param editor
@@ -1090,7 +1090,7 @@ public class OBEGraphWorkflow extends JGraph
 		ActivityView activityView = new ActivityView( activity, editor);
 		OBEGraphCell cell = new OBEGraphCell( activityView);
 
-		//±£´æ¹ØÁª
+		//ä¿å­˜å…³è”
 		elementViews.put( activity.getId(), activityView);
 		activityView.setCell( cell);
 
@@ -1144,7 +1144,7 @@ public class OBEGraphWorkflow extends JGraph
 		return "multi2multi.gif";
 	}
 
-	//Ìí¼Óactivity
+	//æ·»åŠ activity
 	protected Activity addActivity( WorkflowEditor editor, String title)
 	{
 		Activity activity = null;
@@ -1171,7 +1171,7 @@ public class OBEGraphWorkflow extends JGraph
 		workflowProcess.getTransitions().add( transition);
 	}
 
-	//±à¼­µÄ·½·¨
+	//ç¼–è¾‘çš„æ–¹æ³•
 	public void edit( DefaultGraphCell graphCell)
 	{
 		Object userObject = graphCell.getUserObject();
@@ -1195,11 +1195,11 @@ public class OBEGraphWorkflow extends JGraph
 		}
 	}
 
-	//±à¼­Á÷³Ì
+	//ç¼–è¾‘æµç¨‹
 	public void editWorkflowProcess()
 	{
 		EditWorkflowProcessDialog d = new EditWorkflowProcessDialog( parent, workflowProcess,
-				getName(), "±à¼­Á÷³Ì¶¨ÒåÊôĞÔ");
+				getName(), "ç¼–è¾‘æµç¨‹å®šä¹‰å±æ€§");
 		d.showDialog();
 	}
 
@@ -1215,7 +1215,7 @@ public class OBEGraphWorkflow extends JGraph
 		}
 	}
 
-	//É¾³ı²Ù×÷
+	//åˆ é™¤æ“ä½œ
 	public void delete()
 	{
 		Object cell = getSelectionCell();
@@ -1238,7 +1238,7 @@ public class OBEGraphWorkflow extends JGraph
 		if( activity.getActivityType() == Activity.START)
 			return;
 
-		if (JOptionPane.showConfirmDialog(parent, "ÊÇ·ñÉ¾³ıÑ¡ÔñµÄ»î¶¯", "¾¯¸æ", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)
+		if (JOptionPane.showConfirmDialog(parent, "æ˜¯å¦åˆ é™¤é€‰æ‹©çš„æ´»åŠ¨", "è­¦å‘Š", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)
 				== JOptionPane.NO_OPTION)
 				return;
 
@@ -1253,7 +1253,7 @@ public class OBEGraphWorkflow extends JGraph
 		frame.setFrameModified( true);
 	}
 
-	//É¾³ıÁ¬Ïß
+	//åˆ é™¤è¿çº¿
 	private void deleteAllEdges( String activityID)
 	{
 		ArrayList edgesToRemove = new ArrayList();
@@ -1278,7 +1278,7 @@ public class OBEGraphWorkflow extends JGraph
 		graphModel.remove( remove);
 	}
 
-	//É¾³ıÁ¬Ïß
+	//åˆ é™¤è¿çº¿
 	public void delete( OBEEdge edge)
 	{
 		ArrayList cellsToRemove = new ArrayList();
@@ -1286,7 +1286,7 @@ public class OBEGraphWorkflow extends JGraph
 		TransitionView transitionView = (TransitionView) edge.getUserObject();
 		Transition transition = transitionView.getTransition();
 
-		if (JOptionPane.showConfirmDialog(parent, "ÊÇ·ñÉ¾³ıÑ¡ÔñµÄÌõ¼ş", "¾¯¸æ", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)
+		if (JOptionPane.showConfirmDialog(parent, "æ˜¯å¦åˆ é™¤é€‰æ‹©çš„æ¡ä»¶", "è­¦å‘Š", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE)
 			== JOptionPane.NO_OPTION)
 			return;
 
@@ -1336,7 +1336,7 @@ public class OBEGraphWorkflow extends JGraph
 	}
 
 	/**
-	 * ¸üĞÂÁ¬½ÓµÄid
+	 * æ›´æ–°è¿æ¥çš„id
 	 * 
 	 * @param oldId
 	 * @param newId
@@ -1360,7 +1360,7 @@ public class OBEGraphWorkflow extends JGraph
 
 	private void updateActivityCellImage( Activity activity)
 	{
-		//ĞŞ¸ÄÍ¼ĞÎ
+		//ä¿®æ”¹å›¾å½¢
 		ActivityView av = (ActivityView) elementViews.get( activity.getId());
 		if( av == null)
 			return;
@@ -1398,7 +1398,7 @@ public class OBEGraphWorkflow extends JGraph
 		return transitionViews;
 	}
 
-	//¸²¸Çjgraph µÄ·½·¨ ·µ»ØÍ¼ĞÎviewµÄÀàĞÍ
+	//è¦†ç›–jgraph çš„æ–¹æ³• è¿”å›å›¾å½¢viewçš„ç±»å‹
 	protected VertexView createVertexView( Object v, CellMapper cm)
 	{
 		return new VertexView( v, this, cm);
@@ -1415,7 +1415,7 @@ public class OBEGraphWorkflow extends JGraph
 	}
 
 	/**
-	 * ¸üĞÂ¹¤×÷Á÷µ¥ÔªµÄÎ»ÖÃÊôĞÔ
+	 * æ›´æ–°å·¥ä½œæµå•å…ƒçš„ä½ç½®å±æ€§
 	 */
 	private void updateWorkflowElement()
 	{
@@ -1438,7 +1438,7 @@ public class OBEGraphWorkflow extends JGraph
 				continue;
 			int x = (int) rc.getX();
 			int y = (int) rc.getY();
-			//ÉèÖÃÎ»ÖÃ
+			//è®¾ç½®ä½ç½®
 			setActivityLocation( (Activity) bc, x, y);
 		}
 	}

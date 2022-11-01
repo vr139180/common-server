@@ -4,6 +4,7 @@ import (
 	"cmslib/gnet"
 	"cmslib/gnet/pkg/logging"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -19,7 +20,7 @@ type ITCPServerApp interface {
 	OnTCPShutdown()
 	OnTCPOpened(c gnet.Conn)
 	OnTCPClosed(c gnet.Conn, err error)
-	OnRecvMessage(c gnet.Conn, id int, m proto.Message)
+	OnRecvMessage(c gnet.Conn, m *protocolx.NetProtocol)
 }
 
 // TCP server
@@ -107,36 +108,44 @@ func (t *TCPServer) React(packet []byte, c gnet.Conn) (out []byte, action gnet.A
 		return
 	}
 	buf := packet[0:]
-	totle := len(buf)
+	totle := uint32(len(buf))
 
 	for totle >= 4 {
-		totle -= 4
-
-		head := binary.LittleEndian.Uint32(buf)
-		curlen := int(head >> 16)
-		id := uint16(head & 0x0000ffff)
-
-		if curlen >= 0 {
-			buf = buf[4:]
-			msg, err := t.Codec.Factory.IdToProto(id)
-			if err != nil {
-				logx.Errorf("get a undefined message[id:%d] from tcp steam", id)
-			} else {
-				err = proto.Unmarshal(buf, msg)
-				if err != nil {
-					logx.Errorf("unmarshal a message[id:%d] from tcp steam", id)
-				} else {
-					t.AppListen.OnRecvMessage(c, int(id), msg)
-				}
-			}
+		prolen := binary.BigEndian.Uint32(buf)
+		//字节流长度不够
+		if totle < prolen {
+			break
 		}
 
-		totle -= curlen
+		pro := protocolx.NewNetProtocol()
+		head := pro.WriteHead()
+
+		if !head.DecodeHead(buf, prolen) {
+			break
+		}
+
+		probuf := buf[int(head.HeadLen):]
+		if head.UnpackProtocol {
+			msg, err := t.Codec.Factory.IdToProto(head.MsgId)
+			if err != nil {
+				logx.Errorf("get a undefined message[id:%d] from tcp steam", head.MsgId)
+			}
+			err = proto.Unmarshal(probuf, msg)
+			if err != nil {
+				logx.Errorf("unmarshal a message[id:%d] from tcp steam", head.MsgId)
+			}
+
+			pro.Msg = msg
+		}
+
+		t.AppListen.OnRecvMessage(c, pro)
+
+		totle -= prolen
 		if totle < 4 {
 			break
 		}
 
-		buf = buf[curlen:]
+		buf = buf[prolen:]
 	}
 
 	return
