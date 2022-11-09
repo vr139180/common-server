@@ -1,13 +1,11 @@
 package mailbox
 
 import (
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 	"mailservice/data/db/entity"
 	"mailservice/g"
-	"mailservice/xinf"
-
-	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -50,7 +48,7 @@ type MailBoxRoleOfUser struct {
 	userIid int64
 	gateIid int64
 	//user token head
-	token *gpro.UserToken
+	token protocolx.UserToken
 
 	ch *MailBoxHolder
 }
@@ -69,7 +67,7 @@ func newMailBoxRoleOfUser(t MailBoxType, receiver int64, ch *MailBoxHolder) (m *
 	return
 }
 
-func initUserMailBoxFromRedis(roleiid int64, token *gpro.UserToken, ch *MailBoxHolder) (u *MailBoxRoleOfUser, success bool) {
+func initUserMailBoxFromRedis(roleiid int64, token protocolx.UserToken, ch *MailBoxHolder) (u *MailBoxRoleOfUser, success bool) {
 	success = false
 
 	rd := g.GetRedis()
@@ -134,7 +132,7 @@ func initUserMailBoxFromRedis(roleiid int64, token *gpro.UserToken, ch *MailBoxH
 	return
 }
 
-func (u *MailBoxRoleOfUser) InitUserMailBox(ubox *entity.DBUserMailBox, mitems []*gpro.MailNormalItem, token *gpro.UserToken, mailget int64) {
+func (u *MailBoxRoleOfUser) InitUserMailBox(ubox *entity.DBUserMailBox, mitems []*gpro.MailNormalItem, token protocolx.UserToken, mailget int64) {
 	if u.inited {
 		return
 	}
@@ -200,9 +198,11 @@ func (u *MailBoxRoleOfUser) saveAllToRedis() {
 	rd.Expire(udlskey, USER_MAILBOX_EXPIRESEC)
 }
 
-func (u *MailBoxRoleOfUser) SyncUserToken(token *gpro.UserToken) {
+func (u *MailBoxRoleOfUser) SyncUserToken(token protocolx.UserToken) {
 	u.token = token
-	u.gateIid, u.userIid = xinf.ParseUserGate(uint64(token.GetGiduid()))
+
+	u.gateIid = token.GetTokenGateIid()
+	u.userIid = token.GetTokenRoleIid()
 }
 
 func (u *MailBoxRoleOfUser) SyncSystemMail() {
@@ -232,7 +232,7 @@ func (u *MailBoxRoleOfUser) SaveSystemMails(mails []*gpro.MailNormalItem, sysmai
 	}
 }
 
-func (u *MailBoxRoleOfUser) mailBoxActive(token *gpro.UserToken, first bool, lastMailGet int64) {
+func (u *MailBoxRoleOfUser) mailBoxActive(token protocolx.UserToken, first bool, lastMailGet int64) {
 
 	if first {
 		rd := g.GetRedis()
@@ -267,13 +267,8 @@ func (u *MailBoxRoleOfUser) triggerNewMailNotify() {
 	u.NewMailNotifyIid = u.MaxMailIid
 
 	msg := &gpro.Mail_NewMailNtf{}
-	msg.Utoken = u.cloneUserToken()
 
 	g.SendMsgToRouter(msg)
-}
-
-func (u *MailBoxRoleOfUser) cloneUserToken() *gpro.UserToken {
-	return (proto.Clone(u.token)).(*gpro.UserToken)
 }
 
 func (u *MailBoxRoleOfUser) NewMail(mail *gpro.MailNormalItem) {
@@ -287,8 +282,9 @@ func (u *MailBoxRoleOfUser) NewMail(mail *gpro.MailNormalItem) {
 	}
 }
 
-func (u *MailBoxRoleOfUser) GetMailsFromBox(req *gpro.Mail_MailGetReq) {
-	u.SyncUserToken(req.GetUtoken())
+func (u *MailBoxRoleOfUser) GetMailsFromBox(pro *protocolx.NetProtocol) {
+	req := pro.Msg.(*gpro.Mail_MailGetReq)
+	u.SyncUserToken(pro.GetUserToken())
 
 	num := int(req.Num)
 	if num <= 0 || num > 20 {
@@ -303,14 +299,14 @@ func (u *MailBoxRoleOfUser) GetMailsFromBox(req *gpro.Mail_MailGetReq) {
 		}
 	}
 
-	ack := &gpro.Mail_MailGetAck{Utoken: u.cloneUserToken()}
+	ack := &gpro.Mail_MailGetAck{}
 	ack.Mails = cts
 	ack.Totle = int32(u.totleNum)
 
 	g.SendMsgToRouter(ack)
 }
 
-func (u *MailBoxRoleOfUser) ReadMail(token *gpro.UserToken, mailiid int64) {
+func (u *MailBoxRoleOfUser) ReadMail(token protocolx.UserToken, mailiid int64) {
 	u.SyncUserToken(token)
 
 	mail := u.getMail(mailiid)
@@ -324,7 +320,7 @@ func (u *MailBoxRoleOfUser) ReadMail(token *gpro.UserToken, mailiid int64) {
 	}
 }
 
-func (u *MailBoxRoleOfUser) DeleteMail(token *gpro.UserToken, mailiid int64) {
+func (u *MailBoxRoleOfUser) DeleteMail(token protocolx.UserToken, mailiid int64) {
 	u.SyncUserToken(token)
 
 	mail := u.deleteOneMail(mailiid)

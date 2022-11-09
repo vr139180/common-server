@@ -3,11 +3,10 @@ package xcluster
 import (
 	"cmslib/gnet"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"gamelib/eureka"
 	"gamelib/protobuf/gpro"
 	"gamelib/service"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type syncServiceCommand struct {
@@ -110,7 +109,14 @@ func (c *ClusterServiceCtrl) onMthServiceConnected(s IClusterNetSession) {
 	req.Toiid = tonode.Iid
 	req.Totoken = tonode.Token
 
-	ns.SendMessage(req)
+	pro := protocolx.NewNetProtocolByHeadMsg(req, &c.defaultSHead)
+
+	head := pro.WriteHead()
+	head.ToBroadCast = false
+	head.RouterBalance = false
+	head.ToType = int8(c.targetSType)
+
+	ns.SendMessage(pro)
 }
 
 func (c *ClusterServiceCtrl) OnResNodeDisConnected(s IClusterNetSession) {
@@ -148,13 +154,13 @@ func (c *ClusterServiceCtrl) onMthServiceDisConnected(s IClusterNetSession) {
 }
 
 //-------------------------------------------------------------------------
-func (c *ClusterServiceCtrl) OnResNodeRegistAck(ns IClusterNetSession, id int, pro proto.Message) {
-	cmd := NewClusterNetCmd(ns, id, pro, c.OnMthResNodeRegistAck)
+func (c *ClusterServiceCtrl) OnResNodeRegistAck(ns IClusterNetSession, pro *protocolx.NetProtocol) {
+	cmd := NewClusterNetCmd(ns, pro, c.OnMthResNodeRegistAck)
 	c.ch <- cmd
 }
 
-func (c *ClusterServiceCtrl) OnMthResNodeRegistAck(s IClusterNetSession, id int, m proto.Message) {
-	ack, _ := m.(*gpro.Svr_ServiceBindServiceAck)
+func (c *ClusterServiceCtrl) OnMthResNodeRegistAck(s IClusterNetSession, m *protocolx.NetProtocol) {
+	ack, _ := m.Msg.(*gpro.Svr_ServiceBindServiceAck)
 
 	node := s.GetServiceNode()
 	delete(c.authConnections, s)

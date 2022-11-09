@@ -1,7 +1,6 @@
-<app ip="127.0.0.1" port="6801" loglevel="debug" logdir="" logfile="mailservice.log" confsrc="filesrc">
+<app ip="0.0.0.0" port="0" loglevel="debug" logdir="" logfile="mailservice.log" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
 	<exts>
-		<ext k="mailhash" v="0"/>
 	</exts>
 </app>

@@ -4,6 +4,7 @@ import (
 	"cmslib/logx"
 	"cmslib/mysqlx"
 	"cmslib/netx"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
@@ -80,16 +81,16 @@ func (l *MailService) InitNetwork() (err error) {
 	}
 
 	//chathash扩展参数
-	ext1, _ := l.configTool.GetExtParamByKey(MAILSERVICE_EXTPARAM_MAILHASH)
 	exts := make(map[string]string)
-	exts[MAILSERVICE_EXTPARAM_MAILHASH] = ext1
 
-	subs := [...]int{int(service.ServiceType_Router)}
+	subs := [...]int{int(service.ServiceType_ServiceRouter)}
 	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Mail, l.configTool.Ip, l.configTool.Port, exts, subs[0:], l)
 
-	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_Router, l)
-
-	l.Accept(l.configTool.Ip, l.configTool.Port)
+	var defhead protocolx.SProtocolHead
+	defhead.InitHead()
+	defhead.FromType = int8(service.ServiceType_Mail)
+	defhead.ToType = int8(service.ServiceType_ServiceRouter)
+	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l, defhead)
 
 	return nil
 }

@@ -53,6 +53,26 @@ message EurekaServerNode{
   string ip = 3;
   //服务器port
   int32 port = 4;
+  //是否master节点
+  bool ismaster = 5;
+}
+
+//server node info
+message ServerNode{
+  //服务器sn
+  int64 iid = 1;
+  //对方token，用于验证
+  int64 token = 2;
+  //动态ip
+  string ip = 3;
+  //服务器port
+  int32 port = 4;
+  //扩展信息
+  map<string,string> exts = 5;
+  //是否router服务
+  bool isrouter = 6;
+  //是否上线
+  bool isonline = 7;
 }
 
 //Eureka服务器相互绑定
@@ -80,31 +100,18 @@ message Erk_EurekaUpdate_ntf{
   repeated EurekaServerNode online = 2;
   //下线的服务iid
   repeated int64 offline = 3;
+  //master服务id, -1表示没有master服务
+  int64 masteriid = 4;
 }
 
-//其他服务和eureka服务的同步请求
-message Erk_Eureka_sync{
-  //请求方iid
-  int64 myiid = 1;
-  //存在的eureka服务
-  repeated int64 exists = 2;
-}
-
-//server node info
-message ServerNode{
-  //服务器sn
-  int64 iid = 1;
-  //对方token，用于验证
-  int64 token = 2;
-  //动态ip
-  string ip = 3;
-  //服务器port
-  int32 port = 4;
-  //扩展信息
-  map<string,string> exts = 5;
+//master节点变更通知
+message Erk_MasterChange_ntf{
+	int64 masteriid = 1;
+	EurekaServerNode node = 2;
 }
 
 //其他服务向eureka注册中心，注册服务
+//向master节点发起注册
 message Erk_ServiceRegist_req{
   //服务器类型 NETSVR_TYPE_ENUM定义
   int32 svr_type = 1;
@@ -112,10 +119,12 @@ message Erk_ServiceRegist_req{
   int32 port = 3;
   //扩展信息
   map<string,string> exts = 4;
+  //是否router服务
+  bool isrouter = 5;
 }
 
 message Erk_ServiceRegist_ack{
-  //0:成功 1:失败
+  //0:成功 1:失败 2:不是master节点
   int32 result = 1;
   //service编号，由eureka保证唯一
   optional int64 iid = 2;
@@ -125,13 +134,7 @@ message Erk_ServiceRegist_ack{
   optional int64 eurekatoken = 5;
 }
 
-//注册service再次确认
-message Erk_ServiceRegist_Confirm{
-  int64 iid = 1;
-  int64 token = 2;
-}
-
-//其他服务向eureka注册中心，注册服务
+//已注册服务绑定eureka节点
 message Erk_ServiceBind_req{
   //服务器类型 NETSVR_TYPE_ENUM定义
   int32 svr_type = 1;
@@ -141,7 +144,7 @@ message Erk_ServiceBind_req{
 }
 
 message Erk_ServiceBind_ack{
-  //0:成功 1:失败
+  //0:成功 1:失败 2:服务不存在
   int32 result = 1;
 }
 
@@ -164,7 +167,7 @@ message Erk_ServiceSubscribe_req{
   repeated svrinfo svr_type = 5;
 }
 
-message Erk_ServiceSubscribe_ack{
+message Erk_ServiceSubscribe_ntf{
   //请求方iid
   int64 myiid = 1;
   //服务器类型 NETSVR_TYPE_ENUM定义
@@ -173,6 +176,18 @@ message Erk_ServiceSubscribe_ack{
   repeated ServerNode online = 3;
   //下线的服务
   repeated int64 offline = 4;
+}
+
+//负载均衡服务订阅
+message Erk_RouterSubscribe_req{
+  //请求方iid
+  int64 myiid = 1;
+  //请求放服务类型
+  int32 mysvrtype = 2;
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 3;
+  //服务列表
+  repeated int64 svriids = 4;
 }
 
 //服务下线通知

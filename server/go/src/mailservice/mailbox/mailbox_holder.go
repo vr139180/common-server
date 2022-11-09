@@ -3,29 +3,23 @@ package mailbox
 import (
 	"cmslib/datas"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 	"mailservice/data/db/entity"
 	"mailservice/g"
-	"mailservice/xinf"
-
-	"google.golang.org/protobuf/proto"
 )
 
 //--------------------------------------------------------------------------------------------
-type MBOXHANDLER func(*gpro.UserToken, int, proto.Message)
+type MBOXHANDLER func(*protocolx.NetProtocol)
 
 type mboxNetCmdHandler struct {
-	iid   int
-	pro   proto.Message
-	token *gpro.UserToken
-	f     MBOXHANDLER
+	pro *protocolx.NetProtocol
+	f   MBOXHANDLER
 }
 
-func newMBoxNetCmdHandle(token *gpro.UserToken, iid int, pro proto.Message, f MBOXHANDLER) (c *mboxNetCmdHandler) {
+func newMBoxNetCmdHandle(pro *protocolx.NetProtocol, f MBOXHANDLER) (c *mboxNetCmdHandler) {
 	c = new(mboxNetCmdHandler)
-	c.token = token
-	c.iid = iid
 	c.pro = pro
 	c.f = f
 
@@ -33,7 +27,7 @@ func newMBoxNetCmdHandle(token *gpro.UserToken, iid int, pro proto.Message, f MB
 }
 
 func (c *mboxNetCmdHandler) ProcessMail() {
-	c.f(c.token, c.iid, c.pro)
+	c.f(c.pro)
 }
 
 //--------------------------------------------------------------------------------------------
@@ -75,7 +69,7 @@ func (ch *MailBoxHolder) OneDayMaintance() {
 
 }
 
-func (ch *MailBoxHolder) CacheUserMailBox(roleiid int64, ubox *entity.DBUserMailBox, mitems []*gpro.MailNormalItem, token *gpro.UserToken) IMailBox {
+func (ch *MailBoxHolder) CacheUserMailBox(roleiid int64, ubox *entity.DBUserMailBox, mitems []*gpro.MailNormalItem, token protocolx.UserToken) IMailBox {
 	mbox := ch.GetMailBoxBy(roleiid)
 	if mbox == nil {
 		userbox := newMailBoxRoleOfUser(MailBoxType_User, roleiid, ch)
@@ -159,7 +153,7 @@ func (ch *MailBoxHolder) NewUserMail(mail *gpro.MailNormalItem) {
 	}
 }
 
-func (ch *MailBoxHolder) ReadMail(roleiid int64, mailiid int64, token *gpro.UserToken) {
+func (ch *MailBoxHolder) ReadMail(roleiid int64, mailiid int64, token protocolx.UserToken) {
 	rd := g.GetRedis()
 
 	udkey := rd.BuildKey(REDIS_USERMAILBOX_DATA, roleiid)
@@ -193,7 +187,7 @@ func (ch *MailBoxHolder) ReadMail(roleiid int64, mailiid int64, token *gpro.User
 
 }
 
-func (ch *MailBoxHolder) DeleteMail(roleiid int64, mailiid int64, token *gpro.UserToken) {
+func (ch *MailBoxHolder) DeleteMail(roleiid int64, mailiid int64, token protocolx.UserToken) {
 	rd := g.GetRedis()
 
 	udkey := rd.BuildKey(REDIS_USERMAILBOX_DATA, roleiid)
@@ -215,48 +209,47 @@ func (ch *MailBoxHolder) DeleteMail(roleiid int64, mailiid int64, token *gpro.Us
 }
 
 //run in the boxholder goroutine
-func (ch *MailBoxHolder) OnNetCmdHanderl(token *gpro.UserToken, id int, pro proto.Message) {
+func (ch *MailBoxHolder) OnNetCmdHanderl(pro *protocolx.NetProtocol) {
 
-	_, useriid := xinf.ParseUserGate(uint64(token.GetGiduid()))
+	useriid := pro.GetTokenRoleIid()
 
 	mbox := ch.GetMailBoxBy(useriid)
 	if mbox == nil {
-		ubox, success := initUserMailBoxFromRedis(useriid, token, ch)
+		ubox, success := initUserMailBoxFromRedis(useriid, pro.GetUserToken(), ch)
 		if success {
 			mbox = ubox
 			ch.mailboxsLink.AddHeadElement(ubox)
 			ch.mailboxs[ubox.GetReceiver()] = ubox
 		} else {
 			//load from database
-			cmd := newDBLoadUserMailCmd(useriid, ch, token, id, pro)
+			cmd := newDBLoadUserMailCmd(useriid, ch, pro)
 			g.PostDBProcessor(cmd)
 		}
 	}
 
 	if mbox != nil {
-		ch.triggerNetProcess(mbox, id, pro)
+		ch.triggerNetProcess(mbox, pro)
 	}
 }
 
-func (ch *MailBoxHolder) triggerNetProcess(mbox IMailBox, id int, pro proto.Message) {
-
-	if id == int(gpro.MAIL_PROTYPE_MAIL_USERONLINE_ACTIVE) {
-		msg := pro.(*gpro.Mail_UserOnlineActive)
+func (ch *MailBoxHolder) triggerNetProcess(mbox IMailBox, pro *protocolx.NetProtocol) {
+	id := pro.GetMsgId()
+	if id == uint16(gpro.MAIL_PROTYPE_MAIL_USERONLINE_ACTIVE) {
+		msg := pro.Msg.(*gpro.Mail_UserOnlineActive)
 		ubox := mbox.(*MailBoxRoleOfUser)
 		ch.mailboxsLink.ElementMoveToHead(ubox)
-		ubox.mailBoxActive(msg.GetUtoken(), msg.Firstactive, msg.LastMailiid)
+		ubox.mailBoxActive(pro.GetUserToken(), msg.Firstactive, msg.LastMailiid)
 
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_MAILGET_REQ) {
-		msg := pro.(*gpro.Mail_MailGetReq)
-		mbox.GetMailsFromBox(msg)
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_READMAIL_REQ) {
-		msg := pro.(*gpro.Mail_ReadMailReq)
-		cmd := newDBReadMailCmd(msg.MailIid, mbox.GetReceiver(), ch, msg.GetUtoken())
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_MAILGET_REQ) {
+		mbox.GetMailsFromBox(pro)
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_READMAIL_REQ) {
+		msg := pro.Msg.(*gpro.Mail_ReadMailReq)
+		cmd := newDBReadMailCmd(msg.MailIid, mbox.GetReceiver(), ch, pro.GetUserToken())
 		g.PostDBProcessor(cmd)
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_DELETEMAIL_REQ) {
-		msg := pro.(*gpro.Mail_DeleteMailReq)
-		cmd := newDBDeleteMailCmd(msg.MailIid, mbox.GetReceiver(), ch, msg.GetUtoken())
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_DELETEMAIL_REQ) {
+		msg := pro.Msg.(*gpro.Mail_DeleteMailReq)
+		cmd := newDBDeleteMailCmd(msg.MailIid, mbox.GetReceiver(), ch, pro.GetUserToken())
 		g.PostDBProcessor(cmd)
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_UNBINDATTACHS_REQ) {
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_UNBINDATTACHS_REQ) {
 	}
 }

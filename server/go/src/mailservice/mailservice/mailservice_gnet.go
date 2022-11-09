@@ -2,28 +2,15 @@ package mailservice
 
 import (
 	"cmslib/gnet"
-	"cmslib/logx"
+	"cmslib/protocolx"
 	"errors"
 	"gamelib/eureka"
 	"mailservice/net"
-
-	"google.golang.org/protobuf/proto"
 )
 
 func (l *MailService) GetProtoFactory() (fact gnet.IProtobufFactory, err error) {
 	fact = l.proFactory
 	return
-}
-
-func (l *MailService) OnInitComplete(svr gnet.Server) (action gnet.Action) {
-	logx.Infof("Mail Service is listening on %s (multi-cores: %t, loops: %d)",
-		svr.Addr.String(), svr.Multicore, svr.NumEventLoop)
-
-	return
-}
-
-func (l *MailService) OnTCPInitComplete() {
-	logx.Warnf("<<<<<<<<<<<<MailService listen at %s:%d>>>>>>>>>>>>", l.configTool.Ip, l.configTool.Port)
 }
 
 func (l *MailService) OnTCPShutdown() {
@@ -70,12 +57,12 @@ func (l *MailService) OnTCPClosed(c gnet.Conn, err error) {
 	}
 }
 
-func (l *MailService) OnRecvMessage(c gnet.Conn, id int, m proto.Message) {
+func (l *MailService) OnRecvMessage(c gnet.Conn, m *protocolx.NetProtocol) {
 	s := c.Context()
 	if s != nil {
 		ns, ok := s.(gnet.NetSession)
 		if ok {
-			ns.OnRecvMessage(id, m)
+			ns.OnRecvMessage(m)
 		}
 	}
 }

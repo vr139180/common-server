@@ -2,6 +2,7 @@ package mailbox
 
 import (
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 	"mailservice/data/db/entity"
@@ -45,12 +46,12 @@ func (c *rdSyncSysMailCmd) ProcessMail() {
 
 //-----------------------------------------------------------------------------------------------------
 type dbNewSysMailCmd struct {
-	mailc *gpro.Mail_SystemMailReq
+	mailc *protocolx.NetProtocol
 
 	mdata *gpro.MailSystemItem
 }
 
-func newDBNewSysMailCmd(p *gpro.Mail_SystemMailReq) (c *dbNewSysMailCmd) {
+func newDBNewSysMailCmd(p *protocolx.NetProtocol) (c *dbNewSysMailCmd) {
 	c = new(dbNewSysMailCmd)
 	c.mailc = p
 
@@ -60,11 +61,13 @@ func newDBNewSysMailCmd(p *gpro.Mail_SystemMailReq) (c *dbNewSysMailCmd) {
 func (c *dbNewSysMailCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
+	req := c.mailc.Msg.(*gpro.Mail_SystemMailReq)
+
 	bean := &entity.DBSysMail{}
-	bean.Title = c.mailc.GetTitle()
-	bean.Contents = c.mailc.GetContents()
-	bean.Attachment = int8(c.mailc.GetAttachment())
-	bean.AttachInfo = c.mailc.GetAttachinfo()
+	bean.Title = req.GetTitle()
+	bean.Contents = req.GetContents()
+	bean.Attachment = int8(req.GetAttachment())
+	bean.AttachInfo = req.GetAttachinfo()
 	bean.CreateTime = time.Now()
 
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {

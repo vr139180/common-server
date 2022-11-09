@@ -2,12 +2,11 @@ package net
 
 import (
 	"cmslib/gnet"
+	"cmslib/protocolx"
 	"gamelib/eureka"
 	"gamelib/protobuf/gpro"
 	"gamelib/xcluster"
 	"mailservice/mailbox"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type RouterNetSession struct {
@@ -35,12 +34,13 @@ func (l *RouterNetSession) GetExtParamByKey(k string) (v string, ok bool) {
 }
 
 //--------------------gnet.NetSession interface-----------------------
-func (l *RouterNetSession) OnRecvMessage(id int, pro proto.Message) {
-	if id == int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK) {
+func (l *RouterNetSession) OnRecvMessage(pro *protocolx.NetProtocol) {
+	msgid := pro.GetMsgId()
+	if msgid == uint16(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK) {
 		//整合cluster node的注册机制
-		l.parent.OnResNodeRegistAck(l, id, pro)
-	} else if id > int(gpro.MAIL_PROTYPE_MAIL_MSG_BEGIN) && id < int(gpro.MAIL_PROTYPE_MAIL_MSGALL_END) {
-		l.mailboxCtrl.ProcessNetCmd(id, pro)
+		l.parent.OnResNodeRegistAck(l, pro)
+	} else if msgid > uint16(gpro.MAIL_PROTYPE_MAIL_MSG_BEGIN) && msgid < uint16(gpro.MAIL_PROTYPE_MAIL_MSGALL_END) {
+		l.mailboxCtrl.ProcessNetCmd(pro)
 	}
 }
 
@@ -63,6 +63,6 @@ func (l *RouterNetSession) GetNetSession() gnet.NetSession {
 	return l
 }
 
-func (l *RouterNetSession) SendClusterMessage(msg proto.Message) {
+func (l *RouterNetSession) SendClusterMessage(msg *protocolx.NetProtocol) {
 	l.SendMessage(msg)
 }

@@ -103,6 +103,11 @@ func (e *EurekaSession) bindToEurekaCenter(t service.ServiceType) {
 func (e *EurekaSession) SendNetProtocol(msg proto.Message) {
 	pro := protocolx.NewNetProtocolByMsg(msg)
 
+	head := pro.WriteHead()
+	head.RouterBalance = false
+	head.FromType = int8(e.parent.GetMyNode().SvrType)
+	head.ToType = int8(gpro.ERK_SERVICETYPE_ERK_SERVICE_EUREKA)
+
 	e.SendMessage(pro)
 }
 

@@ -1,11 +1,9 @@
 package mailbox
 
 import (
+	"cmslib/protocolx"
 	"gamelib/protobuf/gpro"
 	"mailservice/g"
-	"mailservice/xinf"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type MailBoxCtrl struct {
@@ -63,46 +61,33 @@ func (cc *MailBoxCtrl) NotifyNewUserMail(mail *gpro.MailNormalItem) {
 }
 
 //run in net goroutine
-func (cc *MailBoxCtrl) ProcessNetCmd(id int, pro proto.Message) {
-	if id == int(gpro.MAIL_PROTYPE_MAIL_SYSTEMMAIL_REQ) {
-		msg := pro.(*gpro.Mail_SystemMailReq)
-		cmd := newDBNewSysMailCmd(msg)
+func (cc *MailBoxCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
+	id := pro.GetMsgId()
+	if id == uint16(gpro.MAIL_PROTYPE_MAIL_SYSTEMMAIL_REQ) {
+		cmd := newDBNewSysMailCmd(pro)
 		g.PostDBProcessor(cmd)
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_NEWMAIL_REQ) {
-		msg := pro.(*gpro.Mail_NewMailReq)
-		cmd := newDBNewUserMailCmd(msg, cc)
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_NEWMAIL_REQ) {
+		cmd := newDBNewUserMailCmd(pro, cc)
 		g.PostDBProcessor(cmd)
-	} else if id == int(gpro.MAIL_PROTYPE_MAIL_SYSTEMMAIL_NTF) {
+	} else if id == uint16(gpro.MAIL_PROTYPE_MAIL_SYSTEMMAIL_NTF) {
 		cmd := newRDSyncSysMailCmd(cc)
 		g.PostToSysMailProcessor(cmd)
 	} else {
-		var ut *gpro.UserToken
-		switch id {
+		switch int(id) {
 		case int(gpro.MAIL_PROTYPE_MAIL_USERONLINE_ACTIVE):
-			msg := pro.(*gpro.Mail_UserOnlineActive)
-			ut = msg.GetUtoken()
 		case int(gpro.MAIL_PROTYPE_MAIL_MAILGET_REQ):
-			msg := pro.(*gpro.Mail_MailGetReq)
-			ut = msg.GetUtoken()
 		case int(gpro.MAIL_PROTYPE_MAIL_READMAIL_REQ):
-			msg := pro.(*gpro.Mail_ReadMailReq)
-			ut = msg.GetUtoken()
 		case int(gpro.MAIL_PROTYPE_MAIL_DELETEMAIL_REQ):
-			msg := pro.(*gpro.Mail_DeleteMailReq)
-			ut = msg.GetUtoken()
 		case int(gpro.MAIL_PROTYPE_MAIL_UNBINDATTACHS_REQ):
-			msg := pro.(*gpro.Mail_UnBindAttachsReq)
-			ut = msg.GetUtoken()
-		}
-
-		if ut == nil {
+			break
+		default:
 			return
 		}
 
-		_, uid := xinf.ParseUserGate(uint64(ut.GetGiduid()))
+		uid := pro.GetTokenRoleIid()
 		lind := cc.getHashKeyOfReceiver(uid)
 		mh := cc.loopHolders[lind]
-		cmd := newMBoxNetCmdHandle(ut, id, pro, mh.OnNetCmdHanderl)
+		cmd := newMBoxNetCmdHandle(pro, mh.OnNetCmdHanderl)
 		g.PostMailProcessor(lind, cmd)
 	}
 }

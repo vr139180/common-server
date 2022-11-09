@@ -2,6 +2,7 @@ package mailbox
 
 import (
 	"cmslib/datas"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 
@@ -16,13 +17,13 @@ type IMailBox interface {
 	//是否超时无激活
 	IsActiveTimeout(tnow int64) bool
 
-	SyncUserToken(token *gpro.UserToken)
+	SyncUserToken(token protocolx.UserToken)
 
 	NewMail(mail *gpro.MailNormalItem)
 
-	GetMailsFromBox(req *gpro.Mail_MailGetReq)
-	ReadMail(token *gpro.UserToken, mailiid int64)
-	DeleteMail(token *gpro.UserToken, mailiid int64)
+	GetMailsFromBox(pro *protocolx.NetProtocol)
+	ReadMail(token protocolx.UserToken, mailiid int64)
+	DeleteMail(token protocolx.UserToken, mailiid int64)
 }
 
 //----------------------------------implement IMailBox interface-------------------
@@ -203,19 +204,19 @@ func (cb *MailBoxBase) insertMailList(ms []*gpro.MailNormalItem, mail *gpro.Mail
 	return ms
 }
 
-func (cb *MailBoxBase) SyncUserToken(token *gpro.UserToken) {
+func (cb *MailBoxBase) SyncUserToken(token protocolx.UserToken) {
 }
 
 func (cb *MailBoxBase) NewMail(mail *gpro.MailNormalItem) {
 }
 
-func (cb *MailBoxBase) GetMailsFromBox(req *gpro.Mail_MailGetReq) {
+func (cb *MailBoxBase) GetMailsFromBox(pro *protocolx.NetProtocol) {
 }
 
-func (cb *MailBoxBase) ReadMail(token *gpro.UserToken, mailiid int64) {
+func (cb *MailBoxBase) ReadMail(token protocolx.UserToken, mailiid int64) {
 }
 
-func (cb *MailBoxBase) DeleteMail(token *gpro.UserToken, mailiid int64) {
+func (cb *MailBoxBase) DeleteMail(token protocolx.UserToken, mailiid int64) {
 }
 
 //-----------------------------------------------------------------

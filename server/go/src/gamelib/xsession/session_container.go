@@ -2,11 +2,10 @@ package xsession
 
 import (
 	"cmslib/gnet"
+	"cmslib/protocolx"
 	"gamelib/protobuf/gpro"
 	"gamelib/service"
 	"sync"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type NetSessionContainer struct {
@@ -46,7 +45,7 @@ func (c *NetSessionContainer) GetSessionByIid(iid int64) (n gnet.NetSession, ok 
 	return
 }
 
-func (c *NetSessionContainer) SendMessage(iid int64, msg proto.Message) bool {
+func (c *NetSessionContainer) SendMessage(iid int64, msg *protocolx.NetProtocol) bool {
 	n, ok := c.GetSessionByIid(iid)
 	if !ok {
 		return ok

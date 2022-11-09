@@ -10,7 +10,7 @@ import (
 //------------------------IClusterAppWrapper-------------------
 func (l *MailService) NewNetSession(s service.ServiceType, p *xcluster.ClusterServiceCtrl, node *eureka.ServiceNodeInfo) xcluster.IClusterNetSession {
 
-	if s == service.ServiceType_Router {
+	if s == service.ServiceType_ServiceRouter {
 		ns := net.NewRouterNetSession(p, node, l.mailboxCtrl)
 		return ns
 	}

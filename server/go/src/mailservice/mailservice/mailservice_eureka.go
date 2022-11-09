@@ -23,7 +23,7 @@ func (l *MailService) OnEurekaLosted() {
 
 func (l *MailService) OnServiceChanged(stype service.ServiceType, newiids []*eureka.ServiceNodeInfo, deliids []int64) {
 	logx.Debugf("eureka service subscribed change notify type:%d", int(stype))
-	if stype == service.ServiceType_Router {
+	if stype == service.ServiceType_ServiceRouter {
 		l.routerSvrs.SyncServiceNodes(stype, newiids, deliids)
 	}
 }

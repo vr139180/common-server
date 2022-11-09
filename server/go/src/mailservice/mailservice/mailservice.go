@@ -2,6 +2,7 @@ package mailservice
 
 import (
 	"cmslib/mysqlx"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
@@ -58,8 +59,8 @@ func (r *MailService) GetDBClient() *mysqlx.MysqlClient {
 	return r.dbClient
 }
 
-func (r *MailService) SendMsgToRouter(msg proto.Message) {
-	r.routerSvrs.SendMessage(msg)
+func (r *MailService) SendMsgToRouter(totype int8, token protocolx.UserToken, msg proto.Message) {
+	r.routerSvrs.SendNetMessage(totype, token, msg)
 }
 
 func (r *MailService) DoMailBoxMaintance(loopIndex int) {

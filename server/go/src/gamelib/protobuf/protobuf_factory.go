@@ -75,15 +75,8 @@ func (pb *ProtobufFactory) initFactory() {
 	pb.registMessage(&gpro.Svr_LiveTickNtf{}, int(gpro.ERK_PROTYPE_SVR_LIVETICK_NTF))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceReq{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_REQ))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceAck{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK))
-	pb.registMessage(&gpro.Svr_GateBindHomeReq{}, int(gpro.ERK_PROTYPE_SVR_GATEBINDHOME_REQ))
-	pb.registMessage(&gpro.Svr_GateBindHomeAck{}, int(gpro.ERK_PROTYPE_SVR_GATEBINDHOME_ACK))
-	pb.registMessage(&gpro.Svr_GateBindHomeConfirm{}, int(gpro.ERK_PROTYPE_SVR_GATEBINDHOME_CONFIRM))
 
 	//res_internal.proto
-	pb.registMessage(&gpro.Res_UserSlotReq{}, int(gpro.ERK_PROTYPE_RES_USERSLOT_REQ))
-	pb.registMessage(&gpro.Res_UserSlotAck{}, int(gpro.ERK_PROTYPE_RES_USERSLOT_ACK))
-	pb.registMessage(&gpro.Res_ProxyUserSlotReq{}, int(gpro.ERK_PROTYPE_RES_PROXYUSERSLOT_REQ))
-	pb.registMessage(&gpro.Res_ProxyUserSlotAck{}, int(gpro.ERK_PROTYPE_RES_PROXYUSERSLOT_ACK))
 	pb.registMessage(&gpro.Res_SyncGateSlotNtf{}, int(gpro.ERK_PROTYPE_RES_SYNCGATESLOT_NTF))
 
 	//gatehome_internal.proto

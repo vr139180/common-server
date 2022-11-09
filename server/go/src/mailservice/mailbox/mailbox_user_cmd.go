@@ -2,26 +2,26 @@ package mailbox
 
 import (
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 	"mailservice/data/db/entity"
 	"mailservice/g"
 	"time"
 
-	"google.golang.org/protobuf/proto"
 	"xorm.io/xorm"
 )
 
 //---------------------------------------------------------------------------------------
 type dbNewUserMailCmd struct {
-	mailc *gpro.Mail_NewMailReq
+	mailc *protocolx.NetProtocol
 
 	ctrl *MailBoxCtrl
 
 	mdata *gpro.MailNormalItem
 }
 
-func newDBNewUserMailCmd(p *gpro.Mail_NewMailReq, ctrl *MailBoxCtrl) (c *dbNewUserMailCmd) {
+func newDBNewUserMailCmd(p *protocolx.NetProtocol, ctrl *MailBoxCtrl) (c *dbNewUserMailCmd) {
 	c = new(dbNewUserMailCmd)
 	c.mailc = p
 	c.ctrl = ctrl
@@ -32,14 +32,16 @@ func newDBNewUserMailCmd(p *gpro.Mail_NewMailReq, ctrl *MailBoxCtrl) (c *dbNewUs
 func (c *dbNewUserMailCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
+	mailreq := c.mailc.Msg.(*gpro.Mail_NewMailReq)
+
 	bean := &entity.DBUserMail{}
-	bean.SType = c.mailc.Stype
-	bean.SenderIid = c.mailc.SenderIid
-	bean.ReceiverIid = c.mailc.ReceiverIid
-	bean.Title = c.mailc.GetTitle()
-	bean.Contents = c.mailc.GetContents()
-	bean.Attachment = int8(c.mailc.GetAttachment())
-	bean.AttachInfo = c.mailc.GetAttachinfo()
+	bean.SType = mailreq.Stype
+	bean.SenderIid = mailreq.SenderIid
+	bean.ReceiverIid = mailreq.ReceiverIid
+	bean.Title = mailreq.GetTitle()
+	bean.Contents = mailreq.GetContents()
+	bean.Attachment = int8(mailreq.GetAttachment())
+	bean.AttachInfo = mailreq.GetAttachinfo()
 	bean.CreateTime = time.Now()
 
 	result := 1
@@ -93,17 +95,13 @@ type dbLoadUserMailCmd struct {
 
 	RoleIid int64
 	holder  *MailBoxHolder
-	token   *gpro.UserToken
-	id      int
-	pro     proto.Message
+	pro     *protocolx.NetProtocol
 }
 
-func newDBLoadUserMailCmd(roleiid int64, holder *MailBoxHolder, token *gpro.UserToken, id int, pro proto.Message) (c *dbLoadUserMailCmd) {
+func newDBLoadUserMailCmd(roleiid int64, holder *MailBoxHolder, pro *protocolx.NetProtocol) (c *dbLoadUserMailCmd) {
 	c = new(dbLoadUserMailCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
-	c.token = token
-	c.id = id
 	c.pro = pro
 	c.ubox = nil
 
@@ -165,9 +163,9 @@ func (c *dbLoadUserMailCmd) RunInDBProcessor() {
 }
 
 func (c *dbLoadUserMailCmd) ProcessMail() {
-	mbox := c.holder.CacheUserMailBox(c.RoleIid, c.ubox, c.mitems, c.token)
+	mbox := c.holder.CacheUserMailBox(c.RoleIid, c.ubox, c.mitems, c.pro.GetUserToken())
 	if mbox != nil {
-		c.holder.triggerNetProcess(mbox, c.id, c.pro)
+		c.holder.triggerNetProcess(mbox, c.pro)
 	}
 }
 
@@ -264,10 +262,10 @@ type dbReadMailCmd struct {
 	mailiid int64
 	RoleIid int64
 	holder  *MailBoxHolder
-	token   *gpro.UserToken
+	token   protocolx.UserToken
 }
 
-func newDBReadMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token *gpro.UserToken) (c *dbReadMailCmd) {
+func newDBReadMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocolx.UserToken) (c *dbReadMailCmd) {
 	c = new(dbReadMailCmd)
 	c.mailiid = mid
 	c.RoleIid = roleiid
@@ -310,7 +308,6 @@ func (c *dbReadMailCmd) RunInDBProcessor() {
 	}
 
 	ack := &gpro.Mail_ReadMailAck{Result: int32(result), MailIid: c.mailiid}
-	ack.Utoken = c.token
 	g.SendMsgToRouter(ack)
 
 	if result == 0 {
@@ -327,10 +324,10 @@ type dbDeleteMailCmd struct {
 	mailiid int64
 	RoleIid int64
 	holder  *MailBoxHolder
-	token   *gpro.UserToken
+	token   protocolx.UserToken
 }
 
-func newDBDeleteMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token *gpro.UserToken) (c *dbDeleteMailCmd) {
+func newDBDeleteMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocolx.UserToken) (c *dbDeleteMailCmd) {
 	c = new(dbDeleteMailCmd)
 	c.mailiid = mid
 	c.RoleIid = roleiid
@@ -373,7 +370,6 @@ func (c *dbDeleteMailCmd) RunInDBProcessor() {
 	}
 
 	ack := &gpro.Mail_DeleteMailAck{Result: int32(result), MailIid: c.mailiid}
-	ack.Utoken = c.token
 
 	g.SendMsgToRouter(ack)
 

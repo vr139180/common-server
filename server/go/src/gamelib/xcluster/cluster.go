@@ -3,6 +3,7 @@ package xcluster
 import (
 	"cmslib/gnet"
 	"cmslib/netx"
+	"cmslib/protocolx"
 	"cmslib/server"
 	"cmslib/timerx"
 	"cmslib/utilc"
@@ -28,7 +29,7 @@ type IClusterNetSession interface {
 	GetTcpConn() gnet.Conn
 	GetServiceNode() *eureka.ServiceNodeInfo
 	GetNetSession() gnet.NetSession
-	SendClusterMessage(proto.Message)
+	SendClusterMessage(*protocolx.NetProtocol)
 }
 
 //cluster服务控制器
@@ -49,6 +50,8 @@ type ClusterServiceCtrl struct {
 	targetSType service.ServiceType
 	appProxy    IClusterAppWrapper
 
+	defaultSHead protocolx.SProtocolHead
+
 	//---------------------------------------------------
 	timerContainer *timerx.TimerContainer //软件定时器
 	ch             chan interface{}
@@ -56,8 +59,10 @@ type ClusterServiceCtrl struct {
 	loopWG         sync.WaitGroup
 }
 
-func NewClusterServiceCtrl(ts *netx.TCPServer, s service.ServiceType, app IClusterAppWrapper) (c *ClusterServiceCtrl) {
+func NewClusterServiceCtrl(ts *netx.TCPServer, s service.ServiceType, app IClusterAppWrapper, head protocolx.SProtocolHead) (c *ClusterServiceCtrl) {
 	c = new(ClusterServiceCtrl)
+
+	c.defaultSHead = head
 
 	c.tcpServer = ts
 	c.appProxy = app
@@ -133,7 +138,7 @@ func (c *ClusterServiceCtrl) run() {
 	}
 }
 
-func (c *ClusterServiceCtrl) SendMessage(msg proto.Message) {
+func (c *ClusterServiceCtrl) SendNetMessage(totype int8, token protocolx.UserToken, msg proto.Message) {
 
 	defer func() {
 		c.cond.L.Unlock()
@@ -150,7 +155,11 @@ func (c *ClusterServiceCtrl) SendMessage(msg proto.Message) {
 	}
 	v, ok := c.serviceVector.Get(c.curServiceIndex)
 	if ok {
-		v.(IClusterNetSession).SendClusterMessage(msg)
+		pro := protocolx.NewNetProtocolByHeadMsg(msg, &c.defaultSHead)
+		head := pro.WriteHead()
+		head.ToType = totype
+		head.Token = token
+		v.(IClusterNetSession).SendClusterMessage(pro)
 	}
 
 	c.curServiceIndex++
@@ -161,19 +170,17 @@ func (c *ClusterServiceCtrl) RealStartTimer(start bool) {
 }
 
 //------------------------------------------------------------
-type ClusterNetCmdFunction = func(IClusterNetSession, int, proto.Message)
+type ClusterNetCmdFunction = func(IClusterNetSession, *protocolx.NetProtocol)
 
 type ClusterNetCmd struct {
 	sess IClusterNetSession
-	id   int
-	msg  proto.Message
+	msg  *protocolx.NetProtocol
 	fun  ClusterNetCmdFunction
 }
 
-func NewClusterNetCmd(s IClusterNetSession, id int, m proto.Message, f ClusterNetCmdFunction) (cmd *ClusterNetCmd) {
+func NewClusterNetCmd(s IClusterNetSession, m *protocolx.NetProtocol, f ClusterNetCmdFunction) (cmd *ClusterNetCmd) {
 	cmd = new(ClusterNetCmd)
 	cmd.sess = s
-	cmd.id = id
 	cmd.msg = m
 	cmd.fun = f
 
@@ -182,6 +189,6 @@ func NewClusterNetCmd(s IClusterNetSession, id int, m proto.Message, f ClusterNe
 
 func (n *ClusterNetCmd) Run() {
 	if n.sess != nil && n.msg != nil && n.fun != nil {
-		n.fun(n.sess, n.id, n.msg)
+		n.fun(n.sess, n.msg)
 	}
 }

@@ -2,6 +2,7 @@ package g
 
 import (
 	"cmslib/mysqlx"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	"gamelib/eureka"
 	"mailservice/xinf"
@@ -22,7 +23,7 @@ type IAppGlobal interface {
 
 	GetMyNode() *eureka.ServiceNodeInfo
 
-	SendMsgToRouter(msg proto.Message)
+	SendMsgToRouter(totype int8, token protocolx.UserToken, msg proto.Message)
 }
 
 var appInstance IAppGlobal
@@ -63,6 +64,6 @@ func GetMyNode() *eureka.ServiceNodeInfo {
 	return appInstance.GetMyNode()
 }
 
-func SendMsgToRouter(msg proto.Message) {
-	appInstance.SendMsgToRouter(msg)
+func SendMsgToRouter(totype int8, token protocolx.UserToken, msg proto.Message) {
+	appInstance.SendMsgToRouter(totype, token, msg)
 }
