@@ -9,16 +9,6 @@ public interface Erk_EurekaUpdate_ntfOrBuilder extends
 
   /**
    * <pre>
-   *请求方iid
-   * </pre>
-   *
-   * <code>int64 myiid = 1;</code>
-   * @return The myiid.
-   */
-  long getMyiid();
-
-  /**
-   * <pre>
    *上线的服务
    * </pre>
    *
@@ -89,4 +79,34 @@ public interface Erk_EurekaUpdate_ntfOrBuilder extends
    * @return The offline at the given index.
    */
   long getOffline(int index);
+
+  /**
+   * <pre>
+   *master服务id, -1表示没有master服务
+   * </pre>
+   *
+   * <code>int64 masteriid = 4;</code>
+   * @return The masteriid.
+   */
+  long getMasteriid();
+
+  /**
+   * <pre>
+   *eureka iid 种子
+   * </pre>
+   *
+   * <code>int64 eureka_seed = 5;</code>
+   * @return The eurekaSeed.
+   */
+  long getEurekaSeed();
+
+  /**
+   * <pre>
+   *service iid 种子
+   * </pre>
+   *
+   * <code>int64 service_seed = 6;</code>
+   * @return The serviceSeed.
+   */
+  long getServiceSeed();
 }

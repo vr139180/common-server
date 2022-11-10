@@ -31,6 +31,10 @@ ServiceNodeInfo& ServiceNodeInfo::operator = (const ServiceNodeInfo& v)
 	this->ip = v.ip;
 	this->port = v.port;
 	this->token = v.token;
+	this->isonline = v.isonline;
+
+	this->subscribes_ = v.subscribes_;
+	this->routers_ = v.routers_;
 
 	return *this;
 }

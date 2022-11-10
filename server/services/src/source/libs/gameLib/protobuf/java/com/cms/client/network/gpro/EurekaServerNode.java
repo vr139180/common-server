@@ -74,6 +74,11 @@ private static final long serialVersionUID = 0L;
             port_ = input.readInt32();
             break;
           }
+          case 40: {
+
+            ismaster_ = input.readBool();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -197,6 +202,21 @@ private static final long serialVersionUID = 0L;
     return port_;
   }
 
+  public static final int ISMASTER_FIELD_NUMBER = 5;
+  private boolean ismaster_;
+  /**
+   * <pre>
+   *是否master节点
+   * </pre>
+   *
+   * <code>bool ismaster = 5;</code>
+   * @return The ismaster.
+   */
+  @java.lang.Override
+  public boolean getIsmaster() {
+    return ismaster_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -223,6 +243,9 @@ private static final long serialVersionUID = 0L;
     if (port_ != 0) {
       output.writeInt32(4, port_);
     }
+    if (ismaster_ != false) {
+      output.writeBool(5, ismaster_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -247,6 +270,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, port_);
     }
+    if (ismaster_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, ismaster_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -270,6 +297,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getIp())) return false;
     if (getPort()
         != other.getPort()) return false;
+    if (getIsmaster()
+        != other.getIsmaster()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -291,6 +320,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getIp().hashCode();
     hash = (37 * hash) + PORT_FIELD_NUMBER;
     hash = (53 * hash) + getPort();
+    hash = (37 * hash) + ISMASTER_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsmaster());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -436,6 +468,8 @@ private static final long serialVersionUID = 0L;
 
       port_ = 0;
 
+      ismaster_ = false;
+
       return this;
     }
 
@@ -466,6 +500,7 @@ private static final long serialVersionUID = 0L;
       result.token_ = token_;
       result.ip_ = ip_;
       result.port_ = port_;
+      result.ismaster_ = ismaster_;
       onBuilt();
       return result;
     }
@@ -526,6 +561,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getPort() != 0) {
         setPort(other.getPort());
+      }
+      if (other.getIsmaster() != false) {
+        setIsmaster(other.getIsmaster());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -777,6 +815,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearPort() {
       
       port_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean ismaster_ ;
+    /**
+     * <pre>
+     *是否master节点
+     * </pre>
+     *
+     * <code>bool ismaster = 5;</code>
+     * @return The ismaster.
+     */
+    @java.lang.Override
+    public boolean getIsmaster() {
+      return ismaster_;
+    }
+    /**
+     * <pre>
+     *是否master节点
+     * </pre>
+     *
+     * <code>bool ismaster = 5;</code>
+     * @param value The ismaster to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsmaster(boolean value) {
+      
+      ismaster_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *是否master节点
+     * </pre>
+     *
+     * <code>bool ismaster = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsmaster() {
+      
+      ismaster_ = false;
       onChanged();
       return this;
     }

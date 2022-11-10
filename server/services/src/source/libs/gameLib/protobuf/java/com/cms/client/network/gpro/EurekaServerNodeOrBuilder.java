@@ -56,4 +56,14 @@ public interface EurekaServerNodeOrBuilder extends
    * @return The port.
    */
   int getPort();
+
+  /**
+   * <pre>
+   *是否master节点
+   * </pre>
+   *
+   * <code>bool ismaster = 5;</code>
+   * @return The ismaster.
+   */
+  boolean getIsmaster();
 }

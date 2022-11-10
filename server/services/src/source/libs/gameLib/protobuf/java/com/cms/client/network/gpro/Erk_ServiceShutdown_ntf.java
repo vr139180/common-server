@@ -59,7 +59,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
 
-            service_ = input.readInt64();
+            svriid_ = input.readInt64();
             break;
           }
           default: {
@@ -109,15 +109,15 @@ private static final long serialVersionUID = 0L;
     return svrType_;
   }
 
-  public static final int SERVICE_FIELD_NUMBER = 2;
-  private long service_;
+  public static final int SVRIID_FIELD_NUMBER = 2;
+  private long svriid_;
   /**
-   * <code>int64 service = 2;</code>
-   * @return The service.
+   * <code>int64 svriid = 2;</code>
+   * @return The svriid.
    */
   @java.lang.Override
-  public long getService() {
-    return service_;
+  public long getSvriid() {
+    return svriid_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -137,8 +137,8 @@ private static final long serialVersionUID = 0L;
     if (svrType_ != 0) {
       output.writeInt32(1, svrType_);
     }
-    if (service_ != 0L) {
-      output.writeInt64(2, service_);
+    if (svriid_ != 0L) {
+      output.writeInt64(2, svriid_);
     }
     unknownFields.writeTo(output);
   }
@@ -153,9 +153,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, svrType_);
     }
-    if (service_ != 0L) {
+    if (svriid_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, service_);
+        .computeInt64Size(2, svriid_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
 
     if (getSvrType()
         != other.getSvrType()) return false;
-    if (getService()
-        != other.getService()) return false;
+    if (getSvriid()
+        != other.getSvriid()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -189,9 +189,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + SVR_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getSvrType();
-    hash = (37 * hash) + SERVICE_FIELD_NUMBER;
+    hash = (37 * hash) + SVRIID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getService());
+        getSvriid());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -331,7 +331,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       svrType_ = 0;
 
-      service_ = 0L;
+      svriid_ = 0L;
 
       return this;
     }
@@ -360,7 +360,7 @@ private static final long serialVersionUID = 0L;
     public com.cms.client.network.gpro.Erk_ServiceShutdown_ntf buildPartial() {
       com.cms.client.network.gpro.Erk_ServiceShutdown_ntf result = new com.cms.client.network.gpro.Erk_ServiceShutdown_ntf(this);
       result.svrType_ = svrType_;
-      result.service_ = service_;
+      result.svriid_ = svriid_;
       onBuilt();
       return result;
     }
@@ -412,8 +412,8 @@ private static final long serialVersionUID = 0L;
       if (other.getSvrType() != 0) {
         setSvrType(other.getSvrType());
       }
-      if (other.getService() != 0L) {
-        setService(other.getService());
+      if (other.getSvriid() != 0L) {
+        setSvriid(other.getSvriid());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -487,33 +487,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long service_ ;
+    private long svriid_ ;
     /**
-     * <code>int64 service = 2;</code>
-     * @return The service.
+     * <code>int64 svriid = 2;</code>
+     * @return The svriid.
      */
     @java.lang.Override
-    public long getService() {
-      return service_;
+    public long getSvriid() {
+      return svriid_;
     }
     /**
-     * <code>int64 service = 2;</code>
-     * @param value The service to set.
+     * <code>int64 svriid = 2;</code>
+     * @param value The svriid to set.
      * @return This builder for chaining.
      */
-    public Builder setService(long value) {
+    public Builder setSvriid(long value) {
       
-      service_ = value;
+      svriid_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 service = 2;</code>
+     * <code>int64 svriid = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearService() {
+    public Builder clearSvriid() {
       
-      service_ = 0L;
+      svriid_ = 0L;
       onChanged();
       return this;
     }

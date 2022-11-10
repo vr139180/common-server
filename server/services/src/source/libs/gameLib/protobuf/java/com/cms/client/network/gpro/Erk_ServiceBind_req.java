@@ -5,7 +5,7 @@ package com.cms.client.network.gpro;
 
 /**
  * <pre>
- *其他服务向eureka注册中心，注册服务
+ *已注册服务绑定eureka节点
  * </pre>
  *
  * Protobuf type {@code PRO.Erk_ServiceBind_req}
@@ -65,6 +65,11 @@ private static final long serialVersionUID = 0L;
           case 24: {
 
             token_ = input.readInt64();
+            break;
+          }
+          case 32: {
+
+            eurekatoken_ = input.readInt64();
             break;
           }
           default: {
@@ -140,6 +145,17 @@ private static final long serialVersionUID = 0L;
     return token_;
   }
 
+  public static final int EUREKATOKEN_FIELD_NUMBER = 4;
+  private long eurekatoken_;
+  /**
+   * <code>int64 eurekatoken = 4;</code>
+   * @return The eurekatoken.
+   */
+  @java.lang.Override
+  public long getEurekatoken() {
+    return eurekatoken_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -163,6 +179,9 @@ private static final long serialVersionUID = 0L;
     if (token_ != 0L) {
       output.writeInt64(3, token_);
     }
+    if (eurekatoken_ != 0L) {
+      output.writeInt64(4, eurekatoken_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -183,6 +202,10 @@ private static final long serialVersionUID = 0L;
     if (token_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(3, token_);
+    }
+    if (eurekatoken_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, eurekatoken_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -205,6 +228,8 @@ private static final long serialVersionUID = 0L;
         != other.getIid()) return false;
     if (getToken()
         != other.getToken()) return false;
+    if (getEurekatoken()
+        != other.getEurekatoken()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -224,6 +249,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getToken());
+    hash = (37 * hash) + EUREKATOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getEurekatoken());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -321,7 +349,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *其他服务向eureka注册中心，注册服务
+   *已注册服务绑定eureka节点
    * </pre>
    *
    * Protobuf type {@code PRO.Erk_ServiceBind_req}
@@ -367,6 +395,8 @@ private static final long serialVersionUID = 0L;
 
       token_ = 0L;
 
+      eurekatoken_ = 0L;
+
       return this;
     }
 
@@ -396,6 +426,7 @@ private static final long serialVersionUID = 0L;
       result.svrType_ = svrType_;
       result.iid_ = iid_;
       result.token_ = token_;
+      result.eurekatoken_ = eurekatoken_;
       onBuilt();
       return result;
     }
@@ -452,6 +483,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getToken() != 0L) {
         setToken(other.getToken());
+      }
+      if (other.getEurekatoken() != 0L) {
+        setEurekatoken(other.getEurekatoken());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -595,6 +629,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearToken() {
       
       token_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long eurekatoken_ ;
+    /**
+     * <code>int64 eurekatoken = 4;</code>
+     * @return The eurekatoken.
+     */
+    @java.lang.Override
+    public long getEurekatoken() {
+      return eurekatoken_;
+    }
+    /**
+     * <code>int64 eurekatoken = 4;</code>
+     * @param value The eurekatoken to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEurekatoken(long value) {
+      
+      eurekatoken_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 eurekatoken = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEurekatoken() {
+      
+      eurekatoken_ = 0L;
       onChanged();
       return this;
     }

@@ -20,7 +20,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Erk_ServiceSubscribe_req() {
-    myip_ = "";
     svrType_ = java.util.Collections.emptyList();
   }
 
@@ -66,17 +65,6 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            myip_ = s;
-            break;
-          }
-          case 32: {
-
-            myport_ = input.readInt32();
-            break;
-          }
-          case 42: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               svrType_ = new java.util.ArrayList<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo>();
               mutable_bitField0_ |= 0x00000001;
@@ -907,71 +895,14 @@ private static final long serialVersionUID = 0L;
     return mysvrtype_;
   }
 
-  public static final int MYIP_FIELD_NUMBER = 3;
-  private volatile java.lang.Object myip_;
-  /**
-   * <pre>
-   *ip port方便过滤算法
-   * </pre>
-   *
-   * <code>string myip = 3;</code>
-   * @return The myip.
-   */
-  @java.lang.Override
-  public java.lang.String getMyip() {
-    java.lang.Object ref = myip_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      myip_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *ip port方便过滤算法
-   * </pre>
-   *
-   * <code>string myip = 3;</code>
-   * @return The bytes for myip.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMyipBytes() {
-    java.lang.Object ref = myip_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      myip_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int MYPORT_FIELD_NUMBER = 4;
-  private int myport_;
-  /**
-   * <code>int32 myport = 4;</code>
-   * @return The myport.
-   */
-  @java.lang.Override
-  public int getMyport() {
-    return myport_;
-  }
-
-  public static final int SVR_TYPE_FIELD_NUMBER = 5;
+  public static final int SVR_TYPE_FIELD_NUMBER = 3;
   private java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> svrType_;
   /**
    * <pre>
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   @java.lang.Override
   public java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> getSvrTypeList() {
@@ -982,7 +913,7 @@ private static final long serialVersionUID = 0L;
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   @java.lang.Override
   public java.util.List<? extends com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder> 
@@ -994,7 +925,7 @@ private static final long serialVersionUID = 0L;
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   @java.lang.Override
   public int getSvrTypeCount() {
@@ -1005,7 +936,7 @@ private static final long serialVersionUID = 0L;
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo getSvrType(int index) {
@@ -1016,7 +947,7 @@ private static final long serialVersionUID = 0L;
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   @java.lang.Override
   public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder getSvrTypeOrBuilder(
@@ -1044,14 +975,8 @@ private static final long serialVersionUID = 0L;
     if (mysvrtype_ != 0) {
       output.writeInt32(2, mysvrtype_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(myip_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, myip_);
-    }
-    if (myport_ != 0) {
-      output.writeInt32(4, myport_);
-    }
     for (int i = 0; i < svrType_.size(); i++) {
-      output.writeMessage(5, svrType_.get(i));
+      output.writeMessage(3, svrType_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -1070,16 +995,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, mysvrtype_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(myip_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, myip_);
-    }
-    if (myport_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, myport_);
-    }
     for (int i = 0; i < svrType_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, svrType_.get(i));
+        .computeMessageSize(3, svrType_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -1100,10 +1018,6 @@ private static final long serialVersionUID = 0L;
         != other.getMyiid()) return false;
     if (getMysvrtype()
         != other.getMysvrtype()) return false;
-    if (!getMyip()
-        .equals(other.getMyip())) return false;
-    if (getMyport()
-        != other.getMyport()) return false;
     if (!getSvrTypeList()
         .equals(other.getSvrTypeList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -1122,10 +1036,6 @@ private static final long serialVersionUID = 0L;
         getMyiid());
     hash = (37 * hash) + MYSVRTYPE_FIELD_NUMBER;
     hash = (53 * hash) + getMysvrtype();
-    hash = (37 * hash) + MYIP_FIELD_NUMBER;
-    hash = (53 * hash) + getMyip().hashCode();
-    hash = (37 * hash) + MYPORT_FIELD_NUMBER;
-    hash = (53 * hash) + getMyport();
     if (getSvrTypeCount() > 0) {
       hash = (37 * hash) + SVR_TYPE_FIELD_NUMBER;
       hash = (53 * hash) + getSvrTypeList().hashCode();
@@ -1272,10 +1182,6 @@ private static final long serialVersionUID = 0L;
 
       mysvrtype_ = 0;
 
-      myip_ = "";
-
-      myport_ = 0;
-
       if (svrTypeBuilder_ == null) {
         svrType_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1311,8 +1217,6 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       result.myiid_ = myiid_;
       result.mysvrtype_ = mysvrtype_;
-      result.myip_ = myip_;
-      result.myport_ = myport_;
       if (svrTypeBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           svrType_ = java.util.Collections.unmodifiableList(svrType_);
@@ -1375,13 +1279,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getMysvrtype() != 0) {
         setMysvrtype(other.getMysvrtype());
-      }
-      if (!other.getMyip().isEmpty()) {
-        myip_ = other.myip_;
-        onChanged();
-      }
-      if (other.getMyport() != 0) {
-        setMyport(other.getMyport());
       }
       if (svrTypeBuilder_ == null) {
         if (!other.svrType_.isEmpty()) {
@@ -1525,133 +1422,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object myip_ = "";
-    /**
-     * <pre>
-     *ip port方便过滤算法
-     * </pre>
-     *
-     * <code>string myip = 3;</code>
-     * @return The myip.
-     */
-    public java.lang.String getMyip() {
-      java.lang.Object ref = myip_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        myip_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *ip port方便过滤算法
-     * </pre>
-     *
-     * <code>string myip = 3;</code>
-     * @return The bytes for myip.
-     */
-    public com.google.protobuf.ByteString
-        getMyipBytes() {
-      java.lang.Object ref = myip_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        myip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *ip port方便过滤算法
-     * </pre>
-     *
-     * <code>string myip = 3;</code>
-     * @param value The myip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMyip(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      myip_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *ip port方便过滤算法
-     * </pre>
-     *
-     * <code>string myip = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMyip() {
-      
-      myip_ = getDefaultInstance().getMyip();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *ip port方便过滤算法
-     * </pre>
-     *
-     * <code>string myip = 3;</code>
-     * @param value The bytes for myip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMyipBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      myip_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int myport_ ;
-    /**
-     * <code>int32 myport = 4;</code>
-     * @return The myport.
-     */
-    @java.lang.Override
-    public int getMyport() {
-      return myport_;
-    }
-    /**
-     * <code>int32 myport = 4;</code>
-     * @param value The myport to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMyport(int value) {
-      
-      myport_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 myport = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMyport() {
-      
-      myport_ = 0;
-      onChanged();
-      return this;
-    }
-
     private java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> svrType_ =
       java.util.Collections.emptyList();
     private void ensureSvrTypeIsMutable() {
@@ -1669,7 +1439,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> getSvrTypeList() {
       if (svrTypeBuilder_ == null) {
@@ -1683,7 +1453,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public int getSvrTypeCount() {
       if (svrTypeBuilder_ == null) {
@@ -1697,7 +1467,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo getSvrType(int index) {
       if (svrTypeBuilder_ == null) {
@@ -1711,7 +1481,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder setSvrType(
         int index, com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo value) {
@@ -1732,7 +1502,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder setSvrType(
         int index, com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder builderForValue) {
@@ -1750,7 +1520,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder addSvrType(com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo value) {
       if (svrTypeBuilder_ == null) {
@@ -1770,7 +1540,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder addSvrType(
         int index, com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo value) {
@@ -1791,7 +1561,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder addSvrType(
         com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder builderForValue) {
@@ -1809,7 +1579,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder addSvrType(
         int index, com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder builderForValue) {
@@ -1827,7 +1597,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder addAllSvrType(
         java.lang.Iterable<? extends com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> values) {
@@ -1846,7 +1616,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder clearSvrType() {
       if (svrTypeBuilder_ == null) {
@@ -1863,7 +1633,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public Builder removeSvrType(int index) {
       if (svrTypeBuilder_ == null) {
@@ -1880,7 +1650,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder getSvrTypeBuilder(
         int index) {
@@ -1891,7 +1661,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder getSvrTypeOrBuilder(
         int index) {
@@ -1905,7 +1675,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public java.util.List<? extends com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder> 
          getSvrTypeOrBuilderList() {
@@ -1920,7 +1690,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder addSvrTypeBuilder() {
       return getSvrTypeFieldBuilder().addBuilder(
@@ -1931,7 +1701,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder addSvrTypeBuilder(
         int index) {
@@ -1943,7 +1713,7 @@ private static final long serialVersionUID = 0L;
      *服务器类型 NETSVR_TYPE_ENUM定义
      * </pre>
      *
-     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+     * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
      */
     public java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo.Builder> 
          getSvrTypeBuilderList() {

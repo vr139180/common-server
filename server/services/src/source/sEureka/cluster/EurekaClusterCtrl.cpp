@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "cluster/EurekaClusterCtrl.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -12,6 +27,8 @@ USED_REDISKEY_GLOBAL_NS
 
 EurekaClusterCtrl::EurekaClusterCtrl():lastupdate_(0)
 , is_boosted_(false)
+, eureka_master_iid_(0)
+, last_eureka_iid_(0)
 {
 
 }
@@ -21,144 +38,83 @@ EurekaClusterCtrl::~EurekaClusterCtrl()
 	release();
 }
 
+void EurekaClusterCtrl::init_ctrl()
+{
+	eureka_links_from_.init_holder();
+
+	this->InitNetMessage();
+}
+
+void EurekaClusterCtrl::unint_ctrl()
+{
+	//master结束时删除redis注册信息
+	if (is_master())
+	{
+		RedisClient* redis = svrApp.get_redisclient();
+
+		S_INT_64 masterid = 0;
+		if (redis->get_hashmember_ul(EUREKA_MASTER_NODE, FIELD_MASTER_NODE_IID, masterid))
+		{
+			if (myself_.iid == masterid)
+			{
+				redis->del(EUREKA_MASTER_NODE);
+			}
+		}
+	}
+
+	eureka_links_from_.uninit_holder();
+	eureka_links_to_.free_all();
+}
+
 void EurekaClusterCtrl::release()
 {
-	link_nodes_.clear();
+	eureka_nodes_.clear();
+}
 
-	wait_links_to_.clear();
-	auth_links_to_.clear();
-	for (std::list<EurekaLinkTo*>::iterator iter = links_to_.begin(); iter != links_to_.end(); ++iter) {
-		delete (*iter);
-	}
-	links_to_.clear();
+bool EurekaClusterCtrl::check_node_is_master(S_INT_64 nodeid)
+{
+	if (nodeid <= 0 || eureka_master_iid_ <= 0)
+		return false;
 
-	free_links_from_.clear();
-	for (std::list<EurekaLinkFrom*>::iterator iter = links_from_.begin(); iter != links_from_.end(); ++iter) {
-		delete (*iter);
-	}
-	links_from_.clear();
-
-	for (boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator iter = redis_nodes.begin(); iter != redis_nodes.end(); ++iter) {
-		delete iter->second;
-	}
-	redis_nodes.clear();
+	return nodeid == eureka_master_iid_;
 }
 
 bool EurekaClusterCtrl::is_eureka_exist(S_INT_64 iid)
 {
-	EUREKALINKNODE_MAP::iterator fiter = link_nodes_.find(iid);
-	return fiter != link_nodes_.end();
+	if (iid == myself_.iid)
+		return true;
+
+	if (iid > myself_.iid)
+	{
+		return eureka_links_from_.get_eurekalink_byiid(iid) > 0;
+	}
+	else
+	{
+		return eureka_links_to_.get_eurekalink_byiid(iid) > 0;
+	}
 }
 
 bool EurekaClusterCtrl::is_legality_eureka(S_INT_64 iid, S_INT_64 token)
 {
-	boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator fiter = redis_nodes.find(iid);
-	if (fiter == redis_nodes.end())
+	boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(iid);
+	if (fiter == eureka_nodes_.end())
 		return false;
-	EurekaNodeInfo* ni = fiter->second;
-	return ni->is_same_node(token);
-}
-
-void EurekaClusterCtrl::on_cantconnect_with_linkto(EurekaLinkTo* plink)
-{
-	S_INT_64 nodeiid = plink->get_iid();
-
-	{
-		ThreadLockWrapper guard(svrApp.get_threadlock());
-
-		link_nodes_.erase(nodeiid);
-		auth_links_to_.erase(plink);
-
-		//从认证队列删除，放入等待重连队列
-		if (is_legality_eureka( nodeiid, plink->get_token()))
-		{
-			wait_links_to_.insert(plink);
-		}
-		else
-		{
-			//节点回收
-			wait_links_to_.erase(plink);
-		}
-
-		//重置
-		plink->force_close();
-
-#ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_runtime, "me(eureka) cant connect to eureka node. online nodes:%d", link_nodes_.size());
-#endif
-	}
-
-	//连接错误警告
-	this->warning_eureka_cantconnect(nodeiid);
+	EurekaNodeInfo& ni = fiter->second;
+	return ni.is_same_node(token);
 }
 
 void EurekaClusterCtrl::on_disconnected_with_linkto(EurekaLinkTo* plink)
 {
-	{
-		ThreadLockWrapper guard(svrApp.get_threadlock());
-
-		//断开映射关系
-		link_nodes_.erase(plink->get_iid());
-		auth_links_to_.erase(plink);
-
-		//有效节点
-		if (is_legality_eureka(plink->get_iid(), plink->get_token()))
-		{
-			//放入等待重新连接队列
-			wait_links_to_.insert(plink);
-		}
-		else
-		{
-			//节点回收
-			wait_links_to_.erase(plink);
-		}
-
-		plink->force_close();
-
-#ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_runtime, "me(eureka) disconnect with linkto eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
-#endif
-
-	}
+	eureka_links_to_.on_linkto_disconnected(plink);
 }
 
-void EurekaClusterCtrl::on_authed_with_linkto(EurekaLinkTo* plink)
+void EurekaClusterCtrl::on_linkto_regist_result(EurekaLinkTo* plink)
 {
-	S_INT_64 nodeiid = plink->get_iid();
-
-	{
-		ThreadLockWrapper guard(svrApp.get_threadlock());
-
-		//从认证队列删除
-		auth_links_to_.erase(plink);
-
-		//IEurekaNodeLink* pp = dynamic_cast<IEurekaNodeLink*>(plink);
-		link_nodes_[nodeiid] = plink;
-	}
+	eureka_links_to_.on_linkto_regist_result(plink);
 }
 
 void EurekaClusterCtrl::on_disconnected_with_linkfrom(EurekaLinkFrom* plink)
 {
-	EurekaSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(svrApp.get_threadlock());
-
-		//断开映射关系
-		link_nodes_.erase(plink->get_iid());
-
-#ifdef EUREKA_DEBUGINFO_ENABLE
-		logDebug(out_runtime, "me(eureka) disconnect with linkfrom eureka node:%lld. online nodes:%d", plink->get_iid(), link_nodes_.size());
-#endif
-
-		plink->reset();
-		psession->reset();
-
-		svrApp.return_freesession_no_mutext(psession);
-	}
-
+	//结合sEurekaApp的disconnect处理流程
+	eureka_links_from_.return_freelink(plink);
 }

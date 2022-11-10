@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/EurekaLinkTo.h"
 
 #include <cmsLib/system/CommandBase.h>
@@ -6,15 +21,16 @@
 
 #include "sEurekaApp.h"
 
-EurekaLinkTo::EurekaLinkTo(EurekaNodeInfo* p):LinkToBase()
-,node_(p)
+EurekaLinkTo::EurekaLinkTo(EurekaNodeInfo p):LinkToBase()
 , fail_num_(0)
 {
+	node_ = p;
+	this->init_protocolhead();
 }
 
 EurekaLinkTo::~EurekaLinkTo()
 {
-	reset(0);
+	reset(EurekaNodeInfo());
 }
 
 void EurekaLinkTo::init_protocolhead()
@@ -35,10 +51,11 @@ void EurekaLinkTo::send_to_eureka(BasicProtocol* msg)
 	LinkToBase::send_protocol(pro);
 }
 
-void EurekaLinkTo::reset(EurekaNodeInfo* pnode)
+void EurekaLinkTo::reset(EurekaNodeInfo pinfo)
 {
 	fail_num_ = 0;
-	node_.reset(pnode);
+	node_ = pinfo;
+
 	force_close();
 }
 
@@ -54,10 +71,10 @@ void EurekaLinkTo::connect()
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
 	logInfo(out_runtime, "++++++me(sEureka) try to connect to sEureka(iid:%ld ip:%s port:%d)++++++",
-		node_->iid, node_->ip.c_str(), node_->port);
+		node_.iid, node_.ip.c_str(), node_.port);
 #endif
 
-	connect_to(node_->ip.c_str(), node_->port);
+	connect_to(node_.ip.c_str(), node_.port);
 }
 
 void EurekaLinkTo::on_cant_connectedto()
@@ -80,7 +97,7 @@ void EurekaLinkTo::on_connectedto_done()
 
 #ifdef EUREKA_DEBUGINFO_ENABLE
 	logInfo(out_runtime, "++++++me(sEureka) connected to sEureka(iid:%ld ip:%s port:%d)++++++",
-		node_->iid, node_->ip.c_str(), node_->port);
+		node_.iid, node_.ip.c_str(), node_.port);
 #endif
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -99,7 +116,16 @@ void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
 	
-	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_ACK)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKAREGIST_ACK)
+	{
+		PRO::Erk_EurekaRegist_ack* ack = dynamic_cast<Erk_EurekaRegist_ack*>(pro->msg_);
+
+		bool bauth = (ack->result() == 0);
+		SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
+			boost::bind(&EurekaLinkTo::on_authed, this, boost::placeholders::_1), bauth);
+		svrApp.regist_syscmd(cmd);
+	}
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_ACK)
     {
         PRO::Erk_EurekaBind_ack* ack =dynamic_cast<Erk_EurekaBind_ack*>(pro->msg_);
 
@@ -125,19 +151,37 @@ void EurekaLinkTo::on_connected( bool success)
 		EurekaNodeInfo& myself = svrApp.get_eurekactrl()->get_myself();
 
 		//发送绑定请求
-        PRO::Erk_EurekaBind_req* req = new PRO::Erk_EurekaBind_req();
-		req->set_iid(myself.iid);
-		req->set_token( myself.token);
-		req->set_ip(myself.ip);
-		req->set_port(myself.port);
+		bool regist = false;
+		if (svrApp.get_eurekactrl()->check_node_is_master(node_.iid))
+		{
+			regist = true;
+			if (svrApp.get_eurekactrl()->is_boosted())
+				regist = false;
+		}
 
-		this->send_to_eureka( req);
+		if (regist)
+		{
+			PRO::Erk_EurekaRegist_req* req = new PRO::Erk_EurekaRegist_req();
+			req->set_ip(myself.ip);
+			req->set_port(myself.port);
+
+			this->send_to_eureka(req);
+		}
+		else
+		{
+			PRO::Erk_EurekaBind_req* req = new PRO::Erk_EurekaBind_req();
+			req->set_iid(myself.iid);
+			req->set_token(myself.token);
+
+			this->send_to_eureka(req);
+		}
     }
     else
     {
 		++fail_num_;
-		//连接不上eureka 触发maintnce检测
-		svrApp.get_eurekactrl()->on_cantconnect_with_linkto(this);
+		logError(out_runtime, "me(Eureka) can't connect to Eureka[ip:%s port:%d]", node_.ip.c_str(), node_.port);
+
+		svrApp.get_eurekactrl()->on_disconnected_with_linkto(this);
     }
 }
 
@@ -146,25 +190,17 @@ void EurekaLinkTo::on_authed( bool success)
     if( success)
     {
         logInfo(out_runtime, ">>>>>> me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d]!!!!",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
         this->set_authed( true);
-		svrApp.get_eurekactrl()->on_authed_with_linkto(this);
+		
+		svrApp.get_eurekactrl()->on_linkto_regist_result(this);
 	}
     else
     {
 #ifdef EUREKA_DEBUGINFO_ENABLE
-        logInfo( out_runtime, "<<<<<< me(sEureka) auth to sEureka[iid:%ld ip:%s port:%d] failed!!!!", 
-			node_->iid, node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(sEureka) connect to sEureka[iid:%ld ip:%s port:%d] failed", node_.iid, node_.ip.c_str(), node_.port);
 #endif
-        
-		++fail_num_;
-		//先断开连接
-		this->force_linkclose();
-		//注册绑定失败警告
-		//S_INT_64 myiid = svrApp.get_eurekactrl()->get_myself().iid;
-		//svrApp.get_eurekactrl()->warning_eurekabind_failed(myiid, node_->iid);
     }
-
 }
 
 void EurekaLinkTo::on_disconnected()
@@ -173,17 +209,10 @@ void EurekaLinkTo::on_disconnected()
     if( this->is_authed())
     {
         logInfo(out_runtime, "<<<<<< me(sEureka)(authed) lost connection to sEureka[iid:%ld ip:%s port:%d]",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
     }
-	else
-	{
-		logInfo(out_runtime, "<<<<<< me(sEureka)(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
-			node_->iid, node_->ip.c_str(), node_->port);
-	}
 
 	svrApp.get_eurekactrl()->on_disconnected_with_linkto(this);
-
-    //this->reset( 0);
 }
 
 void EurekaLinkTo::heart_beat()

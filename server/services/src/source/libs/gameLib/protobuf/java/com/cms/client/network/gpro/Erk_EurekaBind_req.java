@@ -5,7 +5,8 @@ package com.cms.client.network.gpro;
 
 /**
  * <pre>
- *Eureka服务器相互绑定
+ *Eureka服务器相互绑定,svrid大的向小的发起连接
+ *网状结构
  * </pre>
  *
  * Protobuf type {@code PRO.Erk_EurekaBind_req}
@@ -20,7 +21,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Erk_EurekaBind_req() {
-    ip_ = "";
   }
 
   @java.lang.Override
@@ -61,17 +61,6 @@ private static final long serialVersionUID = 0L;
           case 16: {
 
             token_ = input.readInt64();
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            ip_ = s;
-            break;
-          }
-          case 32: {
-
-            port_ = input.readInt32();
             break;
           }
           default: {
@@ -136,67 +125,6 @@ private static final long serialVersionUID = 0L;
     return token_;
   }
 
-  public static final int IP_FIELD_NUMBER = 3;
-  private volatile java.lang.Object ip_;
-  /**
-   * <pre>
-   *动态ip
-   * </pre>
-   *
-   * <code>string ip = 3;</code>
-   * @return The ip.
-   */
-  @java.lang.Override
-  public java.lang.String getIp() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      ip_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *动态ip
-   * </pre>
-   *
-   * <code>string ip = 3;</code>
-   * @return The bytes for ip.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getIpBytes() {
-    java.lang.Object ref = ip_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      ip_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int PORT_FIELD_NUMBER = 4;
-  private int port_;
-  /**
-   * <pre>
-   *服务器port
-   * </pre>
-   *
-   * <code>int32 port = 4;</code>
-   * @return The port.
-   */
-  @java.lang.Override
-  public int getPort() {
-    return port_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -217,12 +145,6 @@ private static final long serialVersionUID = 0L;
     if (token_ != 0L) {
       output.writeInt64(2, token_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ip_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ip_);
-    }
-    if (port_ != 0) {
-      output.writeInt32(4, port_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -239,13 +161,6 @@ private static final long serialVersionUID = 0L;
     if (token_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(2, token_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ip_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ip_);
-    }
-    if (port_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, port_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -266,10 +181,6 @@ private static final long serialVersionUID = 0L;
         != other.getIid()) return false;
     if (getToken()
         != other.getToken()) return false;
-    if (!getIp()
-        .equals(other.getIp())) return false;
-    if (getPort()
-        != other.getPort()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -287,10 +198,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getToken());
-    hash = (37 * hash) + IP_FIELD_NUMBER;
-    hash = (53 * hash) + getIp().hashCode();
-    hash = (37 * hash) + PORT_FIELD_NUMBER;
-    hash = (53 * hash) + getPort();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -388,7 +295,8 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *Eureka服务器相互绑定
+   *Eureka服务器相互绑定,svrid大的向小的发起连接
+   *网状结构
    * </pre>
    *
    * Protobuf type {@code PRO.Erk_EurekaBind_req}
@@ -432,10 +340,6 @@ private static final long serialVersionUID = 0L;
 
       token_ = 0L;
 
-      ip_ = "";
-
-      port_ = 0;
-
       return this;
     }
 
@@ -464,8 +368,6 @@ private static final long serialVersionUID = 0L;
       com.cms.client.network.gpro.Erk_EurekaBind_req result = new com.cms.client.network.gpro.Erk_EurekaBind_req(this);
       result.iid_ = iid_;
       result.token_ = token_;
-      result.ip_ = ip_;
-      result.port_ = port_;
       onBuilt();
       return result;
     }
@@ -519,13 +421,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getToken() != 0L) {
         setToken(other.getToken());
-      }
-      if (!other.getIp().isEmpty()) {
-        ip_ = other.ip_;
-        onChanged();
-      }
-      if (other.getPort() != 0) {
-        setPort(other.getPort());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -638,145 +533,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearToken() {
       
       token_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object ip_ = "";
-    /**
-     * <pre>
-     *动态ip
-     * </pre>
-     *
-     * <code>string ip = 3;</code>
-     * @return The ip.
-     */
-    public java.lang.String getIp() {
-      java.lang.Object ref = ip_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ip_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     *动态ip
-     * </pre>
-     *
-     * <code>string ip = 3;</code>
-     * @return The bytes for ip.
-     */
-    public com.google.protobuf.ByteString
-        getIpBytes() {
-      java.lang.Object ref = ip_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        ip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *动态ip
-     * </pre>
-     *
-     * <code>string ip = 3;</code>
-     * @param value The ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIp(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      ip_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *动态ip
-     * </pre>
-     *
-     * <code>string ip = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIp() {
-      
-      ip_ = getDefaultInstance().getIp();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *动态ip
-     * </pre>
-     *
-     * <code>string ip = 3;</code>
-     * @param value The bytes for ip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIpBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      ip_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int port_ ;
-    /**
-     * <pre>
-     *服务器port
-     * </pre>
-     *
-     * <code>int32 port = 4;</code>
-     * @return The port.
-     */
-    @java.lang.Override
-    public int getPort() {
-      return port_;
-    }
-    /**
-     * <pre>
-     *服务器port
-     * </pre>
-     *
-     * <code>int32 port = 4;</code>
-     * @param value The port to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPort(int value) {
-      
-      port_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *服务器port
-     * </pre>
-     *
-     * <code>int32 port = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPort() {
-      
-      port_ = 0;
       onChanged();
       return this;
     }

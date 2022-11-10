@@ -31,6 +31,7 @@ service_iid_(0)
 , token_(0)
 , cur_link_index_(0)
 , app_proxy_(0)
+, master_link_(0)
 , cur_state_( EurekaState::Eureka_WaitInit)
 {
 }
@@ -41,6 +42,7 @@ EurekaClusterClient::~EurekaClusterClient()
 
 void EurekaClusterClient::release()
 {
+	master_link_ = 0;
 	online_links_.clear();
 	auth_links_.clear();
 	wait_links_.clear();
@@ -158,6 +160,7 @@ void EurekaClusterClient::auto_connect_timer(u64 tnow, int interval, u64 iid, bo
 	{
 		//eureka节点同步
 		{
+			/*
 			PRO::Erk_Eureka_sync *syn = new PRO::Erk_Eureka_sync();
 			syn->set_myiid(this->get_myiid());
 
@@ -168,6 +171,7 @@ void EurekaClusterClient::auto_connect_timer(u64 tnow, int interval, u64 iid, bo
 			}
 
 			this->send_mth_protocol(syn);
+			*/
 		}
 
 		//服务订阅

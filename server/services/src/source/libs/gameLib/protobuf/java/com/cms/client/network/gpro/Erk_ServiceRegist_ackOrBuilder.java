@@ -9,7 +9,7 @@ public interface Erk_ServiceRegist_ackOrBuilder extends
 
   /**
    * <pre>
-   *0:成功 1:失败
+   *0:成功 1:失败 2:不是master节点
    * </pre>
    *
    * <code>int32 result = 1;</code>

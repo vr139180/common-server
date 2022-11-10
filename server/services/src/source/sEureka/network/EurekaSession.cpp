@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/EurekaSession.h"
 
 #include <cmsLib/net/NetDriverX.h>
@@ -46,7 +61,15 @@ void EurekaSession::on_connect_lost_netthread()
 
 void EurekaSession::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_REQ)
+	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKAREGIST_REQ)
+	{
+		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekaregist_req, svrApp.get_eurekactrl(),
+			boost::placeholders::_1, boost::placeholders::_2, this);
+		NetCommandV *pcmd = new NetCommandV(pro, fun);
+
+		svrApp.regist_syscmd(pcmd);
+	}
+	else if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_REQ)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekabind_req, svrApp.get_eurekactrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);

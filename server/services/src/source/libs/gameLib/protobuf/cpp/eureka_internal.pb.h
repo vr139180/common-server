@@ -51,7 +51,7 @@ struct TableStruct_eureka_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[21]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,21 +65,33 @@ extern Erk_EurekaBind_ackDefaultTypeInternal _Erk_EurekaBind_ack_default_instanc
 class Erk_EurekaBind_req;
 struct Erk_EurekaBind_reqDefaultTypeInternal;
 extern Erk_EurekaBind_reqDefaultTypeInternal _Erk_EurekaBind_req_default_instance_;
+class Erk_EurekaRegist_ack;
+struct Erk_EurekaRegist_ackDefaultTypeInternal;
+extern Erk_EurekaRegist_ackDefaultTypeInternal _Erk_EurekaRegist_ack_default_instance_;
+class Erk_EurekaRegist_req;
+struct Erk_EurekaRegist_reqDefaultTypeInternal;
+extern Erk_EurekaRegist_reqDefaultTypeInternal _Erk_EurekaRegist_req_default_instance_;
 class Erk_EurekaUpdate_ntf;
 struct Erk_EurekaUpdate_ntfDefaultTypeInternal;
 extern Erk_EurekaUpdate_ntfDefaultTypeInternal _Erk_EurekaUpdate_ntf_default_instance_;
-class Erk_Eureka_sync;
-struct Erk_Eureka_syncDefaultTypeInternal;
-extern Erk_Eureka_syncDefaultTypeInternal _Erk_Eureka_sync_default_instance_;
+class Erk_MasterChange_ntf;
+struct Erk_MasterChange_ntfDefaultTypeInternal;
+extern Erk_MasterChange_ntfDefaultTypeInternal _Erk_MasterChange_ntf_default_instance_;
+class Erk_RouterOnline_req;
+struct Erk_RouterOnline_reqDefaultTypeInternal;
+extern Erk_RouterOnline_reqDefaultTypeInternal _Erk_RouterOnline_req_default_instance_;
+class Erk_RouterSubscribe_ntf;
+struct Erk_RouterSubscribe_ntfDefaultTypeInternal;
+extern Erk_RouterSubscribe_ntfDefaultTypeInternal _Erk_RouterSubscribe_ntf_default_instance_;
+class Erk_RouterSubscribe_req;
+struct Erk_RouterSubscribe_reqDefaultTypeInternal;
+extern Erk_RouterSubscribe_reqDefaultTypeInternal _Erk_RouterSubscribe_req_default_instance_;
 class Erk_ServiceBind_ack;
 struct Erk_ServiceBind_ackDefaultTypeInternal;
 extern Erk_ServiceBind_ackDefaultTypeInternal _Erk_ServiceBind_ack_default_instance_;
 class Erk_ServiceBind_req;
 struct Erk_ServiceBind_reqDefaultTypeInternal;
 extern Erk_ServiceBind_reqDefaultTypeInternal _Erk_ServiceBind_req_default_instance_;
-class Erk_ServiceRegist_Confirm;
-struct Erk_ServiceRegist_ConfirmDefaultTypeInternal;
-extern Erk_ServiceRegist_ConfirmDefaultTypeInternal _Erk_ServiceRegist_Confirm_default_instance_;
 class Erk_ServiceRegist_ack;
 struct Erk_ServiceRegist_ackDefaultTypeInternal;
 extern Erk_ServiceRegist_ackDefaultTypeInternal _Erk_ServiceRegist_ack_default_instance_;
@@ -92,15 +104,18 @@ extern Erk_ServiceRegist_req_ExtsEntry_DoNotUseDefaultTypeInternal _Erk_ServiceR
 class Erk_ServiceShutdown_ntf;
 struct Erk_ServiceShutdown_ntfDefaultTypeInternal;
 extern Erk_ServiceShutdown_ntfDefaultTypeInternal _Erk_ServiceShutdown_ntf_default_instance_;
-class Erk_ServiceSubscribe_ack;
-struct Erk_ServiceSubscribe_ackDefaultTypeInternal;
-extern Erk_ServiceSubscribe_ackDefaultTypeInternal _Erk_ServiceSubscribe_ack_default_instance_;
+class Erk_ServiceSubscribe_ntf;
+struct Erk_ServiceSubscribe_ntfDefaultTypeInternal;
+extern Erk_ServiceSubscribe_ntfDefaultTypeInternal _Erk_ServiceSubscribe_ntf_default_instance_;
 class Erk_ServiceSubscribe_req;
 struct Erk_ServiceSubscribe_reqDefaultTypeInternal;
 extern Erk_ServiceSubscribe_reqDefaultTypeInternal _Erk_ServiceSubscribe_req_default_instance_;
 class Erk_ServiceSubscribe_req_svrinfo;
 struct Erk_ServiceSubscribe_req_svrinfoDefaultTypeInternal;
 extern Erk_ServiceSubscribe_req_svrinfoDefaultTypeInternal _Erk_ServiceSubscribe_req_svrinfo_default_instance_;
+class Erk_ServiceSync_ntf;
+struct Erk_ServiceSync_ntfDefaultTypeInternal;
+extern Erk_ServiceSync_ntfDefaultTypeInternal _Erk_ServiceSync_ntf_default_instance_;
 class EurekaServerNode;
 struct EurekaServerNodeDefaultTypeInternal;
 extern EurekaServerNodeDefaultTypeInternal _EurekaServerNode_default_instance_;
@@ -113,6 +128,9 @@ extern ServerNode_ExtsEntry_DoNotUseDefaultTypeInternal _ServerNode_ExtsEntry_Do
 class Svr_LiveTick_ntf;
 struct Svr_LiveTick_ntfDefaultTypeInternal;
 extern Svr_LiveTick_ntfDefaultTypeInternal _Svr_LiveTick_ntf_default_instance_;
+class Svr_RouterOnline_ntf;
+struct Svr_RouterOnline_ntfDefaultTypeInternal;
+extern Svr_RouterOnline_ntfDefaultTypeInternal _Svr_RouterOnline_ntf_default_instance_;
 class Svr_ServiceBindService_ack;
 struct Svr_ServiceBindService_ackDefaultTypeInternal;
 extern Svr_ServiceBindService_ackDefaultTypeInternal _Svr_ServiceBindService_ack_default_instance_;
@@ -126,22 +144,28 @@ extern Svr_ServiceBindService_req_MyextsEntry_DoNotUseDefaultTypeInternal _Svr_S
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PRO::Erk_EurekaBind_ack* Arena::CreateMaybeMessage<::PRO::Erk_EurekaBind_ack>(Arena*);
 template<> ::PRO::Erk_EurekaBind_req* Arena::CreateMaybeMessage<::PRO::Erk_EurekaBind_req>(Arena*);
+template<> ::PRO::Erk_EurekaRegist_ack* Arena::CreateMaybeMessage<::PRO::Erk_EurekaRegist_ack>(Arena*);
+template<> ::PRO::Erk_EurekaRegist_req* Arena::CreateMaybeMessage<::PRO::Erk_EurekaRegist_req>(Arena*);
 template<> ::PRO::Erk_EurekaUpdate_ntf* Arena::CreateMaybeMessage<::PRO::Erk_EurekaUpdate_ntf>(Arena*);
-template<> ::PRO::Erk_Eureka_sync* Arena::CreateMaybeMessage<::PRO::Erk_Eureka_sync>(Arena*);
+template<> ::PRO::Erk_MasterChange_ntf* Arena::CreateMaybeMessage<::PRO::Erk_MasterChange_ntf>(Arena*);
+template<> ::PRO::Erk_RouterOnline_req* Arena::CreateMaybeMessage<::PRO::Erk_RouterOnline_req>(Arena*);
+template<> ::PRO::Erk_RouterSubscribe_ntf* Arena::CreateMaybeMessage<::PRO::Erk_RouterSubscribe_ntf>(Arena*);
+template<> ::PRO::Erk_RouterSubscribe_req* Arena::CreateMaybeMessage<::PRO::Erk_RouterSubscribe_req>(Arena*);
 template<> ::PRO::Erk_ServiceBind_ack* Arena::CreateMaybeMessage<::PRO::Erk_ServiceBind_ack>(Arena*);
 template<> ::PRO::Erk_ServiceBind_req* Arena::CreateMaybeMessage<::PRO::Erk_ServiceBind_req>(Arena*);
-template<> ::PRO::Erk_ServiceRegist_Confirm* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_Confirm>(Arena*);
 template<> ::PRO::Erk_ServiceRegist_ack* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_ack>(Arena*);
 template<> ::PRO::Erk_ServiceRegist_req* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_req>(Arena*);
 template<> ::PRO::Erk_ServiceRegist_req_ExtsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_req_ExtsEntry_DoNotUse>(Arena*);
 template<> ::PRO::Erk_ServiceShutdown_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceShutdown_ntf>(Arena*);
-template<> ::PRO::Erk_ServiceSubscribe_ack* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_ack>(Arena*);
+template<> ::PRO::Erk_ServiceSubscribe_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_ntf>(Arena*);
 template<> ::PRO::Erk_ServiceSubscribe_req* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_req>(Arena*);
 template<> ::PRO::Erk_ServiceSubscribe_req_svrinfo* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_req_svrinfo>(Arena*);
+template<> ::PRO::Erk_ServiceSync_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSync_ntf>(Arena*);
 template<> ::PRO::EurekaServerNode* Arena::CreateMaybeMessage<::PRO::EurekaServerNode>(Arena*);
 template<> ::PRO::ServerNode* Arena::CreateMaybeMessage<::PRO::ServerNode>(Arena*);
 template<> ::PRO::ServerNode_ExtsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::ServerNode_ExtsEntry_DoNotUse>(Arena*);
 template<> ::PRO::Svr_LiveTick_ntf* Arena::CreateMaybeMessage<::PRO::Svr_LiveTick_ntf>(Arena*);
+template<> ::PRO::Svr_RouterOnline_ntf* Arena::CreateMaybeMessage<::PRO::Svr_RouterOnline_ntf>(Arena*);
 template<> ::PRO::Svr_ServiceBindService_ack* Arena::CreateMaybeMessage<::PRO::Svr_ServiceBindService_ack>(Arena*);
 template<> ::PRO::Svr_ServiceBindService_req* Arena::CreateMaybeMessage<::PRO::Svr_ServiceBindService_req>(Arena*);
 template<> ::PRO::Svr_ServiceBindService_req_MyextsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::Svr_ServiceBindService_req_MyextsEntry_DoNotUse>(Arena*);
@@ -316,6 +340,7 @@ class EurekaServerNode final :
     kIidFieldNumber = 1,
     kTokenFieldNumber = 2,
     kPortFieldNumber = 4,
+    kIsmasterFieldNumber = 5,
   };
   // string ip = 3;
   void clear_ip();
@@ -358,6 +383,15 @@ class EurekaServerNode final :
   void _internal_set_port(int32_t value);
   public:
 
+  // bool ismaster = 5;
+  void clear_ismaster();
+  bool ismaster() const;
+  void set_ismaster(bool value);
+  private:
+  bool _internal_ismaster() const;
+  void _internal_set_ismaster(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.EurekaServerNode)
  private:
   class _Internal;
@@ -369,6 +403,616 @@ class EurekaServerNode final :
   int64_t iid_;
   int64_t token_;
   int32_t port_;
+  bool ismaster_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ServerNode_ExtsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ServerNode_ExtsEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ServerNode_ExtsEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  ServerNode_ExtsEntry_DoNotUse();
+  explicit constexpr ServerNode_ExtsEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit ServerNode_ExtsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const ServerNode_ExtsEntry_DoNotUse& other);
+  static const ServerNode_ExtsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ServerNode_ExtsEntry_DoNotUse*>(&_ServerNode_ExtsEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "PRO.ServerNode.ExtsEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "PRO.ServerNode.ExtsEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+};
+
+// -------------------------------------------------------------------
+
+class ServerNode final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.ServerNode) */ {
+ public:
+  inline ServerNode() : ServerNode(nullptr) {}
+  ~ServerNode() override;
+  explicit constexpr ServerNode(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ServerNode(const ServerNode& from);
+  ServerNode(ServerNode&& from) noexcept
+    : ServerNode() {
+    *this = ::std::move(from);
+  }
+
+  inline ServerNode& operator=(const ServerNode& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ServerNode& operator=(ServerNode&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ServerNode& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ServerNode* internal_default_instance() {
+    return reinterpret_cast<const ServerNode*>(
+               &_ServerNode_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(ServerNode& a, ServerNode& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ServerNode* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ServerNode* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ServerNode* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ServerNode>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ServerNode& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ServerNode& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ServerNode* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.ServerNode";
+  }
+  protected:
+  explicit ServerNode(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kExtsFieldNumber = 5,
+    kIpFieldNumber = 3,
+    kIidFieldNumber = 1,
+    kTokenFieldNumber = 2,
+    kPortFieldNumber = 4,
+    kIsrouterFieldNumber = 6,
+    kIsonlineFieldNumber = 7,
+  };
+  // map<string, string> exts = 5;
+  int exts_size() const;
+  private:
+  int _internal_exts_size() const;
+  public:
+  void clear_exts();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_exts() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_exts();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      exts() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_exts();
+
+  // string ip = 3;
+  void clear_ip();
+  const std::string& ip() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_ip(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* ip);
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(const std::string& value);
+  std::string* _internal_mutable_ip();
+  public:
+
+  // int64 iid = 1;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // int64 token = 2;
+  void clear_token();
+  int64_t token() const;
+  void set_token(int64_t value);
+  private:
+  int64_t _internal_token() const;
+  void _internal_set_token(int64_t value);
+  public:
+
+  // int32 port = 4;
+  void clear_port();
+  int32_t port() const;
+  void set_port(int32_t value);
+  private:
+  int32_t _internal_port() const;
+  void _internal_set_port(int32_t value);
+  public:
+
+  // bool isrouter = 6;
+  void clear_isrouter();
+  bool isrouter() const;
+  void set_isrouter(bool value);
+  private:
+  bool _internal_isrouter() const;
+  void _internal_set_isrouter(bool value);
+  public:
+
+  // bool isonline = 7;
+  void clear_isonline();
+  bool isonline() const;
+  void set_isonline(bool value);
+  private:
+  bool _internal_isonline() const;
+  void _internal_set_isonline(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.ServerNode)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+      ServerNode_ExtsEntry_DoNotUse,
+      std::string, std::string,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> exts_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
+  int64_t iid_;
+  int64_t token_;
+  int32_t port_;
+  bool isrouter_;
+  bool isonline_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Erk_EurekaRegist_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_EurekaRegist_req) */ {
+ public:
+  inline Erk_EurekaRegist_req() : Erk_EurekaRegist_req(nullptr) {}
+  ~Erk_EurekaRegist_req() override;
+  explicit constexpr Erk_EurekaRegist_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Erk_EurekaRegist_req(const Erk_EurekaRegist_req& from);
+  Erk_EurekaRegist_req(Erk_EurekaRegist_req&& from) noexcept
+    : Erk_EurekaRegist_req() {
+    *this = ::std::move(from);
+  }
+
+  inline Erk_EurekaRegist_req& operator=(const Erk_EurekaRegist_req& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Erk_EurekaRegist_req& operator=(Erk_EurekaRegist_req&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Erk_EurekaRegist_req& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Erk_EurekaRegist_req* internal_default_instance() {
+    return reinterpret_cast<const Erk_EurekaRegist_req*>(
+               &_Erk_EurekaRegist_req_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(Erk_EurekaRegist_req& a, Erk_EurekaRegist_req& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Erk_EurekaRegist_req* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Erk_EurekaRegist_req* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Erk_EurekaRegist_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_EurekaRegist_req>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Erk_EurekaRegist_req& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Erk_EurekaRegist_req& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Erk_EurekaRegist_req* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Erk_EurekaRegist_req";
+  }
+  protected:
+  explicit Erk_EurekaRegist_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIpFieldNumber = 1,
+    kPortFieldNumber = 2,
+  };
+  // string ip = 1;
+  void clear_ip();
+  const std::string& ip() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_ip(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_ip();
+  PROTOBUF_NODISCARD std::string* release_ip();
+  void set_allocated_ip(std::string* ip);
+  private:
+  const std::string& _internal_ip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(const std::string& value);
+  std::string* _internal_mutable_ip();
+  public:
+
+  // int32 port = 2;
+  void clear_port();
+  int32_t port() const;
+  void set_port(int32_t value);
+  private:
+  int32_t _internal_port() const;
+  void _internal_set_port(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_EurekaRegist_req)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
+  int32_t port_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Erk_EurekaRegist_ack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_EurekaRegist_ack) */ {
+ public:
+  inline Erk_EurekaRegist_ack() : Erk_EurekaRegist_ack(nullptr) {}
+  ~Erk_EurekaRegist_ack() override;
+  explicit constexpr Erk_EurekaRegist_ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Erk_EurekaRegist_ack(const Erk_EurekaRegist_ack& from);
+  Erk_EurekaRegist_ack(Erk_EurekaRegist_ack&& from) noexcept
+    : Erk_EurekaRegist_ack() {
+    *this = ::std::move(from);
+  }
+
+  inline Erk_EurekaRegist_ack& operator=(const Erk_EurekaRegist_ack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Erk_EurekaRegist_ack& operator=(Erk_EurekaRegist_ack&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Erk_EurekaRegist_ack& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Erk_EurekaRegist_ack* internal_default_instance() {
+    return reinterpret_cast<const Erk_EurekaRegist_ack*>(
+               &_Erk_EurekaRegist_ack_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(Erk_EurekaRegist_ack& a, Erk_EurekaRegist_ack& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Erk_EurekaRegist_ack* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Erk_EurekaRegist_ack* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Erk_EurekaRegist_ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_EurekaRegist_ack>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Erk_EurekaRegist_ack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Erk_EurekaRegist_ack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Erk_EurekaRegist_ack* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Erk_EurekaRegist_ack";
+  }
+  protected:
+  explicit Erk_EurekaRegist_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMyiidFieldNumber = 2,
+    kMytokenFieldNumber = 3,
+    kEurekaSeedFieldNumber = 4,
+    kServiceSeedFieldNumber = 5,
+    kResultFieldNumber = 1,
+  };
+  // int64 myiid = 2;
+  void clear_myiid();
+  int64_t myiid() const;
+  void set_myiid(int64_t value);
+  private:
+  int64_t _internal_myiid() const;
+  void _internal_set_myiid(int64_t value);
+  public:
+
+  // int64 mytoken = 3;
+  void clear_mytoken();
+  int64_t mytoken() const;
+  void set_mytoken(int64_t value);
+  private:
+  int64_t _internal_mytoken() const;
+  void _internal_set_mytoken(int64_t value);
+  public:
+
+  // int64 eureka_seed = 4;
+  void clear_eureka_seed();
+  int64_t eureka_seed() const;
+  void set_eureka_seed(int64_t value);
+  private:
+  int64_t _internal_eureka_seed() const;
+  void _internal_set_eureka_seed(int64_t value);
+  public:
+
+  // int64 service_seed = 5;
+  void clear_service_seed();
+  int64_t service_seed() const;
+  void set_service_seed(int64_t value);
+  private:
+  int64_t _internal_service_seed() const;
+  void _internal_set_service_seed(int64_t value);
+  public:
+
+  // int32 result = 1;
+  void clear_result();
+  int32_t result() const;
+  void set_result(int32_t value);
+  private:
+  int32_t _internal_result() const;
+  void _internal_set_result(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_EurekaRegist_ack)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t myiid_;
+  int64_t mytoken_;
+  int64_t eureka_seed_;
+  int64_t service_seed_;
+  int32_t result_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -422,7 +1066,7 @@ class Erk_EurekaBind_req final :
                &_Erk_EurekaBind_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    5;
 
   friend void swap(Erk_EurekaBind_req& a, Erk_EurekaBind_req& b) {
     a.Swap(&b);
@@ -496,25 +1140,9 @@ class Erk_EurekaBind_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kIpFieldNumber = 3,
     kIidFieldNumber = 1,
     kTokenFieldNumber = 2,
-    kPortFieldNumber = 4,
   };
-  // string ip = 3;
-  void clear_ip();
-  const std::string& ip() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_ip(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_ip();
-  PROTOBUF_NODISCARD std::string* release_ip();
-  void set_allocated_ip(std::string* ip);
-  private:
-  const std::string& _internal_ip() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(const std::string& value);
-  std::string* _internal_mutable_ip();
-  public:
-
   // int64 iid = 1;
   void clear_iid();
   int64_t iid() const;
@@ -533,15 +1161,6 @@ class Erk_EurekaBind_req final :
   void _internal_set_token(int64_t value);
   public:
 
-  // int32 port = 4;
-  void clear_port();
-  int32_t port() const;
-  void set_port(int32_t value);
-  private:
-  int32_t _internal_port() const;
-  void _internal_set_port(int32_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:PRO.Erk_EurekaBind_req)
  private:
   class _Internal;
@@ -549,10 +1168,8 @@ class Erk_EurekaBind_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
   int64_t iid_;
   int64_t token_;
-  int32_t port_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -606,7 +1223,7 @@ class Erk_EurekaBind_ack final :
                &_Erk_EurekaBind_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    6;
 
   friend void swap(Erk_EurekaBind_ack& a, Erk_EurekaBind_ack& b) {
     a.Swap(&b);
@@ -752,7 +1369,7 @@ class Erk_EurekaUpdate_ntf final :
                &_Erk_EurekaUpdate_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    7;
 
   friend void swap(Erk_EurekaUpdate_ntf& a, Erk_EurekaUpdate_ntf& b) {
     a.Swap(&b);
@@ -828,7 +1445,9 @@ class Erk_EurekaUpdate_ntf final :
   enum : int {
     kOnlineFieldNumber = 2,
     kOfflineFieldNumber = 3,
-    kMyiidFieldNumber = 1,
+    kMasteriidFieldNumber = 4,
+    kEurekaSeedFieldNumber = 5,
+    kServiceSeedFieldNumber = 6,
   };
   // repeated .PRO.EurekaServerNode online = 2;
   int online_size() const;
@@ -870,13 +1489,31 @@ class Erk_EurekaUpdate_ntf final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
       mutable_offline();
 
-  // int64 myiid = 1;
-  void clear_myiid();
-  int64_t myiid() const;
-  void set_myiid(int64_t value);
+  // int64 masteriid = 4;
+  void clear_masteriid();
+  int64_t masteriid() const;
+  void set_masteriid(int64_t value);
   private:
-  int64_t _internal_myiid() const;
-  void _internal_set_myiid(int64_t value);
+  int64_t _internal_masteriid() const;
+  void _internal_set_masteriid(int64_t value);
+  public:
+
+  // int64 eureka_seed = 5;
+  void clear_eureka_seed();
+  int64_t eureka_seed() const;
+  void set_eureka_seed(int64_t value);
+  private:
+  int64_t _internal_eureka_seed() const;
+  void _internal_set_eureka_seed(int64_t value);
+  public:
+
+  // int64 service_seed = 6;
+  void clear_service_seed();
+  int64_t service_seed() const;
+  void set_service_seed(int64_t value);
+  private:
+  int64_t _internal_service_seed() const;
+  void _internal_set_service_seed(int64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:PRO.Erk_EurekaUpdate_ntf)
@@ -889,30 +1526,32 @@ class Erk_EurekaUpdate_ntf final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::EurekaServerNode > online_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > offline_;
   mutable std::atomic<int> _offline_cached_byte_size_;
-  int64_t myiid_;
+  int64_t masteriid_;
+  int64_t eureka_seed_;
+  int64_t service_seed_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Erk_Eureka_sync final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_Eureka_sync) */ {
+class Erk_MasterChange_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_MasterChange_ntf) */ {
  public:
-  inline Erk_Eureka_sync() : Erk_Eureka_sync(nullptr) {}
-  ~Erk_Eureka_sync() override;
-  explicit constexpr Erk_Eureka_sync(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Erk_MasterChange_ntf() : Erk_MasterChange_ntf(nullptr) {}
+  ~Erk_MasterChange_ntf() override;
+  explicit constexpr Erk_MasterChange_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Erk_Eureka_sync(const Erk_Eureka_sync& from);
-  Erk_Eureka_sync(Erk_Eureka_sync&& from) noexcept
-    : Erk_Eureka_sync() {
+  Erk_MasterChange_ntf(const Erk_MasterChange_ntf& from);
+  Erk_MasterChange_ntf(Erk_MasterChange_ntf&& from) noexcept
+    : Erk_MasterChange_ntf() {
     *this = ::std::move(from);
   }
 
-  inline Erk_Eureka_sync& operator=(const Erk_Eureka_sync& from) {
+  inline Erk_MasterChange_ntf& operator=(const Erk_MasterChange_ntf& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Erk_Eureka_sync& operator=(Erk_Eureka_sync&& from) noexcept {
+  inline Erk_MasterChange_ntf& operator=(Erk_MasterChange_ntf&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -935,20 +1574,20 @@ class Erk_Eureka_sync final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Erk_Eureka_sync& default_instance() {
+  static const Erk_MasterChange_ntf& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Erk_Eureka_sync* internal_default_instance() {
-    return reinterpret_cast<const Erk_Eureka_sync*>(
-               &_Erk_Eureka_sync_default_instance_);
+  static inline const Erk_MasterChange_ntf* internal_default_instance() {
+    return reinterpret_cast<const Erk_MasterChange_ntf*>(
+               &_Erk_MasterChange_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    8;
 
-  friend void swap(Erk_Eureka_sync& a, Erk_Eureka_sync& b) {
+  friend void swap(Erk_MasterChange_ntf& a, Erk_MasterChange_ntf& b) {
     a.Swap(&b);
   }
-  inline void Swap(Erk_Eureka_sync* other) {
+  inline void Swap(Erk_MasterChange_ntf* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -961,7 +1600,7 @@ class Erk_Eureka_sync final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Erk_Eureka_sync* other) {
+  void UnsafeArenaSwap(Erk_MasterChange_ntf* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -969,13 +1608,13 @@ class Erk_Eureka_sync final :
 
   // implements Message ----------------------------------------------
 
-  Erk_Eureka_sync* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Erk_Eureka_sync>(arena);
+  Erk_MasterChange_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_MasterChange_ntf>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Erk_Eureka_sync& from);
+  void CopyFrom(const Erk_MasterChange_ntf& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Erk_Eureka_sync& from);
+  void MergeFrom(const Erk_MasterChange_ntf& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -992,15 +1631,15 @@ class Erk_Eureka_sync final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Erk_Eureka_sync* other);
+  void InternalSwap(Erk_MasterChange_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Erk_Eureka_sync";
+    return "PRO.Erk_MasterChange_ntf";
   }
   protected:
-  explicit Erk_Eureka_sync(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Erk_MasterChange_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1017,100 +1656,81 @@ class Erk_Eureka_sync final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kExistsFieldNumber = 2,
-    kMyiidFieldNumber = 1,
+    kNewmasterFieldNumber = 1,
+    kMastertokenFieldNumber = 2,
+    kEurekaSeedFieldNumber = 3,
+    kServiceSeedFieldNumber = 4,
   };
-  // repeated int64 exists = 2;
-  int exists_size() const;
+  // int64 newmaster = 1;
+  void clear_newmaster();
+  int64_t newmaster() const;
+  void set_newmaster(int64_t value);
   private:
-  int _internal_exists_size() const;
-  public:
-  void clear_exists();
-  private:
-  int64_t _internal_exists(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      _internal_exists() const;
-  void _internal_add_exists(int64_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      _internal_mutable_exists();
-  public:
-  int64_t exists(int index) const;
-  void set_exists(int index, int64_t value);
-  void add_exists(int64_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      exists() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      mutable_exists();
-
-  // int64 myiid = 1;
-  void clear_myiid();
-  int64_t myiid() const;
-  void set_myiid(int64_t value);
-  private:
-  int64_t _internal_myiid() const;
-  void _internal_set_myiid(int64_t value);
+  int64_t _internal_newmaster() const;
+  void _internal_set_newmaster(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.Erk_Eureka_sync)
+  // int64 mastertoken = 2;
+  void clear_mastertoken();
+  int64_t mastertoken() const;
+  void set_mastertoken(int64_t value);
+  private:
+  int64_t _internal_mastertoken() const;
+  void _internal_set_mastertoken(int64_t value);
+  public:
+
+  // int64 eureka_seed = 3;
+  void clear_eureka_seed();
+  int64_t eureka_seed() const;
+  void set_eureka_seed(int64_t value);
+  private:
+  int64_t _internal_eureka_seed() const;
+  void _internal_set_eureka_seed(int64_t value);
+  public:
+
+  // int64 service_seed = 4;
+  void clear_service_seed();
+  int64_t service_seed() const;
+  void set_service_seed(int64_t value);
+  private:
+  int64_t _internal_service_seed() const;
+  void _internal_set_service_seed(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_MasterChange_ntf)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > exists_;
-  mutable std::atomic<int> _exists_cached_byte_size_;
-  int64_t myiid_;
+  int64_t newmaster_;
+  int64_t mastertoken_;
+  int64_t eureka_seed_;
+  int64_t service_seed_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class ServerNode_ExtsEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ServerNode_ExtsEntry_DoNotUse, 
-    std::string, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ServerNode_ExtsEntry_DoNotUse, 
-    std::string, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
-  ServerNode_ExtsEntry_DoNotUse();
-  explicit constexpr ServerNode_ExtsEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit ServerNode_ExtsEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const ServerNode_ExtsEntry_DoNotUse& other);
-  static const ServerNode_ExtsEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ServerNode_ExtsEntry_DoNotUse*>(&_ServerNode_ExtsEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "PRO.ServerNode.ExtsEntry.key");
- }
-  static bool ValidateValue(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "PRO.ServerNode.ExtsEntry.value");
- }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-};
-
-// -------------------------------------------------------------------
-
-class ServerNode final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.ServerNode) */ {
+class Erk_ServiceSync_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceSync_ntf) */ {
  public:
-  inline ServerNode() : ServerNode(nullptr) {}
-  ~ServerNode() override;
-  explicit constexpr ServerNode(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Erk_ServiceSync_ntf() : Erk_ServiceSync_ntf(nullptr) {}
+  ~Erk_ServiceSync_ntf() override;
+  explicit constexpr Erk_ServiceSync_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ServerNode(const ServerNode& from);
-  ServerNode(ServerNode&& from) noexcept
-    : ServerNode() {
+  Erk_ServiceSync_ntf(const Erk_ServiceSync_ntf& from);
+  Erk_ServiceSync_ntf(Erk_ServiceSync_ntf&& from) noexcept
+    : Erk_ServiceSync_ntf() {
     *this = ::std::move(from);
   }
 
-  inline ServerNode& operator=(const ServerNode& from) {
+  inline Erk_ServiceSync_ntf& operator=(const Erk_ServiceSync_ntf& from) {
     CopyFrom(from);
     return *this;
   }
-  inline ServerNode& operator=(ServerNode&& from) noexcept {
+  inline Erk_ServiceSync_ntf& operator=(Erk_ServiceSync_ntf&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1133,20 +1753,20 @@ class ServerNode final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const ServerNode& default_instance() {
+  static const Erk_ServiceSync_ntf& default_instance() {
     return *internal_default_instance();
   }
-  static inline const ServerNode* internal_default_instance() {
-    return reinterpret_cast<const ServerNode*>(
-               &_ServerNode_default_instance_);
+  static inline const Erk_ServiceSync_ntf* internal_default_instance() {
+    return reinterpret_cast<const Erk_ServiceSync_ntf*>(
+               &_Erk_ServiceSync_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    9;
 
-  friend void swap(ServerNode& a, ServerNode& b) {
+  friend void swap(Erk_ServiceSync_ntf& a, Erk_ServiceSync_ntf& b) {
     a.Swap(&b);
   }
-  inline void Swap(ServerNode* other) {
+  inline void Swap(Erk_ServiceSync_ntf* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1159,7 +1779,7 @@ class ServerNode final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(ServerNode* other) {
+  void UnsafeArenaSwap(Erk_ServiceSync_ntf* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1167,13 +1787,13 @@ class ServerNode final :
 
   // implements Message ----------------------------------------------
 
-  ServerNode* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ServerNode>(arena);
+  Erk_ServiceSync_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_ServiceSync_ntf>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ServerNode& from);
+  void CopyFrom(const Erk_ServiceSync_ntf& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const ServerNode& from);
+  void MergeFrom(const Erk_ServiceSync_ntf& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1190,15 +1810,15 @@ class ServerNode final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(ServerNode* other);
+  void InternalSwap(Erk_ServiceSync_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.ServerNode";
+    return "PRO.Erk_ServiceSync_ntf";
   }
   protected:
-  explicit ServerNode(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Erk_ServiceSync_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1212,90 +1832,84 @@ class ServerNode final :
 
   // nested types ----------------------------------------------------
 
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kExtsFieldNumber = 5,
-    kIpFieldNumber = 3,
-    kIidFieldNumber = 1,
-    kTokenFieldNumber = 2,
-    kPortFieldNumber = 4,
+    kNewsvrsFieldNumber = 3,
+    kOfflineFieldNumber = 4,
+    kMasteriidFieldNumber = 1,
+    kFullsvrsFieldNumber = 2,
   };
-  // map<string, string> exts = 5;
-  int exts_size() const;
+  // repeated .PRO.ServerNode newsvrs = 3;
+  int newsvrs_size() const;
   private:
-  int _internal_exts_size() const;
+  int _internal_newsvrs_size() const;
   public:
-  void clear_exts();
+  void clear_newsvrs();
+  ::PRO::ServerNode* mutable_newsvrs(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >*
+      mutable_newsvrs();
   private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      _internal_exts() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      _internal_mutable_exts();
+  const ::PRO::ServerNode& _internal_newsvrs(int index) const;
+  ::PRO::ServerNode* _internal_add_newsvrs();
   public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      exts() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      mutable_exts();
+  const ::PRO::ServerNode& newsvrs(int index) const;
+  ::PRO::ServerNode* add_newsvrs();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >&
+      newsvrs() const;
 
-  // string ip = 3;
-  void clear_ip();
-  const std::string& ip() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_ip(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_ip();
-  PROTOBUF_NODISCARD std::string* release_ip();
-  void set_allocated_ip(std::string* ip);
+  // repeated int64 offline = 4;
+  int offline_size() const;
   private:
-  const std::string& _internal_ip() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_ip(const std::string& value);
-  std::string* _internal_mutable_ip();
+  int _internal_offline_size() const;
   public:
-
-  // int64 iid = 1;
-  void clear_iid();
-  int64_t iid() const;
-  void set_iid(int64_t value);
+  void clear_offline();
   private:
-  int64_t _internal_iid() const;
-  void _internal_set_iid(int64_t value);
+  int64_t _internal_offline(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+      _internal_offline() const;
+  void _internal_add_offline(int64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+      _internal_mutable_offline();
   public:
+  int64_t offline(int index) const;
+  void set_offline(int index, int64_t value);
+  void add_offline(int64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+      offline() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+      mutable_offline();
 
-  // int64 token = 2;
-  void clear_token();
-  int64_t token() const;
-  void set_token(int64_t value);
+  // int64 masteriid = 1;
+  void clear_masteriid();
+  int64_t masteriid() const;
+  void set_masteriid(int64_t value);
   private:
-  int64_t _internal_token() const;
-  void _internal_set_token(int64_t value);
-  public:
-
-  // int32 port = 4;
-  void clear_port();
-  int32_t port() const;
-  void set_port(int32_t value);
-  private:
-  int32_t _internal_port() const;
-  void _internal_set_port(int32_t value);
+  int64_t _internal_masteriid() const;
+  void _internal_set_masteriid(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.ServerNode)
+  // bool fullsvrs = 2;
+  void clear_fullsvrs();
+  bool fullsvrs() const;
+  void set_fullsvrs(bool value);
+  private:
+  bool _internal_fullsvrs() const;
+  void _internal_set_fullsvrs(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceSync_ntf)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-      ServerNode_ExtsEntry_DoNotUse,
-      std::string, std::string,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> exts_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
-  int64_t iid_;
-  int64_t token_;
-  int32_t port_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode > newsvrs_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > offline_;
+  mutable std::atomic<int> _offline_cached_byte_size_;
+  int64_t masteriid_;
+  bool fullsvrs_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -1376,7 +1990,7 @@ class Erk_ServiceRegist_req final :
                &_Erk_ServiceRegist_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    11;
 
   friend void swap(Erk_ServiceRegist_req& a, Erk_ServiceRegist_req& b) {
     a.Swap(&b);
@@ -1455,6 +2069,8 @@ class Erk_ServiceRegist_req final :
     kIpFieldNumber = 2,
     kSvrTypeFieldNumber = 1,
     kPortFieldNumber = 3,
+    kEurekatokenFieldNumber = 6,
+    kIsrouterFieldNumber = 5,
   };
   // map<string, string> exts = 4;
   int exts_size() const;
@@ -1505,6 +2121,24 @@ class Erk_ServiceRegist_req final :
   void _internal_set_port(int32_t value);
   public:
 
+  // int64 eurekatoken = 6;
+  void clear_eurekatoken();
+  int64_t eurekatoken() const;
+  void set_eurekatoken(int64_t value);
+  private:
+  int64_t _internal_eurekatoken() const;
+  void _internal_set_eurekatoken(int64_t value);
+  public:
+
+  // bool isrouter = 5;
+  void clear_isrouter();
+  bool isrouter() const;
+  void set_isrouter(bool value);
+  private:
+  bool _internal_isrouter() const;
+  void _internal_set_isrouter(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceRegist_req)
  private:
   class _Internal;
@@ -1520,6 +2154,8 @@ class Erk_ServiceRegist_req final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr ip_;
   int32_t svr_type_;
   int32_t port_;
+  int64_t eurekatoken_;
+  bool isrouter_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -1573,7 +2209,7 @@ class Erk_ServiceRegist_ack final :
                &_Erk_ServiceRegist_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    12;
 
   friend void swap(Erk_ServiceRegist_ack& a, Erk_ServiceRegist_ack& b) {
     a.Swap(&b);
@@ -1732,163 +2368,6 @@ class Erk_ServiceRegist_ack final :
 };
 // -------------------------------------------------------------------
 
-class Erk_ServiceRegist_Confirm final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceRegist_Confirm) */ {
- public:
-  inline Erk_ServiceRegist_Confirm() : Erk_ServiceRegist_Confirm(nullptr) {}
-  ~Erk_ServiceRegist_Confirm() override;
-  explicit constexpr Erk_ServiceRegist_Confirm(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Erk_ServiceRegist_Confirm(const Erk_ServiceRegist_Confirm& from);
-  Erk_ServiceRegist_Confirm(Erk_ServiceRegist_Confirm&& from) noexcept
-    : Erk_ServiceRegist_Confirm() {
-    *this = ::std::move(from);
-  }
-
-  inline Erk_ServiceRegist_Confirm& operator=(const Erk_ServiceRegist_Confirm& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Erk_ServiceRegist_Confirm& operator=(Erk_ServiceRegist_Confirm&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Erk_ServiceRegist_Confirm& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Erk_ServiceRegist_Confirm* internal_default_instance() {
-    return reinterpret_cast<const Erk_ServiceRegist_Confirm*>(
-               &_Erk_ServiceRegist_Confirm_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    10;
-
-  friend void swap(Erk_ServiceRegist_Confirm& a, Erk_ServiceRegist_Confirm& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Erk_ServiceRegist_Confirm* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Erk_ServiceRegist_Confirm* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Erk_ServiceRegist_Confirm* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Erk_ServiceRegist_Confirm>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Erk_ServiceRegist_Confirm& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Erk_ServiceRegist_Confirm& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Erk_ServiceRegist_Confirm* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Erk_ServiceRegist_Confirm";
-  }
-  protected:
-  explicit Erk_ServiceRegist_Confirm(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kIidFieldNumber = 1,
-    kTokenFieldNumber = 2,
-  };
-  // int64 iid = 1;
-  void clear_iid();
-  int64_t iid() const;
-  void set_iid(int64_t value);
-  private:
-  int64_t _internal_iid() const;
-  void _internal_set_iid(int64_t value);
-  public:
-
-  // int64 token = 2;
-  void clear_token();
-  int64_t token() const;
-  void set_token(int64_t value);
-  private:
-  int64_t _internal_token() const;
-  void _internal_set_token(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceRegist_Confirm)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int64_t iid_;
-  int64_t token_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_eureka_5finternal_2eproto;
-};
-// -------------------------------------------------------------------
-
 class Erk_ServiceBind_req final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceBind_req) */ {
  public:
@@ -1937,7 +2416,7 @@ class Erk_ServiceBind_req final :
                &_Erk_ServiceBind_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(Erk_ServiceBind_req& a, Erk_ServiceBind_req& b) {
     a.Swap(&b);
@@ -2013,6 +2492,7 @@ class Erk_ServiceBind_req final :
   enum : int {
     kIidFieldNumber = 2,
     kTokenFieldNumber = 3,
+    kEurekatokenFieldNumber = 4,
     kSvrTypeFieldNumber = 1,
   };
   // int64 iid = 2;
@@ -2033,6 +2513,15 @@ class Erk_ServiceBind_req final :
   void _internal_set_token(int64_t value);
   public:
 
+  // int64 eurekatoken = 4;
+  void clear_eurekatoken();
+  int64_t eurekatoken() const;
+  void set_eurekatoken(int64_t value);
+  private:
+  int64_t _internal_eurekatoken() const;
+  void _internal_set_eurekatoken(int64_t value);
+  public:
+
   // int32 svr_type = 1;
   void clear_svr_type();
   int32_t svr_type() const;
@@ -2051,6 +2540,7 @@ class Erk_ServiceBind_req final :
   typedef void DestructorSkippable_;
   int64_t iid_;
   int64_t token_;
+  int64_t eurekatoken_;
   int32_t svr_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
@@ -2105,7 +2595,7 @@ class Erk_ServiceBind_ack final :
                &_Erk_ServiceBind_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(Erk_ServiceBind_ack& a, Erk_ServiceBind_ack& b) {
     a.Swap(&b);
@@ -2179,8 +2669,36 @@ class Erk_ServiceBind_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kEurekaiidFieldNumber = 2,
+    kEurekatokenFieldNumber = 3,
     kResultFieldNumber = 1,
   };
+  // optional int64 eurekaiid = 2;
+  bool has_eurekaiid() const;
+  private:
+  bool _internal_has_eurekaiid() const;
+  public:
+  void clear_eurekaiid();
+  int64_t eurekaiid() const;
+  void set_eurekaiid(int64_t value);
+  private:
+  int64_t _internal_eurekaiid() const;
+  void _internal_set_eurekaiid(int64_t value);
+  public:
+
+  // optional int64 eurekatoken = 3;
+  bool has_eurekatoken() const;
+  private:
+  bool _internal_has_eurekatoken() const;
+  public:
+  void clear_eurekatoken();
+  int64_t eurekatoken() const;
+  void set_eurekatoken(int64_t value);
+  private:
+  int64_t _internal_eurekatoken() const;
+  void _internal_set_eurekatoken(int64_t value);
+  public:
+
   // int32 result = 1;
   void clear_result();
   int32_t result() const;
@@ -2197,8 +2715,11 @@ class Erk_ServiceBind_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int32_t result_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  int64_t eurekaiid_;
+  int64_t eurekatoken_;
+  int32_t result_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2251,7 +2772,7 @@ class Erk_ServiceSubscribe_req_svrinfo final :
                &_Erk_ServiceSubscribe_req_svrinfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    15;
 
   friend void swap(Erk_ServiceSubscribe_req_svrinfo& a, Erk_ServiceSubscribe_req_svrinfo& b) {
     a.Swap(&b);
@@ -2422,7 +2943,7 @@ class Erk_ServiceSubscribe_req final :
                &_Erk_ServiceSubscribe_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    16;
 
   friend void swap(Erk_ServiceSubscribe_req& a, Erk_ServiceSubscribe_req& b) {
     a.Swap(&b);
@@ -2498,13 +3019,11 @@ class Erk_ServiceSubscribe_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSvrTypeFieldNumber = 5,
-    kMyipFieldNumber = 3,
+    kSvrTypeFieldNumber = 3,
     kMyiidFieldNumber = 1,
     kMysvrtypeFieldNumber = 2,
-    kMyportFieldNumber = 4,
   };
-  // repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;
+  // repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;
   int svr_type_size() const;
   private:
   int _internal_svr_type_size() const;
@@ -2521,20 +3040,6 @@ class Erk_ServiceSubscribe_req final :
   ::PRO::Erk_ServiceSubscribe_req_svrinfo* add_svr_type();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Erk_ServiceSubscribe_req_svrinfo >&
       svr_type() const;
-
-  // string myip = 3;
-  void clear_myip();
-  const std::string& myip() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_myip(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_myip();
-  PROTOBUF_NODISCARD std::string* release_myip();
-  void set_allocated_myip(std::string* myip);
-  private:
-  const std::string& _internal_myip() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_myip(const std::string& value);
-  std::string* _internal_mutable_myip();
-  public:
 
   // int64 myiid = 1;
   void clear_myiid();
@@ -2554,15 +3059,6 @@ class Erk_ServiceSubscribe_req final :
   void _internal_set_mysvrtype(int32_t value);
   public:
 
-  // int32 myport = 4;
-  void clear_myport();
-  int32_t myport() const;
-  void set_myport(int32_t value);
-  private:
-  int32_t _internal_myport() const;
-  void _internal_set_myport(int32_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceSubscribe_req)
  private:
   class _Internal;
@@ -2571,33 +3067,31 @@ class Erk_ServiceSubscribe_req final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Erk_ServiceSubscribe_req_svrinfo > svr_type_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr myip_;
   int64_t myiid_;
   int32_t mysvrtype_;
-  int32_t myport_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Erk_ServiceSubscribe_ack final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceSubscribe_ack) */ {
+class Erk_ServiceSubscribe_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceSubscribe_ntf) */ {
  public:
-  inline Erk_ServiceSubscribe_ack() : Erk_ServiceSubscribe_ack(nullptr) {}
-  ~Erk_ServiceSubscribe_ack() override;
-  explicit constexpr Erk_ServiceSubscribe_ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Erk_ServiceSubscribe_ntf() : Erk_ServiceSubscribe_ntf(nullptr) {}
+  ~Erk_ServiceSubscribe_ntf() override;
+  explicit constexpr Erk_ServiceSubscribe_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Erk_ServiceSubscribe_ack(const Erk_ServiceSubscribe_ack& from);
-  Erk_ServiceSubscribe_ack(Erk_ServiceSubscribe_ack&& from) noexcept
-    : Erk_ServiceSubscribe_ack() {
+  Erk_ServiceSubscribe_ntf(const Erk_ServiceSubscribe_ntf& from);
+  Erk_ServiceSubscribe_ntf(Erk_ServiceSubscribe_ntf&& from) noexcept
+    : Erk_ServiceSubscribe_ntf() {
     *this = ::std::move(from);
   }
 
-  inline Erk_ServiceSubscribe_ack& operator=(const Erk_ServiceSubscribe_ack& from) {
+  inline Erk_ServiceSubscribe_ntf& operator=(const Erk_ServiceSubscribe_ntf& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Erk_ServiceSubscribe_ack& operator=(Erk_ServiceSubscribe_ack&& from) noexcept {
+  inline Erk_ServiceSubscribe_ntf& operator=(Erk_ServiceSubscribe_ntf&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -2620,20 +3114,20 @@ class Erk_ServiceSubscribe_ack final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Erk_ServiceSubscribe_ack& default_instance() {
+  static const Erk_ServiceSubscribe_ntf& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Erk_ServiceSubscribe_ack* internal_default_instance() {
-    return reinterpret_cast<const Erk_ServiceSubscribe_ack*>(
-               &_Erk_ServiceSubscribe_ack_default_instance_);
+  static inline const Erk_ServiceSubscribe_ntf* internal_default_instance() {
+    return reinterpret_cast<const Erk_ServiceSubscribe_ntf*>(
+               &_Erk_ServiceSubscribe_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    17;
 
-  friend void swap(Erk_ServiceSubscribe_ack& a, Erk_ServiceSubscribe_ack& b) {
+  friend void swap(Erk_ServiceSubscribe_ntf& a, Erk_ServiceSubscribe_ntf& b) {
     a.Swap(&b);
   }
-  inline void Swap(Erk_ServiceSubscribe_ack* other) {
+  inline void Swap(Erk_ServiceSubscribe_ntf* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -2646,7 +3140,7 @@ class Erk_ServiceSubscribe_ack final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Erk_ServiceSubscribe_ack* other) {
+  void UnsafeArenaSwap(Erk_ServiceSubscribe_ntf* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -2654,13 +3148,13 @@ class Erk_ServiceSubscribe_ack final :
 
   // implements Message ----------------------------------------------
 
-  Erk_ServiceSubscribe_ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Erk_ServiceSubscribe_ack>(arena);
+  Erk_ServiceSubscribe_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_ServiceSubscribe_ntf>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Erk_ServiceSubscribe_ack& from);
+  void CopyFrom(const Erk_ServiceSubscribe_ntf& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Erk_ServiceSubscribe_ack& from);
+  void MergeFrom(const Erk_ServiceSubscribe_ntf& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -2677,15 +3171,15 @@ class Erk_ServiceSubscribe_ack final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Erk_ServiceSubscribe_ack* other);
+  void InternalSwap(Erk_ServiceSubscribe_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Erk_ServiceSubscribe_ack";
+    return "PRO.Erk_ServiceSubscribe_ntf";
   }
   protected:
-  explicit Erk_ServiceSubscribe_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Erk_ServiceSubscribe_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -2702,50 +3196,50 @@ class Erk_ServiceSubscribe_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kOnlineFieldNumber = 3,
-    kOfflineFieldNumber = 4,
+    kNewsvrsFieldNumber = 3,
+    kOffsvrsFieldNumber = 4,
     kMyiidFieldNumber = 1,
     kSvrTypeFieldNumber = 2,
   };
-  // repeated .PRO.ServerNode online = 3;
-  int online_size() const;
+  // repeated .PRO.ServerNode newsvrs = 3;
+  int newsvrs_size() const;
   private:
-  int _internal_online_size() const;
+  int _internal_newsvrs_size() const;
   public:
-  void clear_online();
-  ::PRO::ServerNode* mutable_online(int index);
+  void clear_newsvrs();
+  ::PRO::ServerNode* mutable_newsvrs(int index);
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >*
-      mutable_online();
+      mutable_newsvrs();
   private:
-  const ::PRO::ServerNode& _internal_online(int index) const;
-  ::PRO::ServerNode* _internal_add_online();
+  const ::PRO::ServerNode& _internal_newsvrs(int index) const;
+  ::PRO::ServerNode* _internal_add_newsvrs();
   public:
-  const ::PRO::ServerNode& online(int index) const;
-  ::PRO::ServerNode* add_online();
+  const ::PRO::ServerNode& newsvrs(int index) const;
+  ::PRO::ServerNode* add_newsvrs();
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >&
-      online() const;
+      newsvrs() const;
 
-  // repeated int64 offline = 4;
-  int offline_size() const;
+  // repeated int64 offsvrs = 4;
+  int offsvrs_size() const;
   private:
-  int _internal_offline_size() const;
+  int _internal_offsvrs_size() const;
   public:
-  void clear_offline();
+  void clear_offsvrs();
   private:
-  int64_t _internal_offline(int index) const;
+  int64_t _internal_offsvrs(int index) const;
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      _internal_offline() const;
-  void _internal_add_offline(int64_t value);
+      _internal_offsvrs() const;
+  void _internal_add_offsvrs(int64_t value);
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      _internal_mutable_offline();
+      _internal_mutable_offsvrs();
   public:
-  int64_t offline(int index) const;
-  void set_offline(int index, int64_t value);
-  void add_offline(int64_t value);
+  int64_t offsvrs(int index) const;
+  void set_offsvrs(int index, int64_t value);
+  void add_offsvrs(int64_t value);
   const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-      offline() const;
+      offsvrs() const;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-      mutable_offline();
+      mutable_offsvrs();
 
   // int64 myiid = 1;
   void clear_myiid();
@@ -2765,18 +3259,539 @@ class Erk_ServiceSubscribe_ack final :
   void _internal_set_svr_type(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceSubscribe_ack)
+  // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceSubscribe_ntf)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode > online_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > offline_;
-  mutable std::atomic<int> _offline_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode > newsvrs_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > offsvrs_;
+  mutable std::atomic<int> _offsvrs_cached_byte_size_;
   int64_t myiid_;
   int32_t svr_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Erk_RouterSubscribe_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_RouterSubscribe_req) */ {
+ public:
+  inline Erk_RouterSubscribe_req() : Erk_RouterSubscribe_req(nullptr) {}
+  ~Erk_RouterSubscribe_req() override;
+  explicit constexpr Erk_RouterSubscribe_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Erk_RouterSubscribe_req(const Erk_RouterSubscribe_req& from);
+  Erk_RouterSubscribe_req(Erk_RouterSubscribe_req&& from) noexcept
+    : Erk_RouterSubscribe_req() {
+    *this = ::std::move(from);
+  }
+
+  inline Erk_RouterSubscribe_req& operator=(const Erk_RouterSubscribe_req& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Erk_RouterSubscribe_req& operator=(Erk_RouterSubscribe_req&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Erk_RouterSubscribe_req& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Erk_RouterSubscribe_req* internal_default_instance() {
+    return reinterpret_cast<const Erk_RouterSubscribe_req*>(
+               &_Erk_RouterSubscribe_req_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  friend void swap(Erk_RouterSubscribe_req& a, Erk_RouterSubscribe_req& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Erk_RouterSubscribe_req* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Erk_RouterSubscribe_req* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Erk_RouterSubscribe_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_RouterSubscribe_req>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Erk_RouterSubscribe_req& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Erk_RouterSubscribe_req& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Erk_RouterSubscribe_req* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Erk_RouterSubscribe_req";
+  }
+  protected:
+  explicit Erk_RouterSubscribe_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSvrTypesFieldNumber = 3,
+    kMyiidFieldNumber = 1,
+    kMysvrtypeFieldNumber = 2,
+  };
+  // repeated int32 svr_types = 3;
+  int svr_types_size() const;
+  private:
+  int _internal_svr_types_size() const;
+  public:
+  void clear_svr_types();
+  private:
+  int32_t _internal_svr_types(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      _internal_svr_types() const;
+  void _internal_add_svr_types(int32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      _internal_mutable_svr_types();
+  public:
+  int32_t svr_types(int index) const;
+  void set_svr_types(int index, int32_t value);
+  void add_svr_types(int32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      svr_types() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      mutable_svr_types();
+
+  // int64 myiid = 1;
+  void clear_myiid();
+  int64_t myiid() const;
+  void set_myiid(int64_t value);
+  private:
+  int64_t _internal_myiid() const;
+  void _internal_set_myiid(int64_t value);
+  public:
+
+  // int32 mysvrtype = 2;
+  void clear_mysvrtype();
+  int32_t mysvrtype() const;
+  void set_mysvrtype(int32_t value);
+  private:
+  int32_t _internal_mysvrtype() const;
+  void _internal_set_mysvrtype(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_RouterSubscribe_req)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > svr_types_;
+  mutable std::atomic<int> _svr_types_cached_byte_size_;
+  int64_t myiid_;
+  int32_t mysvrtype_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Erk_RouterSubscribe_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_RouterSubscribe_ntf) */ {
+ public:
+  inline Erk_RouterSubscribe_ntf() : Erk_RouterSubscribe_ntf(nullptr) {}
+  ~Erk_RouterSubscribe_ntf() override;
+  explicit constexpr Erk_RouterSubscribe_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Erk_RouterSubscribe_ntf(const Erk_RouterSubscribe_ntf& from);
+  Erk_RouterSubscribe_ntf(Erk_RouterSubscribe_ntf&& from) noexcept
+    : Erk_RouterSubscribe_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline Erk_RouterSubscribe_ntf& operator=(const Erk_RouterSubscribe_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Erk_RouterSubscribe_ntf& operator=(Erk_RouterSubscribe_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Erk_RouterSubscribe_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Erk_RouterSubscribe_ntf* internal_default_instance() {
+    return reinterpret_cast<const Erk_RouterSubscribe_ntf*>(
+               &_Erk_RouterSubscribe_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  friend void swap(Erk_RouterSubscribe_ntf& a, Erk_RouterSubscribe_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Erk_RouterSubscribe_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Erk_RouterSubscribe_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Erk_RouterSubscribe_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_RouterSubscribe_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Erk_RouterSubscribe_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Erk_RouterSubscribe_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Erk_RouterSubscribe_ntf* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Erk_RouterSubscribe_ntf";
+  }
+  protected:
+  explicit Erk_RouterSubscribe_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSvriidsFieldNumber = 3,
+    kMyiidFieldNumber = 1,
+    kSvrTypeFieldNumber = 2,
+  };
+  // repeated int64 svriids = 3;
+  int svriids_size() const;
+  private:
+  int _internal_svriids_size() const;
+  public:
+  void clear_svriids();
+  private:
+  int64_t _internal_svriids(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+      _internal_svriids() const;
+  void _internal_add_svriids(int64_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+      _internal_mutable_svriids();
+  public:
+  int64_t svriids(int index) const;
+  void set_svriids(int index, int64_t value);
+  void add_svriids(int64_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+      svriids() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+      mutable_svriids();
+
+  // int64 myiid = 1;
+  void clear_myiid();
+  int64_t myiid() const;
+  void set_myiid(int64_t value);
+  private:
+  int64_t _internal_myiid() const;
+  void _internal_set_myiid(int64_t value);
+  public:
+
+  // int32 svr_type = 2;
+  void clear_svr_type();
+  int32_t svr_type() const;
+  void set_svr_type(int32_t value);
+  private:
+  int32_t _internal_svr_type() const;
+  void _internal_set_svr_type(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_RouterSubscribe_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > svriids_;
+  mutable std::atomic<int> _svriids_cached_byte_size_;
+  int64_t myiid_;
+  int32_t svr_type_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Erk_RouterOnline_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_RouterOnline_req) */ {
+ public:
+  inline Erk_RouterOnline_req() : Erk_RouterOnline_req(nullptr) {}
+  ~Erk_RouterOnline_req() override;
+  explicit constexpr Erk_RouterOnline_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Erk_RouterOnline_req(const Erk_RouterOnline_req& from);
+  Erk_RouterOnline_req(Erk_RouterOnline_req&& from) noexcept
+    : Erk_RouterOnline_req() {
+    *this = ::std::move(from);
+  }
+
+  inline Erk_RouterOnline_req& operator=(const Erk_RouterOnline_req& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Erk_RouterOnline_req& operator=(Erk_RouterOnline_req&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Erk_RouterOnline_req& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Erk_RouterOnline_req* internal_default_instance() {
+    return reinterpret_cast<const Erk_RouterOnline_req*>(
+               &_Erk_RouterOnline_req_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  friend void swap(Erk_RouterOnline_req& a, Erk_RouterOnline_req& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Erk_RouterOnline_req* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Erk_RouterOnline_req* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Erk_RouterOnline_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Erk_RouterOnline_req>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Erk_RouterOnline_req& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Erk_RouterOnline_req& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Erk_RouterOnline_req* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Erk_RouterOnline_req";
+  }
+  protected:
+  explicit Erk_RouterOnline_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMyiidFieldNumber = 1,
+    kMysvrtypeFieldNumber = 2,
+  };
+  // int64 myiid = 1;
+  void clear_myiid();
+  int64_t myiid() const;
+  void set_myiid(int64_t value);
+  private:
+  int64_t _internal_myiid() const;
+  void _internal_set_myiid(int64_t value);
+  public:
+
+  // int32 mysvrtype = 2;
+  void clear_mysvrtype();
+  int32_t mysvrtype() const;
+  void set_mysvrtype(int32_t value);
+  private:
+  int32_t _internal_mysvrtype() const;
+  void _internal_set_mysvrtype(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Erk_RouterOnline_req)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t myiid_;
+  int32_t mysvrtype_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -2830,7 +3845,7 @@ class Erk_ServiceShutdown_ntf final :
                &_Erk_ServiceShutdown_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    21;
 
   friend void swap(Erk_ServiceShutdown_ntf& a, Erk_ServiceShutdown_ntf& b) {
     a.Swap(&b);
@@ -2904,16 +3919,16 @@ class Erk_ServiceShutdown_ntf final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kServiceFieldNumber = 2,
+    kSvriidFieldNumber = 2,
     kSvrTypeFieldNumber = 1,
   };
-  // int64 service = 2;
-  void clear_service();
-  int64_t service() const;
-  void set_service(int64_t value);
+  // int64 svriid = 2;
+  void clear_svriid();
+  int64_t svriid() const;
+  void set_svriid(int64_t value);
   private:
-  int64_t _internal_service() const;
-  void _internal_set_service(int64_t value);
+  int64_t _internal_svriid() const;
+  void _internal_set_svriid(int64_t value);
   public:
 
   // int32 svr_type = 1;
@@ -2932,7 +3947,7 @@ class Erk_ServiceShutdown_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t service_;
+  int64_t svriid_;
   int32_t svr_type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
@@ -2986,7 +4001,7 @@ class Svr_LiveTick_ntf final :
                &_Svr_LiveTick_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    22;
 
   friend void swap(Svr_LiveTick_ntf& a, Svr_LiveTick_ntf& b) {
     a.Swap(&b);
@@ -3052,6 +4067,163 @@ class Svr_LiveTick_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Svr_RouterOnline_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Svr_RouterOnline_ntf) */ {
+ public:
+  inline Svr_RouterOnline_ntf() : Svr_RouterOnline_ntf(nullptr) {}
+  ~Svr_RouterOnline_ntf() override;
+  explicit constexpr Svr_RouterOnline_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Svr_RouterOnline_ntf(const Svr_RouterOnline_ntf& from);
+  Svr_RouterOnline_ntf(Svr_RouterOnline_ntf&& from) noexcept
+    : Svr_RouterOnline_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline Svr_RouterOnline_ntf& operator=(const Svr_RouterOnline_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Svr_RouterOnline_ntf& operator=(Svr_RouterOnline_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Svr_RouterOnline_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Svr_RouterOnline_ntf* internal_default_instance() {
+    return reinterpret_cast<const Svr_RouterOnline_ntf*>(
+               &_Svr_RouterOnline_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    23;
+
+  friend void swap(Svr_RouterOnline_ntf& a, Svr_RouterOnline_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Svr_RouterOnline_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Svr_RouterOnline_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Svr_RouterOnline_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Svr_RouterOnline_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Svr_RouterOnline_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Svr_RouterOnline_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Svr_RouterOnline_ntf* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Svr_RouterOnline_ntf";
+  }
+  protected:
+  explicit Svr_RouterOnline_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRouteriidFieldNumber = 1,
+    kRoutertypeFieldNumber = 2,
+  };
+  // int64 routeriid = 1;
+  void clear_routeriid();
+  int64_t routeriid() const;
+  void set_routeriid(int64_t value);
+  private:
+  int64_t _internal_routeriid() const;
+  void _internal_set_routeriid(int64_t value);
+  public:
+
+  // int32 routertype = 2;
+  void clear_routertype();
+  int32_t routertype() const;
+  void set_routertype(int32_t value);
+  private:
+  int32_t _internal_routertype() const;
+  void _internal_set_routertype(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Svr_RouterOnline_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t routeriid_;
+  int32_t routertype_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -3132,7 +4304,7 @@ class Svr_ServiceBindService_req final :
                &_Svr_ServiceBindService_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    25;
 
   friend void swap(Svr_ServiceBindService_req& a, Svr_ServiceBindService_req& b) {
     a.Swap(&b);
@@ -3346,7 +4518,7 @@ class Svr_ServiceBindService_ack final :
                &_Svr_ServiceBindService_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    26;
 
   friend void swap(Svr_ServiceBindService_ack& a, Svr_ServiceBindService_ack& b) {
     a.Swap(&b);
@@ -3597,325 +4769,24 @@ inline void EurekaServerNode::set_port(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.EurekaServerNode.port)
 }
 
-// -------------------------------------------------------------------
-
-// Erk_EurekaBind_req
-
-// int64 iid = 1;
-inline void Erk_EurekaBind_req::clear_iid() {
-  iid_ = int64_t{0};
+// bool ismaster = 5;
+inline void EurekaServerNode::clear_ismaster() {
+  ismaster_ = false;
 }
-inline int64_t Erk_EurekaBind_req::_internal_iid() const {
-  return iid_;
+inline bool EurekaServerNode::_internal_ismaster() const {
+  return ismaster_;
 }
-inline int64_t Erk_EurekaBind_req::iid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.iid)
-  return _internal_iid();
+inline bool EurekaServerNode::ismaster() const {
+  // @@protoc_insertion_point(field_get:PRO.EurekaServerNode.ismaster)
+  return _internal_ismaster();
 }
-inline void Erk_EurekaBind_req::_internal_set_iid(int64_t value) {
+inline void EurekaServerNode::_internal_set_ismaster(bool value) {
   
-  iid_ = value;
-}
-inline void Erk_EurekaBind_req::set_iid(int64_t value) {
-  _internal_set_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.iid)
-}
-
-// int64 token = 2;
-inline void Erk_EurekaBind_req::clear_token() {
-  token_ = int64_t{0};
-}
-inline int64_t Erk_EurekaBind_req::_internal_token() const {
-  return token_;
-}
-inline int64_t Erk_EurekaBind_req::token() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.token)
-  return _internal_token();
-}
-inline void Erk_EurekaBind_req::_internal_set_token(int64_t value) {
-  
-  token_ = value;
-}
-inline void Erk_EurekaBind_req::set_token(int64_t value) {
-  _internal_set_token(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.token)
-}
-
-// string ip = 3;
-inline void Erk_EurekaBind_req::clear_ip() {
-  ip_.ClearToEmpty();
-}
-inline const std::string& Erk_EurekaBind_req::ip() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.ip)
-  return _internal_ip();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void Erk_EurekaBind_req::set_ip(ArgT0&& arg0, ArgT... args) {
- 
- ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.ip)
-}
-inline std::string* Erk_EurekaBind_req::mutable_ip() {
-  std::string* _s = _internal_mutable_ip();
-  // @@protoc_insertion_point(field_mutable:PRO.Erk_EurekaBind_req.ip)
-  return _s;
-}
-inline const std::string& Erk_EurekaBind_req::_internal_ip() const {
-  return ip_.Get();
-}
-inline void Erk_EurekaBind_req::_internal_set_ip(const std::string& value) {
-  
-  ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* Erk_EurekaBind_req::_internal_mutable_ip() {
-  
-  return ip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* Erk_EurekaBind_req::release_ip() {
-  // @@protoc_insertion_point(field_release:PRO.Erk_EurekaBind_req.ip)
-  return ip_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void Erk_EurekaBind_req::set_allocated_ip(std::string* ip) {
-  if (ip != nullptr) {
-    
-  } else {
-    
-  }
-  ip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ip,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (ip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    ip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PRO.Erk_EurekaBind_req.ip)
-}
-
-// int32 port = 4;
-inline void Erk_EurekaBind_req::clear_port() {
-  port_ = 0;
-}
-inline int32_t Erk_EurekaBind_req::_internal_port() const {
-  return port_;
-}
-inline int32_t Erk_EurekaBind_req::port() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.port)
-  return _internal_port();
-}
-inline void Erk_EurekaBind_req::_internal_set_port(int32_t value) {
-  
-  port_ = value;
-}
-inline void Erk_EurekaBind_req::set_port(int32_t value) {
-  _internal_set_port(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.port)
-}
-
-// -------------------------------------------------------------------
-
-// Erk_EurekaBind_ack
-
-// int32 result = 1;
-inline void Erk_EurekaBind_ack::clear_result() {
-  result_ = 0;
-}
-inline int32_t Erk_EurekaBind_ack::_internal_result() const {
-  return result_;
-}
-inline int32_t Erk_EurekaBind_ack::result() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_ack.result)
-  return _internal_result();
-}
-inline void Erk_EurekaBind_ack::_internal_set_result(int32_t value) {
-  
-  result_ = value;
-}
-inline void Erk_EurekaBind_ack::set_result(int32_t value) {
-  _internal_set_result(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_ack.result)
-}
-
-// -------------------------------------------------------------------
-
-// Erk_EurekaUpdate_ntf
-
-// int64 myiid = 1;
-inline void Erk_EurekaUpdate_ntf::clear_myiid() {
-  myiid_ = int64_t{0};
-}
-inline int64_t Erk_EurekaUpdate_ntf::_internal_myiid() const {
-  return myiid_;
-}
-inline int64_t Erk_EurekaUpdate_ntf::myiid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.myiid)
-  return _internal_myiid();
-}
-inline void Erk_EurekaUpdate_ntf::_internal_set_myiid(int64_t value) {
-  
-  myiid_ = value;
-}
-inline void Erk_EurekaUpdate_ntf::set_myiid(int64_t value) {
-  _internal_set_myiid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.myiid)
-}
-
-// repeated .PRO.EurekaServerNode online = 2;
-inline int Erk_EurekaUpdate_ntf::_internal_online_size() const {
-  return online_.size();
-}
-inline int Erk_EurekaUpdate_ntf::online_size() const {
-  return _internal_online_size();
-}
-inline void Erk_EurekaUpdate_ntf::clear_online() {
-  online_.Clear();
-}
-inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::mutable_online(int index) {
-  // @@protoc_insertion_point(field_mutable:PRO.Erk_EurekaUpdate_ntf.online)
-  return online_.Mutable(index);
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::EurekaServerNode >*
-Erk_EurekaUpdate_ntf::mutable_online() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_EurekaUpdate_ntf.online)
-  return &online_;
-}
-inline const ::PRO::EurekaServerNode& Erk_EurekaUpdate_ntf::_internal_online(int index) const {
-  return online_.Get(index);
-}
-inline const ::PRO::EurekaServerNode& Erk_EurekaUpdate_ntf::online(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.online)
-  return _internal_online(index);
-}
-inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::_internal_add_online() {
-  return online_.Add();
-}
-inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::add_online() {
-  ::PRO::EurekaServerNode* _add = _internal_add_online();
-  // @@protoc_insertion_point(field_add:PRO.Erk_EurekaUpdate_ntf.online)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::EurekaServerNode >&
-Erk_EurekaUpdate_ntf::online() const {
-  // @@protoc_insertion_point(field_list:PRO.Erk_EurekaUpdate_ntf.online)
-  return online_;
-}
-
-// repeated int64 offline = 3;
-inline int Erk_EurekaUpdate_ntf::_internal_offline_size() const {
-  return offline_.size();
-}
-inline int Erk_EurekaUpdate_ntf::offline_size() const {
-  return _internal_offline_size();
-}
-inline void Erk_EurekaUpdate_ntf::clear_offline() {
-  offline_.Clear();
-}
-inline int64_t Erk_EurekaUpdate_ntf::_internal_offline(int index) const {
-  return offline_.Get(index);
-}
-inline int64_t Erk_EurekaUpdate_ntf::offline(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.offline)
-  return _internal_offline(index);
-}
-inline void Erk_EurekaUpdate_ntf::set_offline(int index, int64_t value) {
-  offline_.Set(index, value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.offline)
-}
-inline void Erk_EurekaUpdate_ntf::_internal_add_offline(int64_t value) {
-  offline_.Add(value);
-}
-inline void Erk_EurekaUpdate_ntf::add_offline(int64_t value) {
-  _internal_add_offline(value);
-  // @@protoc_insertion_point(field_add:PRO.Erk_EurekaUpdate_ntf.offline)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_EurekaUpdate_ntf::_internal_offline() const {
-  return offline_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_EurekaUpdate_ntf::offline() const {
-  // @@protoc_insertion_point(field_list:PRO.Erk_EurekaUpdate_ntf.offline)
-  return _internal_offline();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_EurekaUpdate_ntf::_internal_mutable_offline() {
-  return &offline_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_EurekaUpdate_ntf::mutable_offline() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_EurekaUpdate_ntf.offline)
-  return _internal_mutable_offline();
-}
-
-// -------------------------------------------------------------------
-
-// Erk_Eureka_sync
-
-// int64 myiid = 1;
-inline void Erk_Eureka_sync::clear_myiid() {
-  myiid_ = int64_t{0};
-}
-inline int64_t Erk_Eureka_sync::_internal_myiid() const {
-  return myiid_;
-}
-inline int64_t Erk_Eureka_sync::myiid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_Eureka_sync.myiid)
-  return _internal_myiid();
-}
-inline void Erk_Eureka_sync::_internal_set_myiid(int64_t value) {
-  
-  myiid_ = value;
-}
-inline void Erk_Eureka_sync::set_myiid(int64_t value) {
-  _internal_set_myiid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_Eureka_sync.myiid)
-}
-
-// repeated int64 exists = 2;
-inline int Erk_Eureka_sync::_internal_exists_size() const {
-  return exists_.size();
-}
-inline int Erk_Eureka_sync::exists_size() const {
-  return _internal_exists_size();
-}
-inline void Erk_Eureka_sync::clear_exists() {
-  exists_.Clear();
-}
-inline int64_t Erk_Eureka_sync::_internal_exists(int index) const {
-  return exists_.Get(index);
-}
-inline int64_t Erk_Eureka_sync::exists(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_Eureka_sync.exists)
-  return _internal_exists(index);
-}
-inline void Erk_Eureka_sync::set_exists(int index, int64_t value) {
-  exists_.Set(index, value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_Eureka_sync.exists)
-}
-inline void Erk_Eureka_sync::_internal_add_exists(int64_t value) {
-  exists_.Add(value);
-}
-inline void Erk_Eureka_sync::add_exists(int64_t value) {
-  _internal_add_exists(value);
-  // @@protoc_insertion_point(field_add:PRO.Erk_Eureka_sync.exists)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_Eureka_sync::_internal_exists() const {
-  return exists_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_Eureka_sync::exists() const {
-  // @@protoc_insertion_point(field_list:PRO.Erk_Eureka_sync.exists)
-  return _internal_exists();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_Eureka_sync::_internal_mutable_exists() {
-  return &exists_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_Eureka_sync::mutable_exists() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_Eureka_sync.exists)
-  return _internal_mutable_exists();
+  ismaster_ = value;
+}
+inline void EurekaServerNode::set_ismaster(bool value) {
+  _internal_set_ismaster(value);
+  // @@protoc_insertion_point(field_set:PRO.EurekaServerNode.ismaster)
 }
 
 // -------------------------------------------------------------------
@@ -4064,6 +4935,659 @@ ServerNode::mutable_exts() {
   return _internal_mutable_exts();
 }
 
+// bool isrouter = 6;
+inline void ServerNode::clear_isrouter() {
+  isrouter_ = false;
+}
+inline bool ServerNode::_internal_isrouter() const {
+  return isrouter_;
+}
+inline bool ServerNode::isrouter() const {
+  // @@protoc_insertion_point(field_get:PRO.ServerNode.isrouter)
+  return _internal_isrouter();
+}
+inline void ServerNode::_internal_set_isrouter(bool value) {
+  
+  isrouter_ = value;
+}
+inline void ServerNode::set_isrouter(bool value) {
+  _internal_set_isrouter(value);
+  // @@protoc_insertion_point(field_set:PRO.ServerNode.isrouter)
+}
+
+// bool isonline = 7;
+inline void ServerNode::clear_isonline() {
+  isonline_ = false;
+}
+inline bool ServerNode::_internal_isonline() const {
+  return isonline_;
+}
+inline bool ServerNode::isonline() const {
+  // @@protoc_insertion_point(field_get:PRO.ServerNode.isonline)
+  return _internal_isonline();
+}
+inline void ServerNode::_internal_set_isonline(bool value) {
+  
+  isonline_ = value;
+}
+inline void ServerNode::set_isonline(bool value) {
+  _internal_set_isonline(value);
+  // @@protoc_insertion_point(field_set:PRO.ServerNode.isonline)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_EurekaRegist_req
+
+// string ip = 1;
+inline void Erk_EurekaRegist_req::clear_ip() {
+  ip_.ClearToEmpty();
+}
+inline const std::string& Erk_EurekaRegist_req::ip() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_req.ip)
+  return _internal_ip();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Erk_EurekaRegist_req::set_ip(ArgT0&& arg0, ArgT... args) {
+ 
+ ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_req.ip)
+}
+inline std::string* Erk_EurekaRegist_req::mutable_ip() {
+  std::string* _s = _internal_mutable_ip();
+  // @@protoc_insertion_point(field_mutable:PRO.Erk_EurekaRegist_req.ip)
+  return _s;
+}
+inline const std::string& Erk_EurekaRegist_req::_internal_ip() const {
+  return ip_.Get();
+}
+inline void Erk_EurekaRegist_req::_internal_set_ip(const std::string& value) {
+  
+  ip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Erk_EurekaRegist_req::_internal_mutable_ip() {
+  
+  return ip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Erk_EurekaRegist_req::release_ip() {
+  // @@protoc_insertion_point(field_release:PRO.Erk_EurekaRegist_req.ip)
+  return ip_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void Erk_EurekaRegist_req::set_allocated_ip(std::string* ip) {
+  if (ip != nullptr) {
+    
+  } else {
+    
+  }
+  ip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ip,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (ip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    ip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Erk_EurekaRegist_req.ip)
+}
+
+// int32 port = 2;
+inline void Erk_EurekaRegist_req::clear_port() {
+  port_ = 0;
+}
+inline int32_t Erk_EurekaRegist_req::_internal_port() const {
+  return port_;
+}
+inline int32_t Erk_EurekaRegist_req::port() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_req.port)
+  return _internal_port();
+}
+inline void Erk_EurekaRegist_req::_internal_set_port(int32_t value) {
+  
+  port_ = value;
+}
+inline void Erk_EurekaRegist_req::set_port(int32_t value) {
+  _internal_set_port(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_req.port)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_EurekaRegist_ack
+
+// int32 result = 1;
+inline void Erk_EurekaRegist_ack::clear_result() {
+  result_ = 0;
+}
+inline int32_t Erk_EurekaRegist_ack::_internal_result() const {
+  return result_;
+}
+inline int32_t Erk_EurekaRegist_ack::result() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_ack.result)
+  return _internal_result();
+}
+inline void Erk_EurekaRegist_ack::_internal_set_result(int32_t value) {
+  
+  result_ = value;
+}
+inline void Erk_EurekaRegist_ack::set_result(int32_t value) {
+  _internal_set_result(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_ack.result)
+}
+
+// int64 myiid = 2;
+inline void Erk_EurekaRegist_ack::clear_myiid() {
+  myiid_ = int64_t{0};
+}
+inline int64_t Erk_EurekaRegist_ack::_internal_myiid() const {
+  return myiid_;
+}
+inline int64_t Erk_EurekaRegist_ack::myiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_ack.myiid)
+  return _internal_myiid();
+}
+inline void Erk_EurekaRegist_ack::_internal_set_myiid(int64_t value) {
+  
+  myiid_ = value;
+}
+inline void Erk_EurekaRegist_ack::set_myiid(int64_t value) {
+  _internal_set_myiid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_ack.myiid)
+}
+
+// int64 mytoken = 3;
+inline void Erk_EurekaRegist_ack::clear_mytoken() {
+  mytoken_ = int64_t{0};
+}
+inline int64_t Erk_EurekaRegist_ack::_internal_mytoken() const {
+  return mytoken_;
+}
+inline int64_t Erk_EurekaRegist_ack::mytoken() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_ack.mytoken)
+  return _internal_mytoken();
+}
+inline void Erk_EurekaRegist_ack::_internal_set_mytoken(int64_t value) {
+  
+  mytoken_ = value;
+}
+inline void Erk_EurekaRegist_ack::set_mytoken(int64_t value) {
+  _internal_set_mytoken(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_ack.mytoken)
+}
+
+// int64 eureka_seed = 4;
+inline void Erk_EurekaRegist_ack::clear_eureka_seed() {
+  eureka_seed_ = int64_t{0};
+}
+inline int64_t Erk_EurekaRegist_ack::_internal_eureka_seed() const {
+  return eureka_seed_;
+}
+inline int64_t Erk_EurekaRegist_ack::eureka_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_ack.eureka_seed)
+  return _internal_eureka_seed();
+}
+inline void Erk_EurekaRegist_ack::_internal_set_eureka_seed(int64_t value) {
+  
+  eureka_seed_ = value;
+}
+inline void Erk_EurekaRegist_ack::set_eureka_seed(int64_t value) {
+  _internal_set_eureka_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_ack.eureka_seed)
+}
+
+// int64 service_seed = 5;
+inline void Erk_EurekaRegist_ack::clear_service_seed() {
+  service_seed_ = int64_t{0};
+}
+inline int64_t Erk_EurekaRegist_ack::_internal_service_seed() const {
+  return service_seed_;
+}
+inline int64_t Erk_EurekaRegist_ack::service_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaRegist_ack.service_seed)
+  return _internal_service_seed();
+}
+inline void Erk_EurekaRegist_ack::_internal_set_service_seed(int64_t value) {
+  
+  service_seed_ = value;
+}
+inline void Erk_EurekaRegist_ack::set_service_seed(int64_t value) {
+  _internal_set_service_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaRegist_ack.service_seed)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_EurekaBind_req
+
+// int64 iid = 1;
+inline void Erk_EurekaBind_req::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t Erk_EurekaBind_req::_internal_iid() const {
+  return iid_;
+}
+inline int64_t Erk_EurekaBind_req::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.iid)
+  return _internal_iid();
+}
+inline void Erk_EurekaBind_req::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void Erk_EurekaBind_req::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.iid)
+}
+
+// int64 token = 2;
+inline void Erk_EurekaBind_req::clear_token() {
+  token_ = int64_t{0};
+}
+inline int64_t Erk_EurekaBind_req::_internal_token() const {
+  return token_;
+}
+inline int64_t Erk_EurekaBind_req::token() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_req.token)
+  return _internal_token();
+}
+inline void Erk_EurekaBind_req::_internal_set_token(int64_t value) {
+  
+  token_ = value;
+}
+inline void Erk_EurekaBind_req::set_token(int64_t value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_req.token)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_EurekaBind_ack
+
+// int32 result = 1;
+inline void Erk_EurekaBind_ack::clear_result() {
+  result_ = 0;
+}
+inline int32_t Erk_EurekaBind_ack::_internal_result() const {
+  return result_;
+}
+inline int32_t Erk_EurekaBind_ack::result() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaBind_ack.result)
+  return _internal_result();
+}
+inline void Erk_EurekaBind_ack::_internal_set_result(int32_t value) {
+  
+  result_ = value;
+}
+inline void Erk_EurekaBind_ack::set_result(int32_t value) {
+  _internal_set_result(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaBind_ack.result)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_EurekaUpdate_ntf
+
+// repeated .PRO.EurekaServerNode online = 2;
+inline int Erk_EurekaUpdate_ntf::_internal_online_size() const {
+  return online_.size();
+}
+inline int Erk_EurekaUpdate_ntf::online_size() const {
+  return _internal_online_size();
+}
+inline void Erk_EurekaUpdate_ntf::clear_online() {
+  online_.Clear();
+}
+inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::mutable_online(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.Erk_EurekaUpdate_ntf.online)
+  return online_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::EurekaServerNode >*
+Erk_EurekaUpdate_ntf::mutable_online() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_EurekaUpdate_ntf.online)
+  return &online_;
+}
+inline const ::PRO::EurekaServerNode& Erk_EurekaUpdate_ntf::_internal_online(int index) const {
+  return online_.Get(index);
+}
+inline const ::PRO::EurekaServerNode& Erk_EurekaUpdate_ntf::online(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.online)
+  return _internal_online(index);
+}
+inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::_internal_add_online() {
+  return online_.Add();
+}
+inline ::PRO::EurekaServerNode* Erk_EurekaUpdate_ntf::add_online() {
+  ::PRO::EurekaServerNode* _add = _internal_add_online();
+  // @@protoc_insertion_point(field_add:PRO.Erk_EurekaUpdate_ntf.online)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::EurekaServerNode >&
+Erk_EurekaUpdate_ntf::online() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_EurekaUpdate_ntf.online)
+  return online_;
+}
+
+// repeated int64 offline = 3;
+inline int Erk_EurekaUpdate_ntf::_internal_offline_size() const {
+  return offline_.size();
+}
+inline int Erk_EurekaUpdate_ntf::offline_size() const {
+  return _internal_offline_size();
+}
+inline void Erk_EurekaUpdate_ntf::clear_offline() {
+  offline_.Clear();
+}
+inline int64_t Erk_EurekaUpdate_ntf::_internal_offline(int index) const {
+  return offline_.Get(index);
+}
+inline int64_t Erk_EurekaUpdate_ntf::offline(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.offline)
+  return _internal_offline(index);
+}
+inline void Erk_EurekaUpdate_ntf::set_offline(int index, int64_t value) {
+  offline_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.offline)
+}
+inline void Erk_EurekaUpdate_ntf::_internal_add_offline(int64_t value) {
+  offline_.Add(value);
+}
+inline void Erk_EurekaUpdate_ntf::add_offline(int64_t value) {
+  _internal_add_offline(value);
+  // @@protoc_insertion_point(field_add:PRO.Erk_EurekaUpdate_ntf.offline)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_EurekaUpdate_ntf::_internal_offline() const {
+  return offline_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_EurekaUpdate_ntf::offline() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_EurekaUpdate_ntf.offline)
+  return _internal_offline();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_EurekaUpdate_ntf::_internal_mutable_offline() {
+  return &offline_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_EurekaUpdate_ntf::mutable_offline() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_EurekaUpdate_ntf.offline)
+  return _internal_mutable_offline();
+}
+
+// int64 masteriid = 4;
+inline void Erk_EurekaUpdate_ntf::clear_masteriid() {
+  masteriid_ = int64_t{0};
+}
+inline int64_t Erk_EurekaUpdate_ntf::_internal_masteriid() const {
+  return masteriid_;
+}
+inline int64_t Erk_EurekaUpdate_ntf::masteriid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.masteriid)
+  return _internal_masteriid();
+}
+inline void Erk_EurekaUpdate_ntf::_internal_set_masteriid(int64_t value) {
+  
+  masteriid_ = value;
+}
+inline void Erk_EurekaUpdate_ntf::set_masteriid(int64_t value) {
+  _internal_set_masteriid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.masteriid)
+}
+
+// int64 eureka_seed = 5;
+inline void Erk_EurekaUpdate_ntf::clear_eureka_seed() {
+  eureka_seed_ = int64_t{0};
+}
+inline int64_t Erk_EurekaUpdate_ntf::_internal_eureka_seed() const {
+  return eureka_seed_;
+}
+inline int64_t Erk_EurekaUpdate_ntf::eureka_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.eureka_seed)
+  return _internal_eureka_seed();
+}
+inline void Erk_EurekaUpdate_ntf::_internal_set_eureka_seed(int64_t value) {
+  
+  eureka_seed_ = value;
+}
+inline void Erk_EurekaUpdate_ntf::set_eureka_seed(int64_t value) {
+  _internal_set_eureka_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.eureka_seed)
+}
+
+// int64 service_seed = 6;
+inline void Erk_EurekaUpdate_ntf::clear_service_seed() {
+  service_seed_ = int64_t{0};
+}
+inline int64_t Erk_EurekaUpdate_ntf::_internal_service_seed() const {
+  return service_seed_;
+}
+inline int64_t Erk_EurekaUpdate_ntf::service_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaUpdate_ntf.service_seed)
+  return _internal_service_seed();
+}
+inline void Erk_EurekaUpdate_ntf::_internal_set_service_seed(int64_t value) {
+  
+  service_seed_ = value;
+}
+inline void Erk_EurekaUpdate_ntf::set_service_seed(int64_t value) {
+  _internal_set_service_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaUpdate_ntf.service_seed)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_MasterChange_ntf
+
+// int64 newmaster = 1;
+inline void Erk_MasterChange_ntf::clear_newmaster() {
+  newmaster_ = int64_t{0};
+}
+inline int64_t Erk_MasterChange_ntf::_internal_newmaster() const {
+  return newmaster_;
+}
+inline int64_t Erk_MasterChange_ntf::newmaster() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.newmaster)
+  return _internal_newmaster();
+}
+inline void Erk_MasterChange_ntf::_internal_set_newmaster(int64_t value) {
+  
+  newmaster_ = value;
+}
+inline void Erk_MasterChange_ntf::set_newmaster(int64_t value) {
+  _internal_set_newmaster(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.newmaster)
+}
+
+// int64 mastertoken = 2;
+inline void Erk_MasterChange_ntf::clear_mastertoken() {
+  mastertoken_ = int64_t{0};
+}
+inline int64_t Erk_MasterChange_ntf::_internal_mastertoken() const {
+  return mastertoken_;
+}
+inline int64_t Erk_MasterChange_ntf::mastertoken() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.mastertoken)
+  return _internal_mastertoken();
+}
+inline void Erk_MasterChange_ntf::_internal_set_mastertoken(int64_t value) {
+  
+  mastertoken_ = value;
+}
+inline void Erk_MasterChange_ntf::set_mastertoken(int64_t value) {
+  _internal_set_mastertoken(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.mastertoken)
+}
+
+// int64 eureka_seed = 3;
+inline void Erk_MasterChange_ntf::clear_eureka_seed() {
+  eureka_seed_ = int64_t{0};
+}
+inline int64_t Erk_MasterChange_ntf::_internal_eureka_seed() const {
+  return eureka_seed_;
+}
+inline int64_t Erk_MasterChange_ntf::eureka_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.eureka_seed)
+  return _internal_eureka_seed();
+}
+inline void Erk_MasterChange_ntf::_internal_set_eureka_seed(int64_t value) {
+  
+  eureka_seed_ = value;
+}
+inline void Erk_MasterChange_ntf::set_eureka_seed(int64_t value) {
+  _internal_set_eureka_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.eureka_seed)
+}
+
+// int64 service_seed = 4;
+inline void Erk_MasterChange_ntf::clear_service_seed() {
+  service_seed_ = int64_t{0};
+}
+inline int64_t Erk_MasterChange_ntf::_internal_service_seed() const {
+  return service_seed_;
+}
+inline int64_t Erk_MasterChange_ntf::service_seed() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.service_seed)
+  return _internal_service_seed();
+}
+inline void Erk_MasterChange_ntf::_internal_set_service_seed(int64_t value) {
+  
+  service_seed_ = value;
+}
+inline void Erk_MasterChange_ntf::set_service_seed(int64_t value) {
+  _internal_set_service_seed(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.service_seed)
+}
+
+// -------------------------------------------------------------------
+
+// Erk_ServiceSync_ntf
+
+// int64 masteriid = 1;
+inline void Erk_ServiceSync_ntf::clear_masteriid() {
+  masteriid_ = int64_t{0};
+}
+inline int64_t Erk_ServiceSync_ntf::_internal_masteriid() const {
+  return masteriid_;
+}
+inline int64_t Erk_ServiceSync_ntf::masteriid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSync_ntf.masteriid)
+  return _internal_masteriid();
+}
+inline void Erk_ServiceSync_ntf::_internal_set_masteriid(int64_t value) {
+  
+  masteriid_ = value;
+}
+inline void Erk_ServiceSync_ntf::set_masteriid(int64_t value) {
+  _internal_set_masteriid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSync_ntf.masteriid)
+}
+
+// bool fullsvrs = 2;
+inline void Erk_ServiceSync_ntf::clear_fullsvrs() {
+  fullsvrs_ = false;
+}
+inline bool Erk_ServiceSync_ntf::_internal_fullsvrs() const {
+  return fullsvrs_;
+}
+inline bool Erk_ServiceSync_ntf::fullsvrs() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSync_ntf.fullsvrs)
+  return _internal_fullsvrs();
+}
+inline void Erk_ServiceSync_ntf::_internal_set_fullsvrs(bool value) {
+  
+  fullsvrs_ = value;
+}
+inline void Erk_ServiceSync_ntf::set_fullsvrs(bool value) {
+  _internal_set_fullsvrs(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSync_ntf.fullsvrs)
+}
+
+// repeated .PRO.ServerNode newsvrs = 3;
+inline int Erk_ServiceSync_ntf::_internal_newsvrs_size() const {
+  return newsvrs_.size();
+}
+inline int Erk_ServiceSync_ntf::newsvrs_size() const {
+  return _internal_newsvrs_size();
+}
+inline void Erk_ServiceSync_ntf::clear_newsvrs() {
+  newsvrs_.Clear();
+}
+inline ::PRO::ServerNode* Erk_ServiceSync_ntf::mutable_newsvrs(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.Erk_ServiceSync_ntf.newsvrs)
+  return newsvrs_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >*
+Erk_ServiceSync_ntf::mutable_newsvrs() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSync_ntf.newsvrs)
+  return &newsvrs_;
+}
+inline const ::PRO::ServerNode& Erk_ServiceSync_ntf::_internal_newsvrs(int index) const {
+  return newsvrs_.Get(index);
+}
+inline const ::PRO::ServerNode& Erk_ServiceSync_ntf::newsvrs(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSync_ntf.newsvrs)
+  return _internal_newsvrs(index);
+}
+inline ::PRO::ServerNode* Erk_ServiceSync_ntf::_internal_add_newsvrs() {
+  return newsvrs_.Add();
+}
+inline ::PRO::ServerNode* Erk_ServiceSync_ntf::add_newsvrs() {
+  ::PRO::ServerNode* _add = _internal_add_newsvrs();
+  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSync_ntf.newsvrs)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >&
+Erk_ServiceSync_ntf::newsvrs() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSync_ntf.newsvrs)
+  return newsvrs_;
+}
+
+// repeated int64 offline = 4;
+inline int Erk_ServiceSync_ntf::_internal_offline_size() const {
+  return offline_.size();
+}
+inline int Erk_ServiceSync_ntf::offline_size() const {
+  return _internal_offline_size();
+}
+inline void Erk_ServiceSync_ntf::clear_offline() {
+  offline_.Clear();
+}
+inline int64_t Erk_ServiceSync_ntf::_internal_offline(int index) const {
+  return offline_.Get(index);
+}
+inline int64_t Erk_ServiceSync_ntf::offline(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSync_ntf.offline)
+  return _internal_offline(index);
+}
+inline void Erk_ServiceSync_ntf::set_offline(int index, int64_t value) {
+  offline_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSync_ntf.offline)
+}
+inline void Erk_ServiceSync_ntf::_internal_add_offline(int64_t value) {
+  offline_.Add(value);
+}
+inline void Erk_ServiceSync_ntf::add_offline(int64_t value) {
+  _internal_add_offline(value);
+  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSync_ntf.offline)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_ServiceSync_ntf::_internal_offline() const {
+  return offline_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_ServiceSync_ntf::offline() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSync_ntf.offline)
+  return _internal_offline();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_ServiceSync_ntf::_internal_mutable_offline() {
+  return &offline_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_ServiceSync_ntf::mutable_offline() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSync_ntf.offline)
+  return _internal_mutable_offline();
+}
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -4188,6 +5712,46 @@ inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
 Erk_ServiceRegist_req::mutable_exts() {
   // @@protoc_insertion_point(field_mutable_map:PRO.Erk_ServiceRegist_req.exts)
   return _internal_mutable_exts();
+}
+
+// bool isrouter = 5;
+inline void Erk_ServiceRegist_req::clear_isrouter() {
+  isrouter_ = false;
+}
+inline bool Erk_ServiceRegist_req::_internal_isrouter() const {
+  return isrouter_;
+}
+inline bool Erk_ServiceRegist_req::isrouter() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceRegist_req.isrouter)
+  return _internal_isrouter();
+}
+inline void Erk_ServiceRegist_req::_internal_set_isrouter(bool value) {
+  
+  isrouter_ = value;
+}
+inline void Erk_ServiceRegist_req::set_isrouter(bool value) {
+  _internal_set_isrouter(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceRegist_req.isrouter)
+}
+
+// int64 eurekatoken = 6;
+inline void Erk_ServiceRegist_req::clear_eurekatoken() {
+  eurekatoken_ = int64_t{0};
+}
+inline int64_t Erk_ServiceRegist_req::_internal_eurekatoken() const {
+  return eurekatoken_;
+}
+inline int64_t Erk_ServiceRegist_req::eurekatoken() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceRegist_req.eurekatoken)
+  return _internal_eurekatoken();
+}
+inline void Erk_ServiceRegist_req::_internal_set_eurekatoken(int64_t value) {
+  
+  eurekatoken_ = value;
+}
+inline void Erk_ServiceRegist_req::set_eurekatoken(int64_t value) {
+  _internal_set_eurekatoken(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceRegist_req.eurekatoken)
 }
 
 // -------------------------------------------------------------------
@@ -4328,50 +5892,6 @@ inline void Erk_ServiceRegist_ack::set_eurekatoken(int64_t value) {
 
 // -------------------------------------------------------------------
 
-// Erk_ServiceRegist_Confirm
-
-// int64 iid = 1;
-inline void Erk_ServiceRegist_Confirm::clear_iid() {
-  iid_ = int64_t{0};
-}
-inline int64_t Erk_ServiceRegist_Confirm::_internal_iid() const {
-  return iid_;
-}
-inline int64_t Erk_ServiceRegist_Confirm::iid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceRegist_Confirm.iid)
-  return _internal_iid();
-}
-inline void Erk_ServiceRegist_Confirm::_internal_set_iid(int64_t value) {
-  
-  iid_ = value;
-}
-inline void Erk_ServiceRegist_Confirm::set_iid(int64_t value) {
-  _internal_set_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceRegist_Confirm.iid)
-}
-
-// int64 token = 2;
-inline void Erk_ServiceRegist_Confirm::clear_token() {
-  token_ = int64_t{0};
-}
-inline int64_t Erk_ServiceRegist_Confirm::_internal_token() const {
-  return token_;
-}
-inline int64_t Erk_ServiceRegist_Confirm::token() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceRegist_Confirm.token)
-  return _internal_token();
-}
-inline void Erk_ServiceRegist_Confirm::_internal_set_token(int64_t value) {
-  
-  token_ = value;
-}
-inline void Erk_ServiceRegist_Confirm::set_token(int64_t value) {
-  _internal_set_token(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceRegist_Confirm.token)
-}
-
-// -------------------------------------------------------------------
-
 // Erk_ServiceBind_req
 
 // int32 svr_type = 1;
@@ -4434,6 +5954,26 @@ inline void Erk_ServiceBind_req::set_token(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Erk_ServiceBind_req.token)
 }
 
+// int64 eurekatoken = 4;
+inline void Erk_ServiceBind_req::clear_eurekatoken() {
+  eurekatoken_ = int64_t{0};
+}
+inline int64_t Erk_ServiceBind_req::_internal_eurekatoken() const {
+  return eurekatoken_;
+}
+inline int64_t Erk_ServiceBind_req::eurekatoken() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceBind_req.eurekatoken)
+  return _internal_eurekatoken();
+}
+inline void Erk_ServiceBind_req::_internal_set_eurekatoken(int64_t value) {
+  
+  eurekatoken_ = value;
+}
+inline void Erk_ServiceBind_req::set_eurekatoken(int64_t value) {
+  _internal_set_eurekatoken(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceBind_req.eurekatoken)
+}
+
 // -------------------------------------------------------------------
 
 // Erk_ServiceBind_ack
@@ -4456,6 +5996,62 @@ inline void Erk_ServiceBind_ack::_internal_set_result(int32_t value) {
 inline void Erk_ServiceBind_ack::set_result(int32_t value) {
   _internal_set_result(value);
   // @@protoc_insertion_point(field_set:PRO.Erk_ServiceBind_ack.result)
+}
+
+// optional int64 eurekaiid = 2;
+inline bool Erk_ServiceBind_ack::_internal_has_eurekaiid() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool Erk_ServiceBind_ack::has_eurekaiid() const {
+  return _internal_has_eurekaiid();
+}
+inline void Erk_ServiceBind_ack::clear_eurekaiid() {
+  eurekaiid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline int64_t Erk_ServiceBind_ack::_internal_eurekaiid() const {
+  return eurekaiid_;
+}
+inline int64_t Erk_ServiceBind_ack::eurekaiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceBind_ack.eurekaiid)
+  return _internal_eurekaiid();
+}
+inline void Erk_ServiceBind_ack::_internal_set_eurekaiid(int64_t value) {
+  _has_bits_[0] |= 0x00000001u;
+  eurekaiid_ = value;
+}
+inline void Erk_ServiceBind_ack::set_eurekaiid(int64_t value) {
+  _internal_set_eurekaiid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceBind_ack.eurekaiid)
+}
+
+// optional int64 eurekatoken = 3;
+inline bool Erk_ServiceBind_ack::_internal_has_eurekatoken() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool Erk_ServiceBind_ack::has_eurekatoken() const {
+  return _internal_has_eurekatoken();
+}
+inline void Erk_ServiceBind_ack::clear_eurekatoken() {
+  eurekatoken_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline int64_t Erk_ServiceBind_ack::_internal_eurekatoken() const {
+  return eurekatoken_;
+}
+inline int64_t Erk_ServiceBind_ack::eurekatoken() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceBind_ack.eurekatoken)
+  return _internal_eurekatoken();
+}
+inline void Erk_ServiceBind_ack::_internal_set_eurekatoken(int64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  eurekatoken_ = value;
+}
+inline void Erk_ServiceBind_ack::set_eurekatoken(int64_t value) {
+  _internal_set_eurekatoken(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceBind_ack.eurekatoken)
 }
 
 // -------------------------------------------------------------------
@@ -4573,78 +6169,7 @@ inline void Erk_ServiceSubscribe_req::set_mysvrtype(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_req.mysvrtype)
 }
 
-// string myip = 3;
-inline void Erk_ServiceSubscribe_req::clear_myip() {
-  myip_.ClearToEmpty();
-}
-inline const std::string& Erk_ServiceSubscribe_req::myip() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_req.myip)
-  return _internal_myip();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void Erk_ServiceSubscribe_req::set_myip(ArgT0&& arg0, ArgT... args) {
- 
- myip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_req.myip)
-}
-inline std::string* Erk_ServiceSubscribe_req::mutable_myip() {
-  std::string* _s = _internal_mutable_myip();
-  // @@protoc_insertion_point(field_mutable:PRO.Erk_ServiceSubscribe_req.myip)
-  return _s;
-}
-inline const std::string& Erk_ServiceSubscribe_req::_internal_myip() const {
-  return myip_.Get();
-}
-inline void Erk_ServiceSubscribe_req::_internal_set_myip(const std::string& value) {
-  
-  myip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* Erk_ServiceSubscribe_req::_internal_mutable_myip() {
-  
-  return myip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* Erk_ServiceSubscribe_req::release_myip() {
-  // @@protoc_insertion_point(field_release:PRO.Erk_ServiceSubscribe_req.myip)
-  return myip_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void Erk_ServiceSubscribe_req::set_allocated_myip(std::string* myip) {
-  if (myip != nullptr) {
-    
-  } else {
-    
-  }
-  myip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), myip,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (myip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    myip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PRO.Erk_ServiceSubscribe_req.myip)
-}
-
-// int32 myport = 4;
-inline void Erk_ServiceSubscribe_req::clear_myport() {
-  myport_ = 0;
-}
-inline int32_t Erk_ServiceSubscribe_req::_internal_myport() const {
-  return myport_;
-}
-inline int32_t Erk_ServiceSubscribe_req::myport() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_req.myport)
-  return _internal_myport();
-}
-inline void Erk_ServiceSubscribe_req::_internal_set_myport(int32_t value) {
-  
-  myport_ = value;
-}
-inline void Erk_ServiceSubscribe_req::set_myport(int32_t value) {
-  _internal_set_myport(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_req.myport)
-}
-
-// repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;
+// repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;
 inline int Erk_ServiceSubscribe_req::_internal_svr_type_size() const {
   return svr_type_.size();
 }
@@ -4686,133 +6211,359 @@ Erk_ServiceSubscribe_req::svr_type() const {
 
 // -------------------------------------------------------------------
 
-// Erk_ServiceSubscribe_ack
+// Erk_ServiceSubscribe_ntf
 
 // int64 myiid = 1;
-inline void Erk_ServiceSubscribe_ack::clear_myiid() {
+inline void Erk_ServiceSubscribe_ntf::clear_myiid() {
   myiid_ = int64_t{0};
 }
-inline int64_t Erk_ServiceSubscribe_ack::_internal_myiid() const {
+inline int64_t Erk_ServiceSubscribe_ntf::_internal_myiid() const {
   return myiid_;
 }
-inline int64_t Erk_ServiceSubscribe_ack::myiid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ack.myiid)
+inline int64_t Erk_ServiceSubscribe_ntf::myiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ntf.myiid)
   return _internal_myiid();
 }
-inline void Erk_ServiceSubscribe_ack::_internal_set_myiid(int64_t value) {
+inline void Erk_ServiceSubscribe_ntf::_internal_set_myiid(int64_t value) {
   
   myiid_ = value;
 }
-inline void Erk_ServiceSubscribe_ack::set_myiid(int64_t value) {
+inline void Erk_ServiceSubscribe_ntf::set_myiid(int64_t value) {
   _internal_set_myiid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ack.myiid)
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ntf.myiid)
 }
 
 // int32 svr_type = 2;
-inline void Erk_ServiceSubscribe_ack::clear_svr_type() {
+inline void Erk_ServiceSubscribe_ntf::clear_svr_type() {
   svr_type_ = 0;
 }
-inline int32_t Erk_ServiceSubscribe_ack::_internal_svr_type() const {
+inline int32_t Erk_ServiceSubscribe_ntf::_internal_svr_type() const {
   return svr_type_;
 }
-inline int32_t Erk_ServiceSubscribe_ack::svr_type() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ack.svr_type)
+inline int32_t Erk_ServiceSubscribe_ntf::svr_type() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ntf.svr_type)
   return _internal_svr_type();
 }
-inline void Erk_ServiceSubscribe_ack::_internal_set_svr_type(int32_t value) {
+inline void Erk_ServiceSubscribe_ntf::_internal_set_svr_type(int32_t value) {
   
   svr_type_ = value;
 }
-inline void Erk_ServiceSubscribe_ack::set_svr_type(int32_t value) {
+inline void Erk_ServiceSubscribe_ntf::set_svr_type(int32_t value) {
   _internal_set_svr_type(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ack.svr_type)
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ntf.svr_type)
 }
 
-// repeated .PRO.ServerNode online = 3;
-inline int Erk_ServiceSubscribe_ack::_internal_online_size() const {
-  return online_.size();
+// repeated .PRO.ServerNode newsvrs = 3;
+inline int Erk_ServiceSubscribe_ntf::_internal_newsvrs_size() const {
+  return newsvrs_.size();
 }
-inline int Erk_ServiceSubscribe_ack::online_size() const {
-  return _internal_online_size();
+inline int Erk_ServiceSubscribe_ntf::newsvrs_size() const {
+  return _internal_newsvrs_size();
 }
-inline void Erk_ServiceSubscribe_ack::clear_online() {
-  online_.Clear();
+inline void Erk_ServiceSubscribe_ntf::clear_newsvrs() {
+  newsvrs_.Clear();
 }
-inline ::PRO::ServerNode* Erk_ServiceSubscribe_ack::mutable_online(int index) {
-  // @@protoc_insertion_point(field_mutable:PRO.Erk_ServiceSubscribe_ack.online)
-  return online_.Mutable(index);
+inline ::PRO::ServerNode* Erk_ServiceSubscribe_ntf::mutable_newsvrs(int index) {
+  // @@protoc_insertion_point(field_mutable:PRO.Erk_ServiceSubscribe_ntf.newsvrs)
+  return newsvrs_.Mutable(index);
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >*
-Erk_ServiceSubscribe_ack::mutable_online() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSubscribe_ack.online)
-  return &online_;
+Erk_ServiceSubscribe_ntf::mutable_newsvrs() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSubscribe_ntf.newsvrs)
+  return &newsvrs_;
 }
-inline const ::PRO::ServerNode& Erk_ServiceSubscribe_ack::_internal_online(int index) const {
-  return online_.Get(index);
+inline const ::PRO::ServerNode& Erk_ServiceSubscribe_ntf::_internal_newsvrs(int index) const {
+  return newsvrs_.Get(index);
 }
-inline const ::PRO::ServerNode& Erk_ServiceSubscribe_ack::online(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ack.online)
-  return _internal_online(index);
+inline const ::PRO::ServerNode& Erk_ServiceSubscribe_ntf::newsvrs(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ntf.newsvrs)
+  return _internal_newsvrs(index);
 }
-inline ::PRO::ServerNode* Erk_ServiceSubscribe_ack::_internal_add_online() {
-  return online_.Add();
+inline ::PRO::ServerNode* Erk_ServiceSubscribe_ntf::_internal_add_newsvrs() {
+  return newsvrs_.Add();
 }
-inline ::PRO::ServerNode* Erk_ServiceSubscribe_ack::add_online() {
-  ::PRO::ServerNode* _add = _internal_add_online();
-  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSubscribe_ack.online)
+inline ::PRO::ServerNode* Erk_ServiceSubscribe_ntf::add_newsvrs() {
+  ::PRO::ServerNode* _add = _internal_add_newsvrs();
+  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSubscribe_ntf.newsvrs)
   return _add;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::ServerNode >&
-Erk_ServiceSubscribe_ack::online() const {
-  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSubscribe_ack.online)
-  return online_;
+Erk_ServiceSubscribe_ntf::newsvrs() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSubscribe_ntf.newsvrs)
+  return newsvrs_;
 }
 
-// repeated int64 offline = 4;
-inline int Erk_ServiceSubscribe_ack::_internal_offline_size() const {
-  return offline_.size();
+// repeated int64 offsvrs = 4;
+inline int Erk_ServiceSubscribe_ntf::_internal_offsvrs_size() const {
+  return offsvrs_.size();
 }
-inline int Erk_ServiceSubscribe_ack::offline_size() const {
-  return _internal_offline_size();
+inline int Erk_ServiceSubscribe_ntf::offsvrs_size() const {
+  return _internal_offsvrs_size();
 }
-inline void Erk_ServiceSubscribe_ack::clear_offline() {
-  offline_.Clear();
+inline void Erk_ServiceSubscribe_ntf::clear_offsvrs() {
+  offsvrs_.Clear();
 }
-inline int64_t Erk_ServiceSubscribe_ack::_internal_offline(int index) const {
-  return offline_.Get(index);
+inline int64_t Erk_ServiceSubscribe_ntf::_internal_offsvrs(int index) const {
+  return offsvrs_.Get(index);
 }
-inline int64_t Erk_ServiceSubscribe_ack::offline(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ack.offline)
-  return _internal_offline(index);
+inline int64_t Erk_ServiceSubscribe_ntf::offsvrs(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceSubscribe_ntf.offsvrs)
+  return _internal_offsvrs(index);
 }
-inline void Erk_ServiceSubscribe_ack::set_offline(int index, int64_t value) {
-  offline_.Set(index, value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ack.offline)
+inline void Erk_ServiceSubscribe_ntf::set_offsvrs(int index, int64_t value) {
+  offsvrs_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceSubscribe_ntf.offsvrs)
 }
-inline void Erk_ServiceSubscribe_ack::_internal_add_offline(int64_t value) {
-  offline_.Add(value);
+inline void Erk_ServiceSubscribe_ntf::_internal_add_offsvrs(int64_t value) {
+  offsvrs_.Add(value);
 }
-inline void Erk_ServiceSubscribe_ack::add_offline(int64_t value) {
-  _internal_add_offline(value);
-  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSubscribe_ack.offline)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_ServiceSubscribe_ack::_internal_offline() const {
-  return offline_;
+inline void Erk_ServiceSubscribe_ntf::add_offsvrs(int64_t value) {
+  _internal_add_offsvrs(value);
+  // @@protoc_insertion_point(field_add:PRO.Erk_ServiceSubscribe_ntf.offsvrs)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
-Erk_ServiceSubscribe_ack::offline() const {
-  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSubscribe_ack.offline)
-  return _internal_offline();
+Erk_ServiceSubscribe_ntf::_internal_offsvrs() const {
+  return offsvrs_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_ServiceSubscribe_ntf::offsvrs() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_ServiceSubscribe_ntf.offsvrs)
+  return _internal_offsvrs();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_ServiceSubscribe_ack::_internal_mutable_offline() {
-  return &offline_;
+Erk_ServiceSubscribe_ntf::_internal_mutable_offsvrs() {
+  return &offsvrs_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
-Erk_ServiceSubscribe_ack::mutable_offline() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSubscribe_ack.offline)
-  return _internal_mutable_offline();
+Erk_ServiceSubscribe_ntf::mutable_offsvrs() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_ServiceSubscribe_ntf.offsvrs)
+  return _internal_mutable_offsvrs();
+}
+
+// -------------------------------------------------------------------
+
+// Erk_RouterSubscribe_req
+
+// int64 myiid = 1;
+inline void Erk_RouterSubscribe_req::clear_myiid() {
+  myiid_ = int64_t{0};
+}
+inline int64_t Erk_RouterSubscribe_req::_internal_myiid() const {
+  return myiid_;
+}
+inline int64_t Erk_RouterSubscribe_req::myiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_req.myiid)
+  return _internal_myiid();
+}
+inline void Erk_RouterSubscribe_req::_internal_set_myiid(int64_t value) {
+  
+  myiid_ = value;
+}
+inline void Erk_RouterSubscribe_req::set_myiid(int64_t value) {
+  _internal_set_myiid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_req.myiid)
+}
+
+// int32 mysvrtype = 2;
+inline void Erk_RouterSubscribe_req::clear_mysvrtype() {
+  mysvrtype_ = 0;
+}
+inline int32_t Erk_RouterSubscribe_req::_internal_mysvrtype() const {
+  return mysvrtype_;
+}
+inline int32_t Erk_RouterSubscribe_req::mysvrtype() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_req.mysvrtype)
+  return _internal_mysvrtype();
+}
+inline void Erk_RouterSubscribe_req::_internal_set_mysvrtype(int32_t value) {
+  
+  mysvrtype_ = value;
+}
+inline void Erk_RouterSubscribe_req::set_mysvrtype(int32_t value) {
+  _internal_set_mysvrtype(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_req.mysvrtype)
+}
+
+// repeated int32 svr_types = 3;
+inline int Erk_RouterSubscribe_req::_internal_svr_types_size() const {
+  return svr_types_.size();
+}
+inline int Erk_RouterSubscribe_req::svr_types_size() const {
+  return _internal_svr_types_size();
+}
+inline void Erk_RouterSubscribe_req::clear_svr_types() {
+  svr_types_.Clear();
+}
+inline int32_t Erk_RouterSubscribe_req::_internal_svr_types(int index) const {
+  return svr_types_.Get(index);
+}
+inline int32_t Erk_RouterSubscribe_req::svr_types(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_req.svr_types)
+  return _internal_svr_types(index);
+}
+inline void Erk_RouterSubscribe_req::set_svr_types(int index, int32_t value) {
+  svr_types_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_req.svr_types)
+}
+inline void Erk_RouterSubscribe_req::_internal_add_svr_types(int32_t value) {
+  svr_types_.Add(value);
+}
+inline void Erk_RouterSubscribe_req::add_svr_types(int32_t value) {
+  _internal_add_svr_types(value);
+  // @@protoc_insertion_point(field_add:PRO.Erk_RouterSubscribe_req.svr_types)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+Erk_RouterSubscribe_req::_internal_svr_types() const {
+  return svr_types_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+Erk_RouterSubscribe_req::svr_types() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_RouterSubscribe_req.svr_types)
+  return _internal_svr_types();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+Erk_RouterSubscribe_req::_internal_mutable_svr_types() {
+  return &svr_types_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+Erk_RouterSubscribe_req::mutable_svr_types() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_RouterSubscribe_req.svr_types)
+  return _internal_mutable_svr_types();
+}
+
+// -------------------------------------------------------------------
+
+// Erk_RouterSubscribe_ntf
+
+// int64 myiid = 1;
+inline void Erk_RouterSubscribe_ntf::clear_myiid() {
+  myiid_ = int64_t{0};
+}
+inline int64_t Erk_RouterSubscribe_ntf::_internal_myiid() const {
+  return myiid_;
+}
+inline int64_t Erk_RouterSubscribe_ntf::myiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_ntf.myiid)
+  return _internal_myiid();
+}
+inline void Erk_RouterSubscribe_ntf::_internal_set_myiid(int64_t value) {
+  
+  myiid_ = value;
+}
+inline void Erk_RouterSubscribe_ntf::set_myiid(int64_t value) {
+  _internal_set_myiid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_ntf.myiid)
+}
+
+// int32 svr_type = 2;
+inline void Erk_RouterSubscribe_ntf::clear_svr_type() {
+  svr_type_ = 0;
+}
+inline int32_t Erk_RouterSubscribe_ntf::_internal_svr_type() const {
+  return svr_type_;
+}
+inline int32_t Erk_RouterSubscribe_ntf::svr_type() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_ntf.svr_type)
+  return _internal_svr_type();
+}
+inline void Erk_RouterSubscribe_ntf::_internal_set_svr_type(int32_t value) {
+  
+  svr_type_ = value;
+}
+inline void Erk_RouterSubscribe_ntf::set_svr_type(int32_t value) {
+  _internal_set_svr_type(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_ntf.svr_type)
+}
+
+// repeated int64 svriids = 3;
+inline int Erk_RouterSubscribe_ntf::_internal_svriids_size() const {
+  return svriids_.size();
+}
+inline int Erk_RouterSubscribe_ntf::svriids_size() const {
+  return _internal_svriids_size();
+}
+inline void Erk_RouterSubscribe_ntf::clear_svriids() {
+  svriids_.Clear();
+}
+inline int64_t Erk_RouterSubscribe_ntf::_internal_svriids(int index) const {
+  return svriids_.Get(index);
+}
+inline int64_t Erk_RouterSubscribe_ntf::svriids(int index) const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterSubscribe_ntf.svriids)
+  return _internal_svriids(index);
+}
+inline void Erk_RouterSubscribe_ntf::set_svriids(int index, int64_t value) {
+  svriids_.Set(index, value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterSubscribe_ntf.svriids)
+}
+inline void Erk_RouterSubscribe_ntf::_internal_add_svriids(int64_t value) {
+  svriids_.Add(value);
+}
+inline void Erk_RouterSubscribe_ntf::add_svriids(int64_t value) {
+  _internal_add_svriids(value);
+  // @@protoc_insertion_point(field_add:PRO.Erk_RouterSubscribe_ntf.svriids)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_RouterSubscribe_ntf::_internal_svriids() const {
+  return svriids_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
+Erk_RouterSubscribe_ntf::svriids() const {
+  // @@protoc_insertion_point(field_list:PRO.Erk_RouterSubscribe_ntf.svriids)
+  return _internal_svriids();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_RouterSubscribe_ntf::_internal_mutable_svriids() {
+  return &svriids_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
+Erk_RouterSubscribe_ntf::mutable_svriids() {
+  // @@protoc_insertion_point(field_mutable_list:PRO.Erk_RouterSubscribe_ntf.svriids)
+  return _internal_mutable_svriids();
+}
+
+// -------------------------------------------------------------------
+
+// Erk_RouterOnline_req
+
+// int64 myiid = 1;
+inline void Erk_RouterOnline_req::clear_myiid() {
+  myiid_ = int64_t{0};
+}
+inline int64_t Erk_RouterOnline_req::_internal_myiid() const {
+  return myiid_;
+}
+inline int64_t Erk_RouterOnline_req::myiid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterOnline_req.myiid)
+  return _internal_myiid();
+}
+inline void Erk_RouterOnline_req::_internal_set_myiid(int64_t value) {
+  
+  myiid_ = value;
+}
+inline void Erk_RouterOnline_req::set_myiid(int64_t value) {
+  _internal_set_myiid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterOnline_req.myiid)
+}
+
+// int32 mysvrtype = 2;
+inline void Erk_RouterOnline_req::clear_mysvrtype() {
+  mysvrtype_ = 0;
+}
+inline int32_t Erk_RouterOnline_req::_internal_mysvrtype() const {
+  return mysvrtype_;
+}
+inline int32_t Erk_RouterOnline_req::mysvrtype() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_RouterOnline_req.mysvrtype)
+  return _internal_mysvrtype();
+}
+inline void Erk_RouterOnline_req::_internal_set_mysvrtype(int32_t value) {
+  
+  mysvrtype_ = value;
+}
+inline void Erk_RouterOnline_req::set_mysvrtype(int32_t value) {
+  _internal_set_mysvrtype(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_RouterOnline_req.mysvrtype)
 }
 
 // -------------------------------------------------------------------
@@ -4839,29 +6590,73 @@ inline void Erk_ServiceShutdown_ntf::set_svr_type(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.svr_type)
 }
 
-// int64 service = 2;
-inline void Erk_ServiceShutdown_ntf::clear_service() {
-  service_ = int64_t{0};
+// int64 svriid = 2;
+inline void Erk_ServiceShutdown_ntf::clear_svriid() {
+  svriid_ = int64_t{0};
 }
-inline int64_t Erk_ServiceShutdown_ntf::_internal_service() const {
-  return service_;
+inline int64_t Erk_ServiceShutdown_ntf::_internal_svriid() const {
+  return svriid_;
 }
-inline int64_t Erk_ServiceShutdown_ntf::service() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceShutdown_ntf.service)
-  return _internal_service();
+inline int64_t Erk_ServiceShutdown_ntf::svriid() const {
+  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceShutdown_ntf.svriid)
+  return _internal_svriid();
 }
-inline void Erk_ServiceShutdown_ntf::_internal_set_service(int64_t value) {
+inline void Erk_ServiceShutdown_ntf::_internal_set_svriid(int64_t value) {
   
-  service_ = value;
+  svriid_ = value;
 }
-inline void Erk_ServiceShutdown_ntf::set_service(int64_t value) {
-  _internal_set_service(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.service)
+inline void Erk_ServiceShutdown_ntf::set_svriid(int64_t value) {
+  _internal_set_svriid(value);
+  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.svriid)
 }
 
 // -------------------------------------------------------------------
 
 // Svr_LiveTick_ntf
+
+// -------------------------------------------------------------------
+
+// Svr_RouterOnline_ntf
+
+// int64 routeriid = 1;
+inline void Svr_RouterOnline_ntf::clear_routeriid() {
+  routeriid_ = int64_t{0};
+}
+inline int64_t Svr_RouterOnline_ntf::_internal_routeriid() const {
+  return routeriid_;
+}
+inline int64_t Svr_RouterOnline_ntf::routeriid() const {
+  // @@protoc_insertion_point(field_get:PRO.Svr_RouterOnline_ntf.routeriid)
+  return _internal_routeriid();
+}
+inline void Svr_RouterOnline_ntf::_internal_set_routeriid(int64_t value) {
+  
+  routeriid_ = value;
+}
+inline void Svr_RouterOnline_ntf::set_routeriid(int64_t value) {
+  _internal_set_routeriid(value);
+  // @@protoc_insertion_point(field_set:PRO.Svr_RouterOnline_ntf.routeriid)
+}
+
+// int32 routertype = 2;
+inline void Svr_RouterOnline_ntf::clear_routertype() {
+  routertype_ = 0;
+}
+inline int32_t Svr_RouterOnline_ntf::_internal_routertype() const {
+  return routertype_;
+}
+inline int32_t Svr_RouterOnline_ntf::routertype() const {
+  // @@protoc_insertion_point(field_get:PRO.Svr_RouterOnline_ntf.routertype)
+  return _internal_routertype();
+}
+inline void Svr_RouterOnline_ntf::_internal_set_routertype(int32_t value) {
+  
+  routertype_ = value;
+}
+inline void Svr_RouterOnline_ntf::set_routertype(int32_t value) {
+  _internal_set_routertype(value);
+  // @@protoc_insertion_point(field_set:PRO.Svr_RouterOnline_ntf.routertype)
+}
 
 // -------------------------------------------------------------------
 
@@ -5085,6 +6880,18 @@ inline void Svr_ServiceBindService_ack::set_totoken(int64_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

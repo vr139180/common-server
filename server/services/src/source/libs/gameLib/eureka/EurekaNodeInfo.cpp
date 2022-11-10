@@ -20,6 +20,7 @@
 EurekaNodeInfo::EurekaNodeInfo():iid( 0)
 ,port( 0)
 ,token( 0)
+,ismaster( false)
 {
 }
 
@@ -29,6 +30,7 @@ EurekaNodeInfo& EurekaNodeInfo::operator = (const EurekaNodeInfo& v)
 	this->ip = v.ip;
 	this->port = v.port;
 	this->token = v.token;
+	this->ismaster = v.ismaster;
 
 	return *this;
 }
@@ -46,7 +48,8 @@ bool EurekaNodeInfo::to_json(std::string& val)
 		{"iid", iid},
 		{"ip", ip},
 		{"port", port},
-		{"token", token}
+		{"token", token},
+		{"ismaster", ismaster?1:0}
 	};
 
 	val = boost::json::serialize(json);
@@ -62,6 +65,7 @@ bool EurekaNodeInfo::from_json(boost::json::value& root)
 	this->ip =JSONUtil::get_string( obj, "ip", "");
 	this->port = JSONUtil::get_value<int>(obj, "port", 0);
 	this->token = JSONUtil::get_int64(obj, "token", 0);
+	this->ismaster = !(JSONUtil::get_value<int>(obj, "ismaster", 0) == 0);
 
 	return true;
 }

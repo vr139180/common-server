@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "cluster/EurekaClusterCtrl.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -13,6 +28,14 @@ USED_REDISKEY_GLOBAL_NS
 
 void EurekaClusterCtrl::InitNetMessage()
 {
+	REGISTERMSG(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF, &EurekaClusterCtrl::on_eurekaupdate_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::ERK_MASTERCHANGE_NTF, &EurekaClusterCtrl::on_masterchange_ntf, this);
+}
+
+void EurekaClusterCtrl::on_eurekaregist_req(NetProtocol* pro, bool& autorelease, void* session)
+{
+	EurekaSession* pes = reinterpret_cast<EurekaSession*>(session);
+	Erk_EurekaRegist_req* req = reinterpret_cast<Erk_EurekaRegist_req*>(pro->msg_);
 }
 
 void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, void* session)
@@ -35,19 +58,20 @@ void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, v
 		ThreadLockWrapper guard(svrApp.get_threadlock());
 
 		svrApp.remove_waitsession_no_mutex(pes);
+		pfrom = eureka_links_from_.ask_free_link();
 
-		if (free_links_from_.size() == 0)
-		{
-			pfrom = new EurekaLinkFrom();
-			links_from_.push_back(pfrom);
-		}
-		else
-		{
-			std::set<EurekaLinkFrom*>::iterator fiter = free_links_from_.begin();
-			pfrom = (*fiter);
-			free_links_from_.erase(fiter);
-		}
+		pfrom->set_linkbase_info(req->iid(), req->token());
 
+		pes->auth();
+		pfrom->set_session(pes);
+		pes->set_netlinkbase(pfrom);
+
+		//设置当前gatelinke
+		eureka_links_from_.regist_onlinelink(pfrom);
+
+		pfrom->registinfo_tolog(true);
+
+		/*
 		EurekaNodeInfo* pnode = new EurekaNodeInfo();
 		pnode->iid = req->iid();
 		pnode->token = req->token();
@@ -55,81 +79,24 @@ void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, v
 		pnode->port = req->port();
 
 		//关联node
-		pfrom->set_node(pnode);
-
-		pes->auth();
-		pfrom->set_session(pes);
-		pes->set_netlinkbase(pfrom);
-
-		//注册到连接节点中
-		link_nodes_[pfrom->get_iid()] = (IEurekaNodeLink*)pfrom;
+		pfrom->set_node(*pnode);
+		*/
 	}
 
 	if (pfrom)
 	{
-		pfrom->registinfo_tolog(true);
-
 		Erk_EurekaBind_ack *ack = new Erk_EurekaBind_ack();
 		ack->set_result(0);
 		pfrom->send_to_eureka(ack);
 	}
 }
 
-void EurekaClusterCtrl::on_service_eureka_sync(NetProtocol* message, bool& autorelease)
+void EurekaClusterCtrl::on_eurekaupdate_ntf(NetProtocol* pro, bool& autorelease)
 {
-	Erk_Eureka_sync* syn = dynamic_cast<Erk_Eureka_sync*>(message->msg_);
 
-	//根据同步数据提供增量服务信息
-	std::set<S_INT_64> offlines;
-	for (int ii = 0; ii < syn->exists_size(); ++ii)
-	{
-		offlines.insert(syn->exists(ii));
-	}
+}
 
-	std::list<EurekaNodeInfo*> onlines;
-	for (boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator iter = redis_nodes.begin(); iter != redis_nodes.end(); ++iter)
-	{
-		S_INT_64 sid = iter->first;
-		std::set<S_INT_64>::iterator fiter = offlines.find(sid);
-		if (fiter == offlines.end())
-		{
-			onlines.push_back(iter->second);
-		}
-		else
-		{
-			offlines.erase(fiter);
-		}
-	}
+void EurekaClusterCtrl::on_masterchange_ntf(NetProtocol* pro, bool& autorelease)
+{
 
-	Erk_EurekaUpdate_ntf* ntf = new Erk_EurekaUpdate_ntf();
-	ntf->set_myiid(syn->myiid());
-
-	for (std::list<EurekaNodeInfo*>::iterator iter = onlines.begin(); iter != onlines.end(); ++iter)
-	{
-		EurekaNodeInfo* pinfo = (*iter);
-		
-		EurekaServerNode* pn = ntf->add_online();
-		pn->set_iid(pinfo->iid);
-		pn->set_token(pinfo->token);
-		pn->set_ip(pinfo->ip);
-		pn->set_port(pinfo->port);
-	}
-	for (std::set<S_INT_64>::iterator iter = offlines.begin(); iter != offlines.end(); ++iter)
-	{
-		S_INT_64 sid = (*iter);
-		ntf->add_offline(sid);
-	}
-
-	//解耦,路由到service
-	NETCMD_FUN_MAP2 fun = boost::bind(&ServiceRegisterCtrl::on_mth_message_route_to_service, svrApp.get_servicectrl(), 
-		boost::placeholders::_1, boost::placeholders::_2, ntf->myiid());
-
-	SProtocolHead head = message->head_;
-	head.from_type_ = head.to_type_;
-	head.to_type_ = message->head_.from_type_;
-	NetProtocol *pro = new NetProtocol(head, ntf);
-
-	NetCommandV2 *pcmd = new NetCommandV2(pro, fun);
-
-	svrApp.regist_syscmd(pcmd);
 }

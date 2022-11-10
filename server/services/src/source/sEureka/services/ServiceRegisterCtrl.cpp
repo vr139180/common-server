@@ -1,10 +1,25 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "services/ServiceRegisterCtrl.h"
 
 #include <gameLib/config/ConfigHelper.h>
 
 #include "sEurekaApp.h"
 
-ServiceRegisterCtrl::ServiceRegisterCtrl()
+ServiceRegisterCtrl::ServiceRegisterCtrl():last_serviceiid_seed_(0)
 {
 }
 
@@ -16,6 +31,8 @@ bool ServiceRegisterCtrl::init_ctrl()
 {
 	//regist message function
 	this->InitNetMessage();
+
+	service_mth_links_.init_holder();
 
 	return true;
 }
@@ -30,23 +47,16 @@ void ServiceRegisterCtrl::uninit_ctrl()
 
 void ServiceRegisterCtrl::service_mth_meta_release_all()
 {
-	for (boost::unordered_map< NETSERVICE_TYPE, std::list<ServiceNodeInfo*>>::iterator iter = servie_of_type_redis_.begin();
-		iter != servie_of_type_redis_.end(); ++iter)
-	{
-		std::list<ServiceNodeInfo*>& dlist = iter->second;
-		for (std::list<ServiceNodeInfo*>::iterator iter2 = dlist.begin(); iter2 != dlist.end(); ++iter2)
-		{
-			delete (*iter2);
-		}
-		dlist.clear();
-	}
-	servie_of_type_redis_.clear();
+	router_of_subscribe_.clear();
+	service_of_subscribe_.clear();
+	servie_of_type_.clear();
+	all_service_nodes_.clear();
 }
 
 void ServiceRegisterCtrl::service_mth_meta_merge_oftype(NETSERVICE_TYPE type,
 	boost::unordered_map<std::string, ServiceNodeInfo*>& sni, std::set<S_INT_64>& delsvrs)
 {
-	std::list<ServiceNodeInfo*>& dlist = get_service_meth_meta_oftype(type);
+	std::list<ServiceNodeInfo*>& dlist = get_service_node_oftype(type);
 
 	std::list<ServiceNodeInfo*> dels;
 	for (std::list<ServiceNodeInfo*>::iterator iter2 = dlist.begin(); iter2 != dlist.end(); ++iter2)
@@ -89,13 +99,13 @@ void ServiceRegisterCtrl::service_mth_meta_merge_oftype(NETSERVICE_TYPE type,
 	sni.clear();
 }
 
-std::list<ServiceNodeInfo*>& ServiceRegisterCtrl::get_service_meth_meta_oftype(NETSERVICE_TYPE type)
+std::list<ServiceNodeInfo*> ServiceRegisterCtrl::get_service_node_oftype(NETSERVICE_TYPE type)
 {
-	boost::unordered_map< NETSERVICE_TYPE, std::list<ServiceNodeInfo*>>::iterator fiter = servie_of_type_redis_.find(type);
-	if (fiter == servie_of_type_redis_.end())
+	boost::unordered_map< NETSERVICE_TYPE, std::list<ServiceNodeInfo*>>::iterator fiter = servie_of_type_.find(type);
+	if (fiter == servie_of_type_.end())
 	{
-		servie_of_type_redis_[type] = std::list<ServiceNodeInfo *>();
-		fiter = servie_of_type_redis_.find(type);
+		servie_of_type_[type] = std::list<ServiceNodeInfo *>();
+		fiter = servie_of_type_.find(type);
 	}
 
 	return fiter->second;
@@ -120,4 +130,17 @@ void ServiceRegisterCtrl::on_mth_disconnected_with_service(ServiceLinkFrom* plin
 
 		svrApp.return_freesession_no_mutext(psession);
 	}
+}
+
+ServiceNodeInfo* ServiceRegisterCtrl::find_servicenode_byiid(S_INT_64 iid)
+{
+	boost::unordered_map<S_INT_64, ServiceNodeInfo>::iterator fiter = all_service_nodes_.find(iid);
+	if (fiter == all_service_nodes_.end())
+		return 0;
+	return &(fiter->second);
+}
+
+void ServiceRegisterCtrl::regist_one_service(ServiceNodeInfo& info)
+{
+
 }

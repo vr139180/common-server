@@ -24,7 +24,8 @@ USE_PROTOCOL_NAMESPACE
 void EurekaClusterClient::InitNetMessage()
 {
 	REGISTERMSG(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF, &EurekaClusterClient::on_eurekaupdate_ntf, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_ACK, &EurekaClusterClient::on_service_subscribe_ack, this);
+	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_NTF, &EurekaClusterClient::on_service_subscribe_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF, &EurekaClusterClient::on_router_subscribe_ntf, this);
 }
 
 void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease)
@@ -88,18 +89,18 @@ void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autore
 	}
 }
 
-void EurekaClusterClient::on_service_subscribe_ack(NetProtocol* message, bool& autorelease)
+void EurekaClusterClient::on_service_subscribe_ntf(NetProtocol* message, bool& autorelease)
 {
-	Erk_ServiceSubscribe_ack* ack = dynamic_cast<Erk_ServiceSubscribe_ack*>(message->msg_);
+	Erk_ServiceSubscribe_ntf* ack = dynamic_cast<Erk_ServiceSubscribe_ntf*>(message->msg_);
 
 	NETSERVICE_TYPE type = (NETSERVICE_TYPE)ack->svr_type();
 	SERVICENODE_TYPE& s_nodes = get_servicenodes_by_type( type);
 
 	std::list<ServiceNodeInfo*> newiids;
 	//在线服务增量信息
-	for (int ind = 0; ind < ack->online_size(); ++ind)
+	for (int ind = 0; ind < ack->newsvrs_size(); ++ind)
 	{
-		const ServerNode& node = ack->online(ind);
+		const ServerNode& node = ack->newsvrs(ind);
 		SERVICENODE_TYPE::iterator fiter = s_nodes.find(node.iid());
 		if (fiter != s_nodes.end())
 			continue;
@@ -127,9 +128,9 @@ void EurekaClusterClient::on_service_subscribe_ack(NetProtocol* message, bool& a
 
 	//下线服务
 	std::list<S_INT_64>	deliids;
-	for (int ind = 0; ind < ack->offline_size(); ++ind)
+	for (int ind = 0; ind < ack->offsvrs_size(); ++ind)
 	{
-		S_INT_64 sid = ack->offline(ind);
+		S_INT_64 sid = ack->offsvrs(ind);
 		SERVICENODE_TYPE::iterator fiter = s_nodes.find(sid);
 		if (fiter == s_nodes.end())
 			continue;
@@ -146,18 +147,9 @@ void EurekaClusterClient::on_service_subscribe_ack(NetProtocol* message, bool& a
 	{
 		app_proxy_->mth_notify_servicenode_new(type, newiids, deliids);
 	}
+}
 
-	//第一次注册，返回之后 回复确认协议
-	if (cur_state_ == EurekaState::Eureka_Registed)
-	{
-		Erk_ServiceRegist_Confirm *confirm = new Erk_ServiceRegist_Confirm();
-		confirm->set_iid(this->service_iid_);
-		confirm->set_token(this->token_);
+void EurekaClusterClient::on_router_subscribe_ntf(NetProtocol* message, bool& autorelease)
+{
 
-		this->send_mth_protocol(confirm);
-		cur_state_ = EurekaState::Eureka_Done;
-		
-		if (app_proxy_)
-			app_proxy_->mth_service_registed(service_iid_);
-	}
 }

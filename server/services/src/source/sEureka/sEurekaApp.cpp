@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "sEurekaApp.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -20,7 +35,6 @@ sEurekaApp& sEurekaApp::getInstance()
 sEurekaApp::sEurekaApp(): ServerAppBase()
 ,acceptor_( 0)
 ,conf_( 0)
-,service_threads_num_( 0)
 {
 }
 
@@ -51,6 +65,7 @@ bool sEurekaApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 
+	eureka_ctrl_.init_ctrl();
 	service_ctrl_.init_ctrl();
 
 	return true;
@@ -77,15 +92,6 @@ bool sEurekaApp::init_network()
 	redis_.init_redis(conf_->redis_.ip_, conf_->redis_.port_, conf_->redis_.auth_,
 		conf_->redis_.db_, conf_->redis_.socket_timeout_);
 	redis_inthread_.reset(&redis_);
-
-	//init service threads
-	service_threads_num_ = conf_->service_thread_num_;
-	services_.reset(new EurekaService[service_threads_num_]);
-	for (int ii = 0; ii < service_threads_num_; ++ii)
-	{
-		services_[ii].init( conf_.get());
-		services_[ii].start();
-	}
 
 	return true;
 }
@@ -124,10 +130,6 @@ void sEurekaApp::uninit_network()
 	//从redis注销
 	eureka_ctrl_.unint_ctrl();
 
-	for (int ii = 0; ii < service_threads_num_; ++ii)
-		services_[ii].stop();
-	services_.reset(0);
-
 	redis_inthread_.release();
 
 	session_from_.unint_sessions();
@@ -141,7 +143,8 @@ void sEurekaApp::uninit()
 void sEurekaApp::register_timer()
 {
 	//regist timer for system
-	this->add_apptimer(1000 * 5, boost::BOOST_BIND(&sEurekaApp::init_eureka_timer, this,
+	//启动定时器
+	this->add_apptimer(1000 * 1, boost::BOOST_BIND(&sEurekaApp::init_eureka_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	this->add_apptimer(1000 * 15, boost::BOOST_BIND(&sEurekaApp::service_maintnce_check, this,
@@ -172,7 +175,7 @@ void sEurekaApp::main_loop()
 		app_timer_.timer_tick();
 
 		//主线程只处理syscommand命令
-		CommandBase *pCmd = svrApp.pop_sys_cmd();
+		CommandBase *pCmd = pop_one_cmd();
 		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 
 		if (pCmd == 0)
@@ -182,45 +185,6 @@ void sEurekaApp::main_loop()
 		}
 		pCmd->run();
 	}
-}
-
-CommandBase* sEurekaApp::pop_net_cmd()
-{
-	if (will_quit_app_) return 0;
-
-#define ANOTHER_CMD_LIST( cur)	(cur==1?0:1)
-
-	CommandBase* pCmd = 0;
-
-	ThreadLockWrapper guard(lock_);
-
-	if (net_cmds_[cur_netcmds_].size() > 0)
-	{
-		pCmd = net_cmds_[cur_netcmds_].front();
-		net_cmds_[cur_netcmds_].pop_front();
-	}
-	else if (user_cmds_[cur_usercmds_].size() > 0)
-	{
-		pCmd = user_cmds_[cur_usercmds_].front();
-		user_cmds_[cur_usercmds_].pop_front();
-	}
-
-	if (net_cmds_[cur_netcmds_].size() == 0)
-	{
-		if (net_cmds_[ANOTHER_CMD_LIST(cur_netcmds_)].size() > 0)
-		{
-			cur_netcmds_ = ANOTHER_CMD_LIST(cur_netcmds_);
-		}
-		else if (user_cmds_[cur_usercmds_].size() == 0)
-		{
-			if (user_cmds_[ANOTHER_CMD_LIST(cur_usercmds_)].size() > 0)
-			{
-				cur_usercmds_ = ANOTHER_CMD_LIST(cur_usercmds_);
-			}
-		}
-	}
-
-	return pCmd;
 }
 
 void sEurekaApp::remove_waitsession_no_mutex(EurekaSession* psession)
@@ -283,12 +247,10 @@ void sEurekaApp::init_eureka_timer(u64 tnow, int interval, u64 iid, bool& finish
 	finish = true;
 
 	//初始化eureka控制
-	eureka_ctrl_.init_ctrl();
+	eureka_ctrl_.boot_ctrl();
 	eureka_ctrl_.init_timer();
 
 	service_ctrl_.init_timer();
-
-	eureka_ctrl_.mark_boosted();
 }
 
 void sEurekaApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
@@ -297,4 +259,24 @@ void sEurekaApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& f
 
 	//登陆超时检测，和心跳激活
 	session_from_.sessions_maintnce(tnow);
+}
+
+void sEurekaApp::on_disconnected_with_linkfrom(EurekaLinkFrom* plink)
+{
+	EurekaSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(lock_);
+
+		eureka_ctrl_.on_disconnected_with_linkfrom(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
 }

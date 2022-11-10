@@ -6,6 +6,7 @@ package com.cms.client.network.gpro;
 /**
  * <pre>
  *其他服务向eureka注册中心，注册服务
+ *向master节点发起注册
  * </pre>
  *
  * Protobuf type {@code PRO.Erk_ServiceRegist_req}
@@ -81,6 +82,16 @@ private static final long serialVersionUID = 0L;
                 ExtsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
             exts_.getMutableMap().put(
                 exts__.getKey(), exts__.getValue());
+            break;
+          }
+          case 40: {
+
+            isrouter_ = input.readBool();
+            break;
+          }
+          case 48: {
+
+            eurekatoken_ = input.readInt64();
             break;
           }
           default: {
@@ -288,6 +299,36 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int ISROUTER_FIELD_NUMBER = 5;
+  private boolean isrouter_;
+  /**
+   * <pre>
+   *是否router服务
+   * </pre>
+   *
+   * <code>bool isrouter = 5;</code>
+   * @return The isrouter.
+   */
+  @java.lang.Override
+  public boolean getIsrouter() {
+    return isrouter_;
+  }
+
+  public static final int EUREKATOKEN_FIELD_NUMBER = 6;
+  private long eurekatoken_;
+  /**
+   * <pre>
+   *master节点token
+   * </pre>
+   *
+   * <code>int64 eurekatoken = 6;</code>
+   * @return The eurekatoken.
+   */
+  @java.lang.Override
+  public long getEurekatoken() {
+    return eurekatoken_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -317,6 +358,12 @@ private static final long serialVersionUID = 0L;
         internalGetExts(),
         ExtsDefaultEntryHolder.defaultEntry,
         4);
+    if (isrouter_ != false) {
+      output.writeBool(5, isrouter_);
+    }
+    if (eurekatoken_ != 0L) {
+      output.writeInt64(6, eurekatoken_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -347,6 +394,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, exts__);
     }
+    if (isrouter_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, isrouter_);
+    }
+    if (eurekatoken_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(6, eurekatoken_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -370,6 +425,10 @@ private static final long serialVersionUID = 0L;
         != other.getPort()) return false;
     if (!internalGetExts().equals(
         other.internalGetExts())) return false;
+    if (getIsrouter()
+        != other.getIsrouter()) return false;
+    if (getEurekatoken()
+        != other.getEurekatoken()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -391,6 +450,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + EXTS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetExts().hashCode();
     }
+    hash = (37 * hash) + ISROUTER_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsrouter());
+    hash = (37 * hash) + EUREKATOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getEurekatoken());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -489,6 +554,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    *其他服务向eureka注册中心，注册服务
+   *向master节点发起注册
    * </pre>
    *
    * Protobuf type {@code PRO.Erk_ServiceRegist_req}
@@ -557,6 +623,10 @@ private static final long serialVersionUID = 0L;
       port_ = 0;
 
       internalGetMutableExts().clear();
+      isrouter_ = false;
+
+      eurekatoken_ = 0L;
+
       return this;
     }
 
@@ -589,6 +659,8 @@ private static final long serialVersionUID = 0L;
       result.port_ = port_;
       result.exts_ = internalGetExts();
       result.exts_.makeImmutable();
+      result.isrouter_ = isrouter_;
+      result.eurekatoken_ = eurekatoken_;
       onBuilt();
       return result;
     }
@@ -649,6 +721,12 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableExts().mergeFrom(
           other.internalGetExts());
+      if (other.getIsrouter() != false) {
+        setIsrouter(other.getIsrouter());
+      }
+      if (other.getEurekatoken() != 0L) {
+        setEurekatoken(other.getEurekatoken());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -985,6 +1063,92 @@ private static final long serialVersionUID = 0L;
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableExts().getMutableMap()
           .putAll(values);
+      return this;
+    }
+
+    private boolean isrouter_ ;
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 5;</code>
+     * @return The isrouter.
+     */
+    @java.lang.Override
+    public boolean getIsrouter() {
+      return isrouter_;
+    }
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 5;</code>
+     * @param value The isrouter to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsrouter(boolean value) {
+      
+      isrouter_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsrouter() {
+      
+      isrouter_ = false;
+      onChanged();
+      return this;
+    }
+
+    private long eurekatoken_ ;
+    /**
+     * <pre>
+     *master节点token
+     * </pre>
+     *
+     * <code>int64 eurekatoken = 6;</code>
+     * @return The eurekatoken.
+     */
+    @java.lang.Override
+    public long getEurekatoken() {
+      return eurekatoken_;
+    }
+    /**
+     * <pre>
+     *master节点token
+     * </pre>
+     *
+     * <code>int64 eurekatoken = 6;</code>
+     * @param value The eurekatoken to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEurekatoken(long value) {
+      
+      eurekatoken_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *master节点token
+     * </pre>
+     *
+     * <code>int64 eurekatoken = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEurekatoken() {
+      
+      eurekatoken_ = 0L;
+      onChanged();
       return this;
     }
     @java.lang.Override

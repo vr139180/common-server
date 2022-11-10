@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #ifndef __SEUREKAAPP_H__
 #define __SEUREKAAPP_H__
 
@@ -16,8 +31,7 @@
 
 #include "cluster/EurekaClusterCtrl.h"
 #include "services/ServiceRegisterCtrl.h"
-
-#include "EurekaService.h"
+#include "network/EurekaLinkFrom.h"
 
 USE_PROTOCOL_NAMESPACE
 
@@ -33,9 +47,6 @@ public:
 	virtual ~sEurekaApp();
 
 	virtual void main_loop();
-	//disable this funcion. system command be used by mainthread, and net/user command be used by eurekaservice thread
-	virtual CommandBase* pop_one_cmd() { return 0; }
-	virtual CommandBase* pop_net_cmd();
 
 public:
 	EurekaClusterCtrl* get_eurekactrl() { return &eureka_ctrl_; }
@@ -78,9 +89,6 @@ protected:
 
 	SessionMthHolder<EurekaSession>			session_from_;
 
-	boost::scoped_array<EurekaService>		services_;
-	int										service_threads_num_;
-
 	EurekaClusterCtrl						eureka_ctrl_;
 	ServiceRegisterCtrl						service_ctrl_;
 
@@ -94,6 +102,7 @@ protected:
 public:
 	void on_connection_timeout( EurekaSession* session);
 
+	void on_disconnected_with_linkfrom(EurekaLinkFrom* plink);
 };
 
 #define svrApp (sEurekaApp::getInstance())

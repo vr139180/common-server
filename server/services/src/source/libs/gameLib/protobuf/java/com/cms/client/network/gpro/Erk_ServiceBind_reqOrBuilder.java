@@ -32,4 +32,10 @@ public interface Erk_ServiceBind_reqOrBuilder extends
    * @return The token.
    */
   long getToken();
+
+  /**
+   * <code>int64 eurekatoken = 4;</code>
+   * @return The eurekatoken.
+   */
+  long getEurekatoken();
 }

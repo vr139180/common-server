@@ -5,7 +5,7 @@ package com.cms.client.network.gpro;
 
 /**
  * <pre>
- *通知其他服务eureka服务上线或下线
+ *通知注册的服务eureka服务上线或下线
  * </pre>
  *
  * Protobuf type {@code PRO.Erk_EurekaUpdate_ntf}
@@ -55,11 +55,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-
-            myiid_ = input.readInt64();
-            break;
-          }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               online_ = new java.util.ArrayList<com.cms.client.network.gpro.EurekaServerNode>();
@@ -88,6 +83,21 @@ private static final long serialVersionUID = 0L;
               offline_.addLong(input.readInt64());
             }
             input.popLimit(limit);
+            break;
+          }
+          case 32: {
+
+            masteriid_ = input.readInt64();
+            break;
+          }
+          case 40: {
+
+            eurekaSeed_ = input.readInt64();
+            break;
+          }
+          case 48: {
+
+            serviceSeed_ = input.readInt64();
             break;
           }
           default: {
@@ -126,21 +136,6 @@ private static final long serialVersionUID = 0L;
     return com.cms.client.network.gpro.EurekaInternal.internal_static_PRO_Erk_EurekaUpdate_ntf_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.class, com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.Builder.class);
-  }
-
-  public static final int MYIID_FIELD_NUMBER = 1;
-  private long myiid_;
-  /**
-   * <pre>
-   *请求方iid
-   * </pre>
-   *
-   * <code>int64 myiid = 1;</code>
-   * @return The myiid.
-   */
-  @java.lang.Override
-  public long getMyiid() {
-    return myiid_;
   }
 
   public static final int ONLINE_FIELD_NUMBER = 2;
@@ -243,6 +238,51 @@ private static final long serialVersionUID = 0L;
   }
   private int offlineMemoizedSerializedSize = -1;
 
+  public static final int MASTERIID_FIELD_NUMBER = 4;
+  private long masteriid_;
+  /**
+   * <pre>
+   *master服务id, -1表示没有master服务
+   * </pre>
+   *
+   * <code>int64 masteriid = 4;</code>
+   * @return The masteriid.
+   */
+  @java.lang.Override
+  public long getMasteriid() {
+    return masteriid_;
+  }
+
+  public static final int EUREKA_SEED_FIELD_NUMBER = 5;
+  private long eurekaSeed_;
+  /**
+   * <pre>
+   *eureka iid 种子
+   * </pre>
+   *
+   * <code>int64 eureka_seed = 5;</code>
+   * @return The eurekaSeed.
+   */
+  @java.lang.Override
+  public long getEurekaSeed() {
+    return eurekaSeed_;
+  }
+
+  public static final int SERVICE_SEED_FIELD_NUMBER = 6;
+  private long serviceSeed_;
+  /**
+   * <pre>
+   *service iid 种子
+   * </pre>
+   *
+   * <code>int64 service_seed = 6;</code>
+   * @return The serviceSeed.
+   */
+  @java.lang.Override
+  public long getServiceSeed() {
+    return serviceSeed_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -258,9 +298,6 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     getSerializedSize();
-    if (myiid_ != 0L) {
-      output.writeInt64(1, myiid_);
-    }
     for (int i = 0; i < online_.size(); i++) {
       output.writeMessage(2, online_.get(i));
     }
@@ -271,6 +308,15 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < offline_.size(); i++) {
       output.writeInt64NoTag(offline_.getLong(i));
     }
+    if (masteriid_ != 0L) {
+      output.writeInt64(4, masteriid_);
+    }
+    if (eurekaSeed_ != 0L) {
+      output.writeInt64(5, eurekaSeed_);
+    }
+    if (serviceSeed_ != 0L) {
+      output.writeInt64(6, serviceSeed_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -280,10 +326,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (myiid_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, myiid_);
-    }
     for (int i = 0; i < online_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, online_.get(i));
@@ -302,6 +344,18 @@ private static final long serialVersionUID = 0L;
       }
       offlineMemoizedSerializedSize = dataSize;
     }
+    if (masteriid_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, masteriid_);
+    }
+    if (eurekaSeed_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(5, eurekaSeed_);
+    }
+    if (serviceSeed_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(6, serviceSeed_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -317,12 +371,16 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Erk_EurekaUpdate_ntf other = (com.cms.client.network.gpro.Erk_EurekaUpdate_ntf) obj;
 
-    if (getMyiid()
-        != other.getMyiid()) return false;
     if (!getOnlineList()
         .equals(other.getOnlineList())) return false;
     if (!getOfflineList()
         .equals(other.getOfflineList())) return false;
+    if (getMasteriid()
+        != other.getMasteriid()) return false;
+    if (getEurekaSeed()
+        != other.getEurekaSeed()) return false;
+    if (getServiceSeed()
+        != other.getServiceSeed()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -334,9 +392,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MYIID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getMyiid());
     if (getOnlineCount() > 0) {
       hash = (37 * hash) + ONLINE_FIELD_NUMBER;
       hash = (53 * hash) + getOnlineList().hashCode();
@@ -345,6 +400,15 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + OFFLINE_FIELD_NUMBER;
       hash = (53 * hash) + getOfflineList().hashCode();
     }
+    hash = (37 * hash) + MASTERIID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getMasteriid());
+    hash = (37 * hash) + EUREKA_SEED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getEurekaSeed());
+    hash = (37 * hash) + SERVICE_SEED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getServiceSeed());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -442,7 +506,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *通知其他服务eureka服务上线或下线
+   *通知注册的服务eureka服务上线或下线
    * </pre>
    *
    * Protobuf type {@code PRO.Erk_EurekaUpdate_ntf}
@@ -483,8 +547,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      myiid_ = 0L;
-
       if (onlineBuilder_ == null) {
         online_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -493,6 +555,12 @@ private static final long serialVersionUID = 0L;
       }
       offline_ = emptyLongList();
       bitField0_ = (bitField0_ & ~0x00000002);
+      masteriid_ = 0L;
+
+      eurekaSeed_ = 0L;
+
+      serviceSeed_ = 0L;
+
       return this;
     }
 
@@ -520,7 +588,6 @@ private static final long serialVersionUID = 0L;
     public com.cms.client.network.gpro.Erk_EurekaUpdate_ntf buildPartial() {
       com.cms.client.network.gpro.Erk_EurekaUpdate_ntf result = new com.cms.client.network.gpro.Erk_EurekaUpdate_ntf(this);
       int from_bitField0_ = bitField0_;
-      result.myiid_ = myiid_;
       if (onlineBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           online_ = java.util.Collections.unmodifiableList(online_);
@@ -535,6 +602,9 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
       }
       result.offline_ = offline_;
+      result.masteriid_ = masteriid_;
+      result.eurekaSeed_ = eurekaSeed_;
+      result.serviceSeed_ = serviceSeed_;
       onBuilt();
       return result;
     }
@@ -583,9 +653,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Erk_EurekaUpdate_ntf other) {
       if (other == com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.getDefaultInstance()) return this;
-      if (other.getMyiid() != 0L) {
-        setMyiid(other.getMyiid());
-      }
       if (onlineBuilder_ == null) {
         if (!other.online_.isEmpty()) {
           if (online_.isEmpty()) {
@@ -622,6 +689,15 @@ private static final long serialVersionUID = 0L;
         }
         onChanged();
       }
+      if (other.getMasteriid() != 0L) {
+        setMasteriid(other.getMasteriid());
+      }
+      if (other.getEurekaSeed() != 0L) {
+        setEurekaSeed(other.getEurekaSeed());
+      }
+      if (other.getServiceSeed() != 0L) {
+        setServiceSeed(other.getServiceSeed());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -651,49 +727,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int bitField0_;
-
-    private long myiid_ ;
-    /**
-     * <pre>
-     *请求方iid
-     * </pre>
-     *
-     * <code>int64 myiid = 1;</code>
-     * @return The myiid.
-     */
-    @java.lang.Override
-    public long getMyiid() {
-      return myiid_;
-    }
-    /**
-     * <pre>
-     *请求方iid
-     * </pre>
-     *
-     * <code>int64 myiid = 1;</code>
-     * @param value The myiid to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMyiid(long value) {
-      
-      myiid_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *请求方iid
-     * </pre>
-     *
-     * <code>int64 myiid = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMyiid() {
-      
-      myiid_ = 0L;
-      onChanged();
-      return this;
-    }
 
     private java.util.List<com.cms.client.network.gpro.EurekaServerNode> online_ =
       java.util.Collections.emptyList();
@@ -1110,6 +1143,135 @@ private static final long serialVersionUID = 0L;
     public Builder clearOffline() {
       offline_ = emptyLongList();
       bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+
+    private long masteriid_ ;
+    /**
+     * <pre>
+     *master服务id, -1表示没有master服务
+     * </pre>
+     *
+     * <code>int64 masteriid = 4;</code>
+     * @return The masteriid.
+     */
+    @java.lang.Override
+    public long getMasteriid() {
+      return masteriid_;
+    }
+    /**
+     * <pre>
+     *master服务id, -1表示没有master服务
+     * </pre>
+     *
+     * <code>int64 masteriid = 4;</code>
+     * @param value The masteriid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMasteriid(long value) {
+      
+      masteriid_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *master服务id, -1表示没有master服务
+     * </pre>
+     *
+     * <code>int64 masteriid = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMasteriid() {
+      
+      masteriid_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long eurekaSeed_ ;
+    /**
+     * <pre>
+     *eureka iid 种子
+     * </pre>
+     *
+     * <code>int64 eureka_seed = 5;</code>
+     * @return The eurekaSeed.
+     */
+    @java.lang.Override
+    public long getEurekaSeed() {
+      return eurekaSeed_;
+    }
+    /**
+     * <pre>
+     *eureka iid 种子
+     * </pre>
+     *
+     * <code>int64 eureka_seed = 5;</code>
+     * @param value The eurekaSeed to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEurekaSeed(long value) {
+      
+      eurekaSeed_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *eureka iid 种子
+     * </pre>
+     *
+     * <code>int64 eureka_seed = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEurekaSeed() {
+      
+      eurekaSeed_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long serviceSeed_ ;
+    /**
+     * <pre>
+     *service iid 种子
+     * </pre>
+     *
+     * <code>int64 service_seed = 6;</code>
+     * @return The serviceSeed.
+     */
+    @java.lang.Override
+    public long getServiceSeed() {
+      return serviceSeed_;
+    }
+    /**
+     * <pre>
+     *service iid 种子
+     * </pre>
+     *
+     * <code>int64 service_seed = 6;</code>
+     * @param value The serviceSeed to set.
+     * @return This builder for chaining.
+     */
+    public Builder setServiceSeed(long value) {
+      
+      serviceSeed_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *service iid 种子
+     * </pre>
+     *
+     * <code>int64 service_seed = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearServiceSeed() {
+      
+      serviceSeed_ = 0L;
       onChanged();
       return this;
     }

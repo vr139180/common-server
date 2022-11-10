@@ -18,8 +18,8 @@ public interface Erk_ServiceShutdown_ntfOrBuilder extends
   int getSvrType();
 
   /**
-   * <code>int64 service = 2;</code>
-   * @return The service.
+   * <code>int64 svriid = 2;</code>
+   * @return The svriid.
    */
-  long getService();
+  long getSvriid();
 }

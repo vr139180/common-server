@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/EurekaLinkFrom.h"
 
 #include <cmsLib/system/CommandBase.h>
@@ -9,14 +24,13 @@
 #include "sEurekaApp.h"
 
 EurekaLinkFrom::EurekaLinkFrom():NetLinkFromBase<EurekaSession>()
-,node_( 0)
 {
 	this->init_protocolhead();
 }
 
-EurekaLinkFrom::EurekaLinkFrom(EurekaNodeInfo* pnode) : NetLinkFromBase<EurekaSession>()
-,node_( pnode)
+EurekaLinkFrom::EurekaLinkFrom(EurekaNodeInfo pnode) : NetLinkFromBase<EurekaSession>()
 {
+	this->node_ = pnode;
 	this->init_protocolhead();
 }
 
@@ -39,7 +53,6 @@ void EurekaLinkFrom::send_to_eureka(BasicProtocol* msg)
 
 void EurekaLinkFrom::reset()
 {
-	node_.reset();
 	NetLinkFromBase<EurekaSession>::reset();
 }
 
@@ -51,7 +64,7 @@ void EurekaLinkFrom::force_linkclose()
 void EurekaLinkFrom::on_connect_lost_netthread()
 {
 	SystemCommand<EurekaLinkFrom>* cmd = new SystemCommand<EurekaLinkFrom>( 
-			boost::bind( &EurekaClusterCtrl::on_disconnected_with_linkfrom, svrApp.get_eurekactrl(), this));
+			boost::bind( &sEurekaApp::on_disconnected_with_linkfrom, &svrApp, this));
 	svrApp.regist_syscmd( cmd);
 }
 
@@ -68,13 +81,10 @@ void EurekaLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 
 void EurekaLinkFrom::registinfo_tolog( bool bregist)
 {
-	if (node_.get() == 0)
-		return;
-
 	if( bregist)
-		logInfo(out_runtime, ">>>>>> sEureka[%d] regist to me(sEureka)", node_->iid);
+		logInfo(out_runtime, ">>>>>> sEureka[%d] regist to me(sEureka)", node_.iid);
 	else
-		logInfo(out_runtime, "<<<<<< sEureka[%d] disconnect from me(sEureka)", node_->iid);
+		logInfo(out_runtime, "<<<<<< sEureka[%d] disconnect from me(sEureka)", node_.iid);
 }
 
 void EurekaLinkFrom::heart_beat()

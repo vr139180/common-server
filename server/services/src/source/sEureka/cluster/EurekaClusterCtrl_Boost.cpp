@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "cluster/EurekaClusterCtrl.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -9,69 +24,76 @@
 
 USED_REDISKEY_GLOBAL_NS
 
-bool EurekaClusterCtrl::init_ctrl()
+bool EurekaClusterCtrl::boot_ctrl()
 {
-	RedisClient* redis = svrApp.get_redisclient();
+	//初始化信息
+	this->is_boosted_ = false;
+	this->last_eureka_iid_ = 0;
+	this->myself_.ismaster = false;
+	this->myself_.iid = 0;
+	this->eureka_master_iid_ = 0;
 
 	//必须首先注册自己到系统
-	myself_.iid = redis->gen_uuid_from_redis(GLOBAL_IDGEN_HKEY, GLOBAL_IDGEN_SERVICE_F);
 	myself_.ip = ConfigHelper::instance().get_ip();
 	myself_.port = ConfigHelper::instance().get_port();
 	myself_.token = (S_INT_64)OSSystem::mOS->GetTimestamp();
 
-	redis->set_hashobject<EurekaNodeInfo>(EUREKA_CLUSTER_ALLS, std::to_string(myself_.iid).c_str(), myself_);
-	
-	//注册到queue
-	//score 取负数,方便zset计算
-	this->lastupdate_ = myself_.token;
-	S_INT_64 checktime = this->lastupdate_;
-	redis->add_zset(EUREKA_CLUSTER_QUEUE, std::to_string(myself_.iid).c_str(), checktime);
-	
-	//从系统获取存在的cluster节点
-	//***eureka节点永远只在启动的时候设置一次连接请求
-	update_redis_eurekas();
-
-	logInfo(out_runtime, "<<<<<<<<<<<< eureka node:%lld online >>>>>>>>>>>>", myself_.iid);
-
-	//系统初始化时，可能存在上次遗留的同机器的服务，需要判断ip+port是否是本机
-	for (boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator iter = redis_nodes.begin(); iter != redis_nodes.end(); ++iter)
+	//获取master节点信息
+	RedisClient* redis = svrApp.get_redisclient();
+	S_INT_64 masterid = 0;
+	if (!redis->get_hashmember_ul(EUREKA_MASTER_NODE, FIELD_MASTER_NODE_IID, masterid))
 	{
-		S_INT_64 sid = iter->first;
-		EurekaNodeInfo* rinfo = iter->second;
+		//没有master节点,设置自己为master
+		myself_.ismaster = true;
+		myself_.iid = this->make_next_eurekaiid();
+		this->eureka_master_iid_ = myself_.iid;
 
-		//过滤自己
-		if (sid == myself_.iid)
-			continue;
-		//如果连接的是本机，过滤自己
-		if (rinfo->ip == myself_.ip && rinfo->port == myself_.port)
+		if (!update_redis_masterinfo(redis))
 		{
-			continue;
+			svrApp.quit_app();
+			return false;
 		}
 
-		{
-			//和其他eureka节点的线程安全,统一使用主线程的线程锁
-			ThreadLockWrapper guard( svrApp.get_threadlock());
+		//标记为启动成功
+		this->mark_boosted();
 
-			rinfo = rinfo->clone();
-			EurekaLinkTo* lto = new EurekaLinkTo(rinfo);
-			links_to_.push_back(lto);
-			auth_links_to_.insert(lto);
+		//保存到列表中
+		eureka_nodes_[myself_.iid] = myself_;
 
-			lto->connect();
-		}
+		logInfo(out_runtime, "<<<<<<<<<<<< eureka node:%lld online >>>>>>>>>>>>", myself_.iid);
+
+		return true;
 	}
 
+	EurekaNodeInfo masterNode;
+	if (!redis->get_hashobject(EUREKA_MASTER_NODE, FIELD_MASTER_NODE_SVR, masterNode))
+	{
+		svrApp.quit_app();
+		return false;
+	}
+
+	//保存到列表中
+	try_regist_to_master(masterNode);
+	
 	return true;
 }
 
-void EurekaClusterCtrl::unint_ctrl()
+void EurekaClusterCtrl::try_regist_to_master(EurekaNodeInfo info)
 {
-	RedisClient* redis = svrApp.get_redisclient();
+	//注册到eureka节点列表中
+	if (!is_legality_eureka(info.iid, info.token))
+	{
+		eureka_nodes_[info.iid] = info;
 
-	redis->del_hashmember(EUREKA_CLUSTER_ALLS, std::to_string(myself_.iid).c_str());
-	redis->del_zsetmember(EUREKA_CLUSTER_QUEUE, std::to_string(myself_.iid).c_str());
+		std::list<EurekaNodeInfo> nodes;
+		nodes.push_back(info);
+		std::list<S_INT_64> deliids;
+		eureka_links_to_.sync_eureka_services(nodes, deliids);
+	}
 
-	std::string key = redis->build_rediskey(EUREKA_CLUSTER_SVRBIND, myself_.iid);
-	redis->del(key.c_str());
+	//master节点编号
+	this->eureka_master_iid_ = info.iid;
+
+	//强制发起连接
+	eureka_links_to_.connect_to();
 }
-

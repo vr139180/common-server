@@ -38,25 +38,14 @@ REDIS_KEYDEFINED(GLOBAL_DTASK_PREFIX, "-DTASK:%s");
 //eureka 状态维护任务
 REDIS_KEYDEFINED(GLOBAL_DTASK_EUREKAMAINTNCE, "eureka-maintnce");
 
-//服务状态维护
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_ALL, "svr-maintnce-all");
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_RES, "svr-maintnce-res");
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_HOME, "svr-maintnce-home");
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_GATE, "svr-maintnce-gate");
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_LOGIN, "svr-maintnce-login");
-REDIS_KEYDEFINED(GLOBAL_DTASK_SVRMAINTNCE_GATEHOMEAUTH, "svr-maintnce-gatehomeauth");
-
 //------------------------sEureka cluster相关------------------------------
-REDIS_KEYDEFINED(EUREKA_CLUSTER_ALLS, "_EUREKA:ALLS");
-//存放eureka的服务更新信息 zset结构
-REDIS_KEYDEFINED(EUREKA_CLUSTER_QUEUE, "_EUREKA:QUEUE");
-//存放绑定的服务信息
-REDIS_KEYDEFINED(EUREKA_CLUSTER_SVRBIND, "_EUREKA:%ld:BIND");
+//存放eureka master节点信息, hash
+REDIS_KEYDEFINED(EUREKA_MASTER_NODE, "_EUREKA:MASTER");
+REDIS_KEYDEFINED(FIELD_MASTER_NODE_IID, "iid");
+REDIS_KEYDEFINED(FIELD_MASTER_NODE_SVR, "svrinfo");
 
-//eureka节点每 3s更新一个lastupdate, 6s回溯queue
-#define TIMER_EUREKA_UPDATELASTIME_STEP		3000
-#define TIMER_EUREKA_QUEUE_STEP				6000
-
+//master节点失效时间 5 seconds
+#define EUREKA_MASTER_NODE_TIMEOUT	5*1000
 
 //-----------------------服务注册信息-------------------------------------
 //服务分类信息 hash结构
@@ -77,20 +66,7 @@ REDIS_KEYDEFINED(SERVICE_GATEEXT_SLOTSEQ, "ext:slotseq");
 //服务有效性维护
 REDIS_KEYDEFINED(SERVICE_MAINTNCE, "_SVRS:%s:QUEUE");
 
-//服务注册定时
-#define TIMER_SERVICE_UPDATSYNC_STEP		4000
-//service节点每 3s更新一个lastupdate, 6s回溯queue
-#define TIMER_SERVICE_QUEUE_STEP			6000
 
-//---------------------Home+Gate匹配数据项--------------------------------
-
-//每组gate+home的用户资源
-//homeid#gateid
-//资源分配中的userslot资源列表 zset结构 member: proxytoken score: timstamp
-REDIS_KEYDEFINED(HOMEGATE_USERSLOT_AUTH, "_SLOT:%ld#%ld:auth");
-
-//总的可用空闲slot
-REDIS_KEYDEFINED(GLOBAL_USERSLOT_FREE, "_SLOT:total:free");
 
 //用户数据定义
 

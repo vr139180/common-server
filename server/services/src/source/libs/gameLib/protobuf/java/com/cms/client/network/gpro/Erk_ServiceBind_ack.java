@@ -38,6 +38,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -51,6 +52,16 @@ private static final long serialVersionUID = 0L;
           case 8: {
 
             result_ = input.readInt32();
+            break;
+          }
+          case 16: {
+            bitField0_ |= 0x00000001;
+            eurekaiid_ = input.readInt64();
+            break;
+          }
+          case 24: {
+            bitField0_ |= 0x00000002;
+            eurekatoken_ = input.readInt64();
             break;
           }
           default: {
@@ -85,11 +96,12 @@ private static final long serialVersionUID = 0L;
             com.cms.client.network.gpro.Erk_ServiceBind_ack.class, com.cms.client.network.gpro.Erk_ServiceBind_ack.Builder.class);
   }
 
+  private int bitField0_;
   public static final int RESULT_FIELD_NUMBER = 1;
   private int result_;
   /**
    * <pre>
-   *0:成功 1:失败
+   *0:成功 1:失败 2:服务不存在
    * </pre>
    *
    * <code>int32 result = 1;</code>
@@ -98,6 +110,44 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getResult() {
     return result_;
+  }
+
+  public static final int EUREKAIID_FIELD_NUMBER = 2;
+  private long eurekaiid_;
+  /**
+   * <code>optional int64 eurekaiid = 2;</code>
+   * @return Whether the eurekaiid field is set.
+   */
+  @java.lang.Override
+  public boolean hasEurekaiid() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>optional int64 eurekaiid = 2;</code>
+   * @return The eurekaiid.
+   */
+  @java.lang.Override
+  public long getEurekaiid() {
+    return eurekaiid_;
+  }
+
+  public static final int EUREKATOKEN_FIELD_NUMBER = 3;
+  private long eurekatoken_;
+  /**
+   * <code>optional int64 eurekatoken = 3;</code>
+   * @return Whether the eurekatoken field is set.
+   */
+  @java.lang.Override
+  public boolean hasEurekatoken() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional int64 eurekatoken = 3;</code>
+   * @return The eurekatoken.
+   */
+  @java.lang.Override
+  public long getEurekatoken() {
+    return eurekatoken_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -117,6 +167,12 @@ private static final long serialVersionUID = 0L;
     if (result_ != 0) {
       output.writeInt32(1, result_);
     }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      output.writeInt64(2, eurekaiid_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      output.writeInt64(3, eurekatoken_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -129,6 +185,14 @@ private static final long serialVersionUID = 0L;
     if (result_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, result_);
+    }
+    if (((bitField0_ & 0x00000001) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(2, eurekaiid_);
+    }
+    if (((bitField0_ & 0x00000002) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(3, eurekatoken_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -147,6 +211,16 @@ private static final long serialVersionUID = 0L;
 
     if (getResult()
         != other.getResult()) return false;
+    if (hasEurekaiid() != other.hasEurekaiid()) return false;
+    if (hasEurekaiid()) {
+      if (getEurekaiid()
+          != other.getEurekaiid()) return false;
+    }
+    if (hasEurekatoken() != other.hasEurekatoken()) return false;
+    if (hasEurekatoken()) {
+      if (getEurekatoken()
+          != other.getEurekatoken()) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -160,6 +234,16 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + RESULT_FIELD_NUMBER;
     hash = (53 * hash) + getResult();
+    if (hasEurekaiid()) {
+      hash = (37 * hash) + EUREKAIID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEurekaiid());
+    }
+    if (hasEurekatoken()) {
+      hash = (37 * hash) + EUREKATOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEurekatoken());
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -295,6 +379,10 @@ private static final long serialVersionUID = 0L;
       super.clear();
       result_ = 0;
 
+      eurekaiid_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      eurekatoken_ = 0L;
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -321,7 +409,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.cms.client.network.gpro.Erk_ServiceBind_ack buildPartial() {
       com.cms.client.network.gpro.Erk_ServiceBind_ack result = new com.cms.client.network.gpro.Erk_ServiceBind_ack(this);
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.result_ = result_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.eurekaiid_ = eurekaiid_;
+        to_bitField0_ |= 0x00000001;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.eurekatoken_ = eurekatoken_;
+        to_bitField0_ |= 0x00000002;
+      }
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -373,6 +472,12 @@ private static final long serialVersionUID = 0L;
       if (other.getResult() != 0) {
         setResult(other.getResult());
       }
+      if (other.hasEurekaiid()) {
+        setEurekaiid(other.getEurekaiid());
+      }
+      if (other.hasEurekatoken()) {
+        setEurekatoken(other.getEurekatoken());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -401,11 +506,12 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private int result_ ;
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:服务不存在
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -417,7 +523,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:服务不存在
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -432,7 +538,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:服务不存在
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -441,6 +547,84 @@ private static final long serialVersionUID = 0L;
     public Builder clearResult() {
       
       result_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long eurekaiid_ ;
+    /**
+     * <code>optional int64 eurekaiid = 2;</code>
+     * @return Whether the eurekaiid field is set.
+     */
+    @java.lang.Override
+    public boolean hasEurekaiid() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional int64 eurekaiid = 2;</code>
+     * @return The eurekaiid.
+     */
+    @java.lang.Override
+    public long getEurekaiid() {
+      return eurekaiid_;
+    }
+    /**
+     * <code>optional int64 eurekaiid = 2;</code>
+     * @param value The eurekaiid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEurekaiid(long value) {
+      bitField0_ |= 0x00000001;
+      eurekaiid_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int64 eurekaiid = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEurekaiid() {
+      bitField0_ = (bitField0_ & ~0x00000001);
+      eurekaiid_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long eurekatoken_ ;
+    /**
+     * <code>optional int64 eurekatoken = 3;</code>
+     * @return Whether the eurekatoken field is set.
+     */
+    @java.lang.Override
+    public boolean hasEurekatoken() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int64 eurekatoken = 3;</code>
+     * @return The eurekatoken.
+     */
+    @java.lang.Override
+    public long getEurekatoken() {
+      return eurekatoken_;
+    }
+    /**
+     * <code>optional int64 eurekatoken = 3;</code>
+     * @param value The eurekatoken to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEurekatoken(long value) {
+      bitField0_ |= 0x00000002;
+      eurekatoken_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional int64 eurekatoken = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEurekatoken() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      eurekatoken_ = 0L;
       onChanged();
       return this;
     }

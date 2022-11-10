@@ -88,6 +88,16 @@ private static final long serialVersionUID = 0L;
                 exts__.getKey(), exts__.getValue());
             break;
           }
+          case 48: {
+
+            isrouter_ = input.readBool();
+            break;
+          }
+          case 56: {
+
+            isonline_ = input.readBool();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -320,6 +330,36 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int ISROUTER_FIELD_NUMBER = 6;
+  private boolean isrouter_;
+  /**
+   * <pre>
+   *是否router服务
+   * </pre>
+   *
+   * <code>bool isrouter = 6;</code>
+   * @return The isrouter.
+   */
+  @java.lang.Override
+  public boolean getIsrouter() {
+    return isrouter_;
+  }
+
+  public static final int ISONLINE_FIELD_NUMBER = 7;
+  private boolean isonline_;
+  /**
+   * <pre>
+   *是否上线
+   * </pre>
+   *
+   * <code>bool isonline = 7;</code>
+   * @return The isonline.
+   */
+  @java.lang.Override
+  public boolean getIsonline() {
+    return isonline_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -352,6 +392,12 @@ private static final long serialVersionUID = 0L;
         internalGetExts(),
         ExtsDefaultEntryHolder.defaultEntry,
         5);
+    if (isrouter_ != false) {
+      output.writeBool(6, isrouter_);
+    }
+    if (isonline_ != false) {
+      output.writeBool(7, isonline_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -386,6 +432,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, exts__);
     }
+    if (isrouter_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(6, isrouter_);
+    }
+    if (isonline_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(7, isonline_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -411,6 +465,10 @@ private static final long serialVersionUID = 0L;
         != other.getPort()) return false;
     if (!internalGetExts().equals(
         other.internalGetExts())) return false;
+    if (getIsrouter()
+        != other.getIsrouter()) return false;
+    if (getIsonline()
+        != other.getIsonline()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -436,6 +494,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + EXTS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetExts().hashCode();
     }
+    hash = (37 * hash) + ISROUTER_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsrouter());
+    hash = (37 * hash) + ISONLINE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsonline());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -604,6 +668,10 @@ private static final long serialVersionUID = 0L;
       port_ = 0;
 
       internalGetMutableExts().clear();
+      isrouter_ = false;
+
+      isonline_ = false;
+
       return this;
     }
 
@@ -637,6 +705,8 @@ private static final long serialVersionUID = 0L;
       result.port_ = port_;
       result.exts_ = internalGetExts();
       result.exts_.makeImmutable();
+      result.isrouter_ = isrouter_;
+      result.isonline_ = isonline_;
       onBuilt();
       return result;
     }
@@ -700,6 +770,12 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableExts().mergeFrom(
           other.internalGetExts());
+      if (other.getIsrouter() != false) {
+        setIsrouter(other.getIsrouter());
+      }
+      if (other.getIsonline() != false) {
+        setIsonline(other.getIsonline());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1111,6 +1187,92 @@ private static final long serialVersionUID = 0L;
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableExts().getMutableMap()
           .putAll(values);
+      return this;
+    }
+
+    private boolean isrouter_ ;
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 6;</code>
+     * @return The isrouter.
+     */
+    @java.lang.Override
+    public boolean getIsrouter() {
+      return isrouter_;
+    }
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 6;</code>
+     * @param value The isrouter to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsrouter(boolean value) {
+      
+      isrouter_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *是否router服务
+     * </pre>
+     *
+     * <code>bool isrouter = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsrouter() {
+      
+      isrouter_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean isonline_ ;
+    /**
+     * <pre>
+     *是否上线
+     * </pre>
+     *
+     * <code>bool isonline = 7;</code>
+     * @return The isonline.
+     */
+    @java.lang.Override
+    public boolean getIsonline() {
+      return isonline_;
+    }
+    /**
+     * <pre>
+     *是否上线
+     * </pre>
+     *
+     * <code>bool isonline = 7;</code>
+     * @param value The isonline to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsonline(boolean value) {
+      
+      isonline_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *是否上线
+     * </pre>
+     *
+     * <code>bool isonline = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsonline() {
+      
+      isonline_ = false;
+      onChanged();
       return this;
     }
     @java.lang.Override

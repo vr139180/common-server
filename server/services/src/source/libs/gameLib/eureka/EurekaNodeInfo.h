@@ -42,9 +42,11 @@ public:
 	//node的ip地址
 	std::string ip;
 	//node的端口
-	int port;
+	int			port;
 	//node的token
 	S_INT_64	token;
+	//master
+	bool		ismaster;
 };
 
 #endif //__EUREKANODEINFO_H__

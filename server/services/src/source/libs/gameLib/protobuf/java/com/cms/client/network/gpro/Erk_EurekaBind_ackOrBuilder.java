@@ -9,7 +9,7 @@ public interface Erk_EurekaBind_ackOrBuilder extends
 
   /**
    * <pre>
-   *0:成功 1:失
+   *0:成功 1:token错误 2:暂时不存在该服务
    * </pre>
    *
    * <code>int32 result = 1;</code>

@@ -110,4 +110,24 @@ public interface ServerNodeOrBuilder extends
 
   java.lang.String getExtsOrThrow(
       java.lang.String key);
+
+  /**
+   * <pre>
+   *是否router服务
+   * </pre>
+   *
+   * <code>bool isrouter = 6;</code>
+   * @return The isrouter.
+   */
+  boolean getIsrouter();
+
+  /**
+   * <pre>
+   *是否上线
+   * </pre>
+   *
+   * <code>bool isonline = 7;</code>
+   * @return The isonline.
+   */
+  boolean getIsonline();
 }

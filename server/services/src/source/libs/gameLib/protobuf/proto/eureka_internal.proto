@@ -75,39 +75,73 @@ message ServerNode{
   bool isonline = 7;
 }
 
-//Eureka服务器相互绑定
+//Eureka服务器注册到
+message Erk_EurekaRegist_req {
+  //master ip,port
+  string ip = 1;
+  //服务器port
+  int32 port = 2;
+}
+
+message Erk_EurekaRegist_ack{
+  //0:成功 1:不是master 2:其他错误
+  int32 result = 1;
+  //成功，返回iid和token
+  int64 myiid = 2;
+  int64 mytoken = 3;
+  //eureka iid 种子
+  int64 eureka_seed = 4;
+  //service iid 种子
+  int64 service_seed = 5;
+}
+
+//Eureka服务器相互绑定,svrid大的向小的发起连接
+//网状结构
 message Erk_EurekaBind_req {
   //我的iid
   int64 iid = 1;
   //我的token，用于验证
   int64 token = 2;
-  //动态ip
-  string ip = 3;
-  //服务器port
-  int32 port = 4;
 }
 
 message Erk_EurekaBind_ack{
-  //0:成功 1:失
+  //0:成功 1:token错误 2:暂时不存在该服务
   int32 result = 1;
 }
 
-//通知其他服务eureka服务上线或下线
+//通知注册的服务eureka服务上线或下线
 message Erk_EurekaUpdate_ntf{
-  //请求方iid
-  int64 myiid = 1;
   //上线的服务
   repeated EurekaServerNode online = 2;
   //下线的服务iid
   repeated int64 offline = 3;
   //master服务id, -1表示没有master服务
   int64 masteriid = 4;
+  //eureka iid 种子
+  int64 eureka_seed = 5;
+  //service iid 种子
+  int64 service_seed = 6;
 }
 
 //master节点变更通知
 message Erk_MasterChange_ntf{
-	int64 masteriid = 1;
-	EurekaServerNode node = 2;
+  int64 newmaster = 1;
+  int64 mastertoken =2;
+  //eureka iid 种子
+  int64 eureka_seed = 3;
+  //service iid 种子
+  int64 service_seed = 4;
+}
+
+//服务同步 master to slaver
+message Erk_ServiceSync_ntf{
+  int64 masteriid = 1;
+  //是否全量
+  bool fullsvrs = 2;
+  //新增服务
+  repeated ServerNode newsvrs = 3;
+  //下线的服务
+  repeated int64 offline = 4;
 }
 
 //其他服务向eureka注册中心，注册服务
@@ -121,6 +155,8 @@ message Erk_ServiceRegist_req{
   map<string,string> exts = 4;
   //是否router服务
   bool isrouter = 5;
+  //master节点token
+  int64 eurekatoken = 6;
 }
 
 message Erk_ServiceRegist_ack{
@@ -141,11 +177,14 @@ message Erk_ServiceBind_req{
   //service编号，由eureka保证唯一
   int64 iid = 2;
   int64 token = 3;
+  int64 eurekatoken = 4;
 }
 
 message Erk_ServiceBind_ack{
   //0:成功 1:失败 2:服务不存在
   int32 result = 1;
+  optional int64 eurekaiid = 2;
+  optional int64 eurekatoken = 3;
 }
 
 //其他服务向eureka注册中心，订阅服务信息
@@ -160,11 +199,8 @@ message Erk_ServiceSubscribe_req{
   int64 myiid = 1;
   //请求放服务类型
   int32 mysvrtype = 2;
-  //ip port方便过滤算法
-  string myip = 3;
-  int32 myport = 4;
   //服务器类型 NETSVR_TYPE_ENUM定义
-  repeated svrinfo svr_type = 5;
+  repeated svrinfo svr_type = 3;
 }
 
 message Erk_ServiceSubscribe_ntf{
@@ -173,9 +209,9 @@ message Erk_ServiceSubscribe_ntf{
   //服务器类型 NETSVR_TYPE_ENUM定义
   int32 svr_type = 2;
   //新上线的服务
-  repeated ServerNode online = 3;
+  repeated ServerNode newsvrs = 3;
   //下线的服务
-  repeated int64 offline = 4;
+  repeated int64 offsvrs = 4;
 }
 
 //负载均衡服务订阅
@@ -185,19 +221,42 @@ message Erk_RouterSubscribe_req{
   //请求放服务类型
   int32 mysvrtype = 2;
   //服务器类型 NETSVR_TYPE_ENUM定义
-  int32 svr_type = 3;
+  repeated int32 svr_types = 3;
+}
+
+message Erk_RouterSubscribe_ntf{
+  //请求方iid
+  int64 myiid = 1;
+  //服务器类型 NETSVR_TYPE_ENUM定义
+  int32 svr_type = 2;
   //服务列表
-  repeated int64 svriids = 4;
+  repeated int64 svriids = 3;
+}
+
+//router服务上线通知
+message Erk_RouterOnline_req{
+  //请求方iid
+  int64 myiid = 1;
+  //请求放服务类型
+  int32 mysvrtype = 2;
 }
 
 //服务下线通知
 message Erk_ServiceShutdown_ntf{
   //下线的服务
   int32 svr_type = 1;
-  int64 service = 2;
+  int64 svriid = 2;
 }
 
 message Svr_LiveTick_ntf{
+}
+
+//router服务上线通知
+message Svr_RouterOnline_ntf{
+  //请求方iid
+  int64 routeriid = 1;
+  //请求放服务类型
+  int32 routertype = 2;
 }
 
 //服务之间相互注册

@@ -51,7 +51,8 @@ class EurekaClusterClient : public MessageProcess
 {
 	friend class EurekaClusterLink;
 
-	typedef boost::unordered_map<S_INT_64, ServiceNodeInfo*> SERVICENODE_TYPE;
+	typedef boost::unordered_map<S_INT_64, ServiceNodeInfo*>	SERVICENODE_TYPE;
+	typedef boost::unordered_map<S_INT_64, EurekaNodeInfo*>		EUREKANODE_TYPE;
 
 public:
 	static EurekaClusterClient& instance();
@@ -75,12 +76,15 @@ public:
 	void regist_command(CommandBase *p);
 	bool is_servicenode_exist(NETSERVICE_TYPE type, S_INT_64 sid);
 
+	bool has_eureka_masternode() { return master_link_ != 0; }
+
 protected:
 	//---------------------- MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
 	virtual void ProcessMessage(NetProtocol* message, bool& autorelease) {}
 
-	void on_service_subscribe_ack(NetProtocol* message, bool& autorelease);
+	void on_service_subscribe_ntf(NetProtocol* message, bool& autorelease);
+	void on_router_subscribe_ntf(NetProtocol* message, bool& autorelease);
 	void on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease);
 
 protected:
@@ -131,8 +135,10 @@ protected:
 	IEurekaClientIntegrate*			app_proxy_;
 	TimerKey						auto_connect_tk_;
 
-	//订阅相关
-	std::list< NETSERVICE_TYPE>		subscribe_services_;
+	//订阅的服务类型
+	std::list<NETSERVICE_TYPE>		subscribe_services_;
+	//负载均衡的订阅类型
+	std::list<NETSERVICE_TYPE>		subscribe_routers_;
 
 	//cluster节点，连接相关变量
 	std::list<EurekaClusterLink*>	clusterlinks_;
@@ -143,7 +149,9 @@ protected:
 
 	//存放已连接的节点
 	std::vector<EurekaClusterLink*>	online_links_;
-	volatile int	cur_link_index_;
+	EurekaClusterLink*				master_link_;
+
+	volatile int					cur_link_index_;
 };
 
 #endif //__EUREKACLUSTERCLIENT_H__

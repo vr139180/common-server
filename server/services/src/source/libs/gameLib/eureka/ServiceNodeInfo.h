@@ -41,8 +41,8 @@ protected:
 
 public:
 	//服务id
-	S_INT_64	iid;
-	S_INT_64	token;
+	S_INT_64		iid;
+	S_INT_64		token;
 	NETSERVICE_TYPE	type;
 	//扩展信息
 	boost::unordered_map<std::string, std::string> extparams;
@@ -50,7 +50,15 @@ public:
 	//node的ip地址
 	std::string ip;
 	//node的端口
-	int port;
+	int			port;
+
+	//状态,是否在线
+	bool		isonline;
+
+	//只在eureka节点使用的数据
+	//订阅的服务和负载均衡
+	std::list<NETSERVICE_TYPE>	subscribes_;
+	std::list<NETSERVICE_TYPE>	routers_;
 };
 
 #endif //__SERVICENODEINFO_H__

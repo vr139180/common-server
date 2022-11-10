@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #ifndef __SERVICEREGISTERCTRL_H__
 #define __SERVICEREGISTERCTRL_H__
 
@@ -7,8 +22,8 @@
 #include <cmsLib/CommandListener.h>
 
 #include <gameLib/service_type.h>
-#include <gameLib/commons/LinkFromHolder.h>
 
+#include "network/ServiceLinkFromHolder.h"
 #include "network/ServiceLinkFrom.h"
 
 class ServiceRegisterCtrl : public MessageProcess
@@ -22,44 +37,58 @@ public:
 	void init_timer();
 
 protected:
-	//---------eureka端缓存的 各个类型的service的描述
-	void redis_update_mth_serviemeta();
+	S_INT_64 make_next_serviceiid() { return ++last_serviceiid_seed_; }
+	S_INT_64 make_next_serviceiid_fix(S_INT_64 incstep = 10000) { last_serviceiid_seed_ += incstep; return ++last_serviceiid_seed_; }
 
+	ServiceNodeInfo* find_servicenode_byiid(S_INT_64 iid);
+
+	//---------eureka端缓存的 各个类型的service的描述
 	void service_mth_meta_release_all();
+
 	void service_mth_meta_merge_oftype(NETSERVICE_TYPE type, 
 		boost::unordered_map<std::string, ServiceNodeInfo*>& sni, std::set<S_INT_64>& delsvrs);
-	std::list<ServiceNodeInfo*>& get_service_meth_meta_oftype(NETSERVICE_TYPE type);
 
-	boost::unordered_map< NETSERVICE_TYPE, std::list<ServiceNodeInfo*>>	servie_of_type_redis_;
+	std::list<ServiceNodeInfo*> get_service_node_oftype(NETSERVICE_TYPE type);
+
+	void regist_one_service(ServiceNodeInfo& info);
 
 protected:
 	//活动的service连接,只在主线程中使用,代码保证线程安全
-	LinkFromHolder<ServiceLinkFrom>		service_mth_links_;
+	ServiceLinkFromHolder<ServiceLinkFrom>				service_mth_links_;
+
+	//所有的服务节点信息
+	boost::unordered_map<S_INT_64, ServiceNodeInfo>		all_service_nodes_;
+	//服务分类信息
+	boost::unordered_map<NETSERVICE_TYPE, std::list<ServiceNodeInfo*>>	servie_of_type_;
+	//服务订阅信息 key:服务类型 value:订阅人列表
+	boost::unordered_map<NETSERVICE_TYPE, std::list<S_INT_64>> service_of_subscribe_;
+	//负载均衡订阅 key:服务类型 value:订阅人列表
+	boost::unordered_map<NETSERVICE_TYPE, std::list<S_INT_64>> router_of_subscribe_;
+
+	S_INT_64	last_serviceiid_seed_;
 
 public:
-	void on_mth_serviceregist_req(NetProtocol* pro, bool& autorelease, void* session);
-	//ack确认之后，注册的服务在redis服务列表中才会真正有效
-	void on_mth_serviceregist_confirm(NetProtocol* pro, bool& autorelease);
-	void on_mth_servicebind_req(NetProtocol* pro, bool& autorelease, void* session);
 	void on_mth_disconnected_with_service(ServiceLinkFrom* plink);
-	void on_mth_message_route_to_service(NetProtocol* pro, bool& autorelease, S_INT_64 serviceid);
-
-	//服务订阅信息同步
-	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
-
-protected:
-	void redis_serviceregist_do1(ServiceNodeInfo* pnode);
-	void redis_serviceregist_do2(S_INT_64 sid);
-
-	void maintnce_service(u64 now);
 
 	//---------------------- MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
 	virtual void ProcessMessage( NetProtocol* message, bool& autorelease) {}
 
-	//----------------------timer----------------------------------------------------
-	void service_sync_timer(u64 tnow, int interval, u64 iid, bool& finish);
-	void service_maintnce_timer(u64 tnow, int interval, u64 iid, bool& finish);
+	void on_mth_serviceregist_req(NetProtocol* pro, bool& autorelease, void* session);
+	void on_mth_servicebind_req(NetProtocol* pro, bool& autorelease, void* session);
+
+	//服务订阅信息同步
+	void on_mth_servicesync_ntf(NetProtocol* pro, bool& autorelease);
+	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
+	void on_mth_servicesubscribe_ntf(NetProtocol* pro, bool& autorelease);
+
+	void on_mth_routersubscribe_req(NetProtocol* pro, bool& autorelease);
+	void on_mth_routersubscribe_ntf(NetProtocol* pro, bool& autorelease);
+	void on_mth_routeronline_req(NetProtocol* pro, bool& autorelease);
+	void on_mth_routeronline_ntf(NetProtocol* pro, bool& autorelease);
+
+	void on_mth_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease);
+
 };
 
 

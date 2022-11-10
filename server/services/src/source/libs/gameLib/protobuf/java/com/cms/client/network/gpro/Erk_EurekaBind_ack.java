@@ -89,7 +89,7 @@ private static final long serialVersionUID = 0L;
   private int result_;
   /**
    * <pre>
-   *0:成功 1:失
+   *0:成功 1:token错误 2:暂时不存在该服务
    * </pre>
    *
    * <code>int32 result = 1;</code>
@@ -405,7 +405,7 @@ private static final long serialVersionUID = 0L;
     private int result_ ;
     /**
      * <pre>
-     *0:成功 1:失
+     *0:成功 1:token错误 2:暂时不存在该服务
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -417,7 +417,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失
+     *0:成功 1:token错误 2:暂时不存在该服务
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -432,7 +432,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失
+     *0:成功 1:token错误 2:暂时不存在该服务
      * </pre>
      *
      * <code>int32 result = 1;</code>

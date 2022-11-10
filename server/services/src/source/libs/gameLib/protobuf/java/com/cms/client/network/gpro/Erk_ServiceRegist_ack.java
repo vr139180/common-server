@@ -111,7 +111,7 @@ private static final long serialVersionUID = 0L;
   private int result_;
   /**
    * <pre>
-   *0:成功 1:失败
+   *0:成功 1:失败 2:不是master节点
    * </pre>
    *
    * <code>int32 result = 1;</code>
@@ -627,7 +627,7 @@ private static final long serialVersionUID = 0L;
     private int result_ ;
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:不是master节点
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -639,7 +639,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:不是master节点
      * </pre>
      *
      * <code>int32 result = 1;</code>
@@ -654,7 +654,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:失败
+     *0:成功 1:失败 2:不是master节点
      * </pre>
      *
      * <code>int32 result = 1;</code>

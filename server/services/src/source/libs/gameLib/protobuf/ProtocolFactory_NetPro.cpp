@@ -22,26 +22,29 @@ USE_PROTOCOL_NAMESPACE
 void ProtocolFactory::init_factory()
 {
 	//eureka_internal.proto
+	regist_protocal<Erk_EurekaRegist_req>(ERK_PROTYPE::ERK_EUREKAREGIST_REQ);
+	regist_protocal<Erk_EurekaRegist_ack>(ERK_PROTYPE::ERK_EUREKAREGIST_ACK);
 	regist_protocal<Erk_EurekaBind_req>(ERK_PROTYPE::ERK_EUREKABIND_REQ);
 	regist_protocal<Erk_EurekaBind_ack>(ERK_PROTYPE::ERK_EUREKABIND_ACK);
 	regist_protocal<Erk_EurekaUpdate_ntf>(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF);
-	regist_protocal<Erk_Eureka_sync>(ERK_PROTYPE::ERK_EUREKA_SYNC);
+	regist_protocal<Erk_MasterChange_ntf>(ERK_PROTYPE::ERK_MASTERCHANGE_NTF);
 
 	regist_protocal<Erk_ServiceRegist_req>(ERK_PROTYPE::ERK_SERVICEREGIST_REQ);
 	regist_protocal<Erk_ServiceRegist_ack>(ERK_PROTYPE::ERK_SERVICEREGIST_ACK);
-	regist_protocal<Erk_ServiceRegist_Confirm>(ERK_PROTYPE::ERK_SERVICEREGIST_CONFIRM);
-
+	regist_protocal<Erk_ServiceSync_ntf>(ERK_PROTYPE::ERK_SERVICESYNC_NTF);
 	regist_protocal<Erk_ServiceBind_req>(ERK_PROTYPE::ERK_SERVICEBIND_REQ);
 	regist_protocal<Erk_ServiceBind_ack>(ERK_PROTYPE::ERK_SERVICEBIND_ACK);
-
 	regist_protocal<Erk_ServiceSubscribe_req>(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_REQ);
-	regist_protocal<Erk_ServiceSubscribe_ack>(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_ACK);
-
+	regist_protocal<Erk_ServiceSubscribe_ntf>(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_NTF);
+	regist_protocal<Erk_RouterSubscribe_req>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_REQ);
+	regist_protocal<Erk_RouterSubscribe_ntf>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF);
+	regist_protocal<Erk_RouterOnline_req>(ERK_PROTYPE::ERK_ROUTERONLINE_REQ);
 	regist_protocal<Erk_ServiceShutdown_ntf>(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF);
 
 	regist_protocal<Svr_LiveTick_ntf>(ERK_PROTYPE::SVR_LIVETICK_NTF);
 	regist_protocal<Svr_ServiceBindService_req>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ);
 	regist_protocal<Svr_ServiceBindService_ack>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK);
+	regist_protocal<Svr_RouterOnline_ntf>(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF);
 
 	//robot_test_internal.proto
 	regist_protocal<Robot_Config_Req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_REQ);

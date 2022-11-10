@@ -29,36 +29,10 @@ public interface Erk_ServiceSubscribe_reqOrBuilder extends
 
   /**
    * <pre>
-   *ip port方便过滤算法
-   * </pre>
-   *
-   * <code>string myip = 3;</code>
-   * @return The myip.
-   */
-  java.lang.String getMyip();
-  /**
-   * <pre>
-   *ip port方便过滤算法
-   * </pre>
-   *
-   * <code>string myip = 3;</code>
-   * @return The bytes for myip.
-   */
-  com.google.protobuf.ByteString
-      getMyipBytes();
-
-  /**
-   * <code>int32 myport = 4;</code>
-   * @return The myport.
-   */
-  int getMyport();
-
-  /**
-   * <pre>
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   java.util.List<com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo> 
       getSvrTypeList();
@@ -67,7 +41,7 @@ public interface Erk_ServiceSubscribe_reqOrBuilder extends
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfo getSvrType(int index);
   /**
@@ -75,7 +49,7 @@ public interface Erk_ServiceSubscribe_reqOrBuilder extends
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   int getSvrTypeCount();
   /**
@@ -83,7 +57,7 @@ public interface Erk_ServiceSubscribe_reqOrBuilder extends
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   java.util.List<? extends com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder> 
       getSvrTypeOrBuilderList();
@@ -92,7 +66,7 @@ public interface Erk_ServiceSubscribe_reqOrBuilder extends
    *服务器类型 NETSVR_TYPE_ENUM定义
    * </pre>
    *
-   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 5;</code>
+   * <code>repeated .PRO.Erk_ServiceSubscribe_req.svrinfo svr_type = 3;</code>
    */
   com.cms.client.network.gpro.Erk_ServiceSubscribe_req.svrinfoOrBuilder getSvrTypeOrBuilder(
       int index);

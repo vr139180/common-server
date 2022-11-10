@@ -26,34 +26,4 @@ public interface Erk_EurekaBind_reqOrBuilder extends
    * @return The token.
    */
   long getToken();
-
-  /**
-   * <pre>
-   *动态ip
-   * </pre>
-   *
-   * <code>string ip = 3;</code>
-   * @return The ip.
-   */
-  java.lang.String getIp();
-  /**
-   * <pre>
-   *动态ip
-   * </pre>
-   *
-   * <code>string ip = 3;</code>
-   * @return The bytes for ip.
-   */
-  com.google.protobuf.ByteString
-      getIpBytes();
-
-  /**
-   * <pre>
-   *服务器port
-   * </pre>
-   *
-   * <code>int32 port = 4;</code>
-   * @return The port.
-   */
-  int getPort();
 }

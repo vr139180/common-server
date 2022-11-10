@@ -88,4 +88,24 @@ public interface Erk_ServiceRegist_reqOrBuilder extends
 
   java.lang.String getExtsOrThrow(
       java.lang.String key);
+
+  /**
+   * <pre>
+   *是否router服务
+   * </pre>
+   *
+   * <code>bool isrouter = 5;</code>
+   * @return The isrouter.
+   */
+  boolean getIsrouter();
+
+  /**
+   * <pre>
+   *master节点token
+   * </pre>
+   *
+   * <code>int64 eurekatoken = 6;</code>
+   * @return The eurekatoken.
+   */
+  long getEurekatoken();
 }

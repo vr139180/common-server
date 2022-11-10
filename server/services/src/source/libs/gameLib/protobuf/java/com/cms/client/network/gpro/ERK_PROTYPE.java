@@ -21,21 +21,29 @@ public enum ERK_PROTYPE
    *绑定请求
    * </pre>
    *
-   * <code>ERK_EUREKABIND_REQ = 1;</code>
+   * <code>ERK_EUREKAREGIST_REQ = 1;</code>
    */
-  ERK_EUREKABIND_REQ(1),
+  ERK_EUREKAREGIST_REQ(1),
   /**
-   * <code>ERK_EUREKABIND_ACK = 2;</code>
+   * <code>ERK_EUREKAREGIST_ACK = 2;</code>
    */
-  ERK_EUREKABIND_ACK(2),
+  ERK_EUREKAREGIST_ACK(2),
   /**
-   * <code>ERK_EUREKAUPDATE_NTF = 3;</code>
+   * <code>ERK_EUREKABIND_REQ = 3;</code>
    */
-  ERK_EUREKAUPDATE_NTF(3),
+  ERK_EUREKABIND_REQ(3),
   /**
-   * <code>ERK_EUREKA_SYNC = 4;</code>
+   * <code>ERK_EUREKABIND_ACK = 4;</code>
    */
-  ERK_EUREKA_SYNC(4),
+  ERK_EUREKABIND_ACK(4),
+  /**
+   * <code>ERK_EUREKAUPDATE_NTF = 5;</code>
+   */
+  ERK_EUREKAUPDATE_NTF(5),
+  /**
+   * <code>ERK_MASTERCHANGE_NTF = 6;</code>
+   */
+  ERK_MASTERCHANGE_NTF(6),
   /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
@@ -45,9 +53,9 @@ public enum ERK_PROTYPE
    */
   ERK_SERVICEREGIST_ACK(11),
   /**
-   * <code>ERK_SERVICEREGIST_CONFIRM = 12;</code>
+   * <code>ERK_SERVICESYNC_NTF = 12;</code>
    */
-  ERK_SERVICEREGIST_CONFIRM(12),
+  ERK_SERVICESYNC_NTF(12),
   /**
    * <code>ERK_SERVICEBIND_REQ = 13;</code>
    */
@@ -61,13 +69,25 @@ public enum ERK_PROTYPE
    */
   ERK_SERVICESUBSCRIBE_REQ(15),
   /**
-   * <code>ERK_SERVICESUBSCRIBE_ACK = 16;</code>
+   * <code>ERK_SERVICESUBSCRIBE_NTF = 16;</code>
    */
-  ERK_SERVICESUBSCRIBE_ACK(16),
+  ERK_SERVICESUBSCRIBE_NTF(16),
   /**
-   * <code>ERK_SERVICESHUTDOWN_NTF = 17;</code>
+   * <code>ERK_ROUTERSUBSCRIBE_REQ = 17;</code>
    */
-  ERK_SERVICESHUTDOWN_NTF(17),
+  ERK_ROUTERSUBSCRIBE_REQ(17),
+  /**
+   * <code>ERK_ROUTERSUBSCRIBE_NTF = 18;</code>
+   */
+  ERK_ROUTERSUBSCRIBE_NTF(18),
+  /**
+   * <code>ERK_ROUTERONLINE_REQ = 19;</code>
+   */
+  ERK_ROUTERONLINE_REQ(19),
+  /**
+   * <code>ERK_SERVICESHUTDOWN_NTF = 20;</code>
+   */
+  ERK_SERVICESHUTDOWN_NTF(20),
   /**
    * <code>SVR_LIVETICK_NTF = 49;</code>
    */
@@ -80,6 +100,10 @@ public enum ERK_PROTYPE
    * <code>SVR_SERVICEBINDSERVICE_ACK = 51;</code>
    */
   SVR_SERVICEBINDSERVICE_ACK(51),
+  /**
+   * <code>SVR_ROUTERONLINE_NTF = 52;</code>
+   */
+  SVR_ROUTERONLINE_NTF(52),
   /**
    * <pre>
    *资源服务
@@ -100,21 +124,29 @@ public enum ERK_PROTYPE
    *绑定请求
    * </pre>
    *
-   * <code>ERK_EUREKABIND_REQ = 1;</code>
+   * <code>ERK_EUREKAREGIST_REQ = 1;</code>
    */
-  public static final int ERK_EUREKABIND_REQ_VALUE = 1;
+  public static final int ERK_EUREKAREGIST_REQ_VALUE = 1;
   /**
-   * <code>ERK_EUREKABIND_ACK = 2;</code>
+   * <code>ERK_EUREKAREGIST_ACK = 2;</code>
    */
-  public static final int ERK_EUREKABIND_ACK_VALUE = 2;
+  public static final int ERK_EUREKAREGIST_ACK_VALUE = 2;
   /**
-   * <code>ERK_EUREKAUPDATE_NTF = 3;</code>
+   * <code>ERK_EUREKABIND_REQ = 3;</code>
    */
-  public static final int ERK_EUREKAUPDATE_NTF_VALUE = 3;
+  public static final int ERK_EUREKABIND_REQ_VALUE = 3;
   /**
-   * <code>ERK_EUREKA_SYNC = 4;</code>
+   * <code>ERK_EUREKABIND_ACK = 4;</code>
    */
-  public static final int ERK_EUREKA_SYNC_VALUE = 4;
+  public static final int ERK_EUREKABIND_ACK_VALUE = 4;
+  /**
+   * <code>ERK_EUREKAUPDATE_NTF = 5;</code>
+   */
+  public static final int ERK_EUREKAUPDATE_NTF_VALUE = 5;
+  /**
+   * <code>ERK_MASTERCHANGE_NTF = 6;</code>
+   */
+  public static final int ERK_MASTERCHANGE_NTF_VALUE = 6;
   /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
@@ -124,9 +156,9 @@ public enum ERK_PROTYPE
    */
   public static final int ERK_SERVICEREGIST_ACK_VALUE = 11;
   /**
-   * <code>ERK_SERVICEREGIST_CONFIRM = 12;</code>
+   * <code>ERK_SERVICESYNC_NTF = 12;</code>
    */
-  public static final int ERK_SERVICEREGIST_CONFIRM_VALUE = 12;
+  public static final int ERK_SERVICESYNC_NTF_VALUE = 12;
   /**
    * <code>ERK_SERVICEBIND_REQ = 13;</code>
    */
@@ -140,13 +172,25 @@ public enum ERK_PROTYPE
    */
   public static final int ERK_SERVICESUBSCRIBE_REQ_VALUE = 15;
   /**
-   * <code>ERK_SERVICESUBSCRIBE_ACK = 16;</code>
+   * <code>ERK_SERVICESUBSCRIBE_NTF = 16;</code>
    */
-  public static final int ERK_SERVICESUBSCRIBE_ACK_VALUE = 16;
+  public static final int ERK_SERVICESUBSCRIBE_NTF_VALUE = 16;
   /**
-   * <code>ERK_SERVICESHUTDOWN_NTF = 17;</code>
+   * <code>ERK_ROUTERSUBSCRIBE_REQ = 17;</code>
    */
-  public static final int ERK_SERVICESHUTDOWN_NTF_VALUE = 17;
+  public static final int ERK_ROUTERSUBSCRIBE_REQ_VALUE = 17;
+  /**
+   * <code>ERK_ROUTERSUBSCRIBE_NTF = 18;</code>
+   */
+  public static final int ERK_ROUTERSUBSCRIBE_NTF_VALUE = 18;
+  /**
+   * <code>ERK_ROUTERONLINE_REQ = 19;</code>
+   */
+  public static final int ERK_ROUTERONLINE_REQ_VALUE = 19;
+  /**
+   * <code>ERK_SERVICESHUTDOWN_NTF = 20;</code>
+   */
+  public static final int ERK_SERVICESHUTDOWN_NTF_VALUE = 20;
   /**
    * <code>SVR_LIVETICK_NTF = 49;</code>
    */
@@ -159,6 +203,10 @@ public enum ERK_PROTYPE
    * <code>SVR_SERVICEBINDSERVICE_ACK = 51;</code>
    */
   public static final int SVR_SERVICEBINDSERVICE_ACK_VALUE = 51;
+  /**
+   * <code>SVR_ROUTERONLINE_NTF = 52;</code>
+   */
+  public static final int SVR_ROUTERONLINE_NTF_VALUE = 52;
   /**
    * <pre>
    *资源服务
@@ -194,21 +242,27 @@ public enum ERK_PROTYPE
   public static ERK_PROTYPE forNumber(int value) {
     switch (value) {
       case 0: return UNIVERSAL_1;
-      case 1: return ERK_EUREKABIND_REQ;
-      case 2: return ERK_EUREKABIND_ACK;
-      case 3: return ERK_EUREKAUPDATE_NTF;
-      case 4: return ERK_EUREKA_SYNC;
+      case 1: return ERK_EUREKAREGIST_REQ;
+      case 2: return ERK_EUREKAREGIST_ACK;
+      case 3: return ERK_EUREKABIND_REQ;
+      case 4: return ERK_EUREKABIND_ACK;
+      case 5: return ERK_EUREKAUPDATE_NTF;
+      case 6: return ERK_MASTERCHANGE_NTF;
       case 10: return ERK_SERVICEREGIST_REQ;
       case 11: return ERK_SERVICEREGIST_ACK;
-      case 12: return ERK_SERVICEREGIST_CONFIRM;
+      case 12: return ERK_SERVICESYNC_NTF;
       case 13: return ERK_SERVICEBIND_REQ;
       case 14: return ERK_SERVICEBIND_ACK;
       case 15: return ERK_SERVICESUBSCRIBE_REQ;
-      case 16: return ERK_SERVICESUBSCRIBE_ACK;
-      case 17: return ERK_SERVICESHUTDOWN_NTF;
+      case 16: return ERK_SERVICESUBSCRIBE_NTF;
+      case 17: return ERK_ROUTERSUBSCRIBE_REQ;
+      case 18: return ERK_ROUTERSUBSCRIBE_NTF;
+      case 19: return ERK_ROUTERONLINE_REQ;
+      case 20: return ERK_SERVICESHUTDOWN_NTF;
       case 49: return SVR_LIVETICK_NTF;
       case 50: return SVR_SERVICEBINDSERVICE_REQ;
       case 51: return SVR_SERVICEBINDSERVICE_ACK;
+      case 52: return SVR_ROUTERONLINE_NTF;
       case 100: return RES_SYNCGATESLOT_NTF;
       default: return null;
     }
