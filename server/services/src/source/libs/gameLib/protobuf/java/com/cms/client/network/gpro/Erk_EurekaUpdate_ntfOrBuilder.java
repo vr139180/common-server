@@ -9,6 +9,16 @@ public interface Erk_EurekaUpdate_ntfOrBuilder extends
 
   /**
    * <pre>
+   *是否全量
+   * </pre>
+   *
+   * <code>bool fulleurekas = 1;</code>
+   * @return The fulleurekas.
+   */
+  boolean getFulleurekas();
+
+  /**
+   * <pre>
    *上线的服务
    * </pre>
    *
@@ -82,7 +92,7 @@ public interface Erk_EurekaUpdate_ntfOrBuilder extends
 
   /**
    * <pre>
-   *master服务id, -1表示没有master服务
+   *master服务id, 0表示没有master服务
    * </pre>
    *
    * <code>int64 masteriid = 4;</code>

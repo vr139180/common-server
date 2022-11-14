@@ -55,6 +55,11 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            fulleurekas_ = input.readBool();
+            break;
+          }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               online_ = new java.util.ArrayList<com.cms.client.network.gpro.EurekaServerNode>();
@@ -136,6 +141,21 @@ private static final long serialVersionUID = 0L;
     return com.cms.client.network.gpro.EurekaInternal.internal_static_PRO_Erk_EurekaUpdate_ntf_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.class, com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.Builder.class);
+  }
+
+  public static final int FULLEUREKAS_FIELD_NUMBER = 1;
+  private boolean fulleurekas_;
+  /**
+   * <pre>
+   *是否全量
+   * </pre>
+   *
+   * <code>bool fulleurekas = 1;</code>
+   * @return The fulleurekas.
+   */
+  @java.lang.Override
+  public boolean getFulleurekas() {
+    return fulleurekas_;
   }
 
   public static final int ONLINE_FIELD_NUMBER = 2;
@@ -242,7 +262,7 @@ private static final long serialVersionUID = 0L;
   private long masteriid_;
   /**
    * <pre>
-   *master服务id, -1表示没有master服务
+   *master服务id, 0表示没有master服务
    * </pre>
    *
    * <code>int64 masteriid = 4;</code>
@@ -298,6 +318,9 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     getSerializedSize();
+    if (fulleurekas_ != false) {
+      output.writeBool(1, fulleurekas_);
+    }
     for (int i = 0; i < online_.size(); i++) {
       output.writeMessage(2, online_.get(i));
     }
@@ -326,6 +349,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (fulleurekas_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(1, fulleurekas_);
+    }
     for (int i = 0; i < online_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, online_.get(i));
@@ -371,6 +398,8 @@ private static final long serialVersionUID = 0L;
     }
     com.cms.client.network.gpro.Erk_EurekaUpdate_ntf other = (com.cms.client.network.gpro.Erk_EurekaUpdate_ntf) obj;
 
+    if (getFulleurekas()
+        != other.getFulleurekas()) return false;
     if (!getOnlineList()
         .equals(other.getOnlineList())) return false;
     if (!getOfflineList()
@@ -392,6 +421,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FULLEUREKAS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getFulleurekas());
     if (getOnlineCount() > 0) {
       hash = (37 * hash) + ONLINE_FIELD_NUMBER;
       hash = (53 * hash) + getOnlineList().hashCode();
@@ -547,6 +579,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      fulleurekas_ = false;
+
       if (onlineBuilder_ == null) {
         online_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -588,6 +622,7 @@ private static final long serialVersionUID = 0L;
     public com.cms.client.network.gpro.Erk_EurekaUpdate_ntf buildPartial() {
       com.cms.client.network.gpro.Erk_EurekaUpdate_ntf result = new com.cms.client.network.gpro.Erk_EurekaUpdate_ntf(this);
       int from_bitField0_ = bitField0_;
+      result.fulleurekas_ = fulleurekas_;
       if (onlineBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           online_ = java.util.Collections.unmodifiableList(online_);
@@ -653,6 +688,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.cms.client.network.gpro.Erk_EurekaUpdate_ntf other) {
       if (other == com.cms.client.network.gpro.Erk_EurekaUpdate_ntf.getDefaultInstance()) return this;
+      if (other.getFulleurekas() != false) {
+        setFulleurekas(other.getFulleurekas());
+      }
       if (onlineBuilder_ == null) {
         if (!other.online_.isEmpty()) {
           if (online_.isEmpty()) {
@@ -727,6 +765,49 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int bitField0_;
+
+    private boolean fulleurekas_ ;
+    /**
+     * <pre>
+     *是否全量
+     * </pre>
+     *
+     * <code>bool fulleurekas = 1;</code>
+     * @return The fulleurekas.
+     */
+    @java.lang.Override
+    public boolean getFulleurekas() {
+      return fulleurekas_;
+    }
+    /**
+     * <pre>
+     *是否全量
+     * </pre>
+     *
+     * <code>bool fulleurekas = 1;</code>
+     * @param value The fulleurekas to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFulleurekas(boolean value) {
+      
+      fulleurekas_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *是否全量
+     * </pre>
+     *
+     * <code>bool fulleurekas = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFulleurekas() {
+      
+      fulleurekas_ = false;
+      onChanged();
+      return this;
+    }
 
     private java.util.List<com.cms.client.network.gpro.EurekaServerNode> online_ =
       java.util.Collections.emptyList();
@@ -1150,7 +1231,7 @@ private static final long serialVersionUID = 0L;
     private long masteriid_ ;
     /**
      * <pre>
-     *master服务id, -1表示没有master服务
+     *master服务id, 0表示没有master服务
      * </pre>
      *
      * <code>int64 masteriid = 4;</code>
@@ -1162,7 +1243,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *master服务id, -1表示没有master服务
+     *master服务id, 0表示没有master服务
      * </pre>
      *
      * <code>int64 masteriid = 4;</code>
@@ -1177,7 +1258,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *master服务id, -1表示没有master服务
+     *master服务id, 0表示没有master服务
      * </pre>
      *
      * <code>int64 masteriid = 4;</code>

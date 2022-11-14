@@ -73,6 +73,8 @@ message ServerNode{
   bool isrouter = 6;
   //是否上线
   bool isonline = 7;
+  repeated int64 subscribes = 8;
+  repeated int64 routers =9;
 }
 
 //Eureka服务器注册到
@@ -87,12 +89,12 @@ message Erk_EurekaRegist_ack{
   //0:成功 1:不是master 2:其他错误
   int32 result = 1;
   //成功，返回iid和token
-  int64 myiid = 2;
-  int64 mytoken = 3;
+  optional int64 myiid = 2;
+  optional int64 mytoken = 3;
   //eureka iid 种子
-  int64 eureka_seed = 4;
+  optional int64 eureka_seed = 4;
   //service iid 种子
-  int64 service_seed = 5;
+  optional int64 service_seed = 5;
 }
 
 //Eureka服务器相互绑定,svrid大的向小的发起连接
@@ -111,11 +113,13 @@ message Erk_EurekaBind_ack{
 
 //通知注册的服务eureka服务上线或下线
 message Erk_EurekaUpdate_ntf{
+  //是否全量
+  bool fulleurekas = 1;
   //上线的服务
   repeated EurekaServerNode online = 2;
   //下线的服务iid
   repeated int64 offline = 3;
-  //master服务id, -1表示没有master服务
+  //master服务id, 0表示没有master服务
   int64 masteriid = 4;
   //eureka iid 种子
   int64 eureka_seed = 5;
@@ -133,6 +137,14 @@ message Erk_MasterChange_ntf{
   int64 service_seed = 4;
 }
 
+//连接断开广播通知
+message Erk_EurekaLost_ntf{
+  //来自eureka节点
+  int64 from_eureka = 1;
+  //断开的节点iid
+  int64 lost_eureka = 2 ;
+}
+
 //服务同步 master to slaver
 message Erk_ServiceSync_ntf{
   int64 masteriid = 1;
@@ -142,6 +154,10 @@ message Erk_ServiceSync_ntf{
   repeated ServerNode newsvrs = 3;
   //下线的服务
   repeated int64 offline = 4;
+  //eureka iid 种子
+  int64 eureka_seed = 5;
+  //service iid 种子
+  int64 service_seed = 6;
 }
 
 //其他服务向eureka注册中心，注册服务
@@ -155,8 +171,6 @@ message Erk_ServiceRegist_req{
   map<string,string> exts = 4;
   //是否router服务
   bool isrouter = 5;
-  //master节点token
-  int64 eurekatoken = 6;
 }
 
 message Erk_ServiceRegist_ack{

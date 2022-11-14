@@ -21,11 +21,11 @@
 
 USE_PROTOCOL_NAMESPACE
 
-EurekaClusterLink::EurekaClusterLink(EurekaClusterClient* p, EurekaNodeInfo* info) :LinkToBase()
+EurekaClusterLink::EurekaClusterLink(EurekaClusterClient* p, EurekaNodeInfo& info) :LinkToBase()
 , fail_num_(0)
 , parent_(p)
-, node_( info)
 {
+	node_ = info;
 	this->init_protocolhead();
 }
 
@@ -55,7 +55,8 @@ void EurekaClusterLink::send_to_eureka(BasicProtocol* msg)
 void EurekaClusterLink::reset(EurekaNodeInfo* pnode)
 {
 	fail_num_ = 0;
-	node_.reset(pnode);
+	if (pnode != 0)
+		node_ = *pnode;
 	force_close();
 }
 
@@ -70,9 +71,9 @@ void EurekaClusterLink::connect()
 		return;
 
 	logDebug(out_runtime, "++++++++me try to connect to sEureka(iid:%ld ip:%s port:%d)++++++++",
-		node_->iid, node_->ip.c_str(), node_->port);
+		node_.iid, node_.ip.c_str(), node_.port);
 
-	connect_to(node_->ip.c_str(), node_->port);
+	connect_to(node_.ip.c_str(), node_.port);
 }
 
 void EurekaClusterLink::on_cant_connectedto()
@@ -80,7 +81,7 @@ void EurekaClusterLink::on_cant_connectedto()
 	LinkToBase::on_cant_connectedto();
 
 	logDebug(out_runtime, "---------me cant connect to sEureka(iid:%ld ip:%s port:%d)---------",
-		node_->iid, node_->ip.c_str(), node_->port);
+		node_.iid, node_.ip.c_str(), node_.port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
 		boost::bind(&EurekaClusterLink::on_connected, this, boost::placeholders::_1), false);
@@ -93,7 +94,7 @@ void EurekaClusterLink::on_connectedto_done()
 	LinkToBase::on_connectedto_done();
 
 	logDebug(out_runtime, "++++++++me connected to sEureka(iid:%ld ip:%s port:%d)++++++++",
-		node_->iid, node_->ip.c_str(), node_->port);
+		node_.iid, node_.ip.c_str(), node_.port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
 		boost::bind(&EurekaClusterLink::on_connected, this, boost::placeholders::_1), true);
@@ -154,6 +155,7 @@ void EurekaClusterLink::on_connected(bool success)
 			req->set_svr_type(parent_->get_svrtype());
 			req->set_iid(parent_->get_myiid());
 			req->set_token( parent_->get_token());
+			req->set_eurekatoken(parent_->master_eureka_token_);
 
 			this->send_to_eureka(req);
 		}
@@ -175,6 +177,8 @@ void EurekaClusterLink::on_connected(bool success)
 				}
 			}
 
+			req->set_isrouter(parent_->is_router_node_);
+
 			this->send_to_eureka(req);
 		}
 	}
@@ -191,12 +195,12 @@ void EurekaClusterLink::on_disconnected()
 	if (this->is_authed())
 	{
 		logInfo(out_runtime, "me(auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 	}
 	else
 	{
 		logInfo(out_runtime, "me(wait auth) lost connection to sEureka[iid:%ld ip:%s port:%d]",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 	}
 
 	parent_->on_link_disconnected(this);
@@ -210,13 +214,14 @@ void EurekaClusterLink::on_regist_result(NetProtocol* message, bool& autorelease
 	if( success)
 	{
 		logInfo(out_runtime, "me regist to sEureka[iid:%ld ip:%s port:%d] success",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 
 		this->set_authed(true);
 
 		//这个eureka对应的 iid, token. 第一个几点只知道ip,port不知道 iid,token
-		this->node_->iid = ack->eurekaiid();
-		this->node_->token = ack->eurekatoken();
+		this->node_.iid = ack->eurekaiid();
+		this->node_.token = ack->eurekatoken();
+		this->node_.ismaster = true;
 
 		//保存系统分配的serviceiid，token
 		parent_->set_myinfo(ack->iid(), ack->token());
@@ -226,11 +231,10 @@ void EurekaClusterLink::on_regist_result(NetProtocol* message, bool& autorelease
 	else
 	{
 		logInfo(out_runtime, "me to sEureka[iid:%ld ip:%s port:%d] regist failed",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 
 		++fail_num_;
-		//eureka服务器会主动断开连接
-		//this->force_close();
+		this->force_close();
 	}
 }
 
@@ -239,7 +243,7 @@ void EurekaClusterLink::on_bind_result(bool success)
 	if (success)
 	{
 		logInfo(out_runtime, "me bind to sEureka[iid:%ld ip:%s port:%d] success",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 		this->set_authed(true);
 
 		parent_->on_link_bind_result(this);
@@ -247,10 +251,9 @@ void EurekaClusterLink::on_bind_result(bool success)
 	else
 	{
 		logInfo(out_runtime, "me bind to sEureka[iid:%ld ip:%s port:%d] failed",
-			node_->iid, node_->ip.c_str(), node_->port);
+			node_.iid, node_.ip.c_str(), node_.port);
 
-		//eureka服务器会主动断开连接
-		//this->force_close();
 		++fail_num_;
+		this->force_close();
 	}
 }

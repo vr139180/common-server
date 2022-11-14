@@ -100,6 +100,9 @@ protected:
 	boost::scoped_ptr<EurekaConfig>			conf_;
 
 public:
+	//Æô¶¯³É¹¦
+	void on_notify_boosted();
+
 	void on_connection_timeout( EurekaSession* session);
 
 	void on_disconnected_with_linkfrom(EurekaLinkFrom* plink);

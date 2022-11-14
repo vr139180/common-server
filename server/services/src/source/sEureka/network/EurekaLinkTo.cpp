@@ -118,21 +118,19 @@ void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 	
 	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKAREGIST_ACK)
 	{
-		PRO::Erk_EurekaRegist_ack* ack = dynamic_cast<Erk_EurekaRegist_ack*>(pro->msg_);
+		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekaregist_ack, svrApp.get_eurekactrl(),
+			boost::placeholders::_1, boost::placeholders::_2, this);
+		NetCommandV *pcmd = new NetCommandV(pro, fun);
 
-		bool bauth = (ack->result() == 0);
-		SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
-			boost::bind(&EurekaLinkTo::on_authed, this, boost::placeholders::_1), bauth);
-		svrApp.regist_syscmd(cmd);
+		svrApp.regist_syscmd(pcmd);
 	}
 	else if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_ACK)
     {
-        PRO::Erk_EurekaBind_ack* ack =dynamic_cast<Erk_EurekaBind_ack*>(pro->msg_);
+		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekabind_ack, svrApp.get_eurekactrl(),
+			boost::placeholders::_1, boost::placeholders::_2, this);
+		NetCommandV *pcmd = new NetCommandV(pro, fun);
 
-        bool bauth =(ack->result() == 0);
-        SystemCommand2<bool>* cmd =new SystemCommand2<bool>(
-			boost::bind( &EurekaLinkTo::on_authed, this, boost::placeholders::_1), bauth);
-        svrApp.regist_syscmd( cmd);
+		svrApp.regist_syscmd(pcmd);
     }
     else
     {
@@ -155,6 +153,7 @@ void EurekaLinkTo::on_connected( bool success)
 		if (svrApp.get_eurekactrl()->check_node_is_master(node_.iid))
 		{
 			regist = true;
+			//已经注册成功了，丢失连接只做bind
 			if (svrApp.get_eurekactrl()->is_boosted())
 				regist = false;
 		}
@@ -197,9 +196,7 @@ void EurekaLinkTo::on_authed( bool success)
 	}
     else
     {
-#ifdef EUREKA_DEBUGINFO_ENABLE
 		logInfo(out_runtime, "me(sEureka) connect to sEureka[iid:%ld ip:%s port:%d] failed", node_.iid, node_.ip.c_str(), node_.port);
-#endif
     }
 }
 

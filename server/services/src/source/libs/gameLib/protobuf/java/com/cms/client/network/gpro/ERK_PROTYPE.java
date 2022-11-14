@@ -45,6 +45,10 @@ public enum ERK_PROTYPE
    */
   ERK_MASTERCHANGE_NTF(6),
   /**
+   * <code>ERK_EUREKALOST_NTF = 7;</code>
+   */
+  ERK_EUREKALOST_NTF(7),
+  /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
   ERK_SERVICEREGIST_REQ(10),
@@ -148,6 +152,10 @@ public enum ERK_PROTYPE
    */
   public static final int ERK_MASTERCHANGE_NTF_VALUE = 6;
   /**
+   * <code>ERK_EUREKALOST_NTF = 7;</code>
+   */
+  public static final int ERK_EUREKALOST_NTF_VALUE = 7;
+  /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
   public static final int ERK_SERVICEREGIST_REQ_VALUE = 10;
@@ -248,6 +256,7 @@ public enum ERK_PROTYPE
       case 4: return ERK_EUREKABIND_ACK;
       case 5: return ERK_EUREKAUPDATE_NTF;
       case 6: return ERK_MASTERCHANGE_NTF;
+      case 7: return ERK_EUREKALOST_NTF;
       case 10: return ERK_SERVICEREGIST_REQ;
       case 11: return ERK_SERVICEREGIST_ACK;
       case 12: return ERK_SERVICESYNC_NTF;

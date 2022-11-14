@@ -25,12 +25,12 @@
 
 USED_REDISKEY_GLOBAL_NS
 
-EurekaClusterCtrl::EurekaClusterCtrl():lastupdate_(0)
-, is_boosted_(false)
+EurekaClusterCtrl::EurekaClusterCtrl():is_boosted_(false)
 , eureka_master_iid_(0)
 , last_eureka_iid_(0)
 {
-
+	vote_key_ = TimerKey::None;
+	vote_master_retry_ = 0;
 }
 
 EurekaClusterCtrl::~EurekaClusterCtrl()
@@ -62,6 +62,10 @@ void EurekaClusterCtrl::unint_ctrl()
 		}
 	}
 
+	for (boost::unordered_map<S_INT_64, EurekaLostMaintance*>::iterator iter = lost_maintance_.begin(); iter != lost_maintance_.end(); ++iter)
+		delete iter->second;
+	lost_maintance_.clear();
+
 	eureka_links_from_.uninit_holder();
 	eureka_links_to_.free_all();
 }
@@ -79,7 +83,7 @@ bool EurekaClusterCtrl::check_node_is_master(S_INT_64 nodeid)
 	return nodeid == eureka_master_iid_;
 }
 
-bool EurekaClusterCtrl::is_eureka_exist(S_INT_64 iid)
+bool EurekaClusterCtrl::is_eurekalink_exist(S_INT_64 iid)
 {
 	if (iid == myself_.iid)
 		return true;
@@ -94,7 +98,7 @@ bool EurekaClusterCtrl::is_eureka_exist(S_INT_64 iid)
 	}
 }
 
-bool EurekaClusterCtrl::is_legality_eureka(S_INT_64 iid, S_INT_64 token)
+bool EurekaClusterCtrl::is_eureka_node(S_INT_64 iid, S_INT_64 token)
 {
 	boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(iid);
 	if (fiter == eureka_nodes_.end())
@@ -103,9 +107,45 @@ bool EurekaClusterCtrl::is_legality_eureka(S_INT_64 iid, S_INT_64 token)
 	return ni.is_same_node(token);
 }
 
+EurekaNodeInfo* EurekaClusterCtrl::get_eureka_node(S_INT_64 iid)
+{
+	boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(iid);
+	if (fiter == eureka_nodes_.end())
+		return 0;
+	return &(fiter->second);
+}
+
+bool EurekaClusterCtrl::is_eureka_node(S_INT_64 iid)
+{
+	boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(iid);
+	if (fiter == eureka_nodes_.end())
+		return false;
+	return true;
+}
+
+void EurekaClusterCtrl::broadcast_to_eurekas(BasicProtocol* msg, IEurekaNodeLink* ignore)
+{
+	eureka_links_from_.broadcast(msg,(ignore==0?0: ignore->get_iid()));
+	eureka_links_to_.broadcast(msg, (ignore == 0 ? 0 : ignore->get_iid()));
+}
+
+S_INT_64 EurekaClusterCtrl::make_next_eurekaiid()
+{
+	S_INT_64 iid = ++last_eureka_iid_;
+	if (is_eureka_node(iid))
+		iid = make_next_eurekaiid_fix();
+	return iid;
+}
+
 void EurekaClusterCtrl::on_disconnected_with_linkto(EurekaLinkTo* plink)
 {
+	bool isready = plink->is_ready();
+	S_INT_64 iid = plink->get_iid();
+
 	eureka_links_to_.on_linkto_disconnected(plink);
+
+	if (isready)
+		fire_common_eurekanode_lost( iid);
 }
 
 void EurekaClusterCtrl::on_linkto_regist_result(EurekaLinkTo* plink)
@@ -115,6 +155,22 @@ void EurekaClusterCtrl::on_linkto_regist_result(EurekaLinkTo* plink)
 
 void EurekaClusterCtrl::on_disconnected_with_linkfrom(EurekaLinkFrom* plink)
 {
+	bool isready = plink->is_ready();
+	S_INT_64 iid = plink->get_iid();
+
 	//结合sEurekaApp的disconnect处理流程
 	eureka_links_from_.return_freelink(plink);
+
+	if (isready)
+		fire_common_eurekanode_lost(iid);
+}
+
+bool EurekaClusterCtrl::force_reconnect(S_INT_64 iid)
+{
+	return eureka_links_to_.connect_to( iid);
+}
+
+S_INT_32 EurekaClusterCtrl::get_lived_eurekanode_size()
+{
+	return eureka_links_from_.get_linked_size() + eureka_links_to_.get_authed_size();
 }

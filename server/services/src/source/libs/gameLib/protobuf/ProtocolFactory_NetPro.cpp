@@ -28,6 +28,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Erk_EurekaBind_ack>(ERK_PROTYPE::ERK_EUREKABIND_ACK);
 	regist_protocal<Erk_EurekaUpdate_ntf>(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF);
 	regist_protocal<Erk_MasterChange_ntf>(ERK_PROTYPE::ERK_MASTERCHANGE_NTF);
+	regist_protocal<Erk_EurekaLost_ntf>(ERK_PROTYPE::ERK_EUREKALOST_NTF);
 
 	regist_protocal<Erk_ServiceRegist_req>(ERK_PROTYPE::ERK_SERVICEREGIST_REQ);
 	regist_protocal<Erk_ServiceRegist_ack>(ERK_PROTYPE::ERK_SERVICEREGIST_ACK);

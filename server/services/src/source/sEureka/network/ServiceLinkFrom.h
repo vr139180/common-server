@@ -27,7 +27,7 @@ class ServiceLinkFrom : public NetLinkFromBase<EurekaSession>
 public:
 	ServiceLinkFrom();
 
-	void set_node(ServiceNodeInfo pnode);
+	void set_node(ServiceNodeInfo* pnode);
 	ServiceNodeInfo* get_node() { return &node_; }
 
 	virtual void reset();

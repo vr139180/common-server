@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/GateServiceLinkFrom.h"
 
 #include <cmsLib/system/CommandBase.h>
@@ -12,6 +27,27 @@
 
 #include "ServiceRouterApp.h"
 
+GateServiceLinkFrom::GateServiceLinkFrom() :NetLinkFromBase<RouterSession>()
+{
+	this->init_protocolhead();
+}
+
+GateServiceLinkFrom::~GateServiceLinkFrom()
+{
+}
+
+void GateServiceLinkFrom::init_protocolhead()
+{
+	s_head_.router_balance_ = false;
+	s_head_.hashkey_ = 0;
+	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
+	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_GATE;
+	s_head_.to_broadcast_ = false;
+	s_head_.unpack_protocol_ = true;
+	s_head_.token_gidrid_ = 0;
+	s_head_.token_slottoken_ = 0;
+}
+
 void GateServiceLinkFrom::force_linkclose()
 {
 	force_close();
@@ -24,21 +60,22 @@ void GateServiceLinkFrom::on_connect_lost_netthread()
 	svrApp.regist_syscmd( cmd);
 }
 
-void GateServiceLinkFrom::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void GateServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
+	S_UINT_16 msgid = pro->get_msg();
+	std::unique_ptr<NetProtocol> p_msg(pro);
 
-	if( proiid > PRO::CHAT_PROTYPE::CHAT_MSG_BEGIN && proiid < PRO::CHAT_PROTYPE::CHAT_MSG_END)
+	if(msgid > PRO::CHAT_PROTYPE::CHAT_MSG_BEGIN && msgid < PRO::CHAT_PROTYPE::CHAT_MSG_END)
 	{
-		ChatModule::instance().process_chat_msg(proiid, p_msg.release());
+		ChatModule::instance().process_chat_msg( p_msg.release());
 	}
-	else if (proiid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && proiid < PRO::MAIL_PROTYPE::MAIL_MSGALL_END)
+	else if (msgid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && msgid < PRO::MAIL_PROTYPE::MAIL_MSGALL_END)
 	{
-		MailModule::instance().process_mail_msg(proiid, p_msg.release());
+		MailModule::instance().process_mail_msg( p_msg.release());
 	}
-	else if (proiid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && proiid < PRO::FRIEND_PROTYPE::FRIEND_MSGALL_END)
+	else if (msgid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && msgid < PRO::FRIEND_PROTYPE::FRIEND_MSGALL_END)
 	{
-		FriendModule::instance().process_friend_msg(proiid, p_msg.release());
+		FriendModule::instance().process_friend_msg( p_msg.release());
 	}
 }
 
@@ -48,4 +85,11 @@ void GateServiceLinkFrom::registinfo_tolog( bool bregist)
 		logInfo( out_runtime, "GateService[%d] regist to me(RouterSession)", get_iid());
 	else
 		logInfo( out_runtime, "GateService[%d] disconnect from me(RouterSession)", get_iid());
+}
+
+void GateServiceLinkFrom::send_netprotocol(BasicProtocol* msg)
+{
+	NetProtocol *pro = new NetProtocol(get_protocolhead(), msg);
+
+	this->send_protocol(pro);
 }

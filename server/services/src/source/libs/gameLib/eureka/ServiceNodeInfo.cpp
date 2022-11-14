@@ -21,6 +21,7 @@ ServiceNodeInfo::ServiceNodeInfo() :iid(0)
 , port(0)
 , token(0)
 , type(NETSERVICE_TYPE::ERK_SERVICE_NONE)
+, isrouter(false)
 {
 }
 
@@ -31,12 +32,57 @@ ServiceNodeInfo& ServiceNodeInfo::operator = (const ServiceNodeInfo& v)
 	this->ip = v.ip;
 	this->port = v.port;
 	this->token = v.token;
+	this->isrouter = v.isrouter;
 	this->isonline = v.isonline;
 
 	this->subscribes_ = v.subscribes_;
 	this->routers_ = v.routers_;
 
 	return *this;
+}
+
+void ServiceNodeInfo::copy_to(PRO::ServerNode* pnode) const
+{
+	pnode->set_iid(this->iid);
+	pnode->set_token(this->token);
+	pnode->set_ip(ip.c_str());
+	pnode->set_port(port);
+	pnode->set_isrouter(isrouter);
+	pnode->set_isonline(isrouter);
+	
+	for (boost::unordered_map<std::string, std::string>::const_iterator iter = extparams.cbegin();
+		iter != extparams.cend(); ++iter)
+	{
+		google::protobuf::Map<std::string, std::string>& ext = *(pnode->mutable_exts());
+		ext[iter->first] = iter->second;
+	}
+
+	for (std::list<NETSERVICE_TYPE>::const_iterator iter = subscribes_.begin(); iter != subscribes_.end(); ++iter)
+		pnode->add_subscribes((S_INT_64)(*iter));
+	for (std::list<NETSERVICE_TYPE>::const_iterator iter = routers_.begin(); iter != routers_.end(); ++iter)
+		pnode->add_routers((S_INT_64)(*iter));
+}
+
+void ServiceNodeInfo::copy_from(const PRO::ServerNode* pnode)
+{
+	iid = pnode->iid();
+	token = pnode->token();
+	ip = pnode->ip().c_str();
+	port = pnode->port();
+	isrouter = pnode->isrouter();
+	isonline = pnode->isonline();
+
+	const google::protobuf::Map<std::string, std::string>& kvs = pnode->exts();
+	for (google::protobuf::Map<std::string, std::string>::const_iterator xiter = kvs.cbegin();
+		xiter != kvs.cend(); ++xiter)
+	{
+		extparams[xiter->first] = xiter->second;
+	}
+
+	for (int ii = 0; ii < pnode->subscribes_size(); ++ii)
+		subscribes_.push_back((NETSERVICE_TYPE)pnode->subscribes(ii));
+	for (int ii = 0; ii < pnode->routers_size(); ++ii)
+		routers_.push_back((NETSERVICE_TYPE)pnode->routers(ii));
 }
 
 ServiceNodeInfo* ServiceNodeInfo::clone()
@@ -54,6 +100,26 @@ std::string ServiceNodeInfo::get_extparam_bykey(const char* key)
 	return fiter->second;
 }
 
+bool ServiceNodeInfo::add_subscribe(NETSERVICE_TYPE st)
+{
+	std::list<NETSERVICE_TYPE>::iterator fiter = std::find(subscribes_.begin(), subscribes_.end(), st);
+	if (fiter != subscribes_.end())
+		return false;
+
+	subscribes_.push_back(st);
+	return true;
+}
+
+bool ServiceNodeInfo::add_router(NETSERVICE_TYPE st)
+{
+	std::list<NETSERVICE_TYPE>::iterator fiter = std::find(routers_.begin(), routers_.end(), st);
+	if (fiter != routers_.end())
+		return false;
+
+	routers_.push_back(st);
+	return true;
+}
+
 bool ServiceNodeInfo::to_json(std::string& val)
 {
 	boost::json::object json = {
@@ -61,7 +127,8 @@ bool ServiceNodeInfo::to_json(std::string& val)
 		{"type", (int)type},
 		{"ip", ip},
 		{"port", port},
-		{"token", token}
+		{"token", token},
+		{"isrouter", isrouter?1:0}
 	};
 	
 	if (extparams.size() > 0)
@@ -91,6 +158,7 @@ bool ServiceNodeInfo::from_json(boost::json::value& root)
 	this->ip = JSONUtil::get_string(obj, "ip", "");
 	this->port = JSONUtil::get_value<int>(obj, "port", 0);
 	this->token = JSONUtil::get_int64(obj, "token", 0);
+	this->isrouter = JSONUtil::get_value<int>(obj, "isrouter", 0) != 0;
 
 	try {
 		if (obj.contains("exts"))

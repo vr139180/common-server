@@ -48,20 +48,6 @@ REDIS_KEYDEFINED(FIELD_MASTER_NODE_SVR, "svrinfo");
 #define EUREKA_MASTER_NODE_TIMEOUT	5*1000
 
 //-----------------------服务注册信息-------------------------------------
-//服务分类信息 hash结构
-REDIS_KEYDEFINED(SERVICE_CATEGORY, "_SVRS:%s");
-//服务详细信息 hash结构
-REDIS_KEYDEFINED(SERVICE_DETAIL_INFO, "_SERVICE:%ld");
-REDIS_KEYDEFINED(SERVICE_DETAIL_SVRTYPE, "base:type");
-REDIS_KEYDEFINED(SERVICE_DETAIL_TOKEN, "base:token");
-REDIS_KEYDEFINED(SERVICE_DETAIL_STATUS, "base:status");
-REDIS_KEYDEFINED(SERVICE_DETAIL_SVRINFO, "base:sinfo");
-//gate扩展项
-//存放gate最后一次同步的sequence
-REDIS_KEYDEFINED(SERVICE_GATEEXT_SLOTSEQ, "ext:slotseq");
-
-//home扩展项
-
 
 //服务有效性维护
 REDIS_KEYDEFINED(SERVICE_MAINTNCE, "_SVRS:%s:QUEUE");

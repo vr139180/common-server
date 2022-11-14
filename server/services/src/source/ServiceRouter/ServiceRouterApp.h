@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #ifndef __SERVICEROUTERAPP_H__
 #define __SERVICEROUTERAPP_H__
 
@@ -71,6 +86,7 @@ public:
 	virtual void del_apptimer_proxy(TimerKey tid) { del_apptimer(tid); };
 	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
+	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs);
 
 	virtual void mth_service_registed(S_INT_64 sid);
 	virtual void mth_eureka_losted();
@@ -114,9 +130,11 @@ protected:
 public:
 	void on_connection_timeout(RouterSession* session);
 
-	void on_mth_servicebindservice_req(BasicProtocol* pro, bool& autorelease, void* session);
+	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
 
 	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
+	void on_datarouter_regist_result(DataRouterLinkTo* plink);
+
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 	void on_disconnected_with_chatservice(ChatServiceLinkFrom* plink);
 	void on_disconnected_with_mailservice(MailServiceLinkFrom* plink);

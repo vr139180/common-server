@@ -36,8 +36,16 @@ public:
 	void uninit_ctrl();
 	void init_timer();
 
+	S_INT_64 get_serviceiid_seed() { return last_serviceiid_seed_; }
+	void set_serviceiid_seed(S_INT_64 iid) { last_serviceiid_seed_ = iid; }
+
+	//构建全量的服务信息
+	BasicProtocol* master_syncall_servicenodes();
+	void broadcast_to_allsvrs(BasicProtocol* msg);
+
 protected:
-	S_INT_64 make_next_serviceiid() { return ++last_serviceiid_seed_; }
+	S_INT_64 make_next_serviceiid();
+	//master切换或者其他不同步情况下，跳跃一个间隔解决可能的serviceid占用问题
 	S_INT_64 make_next_serviceiid_fix(S_INT_64 incstep = 10000) { last_serviceiid_seed_ += incstep; return ++last_serviceiid_seed_; }
 
 	ServiceNodeInfo* find_servicenode_byiid(S_INT_64 iid);
@@ -45,12 +53,20 @@ protected:
 	//---------eureka端缓存的 各个类型的service的描述
 	void service_mth_meta_release_all();
 
-	void service_mth_meta_merge_oftype(NETSERVICE_TYPE type, 
-		boost::unordered_map<std::string, ServiceNodeInfo*>& sni, std::set<S_INT_64>& delsvrs);
+	std::list<ServiceNodeInfo*>& get_service_node_oftype(NETSERVICE_TYPE type);
+	std::list<S_INT_64>& get_subscribes_oftype(NETSERVICE_TYPE type);
+	std::list<S_INT_64>& get_routers_oftype(NETSERVICE_TYPE type);
+	void add_service_to_subscribe(NETSERVICE_TYPE type, S_INT_64 svriid);
+	void add_service_to_router(NETSERVICE_TYPE type, S_INT_64 svriid);
+	void del_service_from_subscribe(NETSERVICE_TYPE type, S_INT_64 svriid);
+	void del_service_from_router(NETSERVICE_TYPE type, S_INT_64 svriid);
 
-	std::list<ServiceNodeInfo*> get_service_node_oftype(NETSERVICE_TYPE type);
+	//注册一个新的服务
+	ServiceNodeInfo* regist_one_service(ServiceNodeInfo& info, bool forceupdate = false);
+	void offline_one_service(S_INT_64 iid);
 
-	void regist_one_service(ServiceNodeInfo& info);
+	void notify_service_online(S_INT_64 iid);
+	void notify_service_offline(S_INT_64 iid, NETSERVICE_TYPE ctype);
 
 protected:
 	//活动的service连接,只在主线程中使用,代码保证线程安全
@@ -65,6 +81,7 @@ protected:
 	//负载均衡订阅 key:服务类型 value:订阅人列表
 	boost::unordered_map<NETSERVICE_TYPE, std::list<S_INT_64>> router_of_subscribe_;
 
+	//服务编号生成种子
 	S_INT_64	last_serviceiid_seed_;
 
 public:
@@ -79,16 +96,12 @@ public:
 
 	//服务订阅信息同步
 	void on_mth_servicesync_ntf(NetProtocol* pro, bool& autorelease);
-	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
-	void on_mth_servicesubscribe_ntf(NetProtocol* pro, bool& autorelease);
 
+	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
 	void on_mth_routersubscribe_req(NetProtocol* pro, bool& autorelease);
-	void on_mth_routersubscribe_ntf(NetProtocol* pro, bool& autorelease);
 	void on_mth_routeronline_req(NetProtocol* pro, bool& autorelease);
-	void on_mth_routeronline_ntf(NetProtocol* pro, bool& autorelease);
 
 	void on_mth_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease);
-
 };
 
 

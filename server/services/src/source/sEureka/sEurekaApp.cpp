@@ -116,6 +116,9 @@ bool sEurekaApp::init_finish()
 
 	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 
+	eureka_ctrl_.init_timer();
+	service_ctrl_.init_timer();
+
 	return true;
 }
 
@@ -248,9 +251,6 @@ void sEurekaApp::init_eureka_timer(u64 tnow, int interval, u64 iid, bool& finish
 
 	//³õÊ¼»¯eureka¿ØÖÆ
 	eureka_ctrl_.boot_ctrl();
-	eureka_ctrl_.init_timer();
-
-	service_ctrl_.init_timer();
 }
 
 void sEurekaApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
@@ -279,4 +279,9 @@ void sEurekaApp::on_disconnected_with_linkfrom(EurekaLinkFrom* plink)
 		plink->reset();
 		psession->reset();
 	}
+}
+
+void sEurekaApp::on_notify_boosted()
+{
+	logInfo(out_runtime, "<<<<<<<<<<<< me eureka node:%lld online >>>>>>>>>>>>", eureka_ctrl_.get_myself().iid);
 }

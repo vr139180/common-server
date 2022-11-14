@@ -42,6 +42,8 @@ public:
 	//nodes中的指针不可以保存长期使用，不需要调用放主动释放
 	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids) = 0;
+	//router的balance服务全列表
+	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs) = 0;
 
 	//服务注册成功通知
 	virtual void mth_service_registed(S_INT_64 sid) = 0;

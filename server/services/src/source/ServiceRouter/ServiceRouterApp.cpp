@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "ServiceRouterApp.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -103,19 +118,17 @@ bool ServiceRouterApp::pre_init()
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
-	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER,
-		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types);
+	std::list< NETSERVICE_TYPE> router_types;
+	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER, cf.get_ip().c_str(), cf.get_port(), 
+		EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, true);
 
 	return true;
 }
 
 bool ServiceRouterApp::init_network()
 {
-    int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator(500);
-
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+	int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
 		logFatal( out_runtime, ("RouterService init network failed"));
 		return false;
@@ -278,6 +291,16 @@ void ServiceRouterApp::on_connection_timeout(RouterSession* session)
 	logError(out_runtime, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
+void ServiceRouterApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void ServiceRouterApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_disconnected(plink);
+}
+
 void ServiceRouterApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
 {
 	RouterSession* psession = plink->get_session();
@@ -330,7 +353,7 @@ void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* ms
 		return;
 	}
 
-	plink->send_protocol(msg);
+	plink->send_netprotocol(msg);
 }
 
 void ServiceRouterApp::send_protocal_to_chat(int chathash, BasicProtocol* msg)

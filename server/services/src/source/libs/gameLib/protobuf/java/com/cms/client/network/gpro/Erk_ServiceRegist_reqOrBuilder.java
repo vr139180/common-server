@@ -98,14 +98,4 @@ public interface Erk_ServiceRegist_reqOrBuilder extends
    * @return The isrouter.
    */
   boolean getIsrouter();
-
-  /**
-   * <pre>
-   *master节点token
-   * </pre>
-   *
-   * <code>int64 eurekatoken = 6;</code>
-   * @return The eurekatoken.
-   */
-  long getEurekatoken();
 }

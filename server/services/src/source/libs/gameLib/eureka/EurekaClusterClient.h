@@ -63,8 +63,11 @@ private:
 public:
 	virtual ~EurekaClusterClient();
 
-	void init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type, const char* myip, int myport, EurekaServerExtParam extpms,
-		const char* eurekaip, int eurekaport, std::list< NETSERVICE_TYPE>& subscribe_service);
+	void init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type, const char* myip, int myport, 
+		EurekaServerExtParam extpms, const char* eurekaip, int eurekaport, 
+		std::list< NETSERVICE_TYPE>& subscribe_service,
+		std::list< NETSERVICE_TYPE>& subscribe_balance,
+		bool isrouter = false);
 	void uninit();
 
 	void regist_timer();
@@ -73,10 +76,14 @@ public:
 	bool is_done() { return cur_state_ == EurekaState::Eureka_Done; }
 
 	void send_mth_protocol(BasicProtocol* pro, bool balance = true);
+	void send_to_master(BasicProtocol* pro);
 	void regist_command(CommandBase *p);
 	bool is_servicenode_exist(NETSERVICE_TYPE type, S_INT_64 sid);
 
+	EurekaClusterLink* get_eurekalink_byiid(S_INT_64 iid);
+
 	bool has_eureka_masternode() { return master_link_ != 0; }
+	void subscribe_to_masternode();
 
 protected:
 	//---------------------- MessageProcess interface--------------------------------
@@ -86,9 +93,12 @@ protected:
 	void on_service_subscribe_ntf(NetProtocol* message, bool& autorelease);
 	void on_router_subscribe_ntf(NetProtocol* message, bool& autorelease);
 	void on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease);
+	void on_eurekamaster_change_ntf(NetProtocol* message, bool& autorelease);
+	void on_routeronline_ntf(NetProtocol* pro, bool& autorelease);
 
 protected:
 	void auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish);
+	void router_autoconfirm_timer(u64 tnow, int interval, u64 iid, bool& finish);
 
 	void on_link_disconnected( EurekaClusterLink* plink);
 	void on_link_regist_result( EurekaClusterLink* plink);
@@ -116,7 +126,7 @@ protected:
 	SERVICENODE_TYPE& get_servicenodes_by_type(NETSERVICE_TYPE type);
 
 	//同步的eureka节点信息，和订阅的service信息
-	boost::unordered_map<S_INT_64, EurekaNodeInfo*>	eureka_nodes_;
+	boost::unordered_map<S_INT_64, EurekaNodeInfo>	eureka_nodes_;
 	boost::unordered_map<NETSERVICE_TYPE, SERVICENODE_TYPE > service_nodes_;
 
 protected:
@@ -130,6 +140,8 @@ protected:
 	std::string				myip_;
 	int						myport_;
 	EurekaServerExtParam	extpms_;
+	S_INT_64				master_eureka_iid_;
+	S_INT_64				master_eureka_token_;
 
 	//和主线程的集成
 	IEurekaClientIntegrate*			app_proxy_;
@@ -138,7 +150,9 @@ protected:
 	//订阅的服务类型
 	std::list<NETSERVICE_TYPE>		subscribe_services_;
 	//负载均衡的订阅类型
-	std::list<NETSERVICE_TYPE>		subscribe_routers_;
+	std::list<NETSERVICE_TYPE>		subscribe_balance_;
+	//是否是router节点
+	bool							is_router_node_;
 
 	//cluster节点，连接相关变量
 	std::list<EurekaClusterLink*>	clusterlinks_;

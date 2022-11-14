@@ -24,4 +24,8 @@
 #define HOME_LOBBY_THREADNUM	4		//lobby线程数
 #define HOME_LOBBY_PLAYERS		1000	//每个lobby的用户数
 
+//eureka定义 8seconds
+#define EUREKA_LOST_TIMEOUT		8*1000
+#define EUREKA_LOST_RETRY		3
+
 #endif //__GLOBAL_CONST_H__

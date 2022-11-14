@@ -130,4 +130,38 @@ public interface ServerNodeOrBuilder extends
    * @return The isonline.
    */
   boolean getIsonline();
+
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @return A list containing the subscribes.
+   */
+  java.util.List<java.lang.Long> getSubscribesList();
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @return The count of subscribes.
+   */
+  int getSubscribesCount();
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @param index The index of the element to return.
+   * @return The subscribes at the given index.
+   */
+  long getSubscribes(int index);
+
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @return A list containing the routers.
+   */
+  java.util.List<java.lang.Long> getRoutersList();
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @return The count of routers.
+   */
+  int getRoutersCount();
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @param index The index of the element to return.
+   * @return The routers at the given index.
+   */
+  long getRouters(int index);
 }

@@ -21,6 +21,8 @@ private static final long serialVersionUID = 0L;
   }
   private ServerNode() {
     ip_ = "";
+    subscribes_ = emptyLongList();
+    routers_ = emptyLongList();
   }
 
   @java.lang.Override
@@ -98,6 +100,48 @@ private static final long serialVersionUID = 0L;
             isonline_ = input.readBool();
             break;
           }
+          case 64: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              subscribes_ = newLongList();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            subscribes_.addLong(input.readInt64());
+            break;
+          }
+          case 66: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+              subscribes_ = newLongList();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              subscribes_.addLong(input.readInt64());
+            }
+            input.popLimit(limit);
+            break;
+          }
+          case 72: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              routers_ = newLongList();
+              mutable_bitField0_ |= 0x00000004;
+            }
+            routers_.addLong(input.readInt64());
+            break;
+          }
+          case 74: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
+              routers_ = newLongList();
+              mutable_bitField0_ |= 0x00000004;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              routers_.addLong(input.readInt64());
+            }
+            input.popLimit(limit);
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -113,6 +157,12 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        subscribes_.makeImmutable(); // C
+      }
+      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        routers_.makeImmutable(); // C
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -360,6 +410,62 @@ private static final long serialVersionUID = 0L;
     return isonline_;
   }
 
+  public static final int SUBSCRIBES_FIELD_NUMBER = 8;
+  private com.google.protobuf.Internal.LongList subscribes_;
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @return A list containing the subscribes.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Long>
+      getSubscribesList() {
+    return subscribes_;
+  }
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @return The count of subscribes.
+   */
+  public int getSubscribesCount() {
+    return subscribes_.size();
+  }
+  /**
+   * <code>repeated int64 subscribes = 8;</code>
+   * @param index The index of the element to return.
+   * @return The subscribes at the given index.
+   */
+  public long getSubscribes(int index) {
+    return subscribes_.getLong(index);
+  }
+  private int subscribesMemoizedSerializedSize = -1;
+
+  public static final int ROUTERS_FIELD_NUMBER = 9;
+  private com.google.protobuf.Internal.LongList routers_;
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @return A list containing the routers.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Long>
+      getRoutersList() {
+    return routers_;
+  }
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @return The count of routers.
+   */
+  public int getRoutersCount() {
+    return routers_.size();
+  }
+  /**
+   * <code>repeated int64 routers = 9;</code>
+   * @param index The index of the element to return.
+   * @return The routers at the given index.
+   */
+  public long getRouters(int index) {
+    return routers_.getLong(index);
+  }
+  private int routersMemoizedSerializedSize = -1;
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -374,6 +480,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    getSerializedSize();
     if (iid_ != 0L) {
       output.writeInt64(1, iid_);
     }
@@ -397,6 +504,20 @@ private static final long serialVersionUID = 0L;
     }
     if (isonline_ != false) {
       output.writeBool(7, isonline_);
+    }
+    if (getSubscribesList().size() > 0) {
+      output.writeUInt32NoTag(66);
+      output.writeUInt32NoTag(subscribesMemoizedSerializedSize);
+    }
+    for (int i = 0; i < subscribes_.size(); i++) {
+      output.writeInt64NoTag(subscribes_.getLong(i));
+    }
+    if (getRoutersList().size() > 0) {
+      output.writeUInt32NoTag(74);
+      output.writeUInt32NoTag(routersMemoizedSerializedSize);
+    }
+    for (int i = 0; i < routers_.size(); i++) {
+      output.writeInt64NoTag(routers_.getLong(i));
     }
     unknownFields.writeTo(output);
   }
@@ -440,6 +561,34 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(7, isonline_);
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < subscribes_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt64SizeNoTag(subscribes_.getLong(i));
+      }
+      size += dataSize;
+      if (!getSubscribesList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      subscribesMemoizedSerializedSize = dataSize;
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < routers_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt64SizeNoTag(routers_.getLong(i));
+      }
+      size += dataSize;
+      if (!getRoutersList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      routersMemoizedSerializedSize = dataSize;
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -469,6 +618,10 @@ private static final long serialVersionUID = 0L;
         != other.getIsrouter()) return false;
     if (getIsonline()
         != other.getIsonline()) return false;
+    if (!getSubscribesList()
+        .equals(other.getSubscribesList())) return false;
+    if (!getRoutersList()
+        .equals(other.getRoutersList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -500,6 +653,14 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ISONLINE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsonline());
+    if (getSubscribesCount() > 0) {
+      hash = (37 * hash) + SUBSCRIBES_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscribesList().hashCode();
+    }
+    if (getRoutersCount() > 0) {
+      hash = (37 * hash) + ROUTERS_FIELD_NUMBER;
+      hash = (53 * hash) + getRoutersList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -672,6 +833,10 @@ private static final long serialVersionUID = 0L;
 
       isonline_ = false;
 
+      subscribes_ = emptyLongList();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      routers_ = emptyLongList();
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -707,6 +872,16 @@ private static final long serialVersionUID = 0L;
       result.exts_.makeImmutable();
       result.isrouter_ = isrouter_;
       result.isonline_ = isonline_;
+      if (((bitField0_ & 0x00000002) != 0)) {
+        subscribes_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.subscribes_ = subscribes_;
+      if (((bitField0_ & 0x00000004) != 0)) {
+        routers_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000004);
+      }
+      result.routers_ = routers_;
       onBuilt();
       return result;
     }
@@ -775,6 +950,26 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getIsonline() != false) {
         setIsonline(other.getIsonline());
+      }
+      if (!other.subscribes_.isEmpty()) {
+        if (subscribes_.isEmpty()) {
+          subscribes_ = other.subscribes_;
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          ensureSubscribesIsMutable();
+          subscribes_.addAll(other.subscribes_);
+        }
+        onChanged();
+      }
+      if (!other.routers_.isEmpty()) {
+        if (routers_.isEmpty()) {
+          routers_ = other.routers_;
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          ensureRoutersIsMutable();
+          routers_.addAll(other.routers_);
+        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1272,6 +1467,164 @@ private static final long serialVersionUID = 0L;
     public Builder clearIsonline() {
       
       isonline_ = false;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.Internal.LongList subscribes_ = emptyLongList();
+    private void ensureSubscribesIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        subscribes_ = mutableCopy(subscribes_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @return A list containing the subscribes.
+     */
+    public java.util.List<java.lang.Long>
+        getSubscribesList() {
+      return ((bitField0_ & 0x00000002) != 0) ?
+               java.util.Collections.unmodifiableList(subscribes_) : subscribes_;
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @return The count of subscribes.
+     */
+    public int getSubscribesCount() {
+      return subscribes_.size();
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @param index The index of the element to return.
+     * @return The subscribes at the given index.
+     */
+    public long getSubscribes(int index) {
+      return subscribes_.getLong(index);
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @param index The index to set the value at.
+     * @param value The subscribes to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSubscribes(
+        int index, long value) {
+      ensureSubscribesIsMutable();
+      subscribes_.setLong(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @param value The subscribes to add.
+     * @return This builder for chaining.
+     */
+    public Builder addSubscribes(long value) {
+      ensureSubscribesIsMutable();
+      subscribes_.addLong(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @param values The subscribes to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllSubscribes(
+        java.lang.Iterable<? extends java.lang.Long> values) {
+      ensureSubscribesIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, subscribes_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 subscribes = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSubscribes() {
+      subscribes_ = emptyLongList();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.Internal.LongList routers_ = emptyLongList();
+    private void ensureRoutersIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        routers_ = mutableCopy(routers_);
+        bitField0_ |= 0x00000004;
+       }
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @return A list containing the routers.
+     */
+    public java.util.List<java.lang.Long>
+        getRoutersList() {
+      return ((bitField0_ & 0x00000004) != 0) ?
+               java.util.Collections.unmodifiableList(routers_) : routers_;
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @return The count of routers.
+     */
+    public int getRoutersCount() {
+      return routers_.size();
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @param index The index of the element to return.
+     * @return The routers at the given index.
+     */
+    public long getRouters(int index) {
+      return routers_.getLong(index);
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @param index The index to set the value at.
+     * @param value The routers to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRouters(
+        int index, long value) {
+      ensureRoutersIsMutable();
+      routers_.setLong(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @param value The routers to add.
+     * @return This builder for chaining.
+     */
+    public Builder addRouters(long value) {
+      ensureRoutersIsMutable();
+      routers_.addLong(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @param values The routers to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllRouters(
+        java.lang.Iterable<? extends java.lang.Long> values) {
+      ensureRoutersIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, routers_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int64 routers = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRouters() {
+      routers_ = emptyLongList();
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }

@@ -19,6 +19,7 @@
 #include <string>
 #include <cmsLib/core_type.h>
 #include <cmsLib/redis/RedisClient.h>
+#include <gameLib/protobuf/cpp/eureka_internal.pb.h>
 
 class EurekaNodeInfo : public IRedisSerializer
 {
@@ -28,8 +29,11 @@ public:
 	EurekaNodeInfo* clone();
 
 	EurekaNodeInfo& operator = (const EurekaNodeInfo& v);
+	EurekaNodeInfo& operator = (const PRO::EurekaServerNode& v);
 
 	bool is_same_node(S_INT_64 token) { return this->token == token; }
+
+	void copyto(PRO::EurekaServerNode* v);
 
 protected:
 	//------------------implementation IRedisSerializer---------------------

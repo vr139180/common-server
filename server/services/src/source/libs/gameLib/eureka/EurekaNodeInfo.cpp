@@ -35,6 +35,26 @@ EurekaNodeInfo& EurekaNodeInfo::operator = (const EurekaNodeInfo& v)
 	return *this;
 }
 
+EurekaNodeInfo& EurekaNodeInfo::operator = (const PRO::EurekaServerNode& v)
+{
+	this->iid = v.iid();
+	this->ip = v.ip().c_str();
+	this->port = v.port();
+	this->token = v.token();
+	this->ismaster = v.ismaster();
+
+	return *this;
+}
+
+void EurekaNodeInfo::copyto(PRO::EurekaServerNode* v)
+{
+	v->set_iid(this->iid);
+	v->set_ip(this->ip.c_str());
+	v->set_port(this->port);
+	v->set_token(this->token);
+	v->set_ismaster(this->ismaster);
+}
+
 EurekaNodeInfo* EurekaNodeInfo::clone()
 {
 	EurekaNodeInfo* r = new EurekaNodeInfo();

@@ -25,7 +25,7 @@ class EurekaClusterClient;
 class EurekaClusterLink : public LinkToBase
 {
 public:
-	EurekaClusterLink(EurekaClusterClient* p, EurekaNodeInfo* info);
+	EurekaClusterLink(EurekaClusterClient* p, EurekaNodeInfo& info);
 	virtual ~EurekaClusterLink();
 
 	void connect();
@@ -38,11 +38,8 @@ public:
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
 
-	S_INT_64 get_iid() { return node_->iid; }
-	EurekaNodeInfo* clone_node() {
-		if (node_.get() == 0) return 0;
-		return node_->clone();
-	}
+	const EurekaNodeInfo& get_node() { return node_; }
+	S_INT_64 get_iid() { return node_.iid; }
 
 	void send_to_eureka(BasicProtocol* msg);
 
@@ -61,7 +58,7 @@ public:
 	void on_bind_result(bool success);
 
 protected:
-	std::unique_ptr<EurekaNodeInfo>	node_;
+	EurekaNodeInfo					node_;
 
 	//–≠“ÈÕ∑
 	SProtocolHead					s_head_;

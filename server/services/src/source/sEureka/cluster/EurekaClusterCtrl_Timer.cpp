@@ -27,7 +27,7 @@ USED_REDISKEY_GLOBAL_NS
 
 void EurekaClusterCtrl::init_timer()
 {
-	svrApp.add_apptimer(1000 * 5, boost::BOOST_BIND(&EurekaClusterCtrl::eureka_auto_connect_timer, this,
+	svrApp.add_apptimer(1000 * 3, boost::BOOST_BIND(&EurekaClusterCtrl::eureka_auto_connect_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 }
@@ -35,4 +35,14 @@ void EurekaClusterCtrl::init_timer()
 void EurekaClusterCtrl::eureka_auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish)
 {
 	eureka_links_to_.connect_to();
+
+	//¶ÏÏßÎ¬»¤
+	std::vector<S_INT_64> emiids;
+	for (boost::unordered_map<S_INT_64, EurekaLostMaintance*>::iterator iter = lost_maintance_.begin(); iter != lost_maintance_.end(); ++iter)
+		emiids.push_back(iter->first);
+	for( int ii =0; ii < emiids.size(); ++ii)
+	{
+		S_INT_64 lostnode = emiids[ii];
+		do_eurekanode_lost(lostnode);
+	}
 }

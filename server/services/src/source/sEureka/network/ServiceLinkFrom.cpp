@@ -34,13 +34,14 @@ void ServiceLinkFrom::init_protocolhead()
 	s_head_.router_balance_ = false;
 	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
+	s_head_.to_type_ = (S_INT_8)node_.type;
 	s_head_.to_broadcast_ = false;
 	s_head_.unpack_protocol_ = true;
 }
 
-void ServiceLinkFrom::set_node(ServiceNodeInfo pnode)
+void ServiceLinkFrom::set_node(ServiceNodeInfo* pnode)
 {
-	node_ = pnode;
+	node_ = *pnode;
 	s_head_.to_type_ = (S_INT_8)node_.type;
 }
 
@@ -48,7 +49,6 @@ void ServiceLinkFrom::send_to_service(BasicProtocol* msg)
 {
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
 	SProtocolHead& head = pro->write_head();
-	head.to_type_ = (S_INT_8)node_.type;
 
 	NetLinkFromBase<EurekaSession>::send_protocol(pro);
 }

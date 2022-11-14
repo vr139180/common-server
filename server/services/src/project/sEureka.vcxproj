@@ -138,8 +138,10 @@
     <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl.cpp" />
     <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Boost.cpp" />
     <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Maintnce.cpp" />
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_MSChange.cpp" />
     <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_NetCmd.cpp" />
     <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_Timer.cpp" />
+    <ClCompile Include="..\source\sEureka\cluster\EurekaLostMaintance.cpp" />
     <ClCompile Include="..\source\sEureka\network\EurekaLinkFrom.cpp" />
     <ClCompile Include="..\source\sEureka\network\EurekaLinkTo.cpp" />
     <ClCompile Include="..\source\sEureka\network\EurekaSession.cpp" />
@@ -152,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\sEureka\cluster\EurekaClusterCtrl.h" />
+    <ClInclude Include="..\source\sEureka\cluster\EurekaLostMaintance.h" />
     <ClInclude Include="..\source\sEureka\debugdefine.h" />
     <ClInclude Include="..\source\sEureka\network\EurekaLinkFrom.h" />
     <ClInclude Include="..\source\sEureka\network\EurekaLinkFromHolder.h" />

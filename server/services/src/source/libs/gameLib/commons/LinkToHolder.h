@@ -297,6 +297,8 @@ void LinkToHolder<T>::sync_eureka_services(std::list<ServiceNodeInfo*>& nodes, s
 		S_INT_64 sid = (*iter);
 		services_iid.erase(sid);
 	}
+
+	connect_to();
 }
 
 #endif //__LINKTOHOLDER_H__

@@ -37,19 +37,28 @@ public:
 	virtual void return_freelink(T* link);
 	virtual T* regist_onlinelink(T* link);
 
-	template<class M>
-	void broadcast(M* pro)
+	S_INT_32 get_linked_size() {
+		return (S_INT_32)online_links_.size();
+	}
+
+	void remove_linkfrom_node(S_INT_64 iid);
+
+	void broadcast(BasicProtocol* pro, S_INT_64 ignore = 0)
 	{
 		ThreadLockWrapper guard(lock_);
 
 		typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
 		for (; iter != online_links_.end(); ++iter)
 		{
-			M* msg = new M();
+			S_INT_64 iid = iter->first;
+			if (ignore != 0 && iid == ignore)
+				continue;
+
+			BasicProtocol* msg = pro->New();
 			msg->CopyFrom(*pro);
 
 			T* link = iter->second;
-			link->send_protocol(msg);
+			link->send_to_eureka(msg);
 		}
 	}
 
@@ -142,6 +151,16 @@ T* EurekaLinkFromHolder<T>::get_eurekalink_byiid(S_INT_64 iid)
 	if (fiter == online_links_.end())
 		return 0;
 	return fiter->second;
+}
+
+template<typename T>
+void EurekaLinkFromHolder<T>::remove_linkfrom_node(S_INT_64 iid)
+{
+	T* pLink = get_eurekalink_byiid(iid);
+	if (pLink == 0)
+		return;
+
+	pLink->force_close();
 }
 
 #endif //__EUREKALINKFROMHOLDER_H__

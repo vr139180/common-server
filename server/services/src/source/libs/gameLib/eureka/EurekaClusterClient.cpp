@@ -33,6 +33,9 @@ service_iid_(0)
 , app_proxy_(0)
 , master_link_(0)
 , cur_state_( EurekaState::Eureka_WaitInit)
+, is_router_node_( false)
+, master_eureka_iid_( 0)
+, master_eureka_token_( 0)
 {
 }
 
@@ -60,7 +63,9 @@ void EurekaClusterClient::release()
 void EurekaClusterClient::init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type
 	, const char* myip, int myport, EurekaServerExtParam extpms
 	, const char* eurekaip, int eurekaport
-	, std::list< NETSERVICE_TYPE>& subscribe_service)
+	, std::list< NETSERVICE_TYPE>& subscribe_service
+	, std::list< NETSERVICE_TYPE>& subscribe_balance
+	, bool isrouter)
 {
 	this->cur_state_ = EurekaState::Eureka_WaitInit;
 
@@ -70,6 +75,8 @@ void EurekaClusterClient::init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type
 	this->myport_ = myport;
 	this->extpms_ = extpms;
 	this->subscribe_services_ = subscribe_service;
+	this->subscribe_balance_ = subscribe_balance;
+	this->is_router_node_ = isrouter;
 
 	for (std::list< NETSERVICE_TYPE>::iterator iter = subscribe_services_.begin(); iter != subscribe_services_.end(); ++iter)
 	{
@@ -79,9 +86,10 @@ void EurekaClusterClient::init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type
 	//初始化消息处理映射
 	this->InitNetMessage();
 
-	EurekaNodeInfo* pnode = new EurekaNodeInfo();
-	pnode->ip = eurekaip;
-	pnode->port = eurekaport;
+	EurekaNodeInfo pnode;
+	pnode.ip = eurekaip;
+	pnode.port = eurekaport;
+	pnode.ismaster = true;
 	EurekaClusterLink* plink = new EurekaClusterLink(this, pnode);
 
 	//plink不会释放，多余的放到free作为缓存使用
@@ -112,6 +120,17 @@ void EurekaClusterClient::send_mth_protocol(BasicProtocol* pro, bool balance)
 
 	if( balance)
 		++cur_link_index_;
+}
+
+void EurekaClusterClient::send_to_master(BasicProtocol* pro)
+{
+	if (master_link_ == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	master_link_->send_to_eureka(pro);
 }
 
 void EurekaClusterClient::regist_command(CommandBase *p)
@@ -153,56 +172,11 @@ void EurekaClusterClient::auto_connect_timer(u64 tnow, int interval, u64 iid, bo
 			wait_links_.clear();
 		}
 	}
-
-	//订阅请求
-	//发送订阅请求
-	if (is_registed() && online_links_.size() > 0)
-	{
-		//eureka节点同步
-		{
-			/*
-			PRO::Erk_Eureka_sync *syn = new PRO::Erk_Eureka_sync();
-			syn->set_myiid(this->get_myiid());
-
-			//缓存的节点信息
-			for (boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator iter = eureka_nodes_.begin(); iter != eureka_nodes_.end(); ++iter)
-			{
-				syn->add_exists(iter->first);
-			}
-
-			this->send_mth_protocol(syn);
-			*/
-		}
-
-		//服务订阅
-		{
-			PRO::Erk_ServiceSubscribe_req* req = new PRO::Erk_ServiceSubscribe_req();
-			req->set_myiid(get_myiid());
-
-			for (std::list< NETSERVICE_TYPE>::iterator iter = subscribe_services_.begin(); iter != subscribe_services_.end(); ++iter)
-			{
-				PRO::Erk_ServiceSubscribe_req_svrinfo* sinfo = req->add_svr_type();
-				sinfo->set_svr_type((S_INT_32)(*iter));
-
-				boost::unordered_map<NETSERVICE_TYPE, SERVICENODE_TYPE >::iterator fiter = service_nodes_.find((*iter));
-				if (fiter == service_nodes_.end())
-					continue;
-
-				const SERVICENODE_TYPE& snodes = fiter->second;
-				for (SERVICENODE_TYPE::const_iterator iter2 = snodes.begin(); iter2 != snodes.end(); ++iter2)
-				{
-					sinfo->add_exits(iter2->first);
-				}
-			}
-
-			this->send_mth_protocol(req, false);
-		}
-	}
 }
 
 bool EurekaClusterClient::is_eurekanode_exist(S_INT_64 sid)
 {
-	boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator fiter = eureka_nodes_.find(sid);
+	boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(sid);
 	return fiter != eureka_nodes_.end();
 }
 
@@ -252,6 +226,13 @@ void EurekaClusterClient::on_link_disconnected(EurekaClusterLink* plink)
 	//3秒后重连
 	if (is_registed())
 	{
+		if (master_link_ == plink)
+		{
+			master_link_ = 0;
+			logInfo(out_runtime, "me lost connection to sEureka[iid:%ld ip:%s port:%d] master node",
+				plink->get_node().iid, plink->get_node().ip.c_str(), plink->get_node().port);
+		}
+
 		if (is_eurekanode_exist(plink->get_iid()))
 		{
 			//有效的节点，则继续链接
@@ -289,12 +270,31 @@ void EurekaClusterClient::on_link_regist_result( EurekaClusterLink* plink)
 	//第一个需要手动缓存，后续的通过同步
 	if (is_eurekanode_exist(plink->get_iid()) == false)
 	{
-		EurekaNodeInfo* pinfo = plink->clone_node();
-		eureka_nodes_[pinfo->iid] = pinfo;
+		eureka_nodes_[plink->get_node().iid] = plink->get_node();
 	}
 
 	//连接成功
 	this->cur_state_ = EurekaState::Eureka_Registed;
+
+	//更新master信息
+	this->master_eureka_iid_ = plink->get_node().iid;
+	this->master_eureka_token_ = plink->get_node().token;
+	this->master_link_ = plink;
+
+	subscribe_to_masternode();
+
+	if (is_router_node_)
+	{
+		//delay 5 second 发送routeronline_req
+		app_proxy_->add_apptimer_proxy(3 * 1000, boost::BOOST_BIND(&EurekaClusterClient::router_autoconfirm_timer, this,
+			boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
+	}
+	else
+	{
+		this->cur_state_ = EurekaState::Eureka_Done;
+		if (app_proxy_)
+			app_proxy_->mth_service_registed(get_myiid());
+	}
 }
 
 void EurekaClusterClient::on_link_bind_result( EurekaClusterLink* plink)
@@ -305,4 +305,84 @@ void EurekaClusterClient::on_link_bind_result( EurekaClusterLink* plink)
 	std::vector<EurekaClusterLink*>::iterator fiter = std::find(online_links_.begin(), online_links_.end(), plink);
 	if (fiter == online_links_.end())
 		online_links_.push_back(plink);
+
+	//是否重新绑定的是master
+	if (plink->get_node().iid == master_eureka_iid_ && plink->get_node().token == master_eureka_token_)
+	{
+		master_link_ = plink;
+
+		subscribe_to_masternode();
+	}
+}
+
+EurekaClusterLink* EurekaClusterClient::get_eurekalink_byiid(S_INT_64 iid)
+{
+	for (std::vector<EurekaClusterLink*>::iterator iter = online_links_.begin(); iter != online_links_.end(); ++iter)
+	{
+		EurekaClusterLink* plink = (*iter);
+		if (plink->get_iid() == iid)
+			return plink;
+	}
+
+	return 0;
+}
+
+void EurekaClusterClient::subscribe_to_masternode()
+{
+	//订阅请求
+	//服务订阅
+	if(subscribe_services_.size() > 0)
+	{
+		PRO::Erk_ServiceSubscribe_req* req = new PRO::Erk_ServiceSubscribe_req();
+		req->set_myiid(get_myiid());
+		req->set_mysvrtype((S_INT_32)svrtype_);
+
+		for (std::list< NETSERVICE_TYPE>::iterator iter = subscribe_services_.begin(); iter != subscribe_services_.end(); ++iter)
+		{
+			PRO::Erk_ServiceSubscribe_req_svrinfo* sinfo = req->add_svr_type();
+			sinfo->set_svr_type((S_INT_32)(*iter));
+
+			boost::unordered_map<NETSERVICE_TYPE, SERVICENODE_TYPE >::iterator fiter = service_nodes_.find((*iter));
+			if (fiter == service_nodes_.end())
+				continue;
+
+			const SERVICENODE_TYPE& snodes = fiter->second;
+			for (SERVICENODE_TYPE::const_iterator iter2 = snodes.begin(); iter2 != snodes.end(); ++iter2)
+			{
+				sinfo->add_exits(iter2->first);
+			}
+		}
+
+		this->send_to_master(req);
+	}
+
+	//router节点，订阅负载均衡信息
+	if (is_router_node_ && subscribe_balance_.size() > 0)
+	{
+		PRO::Erk_RouterSubscribe_req* req = new PRO::Erk_RouterSubscribe_req();
+		req->set_myiid(get_myiid());
+		req->set_mysvrtype((S_INT_32)svrtype_);
+
+		for (std::list< NETSERVICE_TYPE>::iterator iter = subscribe_balance_.begin(); iter != subscribe_balance_.end(); ++iter)
+		{
+			req->add_svr_types((S_INT_32)(*iter));
+		}
+
+		this->send_to_master(req);
+	}
+}
+
+void EurekaClusterClient::router_autoconfirm_timer(u64 tnow, int interval, u64 iid, bool& finish)
+{
+	finish = true;
+
+	cur_state_ = EurekaState::Eureka_Done;
+
+	PRO::Erk_RouterOnline_req* req = new PRO::Erk_RouterOnline_req();
+	req->set_myiid(get_myiid());
+	req->set_mysvrtype((S_INT_32)svrtype_);
+
+	this->send_to_master(req);
+
+	app_proxy_->mth_service_registed(get_myiid());
 }

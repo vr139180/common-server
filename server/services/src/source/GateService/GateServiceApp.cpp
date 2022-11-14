@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "GateServiceApp.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -81,10 +96,11 @@ bool GateServiceApp::pre_init()
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
+	std::list<NETSERVICE_TYPE> router_types;
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
-		gopt.eip.c_str(), gopt.eport, subscribe_types);
+		gopt.eip.c_str(), gopt.eport, subscribe_types, router_types);
 
 	GamePlayerCtrl::instance().init_gameplayerctrl( GATE_PLAYER_MAX);
 

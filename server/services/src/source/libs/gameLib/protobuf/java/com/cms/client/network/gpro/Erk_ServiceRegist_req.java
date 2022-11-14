@@ -89,11 +89,6 @@ private static final long serialVersionUID = 0L;
             isrouter_ = input.readBool();
             break;
           }
-          case 48: {
-
-            eurekatoken_ = input.readInt64();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -314,21 +309,6 @@ private static final long serialVersionUID = 0L;
     return isrouter_;
   }
 
-  public static final int EUREKATOKEN_FIELD_NUMBER = 6;
-  private long eurekatoken_;
-  /**
-   * <pre>
-   *master节点token
-   * </pre>
-   *
-   * <code>int64 eurekatoken = 6;</code>
-   * @return The eurekatoken.
-   */
-  @java.lang.Override
-  public long getEurekatoken() {
-    return eurekatoken_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -360,9 +340,6 @@ private static final long serialVersionUID = 0L;
         4);
     if (isrouter_ != false) {
       output.writeBool(5, isrouter_);
-    }
-    if (eurekatoken_ != 0L) {
-      output.writeInt64(6, eurekatoken_);
     }
     unknownFields.writeTo(output);
   }
@@ -398,10 +375,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(5, isrouter_);
     }
-    if (eurekatoken_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(6, eurekatoken_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -427,8 +400,6 @@ private static final long serialVersionUID = 0L;
         other.internalGetExts())) return false;
     if (getIsrouter()
         != other.getIsrouter()) return false;
-    if (getEurekatoken()
-        != other.getEurekatoken()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -453,9 +424,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ISROUTER_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsrouter());
-    hash = (37 * hash) + EUREKATOKEN_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getEurekatoken());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -625,8 +593,6 @@ private static final long serialVersionUID = 0L;
       internalGetMutableExts().clear();
       isrouter_ = false;
 
-      eurekatoken_ = 0L;
-
       return this;
     }
 
@@ -660,7 +626,6 @@ private static final long serialVersionUID = 0L;
       result.exts_ = internalGetExts();
       result.exts_.makeImmutable();
       result.isrouter_ = isrouter_;
-      result.eurekatoken_ = eurekatoken_;
       onBuilt();
       return result;
     }
@@ -723,9 +688,6 @@ private static final long serialVersionUID = 0L;
           other.internalGetExts());
       if (other.getIsrouter() != false) {
         setIsrouter(other.getIsrouter());
-      }
-      if (other.getEurekatoken() != 0L) {
-        setEurekatoken(other.getEurekatoken());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1105,49 +1067,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearIsrouter() {
       
       isrouter_ = false;
-      onChanged();
-      return this;
-    }
-
-    private long eurekatoken_ ;
-    /**
-     * <pre>
-     *master节点token
-     * </pre>
-     *
-     * <code>int64 eurekatoken = 6;</code>
-     * @return The eurekatoken.
-     */
-    @java.lang.Override
-    public long getEurekatoken() {
-      return eurekatoken_;
-    }
-    /**
-     * <pre>
-     *master节点token
-     * </pre>
-     *
-     * <code>int64 eurekatoken = 6;</code>
-     * @param value The eurekatoken to set.
-     * @return This builder for chaining.
-     */
-    public Builder setEurekatoken(long value) {
-      
-      eurekatoken_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *master节点token
-     * </pre>
-     *
-     * <code>int64 eurekatoken = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearEurekatoken() {
-      
-      eurekatoken_ = 0L;
       onChanged();
       return this;
     }

@@ -26,6 +26,8 @@ void EurekaClusterClient::InitNetMessage()
 	REGISTERMSG(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF, &EurekaClusterClient::on_eurekaupdate_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_NTF, &EurekaClusterClient::on_service_subscribe_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF, &EurekaClusterClient::on_router_subscribe_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::ERK_MASTERCHANGE_NTF, &EurekaClusterClient::on_eurekamaster_change_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::SVR_ROUTERONLINE_NTF, &EurekaClusterClient::on_routeronline_ntf, this);
 }
 
 void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autorelease)
@@ -40,16 +42,13 @@ void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autore
 			continue;
 
 		//处理新增加的节点
-		EurekaNodeInfo* pinfo = new EurekaNodeInfo();
-		pinfo->iid = node.iid();
-		pinfo->token = node.token();
-		pinfo->ip = node.ip();
-		pinfo->port = node.port();
+		EurekaNodeInfo pinfo;
+		pinfo = node;
 
-		eureka_nodes_[pinfo->iid] = pinfo;
+		eureka_nodes_[pinfo.iid] = pinfo;
 
 		//eureka已经在线
-		if (is_eurekanode_connected(pinfo->iid))
+		if (is_eurekanode_connected(pinfo.iid))
 			continue;
 
 		//全新的eureka，加入连接缓冲
@@ -57,7 +56,7 @@ void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autore
 		//放入连接节点
 		if (free_links_.size() == 0)
 		{
-			EurekaClusterLink* pc = new EurekaClusterLink(this, pinfo->clone());
+			EurekaClusterLink* pc = new EurekaClusterLink(this, pinfo);
 			clusterlinks_.push_back(pc);
 			pconn = pc;
 		}
@@ -67,25 +66,22 @@ void EurekaClusterClient::on_eurekaupdate_ntf(NetProtocol* message, bool& autore
 			pconn = (*fiter);
 			free_links_.erase(fiter);
 
-			pconn->reset(pinfo->clone());
+			pconn->reset(&pinfo);
 		}
 
 		wait_links_.insert(pconn);
-		logDebug(out_runtime, "recv a new eureka node:%lld wait to connecting", pconn->get_iid());
+		logDebug(out_runtime, "slaver eureka node:%lld wait to connecting", pconn->get_iid());
 	}
 
 	//删除下线的服务，但是不直接断开连接。通过错误重连时来自动维护
 	for (int ind = 0; ind < ntf->offline_size(); ++ind)
 	{
 		S_INT_64 sid = ntf->offline(ind);
-		boost::unordered_map<S_INT_64, EurekaNodeInfo*>::iterator fiter = eureka_nodes_.find(sid);
+		boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator fiter = eureka_nodes_.find(sid);
 		if (fiter == eureka_nodes_.end())
 			continue;
 
-		EurekaNodeInfo* pp = fiter->second;
 		eureka_nodes_.erase(fiter);
-
-		delete pp;
 	}
 }
 
@@ -150,6 +146,41 @@ void EurekaClusterClient::on_service_subscribe_ntf(NetProtocol* message, bool& a
 }
 
 void EurekaClusterClient::on_router_subscribe_ntf(NetProtocol* message, bool& autorelease)
+{
+	Erk_RouterSubscribe_ntf* ack = dynamic_cast<Erk_RouterSubscribe_ntf*>(message->msg_);
+
+	NETSERVICE_TYPE type = (NETSERVICE_TYPE)ack->svr_type();
+
+	std::list<S_INT_64> alliids;
+	//在线服务增量信息
+	for (int ind = 0; ind < ack->svriids_size(); ++ind)
+	{
+		S_INT_64 node = ack->svriids(ind);
+		alliids.push_back(node);
+	}
+
+	if (app_proxy_)
+	{
+		app_proxy_->mth_notify_routerbalance_new(type, alliids);
+	}
+}
+
+void EurekaClusterClient::on_eurekamaster_change_ntf(NetProtocol* message, bool& autorelease)
+{
+	Erk_MasterChange_ntf* ack = dynamic_cast<Erk_MasterChange_ntf*>(message->msg_);
+
+	if (master_eureka_iid_ != ack->newmaster() || master_eureka_token_ != ack->mastertoken())
+	{
+		master_eureka_iid_ = ack->newmaster();
+		master_eureka_token_ = ack->mastertoken();
+		master_link_ = get_eurekalink_byiid(master_eureka_iid_);
+
+		if( master_link_ != 0)
+			subscribe_to_masternode();
+	}
+}
+
+void EurekaClusterClient::on_routeronline_ntf(NetProtocol* pro, bool& autorelease)
 {
 
 }

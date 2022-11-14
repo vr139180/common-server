@@ -31,8 +31,13 @@ public:
 	ServiceNodeInfo* clone();
 
 	ServiceNodeInfo& operator = (const ServiceNodeInfo& v);
+	void copy_to(PRO::ServerNode* pnode) const;
+	void copy_from(const PRO::ServerNode* pnode);
 
 	std::string get_extparam_bykey(const char* key);
+
+	bool add_subscribe(NETSERVICE_TYPE st);
+	bool add_router(NETSERVICE_TYPE st);
 
 protected:
 	//------------------implementation IRedisSerializer---------------------
@@ -51,11 +56,12 @@ public:
 	std::string ip;
 	//node的端口
 	int			port;
-
-	//状态,是否在线
-	bool		isonline;
+	//是否router服务
+	bool		isrouter;
 
 	//只在eureka节点使用的数据
+	//状态,是否在线
+	bool		isonline;
 	//订阅的服务和负载均衡
 	std::list<NETSERVICE_TYPE>	subscribes_;
 	std::list<NETSERVICE_TYPE>	routers_;

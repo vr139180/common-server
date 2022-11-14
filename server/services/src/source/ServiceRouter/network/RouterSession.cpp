@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/RouterSession.h"
 
 #include <cmsLib/net/NetDriverX.h>
@@ -15,15 +30,17 @@ RouterSession::~RouterSession()
 {
 }
 
-void RouterSession::send_protocol(BasicProtocol* pro)
+void RouterSession::send_protocol(NetProtocol* pro)
 {
 	session_->send_protocol(pro);
 }
 
-BasicProtocol* RouterSession::get_livekeep_msg()
+NetProtocol* RouterSession::get_livekeep_msg()
 {
 	PRO::Svr_LiveTick_ntf* ntf = new PRO::Svr_LiveTick_ntf();
-	return ntf;
+	NetProtocol* pro = new NetProtocol(ntf);
+
+	return pro;
 }
 
 void RouterSession::on_connect_lost_netthread()
@@ -38,9 +55,10 @@ void RouterSession::on_connect_lost_netthread()
 	}
 }
 
-void RouterSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void RouterSession::on_recv_protocol_netthread(NetProtocol* pro)
 {
-	if (proiid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ)
+	S_UINT_16 msgid = pro->get_msg();
+	if (msgid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&ServiceRouterApp::on_mth_servicebindservice_req, &svrApp,
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -50,9 +68,9 @@ void RouterSession::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* 
 	}
 	else
 	{
-		std::unique_ptr<BasicProtocol> p_msg(pro);
+		std::unique_ptr<NetProtocol> p_msg(pro);
 		if (is_auth() && parent_)
-			parent_->on_recv_protocol_netthread(proiid, p_msg.release());
+			parent_->on_recv_protocol_netthread( p_msg.release());
 	}
 }
 

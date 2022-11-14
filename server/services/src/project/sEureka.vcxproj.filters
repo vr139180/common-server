@@ -50,6 +50,12 @@
     <ClCompile Include="..\source\sEureka\network\ServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaClusterCtrl_MSChange.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\sEureka\cluster\EurekaLostMaintance.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\sEureka\sEurekaApp.h" />
@@ -83,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="..\source\sEureka\network\ServiceLinkFromHolder.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\sEureka\cluster\EurekaLostMaintance.h">
+      <Filter>cluster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

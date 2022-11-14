@@ -28,15 +28,9 @@ USE_PROTOCOL_NAMESPACE
 void ServiceRegisterCtrl::InitNetMessage()
 {
 	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_REQ, &ServiceRegisterCtrl::on_mth_servicesubscribe_req, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESUBSCRIBE_NTF, &ServiceRegisterCtrl::on_mth_servicesubscribe_ntf, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESYNC_NTF, &ServiceRegisterCtrl::on_mth_servicesync_ntf, this);
-
 	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_REQ, &ServiceRegisterCtrl::on_mth_routersubscribe_req, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF, &ServiceRegisterCtrl::on_mth_routersubscribe_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERONLINE_REQ, &ServiceRegisterCtrl::on_mth_routeronline_req, this);
-	REGISTERMSG(ERK_PROTYPE::SVR_ROUTERONLINE_NTF, &ServiceRegisterCtrl::on_mth_routeronline_ntf, this);
-
-	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF, &ServiceRegisterCtrl::on_mth_serviceshutdown_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESYNC_NTF, &ServiceRegisterCtrl::on_mth_servicesync_ntf, this);
 }
 
 void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autorelease, void* session)
@@ -66,8 +60,6 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 
 	//生成服务iid,全局唯一
 	S_INT_64 sid = make_next_serviceiid();
-	if (find_servicenode_byiid(sid) != 0)
-		sid = make_next_serviceiid_fix();
 
 	ServiceNodeInfo pnode;
 	pnode.iid = sid;
@@ -75,6 +67,7 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 	pnode.token = (S_INT_64)OSSystem::mOS->GetTimestamp();
 	pnode.ip = req->ip().c_str();
 	pnode.port = req->port();
+	pnode.isrouter = req->isrouter();
 	//router服务在线状态需要确认，其他默认为online
 	if (req->isrouter())
 		pnode.isonline = false;
@@ -99,9 +92,10 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 
 		pLink = service_mth_links_.ask_free_link();
 
-		pLink->set_linkbase_info(pnode.iid, pnode.token, pnode.extparams);
+		pLink->set_linkbase_info(pnode.iid, pnode.token);
+		pLink->set_exts(pnode.extparams);
 		//关联node
-		pLink->set_node(pnode);
+		pLink->set_node( &pnode);
 
 		psession->auth();
 		pLink->set_session(psession);
@@ -123,6 +117,22 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 	ack->set_eurekatoken(svrApp.get_eurekactrl()->get_myself().token);
 
 	pLink->send_to_service(ack);
+
+	//同步增量服务
+	Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
+	std::unique_ptr<Erk_ServiceSync_ntf> ptr(ntf);
+
+	ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
+	ntf->set_fullsvrs(false);
+	ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+	ntf->set_service_seed(this->get_serviceiid_seed());
+
+	PRO::ServerNode *pnew = ntf->add_newsvrs();
+	pnode.copy_to(pnew);
+
+	svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
+
+	notify_service_online(sid);
 }
 
 void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorelease, void* session)
@@ -147,7 +157,6 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 		head.to_type_ = pro->head_.from_type_;
 		psession->send_to_service( head, ack);
 
-		psession->force_close();
 		return;
 	}
 
@@ -164,8 +173,6 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 			head.from_type_ = head.to_type_;
 			head.to_type_ = pro->head_.from_type_;
 			psession->send_to_service(head, ack);
-
-			psession->force_close();
 			return;
 		}
 
@@ -174,7 +181,7 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 		pLink = service_mth_links_.ask_free_link();
 
 		//关联node
-		pLink->set_node(*pnode);
+		pLink->set_node( pnode);
 
 		psession->auth();
 		pLink->set_session(psession);
@@ -189,45 +196,37 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 
 void ServiceRegisterCtrl::on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease)
 {
-	Erk_ServiceSubscribe_req* req = dynamic_cast<Erk_ServiceSubscribe_req*>(pro->msg_);
-
-	//更新redis心跳信息
-	S_TIMESTAMP tnow = OSSystem::mOS->GetTimestamp();
-	RedisClient* redis = svrApp.get_redisclient();
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
+	if (!bmaster)
 	{
-		std::string skey = redis->build_rediskey(SERVICE_DETAIL_INFO, req->myiid());
-		std::string stype = "";
-		if (redis->get_hashmember(skey.c_str(), SERVICE_DETAIL_SVRTYPE, stype))
-		{
-			skey = redis->build_rediskey(SERVICE_MAINTNCE, stype.c_str());
-			S_INT_64 lasttime = ((S_INT_64)tnow);
-			redis->add_zset(skey.c_str(), std::to_string(req->myiid()).c_str(), lasttime, UpdateType::EXIST);
-		}
+		logError(out_runtime, "eureka[%d] slaver node recv a Erk_ServiceSubscribe_req request....", svrApp.get_eurekactrl()->get_myself().iid);
+		return;
 	}
+
+	Erk_ServiceSubscribe_req* req = dynamic_cast<Erk_ServiceSubscribe_req*>(pro->msg_);
 
 	//-------------------------协议同步-----------------------
 	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->myiid());
-	if (plink == 0)
+	ServiceNodeInfo* pNode = find_servicenode_byiid(req->myiid());
+	if (plink == 0 || pNode == 0)
 		return;
 
-	//无订阅回复一个空的协议
-	if (req->svr_type_size() == 0)
-	{
-		Erk_ServiceSubscribe_ntf* ack = new Erk_ServiceSubscribe_ntf();
-		ack->set_myiid(req->myiid());
-		ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_NONE);
-
-		plink->send_to_service(ack);
-
-		return;
-	}
-
+	bool bdiff = false;
 	for (int ii = 0; ii < req->svr_type_size(); ++ii)
 	{
 		const Erk_ServiceSubscribe_req_svrinfo& sinfo = req->svr_type(ii);
 		NETSERVICE_TYPE ctype = (NETSERVICE_TYPE)sinfo.svr_type();
 		if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE)
 			continue;
+
+		//保存一个注册
+		if (pNode->add_subscribe(ctype))
+		{
+			bdiff = true;
+
+			//建立关联信息
+			add_service_to_subscribe(ctype, req->myiid());
+		}
 
 		std::set<S_INT_64> offline;
 		for (int kk = 0; kk < sinfo.exits_size(); ++kk)
@@ -242,6 +241,7 @@ void ServiceRegisterCtrl::on_mth_servicesubscribe_req(NetProtocol* pro, bool& au
 		const std::list<ServiceNodeInfo*>& pnodes = get_service_node_oftype(ctype);
 		for (std::list<ServiceNodeInfo*>::const_iterator iter = pnodes.begin(); iter != pnodes.end(); ++iter)
 		{
+			//检查服务是否依然在线
 			const ServiceNodeInfo* pinfo = (*iter);
 			std::set<S_INT_64>::iterator fiter = offline.find(pinfo->iid);
 			if (fiter == offline.end())
@@ -254,7 +254,7 @@ void ServiceRegisterCtrl::on_mth_servicesubscribe_req(NetProtocol* pro, bool& au
 
 		Erk_ServiceSubscribe_ntf* ack = new Erk_ServiceSubscribe_ntf();
 		ack->set_myiid(req->myiid());
-		ack->set_svr_type(sinfo.svr_type());
+		ack->set_svr_type(ctype);
 
 		for (std::set<S_INT_64>::iterator iter = offline.begin(); iter != offline.end(); ++iter)
 		{
@@ -265,55 +265,228 @@ void ServiceRegisterCtrl::on_mth_servicesubscribe_req(NetProtocol* pro, bool& au
 			const ServiceNodeInfo* pinfo = (*iter);
 
 			PRO::ServerNode* pnod = ack->add_newsvrs();
-			pnod->set_iid(pinfo->iid);
-			pnod->set_token(pinfo->token);
-			pnod->set_ip(pinfo->ip);
-			pnod->set_port(pinfo->port);
-
-			if (pinfo->extparams.size() > 0)
-			{
-				google::protobuf::Map<std::string, std::string>& kvs = *(pnod->mutable_exts());
-
-				for( boost::unordered_map<std::string, std::string>::const_iterator xiter = pinfo->extparams.cbegin(); 
-					xiter != pinfo->extparams.cend(); ++xiter)
-				{
-					kvs[xiter->first] = xiter->second;
-				}
-			}
+			pinfo->copy_to(pnod);
 		}
 
 		plink->send_to_service(ack);
 	}
-}
 
-void ServiceRegisterCtrl::on_mth_servicesubscribe_ntf(NetProtocol* pro, bool& autorelease)
-{
+	//有变化，需要eureka节点间同步
+	if (bdiff)
+	{
+		Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
+		std::unique_ptr<Erk_ServiceSync_ntf> ptr(ntf);
 
+		ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
+		ntf->set_fullsvrs(false);
+		ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+		ntf->set_service_seed(this->get_serviceiid_seed());
+
+		PRO::ServerNode *pnew = ntf->add_newsvrs();
+		pNode->copy_to(pnew);
+
+		svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
+	}
 }
 
 void ServiceRegisterCtrl::on_mth_servicesync_ntf(NetProtocol* pro, bool& autorelease)
 {
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
+	if (bmaster)
+		return;
 
+	Erk_ServiceSync_ntf* ntf = dynamic_cast<Erk_ServiceSync_ntf*>(pro->msg_);
+
+	svrApp.get_eurekactrl()->sync_slaver_eurekaseed(ntf->eureka_seed());
+	this->set_serviceiid_seed(ntf->service_seed());
+
+	if (ntf->fullsvrs())
+	{
+		//全量更新
+		router_of_subscribe_.clear();
+		service_of_subscribe_.clear();
+		servie_of_type_.clear();
+		all_service_nodes_.clear();
+
+		for (int ii = 0; ii < ntf->newsvrs_size(); ++ii)
+		{
+			const PRO::ServerNode& pnod = ntf->newsvrs(ii);
+
+			ServiceNodeInfo ninfo;
+			ninfo.copy_from( &pnod);
+
+			ServiceNodeInfo* psvr = regist_one_service(ninfo);
+
+			for (std::list<NETSERVICE_TYPE>::iterator iter = psvr->subscribes_.begin(); iter != psvr->subscribes_.end(); ++iter)
+			{
+				NETSERVICE_TYPE ctype = (*iter);
+				add_service_to_subscribe(ctype, ninfo.iid);
+			}
+
+			for (std::list<NETSERVICE_TYPE>::iterator iter = psvr->routers_.begin(); iter != psvr->routers_.end(); ++iter)
+			{
+				NETSERVICE_TYPE ctype = (*iter);
+				add_service_to_router(ctype, ninfo.iid);
+			}
+		}
+	}
+	else
+	{
+		//增量更新
+		for (int ii = 0; ii < ntf->newsvrs_size(); ++ii)
+		{
+			const PRO::ServerNode& pnod = ntf->newsvrs(ii);
+
+			ServiceNodeInfo ninfo;
+			ninfo.copy_from( &pnod);
+
+			ServiceNodeInfo* psvr = regist_one_service(ninfo, true);
+
+			for (std::list<NETSERVICE_TYPE>::iterator iter = psvr->subscribes_.begin(); iter != psvr->subscribes_.end(); ++iter)
+			{
+				NETSERVICE_TYPE ctype = (*iter);
+				add_service_to_subscribe(ctype, ninfo.iid);
+			}
+
+			for (std::list<NETSERVICE_TYPE>::iterator iter = psvr->routers_.begin(); iter != psvr->routers_.end(); ++iter)
+			{
+				NETSERVICE_TYPE ctype = (*iter);
+				add_service_to_router(ctype, ninfo.iid);
+			}
+		}
+
+		//删除失效的
+		for (int ii = 0; ii < ntf->offline_size(); ++ii)
+		{
+			S_INT_64 iid = ntf->offline(ii);
+			offline_one_service(iid);
+		}
+	}
 }
 
 void ServiceRegisterCtrl::on_mth_routersubscribe_req(NetProtocol* pro, bool& autorelease)
 {
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
+	if (!bmaster)
+	{
+		logError(out_runtime, "eureka[%d] slaver node recv a Erk_RouterSubscribe_req request....", svrApp.get_eurekactrl()->get_myself().iid);
+		return;
+	}
 
-}
+	Erk_RouterSubscribe_req* req = dynamic_cast<Erk_RouterSubscribe_req*>(pro->msg_);
 
-void ServiceRegisterCtrl::on_mth_routersubscribe_ntf(NetProtocol* pro, bool& autorelease)
-{
+	//-------------------------协议同步-----------------------
+	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->myiid());
+	ServiceNodeInfo* pNode = find_servicenode_byiid(req->myiid());
+	if (plink == 0 || pNode == 0 || !pNode->isrouter)
+		return;
 
+	bool bdiff = false;
+	for (int ii = 0; ii < req->svr_types_size(); ++ii)
+	{
+		NETSERVICE_TYPE ctype = (NETSERVICE_TYPE)req->svr_types(ii);
+		if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE)
+			continue;
+
+		//保存一个注册
+		if (pNode->add_router(ctype))
+		{
+			bdiff = true;
+
+			add_service_to_router(ctype, req->myiid());
+		}
+
+		if (pNode->isonline)
+		{
+			//一次订阅所有
+			for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->subscribes_.begin(); iter != pNode->subscribes_.end(); ++iter)
+			{
+				NETSERVICE_TYPE ctype = (*iter);
+
+				Erk_RouterSubscribe_ntf* ack = new Erk_RouterSubscribe_ntf();
+				ack->set_myiid(req->myiid());
+				ack->set_svr_type(ctype);
+
+				const std::list<ServiceNodeInfo*>& pnodes = get_service_node_oftype(ctype);
+				for (std::list<ServiceNodeInfo*>::const_iterator iter = pnodes.begin(); iter != pnodes.end(); ++iter)
+				{
+					const ServiceNodeInfo* pinfo = (*iter);
+					ack->add_svriids((S_INT_64)pinfo->iid);
+				}
+
+				plink->send_to_service(ack);
+			}
+		}
+	}
+
+	//有变化，需要eureka节点间同步
+	if (bdiff)
+	{
+		Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
+		std::unique_ptr<Erk_ServiceSync_ntf> ptr(ntf);
+
+		ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
+		ntf->set_fullsvrs(false);
+		ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+		ntf->set_service_seed(this->get_serviceiid_seed());
+
+		PRO::ServerNode *pnew = ntf->add_newsvrs();
+		pNode->copy_to(pnew);
+
+		svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
+	}
 }
 
 void ServiceRegisterCtrl::on_mth_routeronline_req(NetProtocol* pro, bool& autorelease)
 {
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
+	if (!bmaster)
+	{
+		logError(out_runtime, "eureka[%d] slaver node recv a Erk_RouterOnline_req request....", svrApp.get_eurekactrl()->get_myself().iid);
+		return;
+	}
 
-}
+	Erk_RouterOnline_req* req = dynamic_cast<Erk_RouterOnline_req*>(pro->msg_);
 
-void ServiceRegisterCtrl::on_mth_routeronline_ntf(NetProtocol* pro, bool& autorelease)
-{
+	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->myiid());
+	ServiceNodeInfo* pNode = find_servicenode_byiid(req->myiid());
+	if (plink == 0 || pNode == 0)
+		return;
 
+	pNode->isonline = true;
+
+	//一次通过所有的订阅
+	for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->subscribes_.begin(); iter != pNode->subscribes_.end(); ++iter)
+	{
+		NETSERVICE_TYPE ctype = (*iter);
+
+		Erk_RouterSubscribe_ntf* ack = new Erk_RouterSubscribe_ntf();
+		ack->set_myiid(req->myiid());
+		ack->set_svr_type(ctype);
+
+		const std::list<ServiceNodeInfo*>& pnodes = get_service_node_oftype(ctype);
+		for (std::list<ServiceNodeInfo*>::const_iterator iter = pnodes.begin(); iter != pnodes.end(); ++iter)
+		{
+			const ServiceNodeInfo* pinfo = (*iter);
+			ack->add_svriids((S_INT_64)pinfo->iid);
+		}
+
+		plink->send_to_service(ack);
+	}
+
+	//sync to all slaver nodes
+	Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
+	std::unique_ptr<Erk_ServiceSync_ntf> ptr(ntf);
+
+	ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
+	ntf->set_fullsvrs(false);
+	ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+	ntf->set_service_seed(this->get_serviceiid_seed());
+
+	PRO::ServerNode *pnew = ntf->add_newsvrs();
+	pNode->copy_to(pnew);
+
+	svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
 }
 
 void ServiceRegisterCtrl::on_mth_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease)
