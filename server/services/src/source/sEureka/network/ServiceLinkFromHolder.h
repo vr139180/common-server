@@ -37,6 +37,8 @@ public:
 	virtual void return_freelink(T* link);
 	virtual T* regist_onlinelink(T* link);
 
+	S_INT_32 get_online_size() { return (S_INT_32)online_links_.size(); }
+
 	void broadcast(BasicProtocol* pro)
 	{
 		ThreadLockWrapper guard(lock_);

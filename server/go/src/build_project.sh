@@ -1,15 +1,5 @@
 #!/bin/sh
 
-echo '--------------go build resservice------------'
-cd resservice
-go build -o ../../bin/resservice/resservice resservice
-cd ..
-
-echo '--------------go build loginservice------------'
-cd loginservice
-go build -o ../../bin/loginservice/loginservice loginservice
-cd ..
-
 echo '--------------go build mailservice------------'
 cd mailservice
 go build -o ../../bin/mailservice/mailservice mailservice

@@ -61,6 +61,12 @@ void EurekaLinkFrom::force_linkclose()
 	force_close();
 }
 
+void EurekaLinkFrom::set_node(EurekaNodeInfo pnode)
+{
+	node_ = pnode;
+	set_linkbase_info(node_.iid, node_.token);
+}
+
 void EurekaLinkFrom::on_connect_lost_netthread()
 {
 	SystemCommand<EurekaLinkFrom>* cmd = new SystemCommand<EurekaLinkFrom>( 

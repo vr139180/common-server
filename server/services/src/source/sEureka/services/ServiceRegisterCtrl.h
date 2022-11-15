@@ -39,14 +39,18 @@ public:
 	S_INT_64 get_serviceiid_seed() { return last_serviceiid_seed_; }
 	void set_serviceiid_seed(S_INT_64 iid) { last_serviceiid_seed_ = iid; }
 
+	S_INT_32 get_service_node_size() { return (S_INT_32)all_service_nodes_.size(); }
+	S_INT_32 get_linkedservice_size() { return service_mth_links_.get_online_size();}
+
 	//构建全量的服务信息
 	BasicProtocol* master_syncall_servicenodes();
 	void broadcast_to_allsvrs(BasicProtocol* msg);
 
-protected:
 	S_INT_64 make_next_serviceiid();
 	//master切换或者其他不同步情况下，跳跃一个间隔解决可能的serviceid占用问题
 	S_INT_64 make_next_serviceiid_fix(S_INT_64 incstep = 10000) { last_serviceiid_seed_ += incstep; return ++last_serviceiid_seed_; }
+
+protected:
 
 	ServiceNodeInfo* find_servicenode_byiid(S_INT_64 iid);
 
@@ -100,8 +104,6 @@ public:
 	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
 	void on_mth_routersubscribe_req(NetProtocol* pro, bool& autorelease);
 	void on_mth_routeronline_req(NetProtocol* pro, bool& autorelease);
-
-	void on_mth_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease);
 };
 
 

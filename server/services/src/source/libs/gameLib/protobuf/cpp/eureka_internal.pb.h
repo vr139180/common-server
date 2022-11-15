@@ -51,7 +51,7 @@ struct TableStruct_eureka_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[28]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,9 +65,6 @@ extern Erk_EurekaBind_ackDefaultTypeInternal _Erk_EurekaBind_ack_default_instanc
 class Erk_EurekaBind_req;
 struct Erk_EurekaBind_reqDefaultTypeInternal;
 extern Erk_EurekaBind_reqDefaultTypeInternal _Erk_EurekaBind_req_default_instance_;
-class Erk_EurekaLost_ntf;
-struct Erk_EurekaLost_ntfDefaultTypeInternal;
-extern Erk_EurekaLost_ntfDefaultTypeInternal _Erk_EurekaLost_ntf_default_instance_;
 class Erk_EurekaRegist_ack;
 struct Erk_EurekaRegist_ackDefaultTypeInternal;
 extern Erk_EurekaRegist_ackDefaultTypeInternal _Erk_EurekaRegist_ack_default_instance_;
@@ -104,9 +101,6 @@ extern Erk_ServiceRegist_reqDefaultTypeInternal _Erk_ServiceRegist_req_default_i
 class Erk_ServiceRegist_req_ExtsEntry_DoNotUse;
 struct Erk_ServiceRegist_req_ExtsEntry_DoNotUseDefaultTypeInternal;
 extern Erk_ServiceRegist_req_ExtsEntry_DoNotUseDefaultTypeInternal _Erk_ServiceRegist_req_ExtsEntry_DoNotUse_default_instance_;
-class Erk_ServiceShutdown_ntf;
-struct Erk_ServiceShutdown_ntfDefaultTypeInternal;
-extern Erk_ServiceShutdown_ntfDefaultTypeInternal _Erk_ServiceShutdown_ntf_default_instance_;
 class Erk_ServiceSubscribe_ntf;
 struct Erk_ServiceSubscribe_ntfDefaultTypeInternal;
 extern Erk_ServiceSubscribe_ntfDefaultTypeInternal _Erk_ServiceSubscribe_ntf_default_instance_;
@@ -147,7 +141,6 @@ extern Svr_ServiceBindService_req_MyextsEntry_DoNotUseDefaultTypeInternal _Svr_S
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PRO::Erk_EurekaBind_ack* Arena::CreateMaybeMessage<::PRO::Erk_EurekaBind_ack>(Arena*);
 template<> ::PRO::Erk_EurekaBind_req* Arena::CreateMaybeMessage<::PRO::Erk_EurekaBind_req>(Arena*);
-template<> ::PRO::Erk_EurekaLost_ntf* Arena::CreateMaybeMessage<::PRO::Erk_EurekaLost_ntf>(Arena*);
 template<> ::PRO::Erk_EurekaRegist_ack* Arena::CreateMaybeMessage<::PRO::Erk_EurekaRegist_ack>(Arena*);
 template<> ::PRO::Erk_EurekaRegist_req* Arena::CreateMaybeMessage<::PRO::Erk_EurekaRegist_req>(Arena*);
 template<> ::PRO::Erk_EurekaUpdate_ntf* Arena::CreateMaybeMessage<::PRO::Erk_EurekaUpdate_ntf>(Arena*);
@@ -160,7 +153,6 @@ template<> ::PRO::Erk_ServiceBind_req* Arena::CreateMaybeMessage<::PRO::Erk_Serv
 template<> ::PRO::Erk_ServiceRegist_ack* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_ack>(Arena*);
 template<> ::PRO::Erk_ServiceRegist_req* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_req>(Arena*);
 template<> ::PRO::Erk_ServiceRegist_req_ExtsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::Erk_ServiceRegist_req_ExtsEntry_DoNotUse>(Arena*);
-template<> ::PRO::Erk_ServiceShutdown_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceShutdown_ntf>(Arena*);
 template<> ::PRO::Erk_ServiceSubscribe_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_ntf>(Arena*);
 template<> ::PRO::Erk_ServiceSubscribe_req* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_req>(Arena*);
 template<> ::PRO::Erk_ServiceSubscribe_req_svrinfo* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_req_svrinfo>(Arena*);
@@ -1740,8 +1732,6 @@ class Erk_MasterChange_ntf final :
   enum : int {
     kNewmasterFieldNumber = 1,
     kMastertokenFieldNumber = 2,
-    kEurekaSeedFieldNumber = 3,
-    kServiceSeedFieldNumber = 4,
   };
   // int64 newmaster = 1;
   void clear_newmaster();
@@ -1761,24 +1751,6 @@ class Erk_MasterChange_ntf final :
   void _internal_set_mastertoken(int64_t value);
   public:
 
-  // int64 eureka_seed = 3;
-  void clear_eureka_seed();
-  int64_t eureka_seed() const;
-  void set_eureka_seed(int64_t value);
-  private:
-  int64_t _internal_eureka_seed() const;
-  void _internal_set_eureka_seed(int64_t value);
-  public:
-
-  // int64 service_seed = 4;
-  void clear_service_seed();
-  int64_t service_seed() const;
-  void set_service_seed(int64_t value);
-  private:
-  int64_t _internal_service_seed() const;
-  void _internal_set_service_seed(int64_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:PRO.Erk_MasterChange_ntf)
  private:
   class _Internal;
@@ -1788,165 +1760,6 @@ class Erk_MasterChange_ntf final :
   typedef void DestructorSkippable_;
   int64_t newmaster_;
   int64_t mastertoken_;
-  int64_t eureka_seed_;
-  int64_t service_seed_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_eureka_5finternal_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Erk_EurekaLost_ntf final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_EurekaLost_ntf) */ {
- public:
-  inline Erk_EurekaLost_ntf() : Erk_EurekaLost_ntf(nullptr) {}
-  ~Erk_EurekaLost_ntf() override;
-  explicit constexpr Erk_EurekaLost_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Erk_EurekaLost_ntf(const Erk_EurekaLost_ntf& from);
-  Erk_EurekaLost_ntf(Erk_EurekaLost_ntf&& from) noexcept
-    : Erk_EurekaLost_ntf() {
-    *this = ::std::move(from);
-  }
-
-  inline Erk_EurekaLost_ntf& operator=(const Erk_EurekaLost_ntf& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Erk_EurekaLost_ntf& operator=(Erk_EurekaLost_ntf&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Erk_EurekaLost_ntf& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Erk_EurekaLost_ntf* internal_default_instance() {
-    return reinterpret_cast<const Erk_EurekaLost_ntf*>(
-               &_Erk_EurekaLost_ntf_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  friend void swap(Erk_EurekaLost_ntf& a, Erk_EurekaLost_ntf& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Erk_EurekaLost_ntf* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Erk_EurekaLost_ntf* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Erk_EurekaLost_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Erk_EurekaLost_ntf>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Erk_EurekaLost_ntf& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Erk_EurekaLost_ntf& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Erk_EurekaLost_ntf* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Erk_EurekaLost_ntf";
-  }
-  protected:
-  explicit Erk_EurekaLost_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kFromEurekaFieldNumber = 1,
-    kLostEurekaFieldNumber = 2,
-  };
-  // int64 from_eureka = 1;
-  void clear_from_eureka();
-  int64_t from_eureka() const;
-  void set_from_eureka(int64_t value);
-  private:
-  int64_t _internal_from_eureka() const;
-  void _internal_set_from_eureka(int64_t value);
-  public:
-
-  // int64 lost_eureka = 2;
-  void clear_lost_eureka();
-  int64_t lost_eureka() const;
-  void set_lost_eureka(int64_t value);
-  private:
-  int64_t _internal_lost_eureka() const;
-  void _internal_set_lost_eureka(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.Erk_EurekaLost_ntf)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int64_t from_eureka_;
-  int64_t lost_eureka_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -2000,7 +1813,7 @@ class Erk_ServiceSync_ntf final :
                &_Erk_ServiceSync_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    9;
 
   friend void swap(Erk_ServiceSync_ntf& a, Erk_ServiceSync_ntf& b) {
     a.Swap(&b);
@@ -2251,7 +2064,7 @@ class Erk_ServiceRegist_req final :
                &_Erk_ServiceRegist_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    11;
 
   friend void swap(Erk_ServiceRegist_req& a, Erk_ServiceRegist_req& b) {
     a.Swap(&b);
@@ -2459,7 +2272,7 @@ class Erk_ServiceRegist_ack final :
                &_Erk_ServiceRegist_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    12;
 
   friend void swap(Erk_ServiceRegist_ack& a, Erk_ServiceRegist_ack& b) {
     a.Swap(&b);
@@ -2666,7 +2479,7 @@ class Erk_ServiceBind_req final :
                &_Erk_ServiceBind_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    13;
 
   friend void swap(Erk_ServiceBind_req& a, Erk_ServiceBind_req& b) {
     a.Swap(&b);
@@ -2845,7 +2658,7 @@ class Erk_ServiceBind_ack final :
                &_Erk_ServiceBind_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    14;
 
   friend void swap(Erk_ServiceBind_ack& a, Erk_ServiceBind_ack& b) {
     a.Swap(&b);
@@ -3022,7 +2835,7 @@ class Erk_ServiceSubscribe_req_svrinfo final :
                &_Erk_ServiceSubscribe_req_svrinfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    15;
 
   friend void swap(Erk_ServiceSubscribe_req_svrinfo& a, Erk_ServiceSubscribe_req_svrinfo& b) {
     a.Swap(&b);
@@ -3193,7 +3006,7 @@ class Erk_ServiceSubscribe_req final :
                &_Erk_ServiceSubscribe_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    16;
 
   friend void swap(Erk_ServiceSubscribe_req& a, Erk_ServiceSubscribe_req& b) {
     a.Swap(&b);
@@ -3372,7 +3185,7 @@ class Erk_ServiceSubscribe_ntf final :
                &_Erk_ServiceSubscribe_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    17;
 
   friend void swap(Erk_ServiceSubscribe_ntf& a, Erk_ServiceSubscribe_ntf& b) {
     a.Swap(&b);
@@ -3574,7 +3387,7 @@ class Erk_RouterSubscribe_req final :
                &_Erk_RouterSubscribe_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    18;
 
   friend void swap(Erk_RouterSubscribe_req& a, Erk_RouterSubscribe_req& b) {
     a.Swap(&b);
@@ -3756,7 +3569,7 @@ class Erk_RouterSubscribe_ntf final :
                &_Erk_RouterSubscribe_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    19;
 
   friend void swap(Erk_RouterSubscribe_ntf& a, Erk_RouterSubscribe_ntf& b) {
     a.Swap(&b);
@@ -3938,7 +3751,7 @@ class Erk_RouterOnline_req final :
                &_Erk_RouterOnline_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    20;
 
   friend void swap(Erk_RouterOnline_req& a, Erk_RouterOnline_req& b) {
     a.Swap(&b);
@@ -4047,163 +3860,6 @@ class Erk_RouterOnline_req final :
 };
 // -------------------------------------------------------------------
 
-class Erk_ServiceShutdown_ntf final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Erk_ServiceShutdown_ntf) */ {
- public:
-  inline Erk_ServiceShutdown_ntf() : Erk_ServiceShutdown_ntf(nullptr) {}
-  ~Erk_ServiceShutdown_ntf() override;
-  explicit constexpr Erk_ServiceShutdown_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  Erk_ServiceShutdown_ntf(const Erk_ServiceShutdown_ntf& from);
-  Erk_ServiceShutdown_ntf(Erk_ServiceShutdown_ntf&& from) noexcept
-    : Erk_ServiceShutdown_ntf() {
-    *this = ::std::move(from);
-  }
-
-  inline Erk_ServiceShutdown_ntf& operator=(const Erk_ServiceShutdown_ntf& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Erk_ServiceShutdown_ntf& operator=(Erk_ServiceShutdown_ntf&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Erk_ServiceShutdown_ntf& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Erk_ServiceShutdown_ntf* internal_default_instance() {
-    return reinterpret_cast<const Erk_ServiceShutdown_ntf*>(
-               &_Erk_ServiceShutdown_ntf_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    22;
-
-  friend void swap(Erk_ServiceShutdown_ntf& a, Erk_ServiceShutdown_ntf& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Erk_ServiceShutdown_ntf* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Erk_ServiceShutdown_ntf* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Erk_ServiceShutdown_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Erk_ServiceShutdown_ntf>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Erk_ServiceShutdown_ntf& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Erk_ServiceShutdown_ntf& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Erk_ServiceShutdown_ntf* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Erk_ServiceShutdown_ntf";
-  }
-  protected:
-  explicit Erk_ServiceShutdown_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kSvriidFieldNumber = 2,
-    kSvrTypeFieldNumber = 1,
-  };
-  // int64 svriid = 2;
-  void clear_svriid();
-  int64_t svriid() const;
-  void set_svriid(int64_t value);
-  private:
-  int64_t _internal_svriid() const;
-  void _internal_set_svriid(int64_t value);
-  public:
-
-  // int32 svr_type = 1;
-  void clear_svr_type();
-  int32_t svr_type() const;
-  void set_svr_type(int32_t value);
-  private:
-  int32_t _internal_svr_type() const;
-  void _internal_set_svr_type(int32_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.Erk_ServiceShutdown_ntf)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  int64_t svriid_;
-  int32_t svr_type_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_eureka_5finternal_2eproto;
-};
-// -------------------------------------------------------------------
-
 class Svr_LiveTick_ntf final :
     public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.Svr_LiveTick_ntf) */ {
  public:
@@ -4251,7 +3907,7 @@ class Svr_LiveTick_ntf final :
                &_Svr_LiveTick_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    21;
 
   friend void swap(Svr_LiveTick_ntf& a, Svr_LiveTick_ntf& b) {
     a.Swap(&b);
@@ -4370,7 +4026,7 @@ class Svr_RouterOnline_ntf final :
                &_Svr_RouterOnline_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    22;
 
   friend void swap(Svr_RouterOnline_ntf& a, Svr_RouterOnline_ntf& b) {
     a.Swap(&b);
@@ -4554,7 +4210,7 @@ class Svr_ServiceBindService_req final :
                &_Svr_ServiceBindService_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    24;
 
   friend void swap(Svr_ServiceBindService_req& a, Svr_ServiceBindService_req& b) {
     a.Swap(&b);
@@ -4768,7 +4424,7 @@ class Svr_ServiceBindService_ack final :
                &_Svr_ServiceBindService_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    25;
 
   friend void swap(Svr_ServiceBindService_ack& a, Svr_ServiceBindService_ack& b) {
     a.Swap(&b);
@@ -5811,90 +5467,6 @@ inline void Erk_MasterChange_ntf::_internal_set_mastertoken(int64_t value) {
 inline void Erk_MasterChange_ntf::set_mastertoken(int64_t value) {
   _internal_set_mastertoken(value);
   // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.mastertoken)
-}
-
-// int64 eureka_seed = 3;
-inline void Erk_MasterChange_ntf::clear_eureka_seed() {
-  eureka_seed_ = int64_t{0};
-}
-inline int64_t Erk_MasterChange_ntf::_internal_eureka_seed() const {
-  return eureka_seed_;
-}
-inline int64_t Erk_MasterChange_ntf::eureka_seed() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.eureka_seed)
-  return _internal_eureka_seed();
-}
-inline void Erk_MasterChange_ntf::_internal_set_eureka_seed(int64_t value) {
-  
-  eureka_seed_ = value;
-}
-inline void Erk_MasterChange_ntf::set_eureka_seed(int64_t value) {
-  _internal_set_eureka_seed(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.eureka_seed)
-}
-
-// int64 service_seed = 4;
-inline void Erk_MasterChange_ntf::clear_service_seed() {
-  service_seed_ = int64_t{0};
-}
-inline int64_t Erk_MasterChange_ntf::_internal_service_seed() const {
-  return service_seed_;
-}
-inline int64_t Erk_MasterChange_ntf::service_seed() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_MasterChange_ntf.service_seed)
-  return _internal_service_seed();
-}
-inline void Erk_MasterChange_ntf::_internal_set_service_seed(int64_t value) {
-  
-  service_seed_ = value;
-}
-inline void Erk_MasterChange_ntf::set_service_seed(int64_t value) {
-  _internal_set_service_seed(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_MasterChange_ntf.service_seed)
-}
-
-// -------------------------------------------------------------------
-
-// Erk_EurekaLost_ntf
-
-// int64 from_eureka = 1;
-inline void Erk_EurekaLost_ntf::clear_from_eureka() {
-  from_eureka_ = int64_t{0};
-}
-inline int64_t Erk_EurekaLost_ntf::_internal_from_eureka() const {
-  return from_eureka_;
-}
-inline int64_t Erk_EurekaLost_ntf::from_eureka() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaLost_ntf.from_eureka)
-  return _internal_from_eureka();
-}
-inline void Erk_EurekaLost_ntf::_internal_set_from_eureka(int64_t value) {
-  
-  from_eureka_ = value;
-}
-inline void Erk_EurekaLost_ntf::set_from_eureka(int64_t value) {
-  _internal_set_from_eureka(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaLost_ntf.from_eureka)
-}
-
-// int64 lost_eureka = 2;
-inline void Erk_EurekaLost_ntf::clear_lost_eureka() {
-  lost_eureka_ = int64_t{0};
-}
-inline int64_t Erk_EurekaLost_ntf::_internal_lost_eureka() const {
-  return lost_eureka_;
-}
-inline int64_t Erk_EurekaLost_ntf::lost_eureka() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_EurekaLost_ntf.lost_eureka)
-  return _internal_lost_eureka();
-}
-inline void Erk_EurekaLost_ntf::_internal_set_lost_eureka(int64_t value) {
-  
-  lost_eureka_ = value;
-}
-inline void Erk_EurekaLost_ntf::set_lost_eureka(int64_t value) {
-  _internal_set_lost_eureka(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_EurekaLost_ntf.lost_eureka)
 }
 
 // -------------------------------------------------------------------
@@ -7028,50 +6600,6 @@ inline void Erk_RouterOnline_req::set_mysvrtype(int32_t value) {
 
 // -------------------------------------------------------------------
 
-// Erk_ServiceShutdown_ntf
-
-// int32 svr_type = 1;
-inline void Erk_ServiceShutdown_ntf::clear_svr_type() {
-  svr_type_ = 0;
-}
-inline int32_t Erk_ServiceShutdown_ntf::_internal_svr_type() const {
-  return svr_type_;
-}
-inline int32_t Erk_ServiceShutdown_ntf::svr_type() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceShutdown_ntf.svr_type)
-  return _internal_svr_type();
-}
-inline void Erk_ServiceShutdown_ntf::_internal_set_svr_type(int32_t value) {
-  
-  svr_type_ = value;
-}
-inline void Erk_ServiceShutdown_ntf::set_svr_type(int32_t value) {
-  _internal_set_svr_type(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.svr_type)
-}
-
-// int64 svriid = 2;
-inline void Erk_ServiceShutdown_ntf::clear_svriid() {
-  svriid_ = int64_t{0};
-}
-inline int64_t Erk_ServiceShutdown_ntf::_internal_svriid() const {
-  return svriid_;
-}
-inline int64_t Erk_ServiceShutdown_ntf::svriid() const {
-  // @@protoc_insertion_point(field_get:PRO.Erk_ServiceShutdown_ntf.svriid)
-  return _internal_svriid();
-}
-inline void Erk_ServiceShutdown_ntf::_internal_set_svriid(int64_t value) {
-  
-  svriid_ = value;
-}
-inline void Erk_ServiceShutdown_ntf::set_svriid(int64_t value) {
-  _internal_set_svriid(value);
-  // @@protoc_insertion_point(field_set:PRO.Erk_ServiceShutdown_ntf.svriid)
-}
-
-// -------------------------------------------------------------------
-
 // Svr_LiveTick_ntf
 
 // -------------------------------------------------------------------
@@ -7340,10 +6868,6 @@ inline void Svr_ServiceBindService_ack::set_totoken(int64_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

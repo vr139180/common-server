@@ -43,6 +43,8 @@ void ServiceLinkFrom::set_node(ServiceNodeInfo* pnode)
 {
 	node_ = *pnode;
 	s_head_.to_type_ = (S_INT_8)node_.type;
+
+	set_linkbase_info(node_.iid, node_.token);
 }
 
 void ServiceLinkFrom::send_to_service(BasicProtocol* msg)

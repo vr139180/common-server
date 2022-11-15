@@ -29,8 +29,6 @@ EurekaClusterCtrl::EurekaClusterCtrl():is_boosted_(false)
 , eureka_master_iid_(0)
 , last_eureka_iid_(0)
 {
-	vote_key_ = TimerKey::None;
-	vote_master_retry_ = 0;
 }
 
 EurekaClusterCtrl::~EurekaClusterCtrl()
@@ -170,7 +168,21 @@ bool EurekaClusterCtrl::force_reconnect(S_INT_64 iid)
 	return eureka_links_to_.connect_to( iid);
 }
 
-S_INT_32 EurekaClusterCtrl::get_lived_eurekanode_size()
+BasicProtocol* EurekaClusterCtrl::master_syncall_eurekanodes()
 {
-	return eureka_links_from_.get_linked_size() + eureka_links_to_.get_authed_size();
+	Erk_EurekaUpdate_ntf *ntf = new Erk_EurekaUpdate_ntf();
+	ntf->set_fulleurekas(true);
+	ntf->set_masteriid(eureka_master_iid_);
+	ntf->set_eureka_seed(last_eureka_iid_);
+	ntf->set_service_seed(svrApp.get_servicectrl()->get_serviceiid_seed());
+
+	for (boost::unordered_map<S_INT_64, EurekaNodeInfo>::iterator iter = eureka_nodes_.begin(); iter != eureka_nodes_.end(); ++iter)
+	{
+		EurekaNodeInfo& nod = iter->second;
+
+		PRO::EurekaServerNode* pd = ntf->add_online();
+		nod.copyto(pd);
+	}
+
+	return ntf;
 }

@@ -46,8 +46,8 @@ bool NetAcceptor::begin_listen( const char* ip, int port, int maxnums)
 
 		acceptor_->open( endpoint.protocol());
 
-        boost::asio::socket_base::reuse_address reuse_addr_option(true);
-        acceptor_->set_option(reuse_addr_option);
+        //boost::asio::socket_base::reuse_address reuse_addr_option(true);
+        //acceptor_->set_option(reuse_addr_option);
 
 		acceptor_->bind( endpoint);
 

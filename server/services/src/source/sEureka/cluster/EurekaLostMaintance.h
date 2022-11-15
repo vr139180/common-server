@@ -27,30 +27,31 @@
 class EurekaLostMaintance
 {
 public:
-	EurekaLostMaintance(S_INT_64 nodeiid);
+	EurekaLostMaintance(S_INT_64 nodeiid, S_INT_64 lostmid);
 	virtual ~EurekaLostMaintance();
 
 	S_INT_64 get_nodeiid() { return node_iid_; }
 	bool is_timeout();
 	bool is_max_retry() {return try_nums_ >= EUREKA_LOST_RETRY;}
-	void somebody_tellme_lost(S_INT_64 fromiid);
-	S_INT_32 tellme_somebody_num() { return (S_INT_32)tellme_lost_nodes_.size(); }
 
 	//连接重试
 	void try_reconnect();
 	void rebind() { rebinded_ = true; }
 	bool is_rebinded() { return rebinded_; }
 
+	bool is_same_master(S_INT_64 iid) { return iid == lost_master_iid_; }
+
 protected:
 	//重试次数
 	S_INT_32	try_nums_;
-	std::set<S_INT_64>	tellme_lost_nodes_;
 	//重新绑定成功
 	bool		rebinded_;
 
 private:
 	S_INT_64	node_iid_;
 	S_INT_64	lost_time_;
+
+	S_INT_64	lost_master_iid_;
 };
 
 #endif //__EUREKALOSTMAINTANCE_H__

@@ -44,6 +44,7 @@ public:
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids) = 0;
 	//router的balance服务全列表
 	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs) = 0;
+	//router服务上线通知
 
 	//服务注册成功通知
 	virtual void mth_service_registed(S_INT_64 sid) = 0;

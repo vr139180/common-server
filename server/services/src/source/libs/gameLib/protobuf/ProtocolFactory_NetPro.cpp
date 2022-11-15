@@ -28,7 +28,6 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Erk_EurekaBind_ack>(ERK_PROTYPE::ERK_EUREKABIND_ACK);
 	regist_protocal<Erk_EurekaUpdate_ntf>(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF);
 	regist_protocal<Erk_MasterChange_ntf>(ERK_PROTYPE::ERK_MASTERCHANGE_NTF);
-	regist_protocal<Erk_EurekaLost_ntf>(ERK_PROTYPE::ERK_EUREKALOST_NTF);
 
 	regist_protocal<Erk_ServiceRegist_req>(ERK_PROTYPE::ERK_SERVICEREGIST_REQ);
 	regist_protocal<Erk_ServiceRegist_ack>(ERK_PROTYPE::ERK_SERVICEREGIST_ACK);
@@ -40,12 +39,11 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Erk_RouterSubscribe_req>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_REQ);
 	regist_protocal<Erk_RouterSubscribe_ntf>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF);
 	regist_protocal<Erk_RouterOnline_req>(ERK_PROTYPE::ERK_ROUTERONLINE_REQ);
-	regist_protocal<Erk_ServiceShutdown_ntf>(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF);
 
 	regist_protocal<Svr_LiveTick_ntf>(ERK_PROTYPE::SVR_LIVETICK_NTF);
 	regist_protocal<Svr_ServiceBindService_req>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ);
 	regist_protocal<Svr_ServiceBindService_ack>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK);
-	regist_protocal<Svr_RouterOnline_ntf>(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF);
+	regist_protocal<Svr_RouterOnline_ntf>(ERK_PROTYPE::SVR_ROUTERONLINE_NTF);
 
 	//robot_test_internal.proto
 	regist_protocal<Robot_Config_Req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_REQ);

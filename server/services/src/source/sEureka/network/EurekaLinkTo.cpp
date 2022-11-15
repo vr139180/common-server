@@ -114,9 +114,9 @@ void EurekaLinkTo::on_connect_lost_netthread()
 
 void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<NetProtocol> p_msg(pro);
+	S_UINT_16 msgid = pro->get_msg();
 	
-	if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKAREGIST_ACK)
+	if (msgid == ERK_PROTYPE::ERK_EUREKAREGIST_ACK)
 	{
 		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekaregist_ack, svrApp.get_eurekactrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -124,7 +124,7 @@ void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 
 		svrApp.regist_syscmd(pcmd);
 	}
-	else if (pro->get_msg() == ERK_PROTYPE::ERK_EUREKABIND_ACK)
+	else if (msgid == ERK_PROTYPE::ERK_EUREKABIND_ACK)
     {
 		NETCMD_FUN_MAP3 fun = boost::bind(&EurekaClusterCtrl::on_eurekabind_ack, svrApp.get_eurekactrl(),
 			boost::placeholders::_1, boost::placeholders::_2, this);
@@ -137,7 +137,7 @@ void EurekaLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 		NETCMD_FUN_MAP fun = boost::bind(
 			&EurekaClusterCtrl::NetProcessMessage, svrApp.get_eurekactrl(), boost::placeholders::_1, boost::placeholders::_2);
 
-		NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
+		NetCommand *pcmd = new NetCommand( pro, fun);
 		svrApp.regist_syscmd(pcmd);
     }
 }
@@ -173,6 +173,8 @@ void EurekaLinkTo::on_connected( bool success)
 			req->set_token(myself.token);
 
 			this->send_to_eureka(req);
+
+			logInfo(out_runtime, "------ send bind request from:%d to:%d", myself.iid, node_.iid);
 		}
     }
     else

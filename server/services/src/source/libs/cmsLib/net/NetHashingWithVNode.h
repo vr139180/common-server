@@ -22,7 +22,7 @@
 #include <cmsLib/hash/HashUtil.h>
 #include <cmsLib/util/ShareUtil.h>
 
-template<class T, int VNODE_NUM = 100>
+template<class T>
 class NetHashingWithVNode
 {
 public:
@@ -32,7 +32,7 @@ public:
 	public:
 		VNodeWrap():node_(0), virtual_seq_(0){}
 
-		void build_vnode(S_INT_64 key, int seq, T* node) {
+		void build_vnode(S_INT_64 key, int seq, T node) {
 			this->key_ = key;
 			this->virtual_seq_ = seq;
 			this->node_ = node;
@@ -44,7 +44,7 @@ public:
 		S_INT_32 get_hashkey() { return hash_key_; }
 
 	protected:
-		T*			node_;		
+		T			node_;		
 		S_INT_64	key_;
 		S_INT_32	hash_key_;
 
@@ -53,35 +53,38 @@ public:
 public:
 	NetHashingWithVNode();
 
+	void init_vnode(S_INT_32 v) { virtual_nodes_ = v; }
+
 	void clear_nodes() {
 		real_nodes_.clear();
 	}
 
-	void add_realnode(S_INT_64 key, T* node);
+	void add_realnode(S_INT_64 key, T node);
 	void build_nethashing();
 
-	T* get_netnode_byhash(S_INT_32 hash);
-	T* get_netnode_byval(S_INT_64 iid) {
+	T get_netnode_byhash(S_INT_32 hash);
+	T get_netnode_byval(S_INT_64 iid) {
 		std::string sk = ShareUtil::str_format<32>("%lld", iid);
 		S_INT_32 hash = HashUtil::fnv1_32_hash(sk);
 		return get_netnode_byhash(hash);
 	}
 
-	static void test();
+	//static void test();
 
 private:
 	std::map<S_INT_32, VNodeWrap>	net_nodes_;
 
+	S_INT_32				virtual_nodes_;
 	std::list<VNodeWrap>	real_nodes_;
 };
 
-template<class T, int VNODE_NUM>
-NetHashingWithVNode<T, VNODE_NUM>::NetHashingWithVNode()
+template<class T>
+NetHashingWithVNode<T>::NetHashingWithVNode():virtual_nodes_(1000)
 {
 }
 
-template<class T, int VNODE_NUM>
-void NetHashingWithVNode<T, VNODE_NUM>::add_realnode(S_INT_64 key, T* node)
+template<class T>
+void NetHashingWithVNode<T>::add_realnode(S_INT_64 key, T node)
 {
 	VNodeWrap vn;
 	vn.key_ = key;
@@ -90,15 +93,15 @@ void NetHashingWithVNode<T, VNODE_NUM>::add_realnode(S_INT_64 key, T* node)
 	real_nodes_.push_back(vn);
 }
 
-template<class T, int VNODE_NUM>
-void NetHashingWithVNode<T, VNODE_NUM>::build_nethashing()
+template<class T>
+void NetHashingWithVNode<T>::build_nethashing()
 {
 	net_nodes_.clear();
 
 	for (std::list<VNodeWrap>::iterator iter = real_nodes_.begin(); iter != real_nodes_.end(); ++iter)
 	{
 		const VNodeWrap& v = (*iter);
-		for (int ii = 0; ii < VNODE_NUM; ++ii)
+		for (int ii = 0; ii < virtual_nodes_; ++ii)
 		{
 			VNodeWrap vn;
 			vn.build_vnode(v.key_, ii, v.node_);
@@ -108,8 +111,8 @@ void NetHashingWithVNode<T, VNODE_NUM>::build_nethashing()
 	}
 }
 
-template<class T, int VNODE_NUM>
-T* NetHashingWithVNode<T, VNODE_NUM>::get_netnode_byhash(S_INT_32 hash)
+template<class T>
+T NetHashingWithVNode<T>::get_netnode_byhash(S_INT_32 hash)
 {
 	std::map<S_INT_32, VNodeWrap>::iterator iter = net_nodes_.upper_bound(hash);
 	if (iter == net_nodes_.end())
@@ -118,6 +121,7 @@ T* NetHashingWithVNode<T, VNODE_NUM>::get_netnode_byhash(S_INT_32 hash)
 	return iter->second.node_;
 }
 
+/*
 template<class T, int VNODE_NUM>
 void NetHashingWithVNode<T, VNODE_NUM>::test()
 {
@@ -152,5 +156,6 @@ void NetHashingWithVNode<T, VNODE_NUM>::test()
 
 	return;
 }
+*/
 
 #endif //__NETHASHINGWITHVNODE_H__

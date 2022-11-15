@@ -143,9 +143,6 @@
     <ClInclude Include="..\source\libs\gameLib\commons\LinkFromConsistentHash.h">
       <Filter>commons</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\libs\gameLib\commons\LinkToConsistentHash.h">
-      <Filter>commons</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">

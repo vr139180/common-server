@@ -54,7 +54,6 @@
   <ItemGroup>
     <ClInclude Include="..\source\libs\gameLib\commons\LinkFromConsistentHash.h" />
     <ClInclude Include="..\source\libs\gameLib\commons\LinkFromHolder.h" />
-    <ClInclude Include="..\source\libs\gameLib\commons\LinkToConsistentHash.h" />
     <ClInclude Include="..\source\libs\gameLib\commons\LinkToHolder.h" />
     <ClInclude Include="..\source\libs\gameLib\commons\NetLinkFromBase.h" />
     <ClInclude Include="..\source\libs\gameLib\commons\SessionMthHolder.h" />

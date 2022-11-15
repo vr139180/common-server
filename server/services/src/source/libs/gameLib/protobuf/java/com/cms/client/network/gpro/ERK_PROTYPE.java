@@ -45,10 +45,6 @@ public enum ERK_PROTYPE
    */
   ERK_MASTERCHANGE_NTF(6),
   /**
-   * <code>ERK_EUREKALOST_NTF = 7;</code>
-   */
-  ERK_EUREKALOST_NTF(7),
-  /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
   ERK_SERVICEREGIST_REQ(10),
@@ -88,10 +84,6 @@ public enum ERK_PROTYPE
    * <code>ERK_ROUTERONLINE_REQ = 19;</code>
    */
   ERK_ROUTERONLINE_REQ(19),
-  /**
-   * <code>ERK_SERVICESHUTDOWN_NTF = 20;</code>
-   */
-  ERK_SERVICESHUTDOWN_NTF(20),
   /**
    * <code>SVR_LIVETICK_NTF = 49;</code>
    */
@@ -152,10 +144,6 @@ public enum ERK_PROTYPE
    */
   public static final int ERK_MASTERCHANGE_NTF_VALUE = 6;
   /**
-   * <code>ERK_EUREKALOST_NTF = 7;</code>
-   */
-  public static final int ERK_EUREKALOST_NTF_VALUE = 7;
-  /**
    * <code>ERK_SERVICEREGIST_REQ = 10;</code>
    */
   public static final int ERK_SERVICEREGIST_REQ_VALUE = 10;
@@ -195,10 +183,6 @@ public enum ERK_PROTYPE
    * <code>ERK_ROUTERONLINE_REQ = 19;</code>
    */
   public static final int ERK_ROUTERONLINE_REQ_VALUE = 19;
-  /**
-   * <code>ERK_SERVICESHUTDOWN_NTF = 20;</code>
-   */
-  public static final int ERK_SERVICESHUTDOWN_NTF_VALUE = 20;
   /**
    * <code>SVR_LIVETICK_NTF = 49;</code>
    */
@@ -256,7 +240,6 @@ public enum ERK_PROTYPE
       case 4: return ERK_EUREKABIND_ACK;
       case 5: return ERK_EUREKAUPDATE_NTF;
       case 6: return ERK_MASTERCHANGE_NTF;
-      case 7: return ERK_EUREKALOST_NTF;
       case 10: return ERK_SERVICEREGIST_REQ;
       case 11: return ERK_SERVICEREGIST_ACK;
       case 12: return ERK_SERVICESYNC_NTF;
@@ -267,7 +250,6 @@ public enum ERK_PROTYPE
       case 17: return ERK_ROUTERSUBSCRIBE_REQ;
       case 18: return ERK_ROUTERSUBSCRIBE_NTF;
       case 19: return ERK_ROUTERONLINE_REQ;
-      case 20: return ERK_SERVICESHUTDOWN_NTF;
       case 49: return SVR_LIVETICK_NTF;
       case 50: return SVR_SERVICEBINDSERVICE_REQ;
       case 51: return SVR_SERVICEBINDSERVICE_ACK;

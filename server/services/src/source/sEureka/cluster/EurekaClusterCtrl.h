@@ -63,13 +63,13 @@ public:
 
 	//节点是否已经注册
 	bool is_eurekalink_exist(S_INT_64 iid);
-	//连接的节点数
-	S_INT_32 get_lived_eurekanode_size();
 	bool is_eureka_node(S_INT_64 iid);
 	EurekaNodeInfo* get_eureka_node(S_INT_64 iid);
 	//是否是有效的节点
 	bool is_eureka_node(S_INT_64 iid, S_INT_64 token);
 	S_INT_32 eureka_node_size() { return (S_INT_32)eureka_nodes_.size(); }
+
+	BasicProtocol* master_syncall_eurekanodes();
 
 	//msg需要调用者管理，复用或者释放
 	void broadcast_to_eurekas( BasicProtocol* msg, IEurekaNodeLink* ignore = 0);
@@ -80,7 +80,6 @@ public:
 	void sync_slaver_eurekaseed(S_INT_64 iid) { last_eureka_iid_ = iid; }
 	S_INT_64 get_eureka_seed() { return last_eureka_iid_; }
 
-
 protected:
 	void release();
 
@@ -90,7 +89,10 @@ protected:
 	S_INT_64 make_next_eurekaiid_fix(S_INT_32 incstep = 10000) { last_eureka_iid_ += incstep;  return ++last_eureka_iid_; }
 
 	//从redis更新eureka节点
-	bool update_redis_masterinfo(RedisClient* rdv);
+	bool redis_update_masterinfo(RedisClient* rdv);
+	void redis_active_masterinfo(RedisClient* rdv);
+	S_INT_64 redis_have_masterinfo(RedisClient* rdv);
+
 	//使自己成为master
 	void make_me_masternode();
 	void master_regist_one_slaver(EurekaNodeInfo& node);
@@ -107,15 +109,12 @@ protected:
 	void slaver_sync_eurekanodes(PRO::Erk_EurekaUpdate_ntf* ntf);
 	//节点失效
 	void slaver_eurekanode_invalid(S_INT_64 nodiid);
-	//重选master
-	void slaver_vote_master();
 	void slaver_try_vote_master();
 	
 	//------------------------------commons---------------------------
 	//触发一个节点丢失处理
 	void fire_common_eurekanode_lost(S_INT_64 nodiid);
 	EurekaLostMaintance* get_eurekanode_lost(S_INT_64 nodiid);
-	void tellme_eurekanode_lost( S_INT_64 fromiid, S_INT_64 lostnode);
 	//检测节点 0: waiting 1:lost 2:well
 	S_INT_32 check_eurekanode_lost_well(S_INT_64 lostnode);
 	//注册成功通知
@@ -125,8 +124,6 @@ protected:
 
 protected:
 	void eureka_auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish);
-
-	void vote_master_timer(u64 tnow, int interval, u64 iid, bool& finish);
 
 	//---------------------- MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
@@ -143,8 +140,6 @@ public:
 	void on_eurekaupdate_ntf(NetProtocol* pro, bool& autorelease);
 	void on_masterchange_ntf(NetProtocol* pro, bool& autorelease);
 	void on_servicesync_ntf(NetProtocol* pro, bool& autorelease);
-	void on_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease);
-	void on_eurekalost_ntf(NetProtocol* pro, bool& autorelease);
 
 	//---------------------------system command--------------------------------
 	void on_disconnected_with_linkto(EurekaLinkTo* plink);
@@ -167,9 +162,6 @@ private:
 
 	//断线检测问题
 	boost::unordered_map<S_INT_64, EurekaLostMaintance*>	lost_maintance_;
-	//重选master,检测次数
-	S_INT_32 vote_master_retry_;
-	TimerKey vote_key_;
 };
 
 #endif //__EUREKACLUSTERCTRL_H__

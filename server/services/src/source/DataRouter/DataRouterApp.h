@@ -107,11 +107,11 @@ protected:
 	LinkFromHolder<GateServiceLinkFrom>		gate_links_from_;
 	LinkFromHolder<FightRouterLinkFrom>		fightrouter_links_from_;
 	LinkFromHolder<ServiceRouterLinkFrom>	servicerouter_links_from_;
+	LinkFromHolder<LoginServiceLinkFrom>	login_links_from_;
 
 	//¸ºÔØ¾ùºâ
 	LinkFromConsistentHash<HomeServiceLinkFrom>		home_links_from_;
 	LinkFromConsistentHash<StateServiceLinkFrom>	state_links_from_;
-	LinkFromConsistentHash<LoginServiceLinkFrom>	login_links_from_;
 
 	boost::scoped_ptr<RouterConfig>	conf_;
 

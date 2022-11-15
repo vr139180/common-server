@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\source\StateService\StateServiceApp.cpp" />
+    <ClCompile Include="..\source\StateService\sMain.cpp" />
+    <ClCompile Include="..\source\StateService\StateServiceApp_NetCmd.cpp" />
+    <ClCompile Include="..\source\StateService\dbs\DBSCtrl.cpp">
+      <Filter>dbs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\dbs\dbThread.cpp">
+      <Filter>dbs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\dbs\cmd\BaseDBCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\network\DataRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\dbs\cmd\UserLoginCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateService.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateService_Network.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateUser.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateUser_Database.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateUser_Network.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateUser_Redis.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\StateService\StateServiceApp.h" />
+    <ClInclude Include="..\source\StateService\dbs\DBSCtrl.h">
+      <Filter>dbs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\dbs\dbThread.h">
+      <Filter>dbs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\dbs\cmd\BaseDBCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\network\DataRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\config\StateConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\dbs\cmd\UserLoginCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\states\StateService.h">
+      <Filter>states</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\StateService\states\StateUser.h">
+      <Filter>states</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\source\StateService\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{6a05a6e9-0c71-40ce-ba26-7c67720eca72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbs">
+      <UniqueIdentifier>{21eba8c5-d95e-4028-9bfd-ddf33c4d18d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbs\cmd">
+      <UniqueIdentifier>{8417fe2a-a1d3-4ec6-bc56-2a70f5668975}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="states">
+      <UniqueIdentifier>{2b3fbb9d-714e-4bc8-bfe8-65e0e5e30a21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

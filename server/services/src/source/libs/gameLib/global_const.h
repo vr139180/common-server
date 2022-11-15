@@ -26,6 +26,6 @@
 
 //eureka∂®“Â 8seconds
 #define EUREKA_LOST_TIMEOUT		8*1000
-#define EUREKA_LOST_RETRY		3
+#define EUREKA_LOST_RETRY		8
 
 #endif //__GLOBAL_CONST_H__

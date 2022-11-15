@@ -55,9 +55,6 @@ bool EurekaClusterCtrl::boot_ctrl()
 			svrApp.quit_app();
 			return false;
 		}
-
-		if (masterNode.ip == myself_.ip && masterNode.port == myself_.port)
-			iammaster = true;
 	}
 
 	if (iammaster)
@@ -92,7 +89,7 @@ void EurekaClusterCtrl::make_me_masternode()
 		eureka_nodes_[myself_.iid] = myself_;
 
 	//保存master节点信息
-	if (!update_redis_masterinfo(0))
+	if (!redis_update_masterinfo(0))
 	{
 		svrApp.quit_app();
 		return;
@@ -101,7 +98,30 @@ void EurekaClusterCtrl::make_me_masternode()
 	if (!is_boosted())
 		return;
 
+	//slaver修正一下seed
+	make_next_eurekaiid_fix();
+	svrApp.get_servicectrl()->make_next_serviceiid_fix();
+
 	//中间切换master
+	Erk_MasterChange_ntf *ntf = new Erk_MasterChange_ntf();
+	std::unique_ptr< Erk_MasterChange_ntf> ptr(ntf);
+
+	ntf->set_newmaster(myself_.iid);
+	ntf->set_mastertoken(myself_.token);
+
+	broadcast_to_eurekas(ntf);
+
+	//notify all service
+	svrApp.get_servicectrl()->broadcast_to_allsvrs(ntf);
+
+	//强制同步节点信息
+	BasicProtocol* allnod = master_syncall_eurekanodes();
+	std::unique_ptr<BasicProtocol> ptr1(allnod);
+	broadcast_to_eurekas(allnod);
+
+	BasicProtocol* allsvr = svrApp.get_servicectrl()->master_syncall_servicenodes();
+	std::unique_ptr<BasicProtocol> ptr2(allsvr);
+	broadcast_to_eurekas(allsvr);
 }
 
 void EurekaClusterCtrl::master_regist_one_slaver(EurekaNodeInfo& info)
@@ -161,7 +181,25 @@ void EurekaClusterCtrl::master_notify_change_to_slaver(EurekaLinkFrom* notify)
 
 void EurekaClusterCtrl::master_invalid_one_slaver(S_INT_64 nodiid)
 {
+	//删除节点
+	eureka_nodes_.erase(nodiid);
 
+	if (myself_.iid > nodiid)
+		eureka_links_to_.remove_linkto_node(nodiid);
+	else
+		eureka_links_from_.remove_linkfrom_node(nodiid);
+
+	//sync slaver change
+	Erk_EurekaUpdate_ntf* ntf = new Erk_EurekaUpdate_ntf();
+	std::unique_ptr<Erk_EurekaUpdate_ntf> ptr(ntf);
+
+	ntf->set_fulleurekas(false);
+	ntf->set_masteriid(eureka_master_iid_);
+	ntf->set_eureka_seed(last_eureka_iid_);
+	ntf->set_service_seed(svrApp.get_servicectrl()->get_serviceiid_seed());
+	ntf->add_offline(nodiid);
+
+	broadcast_to_eurekas(ntf);
 }
 
 void EurekaClusterCtrl::slaver_regist_to_master(EurekaNodeInfo info)
@@ -207,6 +245,8 @@ void EurekaClusterCtrl::slaver_sync_eurekanodes(Erk_EurekaUpdate_ntf* ntf)
 			info = nod;
 
 			eureka_nodes_[info.iid] = info;
+
+			logDebug(out_runtime, "-----slaver:%d fullsync recv a new slaver node:%d", myself_.iid, info.iid);
 			
 			EurekaNodeInfo* pinfo = get_eureka_node(info.iid);
 			//大的主动连接小的
@@ -225,6 +265,8 @@ void EurekaClusterCtrl::slaver_sync_eurekanodes(Erk_EurekaUpdate_ntf* ntf)
 			//原来就有的
 			if (fiter != alladds.end())
 				continue;
+
+			logDebug(out_runtime, "-----slaver:%d fullsync recv a remove slaver node:%d", myself_.iid, iid);
 
 			//被移除的，需要更新
 			slaver_eurekanode_invalid(iid);
@@ -246,6 +288,8 @@ void EurekaClusterCtrl::slaver_sync_eurekanodes(Erk_EurekaUpdate_ntf* ntf)
 
 			eureka_nodes_[info.iid] = info;
 
+			logDebug(out_runtime, "-----slaver:%d partsync recv a new slaver node:%d", myself_.iid, info.iid);
+
 			EurekaNodeInfo* pinfo = get_eureka_node(info.iid);
 			//大的主动连接小的
 			if (myself_.iid > pinfo->iid)
@@ -259,6 +303,9 @@ void EurekaClusterCtrl::slaver_sync_eurekanodes(Erk_EurekaUpdate_ntf* ntf)
 		for (int ii = 0; ii < ntf->offline_size(); ++ii)
 		{
 			S_INT_64 iid = ntf->offline(ii);
+
+			logDebug(out_runtime, "-----slaver:%d partsync recv a remove slaver node:%d", myself_.iid, iid);
+
 			//被移除的，需要更新
 			slaver_eurekanode_invalid(iid);
 		}

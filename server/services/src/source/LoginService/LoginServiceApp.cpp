@@ -1,0 +1,267 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+#include "LoginServiceApp.h"
+
+#include <cmsLib/base/OSSystem.h>
+#include <cmsLib/net/NetDriverX.h>
+#include <cmsLib/Version.h>
+#include <cmsLib/util/XmlUtil.h>
+#include <cmsLib/util/ShareUtil.h>
+
+#include <gameLib/LogExt.h>
+#include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/config/ConfigHelper.h>
+#include <gameLib/config/ConfigTool.h>
+#include <gameLib/global_const.h>
+
+USE_PROTOCOL_NAMESPACE
+
+LoginServiceApp& LoginServiceApp::getInstance()
+{
+	static LoginServiceApp s_instance_;
+	return s_instance_;
+}
+
+LoginServiceApp::LoginServiceApp(): ServerAppBase()
+,acceptor_( 0)
+,conf_( 0)
+{
+}
+
+LoginServiceApp::~LoginServiceApp()
+{
+}
+
+bool LoginServiceApp::load_config()
+{
+	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_LOGIN))
+	{
+		logFatal(out_runtime, "LoginService load svr config file failed");
+		return false;
+	}
+
+	LoginConfig* cf = load_loginconfig();
+	if (cf == 0)
+	{
+		logFatal(out_runtime, "GateService load config file failed");
+		return false;
+	}
+
+	this->conf_.reset(cf);
+
+	return true;
+}
+
+LoginConfig* LoginServiceApp::load_gateconfig()
+{
+	LoginConfig* config = new LoginConfig();
+	std::unique_ptr<LoginConfig> xptr(config);
+
+	std::string fstr = "/system/login_config.xml";
+	std::string str = ConfigTool::get_instance().get_txtfilecontent(fstr.c_str(), true);
+
+	tinyxml2::XMLDocument doc;
+	if (!XmlUtil::loadfromstring(str.c_str(), doc))
+		return 0;
+
+	tinyxml2::XMLElement* root = doc.RootElement();
+
+	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
+
+	return xptr.release();
+}
+
+bool LoginServiceApp::pre_init()
+{
+	//eureka init
+	ConfigHelper& cf = ConfigHelper::instance();
+	const config::GlobalOption& gopt = cf.get_globaloption();
+
+	std::list< NETSERVICE_TYPE> subscribe_types;
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
+	std::list<NETSERVICE_TYPE> router_types;
+
+	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_LOGIN,
+		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
+		gopt.eip.c_str(), gopt.eport, subscribe_types, router_types);
+
+	return true;
+}
+
+bool LoginServiceApp::init_network()
+{
+	int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
+	{
+		logFatal( out_runtime, ("GateService init network failed"));
+		return false;
+	}
+
+	if( acceptor_.get() != 0)
+	{
+		logFatal( out_runtime, ("GateService init network failed"));
+		return false;
+	}
+
+	acceptor_.reset( new NetAcceptor( *this));
+
+	return true;
+}
+
+bool LoginServiceApp::init_finish()
+{
+	ConfigHelper& cf = ConfigHelper::instance();
+
+    if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), GATE_PLAYER_MAX))
+    {
+		logInfo(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+    }
+    else
+    {
+		logFatal(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		return false;
+    }
+
+	std::string verfmt = ShareUtil::str_format<128>(
+		"GateService VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
+		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
+
+    OSSystem::mOS->SetAppTitle( verfmt.c_str());
+
+	return true;
+}
+
+void LoginServiceApp::uninit_network()
+{
+	if (acceptor_.get())
+		acceptor_->end_listen();
+	NetDriverX::getInstance().uninitNetDriver();
+
+	datarouter_link_mth_.free_all();
+
+	EurekaClusterClient::instance().uninit();
+}
+
+void LoginServiceApp::uninit()
+{
+	acceptor_.reset();
+}
+
+void LoginServiceApp::register_timer()
+{
+	//regist timer for system
+	//auto connect
+	this->add_apptimer( 1000*15, boost::BOOST_BIND( &LoginServiceApp::auto_connect_timer, this,
+		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
+
+	EurekaClusterClient::instance().regist_timer();
+}
+
+void LoginServiceApp::main_loop()
+{
+	OSSystem::mOS->UpdateNowTick();
+	u64 st =OSSystem::mOS->GetTicks();
+	int loopnum = conf_->loopnum_;
+
+	int sleepstep =0;
+	while( 1)
+	{
+		if( sleepstep >= loopnum)
+		{
+			OSSystem::mOS->thread_yield();
+			sleepstep =0;
+		}
+		++sleepstep;
+
+		if( will_quit_app_) break;
+
+		//update time
+		OSSystem::mOS->UpdateNowTick();
+
+		app_timer_.timer_tick();
+
+		CommandBase *pCmd =pop_one_cmd();
+		std::unique_ptr<CommandBase> a_pcmd( pCmd);
+
+		if( pCmd == 0)
+		{
+			sleepstep =loopnum;
+			continue;
+		}
+
+		pCmd->run();
+	}
+}
+
+NetAcceptorEvent::NetSessionPtr LoginServiceApp::ask_free_netsession()
+{
+	GamePlayer* player = GamePlayerCtrl::instance().ask_free_slot();
+	if (player == 0)
+	{
+		NetAcceptorEvent::NetSessionPtr new_session;
+		return new_session;
+	}
+
+	return player->get_session();
+}
+
+void LoginServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err)
+{
+	GamePlayer* player = dynamic_cast<GamePlayer*>(session->get_bindevent());
+	if (player == 0)
+		return;
+
+	if (refuse)
+		player->reuse();
+
+	//remove from waiting list
+	if (refuse)
+	{
+		logError(out_runtime, "me(GateService) listen a connected request, but refused by system");
+
+		GamePlayerCtrl::instance().return_slot_to_free(player->get_userslot());
+	}
+	else
+	{
+		logInfo(out_runtime, "me(GateService) listen a connected request, and create a connection successfully");
+	}
+}
+
+void LoginServiceApp::route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+{
+	datarouter_link_mth_.send_mth_protocol(to, pro);
+}
+
+void LoginServiceApp::send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
+{
+	datarouter_link_mth_.send_mth_protocol(to, msg);
+}
+
+void LoginServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
+{
+	//connect to router
+	datarouter_link_mth_.connect_to();
+}
+
+void LoginServiceApp::on_datarouter_regist_result( DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_regist_result( plink);
+}
+
+void LoginServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_disconnected(plink);
+}

@@ -22,6 +22,7 @@
 #include <cmsLib/ThreadLock.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 #include <gameLib/eureka/EurekaNodeInfo.h>
+#include <gameLib/LogExt.h>
 
 template<typename T>
 class EurekaLinkToHolder
@@ -57,6 +58,8 @@ public:
 			T* link = (*iter);
 			if (ignore != 0 && link->get_iid() == ignore)
 				continue;
+
+			logDebug(out_runtime, "---linkto broadcast msg:%s to eureka:%d", pro->GetTypeName().c_str(), link->get_iid());
 
 			BasicProtocol* msg = pro->New();
 			msg->CopyFrom(*pro);

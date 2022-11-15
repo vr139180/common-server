@@ -92,10 +92,9 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 
 		pLink = service_mth_links_.ask_free_link();
 
-		pLink->set_linkbase_info(pnode.iid, pnode.token);
-		pLink->set_exts(pnode.extparams);
 		//关联node
-		pLink->set_node( &pnode);
+		pLink->set_node(&pnode);
+		pLink->set_exts(pnode.extparams);
 
 		psession->auth();
 		pLink->set_session(psession);
@@ -146,15 +145,17 @@ void ServiceRegisterCtrl::on_mth_servicebind_req(NetProtocol* pro, bool& autorel
 	ack->set_result(0);
 
 	ServiceNodeInfo* pnode = find_servicenode_byiid(req->iid());
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
 
 	NETSERVICE_TYPE ctype = (NETSERVICE_TYPE)req->svr_type();
-	if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE || pnode == 0)
+	if (ctype >= NETSERVICE_TYPE::ERK_SERVICE_MAX || ctype <= NETSERVICE_TYPE::ERK_SERVICE_NONE || pnode == 0 || bmaster)
 	{
 		ack->set_result(1);
 
 		SProtocolHead head = pro->head_;
 		head.from_type_ = head.to_type_;
 		head.to_type_ = pro->head_.from_type_;
+
 		psession->send_to_service( head, ack);
 
 		return;
@@ -398,8 +399,9 @@ void ServiceRegisterCtrl::on_mth_routersubscribe_req(NetProtocol* pro, bool& aut
 
 		if (pNode->isonline)
 		{
+			//订阅相关的router服务
 			//一次订阅所有
-			for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->subscribes_.begin(); iter != pNode->subscribes_.end(); ++iter)
+			for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->routers_.begin(); iter != pNode->routers_.end(); ++iter)
 			{
 				NETSERVICE_TYPE ctype = (*iter);
 
@@ -455,8 +457,9 @@ void ServiceRegisterCtrl::on_mth_routeronline_req(NetProtocol* pro, bool& autore
 
 	pNode->isonline = true;
 
+	//online之后，获取改router节点订阅的router balance相关的信息
 	//一次通过所有的订阅
-	for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->subscribes_.begin(); iter != pNode->subscribes_.end(); ++iter)
+	for (std::list<NETSERVICE_TYPE>::iterator iter = pNode->routers_.begin(); iter != pNode->routers_.end(); ++iter)
 	{
 		NETSERVICE_TYPE ctype = (*iter);
 
@@ -474,6 +477,24 @@ void ServiceRegisterCtrl::on_mth_routeronline_req(NetProtocol* pro, bool& autore
 		plink->send_to_service(ack);
 	}
 
+	//向订阅该类服务的发送 online通知
+	{
+		NETSERVICE_TYPE ctype = pNode->type;
+		std::list<S_INT_64>& subs = get_subscribes_oftype(ctype);
+		for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+		{
+			ServiceLinkFrom* psvr = service_mth_links_.get_servicelink_byiid((*iter));
+			if (psvr == 0)
+				continue;
+
+			Svr_RouterOnline_ntf* ntf = new Svr_RouterOnline_ntf();
+			ntf->set_routeriid(pNode->iid);
+			ntf->set_routertype(pNode->type);
+
+			psvr->send_to_service(ntf);
+		}
+	}
+
 	//sync to all slaver nodes
 	Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
 	std::unique_ptr<Erk_ServiceSync_ntf> ptr(ntf);
@@ -487,9 +508,4 @@ void ServiceRegisterCtrl::on_mth_routeronline_req(NetProtocol* pro, bool& autore
 	pNode->copy_to(pnew);
 
 	svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
-}
-
-void ServiceRegisterCtrl::on_mth_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease)
-{
-
 }

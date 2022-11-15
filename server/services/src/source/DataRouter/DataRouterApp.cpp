@@ -97,10 +97,10 @@ bool DataRouterApp::pre_init()
 	gate_links_from_.init_holder();
 	fightrouter_links_from_.init_holder();
 	servicerouter_links_from_.init_holder();
+	login_links_from_.init_holder();
 
 	home_links_from_.init_holder(800);
 	state_links_from_.init_holder(800);
-	login_links_from_.init_holder(800);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -110,6 +110,7 @@ bool DataRouterApp::pre_init()
 	std::list<NETSERVICE_TYPE> router_types;
 	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_HOME);
 	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_STATE);
+
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER, cf.get_ip().c_str(), cf.get_port(), 
 		EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, true);
 

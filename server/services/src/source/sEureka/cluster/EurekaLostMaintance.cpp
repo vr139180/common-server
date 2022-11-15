@@ -23,7 +23,7 @@
 
 #include "sEurekaApp.h"
 
-EurekaLostMaintance::EurekaLostMaintance(S_INT_64 nodeiid):node_iid_(nodeiid)
+EurekaLostMaintance::EurekaLostMaintance(S_INT_64 nodeiid, S_INT_64 lostmid):node_iid_(nodeiid), lost_master_iid_( lostmid)
 {
 	lost_time_ = (S_INT_64)OSSystem::mOS->GetTimestamp();
 	try_nums_ = 0;
@@ -38,11 +38,6 @@ bool EurekaLostMaintance::is_timeout()
 {
 	S_INT_64 tnow = (S_INT_64)OSSystem::mOS->GetTimestamp();
 	return (lost_time_ + EUREKA_LOST_TIMEOUT) < tnow;
-}
-
-void EurekaLostMaintance::somebody_tellme_lost(S_INT_64 fromiid)
-{
-	tellme_lost_nodes_.insert(fromiid);
 }
 
 void EurekaLostMaintance::try_reconnect()

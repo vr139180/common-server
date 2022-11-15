@@ -151,6 +151,9 @@ void ServiceRegisterCtrl::on_mth_disconnected_with_service(ServiceLinkFrom* plin
 	if (psession == 0)
 		return;
 
+	S_INT_64 svriid = plink->get_iid();
+	NETSERVICE_TYPE ctype = plink->get_node()->type;
+
 	plink->registinfo_tolog(false);
 
 	{
@@ -163,6 +166,27 @@ void ServiceRegisterCtrl::on_mth_disconnected_with_service(ServiceLinkFrom* plin
 		psession->reset();
 
 		svrApp.return_freesession_no_mutext(psession);
+	}
+
+	//master检测到断开，直接踢出服务
+	if (svrApp.get_eurekactrl()->is_master())
+	{
+		offline_one_service(svriid);
+
+		//sync to slaver nodes
+		Erk_ServiceSync_ntf* ntf = new Erk_ServiceSync_ntf();
+		std::unique_ptr< Erk_ServiceSync_ntf> ptr(ntf);
+
+		ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
+		ntf->set_fullsvrs(false);
+		ntf->add_offline(svriid);
+		ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+		ntf->set_service_seed(this->get_serviceiid_seed());
+
+		svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
+
+		//notify all service
+		notify_service_offline(svriid, ctype);
 	}
 }
 
@@ -209,6 +233,8 @@ BasicProtocol* ServiceRegisterCtrl::master_syncall_servicenodes()
 	Erk_ServiceSync_ntf * ntf = new Erk_ServiceSync_ntf();
 	ntf->set_masteriid(svrApp.get_eurekactrl()->get_myself().iid);
 	ntf->set_fullsvrs(true);
+	ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
+	ntf->set_service_seed(this->get_serviceiid_seed());
 
 	for (boost::unordered_map<S_INT_64, ServiceNodeInfo>::iterator iter = all_service_nodes_.begin(); iter != all_service_nodes_.end(); ++iter)
 	{
@@ -216,9 +242,6 @@ BasicProtocol* ServiceRegisterCtrl::master_syncall_servicenodes()
 		PRO::ServerNode* pnew = ntf->add_newsvrs();
 		pnode->copy_to(pnew);
 	}
-
-	ntf->set_eureka_seed(svrApp.get_eurekactrl()->get_eureka_seed());
-	ntf->set_service_seed(this->get_serviceiid_seed());
 
 	return ntf;
 }

@@ -44,8 +44,8 @@ REDIS_KEYDEFINED(EUREKA_MASTER_NODE, "_EUREKA:MASTER");
 REDIS_KEYDEFINED(FIELD_MASTER_NODE_IID, "iid");
 REDIS_KEYDEFINED(FIELD_MASTER_NODE_SVR, "svrinfo");
 
-//master节点失效时间 5 seconds
-#define EUREKA_MASTER_NODE_TIMEOUT	5*1000
+//master节点失效时间 4 seconds
+#define EUREKA_MASTER_NODE_TIMEOUT	4*1000
 
 //-----------------------服务注册信息-------------------------------------
 

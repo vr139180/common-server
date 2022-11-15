@@ -26,7 +26,7 @@
 
 USED_REDISKEY_GLOBAL_NS
 
-bool EurekaClusterCtrl::update_redis_masterinfo(RedisClient* rdv)
+bool EurekaClusterCtrl::redis_update_masterinfo(RedisClient* rdv)
 {
 	if( rdv == 0)
 		rdv = svrApp.get_redisclient();
@@ -36,7 +36,30 @@ bool EurekaClusterCtrl::update_redis_masterinfo(RedisClient* rdv)
 	if (!rdv->set_hashobject(EUREKA_MASTER_NODE, FIELD_MASTER_NODE_SVR, myself_))
 		return false;
 
-	//rdv->pexpire(EUREKA_MASTER_NODE, EUREKA_MASTER_NODE_TIMEOUT);
+	rdv->pexpire(EUREKA_MASTER_NODE, EUREKA_MASTER_NODE_TIMEOUT);
 	
 	return true;
+}
+
+void EurekaClusterCtrl::redis_active_masterinfo(RedisClient* rdv)
+{
+	if (rdv == 0)
+		rdv = svrApp.get_redisclient();
+
+	S_INT_64 masterid = redis_have_masterinfo(rdv);
+	if (masterid == 0 || masterid != eureka_master_iid_)
+		return;
+
+	rdv->pexpire(EUREKA_MASTER_NODE, EUREKA_MASTER_NODE_TIMEOUT);
+}
+
+S_INT_64 EurekaClusterCtrl::redis_have_masterinfo(RedisClient* rdv)
+{
+	if (rdv == 0)
+		rdv = svrApp.get_redisclient();
+
+	S_INT_64 masterid = 0;
+	if (!rdv->get_hashmember_ul(EUREKA_MASTER_NODE, FIELD_MASTER_NODE_IID, masterid))
+		return 0;
+	return masterid;
 }

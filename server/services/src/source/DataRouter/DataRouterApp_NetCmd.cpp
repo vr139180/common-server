@@ -203,9 +203,14 @@ void DataRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
 {
 }
 
-void DataRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs)
+void DataRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE ctype, std::list<S_INT_64>& svrs)
 {
+	logInfo(out_runtime, "datarouter recv a balance notify[type:%d, size:%d]", ctype, svrs.size());
 
+	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+		home_links_from_.sync_balance_services(svrs);
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_STATE)
+		state_links_from_.sync_balance_services(svrs);
 }
 
 void DataRouterApp::mth_service_registed(S_INT_64 sid)

@@ -39,15 +39,17 @@ void ProtocolFactory::uinit()
 void ProtocolFactory::release()
 {
 	iid_2_proto.clear();
-	name_2_iid.clear();
+	//name_2_iid.clear();
+	desc_2_iid.clear();
 }
 
 S_UINT_16 ProtocolFactory::proto_to_iid(BasicProtocol* pro)
 {
 	if (pro == 0)
 		return 0;
-	boost::unordered_map<const std::string, S_UINT_16>::iterator fiter = name_2_iid.find(pro->GetTypeName());
-	if (fiter == name_2_iid.end())
+	//boost::unordered_map<const std::string, S_UINT_16>::iterator fiter = name_2_iid.find(pro->GetTypeName());
+	boost::unordered_map<const google::protobuf::Descriptor*, S_UINT_16>::iterator fiter = desc_2_iid.find(pro->GetDescriptor());
+	if (fiter == desc_2_iid.end())
 		return 0;
 	return fiter->second;
 }

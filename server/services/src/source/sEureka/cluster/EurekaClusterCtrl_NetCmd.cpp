@@ -31,8 +31,6 @@ void EurekaClusterCtrl::InitNetMessage()
 	REGISTERMSG(ERK_PROTYPE::ERK_EUREKAUPDATE_NTF, &EurekaClusterCtrl::on_eurekaupdate_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_MASTERCHANGE_NTF, &EurekaClusterCtrl::on_masterchange_ntf, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESYNC_NTF, &EurekaClusterCtrl::on_servicesync_ntf, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESHUTDOWN_NTF, &EurekaClusterCtrl::on_serviceshutdown_ntf, this);
-	REGISTERMSG(ERK_PROTYPE::ERK_EUREKALOST_NTF, &EurekaClusterCtrl::on_eurekalost_ntf, this);
 }
 
 void EurekaClusterCtrl::on_eurekaregist_req(NetProtocol* pro, bool& autorelease, void* session)
@@ -71,7 +69,7 @@ void EurekaClusterCtrl::on_eurekaregist_req(NetProtocol* pro, bool& autorelease,
 		svrApp.remove_waitsession_no_mutex(pes);
 		pfrom = eureka_links_from_.ask_free_link();
 
-		pfrom->set_linkbase_info( enode.iid, enode.token);
+		pfrom->set_node(enode);
 
 		pes->auth();
 		pfrom->set_session(pes);
@@ -81,7 +79,6 @@ void EurekaClusterCtrl::on_eurekaregist_req(NetProtocol* pro, bool& autorelease,
 		eureka_links_from_.regist_onlinelink(pfrom);
 
 		pfrom->registinfo_tolog(true);
-		pfrom->set_node(enode);
 	}
 
 	//管理节点
@@ -130,7 +127,7 @@ void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, v
 		svrApp.remove_waitsession_no_mutex(pes);
 		pfrom = eureka_links_from_.ask_free_link();
 
-		pfrom->set_linkbase_info(req->iid(), req->token());
+		pfrom->set_node(*pnode);
 
 		pes->auth();
 		pfrom->set_session(pes);
@@ -140,8 +137,6 @@ void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, v
 		eureka_links_from_.regist_onlinelink(pfrom);
 
 		pfrom->registinfo_tolog(true);
-
-		pfrom->set_node(*pnode);
 	}
 
 	Erk_EurekaBind_ack *ack = new Erk_EurekaBind_ack();
@@ -201,7 +196,6 @@ void EurekaClusterCtrl::on_eurekabind_ack(NetProtocol* pro, bool& autorelease, E
 	{
 		//断线处理
 		someone_eurekanode_authed(pLinkto->get_iid());
-
 		return;
 	}
 
@@ -233,22 +227,14 @@ void EurekaClusterCtrl::on_eurekaupdate_ntf(NetProtocol* pro, bool& autorelease)
 
 void EurekaClusterCtrl::on_masterchange_ntf(NetProtocol* pro, bool& autorelease)
 {
+	Erk_MasterChange_ntf* ntf = dynamic_cast<Erk_MasterChange_ntf*>(pro->msg_);
 
+	this->eureka_master_iid_ = ntf->newmaster();
+
+	logInfo(out_runtime, "eureka:%d master changed to %d", myself_.iid, eureka_master_iid_);
 }
 
 void EurekaClusterCtrl::on_servicesync_ntf(NetProtocol* pro, bool& autorelease)
 {
 	svrApp.get_servicectrl()->on_mth_servicesync_ntf(pro, autorelease);
-}
-
-void EurekaClusterCtrl::on_serviceshutdown_ntf(NetProtocol* pro, bool& autorelease)
-{
-	svrApp.get_servicectrl()->on_mth_serviceshutdown_ntf(pro, autorelease);
-}
-
-void  EurekaClusterCtrl::on_eurekalost_ntf(NetProtocol* pro, bool& autorelease)
-{
-	Erk_EurekaLost_ntf* ntf = reinterpret_cast<Erk_EurekaLost_ntf*>(pro->msg_);
-
-	tellme_eurekanode_lost(ntf->from_eureka(), ntf->lost_eureka());
 }

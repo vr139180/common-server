@@ -21,8 +21,8 @@
 #include <boost/unordered_map.hpp>
 #include <cmsLib/ThreadLock.h>
 #include <cmsLib/core_type.h>
-#include <cmsLib/hash/HashUtil.h>
 #include <cmsLib/util/ShareUtil.h>
+#include <cmsLib/net/NetHashingWithVNode.h>
 
 template<typename T>
 class LinkFromConsistentHash
@@ -35,39 +35,30 @@ public:
 	void init_holder( int vnodenum);
 	virtual void uninit_holder();
 
+	void sync_balance_services(std::list<S_INT_64>& iids);
+
 	T* ask_free_link();
 	T* get_servicelink_byiid(S_INT_64 iid);
 	virtual void return_freelink(T* link);
 	virtual T* regist_onlinelink(T* link);
 
-	template<class M>
-	void broadcast(M* pro)
-	{
-		ThreadLockWrapper guard(lock_);
-
-		typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
-		for (; iter != online_links_.end(); ++iter)
-		{
-			M* msg = new M();
-			msg->CopyFrom(*pro);
-
-			T* link = iter->second;
-			link->send_protocol(msg);
-		}
-	}
+	void send_netprotocol(S_INT_64 key, BasicProtocol* pro);
+	void send_netprotocol(S_INT_32 hashkey, BasicProtocol* pro);
+	//pro由调用者管理
+	void broadcast(BasicProtocol* pro);
 
 protected:
 	std::list<T*>	all_service_link_;
 	std::set<T*>	free_links_;
 	SERVICEMAP		online_links_;
 
-	int				vnode_num_;
+	NetHashingWithVNode<S_INT_64>	nethash_;
 
 	ThreadLock	lock_;
 };
 
 template<typename T>
-LinkFromConsistentHash<T>::LinkFromConsistentHash():vnode_num_(1000)
+LinkFromConsistentHash<T>::LinkFromConsistentHash()
 {
 }
 
@@ -82,7 +73,7 @@ void LinkFromConsistentHash<T>::init_holder(int vnodenum)
 {
 	ThreadLockWrapper guard(lock_);
 
-	this->vnode_num_ = vnodenum;
+	nethash_.init_vnode(vnodenum);
 }
 
 template<typename T>
@@ -99,6 +90,71 @@ void LinkFromConsistentHash<T>::uninit_holder()
 		delete (*iter);
 	}
 	all_service_link_.clear();
+}
+
+template<typename T>
+void LinkFromConsistentHash<T>::sync_balance_services(std::list<S_INT_64>& iids)
+{
+	ThreadLockWrapper guard(lock_);
+
+	nethash_.clear_nodes();
+
+	for (std::list<S_INT_64>::iterator iter = iids.begin(); iter != iids.end(); ++iter)
+	{
+		S_INT_64 iid = (*iter);
+		nethash_.add_realnode(iid, iid);
+	}
+
+	nethash_.build_nethashing();
+}
+
+template<typename T>
+void LinkFromConsistentHash<T>::send_netprotocol(S_INT_64 key, BasicProtocol* pro)
+{
+	T* plink = 0;
+	{
+		ThreadLockWrapper guard(lock_);
+		S_INT_64 linkid = nethash_.get_netnode_byval(key);
+		plink = get_servicelink_byiid(linkid);
+	}
+
+	if (plink)
+		plink->send_netprotocol(pro);
+	else
+		delete pro;
+}
+
+template<typename T>
+void LinkFromConsistentHash<T>::send_netprotocol(S_INT_32 hashkey, BasicProtocol* pro)
+{
+	T* plink = 0;
+	{
+		ThreadLockWrapper guard(lock_);
+
+		S_INT_64 linkid = nethash_.get_netnode_byval(key);
+		plink = nethash_.get_netnode_byhash(hashkey);
+	}
+
+	if (plink)
+		plink->send_netprotocol(pro);
+	else
+		delete pro;
+}
+
+template<typename T>
+void LinkFromConsistentHash<T>::broadcast(BasicProtocol* pro)
+{
+	ThreadLockWrapper guard(lock_);
+
+	typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
+	for (; iter != online_links_.end(); ++iter)
+	{
+		BasicProtocol* msg = pro->New();
+		msg->CopyFrom(*pro);
+
+		T* link = iter->second;
+		link->send_netprotocol(msg);
+	}
 }
 
 template<typename T>

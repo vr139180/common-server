@@ -59,6 +59,7 @@ void HomeServiceLinkFrom::on_connect_lost_netthread()
 void HomeServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
+
 }
 
 void HomeServiceLinkFrom::registinfo_tolog( bool bregist)

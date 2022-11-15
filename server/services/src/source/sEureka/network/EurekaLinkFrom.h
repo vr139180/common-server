@@ -28,7 +28,7 @@ public:
 	EurekaLinkFrom();
 	EurekaLinkFrom(EurekaNodeInfo pnode);
 
-	void set_node(EurekaNodeInfo pnode) { node_ = pnode; }
+	void set_node(EurekaNodeInfo pnode);
 	EurekaNodeInfo& get_node() { return node_; }
 
 	virtual void reset();

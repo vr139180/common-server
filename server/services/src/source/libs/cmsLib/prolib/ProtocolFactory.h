@@ -51,7 +51,8 @@ protected:
 
 private:
 	boost::unordered_map<S_UINT_16, const BasicProtocol*>	iid_2_proto;
-	boost::unordered_map<const std::string, S_UINT_16>		name_2_iid;
+	//boost::unordered_map<const std::string, S_UINT_16>		name_2_iid;
+	boost::unordered_map<const google::protobuf::Descriptor*, S_UINT_16>	desc_2_iid;
 };
 
 template<typename T>
@@ -60,7 +61,8 @@ void ProtocolFactory::regist_protocal(S_UINT_16 proiid)
 	const BasicProtocol* pro = &(T::default_instance());
 
 	iid_2_proto[proiid] = pro;
-	name_2_iid[pro->GetTypeName()] = proiid;
+	//name_2_iid[pro->GetTypeName()] = proiid;
+	desc_2_iid[pro->GetDescriptor()] = proiid;
 }
 
 #endif //__PROTOCOLFACTORY__H__

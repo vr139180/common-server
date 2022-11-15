@@ -131,18 +131,6 @@ message Erk_EurekaUpdate_ntf{
 message Erk_MasterChange_ntf{
   int64 newmaster = 1;
   int64 mastertoken =2;
-  //eureka iid 种子
-  int64 eureka_seed = 3;
-  //service iid 种子
-  int64 service_seed = 4;
-}
-
-//连接断开广播通知
-message Erk_EurekaLost_ntf{
-  //来自eureka节点
-  int64 from_eureka = 1;
-  //断开的节点iid
-  int64 lost_eureka = 2 ;
 }
 
 //服务同步 master to slaver
@@ -253,13 +241,6 @@ message Erk_RouterOnline_req{
   int64 myiid = 1;
   //请求放服务类型
   int32 mysvrtype = 2;
-}
-
-//服务下线通知
-message Erk_ServiceShutdown_ntf{
-  //下线的服务
-  int32 svr_type = 1;
-  int64 svriid = 2;
 }
 
 message Svr_LiveTick_ntf{

@@ -1,0 +1,4 @@
+<state loopnum="500" dbs="3">
+	<redis name="master" ip="127.0.0.1" port="6379" db="2" auth="123456" socket_timeout="100" />
+	<db db="cms" ip="tcp://127.0.0.1:3306" user="root" pwd="123456"/>
+</state>

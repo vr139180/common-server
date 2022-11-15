@@ -54,6 +54,8 @@ public:
 			if (ignore != 0 && iid == ignore)
 				continue;
 
+			logDebug(out_runtime, "---linkfrom broadcast msg:%s to eureka:%d", pro->GetTypeName().c_str(), iid);
+
 			BasicProtocol* msg = pro->New();
 			msg->CopyFrom(*pro);
 
@@ -159,6 +161,12 @@ void EurekaLinkFromHolder<T>::remove_linkfrom_node(S_INT_64 iid)
 	T* pLink = get_eurekalink_byiid(iid);
 	if (pLink == 0)
 		return;
+
+	{
+		ThreadLockWrapper guard(lock_);
+		online_links_.erase(pLink->get_iid());
+		free_links_.insert(pLink);
+	}
 
 	pLink->force_close();
 }

@@ -1,4 +1,0 @@
-<app ip="127.0.0.1" port="6001" loglevel="debug" logdir="" logfile="resservice.log" confsrc="filesrc">
-	<filesrc datadir="../datas" />
-	<httpsrc url="http://127.0.0.1" />
-</app>
