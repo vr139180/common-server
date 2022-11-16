@@ -28,4 +28,7 @@
 #define EUREKA_LOST_TIMEOUT		8*1000
 #define EUREKA_LOST_RETRY		8
 
+//state容量设计
+#define STATE_SERVICE_THREADNUM	4		//state服务线程数
+
 #endif //__GLOBAL_CONST_H__

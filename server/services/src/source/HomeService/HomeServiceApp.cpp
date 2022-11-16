@@ -114,11 +114,14 @@ HomeConfig* HomeServiceApp::get_config()
 
 bool HomeServiceApp::pre_init()
 {
+	lobby_hash_.init_vnode(800);
 	this->all_lobbys_.reset(new LobbyService[HOME_LOBBY_THREADNUM]);
 	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 	{
 		all_lobbys_[ii].init_lobby(ii);
+		lobby_hash_.add_realnode( ii, ii);
 	}
+	lobby_hash_.build_nethashing();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -250,4 +253,16 @@ void HomeServiceApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
 void HomeServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 {
 	datarouter_link_mth_.on_linkto_disconnected(plink);
+}
+
+void HomeServiceApp::dispatch_to_lobby(NetProtocol* msg)
+{
+	S_INT_64 uid = msg->head_.get_role_iid();
+	S_INT_32 lobbyind = lobby_hash_.get_netnode_byval(uid);
+	LobbyService* plobby = &(all_lobbys_[lobbyind]);
+
+	NETCMD_FUN_MAP fun = boost::bind(&LobbyService::NetProcessMessage, plobby,
+		boost::placeholders::_1, boost::placeholders::_2);
+	NetCommand *pcmd = new NetCommand( msg, fun);
+	plobby->regist_netcmd(pcmd);
 }

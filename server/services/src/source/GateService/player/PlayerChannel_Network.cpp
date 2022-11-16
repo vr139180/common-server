@@ -38,26 +38,15 @@ void PlayerChannel::on_disconnected_with_player(GamePlayer* plink)
 	force_pc_close_player(plink);
 }
 
-void PlayerChannel::on_cth_userproxylogin_req(NetProtocol* message, bool& autorelease, void* p)
+void PlayerChannel::on_cth_userlogin_ack(NetProtocol* pro, bool& autorelease)
 {
-	GamePlayer *psession = (GamePlayer*)p;
+	User_Login_ack* ack = dynamic_cast<User_Login_ack*>(pro->msg_);
 
-	User_ProxyLogin_ack* ack = new User_ProxyLogin_ack();
-	ack->set_result(1);
-
-	User_ProxyLogin_req* req = dynamic_cast<User_ProxyLogin_req*>(message->msg_);
-
-	GamePlayer* pLink = get_player_byslot(psession->get_userslot());
+	GamePlayer* pLink = get_player_frommsg(pro);
 	//TODO:disconnected
-	if (pLink == 0 || pLink != psession)
+	if (pLink == 0)
 		return;
-
-	//token check
-	if (pLink->is_samesession( message->head_))
-	{
-		pLink->send_netprotocol(ack);
-		return;
-	}
+	autorelease = false;
 
 	//auth check
 	if (parent_->auth_wait_slot(pLink->get_userslot()) == false)
@@ -74,15 +63,13 @@ void PlayerChannel::on_cth_userproxylogin_req(NetProtocol* message, bool& autore
 	ack->set_result(0);
 	pLink->send_netprotocol(ack);
 
-	logDebug(out_runtime, "user:%lld login success", req->user_iid());
+	logDebug(out_runtime, "user:%lld login success", ack->user_iid());
 }
 
 void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 {
 	GamePlayer *puser = get_player_frommsg(pro);
 	if (puser == 0) return;
-
-	GHS_UserLogout_ntf* ntf = new GHS_UserLogout_ntf();
 
 	//svrApp.send_to_homeservice(ntf);
 
@@ -98,11 +85,6 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 	if (ack->result() == 0)
 	{
 		puser->role_selected_done(ack->role_iid(), EurekaClusterClient::instance().get_myiid());
-
-		//ask role detail
-		GHS_RoleDetail_ask *ask = new GHS_RoleDetail_ask();
-
-		//svrApp.send_to_homeservice(ask);
 	}
 
 	autorelease = false;

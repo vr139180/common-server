@@ -130,7 +130,7 @@ public enum ROBOTTEST_PROTYPE
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.cms.client.network.gpro.ProtoIidInternal.getDescriptor().getEnumTypes().get(2);
+    return com.cms.client.network.gpro.ProtoIidInternal.getDescriptor().getEnumTypes().get(1);
   }
 
   private static final ROBOTTEST_PROTYPE[] VALUES = values();

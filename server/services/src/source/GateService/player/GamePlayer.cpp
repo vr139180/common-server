@@ -48,14 +48,14 @@ void GamePlayer::auth(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid)
 	cur_state_ = PlayerState_Logon;
 
 	s_head_.set_token_slottoken(slot_, token);
-	s_head_.set_token_gidrid(gateiid, uid);
+	s_head_.set_token_giduid(gateiid, uid);
 }
 
 void GamePlayer::role_selected_done(S_INT_64 rid, S_INT_64 gateiid)
 {
 	cur_state_ = PlayerState::PlayerState_RoleReady;
 	role_iid_ = rid;
-	s_head_.set_token_gidrid(gateiid, this->role_iid_);
+	s_head_.set_role_iid( role_iid_);
 }
 
 void GamePlayer::send_netprotocol(BasicProtocol* msg)

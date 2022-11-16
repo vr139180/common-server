@@ -36,12 +36,9 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Login_reqDefaultTypeIntern
 constexpr User_Login_ack::User_Login_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : logintoken_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , proxyip_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , type_(0)
   , result_(0)
-  , user_iid_(int64_t{0})
-  , proxyport_(0)
-  , proxytoken_(int64_t{0}){}
+  , user_iid_(int64_t{0}){}
 struct User_Login_ackDefaultTypeInternal {
   constexpr User_Login_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -51,33 +48,33 @@ struct User_Login_ackDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Login_ackDefaultTypeInternal _User_Login_ack_default_instance_;
-constexpr User_ProxyLogin_req::User_ProxyLogin_req(
+constexpr User_ReLogin_req::User_ReLogin_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : user_iid_(int64_t{0})
-  , proxytoken_(int64_t{0}){}
-struct User_ProxyLogin_reqDefaultTypeInternal {
-  constexpr User_ProxyLogin_reqDefaultTypeInternal()
+  , logintoken_(int64_t{0}){}
+struct User_ReLogin_reqDefaultTypeInternal {
+  constexpr User_ReLogin_reqDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~User_ProxyLogin_reqDefaultTypeInternal() {}
+  ~User_ReLogin_reqDefaultTypeInternal() {}
   union {
-    User_ProxyLogin_req _instance;
+    User_ReLogin_req _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ProxyLogin_reqDefaultTypeInternal _User_ProxyLogin_req_default_instance_;
-constexpr User_ProxyLogin_ack::User_ProxyLogin_ack(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ReLogin_reqDefaultTypeInternal _User_ReLogin_req_default_instance_;
+constexpr User_ReLogin_ack::User_ReLogin_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : user_iid_(int64_t{0})
-  , proxytoken_(int64_t{0})
+  , logintoken_(int64_t{0})
   , result_(0){}
-struct User_ProxyLogin_ackDefaultTypeInternal {
-  constexpr User_ProxyLogin_ackDefaultTypeInternal()
+struct User_ReLogin_ackDefaultTypeInternal {
+  constexpr User_ReLogin_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
-  ~User_ProxyLogin_ackDefaultTypeInternal() {}
+  ~User_ReLogin_ackDefaultTypeInternal() {}
   union {
-    User_ProxyLogin_ack _instance;
+    User_ReLogin_ack _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ProxyLogin_ackDefaultTypeInternal _User_ProxyLogin_ack_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ReLogin_ackDefaultTypeInternal _User_ReLogin_ack_default_instance_;
 constexpr User_Logout_ntf::User_Logout_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
 struct User_Logout_ntfDefaultTypeInternal {
@@ -89,6 +86,39 @@ struct User_Logout_ntfDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Logout_ntfDefaultTypeInternal _User_Logout_ntf_default_instance_;
+constexpr User_GateLost_ntf::User_GateLost_ntf(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct User_GateLost_ntfDefaultTypeInternal {
+  constexpr User_GateLost_ntfDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~User_GateLost_ntfDefaultTypeInternal() {}
+  union {
+    User_GateLost_ntf _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_GateLost_ntfDefaultTypeInternal _User_GateLost_ntf_default_instance_;
+constexpr User_Active_ntf::User_Active_ntf(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct User_Active_ntfDefaultTypeInternal {
+  constexpr User_Active_ntfDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~User_Active_ntfDefaultTypeInternal() {}
+  union {
+    User_Active_ntf _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Active_ntfDefaultTypeInternal _User_Active_ntf_default_instance_;
+constexpr User_RoleList_req::User_RoleList_req(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct User_RoleList_reqDefaultTypeInternal {
+  constexpr User_RoleList_reqDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~User_RoleList_reqDefaultTypeInternal() {}
+  union {
+    User_RoleList_req _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleList_reqDefaultTypeInternal _User_RoleList_req_default_instance_;
 constexpr User_RoleList_ack::User_RoleList_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : roles_(nullptr){}
@@ -188,7 +218,7 @@ struct User_RoleDetailEnd_ntfDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_RoleDetailEnd_ntfDefaultTypeInternal _User_RoleDetailEnd_ntf_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_5flogin_2eproto[13];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_5flogin_2eproto[16];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_user_5flogin_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_user_5flogin_2eproto = nullptr;
 
@@ -219,38 +249,50 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, user_iid_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, logintoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxytoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxyip_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, proxyport_),
   ~0u,
   ~0u,
-  2,
-  0,
-  4,
   1,
-  3,
+  0,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, user_iid_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_req, proxytoken_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_req, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_req, logintoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, result_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, user_iid_),
-  PROTOBUF_FIELD_OFFSET(::PRO::User_ProxyLogin_ack, proxytoken_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, result_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, logintoken_),
   ~0u,
   0,
   1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_GateLost_ntf, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_req, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
@@ -318,26 +360,32 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 11, -1, sizeof(::PRO::User_Login_req)},
-  { 16, 29, -1, sizeof(::PRO::User_Login_ack)},
-  { 36, -1, -1, sizeof(::PRO::User_ProxyLogin_req)},
-  { 44, 53, -1, sizeof(::PRO::User_ProxyLogin_ack)},
-  { 56, -1, -1, sizeof(::PRO::User_Logout_ntf)},
-  { 62, -1, -1, sizeof(::PRO::User_RoleList_ack)},
-  { 69, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
-  { 76, 84, -1, sizeof(::PRO::User_RoleCreate_ack)},
-  { 86, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
-  { 93, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
-  { 101, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
-  { 109, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
-  { 116, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
+  { 16, 26, -1, sizeof(::PRO::User_Login_ack)},
+  { 30, -1, -1, sizeof(::PRO::User_ReLogin_req)},
+  { 38, 47, -1, sizeof(::PRO::User_ReLogin_ack)},
+  { 50, -1, -1, sizeof(::PRO::User_Logout_ntf)},
+  { 56, -1, -1, sizeof(::PRO::User_GateLost_ntf)},
+  { 62, -1, -1, sizeof(::PRO::User_Active_ntf)},
+  { 68, -1, -1, sizeof(::PRO::User_RoleList_req)},
+  { 74, -1, -1, sizeof(::PRO::User_RoleList_ack)},
+  { 81, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
+  { 88, 96, -1, sizeof(::PRO::User_RoleCreate_ack)},
+  { 98, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
+  { 105, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
+  { 113, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
+  { 121, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
+  { 128, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Login_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Login_ack_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_ProxyLogin_req_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_ProxyLogin_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_ReLogin_req_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_ReLogin_ack_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Logout_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_GateLost_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Active_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleList_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleList_ack_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleCreate_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleCreate_ack_default_instance_),
@@ -353,40 +401,38 @@ const char descriptor_table_protodef_user_5flogin_2eproto[] PROTOBUF_SECTION_VAR
   "to\"\230\001\n\016User_Login_req\022\014\n\004type\030\001 \001(\005\022\024\n\007a"
   "ccount\030\002 \001(\tH\000\210\001\001\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005t"
   "oken\030\004 \001(\tH\002\210\001\001\022\023\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010"
-  "_accountB\006\n\004_pwdB\010\n\006_tokenB\t\n\007_userid\"\352\001"
-  "\n\016User_Login_ack\022\014\n\004type\030\001 \001(\005\022\016\n\006result"
-  "\030\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nloginto"
-  "ken\030\004 \001(\tH\001\210\001\001\022\027\n\nproxytoken\030\n \001(\003H\002\210\001\001\022"
-  "\024\n\007proxyip\030\013 \001(\tH\003\210\001\001\022\026\n\tproxyport\030\014 \001(\005"
-  "H\004\210\001\001B\013\n\t_user_iidB\r\n\013_logintokenB\r\n\013_pr"
-  "oxytokenB\n\n\010_proxyipB\014\n\n_proxyport\";\n\023Us"
-  "er_ProxyLogin_req\022\020\n\010user_iid\030\001 \001(\003\022\022\n\np"
-  "roxytoken\030\002 \001(\003\"q\n\023User_ProxyLogin_ack\022\016"
-  "\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027\n"
-  "\nproxytoken\030\003 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013_"
-  "proxytoken\"\021\n\017User_Logout_ntf\"4\n\021User_Ro"
-  "leList_ack\022\037\n\005roles\030\001 \001(\0132\020.PRO.DBUserRo"
-  "les\"\'\n\023User_RoleCreate_req\022\020\n\010nickname\030\001"
-  " \001(\t\"I\n\023User_RoleCreate_ack\022\016\n\006result\030\001 "
-  "\001(\005\022\025\n\010role_iid\030\002 \001(\003H\000\210\001\001B\013\n\t_role_iid\""
-  "\'\n\023User_RoleSelect_req\022\020\n\010role_iid\030\001 \001(\003"
-  "\"7\n\023User_RoleSelect_ack\022\016\n\006result\030\001 \001(\005\022"
-  "\020\n\010role_iid\030\002 \001(\003\"b\n\024User_RoleDetailA_nt"
-  "f\022\035\n\004home\030\001 \001(\0132\017.PRO.DBUserHome\022+\n\thome"
-  "items\030\002 \001(\0132\030.PRO.DBUserHomeStructure\"5\n"
-  "\024User_RoleDetailB_ntf\022\035\n\004pets\030\001 \001(\0132\017.PR"
-  "O.DBUserPets\"\030\n\026User_RoleDetailEnd_ntfBT"
-  "\n\033com.cms.client.network.gproP\001Z\025gamelib"
-  "/protobuf/gpro\252\002\033com.cms.client.network."
-  "gprob\006proto3"
+  "_accountB\006\n\004_pwdB\010\n\006_tokenB\t\n\007_userid\"z\n"
+  "\016User_Login_ack\022\014\n\004type\030\001 \001(\005\022\016\n\006result\030"
+  "\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nlogintok"
+  "en\030\004 \001(\tH\001\210\001\001B\013\n\t_user_iidB\r\n\013_logintoke"
+  "n\"8\n\020User_ReLogin_req\022\020\n\010user_iid\030\001 \001(\003\022"
+  "\022\n\nlogintoken\030\002 \001(\003\"n\n\020User_ReLogin_ack\022"
+  "\016\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027"
+  "\n\nlogintoken\030\003 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013"
+  "_logintoken\"\021\n\017User_Logout_ntf\"\023\n\021User_G"
+  "ateLost_ntf\"\021\n\017User_Active_ntf\"\023\n\021User_R"
+  "oleList_req\"4\n\021User_RoleList_ack\022\037\n\005role"
+  "s\030\001 \001(\0132\020.PRO.DBUserRoles\"\'\n\023User_RoleCr"
+  "eate_req\022\020\n\010nickname\030\001 \001(\t\"I\n\023User_RoleC"
+  "reate_ack\022\016\n\006result\030\001 \001(\005\022\025\n\010role_iid\030\002 "
+  "\001(\003H\000\210\001\001B\013\n\t_role_iid\"\'\n\023User_RoleSelect"
+  "_req\022\020\n\010role_iid\030\001 \001(\003\"7\n\023User_RoleSelec"
+  "t_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010role_iid\030\002 \001(\003\""
+  "b\n\024User_RoleDetailA_ntf\022\035\n\004home\030\001 \001(\0132\017."
+  "PRO.DBUserHome\022+\n\thomeitems\030\002 \001(\0132\030.PRO."
+  "DBUserHomeStructure\"5\n\024User_RoleDetailB_"
+  "ntf\022\035\n\004pets\030\001 \001(\0132\017.PRO.DBUserPets\"\030\n\026Us"
+  "er_RoleDetailEnd_ntfBT\n\033com.cms.client.n"
+  "etwork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033c"
+  "om.cms.client.network.gprob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5flogin_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5flogin_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5flogin_2eproto = {
-  false, false, 1172, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
-  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 13,
+  false, false, 1114, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
+  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 16,
   schemas, file_default_instances, TableStruct_user_5flogin_2eproto::offsets,
   file_level_metadata_user_5flogin_2eproto, file_level_enum_descriptors_user_5flogin_2eproto, file_level_service_descriptors_user_5flogin_2eproto,
 };
@@ -799,19 +845,10 @@ class User_Login_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<User_Login_ack>()._has_bits_);
   static void set_has_user_iid(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
+    (*has_bits)[0] |= 2u;
   }
   static void set_has_logintoken(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
-  }
-  static void set_has_proxytoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
-  }
-  static void set_has_proxyip(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-  static void set_has_proxyport(HasBits* has_bits) {
-    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -836,17 +873,9 @@ User_Login_ack::User_Login_ack(const User_Login_ack& from)
     logintoken_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_logintoken(), 
       GetArenaForAllocation());
   }
-  proxyip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    proxyip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_proxyip()) {
-    proxyip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_proxyip(), 
-      GetArenaForAllocation());
-  }
   ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(proxytoken_));
+    static_cast<size_t>(reinterpret_cast<char*>(&user_iid_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(user_iid_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_Login_ack)
 }
 
@@ -855,14 +884,10 @@ logintoken_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringA
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   logintoken_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-proxyip_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  proxyip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&type_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(proxytoken_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&user_iid_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(user_iid_));
 }
 
 User_Login_ack::~User_Login_ack() {
@@ -875,7 +900,6 @@ User_Login_ack::~User_Login_ack() {
 inline void User_Login_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   logintoken_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  proxyip_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void User_Login_ack::ArenaDtor(void* object) {
@@ -895,22 +919,13 @@ void User_Login_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      logintoken_.ClearNonDefaultToEmpty();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      proxyip_.ClearNonDefaultToEmpty();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    logintoken_.ClearNonDefaultToEmpty();
   }
   ::memset(&type_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&type_)) + sizeof(result_));
-  if (cached_has_bits & 0x0000001cu) {
-    ::memset(&user_iid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&proxytoken_) -
-        reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
-  }
+  user_iid_ = int64_t{0};
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -953,34 +968,6 @@ const char* User_Login_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
           auto str = _internal_mutable_logintoken();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_Login_ack.logintoken"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional int64 proxytoken = 10;
-      case 10:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
-          _Internal::set_has_proxytoken(&has_bits);
-          proxytoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional string proxyip = 11;
-      case 11:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
-          auto str = _internal_mutable_proxyip();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_Login_ack.proxyip"));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional int32 proxyport = 12;
-      case 12:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 96)) {
-          _Internal::set_has_proxyport(&has_bits);
-          proxyport_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1043,28 +1030,6 @@ uint8_t* User_Login_ack::_InternalSerialize(
         4, this->_internal_logintoken(), target);
   }
 
-  // optional int64 proxytoken = 10;
-  if (_internal_has_proxytoken()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(10, this->_internal_proxytoken(), target);
-  }
-
-  // optional string proxyip = 11;
-  if (_internal_has_proxyip()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_proxyip().data(), static_cast<int>(this->_internal_proxyip().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PRO.User_Login_ack.proxyip");
-    target = stream->WriteStringMaybeAliased(
-        11, this->_internal_proxyip(), target);
-  }
-
-  // optional int32 proxyport = 12;
-  if (_internal_has_proxyport()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(12, this->_internal_proxyport(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1081,23 +1046,14 @@ size_t User_Login_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  // optional string logintoken = 4;
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional string logintoken = 4;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_logintoken());
-    }
-
-    // optional string proxyip = 11;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_proxyip());
-    }
-
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_logintoken());
   }
+
   // int32 type = 1;
   if (this->_internal_type() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
@@ -1108,23 +1064,11 @@ size_t User_Login_ack::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
 
-  if (cached_has_bits & 0x0000001cu) {
-    // optional int64 user_iid = 3;
-    if (cached_has_bits & 0x00000004u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
-    }
-
-    // optional int32 proxyport = 12;
-    if (cached_has_bits & 0x00000008u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_proxyport());
-    }
-
-    // optional int64 proxytoken = 10;
-    if (cached_has_bits & 0x00000010u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
-    }
-
+  // optional int64 user_iid = 3;
+  if (cached_has_bits & 0x00000002u) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
   }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1147,14 +1091,8 @@ void User_Login_ack::MergeFrom(const User_Login_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_set_logintoken(from._internal_logintoken());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _internal_set_proxyip(from._internal_proxyip());
-    }
+  if (from._internal_has_logintoken()) {
+    _internal_set_logintoken(from._internal_logintoken());
   }
   if (from._internal_type() != 0) {
     _internal_set_type(from._internal_type());
@@ -1162,17 +1100,8 @@ void User_Login_ack::MergeFrom(const User_Login_ack& from) {
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
   }
-  if (cached_has_bits & 0x0000001cu) {
-    if (cached_has_bits & 0x00000004u) {
-      user_iid_ = from.user_iid_;
-    }
-    if (cached_has_bits & 0x00000008u) {
-      proxyport_ = from.proxyport_;
-    }
-    if (cached_has_bits & 0x00000010u) {
-      proxytoken_ = from.proxytoken_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (from._internal_has_user_iid()) {
+    _internal_set_user_iid(from._internal_user_iid());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1199,14 +1128,9 @@ void User_Login_ack::InternalSwap(User_Login_ack* other) {
       &logintoken_, lhs_arena,
       &other->logintoken_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &proxyip_, lhs_arena,
-      &other->proxyip_, rhs_arena
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_Login_ack, proxytoken_)
-      + sizeof(User_Login_ack::proxytoken_)
+      PROTOBUF_FIELD_OFFSET(User_Login_ack, user_iid_)
+      + sizeof(User_Login_ack::user_iid_)
       - PROTOBUF_FIELD_OFFSET(User_Login_ack, type_)>(
           reinterpret_cast<char*>(&type_),
           reinterpret_cast<char*>(&other->type_));
@@ -1220,69 +1144,69 @@ void User_Login_ack::InternalSwap(User_Login_ack* other) {
 
 // ===================================================================
 
-class User_ProxyLogin_req::_Internal {
+class User_ReLogin_req::_Internal {
  public:
 };
 
-User_ProxyLogin_req::User_ProxyLogin_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+User_ReLogin_req::User_ReLogin_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:PRO.User_ProxyLogin_req)
+  // @@protoc_insertion_point(arena_constructor:PRO.User_ReLogin_req)
 }
-User_ProxyLogin_req::User_ProxyLogin_req(const User_ProxyLogin_req& from)
+User_ReLogin_req::User_ReLogin_req(const User_ReLogin_req& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&user_iid_, &from.user_iid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
-    reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
-  // @@protoc_insertion_point(copy_constructor:PRO.User_ProxyLogin_req)
+    static_cast<size_t>(reinterpret_cast<char*>(&logintoken_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
+  // @@protoc_insertion_point(copy_constructor:PRO.User_ReLogin_req)
 }
 
-inline void User_ProxyLogin_req::SharedCtor() {
+inline void User_ReLogin_req::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&proxytoken_) -
-    reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&logintoken_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
 }
 
-User_ProxyLogin_req::~User_ProxyLogin_req() {
-  // @@protoc_insertion_point(destructor:PRO.User_ProxyLogin_req)
+User_ReLogin_req::~User_ReLogin_req() {
+  // @@protoc_insertion_point(destructor:PRO.User_ReLogin_req)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void User_ProxyLogin_req::SharedDtor() {
+inline void User_ReLogin_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void User_ProxyLogin_req::ArenaDtor(void* object) {
-  User_ProxyLogin_req* _this = reinterpret_cast< User_ProxyLogin_req* >(object);
+void User_ReLogin_req::ArenaDtor(void* object) {
+  User_ReLogin_req* _this = reinterpret_cast< User_ReLogin_req* >(object);
   (void)_this;
 }
-void User_ProxyLogin_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void User_ReLogin_req::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void User_ProxyLogin_req::SetCachedSize(int size) const {
+void User_ReLogin_req::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void User_ProxyLogin_req::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.User_ProxyLogin_req)
+void User_ReLogin_req::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_ReLogin_req)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   ::memset(&user_iid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&proxytoken_) -
-      reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
+      reinterpret_cast<char*>(&logintoken_) -
+      reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* User_ProxyLogin_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* User_ReLogin_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -1296,10 +1220,10 @@ const char* User_ProxyLogin_req::_InternalParse(const char* ptr, ::PROTOBUF_NAME
         } else
           goto handle_unusual;
         continue;
-      // int64 proxytoken = 2;
+      // int64 logintoken = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          proxytoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          logintoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1327,9 +1251,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* User_ProxyLogin_req::_InternalSerialize(
+uint8_t* User_ReLogin_req::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_ProxyLogin_req)
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_ReLogin_req)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1339,22 +1263,22 @@ uint8_t* User_ProxyLogin_req::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_user_iid(), target);
   }
 
-  // int64 proxytoken = 2;
-  if (this->_internal_proxytoken() != 0) {
+  // int64 logintoken = 2;
+  if (this->_internal_logintoken() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_proxytoken(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_logintoken(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_ProxyLogin_req)
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_ReLogin_req)
   return target;
 }
 
-size_t User_ProxyLogin_req::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.User_ProxyLogin_req)
+size_t User_ReLogin_req::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_ReLogin_req)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1366,29 +1290,29 @@ size_t User_ProxyLogin_req::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
   }
 
-  // int64 proxytoken = 2;
-  if (this->_internal_proxytoken() != 0) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
+  // int64 logintoken = 2;
+  if (this->_internal_logintoken() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_logintoken());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_ProxyLogin_req::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_ReLogin_req::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    User_ProxyLogin_req::MergeImpl
+    User_ReLogin_req::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_ProxyLogin_req::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_ReLogin_req::GetClassData() const { return &_class_data_; }
 
-void User_ProxyLogin_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void User_ReLogin_req::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<User_ProxyLogin_req *>(to)->MergeFrom(
-      static_cast<const User_ProxyLogin_req &>(from));
+  static_cast<User_ReLogin_req *>(to)->MergeFrom(
+      static_cast<const User_ReLogin_req &>(from));
 }
 
 
-void User_ProxyLogin_req::MergeFrom(const User_ProxyLogin_req& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_ProxyLogin_req)
+void User_ReLogin_req::MergeFrom(const User_ReLogin_req& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_ReLogin_req)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1396,35 +1320,35 @@ void User_ProxyLogin_req::MergeFrom(const User_ProxyLogin_req& from) {
   if (from._internal_user_iid() != 0) {
     _internal_set_user_iid(from._internal_user_iid());
   }
-  if (from._internal_proxytoken() != 0) {
-    _internal_set_proxytoken(from._internal_proxytoken());
+  if (from._internal_logintoken() != 0) {
+    _internal_set_logintoken(from._internal_logintoken());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void User_ProxyLogin_req::CopyFrom(const User_ProxyLogin_req& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_ProxyLogin_req)
+void User_ReLogin_req::CopyFrom(const User_ReLogin_req& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_ReLogin_req)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool User_ProxyLogin_req::IsInitialized() const {
+bool User_ReLogin_req::IsInitialized() const {
   return true;
 }
 
-void User_ProxyLogin_req::InternalSwap(User_ProxyLogin_req* other) {
+void User_ReLogin_req::InternalSwap(User_ReLogin_req* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_ProxyLogin_req, proxytoken_)
-      + sizeof(User_ProxyLogin_req::proxytoken_)
-      - PROTOBUF_FIELD_OFFSET(User_ProxyLogin_req, user_iid_)>(
+      PROTOBUF_FIELD_OFFSET(User_ReLogin_req, logintoken_)
+      + sizeof(User_ReLogin_req::logintoken_)
+      - PROTOBUF_FIELD_OFFSET(User_ReLogin_req, user_iid_)>(
           reinterpret_cast<char*>(&user_iid_),
           reinterpret_cast<char*>(&other->user_iid_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata User_ProxyLogin_req::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata User_ReLogin_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
       file_level_metadata_user_5flogin_2eproto[2]);
@@ -1432,66 +1356,66 @@ void User_ProxyLogin_req::InternalSwap(User_ProxyLogin_req* other) {
 
 // ===================================================================
 
-class User_ProxyLogin_ack::_Internal {
+class User_ReLogin_ack::_Internal {
  public:
-  using HasBits = decltype(std::declval<User_ProxyLogin_ack>()._has_bits_);
+  using HasBits = decltype(std::declval<User_ReLogin_ack>()._has_bits_);
   static void set_has_user_iid(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_proxytoken(HasBits* has_bits) {
+  static void set_has_logintoken(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
 };
 
-User_ProxyLogin_ack::User_ProxyLogin_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+User_ReLogin_ack::User_ReLogin_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
   }
-  // @@protoc_insertion_point(arena_constructor:PRO.User_ProxyLogin_ack)
+  // @@protoc_insertion_point(arena_constructor:PRO.User_ReLogin_ack)
 }
-User_ProxyLogin_ack::User_ProxyLogin_ack(const User_ProxyLogin_ack& from)
+User_ReLogin_ack::User_ReLogin_ack(const User_ReLogin_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&user_iid_, &from.user_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&user_iid_)) + sizeof(result_));
-  // @@protoc_insertion_point(copy_constructor:PRO.User_ProxyLogin_ack)
+  // @@protoc_insertion_point(copy_constructor:PRO.User_ReLogin_ack)
 }
 
-inline void User_ProxyLogin_ack::SharedCtor() {
+inline void User_ReLogin_ack::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&result_) -
     reinterpret_cast<char*>(&user_iid_)) + sizeof(result_));
 }
 
-User_ProxyLogin_ack::~User_ProxyLogin_ack() {
-  // @@protoc_insertion_point(destructor:PRO.User_ProxyLogin_ack)
+User_ReLogin_ack::~User_ReLogin_ack() {
+  // @@protoc_insertion_point(destructor:PRO.User_ReLogin_ack)
   if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void User_ProxyLogin_ack::SharedDtor() {
+inline void User_ReLogin_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
-void User_ProxyLogin_ack::ArenaDtor(void* object) {
-  User_ProxyLogin_ack* _this = reinterpret_cast< User_ProxyLogin_ack* >(object);
+void User_ReLogin_ack::ArenaDtor(void* object) {
+  User_ReLogin_ack* _this = reinterpret_cast< User_ReLogin_ack* >(object);
   (void)_this;
 }
-void User_ProxyLogin_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+void User_ReLogin_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 }
-void User_ProxyLogin_ack::SetCachedSize(int size) const {
+void User_ReLogin_ack::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
 
-void User_ProxyLogin_ack::Clear() {
-// @@protoc_insertion_point(message_clear_start:PRO.User_ProxyLogin_ack)
+void User_ReLogin_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_ReLogin_ack)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -1499,15 +1423,15 @@ void User_ProxyLogin_ack::Clear() {
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     ::memset(&user_iid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&proxytoken_) -
-        reinterpret_cast<char*>(&user_iid_)) + sizeof(proxytoken_));
+        reinterpret_cast<char*>(&logintoken_) -
+        reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
   }
   result_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* User_ProxyLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* User_ReLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
@@ -1531,11 +1455,11 @@ const char* User_ProxyLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAME
         } else
           goto handle_unusual;
         continue;
-      // optional int64 proxytoken = 3;
+      // optional int64 logintoken = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _Internal::set_has_proxytoken(&has_bits);
-          proxytoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _Internal::set_has_logintoken(&has_bits);
+          logintoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1564,9 +1488,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* User_ProxyLogin_ack::_InternalSerialize(
+uint8_t* User_ReLogin_ack::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_ProxyLogin_ack)
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_ReLogin_ack)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -1582,22 +1506,22 @@ uint8_t* User_ProxyLogin_ack::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_user_iid(), target);
   }
 
-  // optional int64 proxytoken = 3;
-  if (_internal_has_proxytoken()) {
+  // optional int64 logintoken = 3;
+  if (_internal_has_logintoken()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_proxytoken(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_logintoken(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_ProxyLogin_ack)
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_ReLogin_ack)
   return target;
 }
 
-size_t User_ProxyLogin_ack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PRO.User_ProxyLogin_ack)
+size_t User_ReLogin_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_ReLogin_ack)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -1611,9 +1535,9 @@ size_t User_ProxyLogin_ack::ByteSizeLong() const {
       total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
     }
 
-    // optional int64 proxytoken = 3;
+    // optional int64 logintoken = 3;
     if (cached_has_bits & 0x00000002u) {
-      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_proxytoken());
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_logintoken());
     }
 
   }
@@ -1625,21 +1549,21 @@ size_t User_ProxyLogin_ack::ByteSizeLong() const {
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_ProxyLogin_ack::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_ReLogin_ack::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    User_ProxyLogin_ack::MergeImpl
+    User_ReLogin_ack::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_ProxyLogin_ack::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_ReLogin_ack::GetClassData() const { return &_class_data_; }
 
-void User_ProxyLogin_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+void User_ReLogin_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
                       const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<User_ProxyLogin_ack *>(to)->MergeFrom(
-      static_cast<const User_ProxyLogin_ack &>(from));
+  static_cast<User_ReLogin_ack *>(to)->MergeFrom(
+      static_cast<const User_ReLogin_ack &>(from));
 }
 
 
-void User_ProxyLogin_ack::MergeFrom(const User_ProxyLogin_ack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_ProxyLogin_ack)
+void User_ReLogin_ack::MergeFrom(const User_ReLogin_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_ReLogin_ack)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1650,7 +1574,7 @@ void User_ProxyLogin_ack::MergeFrom(const User_ProxyLogin_ack& from) {
       user_iid_ = from.user_iid_;
     }
     if (cached_has_bits & 0x00000002u) {
-      proxytoken_ = from.proxytoken_;
+      logintoken_ = from.logintoken_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -1660,30 +1584,30 @@ void User_ProxyLogin_ack::MergeFrom(const User_ProxyLogin_ack& from) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void User_ProxyLogin_ack::CopyFrom(const User_ProxyLogin_ack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_ProxyLogin_ack)
+void User_ReLogin_ack::CopyFrom(const User_ReLogin_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_ReLogin_ack)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool User_ProxyLogin_ack::IsInitialized() const {
+bool User_ReLogin_ack::IsInitialized() const {
   return true;
 }
 
-void User_ProxyLogin_ack::InternalSwap(User_ProxyLogin_ack* other) {
+void User_ReLogin_ack::InternalSwap(User_ReLogin_ack* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_ProxyLogin_ack, result_)
-      + sizeof(User_ProxyLogin_ack::result_)
-      - PROTOBUF_FIELD_OFFSET(User_ProxyLogin_ack, user_iid_)>(
+      PROTOBUF_FIELD_OFFSET(User_ReLogin_ack, result_)
+      + sizeof(User_ReLogin_ack::result_)
+      - PROTOBUF_FIELD_OFFSET(User_ReLogin_ack, user_iid_)>(
           reinterpret_cast<char*>(&user_iid_),
           reinterpret_cast<char*>(&other->user_iid_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata User_ProxyLogin_ack::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata User_ReLogin_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
       file_level_metadata_user_5flogin_2eproto[3]);
@@ -1726,6 +1650,123 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_Logout_ntf::GetClassData(
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
       file_level_metadata_user_5flogin_2eproto[4]);
+}
+
+// ===================================================================
+
+class User_GateLost_ntf::_Internal {
+ public:
+};
+
+User_GateLost_ntf::User_GateLost_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:PRO.User_GateLost_ntf)
+}
+User_GateLost_ntf::User_GateLost_ntf(const User_GateLost_ntf& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:PRO.User_GateLost_ntf)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_GateLost_ntf::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_GateLost_ntf::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata User_GateLost_ntf::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
+      file_level_metadata_user_5flogin_2eproto[5]);
+}
+
+// ===================================================================
+
+class User_Active_ntf::_Internal {
+ public:
+};
+
+User_Active_ntf::User_Active_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:PRO.User_Active_ntf)
+}
+User_Active_ntf::User_Active_ntf(const User_Active_ntf& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:PRO.User_Active_ntf)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_Active_ntf::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_Active_ntf::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata User_Active_ntf::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
+      file_level_metadata_user_5flogin_2eproto[6]);
+}
+
+// ===================================================================
+
+class User_RoleList_req::_Internal {
+ public:
+};
+
+User_RoleList_req::User_RoleList_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:PRO.User_RoleList_req)
+}
+User_RoleList_req::User_RoleList_req(const User_RoleList_req& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:PRO.User_RoleList_req)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_RoleList_req::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleList_req::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata User_RoleList_req::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
+      file_level_metadata_user_5flogin_2eproto[7]);
 }
 
 // ===================================================================
@@ -1926,7 +1967,7 @@ void User_RoleList_ack::InternalSwap(User_RoleList_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleList_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[5]);
+      file_level_metadata_user_5flogin_2eproto[8]);
 }
 
 // ===================================================================
@@ -2129,7 +2170,7 @@ void User_RoleCreate_req::InternalSwap(User_RoleCreate_req* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[6]);
+      file_level_metadata_user_5flogin_2eproto[9]);
 }
 
 // ===================================================================
@@ -2351,7 +2392,7 @@ void User_RoleCreate_ack::InternalSwap(User_RoleCreate_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[7]);
+      file_level_metadata_user_5flogin_2eproto[10]);
 }
 
 // ===================================================================
@@ -2529,7 +2570,7 @@ void User_RoleSelect_req::InternalSwap(User_RoleSelect_req* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[8]);
+      file_level_metadata_user_5flogin_2eproto[11]);
 }
 
 // ===================================================================
@@ -2741,7 +2782,7 @@ void User_RoleSelect_ack::InternalSwap(User_RoleSelect_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[9]);
+      file_level_metadata_user_5flogin_2eproto[12]);
 }
 
 // ===================================================================
@@ -2997,7 +3038,7 @@ void User_RoleDetailA_ntf::InternalSwap(User_RoleDetailA_ntf* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailA_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[10]);
+      file_level_metadata_user_5flogin_2eproto[13]);
 }
 
 // ===================================================================
@@ -3198,7 +3239,7 @@ void User_RoleDetailB_ntf::InternalSwap(User_RoleDetailB_ntf* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailB_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[11]);
+      file_level_metadata_user_5flogin_2eproto[14]);
 }
 
 // ===================================================================
@@ -3237,7 +3278,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleDetailEnd_ntf::GetCla
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailEnd_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[12]);
+      file_level_metadata_user_5flogin_2eproto[15]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3249,14 +3290,23 @@ template<> PROTOBUF_NOINLINE ::PRO::User_Login_req* Arena::CreateMaybeMessage< :
 template<> PROTOBUF_NOINLINE ::PRO::User_Login_ack* Arena::CreateMaybeMessage< ::PRO::User_Login_ack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::User_Login_ack >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PRO::User_ProxyLogin_req* Arena::CreateMaybeMessage< ::PRO::User_ProxyLogin_req >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::User_ProxyLogin_req >(arena);
+template<> PROTOBUF_NOINLINE ::PRO::User_ReLogin_req* Arena::CreateMaybeMessage< ::PRO::User_ReLogin_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_ReLogin_req >(arena);
 }
-template<> PROTOBUF_NOINLINE ::PRO::User_ProxyLogin_ack* Arena::CreateMaybeMessage< ::PRO::User_ProxyLogin_ack >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PRO::User_ProxyLogin_ack >(arena);
+template<> PROTOBUF_NOINLINE ::PRO::User_ReLogin_ack* Arena::CreateMaybeMessage< ::PRO::User_ReLogin_ack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_ReLogin_ack >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PRO::User_Logout_ntf* Arena::CreateMaybeMessage< ::PRO::User_Logout_ntf >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::User_Logout_ntf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::User_GateLost_ntf* Arena::CreateMaybeMessage< ::PRO::User_GateLost_ntf >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_GateLost_ntf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::User_Active_ntf* Arena::CreateMaybeMessage< ::PRO::User_Active_ntf >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_Active_ntf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::User_RoleList_req* Arena::CreateMaybeMessage< ::PRO::User_RoleList_req >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_RoleList_req >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PRO::User_RoleList_ack* Arena::CreateMaybeMessage< ::PRO::User_RoleList_ack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::User_RoleList_ack >(arena);

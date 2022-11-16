@@ -32,19 +32,6 @@ void GamePlayerCtrl::ask_gateslot_sync()
 
 void GamePlayerCtrl::on_mth_gateslot_sync(void*)
 {
-	Res_SyncGateSlot_ntf* ntf = new Res_SyncGateSlot_ntf();
-	
-	++slot_sequence_;
-	ntf->set_syncsequence(slot_sequence_);
-	ntf->set_gateiid(EurekaClusterClient::instance().get_myiid());
-	
-	{
-		ThreadLockWrapper tl(lock_);
-
-		ntf->set_freeslots(free_slot_num_);
-	}
-
-	//svrApp.send_to_homeservice(ntf);
 }
 
 void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish)

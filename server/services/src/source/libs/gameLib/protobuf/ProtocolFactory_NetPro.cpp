@@ -53,21 +53,17 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Robot_State_Rpt>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_RPT);
 	regist_protocal<Robot_State_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_ACK);
 
-	//res_internal.proto
-	regist_protocal<Res_SyncGateSlot_ntf>(ERK_PROTYPE::RES_SYNCGATESLOT_NTF);
-
-	//gatehome_internal.proto
-	regist_protocal<GHS_UserInit_req>(GATEHOME_PROTYPE::GHS_USERINIT_REQ);
-	regist_protocal<GHS_UserLogout_ntf>(GATEHOME_PROTYPE::GHS_USERLOGOUT_NTF);
-	regist_protocal<GHS_RoleDetail_ask>(GATEHOME_PROTYPE::GHS_ROLEDETAIL_ASK);
 
 	//自定义协议
 	regist_protocal<User_Login_req>(USER_PROTYPE::USER_LOGIN_REQ);
 	regist_protocal<User_Login_ack>(USER_PROTYPE::USER_LOGIN_ACK);
-	regist_protocal<User_ProxyLogin_req>(USER_PROTYPE::USER_PROXYLOGIN_REQ);
-	regist_protocal<User_ProxyLogin_ack>(USER_PROTYPE::USER_PROXYLOGIN_ACK);
+	regist_protocal<User_ReLogin_req>(USER_PROTYPE::USER_RELOGIN_REQ);
+	regist_protocal<User_ReLogin_ack>(USER_PROTYPE::USER_RELOGIN_ACK);
 	regist_protocal<User_Logout_ntf>(USER_PROTYPE::USER_LOGOUT_NTF);
+	regist_protocal<User_GateLost_ntf>(USER_PROTYPE::USER_GATELOST_NTF);
+	regist_protocal<User_Active_ntf>(USER_PROTYPE::USER_ACTIVE_NTF);
 
+	regist_protocal<User_RoleList_req>(USER_PROTYPE::USER_ROLELIST_REQ);
 	regist_protocal<User_RoleList_ack>(USER_PROTYPE::USER_ROLELIST_ACK);
 	regist_protocal<User_RoleSelect_req>(USER_PROTYPE::USER_ROLESELECT_REQ);
 	regist_protocal<User_RoleSelect_ack>(USER_PROTYPE::USER_ROLESELECT_ACK);

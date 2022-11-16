@@ -23,8 +23,6 @@
 
 #include <gameLib/protobuf/cpp/proto_iid_internal.pb.h>
 #include <gameLib/protobuf/cpp/eureka_internal.pb.h>
-#include <gameLib/protobuf/cpp/res_internal.pb.h>
-#include <gameLib/protobuf/cpp/gatehome_internal.pb.h>
 
 #include <gameLib/protobuf/cpp/robot_test_internal.pb.h>
 

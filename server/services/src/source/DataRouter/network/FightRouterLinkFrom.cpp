@@ -35,13 +35,8 @@ FightRouterLinkFrom::~FightRouterLinkFrom()
 void FightRouterLinkFrom::init_protocolhead()
 {
 	s_head_.router_balance_ = false;
-	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_DATAROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_FIGHTROUTER;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
 }
 
 void FightRouterLinkFrom::force_linkclose()

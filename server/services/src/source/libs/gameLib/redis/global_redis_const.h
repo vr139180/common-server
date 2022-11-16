@@ -23,38 +23,29 @@
 
 #define USED_REDISKEY_GLOBAL_NS using namespace rdkey::global;
 
-#define REDIS_KEYDEFINED( KEY, VAL) static const char* KEY = VAL
+#define REDIS_KEY_DEF( KEY, VAL) static const char* KEY = VAL
+#define REDIS_FIELD_DEF( KEY, VAL) static const char* KEY = VAL
 
 REDISKEY_GLOBAL_NS_BEGIN
 
 //----------------------------全局自增id-----------------------------------
-REDIS_KEYDEFINED( GLOBAL_IDGEN_HKEY, "-GLOBAL:IDGEN-");
-REDIS_KEYDEFINED( GLOBAL_IDGEN_SERVICE_F, "_svr:iid");
-REDIS_KEYDEFINED( GLOBAL_IDGEN_DBID, "_db_id:%s");
+REDIS_KEY_DEF( GLOBAL_IDGEN_HKEY, "-GLOBAL:IDGEN-");
+REDIS_FIELD_DEF( GLOBAL_IDGEN_DBID, "_db_id:%s");
 
 //----------------------------分布式任务 前缀-------------------------------
-REDIS_KEYDEFINED(GLOBAL_DTASK_PREFIX, "-DTASK:%s");
+REDIS_KEY_DEF(GLOBAL_DTASK_PREFIX, "-DTASK:#%s");
 
 //eureka 状态维护任务
-REDIS_KEYDEFINED(GLOBAL_DTASK_EUREKAMAINTNCE, "eureka-maintnce");
+REDIS_KEY_DEF(GLOBAL_DTASK_EUREKAMAINTNCE, "eureka-maintnce");
 
 //------------------------sEureka cluster相关------------------------------
 //存放eureka master节点信息, hash
-REDIS_KEYDEFINED(EUREKA_MASTER_NODE, "_EUREKA:MASTER");
-REDIS_KEYDEFINED(FIELD_MASTER_NODE_IID, "iid");
-REDIS_KEYDEFINED(FIELD_MASTER_NODE_SVR, "svrinfo");
+REDIS_KEY_DEF(EUREKA_MASTER_NODE, "_EUREKA:MASTER");
+REDIS_FIELD_DEF(FIELD_MASTER_NODE_IID, "iid");
+REDIS_FIELD_DEF(FIELD_MASTER_NODE_SVR, "svrinfo");
 
 //master节点失效时间 4 seconds
 #define EUREKA_MASTER_NODE_TIMEOUT	4*1000
-
-//-----------------------服务注册信息-------------------------------------
-
-//服务有效性维护
-REDIS_KEYDEFINED(SERVICE_MAINTNCE, "_SVRS:%s:QUEUE");
-
-
-
-//用户数据定义
 
 REDISKEY_GLOBAL_NS_END
 

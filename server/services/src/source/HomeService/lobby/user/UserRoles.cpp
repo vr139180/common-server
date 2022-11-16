@@ -74,16 +74,16 @@ bool UserRoles::load_from_redis(S_INT_64 uid, RedisClient* rdv)
 	roles_data_.Clear();
 	roles_data_update_ = false;
 
-	std::string key = rdv->build_rediskey(USER_ROLES, uid);
-	return rdv->get(key.c_str(), &roles_data_, REDIS_USER_LIFETIME);
+	std::string key = rdv->build_rediskey(USER_USERINFO, uid);
+	return rdv->get_hashobject(key.c_str(), USER_UINFO_F_ROLES, &roles_data_);
 }
 
 bool UserRoles::update_redis_cache(S_INT_64 uid, RedisClient* rdv)
 {
 	roles_data_update_ = false;
-	std::string key = rdv->build_rediskey(USER_ROLES, uid);
+	std::string key = rdv->build_rediskey(USER_USERINFO, uid);
 	
-	if (rdv->add(key.c_str(), &roles_data_, svrApp.get_redisprotocache(), REDIS_USER_LIFETIME))
+	if( rdv->set_hashobject( key.c_str(), USER_UINFO_F_ROLES, &roles_data_, svrApp.get_redisprotocache()))
 	{
 		roles_data_update_ = false;
 		return true;

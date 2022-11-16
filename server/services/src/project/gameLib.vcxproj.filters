@@ -67,9 +67,6 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.h">
-      <Filter>protobuf\cpp</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\libs\gameLib\commons\SessionMthHolder.h">
       <Filter>commons</Filter>
     </ClInclude>
@@ -77,9 +74,6 @@
       <Filter>commons</Filter>
     </ClInclude>
     <ClInclude Include="..\source\libs\gameLib\global_const.h" />
-    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\gatehome_internal.pb.h">
-      <Filter>protobuf\cpp</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
@@ -214,12 +208,6 @@
       <Filter>protobuf\cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\user_login.pb.cc">
-      <Filter>protobuf\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\res_internal.pb.cc">
-      <Filter>protobuf\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\gatehome_internal.pb.cc">
       <Filter>protobuf\cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\proto_iid_internal.pb.cc">

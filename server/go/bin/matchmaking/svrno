@@ -1,4 +1,4 @@
-<app ip="127.0.0.1" port="6501" loglevel="debug" logdir="" logfile="matchmaking.log" confsrc="filesrc">
+<app loglevel="debug" logdir="" logfile="matchmaking.log" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
 </app>

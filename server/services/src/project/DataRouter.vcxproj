@@ -136,7 +136,6 @@
     <ClCompile Include="..\source\DataRouter\network\FightRouterLinkFrom.cpp" />
     <ClCompile Include="..\source\DataRouter\network\GateServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\DataRouter\network\HomeServiceLinkFrom.cpp" />
-    <ClCompile Include="..\source\DataRouter\network\LoginServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\DataRouter\network\RouterSession.cpp" />
     <ClCompile Include="..\source\DataRouter\DataRouterApp.cpp" />
     <ClCompile Include="..\source\DataRouter\DataRouterApp_NetCmd.cpp" />
@@ -149,7 +148,6 @@
     <ClInclude Include="..\source\DataRouter\network\FightRouterLinkFrom.h" />
     <ClInclude Include="..\source\DataRouter\network\GateServiceLinkFrom.h" />
     <ClInclude Include="..\source\DataRouter\network\HomeServiceLinkFrom.h" />
-    <ClInclude Include="..\source\DataRouter\network\LoginServiceLinkFrom.h" />
     <ClInclude Include="..\source\DataRouter\network\RouterSession.h" />
     <ClInclude Include="..\source\DataRouter\DataRouterApp.h" />
     <ClInclude Include="..\source\DataRouter\network\ServiceRouterLinkFrom.h" />

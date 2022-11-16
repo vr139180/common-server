@@ -15,7 +15,8 @@
 
 #include <cmsLib/ServerAppWrapper.h>
 
-#include "LoginServiceApp.h"
+#include "StateServiceApp.h"
+
 #include <cmsLib/GlobalSettings.h>
 
 #include <cmsLib/wincrash/crashhandler.h>
@@ -27,7 +28,6 @@
 	int main( s32 argc, char* argv[] )
 #endif
 	{
-
 #if EW_PLATFORM_WINDOWS
 		SetUnhandledExceptionFilter(HandleCrash);
 #endif

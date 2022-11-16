@@ -78,13 +78,12 @@ enum ERK_PROTYPE : int {
   SVR_SERVICEBINDSERVICE_REQ = 50,
   SVR_SERVICEBINDSERVICE_ACK = 51,
   SVR_ROUTERONLINE_NTF = 52,
-  RES_SYNCGATESLOT_NTF = 100,
   ERK_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   ERK_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool ERK_PROTYPE_IsValid(int value);
 constexpr ERK_PROTYPE ERK_PROTYPE_MIN = UNIVERSAL_1;
-constexpr ERK_PROTYPE ERK_PROTYPE_MAX = RES_SYNCGATESLOT_NTF;
+constexpr ERK_PROTYPE ERK_PROTYPE_MAX = SVR_ROUTERONLINE_NTF;
 constexpr int ERK_PROTYPE_ARRAYSIZE = ERK_PROTYPE_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ERK_PROTYPE_descriptor();
@@ -100,33 +99,6 @@ inline bool ERK_PROTYPE_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ERK_PROTYPE* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ERK_PROTYPE>(
     ERK_PROTYPE_descriptor(), name, value);
-}
-enum GATEHOME_PROTYPE : int {
-  UNIVERSAL_200 = 0,
-  GHS_USERINIT_REQ = 201,
-  GHS_USERLOGOUT_NTF = 202,
-  GHS_ROLEDETAIL_ASK = 203,
-  GATEHOME_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  GATEHOME_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
-};
-bool GATEHOME_PROTYPE_IsValid(int value);
-constexpr GATEHOME_PROTYPE GATEHOME_PROTYPE_MIN = UNIVERSAL_200;
-constexpr GATEHOME_PROTYPE GATEHOME_PROTYPE_MAX = GHS_ROLEDETAIL_ASK;
-constexpr int GATEHOME_PROTYPE_ARRAYSIZE = GATEHOME_PROTYPE_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* GATEHOME_PROTYPE_descriptor();
-template<typename T>
-inline const std::string& GATEHOME_PROTYPE_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, GATEHOME_PROTYPE>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function GATEHOME_PROTYPE_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    GATEHOME_PROTYPE_descriptor(), enum_t_value);
-}
-inline bool GATEHOME_PROTYPE_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, GATEHOME_PROTYPE* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<GATEHOME_PROTYPE>(
-    GATEHOME_PROTYPE_descriptor(), name, value);
 }
 enum ROBOTTEST_PROTYPE : int {
   UNIVERSAL_300 = 0,
@@ -184,11 +156,6 @@ template <> struct is_proto_enum< ::PRO::ERK_PROTYPE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::PRO::ERK_PROTYPE>() {
   return ::PRO::ERK_PROTYPE_descriptor();
-}
-template <> struct is_proto_enum< ::PRO::GATEHOME_PROTYPE> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::PRO::GATEHOME_PROTYPE>() {
-  return ::PRO::GATEHOME_PROTYPE_descriptor();
 }
 template <> struct is_proto_enum< ::PRO::ROBOTTEST_PROTYPE> : ::std::true_type {};
 template <>

@@ -36,11 +36,9 @@ DataRouterLinkTo::DataRouterLinkTo(ServiceNodeInfo* pnode): LinkToBase()
 void DataRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = true;
+	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_HOME;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
 }
 
 void DataRouterLinkTo::send_netprotocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
@@ -132,6 +130,10 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 		SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
 			boost::bind(&DataRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
+	}
+	else
+	{
+		svrApp.dispatch_to_lobby(p_msg.release());
 	}
 }
 

@@ -1,4 +1,4 @@
-﻿<app ip="127.0.0.1" port="7001" neths="2" confsrc="filesrc">
+﻿<app ip="127.0.0.1" port="5001" neths="2" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
 </app>

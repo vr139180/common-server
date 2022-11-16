@@ -17,7 +17,6 @@ private static final long serialVersionUID = 0L;
   }
   private User_Login_ack() {
     logintoken_ = "";
-    proxyip_ = "";
   }
 
   @java.lang.Override
@@ -72,22 +71,6 @@ private static final long serialVersionUID = 0L;
             logintoken_ = s;
             break;
           }
-          case 80: {
-            bitField0_ |= 0x00000004;
-            proxytoken_ = input.readInt64();
-            break;
-          }
-          case 90: {
-            java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000008;
-            proxyip_ = s;
-            break;
-          }
-          case 96: {
-            bitField0_ |= 0x00000010;
-            proxyport_ = input.readInt32();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -140,7 +123,7 @@ private static final long serialVersionUID = 0L;
   private int result_;
   /**
    * <pre>
-   *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+   *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
    * </pre>
    *
    * <code>int32 result = 2;</code>
@@ -236,98 +219,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PROXYTOKEN_FIELD_NUMBER = 10;
-  private long proxytoken_;
-  /**
-   * <pre>
-   *proxytoken
-   * </pre>
-   *
-   * <code>optional int64 proxytoken = 10;</code>
-   * @return Whether the proxytoken field is set.
-   */
-  @java.lang.Override
-  public boolean hasProxytoken() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <pre>
-   *proxytoken
-   * </pre>
-   *
-   * <code>optional int64 proxytoken = 10;</code>
-   * @return The proxytoken.
-   */
-  @java.lang.Override
-  public long getProxytoken() {
-    return proxytoken_;
-  }
-
-  public static final int PROXYIP_FIELD_NUMBER = 11;
-  private volatile java.lang.Object proxyip_;
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return Whether the proxyip field is set.
-   */
-  @java.lang.Override
-  public boolean hasProxyip() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return The proxyip.
-   */
-  @java.lang.Override
-  public java.lang.String getProxyip() {
-    java.lang.Object ref = proxyip_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      proxyip_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return The bytes for proxyip.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getProxyipBytes() {
-    java.lang.Object ref = proxyip_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      proxyip_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int PROXYPORT_FIELD_NUMBER = 12;
-  private int proxyport_;
-  /**
-   * <code>optional int32 proxyport = 12;</code>
-   * @return Whether the proxyport field is set.
-   */
-  @java.lang.Override
-  public boolean hasProxyport() {
-    return ((bitField0_ & 0x00000010) != 0);
-  }
-  /**
-   * <code>optional int32 proxyport = 12;</code>
-   * @return The proxyport.
-   */
-  @java.lang.Override
-  public int getProxyport() {
-    return proxyport_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -354,15 +245,6 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, logintoken_);
     }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt64(10, proxytoken_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, proxyip_);
-    }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeInt32(12, proxyport_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -386,17 +268,6 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, logintoken_);
-    }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(10, proxytoken_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, proxyip_);
-    }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(12, proxyport_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -427,21 +298,6 @@ private static final long serialVersionUID = 0L;
       if (!getLogintoken()
           .equals(other.getLogintoken())) return false;
     }
-    if (hasProxytoken() != other.hasProxytoken()) return false;
-    if (hasProxytoken()) {
-      if (getProxytoken()
-          != other.getProxytoken()) return false;
-    }
-    if (hasProxyip() != other.hasProxyip()) return false;
-    if (hasProxyip()) {
-      if (!getProxyip()
-          .equals(other.getProxyip())) return false;
-    }
-    if (hasProxyport() != other.hasProxyport()) return false;
-    if (hasProxyport()) {
-      if (getProxyport()
-          != other.getProxyport()) return false;
-    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -465,19 +321,6 @@ private static final long serialVersionUID = 0L;
     if (hasLogintoken()) {
       hash = (37 * hash) + LOGINTOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getLogintoken().hashCode();
-    }
-    if (hasProxytoken()) {
-      hash = (37 * hash) + PROXYTOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getProxytoken());
-    }
-    if (hasProxyip()) {
-      hash = (37 * hash) + PROXYIP_FIELD_NUMBER;
-      hash = (53 * hash) + getProxyip().hashCode();
-    }
-    if (hasProxyport()) {
-      hash = (37 * hash) + PROXYPORT_FIELD_NUMBER;
-      hash = (53 * hash) + getProxyport();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -620,12 +463,6 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       logintoken_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
-      proxytoken_ = 0L;
-      bitField0_ = (bitField0_ & ~0x00000004);
-      proxyip_ = "";
-      bitField0_ = (bitField0_ & ~0x00000008);
-      proxyport_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
@@ -664,18 +501,6 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000002;
       }
       result.logintoken_ = logintoken_;
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.proxytoken_ = proxytoken_;
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        to_bitField0_ |= 0x00000008;
-      }
-      result.proxyip_ = proxyip_;
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.proxyport_ = proxyport_;
-        to_bitField0_ |= 0x00000010;
-      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -738,17 +563,6 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000002;
         logintoken_ = other.logintoken_;
         onChanged();
-      }
-      if (other.hasProxytoken()) {
-        setProxytoken(other.getProxytoken());
-      }
-      if (other.hasProxyip()) {
-        bitField0_ |= 0x00000008;
-        proxyip_ = other.proxyip_;
-        onChanged();
-      }
-      if (other.hasProxyport()) {
-        setProxyport(other.getProxyport());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -826,7 +640,7 @@ private static final long serialVersionUID = 0L;
     private int result_ ;
     /**
      * <pre>
-     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
      * </pre>
      *
      * <code>int32 result = 2;</code>
@@ -838,7 +652,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
      * </pre>
      *
      * <code>int32 result = 2;</code>
@@ -853,7 +667,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+     *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
      * </pre>
      *
      * <code>int32 result = 2;</code>
@@ -1024,183 +838,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       bitField0_ |= 0x00000002;
       logintoken_ = value;
-      onChanged();
-      return this;
-    }
-
-    private long proxytoken_ ;
-    /**
-     * <pre>
-     *proxytoken
-     * </pre>
-     *
-     * <code>optional int64 proxytoken = 10;</code>
-     * @return Whether the proxytoken field is set.
-     */
-    @java.lang.Override
-    public boolean hasProxytoken() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <pre>
-     *proxytoken
-     * </pre>
-     *
-     * <code>optional int64 proxytoken = 10;</code>
-     * @return The proxytoken.
-     */
-    @java.lang.Override
-    public long getProxytoken() {
-      return proxytoken_;
-    }
-    /**
-     * <pre>
-     *proxytoken
-     * </pre>
-     *
-     * <code>optional int64 proxytoken = 10;</code>
-     * @param value The proxytoken to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProxytoken(long value) {
-      bitField0_ |= 0x00000004;
-      proxytoken_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *proxytoken
-     * </pre>
-     *
-     * <code>optional int64 proxytoken = 10;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearProxytoken() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      proxytoken_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object proxyip_ = "";
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @return Whether the proxyip field is set.
-     */
-    public boolean hasProxyip() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @return The proxyip.
-     */
-    public java.lang.String getProxyip() {
-      java.lang.Object ref = proxyip_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        proxyip_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @return The bytes for proxyip.
-     */
-    public com.google.protobuf.ByteString
-        getProxyipBytes() {
-      java.lang.Object ref = proxyip_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        proxyip_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @param value The proxyip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProxyip(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-      proxyip_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearProxyip() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      proxyip_ = getDefaultInstance().getProxyip();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string proxyip = 11;</code>
-     * @param value The bytes for proxyip to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProxyipBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000008;
-      proxyip_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int proxyport_ ;
-    /**
-     * <code>optional int32 proxyport = 12;</code>
-     * @return Whether the proxyport field is set.
-     */
-    @java.lang.Override
-    public boolean hasProxyport() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional int32 proxyport = 12;</code>
-     * @return The proxyport.
-     */
-    @java.lang.Override
-    public int getProxyport() {
-      return proxyport_;
-    }
-    /**
-     * <code>optional int32 proxyport = 12;</code>
-     * @param value The proxyport to set.
-     * @return This builder for chaining.
-     */
-    public Builder setProxyport(int value) {
-      bitField0_ |= 0x00000010;
-      proxyport_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 proxyport = 12;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearProxyport() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      proxyport_ = 0;
       onChanged();
       return this;
     }

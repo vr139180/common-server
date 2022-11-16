@@ -7,18 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmsLib", "cmsLib.vcxproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StateService", "StateService.vcxproj", "{B93995AC-E0F7-44D2-9389-C372DEFAFF52}"
 	ProjectSection(ProjectDependencies) = postProject
-		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9} = {E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}
 		{53D53FF1-2475-485F-9343-407DE29E8AC6} = {53D53FF1-2475-485F-9343-407DE29E8AC6}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gameLib", "gameLib.vcxproj", "{53D53FF1-2475-485F-9343-407DE29E8AC6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "taskLib", "taskLib.vcxproj", "{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{53D53FF1-2475-485F-9343-407DE29E8AC6} = {53D53FF1-2475-485F-9343-407DE29E8AC6}
 	EndProjectSection
 EndProject
 Global
@@ -39,10 +33,6 @@ Global
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Debug|x64.Build.0 = Debug|x64
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.ActiveCfg = Release|x64
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.Build.0 = Release|x64
-		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Debug|x64.ActiveCfg = Debug|x64
-		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Debug|x64.Build.0 = Debug|x64
-		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Release|x64.ActiveCfg = Release|x64
-		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,50 +23,74 @@
 
 #define USED_REDISKEY_USER_NS using namespace rdkey::user;
 
-#define REDIS_KEYDEFINEDX( KEY, VAL) static const char* KEY = VAL
+#define REDIS_KEY_DEF( KEY, VAL) static const char* KEY = VAL
+#define REDIS_FIELD_DEF( KEY, VAL) static const char* KEY = VAL
 
 //--------------------------------------------------------------------------------
 REDISKEY_USER_NS_BEGIN
 
+//---------------------------登陆相关-------------------------------------
+//和账户相关的信息 hash %s=account
+REDIS_KEY_DEF(USER_ACCOUNT, "-USERS:ACC:#%s");
+REDIS_FIELD_DEF(USER_ACCOUNT_F_USERID, "userid");
+REDIS_FIELD_DEF(USER_ACCOUNT_F_TOKEN, "token");
+
+//userid账户相关 hash %lld=userid
+REDIS_KEY_DEF(USER_USERINFO, "-USERS:USR:#%lld");
+REDIS_FIELD_DEF(USER_UINFO_F_USERID, "userid");
+REDIS_FIELD_DEF(USER_UINFO_F_TOKEN, "token");
+REDIS_FIELD_DEF(USER_UINFO_F_DISABLE, "disable");
+REDIS_FIELD_DEF(USER_UINFO_F_LOGINTIME, "logintime");
+REDIS_FIELD_DEF(USER_UINFO_F_RELOGIN, "relogin");
+REDIS_FIELD_DEF(USER_UINFO_F_ROLES, "roles");
+
+//在线用户信息 set %d=0
+//score userid, value timestamp
+REDIS_KEY_DEF(USER_ONLINES, "-USERS:ONLINE:#%d");
+
+//用户激活定时 10s
+#define USER_ACTIVE_TIME_STEP	10*1000
+//断线超时 30s
+#define USER_LOSTCONN_TIME		30*1000
+
+//---------------------------用户数据相关-----------------------------------
 //datasync 使用的用户数据变更set
 //memeber roleiid, field timestamp
-REDIS_KEYDEFINEDX(DATASYNC_USERS, "-DATASYNC-:users");
+REDIS_KEY_DEF(DATASYNC_USERS, "-DATASYNC-:users");
 
 
 //table id generator
-REDIS_KEYDEFINEDX(DBID_ROLE_BASEINFO, "role_baseinfo");
-REDIS_KEYDEFINEDX(DBID_USER_HOME_STRUCTURE, "user_home_structure");
-REDIS_KEYDEFINEDX(DBID_USER_PETS, "user_pets");
+REDIS_KEY_DEF(DBID_ROLE_BASEINFO, "role_baseinfo");
+REDIS_KEY_DEF(DBID_USER_HOME_STRUCTURE, "user_home_structure");
+REDIS_KEY_DEF(DBID_USER_PETS, "user_pets");
 
-REDIS_KEYDEFINEDX(DBID_USER_TASKGROUP, "user_taskgroup");
-REDIS_KEYDEFINEDX(DBID_USER_TASKINFO, "user_taskinfo");
-
+REDIS_KEY_DEF(DBID_USER_TASKGROUP, "user_taskgroup");
+REDIS_KEY_DEF(DBID_USER_TASKINFO, "user_taskinfo");
 //life time 14 days
+
 #define REDIS_USER_LIFETIME	14*24*60*60*1000
 
-//lld=user_iid
-REDIS_KEYDEFINEDX(USER_ROLES, "-USERS-ROLES:%lld");
 //role detail lld=role_iid
-REDIS_KEYDEFINEDX(USER_DETAIL, "-USERS:%lld");
+REDIS_KEY_DEF(USER_DETAIL, "-USERS:#%lld");
 //userbase
-REDIS_KEYDEFINEDX(USER_DETAIL_USERBASE, "user:base");
-REDIS_KEYDEFINEDX(USER_DETAIL_USERHOME, "user:home");
-REDIS_KEYDEFINEDX(USER_DETAIL_BUILDING, "build:items");
-REDIS_KEYDEFINEDX(USER_DETAIL_BUILDING_DEL, "build:dels");
-REDIS_KEYDEFINEDX(USER_DETAIL_PET, "pet:items");
-REDIS_KEYDEFINEDX(USER_DETAIL_PET_DEL, "pet:dels");
+REDIS_FIELD_DEF(USER_DETAIL_USERBASE, "user:base");
+REDIS_FIELD_DEF(USER_DETAIL_USERHOME, "user:home");
+REDIS_FIELD_DEF(USER_DETAIL_BUILDING, "build:items");
+REDIS_FIELD_DEF(USER_DETAIL_BUILDING_DEL, "build:dels");
+REDIS_FIELD_DEF(USER_DETAIL_PET, "pet:items");
+REDIS_FIELD_DEF(USER_DETAIL_PET_DEL, "pet:dels");
 
-REDIS_KEYDEFINEDX(USER_DETAIL_TASKS, "tsk:tsks");
-REDIS_KEYDEFINEDX(USER_DETAIL_TASKS_END, "tsk:tsks_end");
-REDIS_KEYDEFINEDX(USER_DETAIL_TASKGROUPS, "tsk:groups");
-REDIS_KEYDEFINEDX(USER_DETAIL_TASKGROUPS_END, "tsk:groups_end");
+REDIS_FIELD_DEF(USER_DETAIL_TASKS, "tsk:tsks");
+REDIS_FIELD_DEF(USER_DETAIL_TASKS_END, "tsk:tsks_end");
+REDIS_FIELD_DEF(USER_DETAIL_TASKGROUPS, "tsk:groups");
+REDIS_FIELD_DEF(USER_DETAIL_TASKGROUPS_END, "tsk:groups_end");
 
 //数据版本控制项
 //redis上的版本号
-REDIS_KEYDEFINEDX(USER_DETAIL_VERSION_RD, "ver:rv");
-REDIS_KEYDEFINEDX(USER_DETAIL_VERSION_DB, "ver:db");
+REDIS_FIELD_DEF(USER_DETAIL_VERSION_RD, "ver:rv");
+REDIS_FIELD_DEF(USER_DETAIL_VERSION_DB, "ver:db");
 //更改来源,记录home service iid
-REDIS_KEYDEFINEDX(USER_DETAIL_VERSION_SOURCE, "ver:src");
+REDIS_FIELD_DEF(USER_DETAIL_VERSION_SOURCE, "ver:src");
 
 REDISKEY_USER_NS_END
 //--------------------------------------------------------------------------------

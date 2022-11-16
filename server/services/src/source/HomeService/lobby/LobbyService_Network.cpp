@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "lobby/LobbyService.h"
 
 #include <gameLib/protobuf/Proto_all.h>
@@ -9,12 +24,11 @@ USE_PROTOCOL_NAMESPACE
 
 void LobbyService::InitNetMessage()
 {
-	REGISTERMSG(GATEHOME_PROTYPE::GHS_USERINIT_REQ, &LobbyService::on_lb_ghuserinit_req, this);
-	REGISTERMSG(GATEHOME_PROTYPE::GHS_USERLOGOUT_NTF, &LobbyService::on_lb_ghuserlogout_ntf, this);
+	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &LobbyService::on_lb_userlogout_ntf, this);
 
+	REGISTERMSG(USER_PROTYPE::USER_ROLELIST_REQ, &LobbyService::on_lb_rolelist_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLECREATE_REQ, &LobbyService::on_lb_rolecreate_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_REQ, &LobbyService::on_lb_roleselect_req, this);
-	REGISTERMSG(GATEHOME_PROTYPE::GHS_ROLEDETAIL_ASK, &LobbyService::on_lb_ghroledetail_ask, this);
 
 	REGISTERMSG(BUILD_PROTYPE::BUILD_ADDITEM_REQ, &LobbyService::on_lb_build_additem_req, this);
 	REGISTERMSG(BUILD_PROTYPE::BUILD_DELITEM_REQ, &LobbyService::on_lb_build_delitem_req, this);
@@ -29,26 +43,23 @@ void LobbyService::InitNetMessage()
 	REGISTERMSG(TASK_PROTYPE::TASK_GIVEUPTASK_REQ, &LobbyService::on_lb_task_giveup_req, this);
 }
 
-void LobbyService::on_lb_ghuserinit_req(NetProtocol* pro, bool& autorelease)
-{
-	GHS_UserInit_req * req = dynamic_cast<GHS_UserInit_req*>(pro);
-
-	LobbyUser *puser = get_userbyslot_from_msg(pro);
-	if (puser == 0)
-		return;
-
-	//puser->init_user(ut.giduid(), ut.slottoken());
-
-	logDebug(out_runtime, "recv user:%lld init request", puser->get_user_iid());
-}
-
-void LobbyService::on_lb_ghuserlogout_ntf(NetProtocol* pro, bool& autorelease)
+void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 {
 	LobbyUser *puser = get_userofsame_from_msg(pro);
 	if (puser == 0) return;
 
 	logDebug(out_runtime, "recv user:%lld logount request", puser->get_user_iid());
 	puser->rest_user();
+}
+
+void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userofsame_from_msg(pro);
+	if (puser == 0) return;
+
+	User_RoleCreate_req* req = dynamic_cast<User_RoleCreate_req*>(pro->msg_);
+
+	puser->on_ls_rolecreate_req(req->nickname().c_str());
 }
 
 void LobbyService::on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease)
@@ -68,14 +79,6 @@ void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 	User_RoleSelect_req* req = dynamic_cast<User_RoleSelect_req*>(pro->msg_);
 
 	puser->on_ls_roleselect_req(req->role_iid());
-}
-
-void LobbyService::on_lb_ghroledetail_ask(NetProtocol* pro, bool& autorelease)
-{
-	LobbyUser *puser = get_userofsame_from_msg(pro);
-	if (puser == 0) return;
-
-	puser->notify_roledetail_to_user();
 }
 
 void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)

@@ -97,10 +97,9 @@ bool DataRouterApp::pre_init()
 	gate_links_from_.init_holder();
 	fightrouter_links_from_.init_holder();
 	servicerouter_links_from_.init_holder();
-	login_links_from_.init_holder();
+	state_links_from_.init_holder();
 
 	home_links_from_.init_holder(800);
-	state_links_from_.init_holder(800);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -109,7 +108,6 @@ bool DataRouterApp::pre_init()
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	std::list<NETSERVICE_TYPE> router_types;
 	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_HOME);
-	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_STATE);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER, cf.get_ip().c_str(), cf.get_port(), 
 		EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, true);
@@ -172,7 +170,6 @@ void DataRouterApp::uninit_network()
 
 	home_links_from_.uninit_holder();
 	state_links_from_.uninit_holder();
-	login_links_from_.uninit_holder();
 
 	session_from_.unint_sessions();
 
@@ -341,27 +338,6 @@ void DataRouterApp::on_disconnected_with_stateservice(StateServiceLinkFrom* plin
 
 		//断开映射关系
 		state_links_from_.return_freelink(plink);
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-	}
-}
-
-void DataRouterApp::on_disconnected_with_loginservice(LoginServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		login_links_from_.return_freelink(plink);
 
 		session_from_.return_freesession_mth(psession);
 

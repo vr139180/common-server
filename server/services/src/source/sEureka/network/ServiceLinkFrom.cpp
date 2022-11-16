@@ -32,11 +32,8 @@ void ServiceLinkFrom::init_protocolhead()
 {
 	//设置通用协议头
 	s_head_.router_balance_ = false;
-	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 	s_head_.to_type_ = (S_INT_8)node_.type;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
 }
 
 void ServiceLinkFrom::set_node(ServiceNodeInfo* pnode)
@@ -88,12 +85,12 @@ void ServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if (bregist)
 	{
-		logInfo(out_runtime, ">>>>>> Service[iid:%ld type:%d ip:%s port:%d] regist to me(sEureka)",
-			node_.iid, node_.type, node_.ip.c_str(), node_.port);
+		logInfo(out_runtime, ">>>>>> Service[iid:%ld type:%s ip:%s port:%d] regist to me(sEureka)",
+			node_.iid, NetServiceType::to_string(node_.type).c_str(), node_.ip.c_str(), node_.port);
 	}
 	else 
 	{
-		logInfo(out_runtime, "<<<<<< Service[iid:%ld type:%d ip:%s port:%d] disconnect from me(sEureka)",
-			node_.iid, node_.type, node_.ip.c_str(), node_.port);
+		logInfo(out_runtime, "<<<<<< Service[iid:%ld type:%s ip:%s port:%d] disconnect from me(sEureka)",
+			node_.iid, NetServiceType::to_string(node_.type).c_str(), node_.ip.c_str(), node_.port);
 	}
 }

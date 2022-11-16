@@ -13,8 +13,8 @@
 // limitations under the License.
 //
 
-#ifndef __LOGINSERVICEAPP_H__
-#define __LOGINSERVICEAPP_H__
+#ifndef __STATESERVICEAPP_H__
+#define __STATESERVICEAPP_H__
 
 #include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -23,36 +23,42 @@
 #include <cmsLib/ServerAppBase.h>
 #include <cmsLib/net/NetAcceptor.h>
 #include <cmsLib/net/NetAcceptorEvent.h>
+#include <cmsLib/redis/RedisProtoBufThreadCache.h>
+#include <cmsLib/lua/ScriptContext.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/LinkToHolder.h>
 
-#include "config/LoginConfig.h"
+#include "config/StateConfig.h"
 
 #include "network/DataRouterLinkTo.h"
 
-#include "player/GamePlayer.h"
+#include "states/StateService.h"
 
-class LoginServiceApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
+class StateServiceApp : public ServerAppBase, public IEurekaClientIntegrate
 {
 private:
-	LoginServiceApp();
+	StateServiceApp();
 
 public:
-	static LoginServiceApp& getInstance();
-	virtual ~LoginServiceApp();
+	static StateServiceApp& getInstance();
+	virtual ~StateServiceApp();
+
+	StateConfig* get_config();
 
 	virtual void main_loop();
 
 public:
-	void route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
-	void send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
+	void send_protocol_to_gate(BasicProtocol* pro);
+
+	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
+	RedisClient* get_redisclient() { return redis_inthread_.get(); }
+	boost::thread_specific_ptr<RedisProtoBufThreadCache>& get_rpcache_thread() { return this->rpcache_inthread_; }
+	RedisProtoBufThreadCache* get_redisprotocache() { return rpcache_inthread_.get(); }
+
+	StateService* get_next_dispatcher();
 
 public:
-
-	//------------------------------implement NetAcceptorEvent ------------------------------//
-	virtual NetAcceptorEvent::NetSessionPtr ask_free_netsession();
-	virtual void accept_netsession( NetAcceptorEvent::NetSessionPtr session, bool refuse, int err);
 
 	//------------------------------implement IEurekaClientIntegrate-------------------------//
 	virtual ThreadLock& get_mth_threadlock() { return lock_; }
@@ -60,7 +66,7 @@ public:
 	virtual TimerKey add_apptimer_proxy(int step, APPTIMER_FUN_MAP f) { return add_apptimer(step, f); }
 	virtual void del_apptimer_proxy(TimerKey tid) { del_apptimer(tid); };
 
-	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE type, 
+	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
 	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs) {}
 
@@ -78,27 +84,34 @@ protected:
 
 	virtual void register_timer();
 
-	LoginConfig* load_loginconfig();
+	StateConfig* load_stateconfig();
 
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
+	//注册成功之后标注为true
+	bool								is_ready_;
+
+	//state service
+	boost::scoped_array<StateService>	all_states_;
+	volatile S_INT_32					cur_state_index_;
+
+	//run in main thread
+	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
+
 	//network
-	std::shared_ptr<NetAcceptor>	acceptor_;
+	boost::thread_specific_ptr<RedisClient>					redis_inthread_;
+	boost::thread_specific_ptr<RedisProtoBufThreadCache>	rpcache_inthread_;
 
-	LinkToHolder<DataRouterLinkTo>	datarouter_link_mth_;
+	boost::scoped_ptr<StateConfig>				conf_;
 
-	boost::scoped_ptr<LoginConfig>	conf_;
 public:
 	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
 	void on_datarouter_regist_result(DataRouterLinkTo* plink);
-
-public:
-	
 };
 
-#define svrApp (LoginServiceApp::getInstance())
+#define svrApp (StateServiceApp::getInstance())
 
-#endif	//__LOGINSERVICEAPP_H__
+#endif	//__STATESERVICEAPP_H__

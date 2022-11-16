@@ -100,14 +100,6 @@ public enum ERK_PROTYPE
    * <code>SVR_ROUTERONLINE_NTF = 52;</code>
    */
   SVR_ROUTERONLINE_NTF(52),
-  /**
-   * <pre>
-   *资源服务
-   * </pre>
-   *
-   * <code>RES_SYNCGATESLOT_NTF = 100;</code>
-   */
-  RES_SYNCGATESLOT_NTF(100),
   UNRECOGNIZED(-1),
   ;
 
@@ -199,14 +191,6 @@ public enum ERK_PROTYPE
    * <code>SVR_ROUTERONLINE_NTF = 52;</code>
    */
   public static final int SVR_ROUTERONLINE_NTF_VALUE = 52;
-  /**
-   * <pre>
-   *资源服务
-   * </pre>
-   *
-   * <code>RES_SYNCGATESLOT_NTF = 100;</code>
-   */
-  public static final int RES_SYNCGATESLOT_NTF_VALUE = 100;
 
 
   public final int getNumber() {
@@ -254,7 +238,6 @@ public enum ERK_PROTYPE
       case 50: return SVR_SERVICEBINDSERVICE_REQ;
       case 51: return SVR_SERVICEBINDSERVICE_ACK;
       case 52: return SVR_ROUTERONLINE_NTF;
-      case 100: return RES_SYNCGATESLOT_NTF;
       default: return null;
     }
   }

@@ -42,11 +42,15 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 	std::unique_ptr<NetProtocol> p_msg(pro);
 
 	S_UINT_16 msgid = pro->get_msg();
-	if (msgid == PRO::USER_PROXYLOGIN_REQ)
+	if (msgid == PRO::USER_LOGIN_REQ || msgid == PRO::USER_RELOGIN_REQ)
 	{
-		user_login(pro);
+		if (cur_state_ != PlayerState_Free)
+			return;
+
+		this->cur_state_ = PlayerState::PlayerState_Loginning;
+		svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 	}
-	else if (msgid == PRO::USER_ROLECREATE_REQ || msgid == PRO::USER_ROLESELECT_REQ)
+	else if (msgid == PRO::USER_ROLECREATE_REQ || msgid == PRO::USER_ROLESELECT_REQ || msgid == PRO::USER_ROLELIST_REQ)
 	{
 		if( !is_in_rolerange())
 			return;
@@ -96,20 +100,4 @@ void GamePlayer::registinfo_tolog(bool bregist)
 	}
 	else
 		logInfo(out_runtime, "Player[%d] disconnect from me(GateService)", get_iid());
-}
-
-void GamePlayer::user_login(NetProtocol* msg)
-{
-	this->cur_state_ = PlayerState::PlayerState_Loginning;
-
-	PRO::User_ProxyLogin_req* req = dynamic_cast<PRO::User_ProxyLogin_req*>(msg->msg_);
-	logDebug(out_runtime, "user login request slot:%d utoken:%lld", slot_, req->proxytoken());
-
-	PlayerChannel *pchannel = GamePlayerCtrl::instance().get_channel_by_slot(slot_);
-
-	NETCMD_FUN_MAP3 fun = boost::bind(&PlayerChannel::on_cth_userproxylogin_req, pchannel,
-		boost::placeholders::_1, boost::placeholders::_2, this);
-	NetCommandV *pcmd = new NetCommandV(msg, fun);
-
-	pchannel->regist_syscmd(pcmd);
 }

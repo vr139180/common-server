@@ -19,7 +19,7 @@ public interface User_Login_ackOrBuilder extends
 
   /**
    * <pre>
-   *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+   *0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
    * </pre>
    *
    * <code>int32 result = 2;</code>
@@ -74,51 +74,4 @@ public interface User_Login_ackOrBuilder extends
    */
   com.google.protobuf.ByteString
       getLogintokenBytes();
-
-  /**
-   * <pre>
-   *proxytoken
-   * </pre>
-   *
-   * <code>optional int64 proxytoken = 10;</code>
-   * @return Whether the proxytoken field is set.
-   */
-  boolean hasProxytoken();
-  /**
-   * <pre>
-   *proxytoken
-   * </pre>
-   *
-   * <code>optional int64 proxytoken = 10;</code>
-   * @return The proxytoken.
-   */
-  long getProxytoken();
-
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return Whether the proxyip field is set.
-   */
-  boolean hasProxyip();
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return The proxyip.
-   */
-  java.lang.String getProxyip();
-  /**
-   * <code>optional string proxyip = 11;</code>
-   * @return The bytes for proxyip.
-   */
-  com.google.protobuf.ByteString
-      getProxyipBytes();
-
-  /**
-   * <code>optional int32 proxyport = 12;</code>
-   * @return Whether the proxyport field is set.
-   */
-  boolean hasProxyport();
-  /**
-   * <code>optional int32 proxyport = 12;</code>
-   * @return The proxyport.
-   */
-  int getProxyport();
 }

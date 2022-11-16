@@ -37,11 +37,8 @@ FightRouterLinkTo::FightRouterLinkTo(ServiceNodeInfo* pnode): LinkToBase()
 void FightRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
 }
 
 void FightRouterLinkTo::send_netprotocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)

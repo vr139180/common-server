@@ -1,0 +1,17 @@
+
+#各个服务缺省端口号
+GateService:	8001
+
+sEureka:		5001
+DataRouter:		5101
+ServiceRouter:	5201
+FightRouter:	5301
+
+HomeService:	none
+StateService:	none
+ChatService:	none
+friendservice:	none
+MailService:	none
+DataSync:		none
+UnionService:	none
+Matchmaking:	none

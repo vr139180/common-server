@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #ifndef __LOBBYSERVICE_H__
 #define __LOBBYSERVICE_H__
 
@@ -57,11 +72,8 @@ public:
 	virtual void task_luacontext_end();
 
 protected:
-	void on_lb_ghuserinit_req(NetProtocol* pro, bool& autorelease);
-	void on_lb_ghuserlogout_ntf(NetProtocol* pro, bool& autorelease);
-
-	void on_lb_ghroledetail_ask(NetProtocol* pro, bool& autorelease);
-
+	void on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease);
+	void on_lb_rolelist_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_roleselect_req(NetProtocol* pro, bool& autorelease);
 

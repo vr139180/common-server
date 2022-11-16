@@ -41,9 +41,6 @@ public:
 		case NETSERVICE_TYPE::ERK_SERVICE_HOME:
 			ret = "home";
 			break;
-		case NETSERVICE_TYPE::ERK_SERVICE_LOGIN:
-			ret = "login";
-			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER:
 			ret = "svrrouter";
 			break;

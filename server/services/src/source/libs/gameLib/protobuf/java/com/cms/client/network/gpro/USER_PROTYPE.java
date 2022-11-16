@@ -33,49 +33,61 @@ public enum USER_PROTYPE
    */
   USER_LOGIN_ACK(1002),
   /**
-   * <code>USER_PROXYLOGIN_REQ = 1003;</code>
+   * <code>USER_RELOGIN_REQ = 1003;</code>
    */
-  USER_PROXYLOGIN_REQ(1003),
+  USER_RELOGIN_REQ(1003),
   /**
-   * <code>USER_PROXYLOGIN_ACK = 1004;</code>
+   * <code>USER_RELOGIN_ACK = 1004;</code>
    */
-  USER_PROXYLOGIN_ACK(1004),
+  USER_RELOGIN_ACK(1004),
   /**
    * <code>USER_LOGOUT_NTF = 1005;</code>
    */
   USER_LOGOUT_NTF(1005),
   /**
-   * <code>USER_ROLELIST_ACK = 1007;</code>
+   * <code>USER_GATELOST_NTF = 1006;</code>
    */
-  USER_ROLELIST_ACK(1007),
+  USER_GATELOST_NTF(1006),
   /**
-   * <code>USER_ROLESELECT_REQ = 1008;</code>
+   * <code>USER_ACTIVE_NTF = 1007;</code>
    */
-  USER_ROLESELECT_REQ(1008),
+  USER_ACTIVE_NTF(1007),
   /**
-   * <code>USER_ROLESELECT_ACK = 1009;</code>
+   * <code>USER_ROLELIST_REQ = 1019;</code>
    */
-  USER_ROLESELECT_ACK(1009),
+  USER_ROLELIST_REQ(1019),
   /**
-   * <code>USER_ROLECREATE_REQ = 1010;</code>
+   * <code>USER_ROLELIST_ACK = 1020;</code>
    */
-  USER_ROLECREATE_REQ(1010),
+  USER_ROLELIST_ACK(1020),
   /**
-   * <code>USER_ROLECREATE_ACK = 1011;</code>
+   * <code>USER_ROLESELECT_REQ = 1021;</code>
    */
-  USER_ROLECREATE_ACK(1011),
+  USER_ROLESELECT_REQ(1021),
   /**
-   * <code>USER_ROLEDETAILA_NTF = 1012;</code>
+   * <code>USER_ROLESELECT_ACK = 1022;</code>
    */
-  USER_ROLEDETAILA_NTF(1012),
+  USER_ROLESELECT_ACK(1022),
   /**
-   * <code>USER_ROLEDETAILB_NTF = 1013;</code>
+   * <code>USER_ROLECREATE_REQ = 1023;</code>
    */
-  USER_ROLEDETAILB_NTF(1013),
+  USER_ROLECREATE_REQ(1023),
   /**
-   * <code>USER_ROLEDETAILEND_NTF = 1014;</code>
+   * <code>USER_ROLECREATE_ACK = 1024;</code>
    */
-  USER_ROLEDETAILEND_NTF(1014),
+  USER_ROLECREATE_ACK(1024),
+  /**
+   * <code>USER_ROLEDETAILA_NTF = 1025;</code>
+   */
+  USER_ROLEDETAILA_NTF(1025),
+  /**
+   * <code>USER_ROLEDETAILB_NTF = 1026;</code>
+   */
+  USER_ROLEDETAILB_NTF(1026),
+  /**
+   * <code>USER_ROLEDETAILEND_NTF = 1027;</code>
+   */
+  USER_ROLEDETAILEND_NTF(1027),
   UNRECOGNIZED(-1),
   ;
 
@@ -100,49 +112,61 @@ public enum USER_PROTYPE
    */
   public static final int USER_LOGIN_ACK_VALUE = 1002;
   /**
-   * <code>USER_PROXYLOGIN_REQ = 1003;</code>
+   * <code>USER_RELOGIN_REQ = 1003;</code>
    */
-  public static final int USER_PROXYLOGIN_REQ_VALUE = 1003;
+  public static final int USER_RELOGIN_REQ_VALUE = 1003;
   /**
-   * <code>USER_PROXYLOGIN_ACK = 1004;</code>
+   * <code>USER_RELOGIN_ACK = 1004;</code>
    */
-  public static final int USER_PROXYLOGIN_ACK_VALUE = 1004;
+  public static final int USER_RELOGIN_ACK_VALUE = 1004;
   /**
    * <code>USER_LOGOUT_NTF = 1005;</code>
    */
   public static final int USER_LOGOUT_NTF_VALUE = 1005;
   /**
-   * <code>USER_ROLELIST_ACK = 1007;</code>
+   * <code>USER_GATELOST_NTF = 1006;</code>
    */
-  public static final int USER_ROLELIST_ACK_VALUE = 1007;
+  public static final int USER_GATELOST_NTF_VALUE = 1006;
   /**
-   * <code>USER_ROLESELECT_REQ = 1008;</code>
+   * <code>USER_ACTIVE_NTF = 1007;</code>
    */
-  public static final int USER_ROLESELECT_REQ_VALUE = 1008;
+  public static final int USER_ACTIVE_NTF_VALUE = 1007;
   /**
-   * <code>USER_ROLESELECT_ACK = 1009;</code>
+   * <code>USER_ROLELIST_REQ = 1019;</code>
    */
-  public static final int USER_ROLESELECT_ACK_VALUE = 1009;
+  public static final int USER_ROLELIST_REQ_VALUE = 1019;
   /**
-   * <code>USER_ROLECREATE_REQ = 1010;</code>
+   * <code>USER_ROLELIST_ACK = 1020;</code>
    */
-  public static final int USER_ROLECREATE_REQ_VALUE = 1010;
+  public static final int USER_ROLELIST_ACK_VALUE = 1020;
   /**
-   * <code>USER_ROLECREATE_ACK = 1011;</code>
+   * <code>USER_ROLESELECT_REQ = 1021;</code>
    */
-  public static final int USER_ROLECREATE_ACK_VALUE = 1011;
+  public static final int USER_ROLESELECT_REQ_VALUE = 1021;
   /**
-   * <code>USER_ROLEDETAILA_NTF = 1012;</code>
+   * <code>USER_ROLESELECT_ACK = 1022;</code>
    */
-  public static final int USER_ROLEDETAILA_NTF_VALUE = 1012;
+  public static final int USER_ROLESELECT_ACK_VALUE = 1022;
   /**
-   * <code>USER_ROLEDETAILB_NTF = 1013;</code>
+   * <code>USER_ROLECREATE_REQ = 1023;</code>
    */
-  public static final int USER_ROLEDETAILB_NTF_VALUE = 1013;
+  public static final int USER_ROLECREATE_REQ_VALUE = 1023;
   /**
-   * <code>USER_ROLEDETAILEND_NTF = 1014;</code>
+   * <code>USER_ROLECREATE_ACK = 1024;</code>
    */
-  public static final int USER_ROLEDETAILEND_NTF_VALUE = 1014;
+  public static final int USER_ROLECREATE_ACK_VALUE = 1024;
+  /**
+   * <code>USER_ROLEDETAILA_NTF = 1025;</code>
+   */
+  public static final int USER_ROLEDETAILA_NTF_VALUE = 1025;
+  /**
+   * <code>USER_ROLEDETAILB_NTF = 1026;</code>
+   */
+  public static final int USER_ROLEDETAILB_NTF_VALUE = 1026;
+  /**
+   * <code>USER_ROLEDETAILEND_NTF = 1027;</code>
+   */
+  public static final int USER_ROLEDETAILEND_NTF_VALUE = 1027;
 
 
   public final int getNumber() {
@@ -173,17 +197,20 @@ public enum USER_PROTYPE
       case 1000: return ERK_USER_NUM;
       case 1001: return USER_LOGIN_REQ;
       case 1002: return USER_LOGIN_ACK;
-      case 1003: return USER_PROXYLOGIN_REQ;
-      case 1004: return USER_PROXYLOGIN_ACK;
+      case 1003: return USER_RELOGIN_REQ;
+      case 1004: return USER_RELOGIN_ACK;
       case 1005: return USER_LOGOUT_NTF;
-      case 1007: return USER_ROLELIST_ACK;
-      case 1008: return USER_ROLESELECT_REQ;
-      case 1009: return USER_ROLESELECT_ACK;
-      case 1010: return USER_ROLECREATE_REQ;
-      case 1011: return USER_ROLECREATE_ACK;
-      case 1012: return USER_ROLEDETAILA_NTF;
-      case 1013: return USER_ROLEDETAILB_NTF;
-      case 1014: return USER_ROLEDETAILEND_NTF;
+      case 1006: return USER_GATELOST_NTF;
+      case 1007: return USER_ACTIVE_NTF;
+      case 1019: return USER_ROLELIST_REQ;
+      case 1020: return USER_ROLELIST_ACK;
+      case 1021: return USER_ROLESELECT_REQ;
+      case 1022: return USER_ROLESELECT_ACK;
+      case 1023: return USER_ROLECREATE_REQ;
+      case 1024: return USER_ROLECREATE_ACK;
+      case 1025: return USER_ROLEDETAILA_NTF;
+      case 1026: return USER_ROLEDETAILB_NTF;
+      case 1027: return USER_ROLEDETAILEND_NTF;
       default: return null;
     }
   }

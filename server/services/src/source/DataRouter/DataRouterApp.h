@@ -39,7 +39,6 @@
 
 #include "network/HomeServiceLinkFrom.h"
 #include "network/StateServiceLinkFrom.h"
-#include "network/LoginServiceLinkFrom.h"
 
 class DataRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -107,11 +106,10 @@ protected:
 	LinkFromHolder<GateServiceLinkFrom>		gate_links_from_;
 	LinkFromHolder<FightRouterLinkFrom>		fightrouter_links_from_;
 	LinkFromHolder<ServiceRouterLinkFrom>	servicerouter_links_from_;
-	LinkFromHolder<LoginServiceLinkFrom>	login_links_from_;
+	LinkFromHolder<StateServiceLinkFrom>	state_links_from_;
 
 	//¸ºÔØ¾ùºâ
 	LinkFromConsistentHash<HomeServiceLinkFrom>		home_links_from_;
-	LinkFromConsistentHash<StateServiceLinkFrom>	state_links_from_;
 
 	boost::scoped_ptr<RouterConfig>	conf_;
 
@@ -126,7 +124,6 @@ public:
 
 	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
 	void on_disconnected_with_stateservice(StateServiceLinkFrom* plink);
-	void on_disconnected_with_loginservice(LoginServiceLinkFrom* plink);
 };
 
 #define svrApp (DataRouterApp::getInstance())

@@ -25,18 +25,6 @@
     <ClCompile Include="..\source\StateService\states\StateService_Network.cpp">
       <Filter>states</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\StateService\states\StateUser.cpp">
-      <Filter>states</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\StateService\states\StateUser_Database.cpp">
-      <Filter>states</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\StateService\states\StateUser_Network.cpp">
-      <Filter>states</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\StateService\states\StateUser_Redis.cpp">
-      <Filter>states</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\StateService\StateServiceApp.h" />
@@ -59,9 +47,6 @@
       <Filter>dbs\cmd</Filter>
     </ClInclude>
     <ClInclude Include="..\source\StateService\states\StateService.h">
-      <Filter>states</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\StateService\states\StateUser.h">
       <Filter>states</Filter>
     </ClInclude>
   </ItemGroup>

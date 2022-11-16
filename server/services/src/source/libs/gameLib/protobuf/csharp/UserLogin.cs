@@ -28,37 +28,38 @@ namespace com.cms.client.network.gpro {
             "Cg5Vc2VyX0xvZ2luX3JlcRIMCgR0eXBlGAEgASgFEhQKB2FjY291bnQYAiAB",
             "KAlIAIgBARIQCgNwd2QYAyABKAlIAYgBARISCgV0b2tlbhgEIAEoCUgCiAEB",
             "EhMKBnVzZXJpZBgFIAEoA0gDiAEBQgoKCF9hY2NvdW50QgYKBF9wd2RCCAoG",
-            "X3Rva2VuQgkKB191c2VyaWQi6gEKDlVzZXJfTG9naW5fYWNrEgwKBHR5cGUY",
-            "ASABKAUSDgoGcmVzdWx0GAIgASgFEhUKCHVzZXJfaWlkGAMgASgDSACIAQES",
-            "FwoKbG9naW50b2tlbhgEIAEoCUgBiAEBEhcKCnByb3h5dG9rZW4YCiABKANI",
-            "AogBARIUCgdwcm94eWlwGAsgASgJSAOIAQESFgoJcHJveHlwb3J0GAwgASgF",
-            "SASIAQFCCwoJX3VzZXJfaWlkQg0KC19sb2dpbnRva2VuQg0KC19wcm94eXRv",
-            "a2VuQgoKCF9wcm94eWlwQgwKCl9wcm94eXBvcnQiOwoTVXNlcl9Qcm94eUxv",
-            "Z2luX3JlcRIQCgh1c2VyX2lpZBgBIAEoAxISCgpwcm94eXRva2VuGAIgASgD",
-            "InEKE1VzZXJfUHJveHlMb2dpbl9hY2sSDgoGcmVzdWx0GAEgASgFEhUKCHVz",
-            "ZXJfaWlkGAIgASgDSACIAQESFwoKcHJveHl0b2tlbhgDIAEoA0gBiAEBQgsK",
-            "CV91c2VyX2lpZEINCgtfcHJveHl0b2tlbiIRCg9Vc2VyX0xvZ291dF9udGYi",
-            "NAoRVXNlcl9Sb2xlTGlzdF9hY2sSHwoFcm9sZXMYASABKAsyEC5QUk8uREJV",
-            "c2VyUm9sZXMiJwoTVXNlcl9Sb2xlQ3JlYXRlX3JlcRIQCghuaWNrbmFtZRgB",
-            "IAEoCSJJChNVc2VyX1JvbGVDcmVhdGVfYWNrEg4KBnJlc3VsdBgBIAEoBRIV",
-            "Cghyb2xlX2lpZBgCIAEoA0gAiAEBQgsKCV9yb2xlX2lpZCInChNVc2VyX1Jv",
-            "bGVTZWxlY3RfcmVxEhAKCHJvbGVfaWlkGAEgASgDIjcKE1VzZXJfUm9sZVNl",
-            "bGVjdF9hY2sSDgoGcmVzdWx0GAEgASgFEhAKCHJvbGVfaWlkGAIgASgDImIK",
-            "FFVzZXJfUm9sZURldGFpbEFfbnRmEh0KBGhvbWUYASABKAsyDy5QUk8uREJV",
-            "c2VySG9tZRIrCglob21laXRlbXMYAiABKAsyGC5QUk8uREJVc2VySG9tZVN0",
-            "cnVjdHVyZSI1ChRVc2VyX1JvbGVEZXRhaWxCX250ZhIdCgRwZXRzGAEgASgL",
-            "Mg8uUFJPLkRCVXNlclBldHMiGAoWVXNlcl9Sb2xlRGV0YWlsRW5kX250ZkJU",
-            "Chtjb20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9QAVoVZ2FtZWxpYi9wcm90",
-            "b2J1Zi9ncHJvqgIbY29tLmNtcy5jbGllbnQubmV0d29yay5ncHJvYgZwcm90",
-            "bzM="));
+            "X3Rva2VuQgkKB191c2VyaWQiegoOVXNlcl9Mb2dpbl9hY2sSDAoEdHlwZRgB",
+            "IAEoBRIOCgZyZXN1bHQYAiABKAUSFQoIdXNlcl9paWQYAyABKANIAIgBARIX",
+            "Cgpsb2dpbnRva2VuGAQgASgJSAGIAQFCCwoJX3VzZXJfaWlkQg0KC19sb2dp",
+            "bnRva2VuIjgKEFVzZXJfUmVMb2dpbl9yZXESEAoIdXNlcl9paWQYASABKAMS",
+            "EgoKbG9naW50b2tlbhgCIAEoAyJuChBVc2VyX1JlTG9naW5fYWNrEg4KBnJl",
+            "c3VsdBgBIAEoBRIVCgh1c2VyX2lpZBgCIAEoA0gAiAEBEhcKCmxvZ2ludG9r",
+            "ZW4YAyABKANIAYgBAUILCglfdXNlcl9paWRCDQoLX2xvZ2ludG9rZW4iEQoP",
+            "VXNlcl9Mb2dvdXRfbnRmIhMKEVVzZXJfR2F0ZUxvc3RfbnRmIhEKD1VzZXJf",
+            "QWN0aXZlX250ZiITChFVc2VyX1JvbGVMaXN0X3JlcSI0ChFVc2VyX1JvbGVM",
+            "aXN0X2FjaxIfCgVyb2xlcxgBIAEoCzIQLlBSTy5EQlVzZXJSb2xlcyInChNV",
+            "c2VyX1JvbGVDcmVhdGVfcmVxEhAKCG5pY2tuYW1lGAEgASgJIkkKE1VzZXJf",
+            "Um9sZUNyZWF0ZV9hY2sSDgoGcmVzdWx0GAEgASgFEhUKCHJvbGVfaWlkGAIg",
+            "ASgDSACIAQFCCwoJX3JvbGVfaWlkIicKE1VzZXJfUm9sZVNlbGVjdF9yZXES",
+            "EAoIcm9sZV9paWQYASABKAMiNwoTVXNlcl9Sb2xlU2VsZWN0X2FjaxIOCgZy",
+            "ZXN1bHQYASABKAUSEAoIcm9sZV9paWQYAiABKAMiYgoUVXNlcl9Sb2xlRGV0",
+            "YWlsQV9udGYSHQoEaG9tZRgBIAEoCzIPLlBSTy5EQlVzZXJIb21lEisKCWhv",
+            "bWVpdGVtcxgCIAEoCzIYLlBSTy5EQlVzZXJIb21lU3RydWN0dXJlIjUKFFVz",
+            "ZXJfUm9sZURldGFpbEJfbnRmEh0KBHBldHMYASABKAsyDy5QUk8uREJVc2Vy",
+            "UGV0cyIYChZVc2VyX1JvbGVEZXRhaWxFbmRfbnRmQlQKG2NvbS5jbXMuY2xp",
+            "ZW50Lm5ldHdvcmsuZ3Byb1ABWhVnYW1lbGliL3Byb3RvYnVmL2dwcm+qAhtj",
+            "b20uY21zLmNsaWVudC5uZXR3b3JrLmdwcm9iBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::com.cms.client.network.gpro.DbInternalReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_Login_req), global::com.cms.client.network.gpro.User_Login_req.Parser, new[]{ "Type", "Account", "Pwd", "Token", "Userid" }, new[]{ "Account", "Pwd", "Token", "Userid" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_Login_ack), global::com.cms.client.network.gpro.User_Login_ack.Parser, new[]{ "Type", "Result", "UserIid", "Logintoken", "Proxytoken", "Proxyip", "Proxyport" }, new[]{ "UserIid", "Logintoken", "Proxytoken", "Proxyip", "Proxyport" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_ProxyLogin_req), global::com.cms.client.network.gpro.User_ProxyLogin_req.Parser, new[]{ "UserIid", "Proxytoken" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_ProxyLogin_ack), global::com.cms.client.network.gpro.User_ProxyLogin_ack.Parser, new[]{ "Result", "UserIid", "Proxytoken" }, new[]{ "UserIid", "Proxytoken" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_Login_ack), global::com.cms.client.network.gpro.User_Login_ack.Parser, new[]{ "Type", "Result", "UserIid", "Logintoken" }, new[]{ "UserIid", "Logintoken" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_ReLogin_req), global::com.cms.client.network.gpro.User_ReLogin_req.Parser, new[]{ "UserIid", "Logintoken" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_ReLogin_ack), global::com.cms.client.network.gpro.User_ReLogin_ack.Parser, new[]{ "Result", "UserIid", "Logintoken" }, new[]{ "UserIid", "Logintoken" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_Logout_ntf), global::com.cms.client.network.gpro.User_Logout_ntf.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_GateLost_ntf), global::com.cms.client.network.gpro.User_GateLost_ntf.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_Active_ntf), global::com.cms.client.network.gpro.User_Active_ntf.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_RoleList_req), global::com.cms.client.network.gpro.User_RoleList_req.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_RoleList_ack), global::com.cms.client.network.gpro.User_RoleList_ack.Parser, new[]{ "Roles" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_RoleCreate_req), global::com.cms.client.network.gpro.User_RoleCreate_req.Parser, new[]{ "Nickname" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::com.cms.client.network.gpro.User_RoleCreate_ack), global::com.cms.client.network.gpro.User_RoleCreate_ack.Parser, new[]{ "Result", "RoleIid" }, new[]{ "RoleIid" }, null, null, null),
@@ -516,9 +517,6 @@ namespace com.cms.client.network.gpro {
       result_ = other.result_;
       userIid_ = other.userIid_;
       logintoken_ = other.logintoken_;
-      proxytoken_ = other.proxytoken_;
-      proxyip_ = other.proxyip_;
-      proxyport_ = other.proxyport_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -547,7 +545,7 @@ namespace com.cms.client.network.gpro {
     public const int ResultFieldNumber = 2;
     private int result_;
     /// <summary>
-    ///0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误
+    ///0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -613,83 +611,6 @@ namespace com.cms.client.network.gpro {
       logintoken_ = null;
     }
 
-    /// <summary>Field number for the "proxytoken" field.</summary>
-    public const int ProxytokenFieldNumber = 10;
-    private long proxytoken_;
-    /// <summary>
-    ///proxytoken
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Proxytoken {
-      get { if ((_hasBits0 & 2) != 0) { return proxytoken_; } else { return 0L; } }
-      set {
-        _hasBits0 |= 2;
-        proxytoken_ = value;
-      }
-    }
-    /// <summary>Gets whether the "proxytoken" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasProxytoken {
-      get { return (_hasBits0 & 2) != 0; }
-    }
-    /// <summary>Clears the value of the "proxytoken" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearProxytoken() {
-      _hasBits0 &= ~2;
-    }
-
-    /// <summary>Field number for the "proxyip" field.</summary>
-    public const int ProxyipFieldNumber = 11;
-    private string proxyip_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Proxyip {
-      get { return proxyip_ ?? ""; }
-      set {
-        proxyip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-    /// <summary>Gets whether the "proxyip" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasProxyip {
-      get { return proxyip_ != null; }
-    }
-    /// <summary>Clears the value of the "proxyip" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearProxyip() {
-      proxyip_ = null;
-    }
-
-    /// <summary>Field number for the "proxyport" field.</summary>
-    public const int ProxyportFieldNumber = 12;
-    private int proxyport_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Proxyport {
-      get { if ((_hasBits0 & 4) != 0) { return proxyport_; } else { return 0; } }
-      set {
-        _hasBits0 |= 4;
-        proxyport_ = value;
-      }
-    }
-    /// <summary>Gets whether the "proxyport" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasProxyport {
-      get { return (_hasBits0 & 4) != 0; }
-    }
-    /// <summary>Clears the value of the "proxyport" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearProxyport() {
-      _hasBits0 &= ~4;
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -709,9 +630,6 @@ namespace com.cms.client.network.gpro {
       if (Result != other.Result) return false;
       if (UserIid != other.UserIid) return false;
       if (Logintoken != other.Logintoken) return false;
-      if (Proxytoken != other.Proxytoken) return false;
-      if (Proxyip != other.Proxyip) return false;
-      if (Proxyport != other.Proxyport) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -723,9 +641,6 @@ namespace com.cms.client.network.gpro {
       if (Result != 0) hash ^= Result.GetHashCode();
       if (HasUserIid) hash ^= UserIid.GetHashCode();
       if (HasLogintoken) hash ^= Logintoken.GetHashCode();
-      if (HasProxytoken) hash ^= Proxytoken.GetHashCode();
-      if (HasProxyip) hash ^= Proxyip.GetHashCode();
-      if (HasProxyport) hash ^= Proxyport.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -760,18 +675,6 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(34);
         output.WriteString(Logintoken);
       }
-      if (HasProxytoken) {
-        output.WriteRawTag(80);
-        output.WriteInt64(Proxytoken);
-      }
-      if (HasProxyip) {
-        output.WriteRawTag(90);
-        output.WriteString(Proxyip);
-      }
-      if (HasProxyport) {
-        output.WriteRawTag(96);
-        output.WriteInt32(Proxyport);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -798,18 +701,6 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(34);
         output.WriteString(Logintoken);
       }
-      if (HasProxytoken) {
-        output.WriteRawTag(80);
-        output.WriteInt64(Proxytoken);
-      }
-      if (HasProxyip) {
-        output.WriteRawTag(90);
-        output.WriteString(Proxyip);
-      }
-      if (HasProxyport) {
-        output.WriteRawTag(96);
-        output.WriteInt32(Proxyport);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -831,15 +722,6 @@ namespace com.cms.client.network.gpro {
       }
       if (HasLogintoken) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Logintoken);
-      }
-      if (HasProxytoken) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Proxytoken);
-      }
-      if (HasProxyip) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Proxyip);
-      }
-      if (HasProxyport) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Proxyport);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -865,15 +747,6 @@ namespace com.cms.client.network.gpro {
       if (other.HasLogintoken) {
         Logintoken = other.Logintoken;
       }
-      if (other.HasProxytoken) {
-        Proxytoken = other.Proxytoken;
-      }
-      if (other.HasProxyip) {
-        Proxyip = other.Proxyip;
-      }
-      if (other.HasProxyport) {
-        Proxyport = other.Proxyport;
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -903,18 +776,6 @@ namespace com.cms.client.network.gpro {
           }
           case 34: {
             Logintoken = input.ReadString();
-            break;
-          }
-          case 80: {
-            Proxytoken = input.ReadInt64();
-            break;
-          }
-          case 90: {
-            Proxyip = input.ReadString();
-            break;
-          }
-          case 96: {
-            Proxyport = input.ReadInt32();
             break;
           }
         }
@@ -948,18 +809,6 @@ namespace com.cms.client.network.gpro {
             Logintoken = input.ReadString();
             break;
           }
-          case 80: {
-            Proxytoken = input.ReadInt64();
-            break;
-          }
-          case 90: {
-            Proxyip = input.ReadString();
-            break;
-          }
-          case 96: {
-            Proxyport = input.ReadInt32();
-            break;
-          }
         }
       }
     }
@@ -968,18 +817,18 @@ namespace com.cms.client.network.gpro {
   }
 
   /// <summary>
-  ///用户在gate登录
+  ///用户断线重连
   /// </summary>
-  public sealed partial class User_ProxyLogin_req : pb::IMessage<User_ProxyLogin_req>
+  public sealed partial class User_ReLogin_req : pb::IMessage<User_ReLogin_req>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<User_ProxyLogin_req> _parser = new pb::MessageParser<User_ProxyLogin_req>(() => new User_ProxyLogin_req());
+    private static readonly pb::MessageParser<User_ReLogin_req> _parser = new pb::MessageParser<User_ReLogin_req>(() => new User_ReLogin_req());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<User_ProxyLogin_req> Parser { get { return _parser; } }
+    public static pb::MessageParser<User_ReLogin_req> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -995,7 +844,7 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_req() {
+    public User_ReLogin_req() {
       OnConstruction();
     }
 
@@ -1003,16 +852,16 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_req(User_ProxyLogin_req other) : this() {
+    public User_ReLogin_req(User_ReLogin_req other) : this() {
       userIid_ = other.userIid_;
-      proxytoken_ = other.proxytoken_;
+      logintoken_ = other.logintoken_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_req Clone() {
-      return new User_ProxyLogin_req(this);
+    public User_ReLogin_req Clone() {
+      return new User_ReLogin_req(this);
     }
 
     /// <summary>Field number for the "user_iid" field.</summary>
@@ -1030,30 +879,30 @@ namespace com.cms.client.network.gpro {
       }
     }
 
-    /// <summary>Field number for the "proxytoken" field.</summary>
-    public const int ProxytokenFieldNumber = 2;
-    private long proxytoken_;
+    /// <summary>Field number for the "logintoken" field.</summary>
+    public const int LogintokenFieldNumber = 2;
+    private long logintoken_;
     /// <summary>
-    ///proxytoken
+    ///logintoken
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Proxytoken {
-      get { return proxytoken_; }
+    public long Logintoken {
+      get { return logintoken_; }
       set {
-        proxytoken_ = value;
+        logintoken_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as User_ProxyLogin_req);
+      return Equals(other as User_ReLogin_req);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(User_ProxyLogin_req other) {
+    public bool Equals(User_ReLogin_req other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1061,7 +910,7 @@ namespace com.cms.client.network.gpro {
         return true;
       }
       if (UserIid != other.UserIid) return false;
-      if (Proxytoken != other.Proxytoken) return false;
+      if (Logintoken != other.Logintoken) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1070,7 +919,7 @@ namespace com.cms.client.network.gpro {
     public override int GetHashCode() {
       int hash = 1;
       if (UserIid != 0L) hash ^= UserIid.GetHashCode();
-      if (Proxytoken != 0L) hash ^= Proxytoken.GetHashCode();
+      if (Logintoken != 0L) hash ^= Logintoken.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1093,9 +942,9 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(8);
         output.WriteInt64(UserIid);
       }
-      if (Proxytoken != 0L) {
+      if (Logintoken != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt64(Proxytoken);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1111,9 +960,9 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(8);
         output.WriteInt64(UserIid);
       }
-      if (Proxytoken != 0L) {
+      if (Logintoken != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt64(Proxytoken);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1128,8 +977,8 @@ namespace com.cms.client.network.gpro {
       if (UserIid != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UserIid);
       }
-      if (Proxytoken != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Proxytoken);
+      if (Logintoken != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Logintoken);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1139,15 +988,15 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(User_ProxyLogin_req other) {
+    public void MergeFrom(User_ReLogin_req other) {
       if (other == null) {
         return;
       }
       if (other.UserIid != 0L) {
         UserIid = other.UserIid;
       }
-      if (other.Proxytoken != 0L) {
-        Proxytoken = other.Proxytoken;
+      if (other.Logintoken != 0L) {
+        Logintoken = other.Logintoken;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1169,7 +1018,7 @@ namespace com.cms.client.network.gpro {
             break;
           }
           case 16: {
-            Proxytoken = input.ReadInt64();
+            Logintoken = input.ReadInt64();
             break;
           }
         }
@@ -1192,7 +1041,7 @@ namespace com.cms.client.network.gpro {
             break;
           }
           case 16: {
-            Proxytoken = input.ReadInt64();
+            Logintoken = input.ReadInt64();
             break;
           }
         }
@@ -1202,17 +1051,17 @@ namespace com.cms.client.network.gpro {
 
   }
 
-  public sealed partial class User_ProxyLogin_ack : pb::IMessage<User_ProxyLogin_ack>
+  public sealed partial class User_ReLogin_ack : pb::IMessage<User_ReLogin_ack>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<User_ProxyLogin_ack> _parser = new pb::MessageParser<User_ProxyLogin_ack>(() => new User_ProxyLogin_ack());
+    private static readonly pb::MessageParser<User_ReLogin_ack> _parser = new pb::MessageParser<User_ReLogin_ack>(() => new User_ReLogin_ack());
     private pb::UnknownFieldSet _unknownFields;
     private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<User_ProxyLogin_ack> Parser { get { return _parser; } }
+    public static pb::MessageParser<User_ReLogin_ack> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -1228,7 +1077,7 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_ack() {
+    public User_ReLogin_ack() {
       OnConstruction();
     }
 
@@ -1236,18 +1085,18 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_ack(User_ProxyLogin_ack other) : this() {
+    public User_ReLogin_ack(User_ReLogin_ack other) : this() {
       _hasBits0 = other._hasBits0;
       result_ = other.result_;
       userIid_ = other.userIid_;
-      proxytoken_ = other.proxytoken_;
+      logintoken_ = other.logintoken_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public User_ProxyLogin_ack Clone() {
-      return new User_ProxyLogin_ack(this);
+    public User_ReLogin_ack Clone() {
+      return new User_ReLogin_ack(this);
     }
 
     /// <summary>Field number for the "result" field.</summary>
@@ -1293,43 +1142,43 @@ namespace com.cms.client.network.gpro {
       _hasBits0 &= ~1;
     }
 
-    /// <summary>Field number for the "proxytoken" field.</summary>
-    public const int ProxytokenFieldNumber = 3;
-    private long proxytoken_;
+    /// <summary>Field number for the "logintoken" field.</summary>
+    public const int LogintokenFieldNumber = 3;
+    private long logintoken_;
     /// <summary>
-    ///proxytoken
+    ///logintoken
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Proxytoken {
-      get { if ((_hasBits0 & 2) != 0) { return proxytoken_; } else { return 0L; } }
+    public long Logintoken {
+      get { if ((_hasBits0 & 2) != 0) { return logintoken_; } else { return 0L; } }
       set {
         _hasBits0 |= 2;
-        proxytoken_ = value;
+        logintoken_ = value;
       }
     }
-    /// <summary>Gets whether the "proxytoken" field is set</summary>
+    /// <summary>Gets whether the "logintoken" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasProxytoken {
+    public bool HasLogintoken {
       get { return (_hasBits0 & 2) != 0; }
     }
-    /// <summary>Clears the value of the "proxytoken" field</summary>
+    /// <summary>Clears the value of the "logintoken" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearProxytoken() {
+    public void ClearLogintoken() {
       _hasBits0 &= ~2;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as User_ProxyLogin_ack);
+      return Equals(other as User_ReLogin_ack);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(User_ProxyLogin_ack other) {
+    public bool Equals(User_ReLogin_ack other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1338,7 +1187,7 @@ namespace com.cms.client.network.gpro {
       }
       if (Result != other.Result) return false;
       if (UserIid != other.UserIid) return false;
-      if (Proxytoken != other.Proxytoken) return false;
+      if (Logintoken != other.Logintoken) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1348,7 +1197,7 @@ namespace com.cms.client.network.gpro {
       int hash = 1;
       if (Result != 0) hash ^= Result.GetHashCode();
       if (HasUserIid) hash ^= UserIid.GetHashCode();
-      if (HasProxytoken) hash ^= Proxytoken.GetHashCode();
+      if (HasLogintoken) hash ^= Logintoken.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1375,9 +1224,9 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(16);
         output.WriteInt64(UserIid);
       }
-      if (HasProxytoken) {
+      if (HasLogintoken) {
         output.WriteRawTag(24);
-        output.WriteInt64(Proxytoken);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1397,9 +1246,9 @@ namespace com.cms.client.network.gpro {
         output.WriteRawTag(16);
         output.WriteInt64(UserIid);
       }
-      if (HasProxytoken) {
+      if (HasLogintoken) {
         output.WriteRawTag(24);
-        output.WriteInt64(Proxytoken);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1417,8 +1266,8 @@ namespace com.cms.client.network.gpro {
       if (HasUserIid) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UserIid);
       }
-      if (HasProxytoken) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Proxytoken);
+      if (HasLogintoken) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Logintoken);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1428,7 +1277,7 @@ namespace com.cms.client.network.gpro {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(User_ProxyLogin_ack other) {
+    public void MergeFrom(User_ReLogin_ack other) {
       if (other == null) {
         return;
       }
@@ -1438,8 +1287,8 @@ namespace com.cms.client.network.gpro {
       if (other.HasUserIid) {
         UserIid = other.UserIid;
       }
-      if (other.HasProxytoken) {
-        Proxytoken = other.Proxytoken;
+      if (other.HasLogintoken) {
+        Logintoken = other.Logintoken;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1465,7 +1314,7 @@ namespace com.cms.client.network.gpro {
             break;
           }
           case 24: {
-            Proxytoken = input.ReadInt64();
+            Logintoken = input.ReadInt64();
             break;
           }
         }
@@ -1492,7 +1341,7 @@ namespace com.cms.client.network.gpro {
             break;
           }
           case 24: {
-            Proxytoken = input.ReadInt64();
+            Logintoken = input.ReadInt64();
             break;
           }
         }
@@ -1657,6 +1506,465 @@ namespace com.cms.client.network.gpro {
 
   }
 
+  public sealed partial class User_GateLost_ntf : pb::IMessage<User_GateLost_ntf>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<User_GateLost_ntf> _parser = new pb::MessageParser<User_GateLost_ntf>(() => new User_GateLost_ntf());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<User_GateLost_ntf> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_GateLost_ntf() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_GateLost_ntf(User_GateLost_ntf other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_GateLost_ntf Clone() {
+      return new User_GateLost_ntf(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as User_GateLost_ntf);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(User_GateLost_ntf other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(User_GateLost_ntf other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  ///状态激活协议
+  /// </summary>
+  public sealed partial class User_Active_ntf : pb::IMessage<User_Active_ntf>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<User_Active_ntf> _parser = new pb::MessageParser<User_Active_ntf>(() => new User_Active_ntf());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<User_Active_ntf> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_Active_ntf() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_Active_ntf(User_Active_ntf other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_Active_ntf Clone() {
+      return new User_Active_ntf(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as User_Active_ntf);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(User_Active_ntf other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(User_Active_ntf other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class User_RoleList_req : pb::IMessage<User_RoleList_req>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<User_RoleList_req> _parser = new pb::MessageParser<User_RoleList_req>(() => new User_RoleList_req());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<User_RoleList_req> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_RoleList_req() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_RoleList_req(User_RoleList_req other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public User_RoleList_req Clone() {
+      return new User_RoleList_req(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as User_RoleList_req);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(User_RoleList_req other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(User_RoleList_req other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class User_RoleList_ack : pb::IMessage<User_RoleList_ack>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1671,7 +1979,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[5]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1869,7 +2177,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[6]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2059,7 +2367,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[7]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2302,7 +2610,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[8]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2491,7 +2799,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[9]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2723,7 +3031,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[10]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2967,7 +3275,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[11]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3165,7 +3473,7 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[12]; }
+      get { return global::com.cms.client.network.gpro.UserLoginReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

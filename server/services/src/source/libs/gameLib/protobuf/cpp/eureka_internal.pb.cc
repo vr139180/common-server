@@ -789,24 +789,23 @@ const char descriptor_table_protodef_eureka_5finternal_2eproto[] PROTOBUF_SECTIO
   "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"^\n\032Svr_Servi"
   "ceBindService_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010svr"
   "_type\030\002 \001(\005\022\r\n\005toiid\030\003 \001(\003\022\017\n\007totoken\030\004 "
-  "\001(\003*\252\003\n\017ERK_SERVICETYPE\022\024\n\020ERK_SERVICE_N"
+  "\001(\003*\223\003\n\017ERK_SERVICETYPE\022\024\n\020ERK_SERVICE_N"
   "ONE\020\000\022\026\n\022ERK_SERVICE_EUREKA\020\001\022\032\n\026ERK_SER"
   "VICE_DATAROUTER\020\002\022\025\n\021ERK_SERVICE_STATE\020\003"
   "\022\024\n\020ERK_SERVICE_GATE\020\004\022\024\n\020ERK_SERVICE_HO"
-  "ME\020\005\022\025\n\021ERK_SERVICE_LOGIN\020\006\022\031\n\025ERK_SERVI"
-  "CE_SVRROUTER\020\007\022\025\n\021ERK_SERVICE_UNION\020\010\022\024\n"
-  "\020ERK_SERVICE_CHAT\020\t\022\024\n\020ERK_SERVICE_MAIL\020"
-  "\n\022\026\n\022ERK_SERVICE_FRIEND\020\013\022\033\n\027ERK_SERVICE"
-  "_FIGHTROUTER\020\014\022\033\n\027ERK_SERVICE_MATCHMAKIN"
-  "G\020\r\022\024\n\020ERK_SERVICE_GAME\020\016\022\030\n\024ERK_SERVICE"
-  "_DATASYNC\020\017\022\023\n\017ERK_SERVICE_MAX\020\020BT\n\033com."
-  "cms.client.network.gproP\001Z\025gamelib/proto"
-  "buf/gpro\252\002\033com.cms.client.network.gprob\006"
-  "proto3"
+  "ME\020\005\022\031\n\025ERK_SERVICE_SVRROUTER\020\006\022\024\n\020ERK_S"
+  "ERVICE_CHAT\020\007\022\024\n\020ERK_SERVICE_MAIL\020\010\022\026\n\022E"
+  "RK_SERVICE_FRIEND\020\t\022\033\n\027ERK_SERVICE_FIGHT"
+  "ROUTER\020\n\022\033\n\027ERK_SERVICE_MATCHMAKING\020\013\022\024\n"
+  "\020ERK_SERVICE_GAME\020\014\022\030\n\024ERK_SERVICE_DATAS"
+  "YNC\020\r\022\025\n\021ERK_SERVICE_UNION\020\016\022\023\n\017ERK_SERV"
+  "ICE_MAX\020\017BT\n\033com.cms.client.network.gpro"
+  "P\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clie"
+  "nt.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_eureka_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_eureka_5finternal_2eproto = {
-  false, false, 3046, descriptor_table_protodef_eureka_5finternal_2eproto, "eureka_internal.proto", 
+  false, false, 3023, descriptor_table_protodef_eureka_5finternal_2eproto, "eureka_internal.proto", 
   &descriptor_table_eureka_5finternal_2eproto_once, nullptr, 0, 26,
   schemas, file_default_instances, TableStruct_eureka_5finternal_2eproto::offsets,
   file_level_metadata_eureka_5finternal_2eproto, file_level_enum_descriptors_eureka_5finternal_2eproto, file_level_service_descriptors_eureka_5finternal_2eproto,
@@ -840,7 +839,6 @@ bool ERK_SERVICETYPE_IsValid(int value) {
     case 13:
     case 14:
     case 15:
-    case 16:
       return true;
     default:
       return false;

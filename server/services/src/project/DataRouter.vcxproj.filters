@@ -22,9 +22,6 @@
     <ClCompile Include="..\source\DataRouter\network\ServiceRouterLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\DataRouter\network\LoginServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\DataRouter\DataRouterApp.h" />
@@ -47,9 +44,6 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\DataRouter\network\ServiceRouterLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\DataRouter\network\LoginServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

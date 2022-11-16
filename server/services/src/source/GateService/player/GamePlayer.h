@@ -23,7 +23,8 @@
 typedef enum tagPlayerState {
 	PlayerState_Free = 0,
 	PlayerState_Closing,
-	PlayerState_Loginning,
+	PlayerState_Loginning,	//µÇÂ½ÖÐ
+	PlayerState_Sort,		//ÅÅ¶ÓµÈ´ý
 	PlayerState_Logon,
 	PlayerState_RoleSel,
 	PlayerState_RoleReady,
@@ -110,8 +111,6 @@ public:
 	virtual bool pack_protocol(S_UINT_8 *pbuf, S_UINT_32 maxlen, NetProtocol* pro, S_UINT_32& prolen);
 	virtual bool is_need_unpack_protocol(S_UINT_16 msgid);
 
-public:
-	void user_login(NetProtocol* msg);
 };
 
 inline 

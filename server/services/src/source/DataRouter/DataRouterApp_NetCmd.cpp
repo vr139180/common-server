@@ -171,30 +171,6 @@ void DataRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autore
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_LOGIN)
-	{
-		LoginServiceLinkFrom *pLink = 0;
-		{
-			ThreadLockWrapper guard(get_threadlock());
-
-			session_from_.remove_waitsession_mth(psession);
-			pLink = login_links_from_.ask_free_link();
-
-			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-			psession->auth();
-			pLink->set_session(psession);
-			psession->set_netlinkbase(pLink);
-
-			//ÉèÖÃµ±Ç°gatelinke
-			login_links_from_.regist_onlinelink(pLink);
-
-			pLink->registinfo_tolog(true);
-		}
-
-		ack->set_result(0);
-		pLink->send_netprotocol(ptr.release());
-	}
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
@@ -209,8 +185,6 @@ void DataRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE ctype, std::lis
 
 	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_HOME)
 		home_links_from_.sync_balance_services(svrs);
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_STATE)
-		state_links_from_.sync_balance_services(svrs);
 }
 
 void DataRouterApp::mth_service_registed(S_INT_64 sid)

@@ -90,7 +90,7 @@ bool CProtocolHead::decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 #define PARSE_USERGATE_GATEID( USERGATE, GATEID) { GATEID = (USERGATE&USERGATE_MASK_ZERO_L)>>43;}
 #define PARSE_USERGATE_ROLEID( USERGATE, USERID) { USERID = (USERGATE&USERGATE_MASK_ZERO_H);}
 
-S_INT_64 SProtocolHead::build_token_gidrid(S_INT_64 gateiid, S_INT_64 useriid)
+S_INT_64 SProtocolHead::build_token_giduid(S_INT_64 gateiid, S_INT_64 useriid)
 {
 	S_INT_64 r = 0;
 	MAKE_USERGATE(gateiid, useriid, r);
@@ -104,23 +104,23 @@ S_INT_64 SProtocolHead::build_token_slottoken(S_INT_32 slot, S_INT_64 token)
 	return r;
 }
 
-void SProtocolHead::set_token_gidrid(S_INT_64 gateiid, S_INT_64 roleiid)
+void SProtocolHead::set_token_giduid(S_INT_64 gateiid, S_INT_64 useriid)
 {
-	MAKE_USERGATE(gateiid, roleiid, token_gidrid_);
+	MAKE_USERGATE(gateiid, useriid, token_giduid_);
 }
 
 S_INT_64 SProtocolHead::get_token_gateiid() const
 {
 	S_INT_64 gid = 0;
-	PARSE_USERGATE_GATEID(token_gidrid_, gid);
+	PARSE_USERGATE_GATEID(token_giduid_, gid);
 	return gid;
 }
 
-S_INT_64 SProtocolHead::get_token_roleiid() const
+S_INT_64 SProtocolHead::get_token_useriid() const
 {
-	S_INT_64 rid = 0;
-	PARSE_USERGATE_ROLEID(token_gidrid_, rid);
-	return rid;
+	S_INT_64 uid = 0;
+	PARSE_USERGATE_ROLEID(token_giduid_, uid);
+	return uid;
 }
 
 void SProtocolHead::set_token_slottoken(S_INT_32 slot, S_INT_64 token)
@@ -162,17 +162,15 @@ bool SProtocolHead::encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 		return false;
 	if (Encode(pdata, maxlen, offset, router_balance_) != SC_OK)
 		return false;
-	if (Encode(pdata, maxlen, offset, hashkey_) != SC_OK)
-		return false;
 	if (Encode(pdata, maxlen, offset, from_type_) != SC_OK)
 		return false;
 	if (Encode(pdata, maxlen, offset, to_type_) != SC_OK)
 		return false;
-	if (Encode(pdata, maxlen, offset, to_broadcast_) != SC_OK)
-		return false;
-	if (Encode(pdata, maxlen, offset, token_gidrid_) != SC_OK)
+	if (Encode(pdata, maxlen, offset, token_giduid_) != SC_OK)
 		return false;
 	if (Encode(pdata, maxlen, offset, token_slottoken_) != SC_OK)
+		return false;
+	if (Encode(pdata, maxlen, offset, role_iid_) != SC_OK)
 		return false;
 
 	this->head_len_ = offset;
@@ -192,17 +190,15 @@ bool SProtocolHead::decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->router_balance_) != SC_OK)
 		return false;
-	if (Decode(pdata, maxlen, offset, this->hashkey_) != SC_OK)
-		return false;
 	if (Decode(pdata, maxlen, offset, this->from_type_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->to_type_) != SC_OK)
 		return false;
-	if (Decode(pdata, maxlen, offset, this->to_broadcast_) != SC_OK)
-		return false;
-	if (Decode(pdata, maxlen, offset, this->token_gidrid_) != SC_OK)
+	if (Decode(pdata, maxlen, offset, this->token_giduid_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->token_slottoken_) != SC_OK)
+		return false;
+	if (Decode(pdata, maxlen, offset, this->role_iid_) != SC_OK)
 		return false;
 
 	this->head_len_ = (S_INT_16)offset;

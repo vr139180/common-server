@@ -13,19 +13,28 @@
 // limitations under the License.
 //
 
-#ifndef __LOGINCONFIG_H__
-#define __LOGINCONFIG_H__
+#ifndef __STATECONFIG_H__
+#define __STATECONFIG_H__
 
 #include <string>
+#include <gameLib/config/RedisOption.h>
+#include <gameLib/config/DatabaseOption.h>
 
-class LoginConfig
+class StateConfig
 {
 public:
-	LoginConfig(){}
+	StateConfig(){}
 
 public:
 	//现成一次tick循环次数
 	int loopnum_;
+	//db线程数
+	int db_thread_nums_;
+
+	//redis配置
+	config::RedisOption	redis_;
+	//db配置
+	config::DatabaseOption db_;
 };
 
-#endif //__LOGINCONFIG_H__
+#endif //__STATECONFIG_H__

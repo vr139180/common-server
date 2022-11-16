@@ -20,27 +20,25 @@ enum ERK_SERVICETYPE{
 	ERK_SERVICE_GATE = 4;
 	//部署任务系统，购买等逻辑
 	ERK_SERVICE_HOME = 5;
-	//身份认证服务，登陆排队等
-	ERK_SERVICE_LOGIN = 6;
 	//第三方服务router负载均衡器
-	ERK_SERVICE_SVRROUTER = 7;
-	//全局服务，比如工会、战斗匹配
-	ERK_SERVICE_UNION = 8;
+	ERK_SERVICE_SVRROUTER = 6;
 	//chat
-	ERK_SERVICE_CHAT = 9;
+	ERK_SERVICE_CHAT = 7;
 	//mail
-	ERK_SERVICE_MAIL = 10;
+	ERK_SERVICE_MAIL = 8;
 	//friend
-	ERK_SERVICE_FRIEND = 11;
+	ERK_SERVICE_FRIEND = 9;
 	//fightrouter
-	ERK_SERVICE_FIGHTROUTER = 12;
+	ERK_SERVICE_FIGHTROUTER = 10;
 	//matchmaking
-	ERK_SERVICE_MATCHMAKING = 13;
+	ERK_SERVICE_MATCHMAKING = 11;
 	//游戏逻辑服务器
-	ERK_SERVICE_GAME = 14;
+	ERK_SERVICE_GAME = 12;
 	//数据同步服务器
-	ERK_SERVICE_DATASYNC = 15;
-	ERK_SERVICE_MAX = 16;
+	ERK_SERVICE_DATASYNC = 13;
+	//全局服务，比如工会、战斗匹配
+	ERK_SERVICE_UNION = 14;
+	ERK_SERVICE_MAX = 15;
 }
 
 //eureka server node info

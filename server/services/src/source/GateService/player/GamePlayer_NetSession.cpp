@@ -43,14 +43,8 @@ GamePlayer::~GamePlayer()
 
 void GamePlayer::init_protocolhead()
 {
-	s_head_.router_balance_ = true;
-	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = PRO::ERK_SERVICE_GATE;
-	s_head_.to_type_ = -1;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
+	s_head_.to_type_ = 0;
 }
 
 NetProtocol* GamePlayer::get_livekeep_msg()

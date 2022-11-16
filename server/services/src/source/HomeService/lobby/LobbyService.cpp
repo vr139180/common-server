@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "lobby/LobbyService.h"
 
 #include "config/HomeConfig.h"
@@ -107,7 +122,7 @@ LobbyUser* LobbyService::get_userbyslot_from_msg(NetProtocol* msg)
 LobbyUser* LobbyService::get_userofsame_from_msg(NetProtocol* msg)
 {
 	S_INT_64 uid = 0, tks = 0;
-	uid = msg->head_.get_token_roleiid();
+	uid = msg->head_.get_role_iid();
 	tks = msg->head_.get_token_token();
 	int slot = msg->head_.get_token_slot();
 

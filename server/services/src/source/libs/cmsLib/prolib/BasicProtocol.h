@@ -99,42 +99,41 @@ public:
 class SProtocolHead : public CProtoHeadBase
 {
 public:
-	SProtocolHead():router_balance_(true), hashkey_(0), from_type_(-1), to_type_(-1)
-		, to_broadcast_(false), unpack_protocol_(true){}
+	SProtocolHead():router_balance_(true), from_type_(-1), to_type_(-1)
+		, token_giduid_(0), token_slottoken_(0),role_iid_(0), unpack_protocol_(true){}
 
 	bool encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
 	bool encode_totlelen(S_UINT_8 *pbuf, S_UINT_32 maxlen, S_UINT_32 msglen);
 	bool decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
 
-	void set_token_gidrid(S_INT_64 gateiid, S_INT_64 roleiid);
+	void set_token_giduid(S_INT_64 gateiid, S_INT_64 userid);
 	S_INT_64 get_token_gateiid() const;
-	S_INT_64 get_token_roleiid() const;
+	S_INT_64 get_token_useriid() const;
 	void set_token_slottoken(S_INT_32 slot, S_INT_64 token);
 	S_INT_32 get_token_slot() const;
 	S_INT_64 get_token_token() const;
+	S_INT_64 get_role_iid() { return role_iid_; }
+	void set_role_iid(S_INT_64 id) { role_iid_ = id; }
 
 	bool is_same_session(const SProtocolHead& head) {
-		return get_token_roleiid() == head.get_token_roleiid() && get_token_token() == head.get_token_token();
+		return get_token_useriid() == head.get_token_useriid() && get_token_token() == head.get_token_token();
 	}
 
 public:
-	static S_INT_64 build_token_gidrid(S_INT_64 gateiid, S_INT_64 useriid);
+	static S_INT_64 build_token_giduid(S_INT_64 gateiid, S_INT_64 useriid);
 	static S_INT_64 build_token_slottoken(S_INT_32 slot, S_INT_64 token);
 
 public:
 	//是否需要负载均衡
 	bool		router_balance_;
-	//用户balance的key
-	S_INT_32	hashkey_;
 	//来自哪类服务器
 	S_INT_8		from_type_;
 	//发送给哪类服务器
 	S_INT_8		to_type_;
-	//是否广播
-	bool		to_broadcast_;
 	//token信息
-	S_INT_64	token_gidrid_;
+	S_INT_64	token_giduid_;
 	S_INT_64	token_slottoken_;
+	S_INT_64	role_iid_;
 	//是否需要解析协议,bindevent设置，缺省为true, false主要用于转发情况
 	bool		unpack_protocol_;
 };

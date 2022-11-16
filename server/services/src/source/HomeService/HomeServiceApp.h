@@ -25,6 +25,7 @@
 #include <cmsLib/net/NetAcceptorEvent.h>
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
 #include <cmsLib/lua/ScriptContext.h>
+#include <cmsLib/net/NetHashingWithVNode.h>
 
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/LinkToHolder.h>
@@ -48,6 +49,8 @@ public:
 	HomeConfig* get_config();
 
 	virtual void main_loop();
+
+	void dispatch_to_lobby(NetProtocol* msg);
 
 public:
 	void send_protocol_to_gate(BasicProtocol* pro);
@@ -98,6 +101,7 @@ protected:
 
 	//lobby service
 	boost::scoped_array<LobbyService>	all_lobbys_;
+	NetHashingWithVNode<S_INT_32>		lobby_hash_;
 
 	//run in main thread
 	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
