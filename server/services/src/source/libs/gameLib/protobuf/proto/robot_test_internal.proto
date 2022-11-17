@@ -26,11 +26,16 @@ message Robot_Config_Ack{
   //只有ret == 0 时,才有下面选项
   //机器人在服务器的唯一标识
   optional int32 robotid = 3;
-  optional int64 startuserid = 4;
-  optional int32 users = 5;
-  optional int32 usersrange = 6;
-  optional string lgsip = 7;
-  optional int32 lgsport = 8;
+  optional string urladdr = 4;
+  optional string openprefix = 5;
+  
+  optional int64 startuserid = 7;
+  optional int32 users = 8;
+  
+  optional string dbuser = 10;
+  optional string dbpwd = 11;
+  optional string dbname = 12;
+  optional string dbip = 13;
 }
 
 message Robot_Start_Ack{
@@ -45,34 +50,25 @@ message Robot_Start_Ack{
 message Robot_Stop_Ack{
 }
 
-message Robot_State_Rpt{
-  message ActionGroup
-  {
-	int64 actions = 1;		//动作总数
-	int64 succeeds = 2;		//操作成功总数
-	int64 faileds = 3;		//操作失败总数
-	int64 timeouts = 4;		//操作超时总数
-	int64 timeinterval = 5;	//操作超时时间,单位毫秒
-  }
-  
-  message StateData {
-	//登录
-	ActionGroup logon = 1;
-	ActionGroup getrole = 2;
-	ActionGroup selrole = 3;
-	ActionGroup getchannel = 4;
-	ActionGroup selchannel = 5;
-	ActionGroup getroom = 6;
-	ActionGroup loginroom = 7;
-	ActionGroup logoutroom = 8 ;
-	ActionGroup logoutchannel = 9;
-	ActionGroup logout = 10;
-  }
-  //被回复的用户ID
-  int64 robotid = 1;
-  repeated StateData stat_data = 2;
+message Robot_Record_req{
+  int32 robotid = 1;
+  int32 logs = 2;
 }
 
-message Robot_State_Ack{
-  int64 userid = 1;
+message Robot_StartRecord_req{
+  int32 robotid = 1;
+}
+message Robot_EndRecord_req{
+  int32 robotid = 1;
+  int32 logs = 2;
+}
+
+message Robot_UploadLogs_ntf{
+}
+
+message Robot_ClearLogs_ntf{
+}
+
+message Robot_UserPrefixChg_ntf{
+  string prefix = 1;
 }

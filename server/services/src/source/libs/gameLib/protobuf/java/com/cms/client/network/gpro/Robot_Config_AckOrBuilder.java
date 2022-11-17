@@ -49,63 +49,126 @@ public interface Robot_Config_AckOrBuilder extends
   int getRobotid();
 
   /**
-   * <code>optional int64 startuserid = 4;</code>
+   * <code>optional string urladdr = 4;</code>
+   * @return Whether the urladdr field is set.
+   */
+  boolean hasUrladdr();
+  /**
+   * <code>optional string urladdr = 4;</code>
+   * @return The urladdr.
+   */
+  java.lang.String getUrladdr();
+  /**
+   * <code>optional string urladdr = 4;</code>
+   * @return The bytes for urladdr.
+   */
+  com.google.protobuf.ByteString
+      getUrladdrBytes();
+
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return Whether the openprefix field is set.
+   */
+  boolean hasOpenprefix();
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return The openprefix.
+   */
+  java.lang.String getOpenprefix();
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return The bytes for openprefix.
+   */
+  com.google.protobuf.ByteString
+      getOpenprefixBytes();
+
+  /**
+   * <code>optional int64 startuserid = 7;</code>
    * @return Whether the startuserid field is set.
    */
   boolean hasStartuserid();
   /**
-   * <code>optional int64 startuserid = 4;</code>
+   * <code>optional int64 startuserid = 7;</code>
    * @return The startuserid.
    */
   long getStartuserid();
 
   /**
-   * <code>optional int32 users = 5;</code>
+   * <code>optional int32 users = 8;</code>
    * @return Whether the users field is set.
    */
   boolean hasUsers();
   /**
-   * <code>optional int32 users = 5;</code>
+   * <code>optional int32 users = 8;</code>
    * @return The users.
    */
   int getUsers();
 
   /**
-   * <code>optional int32 usersrange = 6;</code>
-   * @return Whether the usersrange field is set.
+   * <code>optional string dbuser = 10;</code>
+   * @return Whether the dbuser field is set.
    */
-  boolean hasUsersrange();
+  boolean hasDbuser();
   /**
-   * <code>optional int32 usersrange = 6;</code>
-   * @return The usersrange.
+   * <code>optional string dbuser = 10;</code>
+   * @return The dbuser.
    */
-  int getUsersrange();
-
+  java.lang.String getDbuser();
   /**
-   * <code>optional string lgsip = 7;</code>
-   * @return Whether the lgsip field is set.
-   */
-  boolean hasLgsip();
-  /**
-   * <code>optional string lgsip = 7;</code>
-   * @return The lgsip.
-   */
-  java.lang.String getLgsip();
-  /**
-   * <code>optional string lgsip = 7;</code>
-   * @return The bytes for lgsip.
+   * <code>optional string dbuser = 10;</code>
+   * @return The bytes for dbuser.
    */
   com.google.protobuf.ByteString
-      getLgsipBytes();
+      getDbuserBytes();
 
   /**
-   * <code>optional int32 lgsport = 8;</code>
-   * @return Whether the lgsport field is set.
+   * <code>optional string dbpwd = 11;</code>
+   * @return Whether the dbpwd field is set.
    */
-  boolean hasLgsport();
+  boolean hasDbpwd();
   /**
-   * <code>optional int32 lgsport = 8;</code>
-   * @return The lgsport.
+   * <code>optional string dbpwd = 11;</code>
+   * @return The dbpwd.
    */
-  int getLgsport();
+  java.lang.String getDbpwd();
+  /**
+   * <code>optional string dbpwd = 11;</code>
+   * @return The bytes for dbpwd.
+   */
+  com.google.protobuf.ByteString
+      getDbpwdBytes();
+
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return Whether the dbname field is set.
+   */
+  boolean hasDbname();
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return The dbname.
+   */
+  java.lang.String getDbname();
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return The bytes for dbname.
+   */
+  com.google.protobuf.ByteString
+      getDbnameBytes();
+
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return Whether the dbip field is set.
+   */
+  boolean hasDbip();
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return The dbip.
+   */
+  java.lang.String getDbip();
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return The bytes for dbip.
+   */
+  com.google.protobuf.ByteString
+      getDbipBytes();
 }

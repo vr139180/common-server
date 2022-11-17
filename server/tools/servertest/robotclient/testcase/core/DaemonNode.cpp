@@ -1,8 +1,23 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "testcase/core/DaemonNode.h"
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/util/XmlUtil.h>
 
 #include "testcase/VirtualUser.h"
@@ -28,17 +43,6 @@ void DaemonNode::init_before_start()
 {
 }
 
-void DaemonNode::handle_message( S_UINT_16 proid, BasicProtocol* pro, bool& handle)
+void DaemonNode::handle_message(S_UINT_16 proid, BasicProtocol* pro, bool& handle)
 {
-	/*
-	if( pro->iid_ == SKIRMISH_INFO_NTF)
-	{
-		handle =true;
-
-		Skirmish_Info_ntf* ntf =dynamic_cast<Skirmish_Info_ntf*>(pro);
-        vuser_->skirmish_season_id_ = ntf->season_id_;
-		vuser_->skirmish_id_ =ntf->matchmaking_id_;
-		vuser_->skirmish_trainid_ =ntf->training_id_;
-	}
-	*/
 }

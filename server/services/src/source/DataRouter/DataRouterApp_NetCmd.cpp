@@ -174,14 +174,17 @@ void DataRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autore
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
-void DataRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
+void DataRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
+	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka",
+		NetServiceType::to_string(type), nodes.size(), deliids.size());
 }
 
 void DataRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE ctype, std::list<S_INT_64>& svrs)
 {
-	logInfo(out_runtime, "datarouter recv a balance notify[type:%d, size:%d]", ctype, svrs.size());
+	logInfo(out_runtime, "datarouter recv a balance notify[type:%s, size:%d]", 
+		NetServiceType::to_string(ctype).c_str(), svrs.size());
 
 	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_HOME)
 		home_links_from_.sync_balance_services(svrs);

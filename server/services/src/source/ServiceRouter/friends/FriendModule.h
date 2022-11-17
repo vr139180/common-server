@@ -31,13 +31,10 @@ public:
 
 	void init_friendmodule(S_INT_64 myiid);
 
-	void process_friend_msg(S_UINT_16 proiid, BasicProtocol* pro);
+	void process_friend_msg( NetProtocol* pro);
 
 	//receiver hash µ½mail·þÎñ
 	int user_to_frdhash(S_INT_64 useriid);
-
-private:
-	FriendHashPlot	fhash_plot_;
 };
 
 #endif //__FRIENDMODULE_H__

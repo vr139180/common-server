@@ -133,13 +133,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.cpp" />
     <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatModule.cpp" />
     <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatModule_Network.cpp" />
-    <ClCompile Include="..\source\ServiceRouter\friends\FriendLinkerHolder.cpp" />
     <ClCompile Include="..\source\ServiceRouter\friends\FriendModule.cpp" />
     <ClCompile Include="..\source\ServiceRouter\friends\FriendModule_Network.cpp" />
-    <ClCompile Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.cpp" />
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule.cpp" />
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule_Network.cpp" />
     <ClCompile Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.cpp" />
@@ -153,12 +150,9 @@
     <ClCompile Include="..\source\ServiceRouter\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.h" />
     <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatModule.h" />
     <ClInclude Include="..\source\ServiceRouter\config\RouterConfig.h" />
-    <ClInclude Include="..\source\ServiceRouter\friends\FriendLinkerHolder.h" />
     <ClInclude Include="..\source\ServiceRouter\friends\FriendModule.h" />
-    <ClInclude Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.h" />
     <ClInclude Include="..\source\ServiceRouter\mailmodule\MailModule.h" />
     <ClInclude Include="..\source\ServiceRouter\network\ChatServiceLinkFrom.h" />
     <ClInclude Include="..\source\ServiceRouter\network\DataRouterLinkTo.h" />

@@ -133,8 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\FightRouter\network\DataRouterLinkTo.cpp" />
     <ClCompile Include="..\source\FightRouter\network\GameServiceLinkFrom.cpp" />
-    <ClCompile Include="..\source\FightRouter\network\HomeServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\FightRouter\network\FightRouterSession.cpp" />
     <ClCompile Include="..\source\FightRouter\FightRouterApp.cpp" />
     <ClCompile Include="..\source\FightRouter\FightRouterApp_NetCmd.cpp" />
@@ -143,8 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\FightRouter\config\FightRouterConfig.h" />
+    <ClInclude Include="..\source\FightRouter\network\DataRouterLinkTo.h" />
     <ClInclude Include="..\source\FightRouter\network\GameServiceLinkFrom.h" />
-    <ClInclude Include="..\source\FightRouter\network\HomeServiceLinkFrom.h" />
     <ClInclude Include="..\source\FightRouter\network\FightRouterSession.h" />
     <ClInclude Include="..\source\FightRouter\FightRouterApp.h" />
     <ClInclude Include="..\source\FightRouter\network\MatchMakingServiceLinkFrom.h" />

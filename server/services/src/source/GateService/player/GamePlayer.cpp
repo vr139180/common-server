@@ -37,9 +37,9 @@ void GamePlayer::force_linkclose()
 	force_close();
 }
 
-void GamePlayer::proxy()
+void GamePlayer::pre_start()
 {
-	cur_state_ = PlayerState::PlayerState_Loginning;
+	cur_state_ = PlayerState::PlayerState_Free;
 	this->start_timestamp_ = OSSystem::mOS->GetTimestamp();
 }
 

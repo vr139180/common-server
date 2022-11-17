@@ -16,7 +16,12 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Robot_Config_Ack() {
-    lgsip_ = "";
+    urladdr_ = "";
+    openprefix_ = "";
+    dbuser_ = "";
+    dbpwd_ = "";
+    dbname_ = "";
+    dbip_ = "";
   }
 
   @java.lang.Override
@@ -65,30 +70,50 @@ private static final long serialVersionUID = 0L;
             robotid_ = input.readInt32();
             break;
           }
-          case 32: {
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
             bitField0_ |= 0x00000002;
+            urladdr_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000004;
+            openprefix_ = s;
+            break;
+          }
+          case 56: {
+            bitField0_ |= 0x00000008;
             startuserid_ = input.readInt64();
             break;
           }
-          case 40: {
-            bitField0_ |= 0x00000004;
+          case 64: {
+            bitField0_ |= 0x00000010;
             users_ = input.readInt32();
             break;
           }
-          case 48: {
-            bitField0_ |= 0x00000008;
-            usersrange_ = input.readInt32();
-            break;
-          }
-          case 58: {
+          case 82: {
             java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000010;
-            lgsip_ = s;
+            bitField0_ |= 0x00000020;
+            dbuser_ = s;
             break;
           }
-          case 64: {
-            bitField0_ |= 0x00000020;
-            lgsport_ = input.readInt32();
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000040;
+            dbpwd_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000080;
+            dbname_ = s;
+            break;
+          }
+          case 106: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000100;
+            dbip_ = s;
             break;
           }
           default: {
@@ -183,18 +208,110 @@ private static final long serialVersionUID = 0L;
     return robotid_;
   }
 
-  public static final int STARTUSERID_FIELD_NUMBER = 4;
+  public static final int URLADDR_FIELD_NUMBER = 4;
+  private volatile java.lang.Object urladdr_;
+  /**
+   * <code>optional string urladdr = 4;</code>
+   * @return Whether the urladdr field is set.
+   */
+  @java.lang.Override
+  public boolean hasUrladdr() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional string urladdr = 4;</code>
+   * @return The urladdr.
+   */
+  @java.lang.Override
+  public java.lang.String getUrladdr() {
+    java.lang.Object ref = urladdr_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      urladdr_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string urladdr = 4;</code>
+   * @return The bytes for urladdr.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUrladdrBytes() {
+    java.lang.Object ref = urladdr_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      urladdr_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int OPENPREFIX_FIELD_NUMBER = 5;
+  private volatile java.lang.Object openprefix_;
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return Whether the openprefix field is set.
+   */
+  @java.lang.Override
+  public boolean hasOpenprefix() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return The openprefix.
+   */
+  @java.lang.Override
+  public java.lang.String getOpenprefix() {
+    java.lang.Object ref = openprefix_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      openprefix_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string openprefix = 5;</code>
+   * @return The bytes for openprefix.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOpenprefixBytes() {
+    java.lang.Object ref = openprefix_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      openprefix_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STARTUSERID_FIELD_NUMBER = 7;
   private long startuserid_;
   /**
-   * <code>optional int64 startuserid = 4;</code>
+   * <code>optional int64 startuserid = 7;</code>
    * @return Whether the startuserid field is set.
    */
   @java.lang.Override
   public boolean hasStartuserid() {
-    return ((bitField0_ & 0x00000002) != 0);
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
-   * <code>optional int64 startuserid = 4;</code>
+   * <code>optional int64 startuserid = 7;</code>
    * @return The startuserid.
    */
   @java.lang.Override
@@ -202,18 +319,18 @@ private static final long serialVersionUID = 0L;
     return startuserid_;
   }
 
-  public static final int USERS_FIELD_NUMBER = 5;
+  public static final int USERS_FIELD_NUMBER = 8;
   private int users_;
   /**
-   * <code>optional int32 users = 5;</code>
+   * <code>optional int32 users = 8;</code>
    * @return Whether the users field is set.
    */
   @java.lang.Override
   public boolean hasUsers() {
-    return ((bitField0_ & 0x00000004) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
-   * <code>optional int32 users = 5;</code>
+   * <code>optional int32 users = 8;</code>
    * @return The users.
    */
   @java.lang.Override
@@ -221,88 +338,188 @@ private static final long serialVersionUID = 0L;
     return users_;
   }
 
-  public static final int USERSRANGE_FIELD_NUMBER = 6;
-  private int usersrange_;
+  public static final int DBUSER_FIELD_NUMBER = 10;
+  private volatile java.lang.Object dbuser_;
   /**
-   * <code>optional int32 usersrange = 6;</code>
-   * @return Whether the usersrange field is set.
+   * <code>optional string dbuser = 10;</code>
+   * @return Whether the dbuser field is set.
    */
   @java.lang.Override
-  public boolean hasUsersrange() {
-    return ((bitField0_ & 0x00000008) != 0);
+  public boolean hasDbuser() {
+    return ((bitField0_ & 0x00000020) != 0);
   }
   /**
-   * <code>optional int32 usersrange = 6;</code>
-   * @return The usersrange.
+   * <code>optional string dbuser = 10;</code>
+   * @return The dbuser.
    */
   @java.lang.Override
-  public int getUsersrange() {
-    return usersrange_;
-  }
-
-  public static final int LGSIP_FIELD_NUMBER = 7;
-  private volatile java.lang.Object lgsip_;
-  /**
-   * <code>optional string lgsip = 7;</code>
-   * @return Whether the lgsip field is set.
-   */
-  @java.lang.Override
-  public boolean hasLgsip() {
-    return ((bitField0_ & 0x00000010) != 0);
-  }
-  /**
-   * <code>optional string lgsip = 7;</code>
-   * @return The lgsip.
-   */
-  @java.lang.Override
-  public java.lang.String getLgsip() {
-    java.lang.Object ref = lgsip_;
+  public java.lang.String getDbuser() {
+    java.lang.Object ref = dbuser_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      lgsip_ = s;
+      dbuser_ = s;
       return s;
     }
   }
   /**
-   * <code>optional string lgsip = 7;</code>
-   * @return The bytes for lgsip.
+   * <code>optional string dbuser = 10;</code>
+   * @return The bytes for dbuser.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getLgsipBytes() {
-    java.lang.Object ref = lgsip_;
+      getDbuserBytes() {
+    java.lang.Object ref = dbuser_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      lgsip_ = b;
+      dbuser_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int LGSPORT_FIELD_NUMBER = 8;
-  private int lgsport_;
+  public static final int DBPWD_FIELD_NUMBER = 11;
+  private volatile java.lang.Object dbpwd_;
   /**
-   * <code>optional int32 lgsport = 8;</code>
-   * @return Whether the lgsport field is set.
+   * <code>optional string dbpwd = 11;</code>
+   * @return Whether the dbpwd field is set.
    */
   @java.lang.Override
-  public boolean hasLgsport() {
-    return ((bitField0_ & 0x00000020) != 0);
+  public boolean hasDbpwd() {
+    return ((bitField0_ & 0x00000040) != 0);
   }
   /**
-   * <code>optional int32 lgsport = 8;</code>
-   * @return The lgsport.
+   * <code>optional string dbpwd = 11;</code>
+   * @return The dbpwd.
    */
   @java.lang.Override
-  public int getLgsport() {
-    return lgsport_;
+  public java.lang.String getDbpwd() {
+    java.lang.Object ref = dbpwd_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      dbpwd_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string dbpwd = 11;</code>
+   * @return The bytes for dbpwd.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDbpwdBytes() {
+    java.lang.Object ref = dbpwd_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      dbpwd_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DBNAME_FIELD_NUMBER = 12;
+  private volatile java.lang.Object dbname_;
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return Whether the dbname field is set.
+   */
+  @java.lang.Override
+  public boolean hasDbname() {
+    return ((bitField0_ & 0x00000080) != 0);
+  }
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return The dbname.
+   */
+  @java.lang.Override
+  public java.lang.String getDbname() {
+    java.lang.Object ref = dbname_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      dbname_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string dbname = 12;</code>
+   * @return The bytes for dbname.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDbnameBytes() {
+    java.lang.Object ref = dbname_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      dbname_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DBIP_FIELD_NUMBER = 13;
+  private volatile java.lang.Object dbip_;
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return Whether the dbip field is set.
+   */
+  @java.lang.Override
+  public boolean hasDbip() {
+    return ((bitField0_ & 0x00000100) != 0);
+  }
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return The dbip.
+   */
+  @java.lang.Override
+  public java.lang.String getDbip() {
+    java.lang.Object ref = dbip_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      dbip_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string dbip = 13;</code>
+   * @return The bytes for dbip.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDbipBytes() {
+    java.lang.Object ref = dbip_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      dbip_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -329,19 +546,28 @@ private static final long serialVersionUID = 0L;
       output.writeInt32(3, robotid_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt64(4, startuserid_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, urladdr_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt32(5, users_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, openprefix_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(6, usersrange_);
+      output.writeInt64(7, startuserid_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, lgsip_);
+      output.writeInt32(8, users_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      output.writeInt32(8, lgsport_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, dbuser_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, dbpwd_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, dbname_);
+    }
+    if (((bitField0_ & 0x00000100) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, dbip_);
     }
     unknownFields.writeTo(output);
   }
@@ -365,23 +591,30 @@ private static final long serialVersionUID = 0L;
         .computeInt32Size(3, robotid_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, startuserid_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, urladdr_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, users_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, openprefix_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(6, usersrange_);
+        .computeInt64Size(7, startuserid_);
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, lgsip_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, users_);
     }
     if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(8, lgsport_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, dbuser_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, dbpwd_);
+    }
+    if (((bitField0_ & 0x00000080) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, dbname_);
+    }
+    if (((bitField0_ & 0x00000100) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, dbip_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -407,6 +640,16 @@ private static final long serialVersionUID = 0L;
       if (getRobotid()
           != other.getRobotid()) return false;
     }
+    if (hasUrladdr() != other.hasUrladdr()) return false;
+    if (hasUrladdr()) {
+      if (!getUrladdr()
+          .equals(other.getUrladdr())) return false;
+    }
+    if (hasOpenprefix() != other.hasOpenprefix()) return false;
+    if (hasOpenprefix()) {
+      if (!getOpenprefix()
+          .equals(other.getOpenprefix())) return false;
+    }
     if (hasStartuserid() != other.hasStartuserid()) return false;
     if (hasStartuserid()) {
       if (getStartuserid()
@@ -417,20 +660,25 @@ private static final long serialVersionUID = 0L;
       if (getUsers()
           != other.getUsers()) return false;
     }
-    if (hasUsersrange() != other.hasUsersrange()) return false;
-    if (hasUsersrange()) {
-      if (getUsersrange()
-          != other.getUsersrange()) return false;
+    if (hasDbuser() != other.hasDbuser()) return false;
+    if (hasDbuser()) {
+      if (!getDbuser()
+          .equals(other.getDbuser())) return false;
     }
-    if (hasLgsip() != other.hasLgsip()) return false;
-    if (hasLgsip()) {
-      if (!getLgsip()
-          .equals(other.getLgsip())) return false;
+    if (hasDbpwd() != other.hasDbpwd()) return false;
+    if (hasDbpwd()) {
+      if (!getDbpwd()
+          .equals(other.getDbpwd())) return false;
     }
-    if (hasLgsport() != other.hasLgsport()) return false;
-    if (hasLgsport()) {
-      if (getLgsport()
-          != other.getLgsport()) return false;
+    if (hasDbname() != other.hasDbname()) return false;
+    if (hasDbname()) {
+      if (!getDbname()
+          .equals(other.getDbname())) return false;
+    }
+    if (hasDbip() != other.hasDbip()) return false;
+    if (hasDbip()) {
+      if (!getDbip()
+          .equals(other.getDbip())) return false;
     }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -451,6 +699,14 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + ROBOTID_FIELD_NUMBER;
       hash = (53 * hash) + getRobotid();
     }
+    if (hasUrladdr()) {
+      hash = (37 * hash) + URLADDR_FIELD_NUMBER;
+      hash = (53 * hash) + getUrladdr().hashCode();
+    }
+    if (hasOpenprefix()) {
+      hash = (37 * hash) + OPENPREFIX_FIELD_NUMBER;
+      hash = (53 * hash) + getOpenprefix().hashCode();
+    }
     if (hasStartuserid()) {
       hash = (37 * hash) + STARTUSERID_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -460,17 +716,21 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + USERS_FIELD_NUMBER;
       hash = (53 * hash) + getUsers();
     }
-    if (hasUsersrange()) {
-      hash = (37 * hash) + USERSRANGE_FIELD_NUMBER;
-      hash = (53 * hash) + getUsersrange();
+    if (hasDbuser()) {
+      hash = (37 * hash) + DBUSER_FIELD_NUMBER;
+      hash = (53 * hash) + getDbuser().hashCode();
     }
-    if (hasLgsip()) {
-      hash = (37 * hash) + LGSIP_FIELD_NUMBER;
-      hash = (53 * hash) + getLgsip().hashCode();
+    if (hasDbpwd()) {
+      hash = (37 * hash) + DBPWD_FIELD_NUMBER;
+      hash = (53 * hash) + getDbpwd().hashCode();
     }
-    if (hasLgsport()) {
-      hash = (37 * hash) + LGSPORT_FIELD_NUMBER;
-      hash = (53 * hash) + getLgsport();
+    if (hasDbname()) {
+      hash = (37 * hash) + DBNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDbname().hashCode();
+    }
+    if (hasDbip()) {
+      hash = (37 * hash) + DBIP_FIELD_NUMBER;
+      hash = (53 * hash) + getDbip().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -611,16 +871,22 @@ private static final long serialVersionUID = 0L;
 
       robotid_ = 0;
       bitField0_ = (bitField0_ & ~0x00000001);
-      startuserid_ = 0L;
+      urladdr_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
-      users_ = 0;
+      openprefix_ = "";
       bitField0_ = (bitField0_ & ~0x00000004);
-      usersrange_ = 0;
+      startuserid_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000008);
-      lgsip_ = "";
+      users_ = 0;
       bitField0_ = (bitField0_ & ~0x00000010);
-      lgsport_ = 0;
+      dbuser_ = "";
       bitField0_ = (bitField0_ & ~0x00000020);
+      dbpwd_ = "";
+      bitField0_ = (bitField0_ & ~0x00000040);
+      dbname_ = "";
+      bitField0_ = (bitField0_ & ~0x00000080);
+      dbip_ = "";
+      bitField0_ = (bitField0_ & ~0x00000100);
       return this;
     }
 
@@ -656,25 +922,37 @@ private static final long serialVersionUID = 0L;
         to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.startuserid_ = startuserid_;
         to_bitField0_ |= 0x00000002;
       }
+      result.urladdr_ = urladdr_;
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.users_ = users_;
         to_bitField0_ |= 0x00000004;
       }
+      result.openprefix_ = openprefix_;
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.usersrange_ = usersrange_;
+        result.startuserid_ = startuserid_;
         to_bitField0_ |= 0x00000008;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.users_ = users_;
         to_bitField0_ |= 0x00000010;
       }
-      result.lgsip_ = lgsip_;
       if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.lgsport_ = lgsport_;
         to_bitField0_ |= 0x00000020;
       }
+      result.dbuser_ = dbuser_;
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        to_bitField0_ |= 0x00000040;
+      }
+      result.dbpwd_ = dbpwd_;
+      if (((from_bitField0_ & 0x00000080) != 0)) {
+        to_bitField0_ |= 0x00000080;
+      }
+      result.dbname_ = dbname_;
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        to_bitField0_ |= 0x00000100;
+      }
+      result.dbip_ = dbip_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -733,22 +1011,41 @@ private static final long serialVersionUID = 0L;
       if (other.hasRobotid()) {
         setRobotid(other.getRobotid());
       }
+      if (other.hasUrladdr()) {
+        bitField0_ |= 0x00000002;
+        urladdr_ = other.urladdr_;
+        onChanged();
+      }
+      if (other.hasOpenprefix()) {
+        bitField0_ |= 0x00000004;
+        openprefix_ = other.openprefix_;
+        onChanged();
+      }
       if (other.hasStartuserid()) {
         setStartuserid(other.getStartuserid());
       }
       if (other.hasUsers()) {
         setUsers(other.getUsers());
       }
-      if (other.hasUsersrange()) {
-        setUsersrange(other.getUsersrange());
-      }
-      if (other.hasLgsip()) {
-        bitField0_ |= 0x00000010;
-        lgsip_ = other.lgsip_;
+      if (other.hasDbuser()) {
+        bitField0_ |= 0x00000020;
+        dbuser_ = other.dbuser_;
         onChanged();
       }
-      if (other.hasLgsport()) {
-        setLgsport(other.getLgsport());
+      if (other.hasDbpwd()) {
+        bitField0_ |= 0x00000040;
+        dbpwd_ = other.dbpwd_;
+        onChanged();
+      }
+      if (other.hasDbname()) {
+        bitField0_ |= 0x00000080;
+        dbname_ = other.dbname_;
+        onChanged();
+      }
+      if (other.hasDbip()) {
+        bitField0_ |= 0x00000100;
+        dbip_ = other.dbip_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -925,17 +1222,183 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object urladdr_ = "";
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @return Whether the urladdr field is set.
+     */
+    public boolean hasUrladdr() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @return The urladdr.
+     */
+    public java.lang.String getUrladdr() {
+      java.lang.Object ref = urladdr_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        urladdr_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @return The bytes for urladdr.
+     */
+    public com.google.protobuf.ByteString
+        getUrladdrBytes() {
+      java.lang.Object ref = urladdr_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        urladdr_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @param value The urladdr to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUrladdr(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+      urladdr_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUrladdr() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      urladdr_ = getDefaultInstance().getUrladdr();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string urladdr = 4;</code>
+     * @param value The bytes for urladdr to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUrladdrBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000002;
+      urladdr_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object openprefix_ = "";
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @return Whether the openprefix field is set.
+     */
+    public boolean hasOpenprefix() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @return The openprefix.
+     */
+    public java.lang.String getOpenprefix() {
+      java.lang.Object ref = openprefix_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        openprefix_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @return The bytes for openprefix.
+     */
+    public com.google.protobuf.ByteString
+        getOpenprefixBytes() {
+      java.lang.Object ref = openprefix_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        openprefix_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @param value The openprefix to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOpenprefix(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      openprefix_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOpenprefix() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      openprefix_ = getDefaultInstance().getOpenprefix();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string openprefix = 5;</code>
+     * @param value The bytes for openprefix to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOpenprefixBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000004;
+      openprefix_ = value;
+      onChanged();
+      return this;
+    }
+
     private long startuserid_ ;
     /**
-     * <code>optional int64 startuserid = 4;</code>
+     * <code>optional int64 startuserid = 7;</code>
      * @return Whether the startuserid field is set.
      */
     @java.lang.Override
     public boolean hasStartuserid() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>optional int64 startuserid = 4;</code>
+     * <code>optional int64 startuserid = 7;</code>
      * @return The startuserid.
      */
     @java.lang.Override
@@ -943,22 +1406,22 @@ private static final long serialVersionUID = 0L;
       return startuserid_;
     }
     /**
-     * <code>optional int64 startuserid = 4;</code>
+     * <code>optional int64 startuserid = 7;</code>
      * @param value The startuserid to set.
      * @return This builder for chaining.
      */
     public Builder setStartuserid(long value) {
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000008;
       startuserid_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int64 startuserid = 4;</code>
+     * <code>optional int64 startuserid = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearStartuserid() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000008);
       startuserid_ = 0L;
       onChanged();
       return this;
@@ -966,15 +1429,15 @@ private static final long serialVersionUID = 0L;
 
     private int users_ ;
     /**
-     * <code>optional int32 users = 5;</code>
+     * <code>optional int32 users = 8;</code>
      * @return Whether the users field is set.
      */
     @java.lang.Override
     public boolean hasUsers() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional int32 users = 5;</code>
+     * <code>optional int32 users = 8;</code>
      * @return The users.
      */
     @java.lang.Override
@@ -982,184 +1445,355 @@ private static final long serialVersionUID = 0L;
       return users_;
     }
     /**
-     * <code>optional int32 users = 5;</code>
+     * <code>optional int32 users = 8;</code>
      * @param value The users to set.
      * @return This builder for chaining.
      */
     public Builder setUsers(int value) {
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000010;
       users_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int32 users = 5;</code>
+     * <code>optional int32 users = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearUsers() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000010);
       users_ = 0;
       onChanged();
       return this;
     }
 
-    private int usersrange_ ;
+    private java.lang.Object dbuser_ = "";
     /**
-     * <code>optional int32 usersrange = 6;</code>
-     * @return Whether the usersrange field is set.
+     * <code>optional string dbuser = 10;</code>
+     * @return Whether the dbuser field is set.
      */
-    @java.lang.Override
-    public boolean hasUsersrange() {
-      return ((bitField0_ & 0x00000008) != 0);
+    public boolean hasDbuser() {
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>optional int32 usersrange = 6;</code>
-     * @return The usersrange.
+     * <code>optional string dbuser = 10;</code>
+     * @return The dbuser.
      */
-    @java.lang.Override
-    public int getUsersrange() {
-      return usersrange_;
-    }
-    /**
-     * <code>optional int32 usersrange = 6;</code>
-     * @param value The usersrange to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUsersrange(int value) {
-      bitField0_ |= 0x00000008;
-      usersrange_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 usersrange = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUsersrange() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      usersrange_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object lgsip_ = "";
-    /**
-     * <code>optional string lgsip = 7;</code>
-     * @return Whether the lgsip field is set.
-     */
-    public boolean hasLgsip() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional string lgsip = 7;</code>
-     * @return The lgsip.
-     */
-    public java.lang.String getLgsip() {
-      java.lang.Object ref = lgsip_;
+    public java.lang.String getDbuser() {
+      java.lang.Object ref = dbuser_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        lgsip_ = s;
+        dbuser_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>optional string lgsip = 7;</code>
-     * @return The bytes for lgsip.
+     * <code>optional string dbuser = 10;</code>
+     * @return The bytes for dbuser.
      */
     public com.google.protobuf.ByteString
-        getLgsipBytes() {
-      java.lang.Object ref = lgsip_;
+        getDbuserBytes() {
+      java.lang.Object ref = dbuser_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        lgsip_ = b;
+        dbuser_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>optional string lgsip = 7;</code>
-     * @param value The lgsip to set.
+     * <code>optional string dbuser = 10;</code>
+     * @param value The dbuser to set.
      * @return This builder for chaining.
      */
-    public Builder setLgsip(
+    public Builder setDbuser(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
-      lgsip_ = value;
+  bitField0_ |= 0x00000020;
+      dbuser_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string lgsip = 7;</code>
+     * <code>optional string dbuser = 10;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLgsip() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      lgsip_ = getDefaultInstance().getLgsip();
+    public Builder clearDbuser() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      dbuser_ = getDefaultInstance().getDbuser();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string lgsip = 7;</code>
-     * @param value The bytes for lgsip to set.
+     * <code>optional string dbuser = 10;</code>
+     * @param value The bytes for dbuser to set.
      * @return This builder for chaining.
      */
-    public Builder setLgsipBytes(
+    public Builder setDbuserBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000010;
-      lgsip_ = value;
+      bitField0_ |= 0x00000020;
+      dbuser_ = value;
       onChanged();
       return this;
     }
 
-    private int lgsport_ ;
+    private java.lang.Object dbpwd_ = "";
     /**
-     * <code>optional int32 lgsport = 8;</code>
-     * @return Whether the lgsport field is set.
+     * <code>optional string dbpwd = 11;</code>
+     * @return Whether the dbpwd field is set.
      */
-    @java.lang.Override
-    public boolean hasLgsport() {
-      return ((bitField0_ & 0x00000020) != 0);
+    public boolean hasDbpwd() {
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
-     * <code>optional int32 lgsport = 8;</code>
-     * @return The lgsport.
+     * <code>optional string dbpwd = 11;</code>
+     * @return The dbpwd.
      */
-    @java.lang.Override
-    public int getLgsport() {
-      return lgsport_;
+    public java.lang.String getDbpwd() {
+      java.lang.Object ref = dbpwd_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dbpwd_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>optional int32 lgsport = 8;</code>
-     * @param value The lgsport to set.
+     * <code>optional string dbpwd = 11;</code>
+     * @return The bytes for dbpwd.
+     */
+    public com.google.protobuf.ByteString
+        getDbpwdBytes() {
+      java.lang.Object ref = dbpwd_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dbpwd_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string dbpwd = 11;</code>
+     * @param value The dbpwd to set.
      * @return This builder for chaining.
      */
-    public Builder setLgsport(int value) {
-      bitField0_ |= 0x00000020;
-      lgsport_ = value;
+    public Builder setDbpwd(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+      dbpwd_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional int32 lgsport = 8;</code>
+     * <code>optional string dbpwd = 11;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLgsport() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      lgsport_ = 0;
+    public Builder clearDbpwd() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      dbpwd_ = getDefaultInstance().getDbpwd();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string dbpwd = 11;</code>
+     * @param value The bytes for dbpwd to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDbpwdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000040;
+      dbpwd_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object dbname_ = "";
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @return Whether the dbname field is set.
+     */
+    public boolean hasDbname() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @return The dbname.
+     */
+    public java.lang.String getDbname() {
+      java.lang.Object ref = dbname_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dbname_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @return The bytes for dbname.
+     */
+    public com.google.protobuf.ByteString
+        getDbnameBytes() {
+      java.lang.Object ref = dbname_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dbname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @param value The dbname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDbname(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+      dbname_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDbname() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      dbname_ = getDefaultInstance().getDbname();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string dbname = 12;</code>
+     * @param value The bytes for dbname to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDbnameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000080;
+      dbname_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object dbip_ = "";
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @return Whether the dbip field is set.
+     */
+    public boolean hasDbip() {
+      return ((bitField0_ & 0x00000100) != 0);
+    }
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @return The dbip.
+     */
+    public java.lang.String getDbip() {
+      java.lang.Object ref = dbip_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dbip_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @return The bytes for dbip.
+     */
+    public com.google.protobuf.ByteString
+        getDbipBytes() {
+      java.lang.Object ref = dbip_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dbip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @param value The dbip to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDbip(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+      dbip_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDbip() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      dbip_ = getDefaultInstance().getDbip();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string dbip = 13;</code>
+     * @param value The bytes for dbip to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDbipBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000100;
+      dbip_ = value;
       onChanged();
       return this;
     }

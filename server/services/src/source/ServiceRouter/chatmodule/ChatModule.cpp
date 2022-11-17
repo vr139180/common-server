@@ -37,9 +37,6 @@ ChatModule::ChatModule() :channel_seed_(0)
 
 void ChatModule::init_chatmodule(S_INT_64 myiid)
 {
-	//init plot
-	this->chash_plot_ = svrApp.get_config()->chathash_plot_;
-
 	this->channel_seed_ = myiid;
 	this->iids_ = (S_INT_64)CMS_RandMinMax(10, 1000);
 }
@@ -52,5 +49,5 @@ S_INT_64 ChatModule::new_custom_channelid()
 
 int ChatModule::channelid_to_chathash(int type, S_INT_64 channelid)
 {
-	return (channelid % chash_plot_.chatmax);
+	return (channelid);
 }

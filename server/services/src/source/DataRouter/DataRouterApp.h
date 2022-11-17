@@ -59,6 +59,9 @@ public:
 		gate_links_from_.broadcast<T>(msg);
 	}
 
+	void router_to_state(NetProtocol* pro);
+	void router_to_home(NetProtocol* pro);
+
 public:
 
 	//------------------------------implement NetAcceptorEvent ------------------------------//

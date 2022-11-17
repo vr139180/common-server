@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #pragma once
 
 #include "stdafx.h"
@@ -9,17 +24,17 @@
 #include "MsgNotify.h"
 #include "LogonDlg.h"
 #include <gameLib/protobuf/Proto_all.h>
+#include "uploads/UploadLogUtil.h"
+#include "uploads/LogSaveUtil.h"
 
 using namespace PRO;
 
 #define WM_INFONOTIFY  WM_USER+0x100
 #define WM_ERRORNOTIFY  WM_USER+0x101
 
-#define MAXCASE_PRETHREAD	50
-
-#define MAX_BUFFER_LEN	1024*16
-
-#define ROBOT_SOCKET_BUF		1024*512	//512k
+#define MAXCASE_PRETHREAD	10
+#define MAX_BUFFER_LEN		1024*16
+#define ROBOT_SOCKET_BUF	1024*512	//512k
 
 class CAboutDlg :public CDialogImpl<CAboutDlg>
 {
@@ -77,17 +92,21 @@ public:
 		COMMAND_ID_HANDLER(IDOK, OnBnClickedOk)
 		COMMAND_ID_HANDLER(IDCANCEL, OnBnClickedCancel)
 
+		COMMAND_ID_HANDLER(ID_CLEARLOG, OnBnClearLogs)
+
 		COMMAND_ID_HANDLER(IDC_SCRIPTBUTTON, OnBnClickedScriptbutton)
+
+		MESSAGE_HANDLER(WM_USER + 0x200, OnBeginUploadLog)
+		MESSAGE_HANDLER(WM_USER + 0x201, OnUploadLog)
+		MESSAGE_HANDLER(WM_USER + 0x202, OnEndUploadLog)
 	END_MSG_MAP()
 
 	BEGIN_DDX_MAP( CThreadTestDlg)
-		DDX_TEXT( IDC_EDIT2, m_ip)
-		DDX_INT( IDC_EDIT4, m_port)
+		DDX_TEXT(IDC_EDIT2, m_urladdr)
 		DDX_CONTROL_HANDLE( IDOK, m_startbut)
 		DDX_CONTROL_HANDLE( IDCANCEL, m_endbut)
 		DDX_TEXT( IDC_STARTNUM, m_startplayer)
 		DDX_TEXT( IDC_CNTNUM, m_playernums)
-		DDX_TEXT( IDC_GWIP, m_robotsvrip)
 		DDX_TEXT( IDC_ROBOTSTATUS, m_robotstatus)
 	END_DDX_MAP()
 
@@ -110,6 +129,12 @@ public:
 		::PostQuitMessage(nVal);
 	}
 
+	LRESULT OnBeginUploadLog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnUploadLog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+	LRESULT OnEndUploadLog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
+
+	LRESULT OnBnClearLogs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+
 protected:
 	void show_notify( MsgNotify *msg);
 	void show_error( MsgNotify *msg);
@@ -120,6 +145,7 @@ protected:
 	virtual void OnClose();
 
 	void robot_login();
+	void send_proto(BasicProtocol* msg);
 
 protected:
 	char			buffer_[ROBOT_SOCKET_BUF];
@@ -135,8 +161,7 @@ public:
 
 	CListViewCtrl	m_list;
 	int				m_usernum;
-	int				m_user;
-	int				m_userrange;
+	S_INT_64		m_user;
 
 	SOCKET			m_hSocket;
 
@@ -150,17 +175,15 @@ protected:
 	void StopAutoRobot();
 
 public:
-	CString			m_ip;
-	int				m_port;
-
-	CString			m_lgsip;
-	int				m_lgsport;
+	CString			m_urladdr;
+	CString			m_openprefix;
 
 	CString			m_startplayer;
 	CString			m_playernums;
-	CString			m_playerrange;
 	CString			m_robotstatus;
-	CString			m_robotsvrip;
+
+	UploadLogUtil	upload_util_;
+	LogSaveUtil		logsave_util_;
 
 	int				m_robotid;
 

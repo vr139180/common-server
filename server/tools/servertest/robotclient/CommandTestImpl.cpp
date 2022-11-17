@@ -1,15 +1,24 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "CommandTestImpl.h"
 #include <cmsLib/GlobalSettings.h>
 #include <cmsLib/util/ShareUtil.h>
-
-#define NET_HEAD_MASK_ZERO_H	0x0000FFFF
-#define NET_HEAD_MASK_ZERO_L	0xFFFF0000
-
-#define MAKE_NETHEAD( VAL, PROID, LENS) { VAL = LENS; VAL = (VAL << 16)&NET_HEAD_MASK_ZERO_L; VAL = VAL|(PROID&NET_HEAD_MASK_ZERO_H);}
-#define GET_NETHEAD( VAL, PROID, LENS) { LENS = (S_UINT_16)((VAL&NET_HEAD_MASK_ZERO_L)>>16); PROID = (S_UINT_16)(VAL&NET_HEAD_MASK_ZERO_H);}
-
+#include <cmsLib/Log.h>
 
 USE_PROTOCOL_NAMESPACE;
 
@@ -17,11 +26,8 @@ CommandTestImpl::CommandTestImpl():
 hthd( 0),
 dwThdId( 0),
 parent_wnd_( 0),
-data_len_( 0),
 gts_data_len_( 0),
-socket_( INVALID_SOCKET),
-socket2_( INVALID_SOCKET),
-thread_step_( 0)
+socket2_( INVALID_SOCKET)
 {
 	data_ = ProtocolFactory::instance();
 	data_->init_factory();
@@ -33,19 +39,18 @@ thread_step_( 0)
 	context_.regist_2_context<CommandTestImpl>( "cmd", this);
 
 	//init
-	userid_ =NO_INITVALUE;
-	role_iid_ =NO_INITVALUE;
+	user_iid_ = NO_INITVALUE;
+	user_token_ = NO_INITVALUE;
+	role_iid_ = NO_INITVALUE;
+
+	head_.encryption_ = false;
+	head_.version_ = 1;
+	head_.channel_ = 1;
 }
 
 CommandTestImpl::~CommandTestImpl(void)
 {
     stopThread();
-
-	if( socket_ != INVALID_SOCKET)
-	{
-		::closesocket( socket_);
-		socket_ =INVALID_SOCKET;
-	}
 
 	if( socket2_ != INVALID_SOCKET)
 	{
@@ -87,151 +92,6 @@ void CommandTestImpl::stopThread()
 	dwThdId =0;
 }
 
-bool CommandTestImpl::connect_to_lgs()
-{
-	socket_ = ::socket(AF_INET, SOCK_STREAM, 0);
-	if( socket_ == INVALID_SOCKET)
-		return false;
-
-	struct sockaddr_in serv_addr;
-	memset(&serv_addr, 0, sizeof(serv_addr));
-	serv_addr.sin_family		= AF_INET;
-	serv_addr.sin_addr.s_addr	= inet_addr( lgs_ip_.c_str());
-	serv_addr.sin_port			= htons( lgs_port_);
-
-	if( ::connect( socket_, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR)
-	{
-		::closesocket( socket_);
-		socket_ =INVALID_SOCKET;
-		return false;
-	}
-	else
-	{        
-		u_long ll =1;
-		ioctlsocket( socket_, FIONBIO, &ll);
-		ll =1024*8;
-		ioctlsocket( socket_, FIONREAD, &ll);        
-		return true;
-	}
-}
-
-bool CommandTestImpl::send_to_lgs( BasicProtocol *p)
-{
-	if( socket_ == INVALID_SOCKET)
-		return false;
-
-	char buf[SINGLE_PACK_LEN] ={0};
-	char *pbuf =buf + sizeof(S_UINT_32);
-
-	S_INT_32 len = (S_INT_32)p->ByteSizeLong();
-	S_UINT_16 proiid = data_->proto_to_iid(p);
-
-	p->SerializeToArray(pbuf, len);
-
-	S_UINT_32 pro_head = 0;
-	MAKE_NETHEAD(pro_head, proiid, len);
-
-	*((S_UINT_32*)buf) = pro_head;
-
-	int totlen =len + sizeof(S_UINT_32);
-	int len2 =0;
-	pbuf =buf;
-
-	while( ( len2 =::send( socket_, pbuf, totlen, 0)) != SOCKET_ERROR)
-	{
-		totlen -= len2;
-		if( totlen <= 0)
-			break;
-		pbuf =pbuf + len2;
-	}
-
-	if( len2 == SOCKET_ERROR)
-	{
-		int err =WSAGetLastError();
-		if( err != WSAEWOULDBLOCK)
-		{
-			::closesocket( socket_);
-			socket_ =INVALID_SOCKET;
-			//reset recvbuf
-			data_len_ =0;
-
-			return false;
-		}
-	}
-	return true;
-}
-
-BasicProtocol* CommandTestImpl::recv_from_lgs(S_UINT_16& proid)
-{
-	if( socket_ == INVALID_SOCKET)
-		return 0;
-
-	char *pbuf = recv_buffer_ + data_len_;
-	int len = MAX_PACK_LEN - data_len_;
-
-	int rlen = ::recv(socket_, pbuf, len, 0);
-
-	if (rlen == SOCKET_ERROR)
-	{
-		if (WSAGetLastError() != WSAEWOULDBLOCK)
-		{
-			::closesocket(socket_);
-			socket_ = INVALID_SOCKET;
-			//reset recvbuf
-			data_len_ = 0;
-
-			CString *pstr = new CString();
-			pstr->Format("和lgs的socket连接断开\r\n");
-			PostMessage(parent_wnd_, WM_USER + 0x200, (WPARAM)pstr, 0);
-
-			return 0;
-		}
-
-		if (data_len_ < sizeof(S_UINT_32))
-			return 0;
-	}
-
-	if (rlen >= 0)
-		data_len_ += rlen;
-
-	//分析现有数据
-	{
-		if (data_len_ < sizeof(S_UINT_32))
-			return 0;
-		pbuf = recv_buffer_;
-
-		S_UINT_32 hd = *((S_UINT_32*)pbuf);
-
-		S_UINT_16 len2 = 0;
-		proid = 0;
-		GET_NETHEAD(hd, proid, len2);
-
-		if (len2 > data_len_ - sizeof(S_UINT_32))
-			return 0;
-
-		pbuf += sizeof(S_UINT_32);
-
-		BasicProtocol *ret = data_->iid_to_proto(proid, pbuf, len2);
-		
-		//移动内存
-		data_len_ -= sizeof(S_UINT_32);
-		data_len_ -= len2;
-		pbuf += len2;
-		memmove(&(recv_buffer_[0]), pbuf, data_len_);
-
-		return ret;
-	}
-}
-
-void CommandTestImpl::disconnect_to_lgs()
-{
-	if( socket_ == INVALID_SOCKET)
-		return;
-
-	::closesocket( socket_);
-	socket_ =INVALID_SOCKET;
-}
-
 void CommandTestImpl::disconnect_to_gts()
 {
 	if( socket2_ == INVALID_SOCKET)
@@ -246,29 +106,45 @@ bool CommandTestImpl::send_to_gts( BasicProtocol *p)
 	if( socket2_ == INVALID_SOCKET)
 		return false;
 
+	//协议号递增
+	++head_.seqno_;
+
 	char buf[SINGLE_PACK_LEN] = { 0 };
-	char *pbuf = buf + sizeof(S_UINT_32);
+	S_UINT_8 *pbuf = (S_UINT_8*)buf;
+	S_UINT_8 *pdata = (S_UINT_8*)pbuf;
 
-	S_INT_32 len = (S_INT_32)p->ByteSizeLong();
 	S_UINT_16 proiid = data_->proto_to_iid(p);
+	if (proiid == 0)
+		return false;
+	//设置协议id
+	head_.set_msgid(proiid);
 
-	p->SerializeToArray(pbuf, len);
+	if (!head_.encode_head(pdata, SINGLE_PACK_LEN))
+		return false;
 
-	S_UINT_32 pro_head = 0;
-	MAKE_NETHEAD(pro_head, proiid, len);
+	S_UINT_32 len2 = (S_UINT_32)p->ByteSizeLong();
+	if (head_.get_headlen() + len2 > SINGLE_PACK_LEN)
+		return false;
 
-	*((S_UINT_32*)buf) = pro_head;
+	try {
+		pdata = pbuf + head_.get_headlen();
+		if (!p->SerializeToArray(pdata, len2))
+			return false;
+	}
+	catch (...) {
+		return false;
+	}
 
-	int totlen = len + sizeof(S_UINT_32);
-	int len2 = 0;
-	pbuf = buf;
+	head_.encode_totlelen(pbuf, SINGLE_PACK_LEN, len2);
+	int totlen = head_.get_totlelen();
 
-	while( ( len2 =::send( socket2_, pbuf, totlen, 0)) != SOCKET_ERROR)
+	pdata = pbuf;
+	while( ( len2 =::send( socket2_, (const char*)pdata, totlen, 0)) != SOCKET_ERROR)
 	{
 		totlen -= len2;
 		if( totlen <= 0)
 			break;
-		pbuf =pbuf + len2;
+		pdata = pdata + len2;
 	}
 
 	if( len2 == SOCKET_ERROR)
@@ -311,41 +187,47 @@ BasicProtocol* CommandTestImpl::recv_from_gts(S_UINT_16& proid)
 
 			return 0;
 		}
-
-		if (gts_data_len_ < sizeof(S_UINT_32))
-			return 0;
 	}
 
 	if (rlen >= 0)
 		gts_data_len_ += rlen;
 
+	if (gts_data_len_ < sizeof(S_UINT_32))
+		return 0;
+
 	//分析现有数据
+	S_UINT_8* pdata = (S_UINT_8*)gts_recv_buffer_;
+	S_UINT_32 prolen = *((S_UINT_32*)pdata);
 	{
-		if (gts_data_len_ < sizeof(S_INT_32))
+		S_UINT_32 offset = 0;
+		CProtoHeadBase::Decode(pdata, (S_UINT_32)gts_data_len_, offset, prolen);
+	}
+
+	if (gts_data_len_ < prolen)
+		return 0;
+
+	CProtocolHead chead;
+	if (!chead.decode_head(pdata, prolen))
+		return 0;
+
+	pdata = (S_UINT_8*)gts_recv_buffer_ + (S_UINT_32)chead.get_headlen();
+	try {
+		BasicProtocol* bp = data_->iid_to_proto(chead.get_msgid(), pdata, chead.get_msglen());
+		if (bp == 0)
 			return 0;
-
-		pbuf = gts_recv_buffer_;
-
-		S_UINT_32 hd = *((S_UINT_32*)pbuf);
-
-		proid = 0;
-		S_UINT_16 len2 = 0;
-		GET_NETHEAD(hd, proid, len2);
-
-		if (len2 > gts_data_len_ - sizeof(S_UINT_32))
-			return 0;
-
-		pbuf += sizeof(S_UINT_32);
-
-		BasicProtocol *ret = data_->iid_to_proto(proid, pbuf, len2);
 
 		//移动内存
-		gts_data_len_ -= sizeof(S_UINT_32);
-		gts_data_len_ -= len2;
-		pbuf += len2;
-		memmove(&(gts_recv_buffer_[0]), pbuf, gts_data_len_);
+		gts_data_len_ -= prolen;
+		if (gts_data_len_ > 0)
+		{
+			pdata = (S_UINT_8*)gts_recv_buffer_ + prolen;
+			memmove(&(gts_recv_buffer_[0]), pdata, gts_data_len_);
+		}
 
-		return ret;
+		return bp;
+	}
+	catch (...) {
+		return 0;
 	}
 }
 
@@ -355,11 +237,15 @@ bool CommandTestImpl::connect_to_gts()
 	if( socket2_ == INVALID_SOCKET)
 		return false;
 
+	std::string ip;
+	int port = 0;
+	svrinfo_->get_ipinfo(ip, port);
+
 	struct sockaddr_in serv_addr;
 	memset(&serv_addr, 0, sizeof(serv_addr));
 	serv_addr.sin_family		= AF_INET;
-	serv_addr.sin_addr.s_addr	= inet_addr( gts_ip_.c_str());
-	serv_addr.sin_port			= htons( gts_port_);
+	serv_addr.sin_addr.s_addr	= inet_addr( ip.c_str());
+	serv_addr.sin_port			= htons( port);
 
 	if( ::connect( socket2_, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR)
 	{
@@ -384,10 +270,7 @@ DWORD  WINAPI CommandTestImpl::Thread(LPVOID  lparam)
 	{
 		::Sleep( 1);
 
-		if( pthis->thread_step_ & 1)
-			pthis->lgs_linkdo();
-		if( pthis->thread_step_ & 2)
-			pthis->gts_linkdo();
+		pthis->gts_linkdo();
 	}
 
 	return 1;
@@ -396,14 +279,14 @@ DWORD  WINAPI CommandTestImpl::Thread(LPVOID  lparam)
 std::string CommandTestImpl::get_status()
 {
 	std::string ret ="";
-	if( userid_ == NO_INITVALUE)
+	if( user_iid_ == NO_INITVALUE)
 	{
 		ret ="未登陆\r\n";
 		return ret;
 	}
 
 	CString fm;
-	fm.Format( "用户[%s / %d] role_iid_[%d] 已经登陆\r\n", username_.c_str(), userid_, role_iid_);
+	fm.Format( "用户[%s / %d] role_iid_[%d] 已经登陆\r\n", username_.c_str(), user_iid_, role_iid_);
 	ret =(LPCTSTR)fm;
 
 	return ret;
@@ -411,7 +294,7 @@ std::string CommandTestImpl::get_status()
 
 bool CommandTestImpl::islogon()
 {
-	return userid_ != NO_INITVALUE;
+	return user_iid_ != NO_INITVALUE;
 }
 
 bool CommandTestImpl::isplayersel()

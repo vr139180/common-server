@@ -35,13 +35,8 @@ MatchMakingServiceLinkFrom::~MatchMakingServiceLinkFrom()
 void MatchMakingServiceLinkFrom::init_protocolhead()
 {
 	s_head_.router_balance_ = false;
-	s_head_.hashkey_ = 0;
-	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_MATCHMAKING;
-	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_FIGHTROUTER;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
+	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_FIGHTROUTER;
+	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_MATCHMAKING;
 }
 
 void MatchMakingServiceLinkFrom::force_linkclose()
@@ -64,9 +59,9 @@ void MatchMakingServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 void MatchMakingServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_runtime, "MatchMaking Service[%d] regist to me(FightRouterService)", get_iid());
+		logInfo( out_runtime, "MatchMaking Service[%d] regist to me(FightRouter)", get_iid());
 	else
-		logInfo( out_runtime, "MatchMaking Service[%d] disconnect from me(FightRouterService)", get_iid());
+		logInfo( out_runtime, "MatchMaking Service[%d] disconnect from me(FightRouter)", get_iid());
 }
 
 void MatchMakingServiceLinkFrom::send_netprotocol(BasicProtocol* msg)

@@ -21,7 +21,7 @@ constexpr User_Login_req::User_Login_req(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : account_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , pwd_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , token_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , token_(int64_t{0})
   , userid_(int64_t{0})
   , type_(0){}
 struct User_Login_reqDefaultTypeInternal {
@@ -35,10 +35,10 @@ struct User_Login_reqDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_Login_reqDefaultTypeInternal _User_Login_req_default_instance_;
 constexpr User_Login_ack::User_Login_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : logintoken_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , type_(0)
+  : type_(0)
   , result_(0)
-  , user_iid_(int64_t{0}){}
+  , user_iid_(int64_t{0})
+  , logintoken_(int64_t{0}){}
 struct User_Login_ackDefaultTypeInternal {
   constexpr User_Login_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -251,8 +251,8 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   PROTOBUF_FIELD_OFFSET(::PRO::User_Login_ack, logintoken_),
   ~0u,
   ~0u,
-  1,
   0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_req, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -400,11 +400,11 @@ const char descriptor_table_protodef_user_5flogin_2eproto[] PROTOBUF_SECTION_VAR
   "\n\020user_login.proto\022\003PRO\032\021db_internal.pro"
   "to\"\230\001\n\016User_Login_req\022\014\n\004type\030\001 \001(\005\022\024\n\007a"
   "ccount\030\002 \001(\tH\000\210\001\001\022\020\n\003pwd\030\003 \001(\tH\001\210\001\001\022\022\n\005t"
-  "oken\030\004 \001(\tH\002\210\001\001\022\023\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010"
+  "oken\030\004 \001(\003H\002\210\001\001\022\023\n\006userid\030\005 \001(\003H\003\210\001\001B\n\n\010"
   "_accountB\006\n\004_pwdB\010\n\006_tokenB\t\n\007_userid\"z\n"
   "\016User_Login_ack\022\014\n\004type\030\001 \001(\005\022\016\n\006result\030"
   "\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nlogintok"
-  "en\030\004 \001(\tH\001\210\001\001B\013\n\t_user_iidB\r\n\013_logintoke"
+  "en\030\004 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013_logintoke"
   "n\"8\n\020User_ReLogin_req\022\020\n\010user_iid\030\001 \001(\003\022"
   "\022\n\nlogintoken\030\002 \001(\003\"n\n\020User_ReLogin_ack\022"
   "\016\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027"
@@ -492,17 +492,9 @@ User_Login_req::User_Login_req(const User_Login_req& from)
     pwd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_pwd(), 
       GetArenaForAllocation());
   }
-  token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    token_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_token()) {
-    token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_token(), 
-      GetArenaForAllocation());
-  }
-  ::memcpy(&userid_, &from.userid_,
+  ::memcpy(&token_, &from.token_,
     static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&userid_)) + sizeof(type_));
+    reinterpret_cast<char*>(&token_)) + sizeof(type_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_Login_req)
 }
 
@@ -515,14 +507,10 @@ pwd_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyI
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   pwd_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-token_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  token_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&userid_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&token_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&type_) -
-    reinterpret_cast<char*>(&userid_)) + sizeof(type_));
+    reinterpret_cast<char*>(&token_)) + sizeof(type_));
 }
 
 User_Login_req::~User_Login_req() {
@@ -536,7 +524,6 @@ inline void User_Login_req::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   account_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   pwd_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  token_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void User_Login_req::ArenaDtor(void* object) {
@@ -556,18 +543,19 @@ void User_Login_req::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
+  if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
       account_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
       pwd_.ClearNonDefaultToEmpty();
     }
-    if (cached_has_bits & 0x00000004u) {
-      token_.ClearNonDefaultToEmpty();
-    }
   }
-  userid_ = int64_t{0};
+  if (cached_has_bits & 0x0000000cu) {
+    ::memset(&token_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&userid_) -
+        reinterpret_cast<char*>(&token_)) + sizeof(userid_));
+  }
   type_ = 0;
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -608,12 +596,11 @@ const char* User_Login_req::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         } else
           goto handle_unusual;
         continue;
-      // optional string token = 4;
+      // optional int64 token = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_token();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_Login_req.token"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _Internal::set_has_token(&has_bits);
+          token_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -683,14 +670,10 @@ uint8_t* User_Login_req::_InternalSerialize(
         3, this->_internal_pwd(), target);
   }
 
-  // optional string token = 4;
+  // optional int64 token = 4;
   if (_internal_has_token()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PRO.User_Login_req.token");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_token(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_token(), target);
   }
 
   // optional int64 userid = 5;
@@ -731,11 +714,9 @@ size_t User_Login_req::ByteSizeLong() const {
           this->_internal_pwd());
     }
 
-    // optional string token = 4;
+    // optional int64 token = 4;
     if (cached_has_bits & 0x00000004u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_token());
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_token());
     }
 
     // optional int64 userid = 5;
@@ -780,7 +761,7 @@ void User_Login_req::MergeFrom(const User_Login_req& from) {
       _internal_set_pwd(from._internal_pwd());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_set_token(from._internal_token());
+      token_ = from.token_;
     }
     if (cached_has_bits & 0x00000008u) {
       userid_ = from.userid_;
@@ -820,17 +801,12 @@ void User_Login_req::InternalSwap(User_Login_req* other) {
       &pwd_, lhs_arena,
       &other->pwd_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &token_, lhs_arena,
-      &other->token_, rhs_arena
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(User_Login_req, type_)
       + sizeof(User_Login_req::type_)
-      - PROTOBUF_FIELD_OFFSET(User_Login_req, userid_)>(
-          reinterpret_cast<char*>(&userid_),
-          reinterpret_cast<char*>(&other->userid_));
+      - PROTOBUF_FIELD_OFFSET(User_Login_req, token_)>(
+          reinterpret_cast<char*>(&token_),
+          reinterpret_cast<char*>(&other->token_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_Login_req::GetMetadata() const {
@@ -845,10 +821,10 @@ class User_Login_ack::_Internal {
  public:
   using HasBits = decltype(std::declval<User_Login_ack>()._has_bits_);
   static void set_has_user_iid(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
+    (*has_bits)[0] |= 1u;
   }
   static void set_has_logintoken(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
+    (*has_bits)[0] |= 2u;
   }
 };
 
@@ -865,29 +841,17 @@ User_Login_ack::User_Login_ack(const User_Login_ack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  logintoken_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    logintoken_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_logintoken()) {
-    logintoken_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_logintoken(), 
-      GetArenaForAllocation());
-  }
   ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&user_iid_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(user_iid_));
+    static_cast<size_t>(reinterpret_cast<char*>(&logintoken_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(logintoken_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_Login_ack)
 }
 
 inline void User_Login_ack::SharedCtor() {
-logintoken_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  logintoken_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&type_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&user_iid_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(user_iid_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&logintoken_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(logintoken_));
 }
 
 User_Login_ack::~User_Login_ack() {
@@ -899,7 +863,6 @@ User_Login_ack::~User_Login_ack() {
 
 inline void User_Login_ack::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  logintoken_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void User_Login_ack::ArenaDtor(void* object) {
@@ -918,14 +881,15 @@ void User_Login_ack::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    logintoken_.ClearNonDefaultToEmpty();
-  }
   ::memset(&type_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&result_) -
       reinterpret_cast<char*>(&type_)) + sizeof(result_));
-  user_iid_ = int64_t{0};
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&user_iid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&logintoken_) -
+        reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -962,12 +926,11 @@ const char* User_Login_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
         } else
           goto handle_unusual;
         continue;
-      // optional string logintoken = 4;
+      // optional int64 logintoken = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_logintoken();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "PRO.User_Login_ack.logintoken"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _Internal::set_has_logintoken(&has_bits);
+          logintoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1020,14 +983,10 @@ uint8_t* User_Login_ack::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_user_iid(), target);
   }
 
-  // optional string logintoken = 4;
+  // optional int64 logintoken = 4;
   if (_internal_has_logintoken()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_logintoken().data(), static_cast<int>(this->_internal_logintoken().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PRO.User_Login_ack.logintoken");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_logintoken(), target);
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_logintoken(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1046,14 +1005,6 @@ size_t User_Login_ack::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // optional string logintoken = 4;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_logintoken());
-  }
-
   // int32 type = 1;
   if (this->_internal_type() != 0) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_type());
@@ -1064,11 +1015,19 @@ size_t User_Login_ack::ByteSizeLong() const {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_result());
   }
 
-  // optional int64 user_iid = 3;
-  if (cached_has_bits & 0x00000002u) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
-  }
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional int64 user_iid = 3;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
+    }
 
+    // optional int64 logintoken = 4;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_logintoken());
+    }
+
+  }
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -1091,17 +1050,21 @@ void User_Login_ack::MergeFrom(const User_Login_ack& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_has_logintoken()) {
-    _internal_set_logintoken(from._internal_logintoken());
-  }
   if (from._internal_type() != 0) {
     _internal_set_type(from._internal_type());
   }
   if (from._internal_result() != 0) {
     _internal_set_result(from._internal_result());
   }
-  if (from._internal_has_user_iid()) {
-    _internal_set_user_iid(from._internal_user_iid());
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      user_iid_ = from.user_iid_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      logintoken_ = from.logintoken_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1119,18 +1082,11 @@ bool User_Login_ack::IsInitialized() const {
 
 void User_Login_ack::InternalSwap(User_Login_ack* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &logintoken_, lhs_arena,
-      &other->logintoken_, rhs_arena
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(User_Login_ack, user_iid_)
-      + sizeof(User_Login_ack::user_iid_)
+      PROTOBUF_FIELD_OFFSET(User_Login_ack, logintoken_)
+      + sizeof(User_Login_ack::logintoken_)
       - PROTOBUF_FIELD_OFFSET(User_Login_ack, type_)>(
           reinterpret_cast<char*>(&type_),
           reinterpret_cast<char*>(&other->type_));

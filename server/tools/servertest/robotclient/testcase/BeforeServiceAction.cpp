@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "testcase/BeforeServiceAction.h"
@@ -10,6 +25,63 @@
 
 USE_PROTOCOL_NAMESPACE;
 
+//--------------------------------------ServerConnectAction--------------------------------------
+ServerConnectAction::ServerConnectAction() :CaseActionBase()
+{
+}
+
+void ServerConnectAction::build_from_xml_sub(tinyxml2::XMLElement* act)
+{
+	CaseActionBase::build_from_xml_sub(act);
+
+	time_out_step_ = get_params_int("timeout", 0);
+}
+
+void ServerConnectAction::init_before_start()
+{
+	CaseActionBase::init_before_start();
+}
+
+void ServerConnectAction::start_action()
+{
+	CaseActionBase::start_action();
+
+	if (time_out_step_ > 0)
+		open_timeout(time_out_step_);
+
+	vuser_->gts_connect_result(false);
+
+	vuser_->random_svrinfo();
+	wf_->get_testcase()->try_connect_to_gts();
+}
+
+void ServerConnectAction::end_action()
+{
+	CaseActionBase::end_action();
+}
+
+void ServerConnectAction::time_out()
+{
+	error_code_ = -1;
+}
+
+void ServerConnectAction::update_do(ULONGLONG now)
+{
+	if (wf_->get_testcase()->is_connected_2_gts())
+	{
+		vuser_->gts_connect_result(true);
+		this->end_action();
+		return;
+	}
+	else if (wf_->get_testcase()->is_connect_2_gts_failed())
+	{
+		vuser_->gts_connect_result(false);
+		error_code_ = wf_->get_testcase()->get_gts_errcode();
+		this->end_action();
+		return;
+	}
+}
+
 //--------------------------------------LoginAction--------------------------------------
 LoginAction::LoginAction():CaseActionBase(),
 	la_state_( LoginActionState_Idle)
@@ -19,14 +91,18 @@ LoginAction::LoginAction():CaseActionBase(),
 void LoginAction::build_from_xml_sub( tinyxml2::XMLElement* act)
 {
 	CaseActionBase::build_from_xml_sub( act);
+
+	time_out_step_ = get_params_int("timeout", 0);
 }
 
 void LoginAction::init_before_start()
 {
 	CaseActionBase::init_before_start();
+}
 
-	la_state_ =LoginActionState_Idle;
-	userid_ =NO_INITVALUE;
+S_UINT_32 LoginAction::get_req_protoid()
+{
+	return 0;
 }
 
 void LoginAction::start_action()
@@ -34,11 +110,10 @@ void LoginAction::start_action()
 	CaseActionBase::start_action();
 
 	//must finish under 10s
-	open_timeout( 10*1000);
+	if (time_out_step_ > 0)
+		open_timeout(time_out_step_);
 
-	wf_->get_testcase()->reconnect_2_lgs();
-
-	la_state_ =LoginActionState_lgs_conn;
+	wf_->send_gts_protocol(0);
 }
 
 void LoginAction::end_action()
@@ -48,59 +123,7 @@ void LoginAction::end_action()
 
 void LoginAction::time_out()
 {
-	if(la_state_ == LoginActionState_lgs_loginreq){
-		error_step_ = "lgs time out";
-		error_code_ = -1;
-	}
-	else if(la_state_ == LoginActionState_gts_loginreq){
-		error_step_ = "gts time out";
-		error_code_ = -1;
-	}
-}
-
-void LoginAction::update_do( ULONGLONG now)
-{
-	if( la_state_ == LoginActionState_lgs_conn)
-	{
-		if( wf_->get_testcase()->is_connected_2_lgs())
-		{
-			PRO::User_Login_req *req = new PRO::User_Login_req();
-
-			wf_->send_lgs_protocol( req);
-
-			la_state_ =LoginActionState_lgs_loginreq;
-		}
-		else if(wf_->get_testcase()->is_connect_2_lgs_failed()){
-			error_code_ = -1;
-			error_step_ = "can't connect to lgs";
-			this->end_action();
-		}
-	}
-	else if( la_state_ == LoginActionState_gts_conn)
-	{
-		wf_->get_testcase()->reconnect_2_gts();
-		la_state_ =LoginActionState_gts_conn_wait;
-	}
-	else if( la_state_ == LoginActionState_gts_conn_wait)
-	{
-		if( wf_->get_testcase()->is_connected_2_gts())
-		{
-			PRO::User_ProxyLogin_req* req =new PRO::User_ProxyLogin_req();
-			//req->proxy_index_ = proxy_index_;
-			//req->userid_ = userid_;
-			//req->token_ = token_.c_str();
-
-			wf_->send_gts_protocol( req);
-
-			la_state_ =LoginActionState_gts_loginreq;
-		}
-		else if( wf_->get_testcase()->is_connect_2_gts_failed())
-		{
-			error_code_ = -1;
-			error_step_ = "can't connect to gts";
-			this->end_action();
-		}
-	}
+	error_code_ = -1;
 }
 
 void LoginAction::handle_message(S_UINT_16 proid, BasicProtocol* pro, bool& handle)
@@ -198,15 +221,6 @@ void LogoutAction::start_action()
 void LogoutAction::end_action()
 {
 	CaseActionBase::end_action();
-}
-
-void LogoutAction::update_do( ULONGLONG now)
-{
-	end_action();
-}
-
-void LogoutAction::handle_message(S_UINT_16 proid, BasicProtocol* pro, bool& handle)
-{
 }
 
 //--------------------------------------CreateChrAction--------------------------------------

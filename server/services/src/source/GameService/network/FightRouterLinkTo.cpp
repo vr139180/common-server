@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/FightRouterLinkTo.h"
 
 #include <cmsLib/system/CommandBase.h>
@@ -9,12 +24,39 @@
 FightRouterLinkTo::FightRouterLinkTo() :LinkToBase()
 , node_(0)
 {
+	this->init_protocolhead();
 }
 
 FightRouterLinkTo::FightRouterLinkTo(ServiceNodeInfo* pnode) : LinkToBase()
 , node_(pnode)
 {
+	this->init_protocolhead();
+}
 
+void FightRouterLinkTo::init_protocolhead()
+{
+	//设置通用协议头
+	s_head_.router_balance_ = false;
+	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER;
+}
+
+void FightRouterLinkTo::send_netprotocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+
+	SProtocolHead& head = pro->write_head();
+	head.to_type_ = (S_INT_8)to;
+
+	this->send_protocol(pro);
+}
+
+void FightRouterLinkTo::send_netprotocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
+{
+	SProtocolHead& head = pro->write_head();
+	head.to_type_ = (S_INT_8)to;
+
+	this->send_protocol(pro);
 }
 
 void FightRouterLinkTo::reset(ServiceNodeInfo* pnode)
@@ -75,12 +117,13 @@ void FightRouterLinkTo::on_connect_lost_netthread()
 	svrApp.regist_syscmd(cmd);
 }
 
-void FightRouterLinkTo::on_recv_protocol_netthread(S_UINT_16 proiid, BasicProtocol* pro)
+void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
-	if (proiid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK)
+	std::unique_ptr<NetProtocol> p_msg(pro);
+	S_UINT_16 msgid = pro->get_msg();
+	if (msgid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK)
 	{
-		PRO::Svr_ServiceBindService_ack *ack = dynamic_cast<PRO::Svr_ServiceBindService_ack*>(pro);
+		PRO::Svr_ServiceBindService_ack *ack = dynamic_cast<PRO::Svr_ServiceBindService_ack*>(pro->msg_);
 		bool success = (ack->result() == 0);
 
 		SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -95,13 +138,14 @@ void FightRouterLinkTo::on_connected(bool success)
 	{
 		//注册到home
 		PRO::Svr_ServiceBindService_req *req = new PRO::Svr_ServiceBindService_req();
+
 		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_GAME);
 		req->set_myiid(EurekaClusterClient::instance().get_myiid());
 		req->set_mytoken(EurekaClusterClient::instance().get_token());
 		req->set_toiid(node_->iid);
 		req->set_totoken(node_->token);
 
-		this->send_protocol(req);
+		this->send_netprotocol(PRO::ERK_SERVICE_FIGHTROUTER, req);
 	}
 	else
 	{
@@ -144,8 +188,13 @@ void FightRouterLinkTo::heart_beat()
 	LinkToBase::heart_beat();
 }
 
-BasicProtocol* FightRouterLinkTo::get_livekeep_msg()
+NetProtocol* FightRouterLinkTo::get_livekeep_msg()
 {
 	PRO::Svr_LiveTick_ntf* ntf = new PRO::Svr_LiveTick_ntf();
-	return ntf;
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
+
+	SProtocolHead& head = pro->write_head();
+	head.router_balance_ = false;
+
+	return pro;
 }

@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "testcase/core/CaseActionBase.h"
@@ -60,6 +75,16 @@ int CaseActionBase::get_params_int( const char* key, int def)
 	return atoi( val.c_str());
 }
 
+S_INT_64 CaseActionBase::get_params_int64(const char* key, S_INT_64 def)
+{
+	std::string val = get_params(key);
+
+	if (val == "")
+		return def;
+
+	return (S_INT_64)strtoll(val.c_str(), 0, 10);
+}
+
 void CaseActionBase::link_after_build( VirtualUser* v, TestCaseWorkFlow* f, FlowNode* n)
 {
 	vuser_ =v;
@@ -103,26 +128,30 @@ void CaseActionBase::start_action()
 	ca_status_ =CASTATUS_RUNNING;
 
     error_code_ = 0;
-	error_step_ = "";
 
 	action_begin_time_ =TestCaseWorkFlow::GetMillisecondTime();
 }
 
 void CaseActionBase::end_action()
 {
+	vuser_->set_callresult(error_code_);
+
 	close_timeout();
 
 	ca_status_ =CASTATUS_END;
 
 	action_end_time_ =TestCaseWorkFlow::GetMillisecondTime();
 
-//#ifdef _DEBUG
-	logInfo( out_runtime, "................. node:%s[%d] done, user id: %d, error code: %d, error step: %s, time: %d ms", 
-		node_->get_name(), node_->get_iid(), vuser_->userid_, error_code_, error_step_, (int)(action_end_time_ - action_begin_time_));
-//#endif
+	if (log_analysis())
+	{
+		//actionname, errorcode, time
+		logInfo(out_runtime, "#analysis#{\"timestamp\":%lld,\"openid\":\"%s\",\"accountid\":\"%s\",\"action\":\"%s\",\"protoid\":\"0x%x\",\"delay\":%d,\"result\":%d}",
+			action_end_time_, vuser_->user_openid_.c_str(), vuser_->account_id_.c_str(),
+			get_action_name().c_str(), get_req_protoid(),
+			(int)(action_end_time_ - action_begin_time_), error_code_);
+	}
 
     error_code_ = 0;
-	error_step_ = "";
 }
 
 void CaseActionBase::open_timeout( int ot)

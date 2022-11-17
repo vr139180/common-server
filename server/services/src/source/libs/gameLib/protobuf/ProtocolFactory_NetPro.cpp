@@ -50,8 +50,13 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Robot_Config_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_ACK);
 	regist_protocal<Robot_Start_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_START_ACK);
 	regist_protocal<Robot_Stop_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STOP_ACK);
-	regist_protocal<Robot_State_Rpt>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_RPT);
-	regist_protocal<Robot_State_Ack>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_STATE_ACK);
+	regist_protocal<Robot_UploadLogs_ntf>(ROBOTTEST_PROTYPE::ROBOTOTEST_UPLOADLOGSROBOT_NTF);
+	regist_protocal<Robot_ClearLogs_ntf>(ROBOTTEST_PROTYPE::ROBOTOTEST_CLEARLOGSROBOT_NTF);
+	regist_protocal<Robot_UserPrefixChg_ntf>(ROBOTTEST_PROTYPE::ROBOTOTEST_USERPREFIXROBOT_NTF);
+
+	regist_protocal<Robot_Record_req>(ROBOTTEST_PROTYPE::ROBOTOTEST_RECORD_REG);
+	regist_protocal<Robot_StartRecord_req>(ROBOTTEST_PROTYPE::ROBOTOTEST_STARTRECORD_REG);
+	regist_protocal<Robot_EndRecord_req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ENDRECORD_REG);
 
 
 	//自定义协议

@@ -23,6 +23,9 @@
     <Filter Include="testaction\core">
       <UniqueIdentifier>{f68eacfb-2af2-4670-8fbf-bb21bfac76cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="uploadlogs">
+      <UniqueIdentifier>{910c4958-7ae1-4774-b981-10121712b18a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandTestImpl.cpp">
@@ -100,6 +103,15 @@
     <ClCompile Include="testcase\core\UtilServiceAction.cpp">
       <Filter>testaction\core</Filter>
     </ClCompile>
+    <ClCompile Include="uploads\LogSaveUtil.cpp">
+      <Filter>uploadlogs</Filter>
+    </ClCompile>
+    <ClCompile Include="uploads\UploadLogUtil.cpp">
+      <Filter>uploadlogs</Filter>
+    </ClCompile>
+    <ClCompile Include="PhpResult.cpp">
+      <Filter>framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandTestImpl.h">
@@ -152,6 +164,15 @@
     </ClInclude>
     <ClInclude Include="testcase\core\UtilServiceAction.h">
       <Filter>testaction\core</Filter>
+    </ClInclude>
+    <ClInclude Include="uploads\LogSaveUtil.h">
+      <Filter>uploadlogs</Filter>
+    </ClInclude>
+    <ClInclude Include="uploads\UploadLogUtil.h">
+      <Filter>uploadlogs</Filter>
+    </ClInclude>
+    <ClInclude Include="PhpResult.h">
+      <Filter>framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

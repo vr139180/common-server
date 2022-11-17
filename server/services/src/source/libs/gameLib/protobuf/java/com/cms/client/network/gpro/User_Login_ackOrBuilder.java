@@ -51,7 +51,7 @@ public interface User_Login_ackOrBuilder extends
    *token登陆时用到的
    * </pre>
    *
-   * <code>optional string logintoken = 4;</code>
+   * <code>optional int64 logintoken = 4;</code>
    * @return Whether the logintoken field is set.
    */
   boolean hasLogintoken();
@@ -60,18 +60,8 @@ public interface User_Login_ackOrBuilder extends
    *token登陆时用到的
    * </pre>
    *
-   * <code>optional string logintoken = 4;</code>
+   * <code>optional int64 logintoken = 4;</code>
    * @return The logintoken.
    */
-  java.lang.String getLogintoken();
-  /**
-   * <pre>
-   *token登陆时用到的
-   * </pre>
-   *
-   * <code>optional string logintoken = 4;</code>
-   * @return The bytes for logintoken.
-   */
-  com.google.protobuf.ByteString
-      getLogintokenBytes();
+  long getLogintoken();
 }

@@ -1,9 +1,29 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #pragma once
 
 #include "stdafx.h"
+
+#include <boost/unordered_map.hpp>
+
 #include <cmsLib/prolib/ProtocolFactory.h>
 #include <gameLib/protobuf/Proto_all.h>
 #include <cmsLib/lua/ScriptContext.h>
+#include <cmsLib/httpcurl/HttpClient.h>
+#include "PhpResult.h"
 
 #include <string>
 
@@ -24,12 +44,6 @@ public:
 	int RunLuaShellCmd( std::string& cmd);
     bool IsScriptInit();
 
-	//lgs socket
-	bool send_to_lgs( BasicProtocol *p);
-	BasicProtocol* recv_from_lgs(S_UINT_16& proiid);
-	bool connect_to_lgs();
-	void disconnect_to_lgs();
-
 	//gts socket
 	bool send_to_gts( BasicProtocol* p);
 	BasicProtocol* recv_from_gts(S_UINT_16& proiid);
@@ -43,24 +57,16 @@ public:
 
 	void InitScriptBind( lua_State* l);
 
+	void get_ipinfo(std::string& ip, int& port);
+
 public:
 	//状态信息
 	CString		ret_desc_;
 
-	S_INT_64	uid;
-	std::string ut;
+	std::string url_addr_;
+	HttpClient	http_client_;
 
-	std::string lgs_ip_;
-	int			lgs_port_;
-	S_INT_64	login_token_;
-	int			login_slot_;
-
-	std::string gts_ip_;
-	int			gts_port_;
-
-public:
-	//1:lgs 2:gts 3:lgs+gts
-	S_INT_8		thread_step_;
+	std::shared_ptr<PhpResult> svrinfo_;
 
 private:
     void startThread();
@@ -68,7 +74,6 @@ private:
     
     static DWORD  WINAPI Thread(LPVOID  lparam);
 
-	void lgs_linkdo();
 	void gts_linkdo();
 
 private:
@@ -80,22 +85,26 @@ private:
     //bool    lock_;
     HWND    parent_wnd_;
 
-	//lgs socket
-	SOCKET	socket_;
-	char recv_buffer_[MAX_PACK_LEN];
-	int	 data_len_;
-
 	//gts
 	SOCKET	socket2_;
 	char gts_recv_buffer_[MAX_PACK_LEN];
 	int	 gts_data_len_;
 
+	CProtocolHead head_;
+
 public:
 	NS_STL::string	username_;
-	S_INT_64		userid_;
+	
+	//用户信息
+	S_INT_64		user_iid_;
+	S_INT_64		user_token_;
+
 	S_INT_64		role_iid_;
 
 public:
+	//实现的脚本功能
+	void get_serverinfo();
+
 	//实现的脚本功能
 	void ping();
 	void on_ping_ntf(BasicProtocol* pro, CString* pRetMsg);

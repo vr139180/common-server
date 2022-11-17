@@ -48,14 +48,14 @@ bool ServiceRouterApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER))
 	{
-		logFatal(out_runtime, "RouterService load svr config file failed");
+		logFatal(out_runtime, "ServiceRouter load svr config file failed");
 		return false;
 	}
 
 	RouterConfig* cf = load_routerconfig();
 	if (cf == 0)
 	{
-		logFatal(out_runtime, "RouterService load config file failed");
+		logFatal(out_runtime, "ServiceRouter load config file failed");
 		return false;
 	}
 
@@ -81,25 +81,6 @@ RouterConfig* ServiceRouterApp::load_routerconfig()
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
 	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 
-	tinyxml2::XMLElement* ch = root->FirstChildElement("chathash");
-	if (ch == 0)
-		return 0;
-	config->chathash_plot_.chatmax = XmlUtil::GetXmlAttrInt(ch, "chatmax", 1);
-
-	ch = root->FirstChildElement("mailhash");
-	if (ch == 0)
-		return 0;
-	config->mailhash_plot_.mailmax = XmlUtil::GetXmlAttrInt(ch, "mailmax", 1);
-
-	ch = root->FirstChildElement("friendhash");
-	if (ch == 0)
-		return 0;
-	config->friendhash_plot_.frdmax = XmlUtil::GetXmlAttrInt(ch, "frdmax", 1);
-
-	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
-	if (rds == 0)
-		return 0;
-
 	config->redis_.load_from_xml(rds);
 
 	return xptr.release();
@@ -108,17 +89,25 @@ RouterConfig* ServiceRouterApp::load_routerconfig()
 bool ServiceRouterApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
+
 	gate_links_from_.init_holder();
-	chat_links_from_.init_holder();
-	mail_links_from_.init_holder();
-	friend_links_from_.init_holder();
+
+	chat_links_from_.init_holder(800);
+	mail_links_from_.init_holder(800);
+	friend_links_from_.init_holder(800);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
+	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
+
 	std::list< NETSERVICE_TYPE> router_types;
+	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_MAIL);
+	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FRIEND);
+	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_CHAT);
+
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER, cf.get_ip().c_str(), cf.get_port(), 
 		EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, true);
 
@@ -130,13 +119,13 @@ bool ServiceRouterApp::init_network()
 	int neths = ConfigHelper::instance().get_netthreads();
 	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
-		logFatal( out_runtime, ("RouterService init network failed"));
+		logFatal( out_runtime, ("ServiceRouter init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_runtime, ("RouterService init network failed"));
+		logFatal( out_runtime, ("ServiceRouter init network failed"));
 		return false;
 	}
 
@@ -151,16 +140,16 @@ bool ServiceRouterApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("<<<<<<<<<<<<RouterService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<ServiceRouter listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("<<<<<<<<<<<<RouterService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<ServiceRouter listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
     char app_title_[200];
-    sprintf(app_title_, "RouterService VER: %s REV: %s PID: %d PORT: %d\n",
+    sprintf(app_title_, "ServiceRouter VER: %s REV: %s PID: %d PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
     OSSystem::mOS->SetAppTitle( app_title_ );
@@ -258,14 +247,14 @@ void ServiceRouterApp::accept_netsession( NetAcceptorEvent::NetSessionPtr sessio
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_runtime, "me(RouterService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(ServiceRouter) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_runtime, "me(RouterService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(ServiceRouter) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -288,7 +277,7 @@ void ServiceRouterApp::on_connection_timeout(RouterSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_runtime, "RouterService listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
+	logError(out_runtime, "ServiceRouter listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void ServiceRouterApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
@@ -356,24 +345,24 @@ void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* ms
 	plink->send_netprotocol(msg);
 }
 
-void ServiceRouterApp::send_protocal_to_chat(int chathash, BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg)
 {
-	chat_links_from_.send_mth_protocol(chathash, msg);
+	chat_links_from_.send_protocol(chathash, msg);
 }
 
-void ServiceRouterApp::send_protocal_to_mail(int mailhash, BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_mail(S_INT_64 mailhash, BasicProtocol* msg)
 {
-	mail_links_from_.send_mth_protocol(mailhash, msg);
+	mail_links_from_.send_protocol(mailhash, msg);
 }
 
 void ServiceRouterApp::send_protocal_to_mail_circle(BasicProtocol* msg)
 {
-	mail_links_from_.send_mth_protocol_circle(msg);
+	//mail_links_from_.send_mth_protocol_circle(msg);
 }
 
-void ServiceRouterApp::send_protocal_to_friend(int frdhash, BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_friend(S_INT_64 frdhash, BasicProtocol* msg)
 {
-	friend_links_from_.send_mth_protocol(frdhash, msg);
+	friend_links_from_.send_protocol(frdhash, msg);
 }
 
 void ServiceRouterApp::on_disconnected_with_mailservice(MailServiceLinkFrom* plink)
@@ -417,11 +406,3 @@ void ServiceRouterApp::on_disconnected_with_frdservice(FriendServiceLinkFrom* pl
 		psession->reset();
 	}
 }
-
-void ServiceRouterApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)
-{
-
-}
-
-
-

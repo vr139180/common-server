@@ -81,12 +81,6 @@ RouterConfig* DataRouterApp::load_routerconfig()
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
 
-	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
-	if (rds == 0)
-		return 0;
-
-	config->redis_.load_from_xml(rds);
-
 	return xptr.release();
 }
 
@@ -385,4 +379,21 @@ void DataRouterApp::on_disconnected_with_servicerouter(ServiceRouterLinkFrom* pl
 		plink->reset();
 		psession->reset();
 	}
+}
+
+void DataRouterApp::router_to_state(NetProtocol* pro)
+{
+	StateServiceLinkFrom* plink = state_links_from_.get_servicelink_random();
+	if (plink == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	plink->send_protocol(pro);
+}
+
+void DataRouterApp::router_to_home(NetProtocol* pro)
+{
+	home_links_from_.send_protocol(pro->get_useriid(), pro);
 }

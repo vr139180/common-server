@@ -53,7 +53,16 @@ void GateServiceLinkFrom::on_connect_lost_netthread()
 
 void GateServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<NetProtocol> p_msg(pro);
+	S_UINT_16 msgid = pro->get_msg();
+	if (msgid == PRO::USER_LOGIN_REQ || msgid == PRO::USER_RELOGIN_REQ)
+	{
+		logDebug(out_runtime, "recv msg:%d from gate to state", msgid);
+		svrApp.router_to_state(pro);
+	}
+	else
+	{
+		svrApp.router_to_home(pro);
+	}
 }
 
 void GateServiceLinkFrom::registinfo_tolog( bool bregist)

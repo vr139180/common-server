@@ -170,6 +170,14 @@ void EurekaLinkToHolder<T>::connect_to()
 	for( typename std::set<T*>::iterator iter = wait_links_.begin(); iter != wait_links_.end(); ++iter)
 	{
 		T* pnode = (*iter);
+
+		if (!is_service_exist(pnode->get_iid()))
+		{
+			free_links_.insert(pnode);
+			service_process_iid.erase(pnode->get_iid());
+			continue;
+		}
+
 		pnode->connect();
 
 		auth_links_.insert(pnode);
@@ -189,6 +197,13 @@ bool EurekaLinkToHolder<T>::connect_to(S_INT_64 iid)
 		T* pnode = (*iter);
 		if (pnode->get_iid() != iid)
 			continue;
+
+		if (!is_service_exist(pnode->get_iid()))
+		{
+			free_links_.insert(pnode);
+			service_process_iid.erase(pnode->get_iid());
+			continue;
+		}
 
 		pnode->connect();
 

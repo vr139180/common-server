@@ -76,7 +76,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;../;../../../services/src/sdk/include;../../../services/src/sdk/include/protobuf/include;../../../services/src/source/libs;../../../services/src/sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -93,7 +93,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;libmysql.lib;mysqlcppconn-static_d.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../../../services/src/sdk/lib64;../../../services/src/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -156,6 +156,7 @@
     <ClCompile Include="CommandTestImpl_Cmd_Pets.cpp" />
     <ClCompile Include="CommandTestImpl_Script.cpp" />
     <ClCompile Include="LogonDlg.cpp" />
+    <ClCompile Include="PhpResult.cpp" />
     <ClCompile Include="ScriptDlg.cpp" />
     <ClCompile Include="MsgNotify.cpp" />
     <ClCompile Include="TestCase.cpp" />
@@ -172,10 +173,13 @@
     <ClCompile Include="ThreadTest.cpp" />
     <ClCompile Include="ThreadTestDlg.cpp" />
     <ClCompile Include="ThreadWrapper.cpp" />
+    <ClCompile Include="uploads\LogSaveUtil.cpp" />
+    <ClCompile Include="uploads\UploadLogUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandTestImpl.h" />
     <ClInclude Include="LogonDlg.h" />
+    <ClInclude Include="PhpResult.h" />
     <ClInclude Include="ScriptDlg.h" />
     <ClInclude Include="MsgNotify.h" />
     <ClInclude Include="Resource.h" />
@@ -191,6 +195,8 @@
     <ClInclude Include="testcase\VirtualUser.h" />
     <ClInclude Include="ThreadTestDlg.h" />
     <ClInclude Include="ThreadWrapper.h" />
+    <ClInclude Include="uploads\LogSaveUtil.h" />
+    <ClInclude Include="uploads\UploadLogUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\ThreadTest.ico" />

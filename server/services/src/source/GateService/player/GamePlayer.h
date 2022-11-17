@@ -75,8 +75,7 @@ public:
 	}
 
 	void reuse();
-	//建立连接
-	void proxy();
+	void pre_start();
 	S_INT_64 get_starttime() { return start_timestamp_;}
 	//完成验证
 	void auth(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid);

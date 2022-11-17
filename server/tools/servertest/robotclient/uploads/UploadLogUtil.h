@@ -13,27 +13,43 @@
 // limitations under the License.
 //
 
-#ifndef __CHATLINKERHOLDER_H__
-#define __CHATLINKERHOLDER_H__
+#ifndef __UPLOADLOGUTIL_H__
+#define __UPLOADLOGUTIL_H__
 
-#include <gameLib/commons/LinkFromHolder.h>
-#include "network/ChatServiceLinkFrom.h"
+#include <cmsLib/util/FileUtil.h>
+#include <cmsLib/ThreadLock.h>
+#include "uploads/LogSaveUtil.h"
 
-class ChatLinkerHolder : public LinkFromHolder<ChatServiceLinkFrom>
+#define LOG_HEADER "#analysis#"
+
+class UploadLogUtil
 {
-	typedef LinkFromHolder<ChatServiceLinkFrom> base;
 public:
-	ChatLinkerHolder();
+	UploadLogUtil();
+	~UploadLogUtil();
 
-	virtual void uninit_holder();
+	void start_uploads();
+	void stop_uploads();
 
-	virtual void return_freelink(ChatServiceLinkFrom* link);
-	virtual ChatServiceLinkFrom* regist_onlinelink(ChatServiceLinkFrom* link);
-
-	void send_mth_protocol(int chathash, BasicProtocol* pro);
+	int get_lognums() { return log_num_; }
+	void clear_logs();
 
 protected:
-	boost::unordered_map<int, ChatServiceLinkFrom*>	hash_service_;
+	static DWORD  WINAPI Thread(LPVOID  lparam);
+	void main_loop();
+
+	void set_cancel();
+
+protected:
+	std::list<std::string> log_files;
+	int	log_num_;
+
+private:
+	std::string log_dir_;
+
+	bool	cancel_;
+	HANDLE	hthread;
+	DWORD	dwThreadId;
 };
 
-#endif //__CHATLINKERHOLDER_H__
+#endif //__UPLOADLOGUTIL_H__

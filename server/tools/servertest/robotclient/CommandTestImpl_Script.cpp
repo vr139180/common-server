@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "CommandTestImpl.h"
@@ -8,84 +23,6 @@
 	case msgid: \
 	fun( recv, pstr); \
 	break;
-
-void CommandTestImpl::lgs_linkdo()
-{
-	if( socket_ == INVALID_SOCKET)
-		return;
-
-	S_UINT_16 proiid = 0;
-	BasicProtocol *recv =recv_from_lgs(proiid);
-	if( recv == 0)
-		return;
-
-	std::auto_ptr<BasicProtocol> p(recv);
-
-	CString *pstr =new CString();
-	CString fm;
-	switch(proiid)
-	{
-	case USER_LOGIN_ACK:
-		{
-			User_Login_ack *lack = dynamic_cast<User_Login_ack*>(recv);
-
-			fm.Format(TEXT("登陆返回 ret:%d userid:%lld\r\n"), lack->result(), lack->user_iid());
-			*pstr = fm;
-
-			if (lack->result() == 0)
-			{
-				this->userid_ = lack->user_iid();
-				this->gts_ip_ = lack->proxyip().c_str();
-				this->gts_port_ = lack->proxyport();
-				this->login_token_ = lack->proxytoken();
-				this->login_slot_ = lack->slot();
-
-				disconnect_to_lgs();
-
-				//发起到gts的连接
-				//开始连接gts
-				if (!connect_to_gts())
-				{
-					fm.Format("连接gts失败\r\n");
-					*pstr = fm + *pstr;
-
-					thread_step_ = 0;
-				}
-				else
-				{
-					fm.Format("连接gts成功.................\r\n");
-					*pstr = fm + *pstr;
-
-					thread_step_ = 2;
-
-					//发送连接请求
-					User_ProxyLogin_req* req = new User_ProxyLogin_req();
-					req->set_user_iid(this->userid_);
-					req->set_proxytoken(this->login_token_);
-					req->set_slot(this->login_slot_);
-
-					if (!send_to_gts(req))
-						*pstr = "发送Player_ProxyLogin_req 失败\r\n" + *pstr;
-				}
-			}
-		}
-		break;
-	default:
-		{
-			if(proiid !=0)
-			{
-				fm.Format( "未处理消息：%d\r\n", proiid);
-				*pstr +=fm;
-			}         
-			break;
-		}
-	}
-
-	if ( pstr->GetLength() > 0)
-		PostMessage( parent_wnd_, WM_USER+0x200, (WPARAM)pstr, 0);
-	else
-		delete pstr;
-}
 
 void CommandTestImpl::gts_linkdo()
 {
@@ -108,7 +45,7 @@ void CommandTestImpl::gts_linkdo()
 	switch( proiid)
 	{
 	//CMDMESSAGE(CLIENT_PING_NTF,         on_ping_ntf);
-	CMDMESSAGE(USER_PROTYPE::USER_PROXYLOGIN_ACK, on_login_ack);
+	CMDMESSAGE(USER_PROTYPE::USER_LOGIN_ACK, on_login_ack);
 	CMDMESSAGE(USER_PROTYPE::USER_ROLELIST_ACK, on_rolelist_ack);
 	CMDMESSAGE(USER_PROTYPE::USER_ROLECREATE_ACK, on_rolecreate_ack);
 
@@ -168,6 +105,7 @@ void CommandTestImpl::gts_linkdo()
 void ScriptDlg::regist()
 {
 	//支持的脚本函数
+	add_function("serverinfo()", "获取服务器信息");
 	add_function("ping()", "Ping 服务器");
 	add_function("login('test1','123456')", "db登陆\r\nusername,password");
 	add_function("logintoken()", "token登陆\r\n");
@@ -216,6 +154,7 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.beginNamespace("test")
 		.beginClass <CommandTestImpl>("CommandTest")
 		.addConstructor <void(*) (void)>()
+		.addFunction("serverinfo", &CommandTestImpl::get_serverinfo)
 		.addFunction("ping", &CommandTestImpl::ping)
 		.addFunction("login", (void (CommandTestImpl::*)(const char*, const char*))&CommandTestImpl::login)
 		.addFunction("logintoken", (void (CommandTestImpl::*)(void))&CommandTestImpl::logintoken)

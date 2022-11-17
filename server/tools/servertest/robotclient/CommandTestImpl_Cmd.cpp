@@ -1,9 +1,27 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include "CommandTestImpl.h"
 #include <cmsLib/GlobalSettings.h>
 #include <cmsLib/util/ShareUtil.h>
 #include <cmsLib/encryption/md5/md5.h>
+#include <cmsLib/encryption/md5/md5.h>
+#include <cmsLib/json/JSONUtil.h>
+#include "PhpResult.h"
 
 USE_PROTOCOL_NAMESPACE;
 
@@ -19,17 +37,7 @@ void CommandTestImpl::ping()
         }
     }
 
-    //Client_Ping_Ntf *req =new Client_Ping_Ntf();
-
     startThread();
-
-	/*
-    if( !send_to_gts( req))
-    {
-        ret_desc_ ="发送Ping协议失败\r\n";
-        return;
-    }
-	*/
 }
 
 void CommandTestImpl::on_ping_ntf(BasicProtocol* pro, CString* pRetMsg)
@@ -38,23 +46,71 @@ void CommandTestImpl::on_ping_ntf(BasicProtocol* pro, CString* pRetMsg)
 	return;
 }
 
+void CommandTestImpl::get_serverinfo()
+{
+	ret_desc_ = "";
+
+	if (1)
+	{
+		PhpResult* info = PhpResult::build_from_str("{\"result\":1,\"useriid\":1,\"gates\":\"127.0.0.1:8001\"}");
+
+		svrinfo_.reset(info);
+
+		ret_desc_ = "获得的可用服务器\r\n";
+		for (boost::unordered_map<std::string, int>::iterator iter = svrinfo_->svrinfos.begin(); iter != svrinfo_->svrinfos.end(); ++iter)
+		{
+			CString fmt;
+			fmt.Format("svr [ip:%s port:%d]\r\n", iter->first.c_str(), iter->second);
+			ret_desc_ += fmt;
+		}
+
+		return;
+	}
+
+	HttpUrl url(url_addr_.c_str());
+	HttpResponse resp;
+	HttpStringWrite writer;
+	if (http_client_.HttpGET(url, resp, writer))
+	{
+		PhpResult* info = PhpResult::build_from_str(writer.GetBody());
+		if (info != 0)
+		{
+			svrinfo_.reset(info);
+
+			ret_desc_ = "获得的可用服务器\r\n";
+			for (boost::unordered_map<std::string, int>::iterator iter = svrinfo_->svrinfos.begin(); iter != svrinfo_->svrinfos.end(); ++iter)
+			{
+				CString fmt;
+				fmt.Format("svr [ip:%s port:%d]\r\n", iter->first.c_str(), iter->second);
+				ret_desc_ += fmt;
+			}
+		}
+		else
+		{
+			ret_desc_ = "返回加过解析失败";
+		}
+	}
+	else
+	{
+		ret_desc_ = "服务访问失败";
+	}
+
+}
+
 void CommandTestImpl::login( const char* name, const char* pwd)
 {
 	ret_desc_ ="";
 
-	if( socket_ == INVALID_SOCKET)
+	username_ =name;
+
+	if (socket2_ == INVALID_SOCKET)
 	{
-		if( !connect_to_lgs())
+		if (!connect_to_gts())
 		{
-			ret_desc_ ="lgs socket打开错误，服务器可能没有运行！\r\n";
+			ret_desc_ = "login socket打开错误，服务器可能没有运行！\r\n";
 			return;
 		}
 	}
-
-	username_ =name;
-
-	//do lgs
-	thread_step_ =1;
 
 	startThread();
 
@@ -63,7 +119,7 @@ void CommandTestImpl::login( const char* name, const char* pwd)
 	req->set_account(name);
 	req->set_pwd(md5(pwd).c_str());
 
-	if( !send_to_lgs( req))
+	if (!send_to_gts(req))
 	{
 		ret_desc_ ="发送协议失败\r\n";
 		return;
@@ -74,26 +130,23 @@ void CommandTestImpl::logintoken()
 {
 	ret_desc_ = "";
 
-	if (socket_ == INVALID_SOCKET)
+	if (socket2_ == INVALID_SOCKET)
 	{
-		if (!connect_to_lgs())
+		if (!connect_to_gts())
 		{
-			ret_desc_ = "lgs socket打开错误，服务器可能没有运行！\r\n";
+			ret_desc_ = "login socket打开错误，服务器可能没有运行！\r\n";
 			return;
 		}
 	}
-
-	//do lgs
-	thread_step_ = 1;
 
 	startThread();
 
 	User_Login_req *req = new User_Login_req();
 	req->set_type(2);
-	req->set_token(ut.c_str());
-	req->set_userid(uid);
+	req->set_token( user_token_);
+	req->set_userid( user_iid_);
 
-	if (!send_to_lgs(req))
+	if (!send_to_gts(req))
 	{
 		ret_desc_ = "发送协议失败\r\n";
 		return;
@@ -102,20 +155,21 @@ void CommandTestImpl::logintoken()
 
 void CommandTestImpl::on_login_ack( BasicProtocol* pro, CString* pRetMsg)
 {
-	User_ProxyLogin_ack* ack =dynamic_cast<User_ProxyLogin_ack*>(pro);
+	User_Login_ack* ack =dynamic_cast<User_Login_ack*>(pro);
 
 	if( ack->result() != 0)
 	{
 		pRetMsg->Format( "Gate验证失败....result:[%d]\r\n", ack->result());
 		disconnect_to_gts();
 
-		thread_step_ =0;
-
 		return;
 	}
 
+	this->user_iid_ = ack->user_iid();
+	this->user_token_ = ack->logintoken();
+
 	CString str1;
-	str1.Format( "Gate验证成功 userid:%lld \r\n", userid_);
+	str1.Format( "Gate验证成功 userid:%lld \r\n", user_iid_);
 	*pRetMsg += str1;
 
 	*pRetMsg += "\r\n";

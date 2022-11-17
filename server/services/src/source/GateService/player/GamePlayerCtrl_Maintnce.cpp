@@ -36,6 +36,9 @@ void GamePlayerCtrl::on_mth_gateslot_sync(void*)
 
 void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish)
 {
+	if (1)
+		return;
+
 	bool bsync = false;
 	{
 		ThreadLockWrapper tl(lock_);

@@ -152,6 +152,8 @@ public:
 	SProtocolHead& write_head() { return head_; }
 
 	S_UINT_16 get_msg() { return head_.get_msgid(); }
+	bool is_routerbalance() { return head_.router_balance_; }
+	S_INT_64 get_useriid() { return head_.get_token_useriid(); }
 
 	NetProtocol* clone();
 

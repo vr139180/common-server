@@ -262,6 +262,7 @@ void GateServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 
 void GateServiceApp::route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
+	logDebug(out_runtime, "recv msg:%d from player, router to datarouter", pro->get_msg());
 	datarouter_link_mth_.send_mth_protocol(to, pro);
 }
 

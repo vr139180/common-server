@@ -28,6 +28,9 @@ USE_PROTOCOL_NAMESPACE
 void GateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type, 
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
+	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka", 
+		NetServiceType::to_string(type).c_str(), nodes.size(), deliids.size());
+
 	if (type == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
 	{
 		datarouter_link_mth_.sync_eureka_services(nodes, deliids);

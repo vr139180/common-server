@@ -291,22 +291,17 @@ class User_Login_req final :
   std::string* _internal_mutable_pwd();
   public:
 
-  // optional string token = 4;
+  // optional int64 token = 4;
   bool has_token() const;
   private:
   bool _internal_has_token() const;
   public:
   void clear_token();
-  const std::string& token() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_token(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_token();
-  PROTOBUF_NODISCARD std::string* release_token();
-  void set_allocated_token(std::string* token);
+  int64_t token() const;
+  void set_token(int64_t value);
   private:
-  const std::string& _internal_token() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_token(const std::string& value);
-  std::string* _internal_mutable_token();
+  int64_t _internal_token() const;
+  void _internal_set_token(int64_t value);
   public:
 
   // optional int64 userid = 5;
@@ -342,7 +337,7 @@ class User_Login_req final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr account_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pwd_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
+  int64_t token_;
   int64_t userid_;
   int32_t type_;
   friend struct ::TableStruct_user_5flogin_2eproto;
@@ -471,29 +466,11 @@ class User_Login_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLogintokenFieldNumber = 4,
     kTypeFieldNumber = 1,
     kResultFieldNumber = 2,
     kUserIidFieldNumber = 3,
+    kLogintokenFieldNumber = 4,
   };
-  // optional string logintoken = 4;
-  bool has_logintoken() const;
-  private:
-  bool _internal_has_logintoken() const;
-  public:
-  void clear_logintoken();
-  const std::string& logintoken() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_logintoken(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_logintoken();
-  PROTOBUF_NODISCARD std::string* release_logintoken();
-  void set_allocated_logintoken(std::string* logintoken);
-  private:
-  const std::string& _internal_logintoken() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_logintoken(const std::string& value);
-  std::string* _internal_mutable_logintoken();
-  public:
-
   // int32 type = 1;
   void clear_type();
   int32_t type() const;
@@ -525,6 +502,19 @@ class User_Login_ack final :
   void _internal_set_user_iid(int64_t value);
   public:
 
+  // optional int64 logintoken = 4;
+  bool has_logintoken() const;
+  private:
+  bool _internal_has_logintoken() const;
+  public:
+  void clear_logintoken();
+  int64_t logintoken() const;
+  void set_logintoken(int64_t value);
+  private:
+  int64_t _internal_logintoken() const;
+  void _internal_set_logintoken(int64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.User_Login_ack)
  private:
   class _Internal;
@@ -534,10 +524,10 @@ class User_Login_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr logintoken_;
   int32_t type_;
   int32_t result_;
   int64_t user_iid_;
+  int64_t logintoken_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2734,7 +2724,7 @@ inline void User_Login_req::set_allocated_pwd(std::string* pwd) {
   // @@protoc_insertion_point(field_set_allocated:PRO.User_Login_req.pwd)
 }
 
-// optional string token = 4;
+// optional int64 token = 4;
 inline bool User_Login_req::_internal_has_token() const {
   bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
@@ -2743,64 +2733,23 @@ inline bool User_Login_req::has_token() const {
   return _internal_has_token();
 }
 inline void User_Login_req::clear_token() {
-  token_.ClearToEmpty();
+  token_ = int64_t{0};
   _has_bits_[0] &= ~0x00000004u;
 }
-inline const std::string& User_Login_req::token() const {
+inline int64_t User_Login_req::_internal_token() const {
+  return token_;
+}
+inline int64_t User_Login_req::token() const {
   // @@protoc_insertion_point(field_get:PRO.User_Login_req.token)
   return _internal_token();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void User_Login_req::set_token(ArgT0&& arg0, ArgT... args) {
- _has_bits_[0] |= 0x00000004u;
- token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void User_Login_req::_internal_set_token(int64_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_ = value;
+}
+inline void User_Login_req::set_token(int64_t value) {
+  _internal_set_token(value);
   // @@protoc_insertion_point(field_set:PRO.User_Login_req.token)
-}
-inline std::string* User_Login_req::mutable_token() {
-  std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:PRO.User_Login_req.token)
-  return _s;
-}
-inline const std::string& User_Login_req::_internal_token() const {
-  return token_.Get();
-}
-inline void User_Login_req::_internal_set_token(const std::string& value) {
-  _has_bits_[0] |= 0x00000004u;
-  token_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* User_Login_req::_internal_mutable_token() {
-  _has_bits_[0] |= 0x00000004u;
-  return token_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* User_Login_req::release_token() {
-  // @@protoc_insertion_point(field_release:PRO.User_Login_req.token)
-  if (!_internal_has_token()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000004u;
-  auto* p = token_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (token_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    token_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  return p;
-}
-inline void User_Login_req::set_allocated_token(std::string* token) {
-  if (token != nullptr) {
-    _has_bits_[0] |= 0x00000004u;
-  } else {
-    _has_bits_[0] &= ~0x00000004u;
-  }
-  token_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), token,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (token_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    token_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PRO.User_Login_req.token)
 }
 
 // optional int64 userid = 5;
@@ -2877,7 +2826,7 @@ inline void User_Login_ack::set_result(int32_t value) {
 
 // optional int64 user_iid = 3;
 inline bool User_Login_ack::_internal_has_user_iid() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
   return value;
 }
 inline bool User_Login_ack::has_user_iid() const {
@@ -2885,7 +2834,7 @@ inline bool User_Login_ack::has_user_iid() const {
 }
 inline void User_Login_ack::clear_user_iid() {
   user_iid_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline int64_t User_Login_ack::_internal_user_iid() const {
   return user_iid_;
@@ -2895,7 +2844,7 @@ inline int64_t User_Login_ack::user_iid() const {
   return _internal_user_iid();
 }
 inline void User_Login_ack::_internal_set_user_iid(int64_t value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000001u;
   user_iid_ = value;
 }
 inline void User_Login_ack::set_user_iid(int64_t value) {
@@ -2903,73 +2852,32 @@ inline void User_Login_ack::set_user_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.User_Login_ack.user_iid)
 }
 
-// optional string logintoken = 4;
+// optional int64 logintoken = 4;
 inline bool User_Login_ack::_internal_has_logintoken() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool User_Login_ack::has_logintoken() const {
   return _internal_has_logintoken();
 }
 inline void User_Login_ack::clear_logintoken() {
-  logintoken_.ClearToEmpty();
-  _has_bits_[0] &= ~0x00000001u;
+  logintoken_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000002u;
 }
-inline const std::string& User_Login_ack::logintoken() const {
+inline int64_t User_Login_ack::_internal_logintoken() const {
+  return logintoken_;
+}
+inline int64_t User_Login_ack::logintoken() const {
   // @@protoc_insertion_point(field_get:PRO.User_Login_ack.logintoken)
   return _internal_logintoken();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void User_Login_ack::set_logintoken(ArgT0&& arg0, ArgT... args) {
- _has_bits_[0] |= 0x00000001u;
- logintoken_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void User_Login_ack::_internal_set_logintoken(int64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  logintoken_ = value;
+}
+inline void User_Login_ack::set_logintoken(int64_t value) {
+  _internal_set_logintoken(value);
   // @@protoc_insertion_point(field_set:PRO.User_Login_ack.logintoken)
-}
-inline std::string* User_Login_ack::mutable_logintoken() {
-  std::string* _s = _internal_mutable_logintoken();
-  // @@protoc_insertion_point(field_mutable:PRO.User_Login_ack.logintoken)
-  return _s;
-}
-inline const std::string& User_Login_ack::_internal_logintoken() const {
-  return logintoken_.Get();
-}
-inline void User_Login_ack::_internal_set_logintoken(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
-  logintoken_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* User_Login_ack::_internal_mutable_logintoken() {
-  _has_bits_[0] |= 0x00000001u;
-  return logintoken_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* User_Login_ack::release_logintoken() {
-  // @@protoc_insertion_point(field_release:PRO.User_Login_ack.logintoken)
-  if (!_internal_has_logintoken()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000001u;
-  auto* p = logintoken_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (logintoken_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    logintoken_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  return p;
-}
-inline void User_Login_ack::set_allocated_logintoken(std::string* logintoken) {
-  if (logintoken != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
-  } else {
-    _has_bits_[0] &= ~0x00000001u;
-  }
-  logintoken_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), logintoken,
-      GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (logintoken_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    logintoken_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PRO.User_Login_ack.logintoken)
 }
 
 // -------------------------------------------------------------------

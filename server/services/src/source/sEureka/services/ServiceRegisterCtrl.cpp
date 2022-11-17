@@ -336,27 +336,24 @@ void ServiceRegisterCtrl::notify_service_offline(S_INT_64 iid, NETSERVICE_TYPE c
 	if (subs.size() > 0)
 	{
 		std::list<ServiceNodeInfo*>& svrs = get_service_node_oftype(ctype);
-		if (svrs.size() > 0)
+		for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
 		{
-			for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+			S_INT_64 tiid = (*iter);
+			ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
+			if (pfrom == 0)
+				continue;
+
+			Erk_RouterSubscribe_ntf* ntf = new Erk_RouterSubscribe_ntf();
+			ntf->set_myiid(pfrom->get_iid());
+			ntf->set_svr_type(ctype);
+
+			for (std::list<ServiceNodeInfo*>::iterator iter = svrs.begin(); iter != svrs.end(); ++iter)
 			{
-				S_INT_64 tiid = (*iter);
-				ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
-				if (pfrom == 0)
-					continue;
-
-				Erk_RouterSubscribe_ntf* ntf = new Erk_RouterSubscribe_ntf();
-				ntf->set_myiid(pfrom->get_iid());
-				ntf->set_svr_type(ctype);
-
-				for (std::list<ServiceNodeInfo*>::iterator iter = svrs.begin(); iter != svrs.end(); ++iter)
-				{
-					ServiceNodeInfo* pinf = (*iter);
-					ntf->add_svriids(pinf->iid);
-				}
-
-				pfrom->send_to_service(ntf);
+				ServiceNodeInfo* pinf = (*iter);
+				ntf->add_svriids(pinf->iid);
 			}
+
+			pfrom->send_to_service(ntf);
 		}
 	}
 }

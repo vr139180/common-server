@@ -29,13 +29,29 @@ public enum ROBOTTEST_PROTYPE
    */
   ROBOTOTEST_ROBOT_STOP_ACK(304),
   /**
-   * <code>ROBOTOTEST_ROBOT_STATE_RPT = 305;</code>
+   * <code>ROBOTOTEST_UPLOADLOGSROBOT_NTF = 305;</code>
    */
-  ROBOTOTEST_ROBOT_STATE_RPT(305),
+  ROBOTOTEST_UPLOADLOGSROBOT_NTF(305),
   /**
-   * <code>ROBOTOTEST_ROBOT_STATE_ACK = 306;</code>
+   * <code>ROBOTOTEST_CLEARLOGSROBOT_NTF = 306;</code>
    */
-  ROBOTOTEST_ROBOT_STATE_ACK(306),
+  ROBOTOTEST_CLEARLOGSROBOT_NTF(306),
+  /**
+   * <code>ROBOTOTEST_USERPREFIXROBOT_NTF = 307;</code>
+   */
+  ROBOTOTEST_USERPREFIXROBOT_NTF(307),
+  /**
+   * <code>ROBOTOTEST_STARTRECORD_REG = 308;</code>
+   */
+  ROBOTOTEST_STARTRECORD_REG(308),
+  /**
+   * <code>ROBOTOTEST_ENDRECORD_REG = 309;</code>
+   */
+  ROBOTOTEST_ENDRECORD_REG(309),
+  /**
+   * <code>ROBOTOTEST_RECORD_REG = 310;</code>
+   */
+  ROBOTOTEST_RECORD_REG(310),
   UNRECOGNIZED(-1),
   ;
 
@@ -60,13 +76,29 @@ public enum ROBOTTEST_PROTYPE
    */
   public static final int ROBOTOTEST_ROBOT_STOP_ACK_VALUE = 304;
   /**
-   * <code>ROBOTOTEST_ROBOT_STATE_RPT = 305;</code>
+   * <code>ROBOTOTEST_UPLOADLOGSROBOT_NTF = 305;</code>
    */
-  public static final int ROBOTOTEST_ROBOT_STATE_RPT_VALUE = 305;
+  public static final int ROBOTOTEST_UPLOADLOGSROBOT_NTF_VALUE = 305;
   /**
-   * <code>ROBOTOTEST_ROBOT_STATE_ACK = 306;</code>
+   * <code>ROBOTOTEST_CLEARLOGSROBOT_NTF = 306;</code>
    */
-  public static final int ROBOTOTEST_ROBOT_STATE_ACK_VALUE = 306;
+  public static final int ROBOTOTEST_CLEARLOGSROBOT_NTF_VALUE = 306;
+  /**
+   * <code>ROBOTOTEST_USERPREFIXROBOT_NTF = 307;</code>
+   */
+  public static final int ROBOTOTEST_USERPREFIXROBOT_NTF_VALUE = 307;
+  /**
+   * <code>ROBOTOTEST_STARTRECORD_REG = 308;</code>
+   */
+  public static final int ROBOTOTEST_STARTRECORD_REG_VALUE = 308;
+  /**
+   * <code>ROBOTOTEST_ENDRECORD_REG = 309;</code>
+   */
+  public static final int ROBOTOTEST_ENDRECORD_REG_VALUE = 309;
+  /**
+   * <code>ROBOTOTEST_RECORD_REG = 310;</code>
+   */
+  public static final int ROBOTOTEST_RECORD_REG_VALUE = 310;
 
 
   public final int getNumber() {
@@ -98,8 +130,12 @@ public enum ROBOTTEST_PROTYPE
       case 302: return ROBOTOTEST_ROBOT_CONFIG_ACK;
       case 303: return ROBOTOTEST_ROBOT_START_ACK;
       case 304: return ROBOTOTEST_ROBOT_STOP_ACK;
-      case 305: return ROBOTOTEST_ROBOT_STATE_RPT;
-      case 306: return ROBOTOTEST_ROBOT_STATE_ACK;
+      case 305: return ROBOTOTEST_UPLOADLOGSROBOT_NTF;
+      case 306: return ROBOTOTEST_CLEARLOGSROBOT_NTF;
+      case 307: return ROBOTOTEST_USERPREFIXROBOT_NTF;
+      case 308: return ROBOTOTEST_STARTRECORD_REG;
+      case 309: return ROBOTOTEST_ENDRECORD_REG;
+      case 310: return ROBOTOTEST_RECORD_REG;
       default: return null;
     }
   }

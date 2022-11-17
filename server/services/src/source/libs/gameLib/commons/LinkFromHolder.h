@@ -36,6 +36,7 @@ public:
 	T* get_servicelink_byiid(S_INT_64 iid);
 	virtual void return_freelink(T* link);
 	virtual T* regist_onlinelink(T* link);
+	T* get_servicelink_random();
 
 	template<class M>
 	void broadcast(M* pro)
@@ -57,6 +58,7 @@ protected:
 	std::list<T*>	all_service_link_;
 	std::set<T*>	free_links_;
 	SERVICEMAP		online_links_;
+	S_INT_32		random_online_;
 
 	ThreadLock	lock_;
 };
@@ -76,6 +78,8 @@ template<typename T>
 void LinkFromHolder<T>::init_holder()
 {
 	ThreadLockWrapper guard(lock_);
+
+	random_online_ = 0;
 }
 
 template<typename T>
@@ -138,10 +142,27 @@ T* LinkFromHolder<T>::get_servicelink_byiid(S_INT_64 iid)
 {
 	ThreadLockWrapper guard(lock_);
 
-	typename boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
+	boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
 	if (fiter == online_links_.end())
 		return 0;
 	return fiter->second;
+}
+
+template<typename T>
+T* LinkFromHolder<T>::get_servicelink_random()
+{
+	if (online_links_.size() == 0)
+		return 0;
+
+	ThreadLockWrapper guard(lock_);
+	++random_online_;
+	if (random_online_ >= online_links_.size())
+		random_online_ = 0;
+
+	boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
+	for (int ii = 0; ii < random_online_; ++ii)
+		++iter;
+	return iter->second;
 }
 
 #endif //__LINKFROMHOLDER_H__

@@ -27,13 +27,15 @@
 #include <gameLib/eureka/EurekaClusterClient.h>
 #include <gameLib/commons/SessionMthHolder.h>
 #include <gameLib/commons/LinkFromHolder.h>
+#include <gameLib/commons/LinkToHolder.h>
+#include <gameLib/commons/LinkFromConsistentHash.h>
 
 #include "config/FightRouterConfig.h"
 
 #include "network/FightRouterSession.h"
-#include "network/HomeServiceLinkFrom.h"
 #include "network/GameServiceLinkFrom.h"
 #include "network/MatchMakingServiceLinkFrom.h"
+#include "network/DataRouterLinkTo.h"
 
 class FightRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -86,26 +88,30 @@ protected:
 
 protected:
 	//注册成功之后标注为true
-	bool							is_ready_;
+	bool										is_ready_;
 
 	//network
-	std::shared_ptr<NetAcceptor>			acceptor_;
-	SessionMthHolder<FightRouterSession>	session_from_;
+	std::shared_ptr<NetAcceptor>				acceptor_;
+	SessionMthHolder<FightRouterSession>		session_from_;
 
-	LinkFromHolder<HomeServiceLinkFrom>			home_links_from_;
-	LinkFromHolder<GameServiceLinkFrom>			game_links_from_;
+	LinkToHolder<DataRouterLinkTo>				datarouter_link_mth_;
 	LinkFromHolder<MatchMakingServiceLinkFrom>	matchmaking_links_from_;
 
-	boost::scoped_ptr<FightRouterConfig>	conf_;
+	//负载均衡
+	LinkFromConsistentHash<GameServiceLinkFrom>	game_links_from_;
+
+	boost::scoped_ptr<FightRouterConfig>		conf_;
 
 public:
 	void on_connection_timeout(FightRouterSession* session);
 
 	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
 
-	void on_disconnected_with_homeservice(HomeServiceLinkFrom* plink);
 	void on_disconnected_with_gameservice(GameServiceLinkFrom* plink);
 	void on_disconnected_with_matchmakingservice(MatchMakingServiceLinkFrom* plink);
+
+	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
+	void on_datarouter_regist_result(DataRouterLinkTo* plink);
 };
 
 #define svrApp (FightRouterApp::getInstance())

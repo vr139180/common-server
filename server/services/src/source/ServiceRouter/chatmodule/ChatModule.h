@@ -31,7 +31,7 @@ public:
 
 	void init_chatmodule(S_INT_64 myiid);
 
-	void process_chat_msg(S_UINT_16 proiid, BasicProtocol* pro);
+	void process_chat_msg( NetProtocol* pro);
 
 protected:
 	void on_customchannelid_req(S_INT_64 sidgid, S_INT_64 slottoken);
@@ -46,8 +46,6 @@ protected:
 	int channelid_to_chathash( int type, S_INT_64 channelid);
 
 private:
-	ChatHashPlot	chash_plot_;
-
 	//sid作为custom channel id的种子
 	S_INT_64				channel_seed_;
 	boost::atomic<S_INT_64>	iids_;

@@ -7,13 +7,13 @@
     <ClCompile Include="..\source\FightRouter\network\FightRouterSession.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\FightRouter\network\HomeServiceLinkFrom.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\FightRouter\network\GameServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
     <ClCompile Include="..\source\FightRouter\network\MatchMakingServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\FightRouter\network\DataRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -25,13 +25,13 @@
     <ClInclude Include="..\source\FightRouter\config\FightRouterConfig.h">
       <Filter>config</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\FightRouter\network\HomeServiceLinkFrom.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\FightRouter\network\GameServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\FightRouter\network\MatchMakingServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\FightRouter\network\DataRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

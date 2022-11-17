@@ -48,7 +48,7 @@ struct TableStruct_robot_5ftest_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,40 +56,48 @@ struct TableStruct_robot_5ftest_5finternal_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_robot_5ftest_5finternal_2eproto;
 namespace PRO {
+class Robot_ClearLogs_ntf;
+struct Robot_ClearLogs_ntfDefaultTypeInternal;
+extern Robot_ClearLogs_ntfDefaultTypeInternal _Robot_ClearLogs_ntf_default_instance_;
 class Robot_Config_Ack;
 struct Robot_Config_AckDefaultTypeInternal;
 extern Robot_Config_AckDefaultTypeInternal _Robot_Config_Ack_default_instance_;
 class Robot_Config_Req;
 struct Robot_Config_ReqDefaultTypeInternal;
 extern Robot_Config_ReqDefaultTypeInternal _Robot_Config_Req_default_instance_;
+class Robot_EndRecord_req;
+struct Robot_EndRecord_reqDefaultTypeInternal;
+extern Robot_EndRecord_reqDefaultTypeInternal _Robot_EndRecord_req_default_instance_;
+class Robot_Record_req;
+struct Robot_Record_reqDefaultTypeInternal;
+extern Robot_Record_reqDefaultTypeInternal _Robot_Record_req_default_instance_;
+class Robot_StartRecord_req;
+struct Robot_StartRecord_reqDefaultTypeInternal;
+extern Robot_StartRecord_reqDefaultTypeInternal _Robot_StartRecord_req_default_instance_;
 class Robot_Start_Ack;
 struct Robot_Start_AckDefaultTypeInternal;
 extern Robot_Start_AckDefaultTypeInternal _Robot_Start_Ack_default_instance_;
-class Robot_State_Ack;
-struct Robot_State_AckDefaultTypeInternal;
-extern Robot_State_AckDefaultTypeInternal _Robot_State_Ack_default_instance_;
-class Robot_State_Rpt;
-struct Robot_State_RptDefaultTypeInternal;
-extern Robot_State_RptDefaultTypeInternal _Robot_State_Rpt_default_instance_;
-class Robot_State_Rpt_ActionGroup;
-struct Robot_State_Rpt_ActionGroupDefaultTypeInternal;
-extern Robot_State_Rpt_ActionGroupDefaultTypeInternal _Robot_State_Rpt_ActionGroup_default_instance_;
-class Robot_State_Rpt_StateData;
-struct Robot_State_Rpt_StateDataDefaultTypeInternal;
-extern Robot_State_Rpt_StateDataDefaultTypeInternal _Robot_State_Rpt_StateData_default_instance_;
 class Robot_Stop_Ack;
 struct Robot_Stop_AckDefaultTypeInternal;
 extern Robot_Stop_AckDefaultTypeInternal _Robot_Stop_Ack_default_instance_;
+class Robot_UploadLogs_ntf;
+struct Robot_UploadLogs_ntfDefaultTypeInternal;
+extern Robot_UploadLogs_ntfDefaultTypeInternal _Robot_UploadLogs_ntf_default_instance_;
+class Robot_UserPrefixChg_ntf;
+struct Robot_UserPrefixChg_ntfDefaultTypeInternal;
+extern Robot_UserPrefixChg_ntfDefaultTypeInternal _Robot_UserPrefixChg_ntf_default_instance_;
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
+template<> ::PRO::Robot_ClearLogs_ntf* Arena::CreateMaybeMessage<::PRO::Robot_ClearLogs_ntf>(Arena*);
 template<> ::PRO::Robot_Config_Ack* Arena::CreateMaybeMessage<::PRO::Robot_Config_Ack>(Arena*);
 template<> ::PRO::Robot_Config_Req* Arena::CreateMaybeMessage<::PRO::Robot_Config_Req>(Arena*);
+template<> ::PRO::Robot_EndRecord_req* Arena::CreateMaybeMessage<::PRO::Robot_EndRecord_req>(Arena*);
+template<> ::PRO::Robot_Record_req* Arena::CreateMaybeMessage<::PRO::Robot_Record_req>(Arena*);
+template<> ::PRO::Robot_StartRecord_req* Arena::CreateMaybeMessage<::PRO::Robot_StartRecord_req>(Arena*);
 template<> ::PRO::Robot_Start_Ack* Arena::CreateMaybeMessage<::PRO::Robot_Start_Ack>(Arena*);
-template<> ::PRO::Robot_State_Ack* Arena::CreateMaybeMessage<::PRO::Robot_State_Ack>(Arena*);
-template<> ::PRO::Robot_State_Rpt* Arena::CreateMaybeMessage<::PRO::Robot_State_Rpt>(Arena*);
-template<> ::PRO::Robot_State_Rpt_ActionGroup* Arena::CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(Arena*);
-template<> ::PRO::Robot_State_Rpt_StateData* Arena::CreateMaybeMessage<::PRO::Robot_State_Rpt_StateData>(Arena*);
 template<> ::PRO::Robot_Stop_Ack* Arena::CreateMaybeMessage<::PRO::Robot_Stop_Ack>(Arena*);
+template<> ::PRO::Robot_UploadLogs_ntf* Arena::CreateMaybeMessage<::PRO::Robot_UploadLogs_ntf>(Arena*);
+template<> ::PRO::Robot_UserPrefixChg_ntf* Arena::CreateMaybeMessage<::PRO::Robot_UserPrefixChg_ntf>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PRO {
 
@@ -420,31 +428,124 @@ class Robot_Config_Ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLgsipFieldNumber = 7,
+    kUrladdrFieldNumber = 4,
+    kOpenprefixFieldNumber = 5,
+    kDbuserFieldNumber = 10,
+    kDbpwdFieldNumber = 11,
+    kDbnameFieldNumber = 12,
+    kDbipFieldNumber = 13,
     kVersionFieldNumber = 1,
     kResultFieldNumber = 2,
-    kStartuseridFieldNumber = 4,
     kRobotidFieldNumber = 3,
-    kUsersFieldNumber = 5,
-    kUsersrangeFieldNumber = 6,
-    kLgsportFieldNumber = 8,
+    kUsersFieldNumber = 8,
+    kStartuseridFieldNumber = 7,
   };
-  // optional string lgsip = 7;
-  bool has_lgsip() const;
+  // optional string urladdr = 4;
+  bool has_urladdr() const;
   private:
-  bool _internal_has_lgsip() const;
+  bool _internal_has_urladdr() const;
   public:
-  void clear_lgsip();
-  const std::string& lgsip() const;
+  void clear_urladdr();
+  const std::string& urladdr() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_lgsip(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_lgsip();
-  PROTOBUF_NODISCARD std::string* release_lgsip();
-  void set_allocated_lgsip(std::string* lgsip);
+  void set_urladdr(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_urladdr();
+  PROTOBUF_NODISCARD std::string* release_urladdr();
+  void set_allocated_urladdr(std::string* urladdr);
   private:
-  const std::string& _internal_lgsip() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_lgsip(const std::string& value);
-  std::string* _internal_mutable_lgsip();
+  const std::string& _internal_urladdr() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_urladdr(const std::string& value);
+  std::string* _internal_mutable_urladdr();
+  public:
+
+  // optional string openprefix = 5;
+  bool has_openprefix() const;
+  private:
+  bool _internal_has_openprefix() const;
+  public:
+  void clear_openprefix();
+  const std::string& openprefix() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_openprefix(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_openprefix();
+  PROTOBUF_NODISCARD std::string* release_openprefix();
+  void set_allocated_openprefix(std::string* openprefix);
+  private:
+  const std::string& _internal_openprefix() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_openprefix(const std::string& value);
+  std::string* _internal_mutable_openprefix();
+  public:
+
+  // optional string dbuser = 10;
+  bool has_dbuser() const;
+  private:
+  bool _internal_has_dbuser() const;
+  public:
+  void clear_dbuser();
+  const std::string& dbuser() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dbuser(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dbuser();
+  PROTOBUF_NODISCARD std::string* release_dbuser();
+  void set_allocated_dbuser(std::string* dbuser);
+  private:
+  const std::string& _internal_dbuser() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dbuser(const std::string& value);
+  std::string* _internal_mutable_dbuser();
+  public:
+
+  // optional string dbpwd = 11;
+  bool has_dbpwd() const;
+  private:
+  bool _internal_has_dbpwd() const;
+  public:
+  void clear_dbpwd();
+  const std::string& dbpwd() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dbpwd(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dbpwd();
+  PROTOBUF_NODISCARD std::string* release_dbpwd();
+  void set_allocated_dbpwd(std::string* dbpwd);
+  private:
+  const std::string& _internal_dbpwd() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dbpwd(const std::string& value);
+  std::string* _internal_mutable_dbpwd();
+  public:
+
+  // optional string dbname = 12;
+  bool has_dbname() const;
+  private:
+  bool _internal_has_dbname() const;
+  public:
+  void clear_dbname();
+  const std::string& dbname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dbname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dbname();
+  PROTOBUF_NODISCARD std::string* release_dbname();
+  void set_allocated_dbname(std::string* dbname);
+  private:
+  const std::string& _internal_dbname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dbname(const std::string& value);
+  std::string* _internal_mutable_dbname();
+  public:
+
+  // optional string dbip = 13;
+  bool has_dbip() const;
+  private:
+  bool _internal_has_dbip() const;
+  public:
+  void clear_dbip();
+  const std::string& dbip() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dbip(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dbip();
+  PROTOBUF_NODISCARD std::string* release_dbip();
+  void set_allocated_dbip(std::string* dbip);
+  private:
+  const std::string& _internal_dbip() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dbip(const std::string& value);
+  std::string* _internal_mutable_dbip();
   public:
 
   // int32 version = 1;
@@ -465,19 +566,6 @@ class Robot_Config_Ack final :
   void _internal_set_result(int32_t value);
   public:
 
-  // optional int64 startuserid = 4;
-  bool has_startuserid() const;
-  private:
-  bool _internal_has_startuserid() const;
-  public:
-  void clear_startuserid();
-  int64_t startuserid() const;
-  void set_startuserid(int64_t value);
-  private:
-  int64_t _internal_startuserid() const;
-  void _internal_set_startuserid(int64_t value);
-  public:
-
   // optional int32 robotid = 3;
   bool has_robotid() const;
   private:
@@ -491,7 +579,7 @@ class Robot_Config_Ack final :
   void _internal_set_robotid(int32_t value);
   public:
 
-  // optional int32 users = 5;
+  // optional int32 users = 8;
   bool has_users() const;
   private:
   bool _internal_has_users() const;
@@ -504,30 +592,17 @@ class Robot_Config_Ack final :
   void _internal_set_users(int32_t value);
   public:
 
-  // optional int32 usersrange = 6;
-  bool has_usersrange() const;
+  // optional int64 startuserid = 7;
+  bool has_startuserid() const;
   private:
-  bool _internal_has_usersrange() const;
+  bool _internal_has_startuserid() const;
   public:
-  void clear_usersrange();
-  int32_t usersrange() const;
-  void set_usersrange(int32_t value);
+  void clear_startuserid();
+  int64_t startuserid() const;
+  void set_startuserid(int64_t value);
   private:
-  int32_t _internal_usersrange() const;
-  void _internal_set_usersrange(int32_t value);
-  public:
-
-  // optional int32 lgsport = 8;
-  bool has_lgsport() const;
-  private:
-  bool _internal_has_lgsport() const;
-  public:
-  void clear_lgsport();
-  int32_t lgsport() const;
-  void set_lgsport(int32_t value);
-  private:
-  int32_t _internal_lgsport() const;
-  void _internal_set_lgsport(int32_t value);
+  int64_t _internal_startuserid() const;
+  void _internal_set_startuserid(int64_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:PRO.Robot_Config_Ack)
@@ -539,14 +614,17 @@ class Robot_Config_Ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr lgsip_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr urladdr_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr openprefix_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dbuser_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dbpwd_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dbname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dbip_;
   int32_t version_;
   int32_t result_;
-  int64_t startuserid_;
   int32_t robotid_;
   int32_t users_;
-  int32_t usersrange_;
-  int32_t lgsport_;
+  int64_t startuserid_;
   friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
@@ -852,24 +930,24 @@ class Robot_Stop_Ack final :
 };
 // -------------------------------------------------------------------
 
-class Robot_State_Rpt_ActionGroup final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_State_Rpt.ActionGroup) */ {
+class Robot_Record_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_Record_req) */ {
  public:
-  inline Robot_State_Rpt_ActionGroup() : Robot_State_Rpt_ActionGroup(nullptr) {}
-  ~Robot_State_Rpt_ActionGroup() override;
-  explicit constexpr Robot_State_Rpt_ActionGroup(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Robot_Record_req() : Robot_Record_req(nullptr) {}
+  ~Robot_Record_req() override;
+  explicit constexpr Robot_Record_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Robot_State_Rpt_ActionGroup(const Robot_State_Rpt_ActionGroup& from);
-  Robot_State_Rpt_ActionGroup(Robot_State_Rpt_ActionGroup&& from) noexcept
-    : Robot_State_Rpt_ActionGroup() {
+  Robot_Record_req(const Robot_Record_req& from);
+  Robot_Record_req(Robot_Record_req&& from) noexcept
+    : Robot_Record_req() {
     *this = ::std::move(from);
   }
 
-  inline Robot_State_Rpt_ActionGroup& operator=(const Robot_State_Rpt_ActionGroup& from) {
+  inline Robot_Record_req& operator=(const Robot_Record_req& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Robot_State_Rpt_ActionGroup& operator=(Robot_State_Rpt_ActionGroup&& from) noexcept {
+  inline Robot_Record_req& operator=(Robot_Record_req&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -892,20 +970,20 @@ class Robot_State_Rpt_ActionGroup final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Robot_State_Rpt_ActionGroup& default_instance() {
+  static const Robot_Record_req& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Robot_State_Rpt_ActionGroup* internal_default_instance() {
-    return reinterpret_cast<const Robot_State_Rpt_ActionGroup*>(
-               &_Robot_State_Rpt_ActionGroup_default_instance_);
+  static inline const Robot_Record_req* internal_default_instance() {
+    return reinterpret_cast<const Robot_Record_req*>(
+               &_Robot_Record_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     4;
 
-  friend void swap(Robot_State_Rpt_ActionGroup& a, Robot_State_Rpt_ActionGroup& b) {
+  friend void swap(Robot_Record_req& a, Robot_Record_req& b) {
     a.Swap(&b);
   }
-  inline void Swap(Robot_State_Rpt_ActionGroup* other) {
+  inline void Swap(Robot_Record_req* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -918,7 +996,7 @@ class Robot_State_Rpt_ActionGroup final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Robot_State_Rpt_ActionGroup* other) {
+  void UnsafeArenaSwap(Robot_Record_req* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -926,13 +1004,13 @@ class Robot_State_Rpt_ActionGroup final :
 
   // implements Message ----------------------------------------------
 
-  Robot_State_Rpt_ActionGroup* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Robot_State_Rpt_ActionGroup>(arena);
+  Robot_Record_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_Record_req>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Robot_State_Rpt_ActionGroup& from);
+  void CopyFrom(const Robot_Record_req& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Robot_State_Rpt_ActionGroup& from);
+  void MergeFrom(const Robot_Record_req& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -949,15 +1027,15 @@ class Robot_State_Rpt_ActionGroup final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Robot_State_Rpt_ActionGroup* other);
+  void InternalSwap(Robot_Record_req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Robot_State_Rpt.ActionGroup";
+    return "PRO.Robot_Record_req";
   }
   protected:
-  explicit Robot_State_Rpt_ActionGroup(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Robot_Record_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -974,92 +1052,59 @@ class Robot_State_Rpt_ActionGroup final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kActionsFieldNumber = 1,
-    kSucceedsFieldNumber = 2,
-    kFailedsFieldNumber = 3,
-    kTimeoutsFieldNumber = 4,
-    kTimeintervalFieldNumber = 5,
+    kRobotidFieldNumber = 1,
+    kLogsFieldNumber = 2,
   };
-  // int64 actions = 1;
-  void clear_actions();
-  int64_t actions() const;
-  void set_actions(int64_t value);
+  // int32 robotid = 1;
+  void clear_robotid();
+  int32_t robotid() const;
+  void set_robotid(int32_t value);
   private:
-  int64_t _internal_actions() const;
-  void _internal_set_actions(int64_t value);
+  int32_t _internal_robotid() const;
+  void _internal_set_robotid(int32_t value);
   public:
 
-  // int64 succeeds = 2;
-  void clear_succeeds();
-  int64_t succeeds() const;
-  void set_succeeds(int64_t value);
+  // int32 logs = 2;
+  void clear_logs();
+  int32_t logs() const;
+  void set_logs(int32_t value);
   private:
-  int64_t _internal_succeeds() const;
-  void _internal_set_succeeds(int64_t value);
+  int32_t _internal_logs() const;
+  void _internal_set_logs(int32_t value);
   public:
 
-  // int64 faileds = 3;
-  void clear_faileds();
-  int64_t faileds() const;
-  void set_faileds(int64_t value);
-  private:
-  int64_t _internal_faileds() const;
-  void _internal_set_faileds(int64_t value);
-  public:
-
-  // int64 timeouts = 4;
-  void clear_timeouts();
-  int64_t timeouts() const;
-  void set_timeouts(int64_t value);
-  private:
-  int64_t _internal_timeouts() const;
-  void _internal_set_timeouts(int64_t value);
-  public:
-
-  // int64 timeinterval = 5;
-  void clear_timeinterval();
-  int64_t timeinterval() const;
-  void set_timeinterval(int64_t value);
-  private:
-  int64_t _internal_timeinterval() const;
-  void _internal_set_timeinterval(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.Robot_State_Rpt.ActionGroup)
+  // @@protoc_insertion_point(class_scope:PRO.Robot_Record_req)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t actions_;
-  int64_t succeeds_;
-  int64_t faileds_;
-  int64_t timeouts_;
-  int64_t timeinterval_;
+  int32_t robotid_;
+  int32_t logs_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Robot_State_Rpt_StateData final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_State_Rpt.StateData) */ {
+class Robot_StartRecord_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_StartRecord_req) */ {
  public:
-  inline Robot_State_Rpt_StateData() : Robot_State_Rpt_StateData(nullptr) {}
-  ~Robot_State_Rpt_StateData() override;
-  explicit constexpr Robot_State_Rpt_StateData(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Robot_StartRecord_req() : Robot_StartRecord_req(nullptr) {}
+  ~Robot_StartRecord_req() override;
+  explicit constexpr Robot_StartRecord_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Robot_State_Rpt_StateData(const Robot_State_Rpt_StateData& from);
-  Robot_State_Rpt_StateData(Robot_State_Rpt_StateData&& from) noexcept
-    : Robot_State_Rpt_StateData() {
+  Robot_StartRecord_req(const Robot_StartRecord_req& from);
+  Robot_StartRecord_req(Robot_StartRecord_req&& from) noexcept
+    : Robot_StartRecord_req() {
     *this = ::std::move(from);
   }
 
-  inline Robot_State_Rpt_StateData& operator=(const Robot_State_Rpt_StateData& from) {
+  inline Robot_StartRecord_req& operator=(const Robot_StartRecord_req& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Robot_State_Rpt_StateData& operator=(Robot_State_Rpt_StateData&& from) noexcept {
+  inline Robot_StartRecord_req& operator=(Robot_StartRecord_req&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1082,20 +1127,20 @@ class Robot_State_Rpt_StateData final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Robot_State_Rpt_StateData& default_instance() {
+  static const Robot_StartRecord_req& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Robot_State_Rpt_StateData* internal_default_instance() {
-    return reinterpret_cast<const Robot_State_Rpt_StateData*>(
-               &_Robot_State_Rpt_StateData_default_instance_);
+  static inline const Robot_StartRecord_req* internal_default_instance() {
+    return reinterpret_cast<const Robot_StartRecord_req*>(
+               &_Robot_StartRecord_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     5;
 
-  friend void swap(Robot_State_Rpt_StateData& a, Robot_State_Rpt_StateData& b) {
+  friend void swap(Robot_StartRecord_req& a, Robot_StartRecord_req& b) {
     a.Swap(&b);
   }
-  inline void Swap(Robot_State_Rpt_StateData* other) {
+  inline void Swap(Robot_StartRecord_req* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1108,7 +1153,7 @@ class Robot_State_Rpt_StateData final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Robot_State_Rpt_StateData* other) {
+  void UnsafeArenaSwap(Robot_StartRecord_req* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1116,13 +1161,13 @@ class Robot_State_Rpt_StateData final :
 
   // implements Message ----------------------------------------------
 
-  Robot_State_Rpt_StateData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Robot_State_Rpt_StateData>(arena);
+  Robot_StartRecord_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_StartRecord_req>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Robot_State_Rpt_StateData& from);
+  void CopyFrom(const Robot_StartRecord_req& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Robot_State_Rpt_StateData& from);
+  void MergeFrom(const Robot_StartRecord_req& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1139,15 +1184,15 @@ class Robot_State_Rpt_StateData final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Robot_State_Rpt_StateData* other);
+  void InternalSwap(Robot_StartRecord_req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Robot_State_Rpt.StateData";
+    return "PRO.Robot_StartRecord_req";
   }
   protected:
-  explicit Robot_State_Rpt_StateData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Robot_StartRecord_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1164,237 +1209,48 @@ class Robot_State_Rpt_StateData final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLogonFieldNumber = 1,
-    kGetroleFieldNumber = 2,
-    kSelroleFieldNumber = 3,
-    kGetchannelFieldNumber = 4,
-    kSelchannelFieldNumber = 5,
-    kGetroomFieldNumber = 6,
-    kLoginroomFieldNumber = 7,
-    kLogoutroomFieldNumber = 8,
-    kLogoutchannelFieldNumber = 9,
-    kLogoutFieldNumber = 10,
+    kRobotidFieldNumber = 1,
   };
-  // .PRO.Robot_State_Rpt.ActionGroup logon = 1;
-  bool has_logon() const;
+  // int32 robotid = 1;
+  void clear_robotid();
+  int32_t robotid() const;
+  void set_robotid(int32_t value);
   private:
-  bool _internal_has_logon() const;
+  int32_t _internal_robotid() const;
+  void _internal_set_robotid(int32_t value);
   public:
-  void clear_logon();
-  const ::PRO::Robot_State_Rpt_ActionGroup& logon() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_logon();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_logon();
-  void set_allocated_logon(::PRO::Robot_State_Rpt_ActionGroup* logon);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_logon() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_logon();
-  public:
-  void unsafe_arena_set_allocated_logon(
-      ::PRO::Robot_State_Rpt_ActionGroup* logon);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_logon();
 
-  // .PRO.Robot_State_Rpt.ActionGroup getrole = 2;
-  bool has_getrole() const;
-  private:
-  bool _internal_has_getrole() const;
-  public:
-  void clear_getrole();
-  const ::PRO::Robot_State_Rpt_ActionGroup& getrole() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_getrole();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_getrole();
-  void set_allocated_getrole(::PRO::Robot_State_Rpt_ActionGroup* getrole);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_getrole() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_getrole();
-  public:
-  void unsafe_arena_set_allocated_getrole(
-      ::PRO::Robot_State_Rpt_ActionGroup* getrole);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_getrole();
-
-  // .PRO.Robot_State_Rpt.ActionGroup selrole = 3;
-  bool has_selrole() const;
-  private:
-  bool _internal_has_selrole() const;
-  public:
-  void clear_selrole();
-  const ::PRO::Robot_State_Rpt_ActionGroup& selrole() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_selrole();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_selrole();
-  void set_allocated_selrole(::PRO::Robot_State_Rpt_ActionGroup* selrole);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_selrole() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_selrole();
-  public:
-  void unsafe_arena_set_allocated_selrole(
-      ::PRO::Robot_State_Rpt_ActionGroup* selrole);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_selrole();
-
-  // .PRO.Robot_State_Rpt.ActionGroup getchannel = 4;
-  bool has_getchannel() const;
-  private:
-  bool _internal_has_getchannel() const;
-  public:
-  void clear_getchannel();
-  const ::PRO::Robot_State_Rpt_ActionGroup& getchannel() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_getchannel();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_getchannel();
-  void set_allocated_getchannel(::PRO::Robot_State_Rpt_ActionGroup* getchannel);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_getchannel() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_getchannel();
-  public:
-  void unsafe_arena_set_allocated_getchannel(
-      ::PRO::Robot_State_Rpt_ActionGroup* getchannel);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_getchannel();
-
-  // .PRO.Robot_State_Rpt.ActionGroup selchannel = 5;
-  bool has_selchannel() const;
-  private:
-  bool _internal_has_selchannel() const;
-  public:
-  void clear_selchannel();
-  const ::PRO::Robot_State_Rpt_ActionGroup& selchannel() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_selchannel();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_selchannel();
-  void set_allocated_selchannel(::PRO::Robot_State_Rpt_ActionGroup* selchannel);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_selchannel() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_selchannel();
-  public:
-  void unsafe_arena_set_allocated_selchannel(
-      ::PRO::Robot_State_Rpt_ActionGroup* selchannel);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_selchannel();
-
-  // .PRO.Robot_State_Rpt.ActionGroup getroom = 6;
-  bool has_getroom() const;
-  private:
-  bool _internal_has_getroom() const;
-  public:
-  void clear_getroom();
-  const ::PRO::Robot_State_Rpt_ActionGroup& getroom() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_getroom();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_getroom();
-  void set_allocated_getroom(::PRO::Robot_State_Rpt_ActionGroup* getroom);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_getroom() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_getroom();
-  public:
-  void unsafe_arena_set_allocated_getroom(
-      ::PRO::Robot_State_Rpt_ActionGroup* getroom);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_getroom();
-
-  // .PRO.Robot_State_Rpt.ActionGroup loginroom = 7;
-  bool has_loginroom() const;
-  private:
-  bool _internal_has_loginroom() const;
-  public:
-  void clear_loginroom();
-  const ::PRO::Robot_State_Rpt_ActionGroup& loginroom() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_loginroom();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_loginroom();
-  void set_allocated_loginroom(::PRO::Robot_State_Rpt_ActionGroup* loginroom);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_loginroom() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_loginroom();
-  public:
-  void unsafe_arena_set_allocated_loginroom(
-      ::PRO::Robot_State_Rpt_ActionGroup* loginroom);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_loginroom();
-
-  // .PRO.Robot_State_Rpt.ActionGroup logoutroom = 8;
-  bool has_logoutroom() const;
-  private:
-  bool _internal_has_logoutroom() const;
-  public:
-  void clear_logoutroom();
-  const ::PRO::Robot_State_Rpt_ActionGroup& logoutroom() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_logoutroom();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_logoutroom();
-  void set_allocated_logoutroom(::PRO::Robot_State_Rpt_ActionGroup* logoutroom);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_logoutroom() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_logoutroom();
-  public:
-  void unsafe_arena_set_allocated_logoutroom(
-      ::PRO::Robot_State_Rpt_ActionGroup* logoutroom);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_logoutroom();
-
-  // .PRO.Robot_State_Rpt.ActionGroup logoutchannel = 9;
-  bool has_logoutchannel() const;
-  private:
-  bool _internal_has_logoutchannel() const;
-  public:
-  void clear_logoutchannel();
-  const ::PRO::Robot_State_Rpt_ActionGroup& logoutchannel() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_logoutchannel();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_logoutchannel();
-  void set_allocated_logoutchannel(::PRO::Robot_State_Rpt_ActionGroup* logoutchannel);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_logoutchannel() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_logoutchannel();
-  public:
-  void unsafe_arena_set_allocated_logoutchannel(
-      ::PRO::Robot_State_Rpt_ActionGroup* logoutchannel);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_logoutchannel();
-
-  // .PRO.Robot_State_Rpt.ActionGroup logout = 10;
-  bool has_logout() const;
-  private:
-  bool _internal_has_logout() const;
-  public:
-  void clear_logout();
-  const ::PRO::Robot_State_Rpt_ActionGroup& logout() const;
-  PROTOBUF_NODISCARD ::PRO::Robot_State_Rpt_ActionGroup* release_logout();
-  ::PRO::Robot_State_Rpt_ActionGroup* mutable_logout();
-  void set_allocated_logout(::PRO::Robot_State_Rpt_ActionGroup* logout);
-  private:
-  const ::PRO::Robot_State_Rpt_ActionGroup& _internal_logout() const;
-  ::PRO::Robot_State_Rpt_ActionGroup* _internal_mutable_logout();
-  public:
-  void unsafe_arena_set_allocated_logout(
-      ::PRO::Robot_State_Rpt_ActionGroup* logout);
-  ::PRO::Robot_State_Rpt_ActionGroup* unsafe_arena_release_logout();
-
-  // @@protoc_insertion_point(class_scope:PRO.Robot_State_Rpt.StateData)
+  // @@protoc_insertion_point(class_scope:PRO.Robot_StartRecord_req)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PRO::Robot_State_Rpt_ActionGroup* logon_;
-  ::PRO::Robot_State_Rpt_ActionGroup* getrole_;
-  ::PRO::Robot_State_Rpt_ActionGroup* selrole_;
-  ::PRO::Robot_State_Rpt_ActionGroup* getchannel_;
-  ::PRO::Robot_State_Rpt_ActionGroup* selchannel_;
-  ::PRO::Robot_State_Rpt_ActionGroup* getroom_;
-  ::PRO::Robot_State_Rpt_ActionGroup* loginroom_;
-  ::PRO::Robot_State_Rpt_ActionGroup* logoutroom_;
-  ::PRO::Robot_State_Rpt_ActionGroup* logoutchannel_;
-  ::PRO::Robot_State_Rpt_ActionGroup* logout_;
+  int32_t robotid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Robot_State_Rpt final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_State_Rpt) */ {
+class Robot_EndRecord_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_EndRecord_req) */ {
  public:
-  inline Robot_State_Rpt() : Robot_State_Rpt(nullptr) {}
-  ~Robot_State_Rpt() override;
-  explicit constexpr Robot_State_Rpt(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Robot_EndRecord_req() : Robot_EndRecord_req(nullptr) {}
+  ~Robot_EndRecord_req() override;
+  explicit constexpr Robot_EndRecord_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Robot_State_Rpt(const Robot_State_Rpt& from);
-  Robot_State_Rpt(Robot_State_Rpt&& from) noexcept
-    : Robot_State_Rpt() {
+  Robot_EndRecord_req(const Robot_EndRecord_req& from);
+  Robot_EndRecord_req(Robot_EndRecord_req&& from) noexcept
+    : Robot_EndRecord_req() {
     *this = ::std::move(from);
   }
 
-  inline Robot_State_Rpt& operator=(const Robot_State_Rpt& from) {
+  inline Robot_EndRecord_req& operator=(const Robot_EndRecord_req& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Robot_State_Rpt& operator=(Robot_State_Rpt&& from) noexcept {
+  inline Robot_EndRecord_req& operator=(Robot_EndRecord_req&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1417,20 +1273,20 @@ class Robot_State_Rpt final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Robot_State_Rpt& default_instance() {
+  static const Robot_EndRecord_req& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Robot_State_Rpt* internal_default_instance() {
-    return reinterpret_cast<const Robot_State_Rpt*>(
-               &_Robot_State_Rpt_default_instance_);
+  static inline const Robot_EndRecord_req* internal_default_instance() {
+    return reinterpret_cast<const Robot_EndRecord_req*>(
+               &_Robot_EndRecord_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     6;
 
-  friend void swap(Robot_State_Rpt& a, Robot_State_Rpt& b) {
+  friend void swap(Robot_EndRecord_req& a, Robot_EndRecord_req& b) {
     a.Swap(&b);
   }
-  inline void Swap(Robot_State_Rpt* other) {
+  inline void Swap(Robot_EndRecord_req* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1443,7 +1299,7 @@ class Robot_State_Rpt final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Robot_State_Rpt* other) {
+  void UnsafeArenaSwap(Robot_EndRecord_req* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1451,13 +1307,13 @@ class Robot_State_Rpt final :
 
   // implements Message ----------------------------------------------
 
-  Robot_State_Rpt* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Robot_State_Rpt>(arena);
+  Robot_EndRecord_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_EndRecord_req>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Robot_State_Rpt& from);
+  void CopyFrom(const Robot_EndRecord_req& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Robot_State_Rpt& from);
+  void MergeFrom(const Robot_EndRecord_req& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1474,15 +1330,15 @@ class Robot_State_Rpt final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Robot_State_Rpt* other);
+  void InternalSwap(Robot_EndRecord_req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Robot_State_Rpt";
+    return "PRO.Robot_EndRecord_req";
   }
   protected:
-  explicit Robot_State_Rpt(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Robot_EndRecord_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1496,74 +1352,61 @@ class Robot_State_Rpt final :
 
   // nested types ----------------------------------------------------
 
-  typedef Robot_State_Rpt_ActionGroup ActionGroup;
-  typedef Robot_State_Rpt_StateData StateData;
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStatDataFieldNumber = 2,
     kRobotidFieldNumber = 1,
+    kLogsFieldNumber = 2,
   };
-  // repeated .PRO.Robot_State_Rpt.StateData stat_data = 2;
-  int stat_data_size() const;
-  private:
-  int _internal_stat_data_size() const;
-  public:
-  void clear_stat_data();
-  ::PRO::Robot_State_Rpt_StateData* mutable_stat_data(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Robot_State_Rpt_StateData >*
-      mutable_stat_data();
-  private:
-  const ::PRO::Robot_State_Rpt_StateData& _internal_stat_data(int index) const;
-  ::PRO::Robot_State_Rpt_StateData* _internal_add_stat_data();
-  public:
-  const ::PRO::Robot_State_Rpt_StateData& stat_data(int index) const;
-  ::PRO::Robot_State_Rpt_StateData* add_stat_data();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Robot_State_Rpt_StateData >&
-      stat_data() const;
-
-  // int64 robotid = 1;
+  // int32 robotid = 1;
   void clear_robotid();
-  int64_t robotid() const;
-  void set_robotid(int64_t value);
+  int32_t robotid() const;
+  void set_robotid(int32_t value);
   private:
-  int64_t _internal_robotid() const;
-  void _internal_set_robotid(int64_t value);
+  int32_t _internal_robotid() const;
+  void _internal_set_robotid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.Robot_State_Rpt)
+  // int32 logs = 2;
+  void clear_logs();
+  int32_t logs() const;
+  void set_logs(int32_t value);
+  private:
+  int32_t _internal_logs() const;
+  void _internal_set_logs(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Robot_EndRecord_req)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Robot_State_Rpt_StateData > stat_data_;
-  int64_t robotid_;
+  int32_t robotid_;
+  int32_t logs_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
 };
 // -------------------------------------------------------------------
 
-class Robot_State_Ack final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_State_Ack) */ {
+class Robot_UploadLogs_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.Robot_UploadLogs_ntf) */ {
  public:
-  inline Robot_State_Ack() : Robot_State_Ack(nullptr) {}
-  ~Robot_State_Ack() override;
-  explicit constexpr Robot_State_Ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline Robot_UploadLogs_ntf() : Robot_UploadLogs_ntf(nullptr) {}
+  explicit constexpr Robot_UploadLogs_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Robot_State_Ack(const Robot_State_Ack& from);
-  Robot_State_Ack(Robot_State_Ack&& from) noexcept
-    : Robot_State_Ack() {
+  Robot_UploadLogs_ntf(const Robot_UploadLogs_ntf& from);
+  Robot_UploadLogs_ntf(Robot_UploadLogs_ntf&& from) noexcept
+    : Robot_UploadLogs_ntf() {
     *this = ::std::move(from);
   }
 
-  inline Robot_State_Ack& operator=(const Robot_State_Ack& from) {
+  inline Robot_UploadLogs_ntf& operator=(const Robot_UploadLogs_ntf& from) {
     CopyFrom(from);
     return *this;
   }
-  inline Robot_State_Ack& operator=(Robot_State_Ack&& from) noexcept {
+  inline Robot_UploadLogs_ntf& operator=(Robot_UploadLogs_ntf&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -1586,20 +1429,20 @@ class Robot_State_Ack final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const Robot_State_Ack& default_instance() {
+  static const Robot_UploadLogs_ntf& default_instance() {
     return *internal_default_instance();
   }
-  static inline const Robot_State_Ack* internal_default_instance() {
-    return reinterpret_cast<const Robot_State_Ack*>(
-               &_Robot_State_Ack_default_instance_);
+  static inline const Robot_UploadLogs_ntf* internal_default_instance() {
+    return reinterpret_cast<const Robot_UploadLogs_ntf*>(
+               &_Robot_UploadLogs_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     7;
 
-  friend void swap(Robot_State_Ack& a, Robot_State_Ack& b) {
+  friend void swap(Robot_UploadLogs_ntf& a, Robot_UploadLogs_ntf& b) {
     a.Swap(&b);
   }
-  inline void Swap(Robot_State_Ack* other) {
+  inline void Swap(Robot_UploadLogs_ntf* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -1612,7 +1455,7 @@ class Robot_State_Ack final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(Robot_State_Ack* other) {
+  void UnsafeArenaSwap(Robot_UploadLogs_ntf* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -1620,13 +1463,250 @@ class Robot_State_Ack final :
 
   // implements Message ----------------------------------------------
 
-  Robot_State_Ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<Robot_State_Ack>(arena);
+  Robot_UploadLogs_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_UploadLogs_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const Robot_UploadLogs_ntf& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const Robot_UploadLogs_ntf& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Robot_UploadLogs_ntf";
+  }
+  protected:
+  explicit Robot_UploadLogs_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:PRO.Robot_UploadLogs_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Robot_ClearLogs_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.Robot_ClearLogs_ntf) */ {
+ public:
+  inline Robot_ClearLogs_ntf() : Robot_ClearLogs_ntf(nullptr) {}
+  explicit constexpr Robot_ClearLogs_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Robot_ClearLogs_ntf(const Robot_ClearLogs_ntf& from);
+  Robot_ClearLogs_ntf(Robot_ClearLogs_ntf&& from) noexcept
+    : Robot_ClearLogs_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline Robot_ClearLogs_ntf& operator=(const Robot_ClearLogs_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Robot_ClearLogs_ntf& operator=(Robot_ClearLogs_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Robot_ClearLogs_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Robot_ClearLogs_ntf* internal_default_instance() {
+    return reinterpret_cast<const Robot_ClearLogs_ntf*>(
+               &_Robot_ClearLogs_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(Robot_ClearLogs_ntf& a, Robot_ClearLogs_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Robot_ClearLogs_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Robot_ClearLogs_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Robot_ClearLogs_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_ClearLogs_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const Robot_ClearLogs_ntf& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const Robot_ClearLogs_ntf& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Robot_ClearLogs_ntf";
+  }
+  protected:
+  explicit Robot_ClearLogs_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:PRO.Robot_ClearLogs_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Robot_UserPrefixChg_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Robot_UserPrefixChg_ntf) */ {
+ public:
+  inline Robot_UserPrefixChg_ntf() : Robot_UserPrefixChg_ntf(nullptr) {}
+  ~Robot_UserPrefixChg_ntf() override;
+  explicit constexpr Robot_UserPrefixChg_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Robot_UserPrefixChg_ntf(const Robot_UserPrefixChg_ntf& from);
+  Robot_UserPrefixChg_ntf(Robot_UserPrefixChg_ntf&& from) noexcept
+    : Robot_UserPrefixChg_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline Robot_UserPrefixChg_ntf& operator=(const Robot_UserPrefixChg_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Robot_UserPrefixChg_ntf& operator=(Robot_UserPrefixChg_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Robot_UserPrefixChg_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Robot_UserPrefixChg_ntf* internal_default_instance() {
+    return reinterpret_cast<const Robot_UserPrefixChg_ntf*>(
+               &_Robot_UserPrefixChg_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(Robot_UserPrefixChg_ntf& a, Robot_UserPrefixChg_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Robot_UserPrefixChg_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Robot_UserPrefixChg_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Robot_UserPrefixChg_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Robot_UserPrefixChg_ntf>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const Robot_State_Ack& from);
+  void CopyFrom(const Robot_UserPrefixChg_ntf& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const Robot_State_Ack& from);
+  void MergeFrom(const Robot_UserPrefixChg_ntf& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -1643,15 +1723,15 @@ class Robot_State_Ack final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(Robot_State_Ack* other);
+  void InternalSwap(Robot_UserPrefixChg_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.Robot_State_Ack";
+    return "PRO.Robot_UserPrefixChg_ntf";
   }
   protected:
-  explicit Robot_State_Ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit Robot_UserPrefixChg_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -1668,25 +1748,30 @@ class Robot_State_Ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUseridFieldNumber = 1,
+    kPrefixFieldNumber = 1,
   };
-  // int64 userid = 1;
-  void clear_userid();
-  int64_t userid() const;
-  void set_userid(int64_t value);
+  // string prefix = 1;
+  void clear_prefix();
+  const std::string& prefix() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_prefix(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_prefix();
+  PROTOBUF_NODISCARD std::string* release_prefix();
+  void set_allocated_prefix(std::string* prefix);
   private:
-  int64_t _internal_userid() const;
-  void _internal_set_userid(int64_t value);
+  const std::string& _internal_prefix() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_prefix(const std::string& value);
+  std::string* _internal_mutable_prefix();
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.Robot_State_Ack)
+  // @@protoc_insertion_point(class_scope:PRO.Robot_UserPrefixChg_ntf)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t userid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr prefix_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_robot_5ftest_5finternal_2eproto;
 };
@@ -1869,7 +1954,7 @@ inline void Robot_Config_Ack::set_result(int32_t value) {
 
 // optional int32 robotid = 3;
 inline bool Robot_Config_Ack::_internal_has_robotid() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000040u) != 0;
   return value;
 }
 inline bool Robot_Config_Ack::has_robotid() const {
@@ -1877,7 +1962,7 @@ inline bool Robot_Config_Ack::has_robotid() const {
 }
 inline void Robot_Config_Ack::clear_robotid() {
   robotid_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline int32_t Robot_Config_Ack::_internal_robotid() const {
   return robotid_;
@@ -1887,7 +1972,7 @@ inline int32_t Robot_Config_Ack::robotid() const {
   return _internal_robotid();
 }
 inline void Robot_Config_Ack::_internal_set_robotid(int32_t value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000040u;
   robotid_ = value;
 }
 inline void Robot_Config_Ack::set_robotid(int32_t value) {
@@ -1895,9 +1980,147 @@ inline void Robot_Config_Ack::set_robotid(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.robotid)
 }
 
-// optional int64 startuserid = 4;
-inline bool Robot_Config_Ack::_internal_has_startuserid() const {
+// optional string urladdr = 4;
+inline bool Robot_Config_Ack::_internal_has_urladdr() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool Robot_Config_Ack::has_urladdr() const {
+  return _internal_has_urladdr();
+}
+inline void Robot_Config_Ack::clear_urladdr() {
+  urladdr_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& Robot_Config_Ack::urladdr() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.urladdr)
+  return _internal_urladdr();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_Config_Ack::set_urladdr(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000001u;
+ urladdr_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.urladdr)
+}
+inline std::string* Robot_Config_Ack::mutable_urladdr() {
+  std::string* _s = _internal_mutable_urladdr();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.urladdr)
+  return _s;
+}
+inline const std::string& Robot_Config_Ack::_internal_urladdr() const {
+  return urladdr_.Get();
+}
+inline void Robot_Config_Ack::_internal_set_urladdr(const std::string& value) {
+  _has_bits_[0] |= 0x00000001u;
+  urladdr_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::_internal_mutable_urladdr() {
+  _has_bits_[0] |= 0x00000001u;
+  return urladdr_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::release_urladdr() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.urladdr)
+  if (!_internal_has_urladdr()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000001u;
+  auto* p = urladdr_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (urladdr_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    urladdr_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void Robot_Config_Ack::set_allocated_urladdr(std::string* urladdr) {
+  if (urladdr != nullptr) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  urladdr_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), urladdr,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (urladdr_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    urladdr_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.urladdr)
+}
+
+// optional string openprefix = 5;
+inline bool Robot_Config_Ack::_internal_has_openprefix() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool Robot_Config_Ack::has_openprefix() const {
+  return _internal_has_openprefix();
+}
+inline void Robot_Config_Ack::clear_openprefix() {
+  openprefix_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& Robot_Config_Ack::openprefix() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.openprefix)
+  return _internal_openprefix();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_Config_Ack::set_openprefix(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000002u;
+ openprefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.openprefix)
+}
+inline std::string* Robot_Config_Ack::mutable_openprefix() {
+  std::string* _s = _internal_mutable_openprefix();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.openprefix)
+  return _s;
+}
+inline const std::string& Robot_Config_Ack::_internal_openprefix() const {
+  return openprefix_.Get();
+}
+inline void Robot_Config_Ack::_internal_set_openprefix(const std::string& value) {
+  _has_bits_[0] |= 0x00000002u;
+  openprefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::_internal_mutable_openprefix() {
+  _has_bits_[0] |= 0x00000002u;
+  return openprefix_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::release_openprefix() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.openprefix)
+  if (!_internal_has_openprefix()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000002u;
+  auto* p = openprefix_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (openprefix_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    openprefix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void Robot_Config_Ack::set_allocated_openprefix(std::string* openprefix) {
+  if (openprefix != nullptr) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  openprefix_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), openprefix,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (openprefix_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    openprefix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.openprefix)
+}
+
+// optional int64 startuserid = 7;
+inline bool Robot_Config_Ack::_internal_has_startuserid() const {
+  bool value = (_has_bits_[0] & 0x00000100u) != 0;
   return value;
 }
 inline bool Robot_Config_Ack::has_startuserid() const {
@@ -1905,7 +2128,7 @@ inline bool Robot_Config_Ack::has_startuserid() const {
 }
 inline void Robot_Config_Ack::clear_startuserid() {
   startuserid_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline int64_t Robot_Config_Ack::_internal_startuserid() const {
   return startuserid_;
@@ -1915,7 +2138,7 @@ inline int64_t Robot_Config_Ack::startuserid() const {
   return _internal_startuserid();
 }
 inline void Robot_Config_Ack::_internal_set_startuserid(int64_t value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000100u;
   startuserid_ = value;
 }
 inline void Robot_Config_Ack::set_startuserid(int64_t value) {
@@ -1923,9 +2146,9 @@ inline void Robot_Config_Ack::set_startuserid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.startuserid)
 }
 
-// optional int32 users = 5;
+// optional int32 users = 8;
 inline bool Robot_Config_Ack::_internal_has_users() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000080u) != 0;
   return value;
 }
 inline bool Robot_Config_Ack::has_users() const {
@@ -1933,7 +2156,7 @@ inline bool Robot_Config_Ack::has_users() const {
 }
 inline void Robot_Config_Ack::clear_users() {
   users_ = 0;
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline int32_t Robot_Config_Ack::_internal_users() const {
   return users_;
@@ -1943,7 +2166,7 @@ inline int32_t Robot_Config_Ack::users() const {
   return _internal_users();
 }
 inline void Robot_Config_Ack::_internal_set_users(int32_t value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000080u;
   users_ = value;
 }
 inline void Robot_Config_Ack::set_users(int32_t value) {
@@ -1951,129 +2174,280 @@ inline void Robot_Config_Ack::set_users(int32_t value) {
   // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.users)
 }
 
-// optional int32 usersrange = 6;
-inline bool Robot_Config_Ack::_internal_has_usersrange() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+// optional string dbuser = 10;
+inline bool Robot_Config_Ack::_internal_has_dbuser() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
-inline bool Robot_Config_Ack::has_usersrange() const {
-  return _internal_has_usersrange();
+inline bool Robot_Config_Ack::has_dbuser() const {
+  return _internal_has_dbuser();
 }
-inline void Robot_Config_Ack::clear_usersrange() {
-  usersrange_ = 0;
-  _has_bits_[0] &= ~0x00000010u;
+inline void Robot_Config_Ack::clear_dbuser() {
+  dbuser_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000004u;
 }
-inline int32_t Robot_Config_Ack::_internal_usersrange() const {
-  return usersrange_;
-}
-inline int32_t Robot_Config_Ack::usersrange() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.usersrange)
-  return _internal_usersrange();
-}
-inline void Robot_Config_Ack::_internal_set_usersrange(int32_t value) {
-  _has_bits_[0] |= 0x00000010u;
-  usersrange_ = value;
-}
-inline void Robot_Config_Ack::set_usersrange(int32_t value) {
-  _internal_set_usersrange(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.usersrange)
-}
-
-// optional string lgsip = 7;
-inline bool Robot_Config_Ack::_internal_has_lgsip() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline bool Robot_Config_Ack::has_lgsip() const {
-  return _internal_has_lgsip();
-}
-inline void Robot_Config_Ack::clear_lgsip() {
-  lgsip_.ClearToEmpty();
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline const std::string& Robot_Config_Ack::lgsip() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.lgsip)
-  return _internal_lgsip();
+inline const std::string& Robot_Config_Ack::dbuser() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.dbuser)
+  return _internal_dbuser();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void Robot_Config_Ack::set_lgsip(ArgT0&& arg0, ArgT... args) {
- _has_bits_[0] |= 0x00000001u;
- lgsip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.lgsip)
+void Robot_Config_Ack::set_dbuser(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000004u;
+ dbuser_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.dbuser)
 }
-inline std::string* Robot_Config_Ack::mutable_lgsip() {
-  std::string* _s = _internal_mutable_lgsip();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.lgsip)
+inline std::string* Robot_Config_Ack::mutable_dbuser() {
+  std::string* _s = _internal_mutable_dbuser();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.dbuser)
   return _s;
 }
-inline const std::string& Robot_Config_Ack::_internal_lgsip() const {
-  return lgsip_.Get();
+inline const std::string& Robot_Config_Ack::_internal_dbuser() const {
+  return dbuser_.Get();
 }
-inline void Robot_Config_Ack::_internal_set_lgsip(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
-  lgsip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+inline void Robot_Config_Ack::_internal_set_dbuser(const std::string& value) {
+  _has_bits_[0] |= 0x00000004u;
+  dbuser_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* Robot_Config_Ack::_internal_mutable_lgsip() {
-  _has_bits_[0] |= 0x00000001u;
-  return lgsip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+inline std::string* Robot_Config_Ack::_internal_mutable_dbuser() {
+  _has_bits_[0] |= 0x00000004u;
+  return dbuser_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* Robot_Config_Ack::release_lgsip() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.lgsip)
-  if (!_internal_has_lgsip()) {
+inline std::string* Robot_Config_Ack::release_dbuser() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.dbuser)
+  if (!_internal_has_dbuser()) {
     return nullptr;
   }
-  _has_bits_[0] &= ~0x00000001u;
-  auto* p = lgsip_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+  _has_bits_[0] &= ~0x00000004u;
+  auto* p = dbuser_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (lgsip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    lgsip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (dbuser_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbuser_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   return p;
 }
-inline void Robot_Config_Ack::set_allocated_lgsip(std::string* lgsip) {
-  if (lgsip != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
+inline void Robot_Config_Ack::set_allocated_dbuser(std::string* dbuser) {
+  if (dbuser != nullptr) {
+    _has_bits_[0] |= 0x00000004u;
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    _has_bits_[0] &= ~0x00000004u;
   }
-  lgsip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), lgsip,
+  dbuser_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dbuser,
       GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (lgsip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    lgsip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  if (dbuser_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbuser_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.lgsip)
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.dbuser)
 }
 
-// optional int32 lgsport = 8;
-inline bool Robot_Config_Ack::_internal_has_lgsport() const {
+// optional string dbpwd = 11;
+inline bool Robot_Config_Ack::_internal_has_dbpwd() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool Robot_Config_Ack::has_dbpwd() const {
+  return _internal_has_dbpwd();
+}
+inline void Robot_Config_Ack::clear_dbpwd() {
+  dbpwd_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline const std::string& Robot_Config_Ack::dbpwd() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.dbpwd)
+  return _internal_dbpwd();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_Config_Ack::set_dbpwd(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000008u;
+ dbpwd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.dbpwd)
+}
+inline std::string* Robot_Config_Ack::mutable_dbpwd() {
+  std::string* _s = _internal_mutable_dbpwd();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.dbpwd)
+  return _s;
+}
+inline const std::string& Robot_Config_Ack::_internal_dbpwd() const {
+  return dbpwd_.Get();
+}
+inline void Robot_Config_Ack::_internal_set_dbpwd(const std::string& value) {
+  _has_bits_[0] |= 0x00000008u;
+  dbpwd_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::_internal_mutable_dbpwd() {
+  _has_bits_[0] |= 0x00000008u;
+  return dbpwd_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::release_dbpwd() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.dbpwd)
+  if (!_internal_has_dbpwd()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000008u;
+  auto* p = dbpwd_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbpwd_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbpwd_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void Robot_Config_Ack::set_allocated_dbpwd(std::string* dbpwd) {
+  if (dbpwd != nullptr) {
+    _has_bits_[0] |= 0x00000008u;
+  } else {
+    _has_bits_[0] &= ~0x00000008u;
+  }
+  dbpwd_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dbpwd,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbpwd_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbpwd_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.dbpwd)
+}
+
+// optional string dbname = 12;
+inline bool Robot_Config_Ack::_internal_has_dbname() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool Robot_Config_Ack::has_dbname() const {
+  return _internal_has_dbname();
+}
+inline void Robot_Config_Ack::clear_dbname() {
+  dbname_.ClearToEmpty();
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline const std::string& Robot_Config_Ack::dbname() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.dbname)
+  return _internal_dbname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_Config_Ack::set_dbname(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000010u;
+ dbname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.dbname)
+}
+inline std::string* Robot_Config_Ack::mutable_dbname() {
+  std::string* _s = _internal_mutable_dbname();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.dbname)
+  return _s;
+}
+inline const std::string& Robot_Config_Ack::_internal_dbname() const {
+  return dbname_.Get();
+}
+inline void Robot_Config_Ack::_internal_set_dbname(const std::string& value) {
+  _has_bits_[0] |= 0x00000010u;
+  dbname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::_internal_mutable_dbname() {
+  _has_bits_[0] |= 0x00000010u;
+  return dbname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::release_dbname() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.dbname)
+  if (!_internal_has_dbname()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000010u;
+  auto* p = dbname_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void Robot_Config_Ack::set_allocated_dbname(std::string* dbname) {
+  if (dbname != nullptr) {
+    _has_bits_[0] |= 0x00000010u;
+  } else {
+    _has_bits_[0] &= ~0x00000010u;
+  }
+  dbname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dbname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.dbname)
+}
+
+// optional string dbip = 13;
+inline bool Robot_Config_Ack::_internal_has_dbip() const {
   bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
-inline bool Robot_Config_Ack::has_lgsport() const {
-  return _internal_has_lgsport();
+inline bool Robot_Config_Ack::has_dbip() const {
+  return _internal_has_dbip();
 }
-inline void Robot_Config_Ack::clear_lgsport() {
-  lgsport_ = 0;
+inline void Robot_Config_Ack::clear_dbip() {
+  dbip_.ClearToEmpty();
   _has_bits_[0] &= ~0x00000020u;
 }
-inline int32_t Robot_Config_Ack::_internal_lgsport() const {
-  return lgsport_;
+inline const std::string& Robot_Config_Ack::dbip() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.dbip)
+  return _internal_dbip();
 }
-inline int32_t Robot_Config_Ack::lgsport() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_Config_Ack.lgsport)
-  return _internal_lgsport();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_Config_Ack::set_dbip(ArgT0&& arg0, ArgT... args) {
+ _has_bits_[0] |= 0x00000020u;
+ dbip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.dbip)
 }
-inline void Robot_Config_Ack::_internal_set_lgsport(int32_t value) {
+inline std::string* Robot_Config_Ack::mutable_dbip() {
+  std::string* _s = _internal_mutable_dbip();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_Config_Ack.dbip)
+  return _s;
+}
+inline const std::string& Robot_Config_Ack::_internal_dbip() const {
+  return dbip_.Get();
+}
+inline void Robot_Config_Ack::_internal_set_dbip(const std::string& value) {
   _has_bits_[0] |= 0x00000020u;
-  lgsport_ = value;
+  dbip_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline void Robot_Config_Ack::set_lgsport(int32_t value) {
-  _internal_set_lgsport(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_Config_Ack.lgsport)
+inline std::string* Robot_Config_Ack::_internal_mutable_dbip() {
+  _has_bits_[0] |= 0x00000020u;
+  return dbip_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_Config_Ack::release_dbip() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_Config_Ack.dbip)
+  if (!_internal_has_dbip()) {
+    return nullptr;
+  }
+  _has_bits_[0] &= ~0x00000020u;
+  auto* p = dbip_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void Robot_Config_Ack::set_allocated_dbip(std::string* dbip) {
+  if (dbip != nullptr) {
+    _has_bits_[0] |= 0x00000020u;
+  } else {
+    _has_bits_[0] &= ~0x00000020u;
+  }
+  dbip_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), dbip,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (dbip_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    dbip_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_Config_Ack.dbip)
 }
 
 // -------------------------------------------------------------------
@@ -2201,1103 +2575,186 @@ Robot_Start_Ack::mutable_behavior() {
 
 // -------------------------------------------------------------------
 
-// Robot_State_Rpt_ActionGroup
+// Robot_Record_req
 
-// int64 actions = 1;
-inline void Robot_State_Rpt_ActionGroup::clear_actions() {
-  actions_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt_ActionGroup::_internal_actions() const {
-  return actions_;
-}
-inline int64_t Robot_State_Rpt_ActionGroup::actions() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.ActionGroup.actions)
-  return _internal_actions();
-}
-inline void Robot_State_Rpt_ActionGroup::_internal_set_actions(int64_t value) {
-  
-  actions_ = value;
-}
-inline void Robot_State_Rpt_ActionGroup::set_actions(int64_t value) {
-  _internal_set_actions(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.ActionGroup.actions)
-}
-
-// int64 succeeds = 2;
-inline void Robot_State_Rpt_ActionGroup::clear_succeeds() {
-  succeeds_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt_ActionGroup::_internal_succeeds() const {
-  return succeeds_;
-}
-inline int64_t Robot_State_Rpt_ActionGroup::succeeds() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.ActionGroup.succeeds)
-  return _internal_succeeds();
-}
-inline void Robot_State_Rpt_ActionGroup::_internal_set_succeeds(int64_t value) {
-  
-  succeeds_ = value;
-}
-inline void Robot_State_Rpt_ActionGroup::set_succeeds(int64_t value) {
-  _internal_set_succeeds(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.ActionGroup.succeeds)
-}
-
-// int64 faileds = 3;
-inline void Robot_State_Rpt_ActionGroup::clear_faileds() {
-  faileds_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt_ActionGroup::_internal_faileds() const {
-  return faileds_;
-}
-inline int64_t Robot_State_Rpt_ActionGroup::faileds() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.ActionGroup.faileds)
-  return _internal_faileds();
-}
-inline void Robot_State_Rpt_ActionGroup::_internal_set_faileds(int64_t value) {
-  
-  faileds_ = value;
-}
-inline void Robot_State_Rpt_ActionGroup::set_faileds(int64_t value) {
-  _internal_set_faileds(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.ActionGroup.faileds)
-}
-
-// int64 timeouts = 4;
-inline void Robot_State_Rpt_ActionGroup::clear_timeouts() {
-  timeouts_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt_ActionGroup::_internal_timeouts() const {
-  return timeouts_;
-}
-inline int64_t Robot_State_Rpt_ActionGroup::timeouts() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.ActionGroup.timeouts)
-  return _internal_timeouts();
-}
-inline void Robot_State_Rpt_ActionGroup::_internal_set_timeouts(int64_t value) {
-  
-  timeouts_ = value;
-}
-inline void Robot_State_Rpt_ActionGroup::set_timeouts(int64_t value) {
-  _internal_set_timeouts(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.ActionGroup.timeouts)
-}
-
-// int64 timeinterval = 5;
-inline void Robot_State_Rpt_ActionGroup::clear_timeinterval() {
-  timeinterval_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt_ActionGroup::_internal_timeinterval() const {
-  return timeinterval_;
-}
-inline int64_t Robot_State_Rpt_ActionGroup::timeinterval() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.ActionGroup.timeinterval)
-  return _internal_timeinterval();
-}
-inline void Robot_State_Rpt_ActionGroup::_internal_set_timeinterval(int64_t value) {
-  
-  timeinterval_ = value;
-}
-inline void Robot_State_Rpt_ActionGroup::set_timeinterval(int64_t value) {
-  _internal_set_timeinterval(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.ActionGroup.timeinterval)
-}
-
-// -------------------------------------------------------------------
-
-// Robot_State_Rpt_StateData
-
-// .PRO.Robot_State_Rpt.ActionGroup logon = 1;
-inline bool Robot_State_Rpt_StateData::_internal_has_logon() const {
-  return this != internal_default_instance() && logon_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_logon() const {
-  return _internal_has_logon();
-}
-inline void Robot_State_Rpt_StateData::clear_logon() {
-  if (GetArenaForAllocation() == nullptr && logon_ != nullptr) {
-    delete logon_;
-  }
-  logon_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_logon() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = logon_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::logon() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.logon)
-  return _internal_logon();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_logon(
-    ::PRO::Robot_State_Rpt_ActionGroup* logon) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(logon_);
-  }
-  logon_ = logon;
-  if (logon) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.logon)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_logon() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logon_;
-  logon_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_logon() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.logon)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logon_;
-  logon_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_logon() {
-  
-  if (logon_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    logon_ = p;
-  }
-  return logon_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_logon() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_logon();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.logon)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_logon(::PRO::Robot_State_Rpt_ActionGroup* logon) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete logon_;
-  }
-  if (logon) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(logon);
-    if (message_arena != submessage_arena) {
-      logon = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, logon, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  logon_ = logon;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.logon)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup getrole = 2;
-inline bool Robot_State_Rpt_StateData::_internal_has_getrole() const {
-  return this != internal_default_instance() && getrole_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_getrole() const {
-  return _internal_has_getrole();
-}
-inline void Robot_State_Rpt_StateData::clear_getrole() {
-  if (GetArenaForAllocation() == nullptr && getrole_ != nullptr) {
-    delete getrole_;
-  }
-  getrole_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_getrole() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = getrole_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::getrole() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.getrole)
-  return _internal_getrole();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_getrole(
-    ::PRO::Robot_State_Rpt_ActionGroup* getrole) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(getrole_);
-  }
-  getrole_ = getrole;
-  if (getrole) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.getrole)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_getrole() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getrole_;
-  getrole_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_getrole() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.getrole)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getrole_;
-  getrole_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_getrole() {
-  
-  if (getrole_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    getrole_ = p;
-  }
-  return getrole_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_getrole() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_getrole();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.getrole)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_getrole(::PRO::Robot_State_Rpt_ActionGroup* getrole) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete getrole_;
-  }
-  if (getrole) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(getrole);
-    if (message_arena != submessage_arena) {
-      getrole = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, getrole, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  getrole_ = getrole;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.getrole)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup selrole = 3;
-inline bool Robot_State_Rpt_StateData::_internal_has_selrole() const {
-  return this != internal_default_instance() && selrole_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_selrole() const {
-  return _internal_has_selrole();
-}
-inline void Robot_State_Rpt_StateData::clear_selrole() {
-  if (GetArenaForAllocation() == nullptr && selrole_ != nullptr) {
-    delete selrole_;
-  }
-  selrole_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_selrole() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = selrole_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::selrole() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.selrole)
-  return _internal_selrole();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_selrole(
-    ::PRO::Robot_State_Rpt_ActionGroup* selrole) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(selrole_);
-  }
-  selrole_ = selrole;
-  if (selrole) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.selrole)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_selrole() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = selrole_;
-  selrole_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_selrole() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.selrole)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = selrole_;
-  selrole_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_selrole() {
-  
-  if (selrole_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    selrole_ = p;
-  }
-  return selrole_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_selrole() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_selrole();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.selrole)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_selrole(::PRO::Robot_State_Rpt_ActionGroup* selrole) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete selrole_;
-  }
-  if (selrole) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(selrole);
-    if (message_arena != submessage_arena) {
-      selrole = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, selrole, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  selrole_ = selrole;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.selrole)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup getchannel = 4;
-inline bool Robot_State_Rpt_StateData::_internal_has_getchannel() const {
-  return this != internal_default_instance() && getchannel_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_getchannel() const {
-  return _internal_has_getchannel();
-}
-inline void Robot_State_Rpt_StateData::clear_getchannel() {
-  if (GetArenaForAllocation() == nullptr && getchannel_ != nullptr) {
-    delete getchannel_;
-  }
-  getchannel_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_getchannel() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = getchannel_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::getchannel() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.getchannel)
-  return _internal_getchannel();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_getchannel(
-    ::PRO::Robot_State_Rpt_ActionGroup* getchannel) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(getchannel_);
-  }
-  getchannel_ = getchannel;
-  if (getchannel) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.getchannel)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_getchannel() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getchannel_;
-  getchannel_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_getchannel() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.getchannel)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getchannel_;
-  getchannel_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_getchannel() {
-  
-  if (getchannel_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    getchannel_ = p;
-  }
-  return getchannel_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_getchannel() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_getchannel();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.getchannel)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_getchannel(::PRO::Robot_State_Rpt_ActionGroup* getchannel) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete getchannel_;
-  }
-  if (getchannel) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(getchannel);
-    if (message_arena != submessage_arena) {
-      getchannel = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, getchannel, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  getchannel_ = getchannel;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.getchannel)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup selchannel = 5;
-inline bool Robot_State_Rpt_StateData::_internal_has_selchannel() const {
-  return this != internal_default_instance() && selchannel_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_selchannel() const {
-  return _internal_has_selchannel();
-}
-inline void Robot_State_Rpt_StateData::clear_selchannel() {
-  if (GetArenaForAllocation() == nullptr && selchannel_ != nullptr) {
-    delete selchannel_;
-  }
-  selchannel_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_selchannel() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = selchannel_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::selchannel() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.selchannel)
-  return _internal_selchannel();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_selchannel(
-    ::PRO::Robot_State_Rpt_ActionGroup* selchannel) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(selchannel_);
-  }
-  selchannel_ = selchannel;
-  if (selchannel) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.selchannel)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_selchannel() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = selchannel_;
-  selchannel_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_selchannel() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.selchannel)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = selchannel_;
-  selchannel_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_selchannel() {
-  
-  if (selchannel_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    selchannel_ = p;
-  }
-  return selchannel_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_selchannel() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_selchannel();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.selchannel)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_selchannel(::PRO::Robot_State_Rpt_ActionGroup* selchannel) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete selchannel_;
-  }
-  if (selchannel) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(selchannel);
-    if (message_arena != submessage_arena) {
-      selchannel = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, selchannel, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  selchannel_ = selchannel;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.selchannel)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup getroom = 6;
-inline bool Robot_State_Rpt_StateData::_internal_has_getroom() const {
-  return this != internal_default_instance() && getroom_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_getroom() const {
-  return _internal_has_getroom();
-}
-inline void Robot_State_Rpt_StateData::clear_getroom() {
-  if (GetArenaForAllocation() == nullptr && getroom_ != nullptr) {
-    delete getroom_;
-  }
-  getroom_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_getroom() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = getroom_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::getroom() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.getroom)
-  return _internal_getroom();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_getroom(
-    ::PRO::Robot_State_Rpt_ActionGroup* getroom) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(getroom_);
-  }
-  getroom_ = getroom;
-  if (getroom) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.getroom)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_getroom() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getroom_;
-  getroom_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_getroom() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.getroom)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = getroom_;
-  getroom_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_getroom() {
-  
-  if (getroom_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    getroom_ = p;
-  }
-  return getroom_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_getroom() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_getroom();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.getroom)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_getroom(::PRO::Robot_State_Rpt_ActionGroup* getroom) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete getroom_;
-  }
-  if (getroom) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(getroom);
-    if (message_arena != submessage_arena) {
-      getroom = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, getroom, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  getroom_ = getroom;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.getroom)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup loginroom = 7;
-inline bool Robot_State_Rpt_StateData::_internal_has_loginroom() const {
-  return this != internal_default_instance() && loginroom_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_loginroom() const {
-  return _internal_has_loginroom();
-}
-inline void Robot_State_Rpt_StateData::clear_loginroom() {
-  if (GetArenaForAllocation() == nullptr && loginroom_ != nullptr) {
-    delete loginroom_;
-  }
-  loginroom_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_loginroom() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = loginroom_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::loginroom() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.loginroom)
-  return _internal_loginroom();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_loginroom(
-    ::PRO::Robot_State_Rpt_ActionGroup* loginroom) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(loginroom_);
-  }
-  loginroom_ = loginroom;
-  if (loginroom) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.loginroom)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_loginroom() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = loginroom_;
-  loginroom_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_loginroom() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.loginroom)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = loginroom_;
-  loginroom_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_loginroom() {
-  
-  if (loginroom_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    loginroom_ = p;
-  }
-  return loginroom_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_loginroom() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_loginroom();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.loginroom)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_loginroom(::PRO::Robot_State_Rpt_ActionGroup* loginroom) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete loginroom_;
-  }
-  if (loginroom) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(loginroom);
-    if (message_arena != submessage_arena) {
-      loginroom = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, loginroom, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  loginroom_ = loginroom;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.loginroom)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup logoutroom = 8;
-inline bool Robot_State_Rpt_StateData::_internal_has_logoutroom() const {
-  return this != internal_default_instance() && logoutroom_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_logoutroom() const {
-  return _internal_has_logoutroom();
-}
-inline void Robot_State_Rpt_StateData::clear_logoutroom() {
-  if (GetArenaForAllocation() == nullptr && logoutroom_ != nullptr) {
-    delete logoutroom_;
-  }
-  logoutroom_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_logoutroom() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = logoutroom_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::logoutroom() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.logoutroom)
-  return _internal_logoutroom();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_logoutroom(
-    ::PRO::Robot_State_Rpt_ActionGroup* logoutroom) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(logoutroom_);
-  }
-  logoutroom_ = logoutroom;
-  if (logoutroom) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.logoutroom)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_logoutroom() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logoutroom_;
-  logoutroom_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_logoutroom() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.logoutroom)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logoutroom_;
-  logoutroom_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_logoutroom() {
-  
-  if (logoutroom_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    logoutroom_ = p;
-  }
-  return logoutroom_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_logoutroom() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_logoutroom();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.logoutroom)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_logoutroom(::PRO::Robot_State_Rpt_ActionGroup* logoutroom) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete logoutroom_;
-  }
-  if (logoutroom) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(logoutroom);
-    if (message_arena != submessage_arena) {
-      logoutroom = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, logoutroom, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  logoutroom_ = logoutroom;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.logoutroom)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup logoutchannel = 9;
-inline bool Robot_State_Rpt_StateData::_internal_has_logoutchannel() const {
-  return this != internal_default_instance() && logoutchannel_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_logoutchannel() const {
-  return _internal_has_logoutchannel();
-}
-inline void Robot_State_Rpt_StateData::clear_logoutchannel() {
-  if (GetArenaForAllocation() == nullptr && logoutchannel_ != nullptr) {
-    delete logoutchannel_;
-  }
-  logoutchannel_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_logoutchannel() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = logoutchannel_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::logoutchannel() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.logoutchannel)
-  return _internal_logoutchannel();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_logoutchannel(
-    ::PRO::Robot_State_Rpt_ActionGroup* logoutchannel) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(logoutchannel_);
-  }
-  logoutchannel_ = logoutchannel;
-  if (logoutchannel) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.logoutchannel)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_logoutchannel() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logoutchannel_;
-  logoutchannel_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_logoutchannel() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.logoutchannel)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logoutchannel_;
-  logoutchannel_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_logoutchannel() {
-  
-  if (logoutchannel_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    logoutchannel_ = p;
-  }
-  return logoutchannel_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_logoutchannel() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_logoutchannel();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.logoutchannel)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_logoutchannel(::PRO::Robot_State_Rpt_ActionGroup* logoutchannel) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete logoutchannel_;
-  }
-  if (logoutchannel) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(logoutchannel);
-    if (message_arena != submessage_arena) {
-      logoutchannel = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, logoutchannel, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  logoutchannel_ = logoutchannel;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.logoutchannel)
-}
-
-// .PRO.Robot_State_Rpt.ActionGroup logout = 10;
-inline bool Robot_State_Rpt_StateData::_internal_has_logout() const {
-  return this != internal_default_instance() && logout_ != nullptr;
-}
-inline bool Robot_State_Rpt_StateData::has_logout() const {
-  return _internal_has_logout();
-}
-inline void Robot_State_Rpt_StateData::clear_logout() {
-  if (GetArenaForAllocation() == nullptr && logout_ != nullptr) {
-    delete logout_;
-  }
-  logout_ = nullptr;
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::_internal_logout() const {
-  const ::PRO::Robot_State_Rpt_ActionGroup* p = logout_;
-  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Robot_State_Rpt_ActionGroup&>(
-      ::PRO::_Robot_State_Rpt_ActionGroup_default_instance_);
-}
-inline const ::PRO::Robot_State_Rpt_ActionGroup& Robot_State_Rpt_StateData::logout() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.StateData.logout)
-  return _internal_logout();
-}
-inline void Robot_State_Rpt_StateData::unsafe_arena_set_allocated_logout(
-    ::PRO::Robot_State_Rpt_ActionGroup* logout) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(logout_);
-  }
-  logout_ = logout;
-  if (logout) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.Robot_State_Rpt.StateData.logout)
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::release_logout() {
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logout_;
-  logout_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::unsafe_arena_release_logout() {
-  // @@protoc_insertion_point(field_release:PRO.Robot_State_Rpt.StateData.logout)
-  
-  ::PRO::Robot_State_Rpt_ActionGroup* temp = logout_;
-  logout_ = nullptr;
-  return temp;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::_internal_mutable_logout() {
-  
-  if (logout_ == nullptr) {
-    auto* p = CreateMaybeMessage<::PRO::Robot_State_Rpt_ActionGroup>(GetArenaForAllocation());
-    logout_ = p;
-  }
-  return logout_;
-}
-inline ::PRO::Robot_State_Rpt_ActionGroup* Robot_State_Rpt_StateData::mutable_logout() {
-  ::PRO::Robot_State_Rpt_ActionGroup* _msg = _internal_mutable_logout();
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.StateData.logout)
-  return _msg;
-}
-inline void Robot_State_Rpt_StateData::set_allocated_logout(::PRO::Robot_State_Rpt_ActionGroup* logout) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete logout_;
-  }
-  if (logout) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Robot_State_Rpt_ActionGroup>::GetOwningArena(logout);
-    if (message_arena != submessage_arena) {
-      logout = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, logout, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  logout_ = logout;
-  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_State_Rpt.StateData.logout)
-}
-
-// -------------------------------------------------------------------
-
-// Robot_State_Rpt
-
-// int64 robotid = 1;
-inline void Robot_State_Rpt::clear_robotid() {
-  robotid_ = int64_t{0};
-}
-inline int64_t Robot_State_Rpt::_internal_robotid() const {
+// int32 robotid = 1;
+inline void Robot_Record_req::clear_robotid() {
+  robotid_ = 0;
+}
+inline int32_t Robot_Record_req::_internal_robotid() const {
   return robotid_;
 }
-inline int64_t Robot_State_Rpt::robotid() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.robotid)
+inline int32_t Robot_Record_req::robotid() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Record_req.robotid)
   return _internal_robotid();
 }
-inline void Robot_State_Rpt::_internal_set_robotid(int64_t value) {
+inline void Robot_Record_req::_internal_set_robotid(int32_t value) {
   
   robotid_ = value;
 }
-inline void Robot_State_Rpt::set_robotid(int64_t value) {
+inline void Robot_Record_req::set_robotid(int32_t value) {
   _internal_set_robotid(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Rpt.robotid)
+  // @@protoc_insertion_point(field_set:PRO.Robot_Record_req.robotid)
 }
 
-// repeated .PRO.Robot_State_Rpt.StateData stat_data = 2;
-inline int Robot_State_Rpt::_internal_stat_data_size() const {
-  return stat_data_.size();
+// int32 logs = 2;
+inline void Robot_Record_req::clear_logs() {
+  logs_ = 0;
 }
-inline int Robot_State_Rpt::stat_data_size() const {
-  return _internal_stat_data_size();
+inline int32_t Robot_Record_req::_internal_logs() const {
+  return logs_;
 }
-inline void Robot_State_Rpt::clear_stat_data() {
-  stat_data_.Clear();
+inline int32_t Robot_Record_req::logs() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_Record_req.logs)
+  return _internal_logs();
 }
-inline ::PRO::Robot_State_Rpt_StateData* Robot_State_Rpt::mutable_stat_data(int index) {
-  // @@protoc_insertion_point(field_mutable:PRO.Robot_State_Rpt.stat_data)
-  return stat_data_.Mutable(index);
+inline void Robot_Record_req::_internal_set_logs(int32_t value) {
+  
+  logs_ = value;
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Robot_State_Rpt_StateData >*
-Robot_State_Rpt::mutable_stat_data() {
-  // @@protoc_insertion_point(field_mutable_list:PRO.Robot_State_Rpt.stat_data)
-  return &stat_data_;
-}
-inline const ::PRO::Robot_State_Rpt_StateData& Robot_State_Rpt::_internal_stat_data(int index) const {
-  return stat_data_.Get(index);
-}
-inline const ::PRO::Robot_State_Rpt_StateData& Robot_State_Rpt::stat_data(int index) const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Rpt.stat_data)
-  return _internal_stat_data(index);
-}
-inline ::PRO::Robot_State_Rpt_StateData* Robot_State_Rpt::_internal_add_stat_data() {
-  return stat_data_.Add();
-}
-inline ::PRO::Robot_State_Rpt_StateData* Robot_State_Rpt::add_stat_data() {
-  ::PRO::Robot_State_Rpt_StateData* _add = _internal_add_stat_data();
-  // @@protoc_insertion_point(field_add:PRO.Robot_State_Rpt.stat_data)
-  return _add;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PRO::Robot_State_Rpt_StateData >&
-Robot_State_Rpt::stat_data() const {
-  // @@protoc_insertion_point(field_list:PRO.Robot_State_Rpt.stat_data)
-  return stat_data_;
+inline void Robot_Record_req::set_logs(int32_t value) {
+  _internal_set_logs(value);
+  // @@protoc_insertion_point(field_set:PRO.Robot_Record_req.logs)
 }
 
 // -------------------------------------------------------------------
 
-// Robot_State_Ack
+// Robot_StartRecord_req
 
-// int64 userid = 1;
-inline void Robot_State_Ack::clear_userid() {
-  userid_ = int64_t{0};
+// int32 robotid = 1;
+inline void Robot_StartRecord_req::clear_robotid() {
+  robotid_ = 0;
 }
-inline int64_t Robot_State_Ack::_internal_userid() const {
-  return userid_;
+inline int32_t Robot_StartRecord_req::_internal_robotid() const {
+  return robotid_;
 }
-inline int64_t Robot_State_Ack::userid() const {
-  // @@protoc_insertion_point(field_get:PRO.Robot_State_Ack.userid)
-  return _internal_userid();
+inline int32_t Robot_StartRecord_req::robotid() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_StartRecord_req.robotid)
+  return _internal_robotid();
 }
-inline void Robot_State_Ack::_internal_set_userid(int64_t value) {
+inline void Robot_StartRecord_req::_internal_set_robotid(int32_t value) {
   
-  userid_ = value;
+  robotid_ = value;
 }
-inline void Robot_State_Ack::set_userid(int64_t value) {
-  _internal_set_userid(value);
-  // @@protoc_insertion_point(field_set:PRO.Robot_State_Ack.userid)
+inline void Robot_StartRecord_req::set_robotid(int32_t value) {
+  _internal_set_robotid(value);
+  // @@protoc_insertion_point(field_set:PRO.Robot_StartRecord_req.robotid)
+}
+
+// -------------------------------------------------------------------
+
+// Robot_EndRecord_req
+
+// int32 robotid = 1;
+inline void Robot_EndRecord_req::clear_robotid() {
+  robotid_ = 0;
+}
+inline int32_t Robot_EndRecord_req::_internal_robotid() const {
+  return robotid_;
+}
+inline int32_t Robot_EndRecord_req::robotid() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_EndRecord_req.robotid)
+  return _internal_robotid();
+}
+inline void Robot_EndRecord_req::_internal_set_robotid(int32_t value) {
+  
+  robotid_ = value;
+}
+inline void Robot_EndRecord_req::set_robotid(int32_t value) {
+  _internal_set_robotid(value);
+  // @@protoc_insertion_point(field_set:PRO.Robot_EndRecord_req.robotid)
+}
+
+// int32 logs = 2;
+inline void Robot_EndRecord_req::clear_logs() {
+  logs_ = 0;
+}
+inline int32_t Robot_EndRecord_req::_internal_logs() const {
+  return logs_;
+}
+inline int32_t Robot_EndRecord_req::logs() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_EndRecord_req.logs)
+  return _internal_logs();
+}
+inline void Robot_EndRecord_req::_internal_set_logs(int32_t value) {
+  
+  logs_ = value;
+}
+inline void Robot_EndRecord_req::set_logs(int32_t value) {
+  _internal_set_logs(value);
+  // @@protoc_insertion_point(field_set:PRO.Robot_EndRecord_req.logs)
+}
+
+// -------------------------------------------------------------------
+
+// Robot_UploadLogs_ntf
+
+// -------------------------------------------------------------------
+
+// Robot_ClearLogs_ntf
+
+// -------------------------------------------------------------------
+
+// Robot_UserPrefixChg_ntf
+
+// string prefix = 1;
+inline void Robot_UserPrefixChg_ntf::clear_prefix() {
+  prefix_.ClearToEmpty();
+}
+inline const std::string& Robot_UserPrefixChg_ntf::prefix() const {
+  // @@protoc_insertion_point(field_get:PRO.Robot_UserPrefixChg_ntf.prefix)
+  return _internal_prefix();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Robot_UserPrefixChg_ntf::set_prefix(ArgT0&& arg0, ArgT... args) {
+ 
+ prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.Robot_UserPrefixChg_ntf.prefix)
+}
+inline std::string* Robot_UserPrefixChg_ntf::mutable_prefix() {
+  std::string* _s = _internal_mutable_prefix();
+  // @@protoc_insertion_point(field_mutable:PRO.Robot_UserPrefixChg_ntf.prefix)
+  return _s;
+}
+inline const std::string& Robot_UserPrefixChg_ntf::_internal_prefix() const {
+  return prefix_.Get();
+}
+inline void Robot_UserPrefixChg_ntf::_internal_set_prefix(const std::string& value) {
+  
+  prefix_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Robot_UserPrefixChg_ntf::_internal_mutable_prefix() {
+  
+  return prefix_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Robot_UserPrefixChg_ntf::release_prefix() {
+  // @@protoc_insertion_point(field_release:PRO.Robot_UserPrefixChg_ntf.prefix)
+  return prefix_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void Robot_UserPrefixChg_ntf::set_allocated_prefix(std::string* prefix) {
+  if (prefix != nullptr) {
+    
+  } else {
+    
+  }
+  prefix_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), prefix,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (prefix_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    prefix_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.Robot_UserPrefixChg_ntf.prefix)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -110,7 +110,7 @@ GamePlayer* GamePlayerCtrl::ask_free_slot()
 		wait_auth_slot_num_ = wait_auth_slots_queue_.size();
 
 		//记录等待开始验证的时间
-		gp->proxy();
+		gp->pre_start();
 
 		return gp;
 	}

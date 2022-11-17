@@ -44,97 +44,86 @@ void FightRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autor
 
 	Svr_ServiceBindService_ack* ack = new Svr_ServiceBindService_ack();
 	std::unique_ptr< Svr_ServiceBindService_ack> ptr(ack);
+
 	ack->set_result(1);
-	ack->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
+	ack->set_svr_type( req->svr_type());
 	ack->set_toiid(req->toiid());
 	ack->set_totoken(req->totoken());
 
-	//来自gate的注册
-	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	//来自game的注册
+	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GAME)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		GameServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		HomeServiceLinkFrom *pLink = home_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = game_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		home_links_from_.regist_onlinelink(pLink);
+			//设置当前gatelinke
+			game_links_from_.regist_onlinelink(pLink);
 
-		pLink->registinfo_tolog(true);
-
-		ack->set_result(0);
-		pLink->send_netprotocol(ptr.release());
-	}
-	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GAME)
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		session_from_.remove_waitsession_mth(psession);
-		GameServiceLinkFrom *pLink = game_links_from_.ask_free_link();
-
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
-
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
-
-		//设置当前gatelinke
-		game_links_from_.regist_onlinelink(pLink);
-
-		pLink->registinfo_tolog(true);
+			pLink->registinfo_tolog(true);
+		}
 
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
 	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		MatchMakingServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		MatchMakingServiceLinkFrom *pLink = matchmaking_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = matchmaking_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		matchmaking_links_from_.regist_onlinelink(pLink);
+			//设置当前gatelinke
+			matchmaking_links_from_.regist_onlinelink(pLink);
 
-		pLink->registinfo_tolog(true);
+			pLink->registinfo_tolog(true);
+		}
 
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
-	else // other sevices
-	{
-
-	}
-
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
-void FightRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
+void FightRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
+	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka",
+		NetServiceType::to_string(type).c_str(), nodes.size(), deliids.size());
 
+	if (type == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
+		datarouter_link_mth_.sync_eureka_services(nodes, deliids);
 }
 
-void FightRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs)
+void FightRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE type, std::list<S_INT_64>& svrs)
 {
+	logInfo(out_runtime, "FightRouter recv a balance notify[type:%s, size:%d]",
+		NetServiceType::to_string(type).c_str(), svrs.size());
 
+	if (type == NETSERVICE_TYPE::ERK_SERVICE_GAME)
+		game_links_from_.sync_balance_services(svrs);
 }
 
 void FightRouterApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_runtime, "<<<<<<<<<<<< fightrouter service node:%lld online to eureka >>>>>>>>>>>>", sid);
+	logInfo(out_runtime, "<<<<<<<<<<<< fightrouter:%lld online to eureka >>>>>>>>>>>>", sid);
 
 	this->is_ready_ = true;
 }
@@ -143,6 +132,6 @@ void FightRouterApp::mth_eureka_losted()
 {
 	this->is_ready_ = false;
 
-	logError(out_runtime, "fightrouter service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
+	logError(out_runtime, "fightrouter[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }

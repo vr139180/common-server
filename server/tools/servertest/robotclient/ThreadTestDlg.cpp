@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "stdafx.h"
 
 #include <windows.h>
@@ -5,19 +20,15 @@
 #include "ThreadTestDlg.h"
 #include "winsock2.h"
 #include "ScriptDlg.h"
-
-#define NET_HEAD_MASK_ZERO_H	0x0000FFFF
-#define NET_HEAD_MASK_ZERO_L	0xFFFF0000
-
-#define MAKE_NETHEAD( VAL, PROID, LENS) { VAL = LENS; VAL = (VAL << 16)&NET_HEAD_MASK_ZERO_L; VAL = VAL|(PROID&NET_HEAD_MASK_ZERO_H);}
-#define GET_NETHEAD( VAL, PROID, LENS) { LENS = (S_UINT_16)((VAL&NET_HEAD_MASK_ZERO_L)>>16); PROID = (S_UINT_16)(VAL&NET_HEAD_MASK_ZERO_H);}
-
+#include <cmsLib/Log.h>
+#include <cmsLib/util/ShareUtil.h>
 
 CString			g_ip;
 int				g_port;
 std::string		g_xml;
 
 CWindow			*g_mainwnd =0;
+LogSaveUtil		*g_logsave = 0;
 
 CThreadTestDlg::CThreadTestDlg():
 	m_hSocket( INVALID_SOCKET)
@@ -25,18 +36,16 @@ CThreadTestDlg::CThreadTestDlg():
 	m_user =0;
 	tests_ =0;
 	thread_num_ =0;
-	m_port =0;
 	m_usernum =1;
-	m_userrange = 1;
-	m_ip =_T("");
 	m_startplayer =_T("");
 	m_playernums =_T("");
-	m_playerrange =_T("");
-	m_robotsvrip =_T("");
 	m_robotstatus =_T("");
+
+	m_urladdr = _T("");
 	
 	need_recon = false;
 	g_mainwnd =this;
+	g_logsave = &logsave_util_;
 }
 
 LRESULT CThreadTestDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
@@ -64,10 +73,9 @@ LRESULT CThreadTestDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*
 	GetCurrentDirectory( 1024, filename);
 	std::string filepath = NS_STL::string(filename) + "\\robotclient.ini";
 
-	char text[256];
-	GetPrivateProfileString( "run", "lgsip", "127.0.0.1", text, sizeof(text), filepath.c_str());
-	m_ip= text;
-	m_port = GetPrivateProfileInt( "run", "lgsport", 15000, filepath.c_str());
+	char text[218] = { 0 };
+	GetPrivateProfileString("run", "urladdr", "", text, sizeof(text), filepath.c_str());
+	m_urladdr = text;
 
 	m_user =0;
 
@@ -102,6 +110,8 @@ LRESULT CThreadTestDlg::OnBnClickedOk(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /
 	if( dlg.DoModal() != IDOK)
 		return TRUE;
 
+	upload_util_.stop_uploads();
+
 	WritePrivateProfileString( "run", "robotserverip", dlg.m_ip, filepath.c_str());
 	CString robotserverport;
 	robotserverport.Format( "%u", dlg.m_port);
@@ -112,6 +122,13 @@ LRESULT CThreadTestDlg::OnBnClickedOk(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /
 		return FALSE;
 	last_time = GetMillisecondTime();
 	return TRUE;
+}
+
+LRESULT CThreadTestDlg::OnBnClearLogs(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	upload_util_.clear_logs();
+
+	return 0;
 }
 
 void CThreadTestDlg::OnReceive()
@@ -164,7 +181,6 @@ void CThreadTestDlg::OnReceive()
 
 	S_UINT_16 len2 = 0;
 	S_UINT_16 proid = 0;
-	GET_NETHEAD(hd, proid, len2);
 
 	if (len2 > read_buffer_pos_ - sizeof(S_UINT_32))
 		return;
@@ -189,17 +205,24 @@ void CThreadTestDlg::OnReceive()
 			if (0 == ack->result())
 			{
 				m_robotid = ack->robotid();
-				m_lgsip = ack->lgsip().c_str();
-				m_lgsport = ack->lgsport();
+				m_urladdr = ack->urladdr().c_str();
+				m_openprefix = ack->openprefix().c_str();
+
 				m_startplayer.Format("%d", ack->startuserid());
 				m_playernums.Format("%d", ack->users());
-				m_playerrange.Format("%d", ack->usersrange());
+				
 				m_user = ack->startuserid();
 				m_usernum = ack->users();
-				m_userrange = ack->usersrange();
+
+				logsave_util_.dbuser_ = ack->dbuser().c_str();
+				logsave_util_.dbpwd_ = ack->dbpwd().c_str();
+				logsave_util_.dbname_ = ack->dbname().c_str();
+				logsave_util_.dbip_ = ack->dbip().c_str();
+				
 				m_robotstatus = "config success";
-				m_robotsvrip = m_lgsip;
 				DoDataExchange(DDX_LOAD);
+
+				logInfo(out_runtime, "robot client regist to robot server....");
 			}
 			else
 			{
@@ -214,12 +237,11 @@ void CThreadTestDlg::OnReceive()
 			Robot_Start_Ack* ack = reinterpret_cast<Robot_Start_Ack*>(ret);
 			
 			g_xml = ack->behavior(0).c_str();
-			m_robotstatus = "begin to login";
 
 			DoDataExchange(DDX_LOAD);
 			StartAutoRobot();
 
-			m_robotstatus = "Threads running";
+			m_robotstatus = "robot starting";
 			DoDataExchange(DDX_LOAD);
 		}
 		break;
@@ -231,9 +253,54 @@ void CThreadTestDlg::OnReceive()
 
 			DoDataExchange(DDX_LOAD);
 			StopAutoRobot();
+
+			//shutdown log,and reinit
+			logShutdown;
+
+			std::string logfile = "log_settings.ini";
+			logInit(logfile.c_str());
 		}
 		break;
+
+		case ROBOTOTEST_UPLOADLOGSROBOT_NTF:
+		{
+			m_robotstatus = "start upload logs...";
+
+			DoDataExchange(DDX_LOAD);
+			StopAutoRobot();
+
+			//shutdown log,and reinit
+			logShutdown;
+
+			std::string logfile = "log_settings.ini";
+			logInit(logfile.c_str());
+
+			upload_util_.start_uploads();
 		}
+		break;
+		case ROBOTOTEST_CLEARLOGSROBOT_NTF:
+		{
+			m_robotstatus = "delete all log fiels...";
+			DoDataExchange(DDX_LOAD);
+
+			upload_util_.clear_logs();
+		}
+		break;
+		case ROBOTOTEST_USERPREFIXROBOT_NTF:
+		{
+			Robot_UserPrefixChg_ntf* ack = reinterpret_cast<Robot_UserPrefixChg_ntf*>(ret);
+			m_openprefix = ack->prefix().c_str();
+
+			m_robotstatus.Format("openid prefix to %s", (LPCTSTR)m_openprefix);
+			DoDataExchange(DDX_LOAD);
+
+			for (int i = 0; i < thread_num_; ++i)
+			{
+				tests_[i].set_openprefix((LPCTSTR)m_openprefix);
+			}
+		}
+		break;
+	}
 	}
 }
 
@@ -368,6 +435,21 @@ bool CThreadTestDlg::connect_2_server(){
 	return TRUE;
 }
 
+void CThreadTestDlg::send_proto(BasicProtocol* msg)
+{
+	uint8_t *pbuf = 0;
+	uint32_t len = 0;
+
+	uint32_t len2 = 0;
+	while ((len2 = ::send(m_hSocket, (const char*)pbuf, len, 0)) != SOCKET_ERROR)
+	{
+		len -= len2;
+		if (len <= 0)
+			break;
+		pbuf = pbuf + len2;
+	}
+}
+
 void CThreadTestDlg::robot_login()
 {
 	Robot_Config_Req req;
@@ -375,24 +457,7 @@ void CThreadTestDlg::robot_login()
 	req.set_robotname(dlg.m_logon.GetBuffer(0));
 	req.set_robotpwd("123456");
 
-	char buf[SINGLE_PACK_LEN] = { 0 };
-	char *pbuf = buf + sizeof(S_UINT_32);
-
-	S_INT_32 len = (S_INT_32)req.ByteSizeLong();
-	S_UINT_16 proiid = ProtocolFactory::instance()->proto_to_iid(&req);
-
-	req.SerializeToArray(pbuf, len);
-
-	S_UINT_32 pro_head = 0;
-	MAKE_NETHEAD(pro_head, proiid, len);
-
-	*((S_UINT_32*)buf) = pro_head;
-
-	int totlen = len + sizeof(S_UINT_32);
-	int len2 = 0;
-	pbuf = buf;
-
-	::send(m_hSocket, pbuf, totlen, 0);
+	send_proto( &req);
 }
 
 ULONGLONG CThreadTestDlg::GetMillisecondTime()
@@ -412,14 +477,10 @@ LRESULT CThreadTestDlg::OnBnClickedScriptbutton(WORD /*wNotifyCode*/, WORD /*wID
 	(_tcsrchr(filename,'\\'))[1] = 0;
 	strcat( filename, "robotclient.ini");
 
-	WritePrivateProfileString( "run", "lgsip", m_ip, filename);
-	CString port;
-	port.Format( "%u", m_port);
-	WritePrivateProfileString( "run", "lgsport", port, filename);
+	WritePrivateProfileString("run", "urladdr", m_urladdr, filename);
 
 	ScriptDlg dlg;
-	dlg.setip( (LPCTSTR)m_ip);
-	dlg.setport( m_port);
+	dlg.seturladdr((LPCTSTR)m_urladdr);
 
 	dlg.DoModal();
 
@@ -442,9 +503,6 @@ void CThreadTestDlg::ReportError( char* pFmt, ...)
 
 void CThreadTestDlg::StartAutoRobot()
 {
-	g_ip = m_lgsip;
-	g_port = m_lgsport;
-
 	if( tests_)
 		delete[] tests_;
 	thread_num_ = m_usernum / MAXCASE_PRETHREAD;
@@ -462,7 +520,7 @@ void CThreadTestDlg::StartAutoRobot()
 				nums =pos;
 		}
 
-		tests_[i].set_thread( m_user + ( i * MAXCASE_PRETHREAD * m_userrange), nums, m_userrange);
+		tests_[i].set_thread(m_user + (i * MAXCASE_PRETHREAD), nums, (LPCTSTR)m_urladdr, (LPCTSTR)m_openprefix);
 
 		tests_[i].start_thread();
 
@@ -488,21 +546,6 @@ void CThreadTestDlg::StopAutoRobot()
 	thread_num_ =0;
 }
 
-LRESULT CThreadTestDlg::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
-{
-	if ( 1000 == wParam)
-	{
-		if( 0 == tests_)
-			KillTimer( wParam);
-	}
-	else if( wParam == 10000)
-	{
-		this->OnReceive();
-	}
-
-	return TRUE;
-}
-
 LRESULT CThreadTestDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
 	if( tests_)
@@ -511,4 +554,72 @@ LRESULT CThreadTestDlg::OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPa
 
 	CloseDialog( 0);
 	return 0;
+}
+
+LRESULT CThreadTestDlg::OnBeginUploadLog(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	m_robotstatus = "-----begin upload log-----";
+	DoDataExchange(DDX_LOAD);
+
+	PRO::Robot_StartRecord_req req;
+	req.set_robotid(m_robotid);
+
+	this->send_proto(&req);
+
+	SetTimer(20000, 1000);
+
+	return 0;
+}
+
+
+LRESULT CThreadTestDlg::OnUploadLog(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	if (wParam == 0)
+		return 0;
+
+	return 0;
+}
+
+LRESULT CThreadTestDlg::OnEndUploadLog(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	m_robotstatus = ShareUtil::str_format("-----end upload log. totle:%d-----", logsave_util_.get_lognum()).c_str();
+	DoDataExchange(DDX_LOAD);
+
+	Robot_EndRecord_req req;
+	req.set_robotid(m_robotid);
+	req.set_logs(logsave_util_.get_lognum());
+
+	this->send_proto(&req);
+
+	KillTimer(20000);
+	upload_util_.stop_uploads();
+	logsave_util_.stop_save();
+
+	return 0;
+}
+
+LRESULT CThreadTestDlg::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& /*bHandled*/)
+{
+	if (1000 == wParam)
+	{
+		if (0 == tests_)
+			KillTimer(wParam);
+	}
+	else if (wParam == 10000)
+	{
+		this->OnReceive();
+	}
+	else if (wParam == 20000)
+	{
+		m_robotstatus = ShareUtil::str_format("upload log:%d...", logsave_util_.get_lognum()).c_str();
+		DoDataExchange(DDX_LOAD);
+
+		Robot_Record_req req;
+		req.set_robotid(m_robotid);
+		req.set_logs(logsave_util_.get_lognum());
+
+		this->send_proto(&req);
+	}
+
+	return TRUE;
 }

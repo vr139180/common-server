@@ -1,7 +1,22 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #ifndef __CASEACTIONBASE_H__
 #define __CASEACTIONBASE_H__
 
-#include <cmsLib/prolib/core_type.h>
+#include <cmsLib/core_type.h>
 #include <cmsLib/prolib/BasicProtocol.h>
 #include <cmsLib/util/XmlUtil.h>
 #include <string>
@@ -32,6 +47,10 @@ public:
 	void link_after_build( VirtualUser* v, TestCaseWorkFlow* f, FlowNode* n);
 
 public:
+	virtual bool log_analysis() { return true; }
+	virtual std::string get_action_name() = 0;
+	virtual S_UINT_32 get_req_protoid() = 0;
+
 	virtual void init_before_start();
 
 	virtual void update( ULONGLONG now);
@@ -44,6 +63,7 @@ public:
 
 	std::string get_params( const char* key);
 	int get_params_int( const char* key, int def =0);
+	S_INT_64 get_params_int64(const char* key, S_INT_64 def = 0);
 
 	int get_doing_time(){
 		return (int)( action_end_time_ - action_begin_time_);
@@ -75,7 +95,6 @@ protected:
     FlowNode*			node_;
 
     int                 error_code_;
-	char*				error_step_;
 
 private:
 	bool				timeout_support_;

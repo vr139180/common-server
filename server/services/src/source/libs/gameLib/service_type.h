@@ -57,7 +57,7 @@ public:
 			ret = "friend";
 			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER:
-			ret = "ftrouter";
+			ret = "fightrouter";
 			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_GAME:
 			ret = "game";

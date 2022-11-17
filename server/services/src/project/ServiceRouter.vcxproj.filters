@@ -13,20 +13,11 @@
     <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatModule_Network.cpp">
       <Filter>chat</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.cpp">
-      <Filter>chat</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.cpp">
-      <Filter>mail</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule.cpp">
       <Filter>mail</Filter>
     </ClCompile>
     <ClCompile Include="..\source\ServiceRouter\mailmodule\MailModule_Network.cpp">
       <Filter>mail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\ServiceRouter\friends\FriendLinkerHolder.cpp">
-      <Filter>friend</Filter>
     </ClCompile>
     <ClCompile Include="..\source\ServiceRouter\friends\FriendModule.cpp">
       <Filter>friend</Filter>
@@ -61,17 +52,8 @@
     <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatModule.h">
       <Filter>chat</Filter>
     </ClInclude>
-    <ClInclude Include="..\source\ServiceRouter\chatmodule\ChatLinkerHolder.h">
-      <Filter>chat</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\ServiceRouter\mailmodule\MailLinkerHolder.h">
-      <Filter>mail</Filter>
-    </ClInclude>
     <ClInclude Include="..\source\ServiceRouter\mailmodule\MailModule.h">
       <Filter>mail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\ServiceRouter\friends\FriendLinkerHolder.h">
-      <Filter>friend</Filter>
     </ClInclude>
     <ClInclude Include="..\source\ServiceRouter\friends\FriendModule.h">
       <Filter>friend</Filter>

@@ -80,7 +80,7 @@ public interface User_Login_reqOrBuilder extends
    *token登录 userid+token
    * </pre>
    *
-   * <code>optional string token = 4;</code>
+   * <code>optional int64 token = 4;</code>
    * @return Whether the token field is set.
    */
   boolean hasToken();
@@ -89,20 +89,10 @@ public interface User_Login_reqOrBuilder extends
    *token登录 userid+token
    * </pre>
    *
-   * <code>optional string token = 4;</code>
+   * <code>optional int64 token = 4;</code>
    * @return The token.
    */
-  java.lang.String getToken();
-  /**
-   * <pre>
-   *token登录 userid+token
-   * </pre>
-   *
-   * <code>optional string token = 4;</code>
-   * @return The bytes for token.
-   */
-  com.google.protobuf.ByteString
-      getTokenBytes();
+  long getToken();
 
   /**
    * <code>optional int64 userid = 5;</code>

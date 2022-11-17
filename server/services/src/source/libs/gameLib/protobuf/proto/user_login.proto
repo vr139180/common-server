@@ -19,7 +19,7 @@ message User_Login_req {
   //md5编码密码
   optional string pwd = 3;
   //token登录 userid+token
-  optional string token = 4;
+  optional int64 token = 4;
   optional int64 userid = 5;
 }
 
@@ -31,7 +31,7 @@ message User_Login_ack {
   //成功返回 用户iid
   optional int64 user_iid = 3;
   //token登陆时用到的
-  optional string logintoken = 4;
+  optional int64 logintoken = 4;
 }
 
 //用户断线重连

@@ -28,6 +28,7 @@
 #include <gameLib/commons/SessionMthHolder.h>
 #include <gameLib/commons/LinkFromHolder.h>
 #include <gameLib/commons/LinkToHolder.h>
+#include <gameLib/commons/LinkFromConsistentHash.h>
 
 #include "config/RouterConfig.h"
 
@@ -58,13 +59,14 @@ public:
 
 public:
 	void send_protocal_to_gate( S_INT_64 gateiid, BasicProtocol* msg);
+
 	template<class T>
 	void broad_protocal_to_gate(T* msg) {
 		gate_links_from_.broadcast<T>(msg);
 	}
 
-	void send_protocal_to_chat(int chathash, BasicProtocol* msg);
-	void send_protocal_to_mail(int mailhash, BasicProtocol* msg);
+	void send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg);
+	void send_protocal_to_mail(S_INT_64 mailhash, BasicProtocol* msg);
 	void send_protocal_to_mail_circle( BasicProtocol* msg);
 	template<class T>
 	void broad_protocal_to_mails(T* msg) {
@@ -84,8 +86,8 @@ public:
 	virtual void regist_eurekacommand(CommandBase *p) { regist_syscmd(p); }
 	virtual TimerKey add_apptimer_proxy(int step, APPTIMER_FUN_MAP f) { return add_apptimer(step, f); }
 	virtual void del_apptimer_proxy(TimerKey tid) { del_apptimer(tid); };
-	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
-		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
+
+	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
 	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs);
 
 	virtual void mth_service_registed(S_INT_64 sid);
@@ -117,13 +119,13 @@ protected:
 	std::shared_ptr<NetAcceptor>		acceptor_;
 	SessionMthHolder<RouterSession>		session_from_;
 
-	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
+	LinkToHolder<DataRouterLinkTo>					datarouter_link_mth_;
+	LinkFromHolder<GateServiceLinkFrom>				gate_links_from_;
 
-	LinkFromHolder<GateServiceLinkFrom>	gate_links_from_;
-
-	ChatLinkerHolder				chat_links_from_;
-	MailLinkerHolder				mail_links_from_;
-	FriendLinkerHolder				friend_links_from_;
+	//¸ºÔØ¾ùºâ
+	LinkFromConsistentHash<ChatServiceLinkFrom>		chat_links_from_;
+	LinkFromConsistentHash<MailServiceLinkFrom>		mail_links_from_;
+	LinkFromConsistentHash<FriendServiceLinkFrom>	friend_links_from_;
 
 	boost::scoped_ptr<RouterConfig>	conf_;
 

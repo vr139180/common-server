@@ -22,19 +22,20 @@
 
 USE_PROTOCOL_NAMESPACE
 
-void ChatModule::process_chat_msg(S_UINT_16 proiid, BasicProtocol* pro)
+void ChatModule::process_chat_msg( NetProtocol* pro)
 {
-	std::unique_ptr<BasicProtocol> p_msg(pro);
-	if (proiid == CHAT_PROTYPE::CHAT_CUSTOMCHANNELID_REQ)
+	std::unique_ptr<NetProtocol> p_msg(pro);
+	S_UINT_16 msgid = pro->get_msg();
+	if (msgid == CHAT_PROTYPE::CHAT_CUSTOMCHANNELID_REQ)
 	{
-		Chat_CustomChannelId_req* req = dynamic_cast<Chat_CustomChannelId_req*>(pro);
+		Chat_CustomChannelId_req* req = dynamic_cast<Chat_CustomChannelId_req*>(pro->msg_);
 		//on_customchannelid_req(req->utoken().giduid(), req->utoken().slottoken());
 	}
-	else if (proiid == CHAT_PROTYPE::CHAT_USERCHANNELS_ACTIVE)
+	else if (msgid == CHAT_PROTYPE::CHAT_USERCHANNELS_ACTIVE)
 	{
-		on_userchannel_active(pro);
+		on_userchannel_active(pro->msg_);
 	}
-	else if (proiid == CHAT_PROTYPE::CHAT_USERMSG_SAY)
+	else if (msgid == CHAT_PROTYPE::CHAT_USERMSG_SAY)
 	{
 		on_user_say_somthing(p_msg.release());
 	}

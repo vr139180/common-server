@@ -13,17 +13,17 @@
 // limitations under the License.
 //
 
-#ifndef __FIGHTROUTERLINKTO_H__
-#define __FIGHTROUTERLINKTO_H__
+#ifndef __DATAROUTERLINKTO_H__
+#define __DATAROUTERLINKTO_H__
 
 #include <cmsLib/net/LinkToBase.h>
 #include <gameLib/eureka/ServiceNodeInfo.h>
 
-class FightRouterLinkTo : public LinkToBase
+class DataRouterLinkTo : public LinkToBase
 {
 public:
-	FightRouterLinkTo();
-	FightRouterLinkTo(ServiceNodeInfo* pnode);
+	DataRouterLinkTo();
+	DataRouterLinkTo(ServiceNodeInfo* pnode);
 
 	virtual void connect();
 
@@ -58,7 +58,9 @@ public:
 
 protected:
 	std::shared_ptr<ServiceNodeInfo>	node_;
-	SProtocolHead						s_head_;
+
+	//–≠“ÈÕ∑
+	SProtocolHead	s_head_;
 };
 
-#endif	//__FIGHTROUTERLINKTO_H__
+#endif	//__DATAROUTERLINKTO_H__

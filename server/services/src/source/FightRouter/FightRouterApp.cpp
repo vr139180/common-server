@@ -48,14 +48,14 @@ bool FightRouterApp::load_config()
 {
 	if (!ConfigHelper::instance().init_config(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER))
 	{
-		logFatal(out_runtime, "FightRouterService load svr config file failed");
+		logFatal(out_runtime, "FightRouter load svr config file failed");
 		return false;
 	}
 
 	FightRouterConfig* cf = load_routerconfig();
 	if (cf == 0)
 	{
-		logFatal(out_runtime, "FightRouterService load config file failed");
+		logFatal(out_runtime, "FightRouter load config file failed");
 		return false;
 	}
 
@@ -93,9 +93,9 @@ FightRouterConfig* FightRouterApp::load_routerconfig()
 bool FightRouterApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
-	home_links_from_.init_holder();
-	game_links_from_.init_holder();
+
 	matchmaking_links_from_.init_holder();
+	game_links_from_.init_holder(800);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -118,13 +118,13 @@ bool FightRouterApp::init_network()
 	int neths = ConfigHelper::instance().get_netthreads();
 	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
-		logFatal( out_runtime, ("FightRouterService init network failed"));
+		logFatal( out_runtime, ("FightRouter init network failed"));
 		return false;
 	}
 
 	if( acceptor_.get() != 0)
 	{
-		logFatal( out_runtime, ("FightRouterService init network failed"));
+		logFatal( out_runtime, ("FightRouter init network failed"));
 		return false;
 	}
 
@@ -139,16 +139,16 @@ bool FightRouterApp::init_finish()
 
 	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), cf.get_globaloption().svrnum_min))
 	{
-		logInfo(out_runtime, ("<<<<<<<<<<<<FightRouterService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+		logInfo(out_runtime, ("<<<<<<<<<<<<FightRouter listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
 	}
 	else
 	{
-		logFatal(out_runtime, ("<<<<<<<<<<<<FightRouterService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		logFatal(out_runtime, ("<<<<<<<<<<<<FightRouter listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
 		return false;
 	}
 
     char app_title_[200];
-    sprintf(app_title_, "FightRouterService VER: %s REV: %s PID: %d PORT: %d\n",
+    sprintf(app_title_, "FightRouter VER: %s REV: %s PID: %d PORT: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
 
     OSSystem::mOS->SetAppTitle( app_title_ );
@@ -162,9 +162,9 @@ void FightRouterApp::uninit_network()
 		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
-	home_links_from_.uninit_holder();
 	game_links_from_.uninit_holder();
 	matchmaking_links_from_.uninit_holder();
+	datarouter_link_mth_.free_all();
 
 	session_from_.unint_sessions();
 
@@ -245,14 +245,14 @@ void FightRouterApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	//remove from waiting list
 	if (refuse)
 	{
-		logError(out_runtime, "me(FightRouterService) listen a connected request, but refused by system");
+		logError(out_runtime, "me(FightRouter) listen a connected request, but refused by system");
 
 		session_from_.free_from_wait_mth(pointer);
 	}
 	else
 	{
 		session_from_.ask_free_netsession_mth_confirm(pointer);
-		logInfo(out_runtime, "me(FightRouterService) listen a connected request, and create a connection successfully");
+		logInfo(out_runtime, "me(FightRouter) listen a connected request, and create a connection successfully");
 	}
 }
 
@@ -275,28 +275,7 @@ void FightRouterApp::on_connection_timeout(FightRouterSession* session)
 
 	session_from_.free_from_wait_mth(session);
 
-	logError(out_runtime, "FightRouterServiceApp listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
-}
-
-void FightRouterApp::on_disconnected_with_homeservice(HomeServiceLinkFrom* plink)
-{
-	FightRouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//¶Ï¿ªÓ³Éä¹ØÏµ
-		home_links_from_.return_freelink(plink);
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-	}
+	logError(out_runtime, "FightRouter listen a connected request, but this connection don't finish auth in a request time. system cut connection by self");
 }
 
 void FightRouterApp::on_disconnected_with_gameservice(GameServiceLinkFrom* plink)
@@ -339,4 +318,14 @@ void FightRouterApp::on_disconnected_with_matchmakingservice(MatchMakingServiceL
 		plink->reset();
 		psession->reset();
 	}
+}
+
+void FightRouterApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void FightRouterApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
+{
+	datarouter_link_mth_.on_linkto_disconnected(plink);
 }

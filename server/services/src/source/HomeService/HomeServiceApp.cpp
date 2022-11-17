@@ -257,7 +257,8 @@ void HomeServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 
 void HomeServiceApp::dispatch_to_lobby(NetProtocol* msg)
 {
-	S_INT_64 uid = msg->head_.get_role_iid();
+	//根据用户userid来派发，而不是roleid
+	S_INT_64 uid = msg->get_useriid();
 	S_INT_32 lobbyind = lobby_hash_.get_netnode_byval(uid);
 	LobbyService* plobby = &(all_lobbys_[lobbyind]);
 

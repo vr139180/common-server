@@ -35,25 +35,35 @@ public final class RobotTestInternal {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PRO_Robot_Stop_Ack_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Robot_State_Rpt_descriptor;
+    internal_static_PRO_Robot_Record_req_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Robot_State_Rpt_fieldAccessorTable;
+      internal_static_PRO_Robot_Record_req_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Robot_State_Rpt_ActionGroup_descriptor;
+    internal_static_PRO_Robot_StartRecord_req_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Robot_State_Rpt_ActionGroup_fieldAccessorTable;
+      internal_static_PRO_Robot_StartRecord_req_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Robot_State_Rpt_StateData_descriptor;
+    internal_static_PRO_Robot_EndRecord_req_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Robot_State_Rpt_StateData_fieldAccessorTable;
+      internal_static_PRO_Robot_EndRecord_req_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PRO_Robot_State_Ack_descriptor;
+    internal_static_PRO_Robot_UploadLogs_ntf_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PRO_Robot_State_Ack_fieldAccessorTable;
+      internal_static_PRO_Robot_UploadLogs_ntf_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_Robot_ClearLogs_ntf_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_Robot_ClearLogs_ntf_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PRO_Robot_UserPrefixChg_ntf_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PRO_Robot_UserPrefixChg_ntf_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -65,39 +75,28 @@ public final class RobotTestInternal {
     java.lang.String[] descriptorData = {
       "\n\031robot_test_internal.proto\022\003PRO\"H\n\020Robo" +
       "t_Config_Req\022\017\n\007version\030\001 \001(\005\022\021\n\trobotna" +
-      "me\030\002 \001(\t\022\020\n\010robotpwd\030\003 \001(\t\"\205\002\n\020Robot_Con" +
+      "me\030\002 \001(\t\022\020\n\010robotpwd\030\003 \001(\t\"\341\002\n\020Robot_Con" +
       "fig_Ack\022\017\n\007version\030\001 \001(\005\022\016\n\006result\030\002 \001(\005" +
-      "\022\024\n\007robotid\030\003 \001(\005H\000\210\001\001\022\030\n\013startuserid\030\004 " +
-      "\001(\003H\001\210\001\001\022\022\n\005users\030\005 \001(\005H\002\210\001\001\022\027\n\nusersran" +
-      "ge\030\006 \001(\005H\003\210\001\001\022\022\n\005lgsip\030\007 \001(\tH\004\210\001\001\022\024\n\007lgs" +
-      "port\030\010 \001(\005H\005\210\001\001B\n\n\010_robotidB\016\n\014_startuse" +
-      "ridB\010\n\006_usersB\r\n\013_usersrangeB\010\n\006_lgsipB\n" +
-      "\n\010_lgsport\"P\n\017Robot_Start_Ack\022\024\n\014startus" +
-      "ernum\030\001 \001(\005\022\025\n\rlogininterval\030\002 \001(\003\022\020\n\010be" +
-      "havior\030\003 \003(\t\"\020\n\016Robot_Stop_Ack\"\332\005\n\017Robot" +
-      "_State_Rpt\022\017\n\007robotid\030\001 \001(\003\0221\n\tstat_data" +
-      "\030\002 \003(\0132\036.PRO.Robot_State_Rpt.StateData\032i" +
-      "\n\013ActionGroup\022\017\n\007actions\030\001 \001(\003\022\020\n\010succee" +
-      "ds\030\002 \001(\003\022\017\n\007faileds\030\003 \001(\003\022\020\n\010timeouts\030\004 " +
-      "\001(\003\022\024\n\014timeinterval\030\005 \001(\003\032\227\004\n\tStateData\022" +
-      "/\n\005logon\030\001 \001(\0132 .PRO.Robot_State_Rpt.Act" +
-      "ionGroup\0221\n\007getrole\030\002 \001(\0132 .PRO.Robot_St" +
-      "ate_Rpt.ActionGroup\0221\n\007selrole\030\003 \001(\0132 .P" +
-      "RO.Robot_State_Rpt.ActionGroup\0224\n\ngetcha" +
-      "nnel\030\004 \001(\0132 .PRO.Robot_State_Rpt.ActionG" +
-      "roup\0224\n\nselchannel\030\005 \001(\0132 .PRO.Robot_Sta" +
-      "te_Rpt.ActionGroup\0221\n\007getroom\030\006 \001(\0132 .PR" +
-      "O.Robot_State_Rpt.ActionGroup\0223\n\tloginro" +
-      "om\030\007 \001(\0132 .PRO.Robot_State_Rpt.ActionGro" +
-      "up\0224\n\nlogoutroom\030\010 \001(\0132 .PRO.Robot_State" +
-      "_Rpt.ActionGroup\0227\n\rlogoutchannel\030\t \001(\0132" +
-      " .PRO.Robot_State_Rpt.ActionGroup\0220\n\006log" +
-      "out\030\n \001(\0132 .PRO.Robot_State_Rpt.ActionGr" +
-      "oup\"!\n\017Robot_State_Ack\022\016\n\006userid\030\001 \001(\003*;" +
-      "\n\013ROBOT_CONST\022\031\n\025ROBOT_CONST_UNIVERSAL\020\000" +
-      "\022\021\n\rROBOT_VERSION\020\001BT\n\033com.cms.client.ne" +
-      "twork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033co" +
-      "m.cms.client.network.gprob\006proto3"
+      "\022\024\n\007robotid\030\003 \001(\005H\000\210\001\001\022\024\n\007urladdr\030\004 \001(\tH" +
+      "\001\210\001\001\022\027\n\nopenprefix\030\005 \001(\tH\002\210\001\001\022\030\n\013startus" +
+      "erid\030\007 \001(\003H\003\210\001\001\022\022\n\005users\030\010 \001(\005H\004\210\001\001\022\023\n\006d" +
+      "buser\030\n \001(\tH\005\210\001\001\022\022\n\005dbpwd\030\013 \001(\tH\006\210\001\001\022\023\n\006" +
+      "dbname\030\014 \001(\tH\007\210\001\001\022\021\n\004dbip\030\r \001(\tH\010\210\001\001B\n\n\010" +
+      "_robotidB\n\n\010_urladdrB\r\n\013_openprefixB\016\n\014_" +
+      "startuseridB\010\n\006_usersB\t\n\007_dbuserB\010\n\006_dbp" +
+      "wdB\t\n\007_dbnameB\007\n\005_dbip\"P\n\017Robot_Start_Ac" +
+      "k\022\024\n\014startusernum\030\001 \001(\005\022\025\n\rlogininterval" +
+      "\030\002 \001(\003\022\020\n\010behavior\030\003 \003(\t\"\020\n\016Robot_Stop_A" +
+      "ck\"1\n\020Robot_Record_req\022\017\n\007robotid\030\001 \001(\005\022" +
+      "\014\n\004logs\030\002 \001(\005\"(\n\025Robot_StartRecord_req\022\017" +
+      "\n\007robotid\030\001 \001(\005\"4\n\023Robot_EndRecord_req\022\017" +
+      "\n\007robotid\030\001 \001(\005\022\014\n\004logs\030\002 \001(\005\"\026\n\024Robot_U" +
+      "ploadLogs_ntf\"\025\n\023Robot_ClearLogs_ntf\")\n\027" +
+      "Robot_UserPrefixChg_ntf\022\016\n\006prefix\030\001 \001(\t*" +
+      ";\n\013ROBOT_CONST\022\031\n\025ROBOT_CONST_UNIVERSAL\020" +
+      "\000\022\021\n\rROBOT_VERSION\020\001BT\n\033com.cms.client.n" +
+      "etwork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033c" +
+      "om.cms.client.network.gprob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -114,7 +113,7 @@ public final class RobotTestInternal {
     internal_static_PRO_Robot_Config_Ack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Robot_Config_Ack_descriptor,
-        new java.lang.String[] { "Version", "Result", "Robotid", "Startuserid", "Users", "Usersrange", "Lgsip", "Lgsport", "Robotid", "Startuserid", "Users", "Usersrange", "Lgsip", "Lgsport", });
+        new java.lang.String[] { "Version", "Result", "Robotid", "Urladdr", "Openprefix", "Startuserid", "Users", "Dbuser", "Dbpwd", "Dbname", "Dbip", "Robotid", "Urladdr", "Openprefix", "Startuserid", "Users", "Dbuser", "Dbpwd", "Dbname", "Dbip", });
     internal_static_PRO_Robot_Start_Ack_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_PRO_Robot_Start_Ack_fieldAccessorTable = new
@@ -127,30 +126,42 @@ public final class RobotTestInternal {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PRO_Robot_Stop_Ack_descriptor,
         new java.lang.String[] { });
-    internal_static_PRO_Robot_State_Rpt_descriptor =
+    internal_static_PRO_Robot_Record_req_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_PRO_Robot_State_Rpt_fieldAccessorTable = new
+    internal_static_PRO_Robot_Record_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Robot_State_Rpt_descriptor,
-        new java.lang.String[] { "Robotid", "StatData", });
-    internal_static_PRO_Robot_State_Rpt_ActionGroup_descriptor =
-      internal_static_PRO_Robot_State_Rpt_descriptor.getNestedTypes().get(0);
-    internal_static_PRO_Robot_State_Rpt_ActionGroup_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Robot_State_Rpt_ActionGroup_descriptor,
-        new java.lang.String[] { "Actions", "Succeeds", "Faileds", "Timeouts", "Timeinterval", });
-    internal_static_PRO_Robot_State_Rpt_StateData_descriptor =
-      internal_static_PRO_Robot_State_Rpt_descriptor.getNestedTypes().get(1);
-    internal_static_PRO_Robot_State_Rpt_StateData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Robot_State_Rpt_StateData_descriptor,
-        new java.lang.String[] { "Logon", "Getrole", "Selrole", "Getchannel", "Selchannel", "Getroom", "Loginroom", "Logoutroom", "Logoutchannel", "Logout", });
-    internal_static_PRO_Robot_State_Ack_descriptor =
+        internal_static_PRO_Robot_Record_req_descriptor,
+        new java.lang.String[] { "Robotid", "Logs", });
+    internal_static_PRO_Robot_StartRecord_req_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_PRO_Robot_State_Ack_fieldAccessorTable = new
+    internal_static_PRO_Robot_StartRecord_req_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PRO_Robot_State_Ack_descriptor,
-        new java.lang.String[] { "Userid", });
+        internal_static_PRO_Robot_StartRecord_req_descriptor,
+        new java.lang.String[] { "Robotid", });
+    internal_static_PRO_Robot_EndRecord_req_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_PRO_Robot_EndRecord_req_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_Robot_EndRecord_req_descriptor,
+        new java.lang.String[] { "Robotid", "Logs", });
+    internal_static_PRO_Robot_UploadLogs_ntf_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_PRO_Robot_UploadLogs_ntf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_Robot_UploadLogs_ntf_descriptor,
+        new java.lang.String[] { });
+    internal_static_PRO_Robot_ClearLogs_ntf_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_PRO_Robot_ClearLogs_ntf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_Robot_ClearLogs_ntf_descriptor,
+        new java.lang.String[] { });
+    internal_static_PRO_Robot_UserPrefixChg_ntf_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_PRO_Robot_UserPrefixChg_ntf_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PRO_Robot_UserPrefixChg_ntf_descriptor,
+        new java.lang.String[] { "Prefix", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

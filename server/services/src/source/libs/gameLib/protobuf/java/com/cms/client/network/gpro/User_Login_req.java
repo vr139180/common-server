@@ -22,7 +22,6 @@ private static final long serialVersionUID = 0L;
   private User_Login_req() {
     account_ = "";
     pwd_ = "";
-    token_ = "";
   }
 
   @java.lang.Override
@@ -73,10 +72,9 @@ private static final long serialVersionUID = 0L;
             pwd_ = s;
             break;
           }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 32: {
             bitField0_ |= 0x00000004;
-            token_ = s;
+            token_ = input.readInt64();
             break;
           }
           case 40: {
@@ -249,13 +247,13 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TOKEN_FIELD_NUMBER = 4;
-  private volatile java.lang.Object token_;
+  private long token_;
   /**
    * <pre>
    *token登录 userid+token
    * </pre>
    *
-   * <code>optional string token = 4;</code>
+   * <code>optional int64 token = 4;</code>
    * @return Whether the token field is set.
    */
   @java.lang.Override
@@ -267,43 +265,12 @@ private static final long serialVersionUID = 0L;
    *token登录 userid+token
    * </pre>
    *
-   * <code>optional string token = 4;</code>
+   * <code>optional int64 token = 4;</code>
    * @return The token.
    */
   @java.lang.Override
-  public java.lang.String getToken() {
-    java.lang.Object ref = token_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      token_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   *token登录 userid+token
-   * </pre>
-   *
-   * <code>optional string token = 4;</code>
-   * @return The bytes for token.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getTokenBytes() {
-    java.lang.Object ref = token_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      token_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getToken() {
+    return token_;
   }
 
   public static final int USERID_FIELD_NUMBER = 5;
@@ -349,7 +316,7 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, pwd_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, token_);
+      output.writeInt64(4, token_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       output.writeInt64(5, userid_);
@@ -374,7 +341,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, pwd_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, token_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, token_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -409,8 +377,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasToken() != other.hasToken()) return false;
     if (hasToken()) {
-      if (!getToken()
-          .equals(other.getToken())) return false;
+      if (getToken()
+          != other.getToken()) return false;
     }
     if (hasUserid() != other.hasUserid()) return false;
     if (hasUserid()) {
@@ -440,7 +408,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasToken()) {
       hash = (37 * hash) + TOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getToken().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getToken());
     }
     if (hasUserid()) {
       hash = (37 * hash) + USERID_FIELD_NUMBER;
@@ -590,7 +559,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       pwd_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
-      token_ = "";
+      token_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
       userid_ = 0L;
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -632,9 +601,9 @@ private static final long serialVersionUID = 0L;
       }
       result.pwd_ = pwd_;
       if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.token_ = token_;
         to_bitField0_ |= 0x00000004;
       }
-      result.token_ = token_;
       if (((from_bitField0_ & 0x00000008) != 0)) {
         result.userid_ = userid_;
         to_bitField0_ |= 0x00000008;
@@ -702,9 +671,7 @@ private static final long serialVersionUID = 0L;
         onChanged();
       }
       if (other.hasToken()) {
-        bitField0_ |= 0x00000004;
-        token_ = other.token_;
-        onChanged();
+        setToken(other.getToken());
       }
       if (other.hasUserid()) {
         setUserid(other.getUserid());
@@ -996,15 +963,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object token_ = "";
+    private long token_ ;
     /**
      * <pre>
      *token登录 userid+token
      * </pre>
      *
-     * <code>optional string token = 4;</code>
+     * <code>optional int64 token = 4;</code>
      * @return Whether the token field is set.
      */
+    @java.lang.Override
     public boolean hasToken() {
       return ((bitField0_ & 0x00000004) != 0);
     }
@@ -1013,57 +981,24 @@ private static final long serialVersionUID = 0L;
      *token登录 userid+token
      * </pre>
      *
-     * <code>optional string token = 4;</code>
+     * <code>optional int64 token = 4;</code>
      * @return The token.
      */
-    public java.lang.String getToken() {
-      java.lang.Object ref = token_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        token_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public long getToken() {
+      return token_;
     }
     /**
      * <pre>
      *token登录 userid+token
      * </pre>
      *
-     * <code>optional string token = 4;</code>
-     * @return The bytes for token.
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      java.lang.Object ref = token_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        token_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     *token登录 userid+token
-     * </pre>
-     *
-     * <code>optional string token = 4;</code>
+     * <code>optional int64 token = 4;</code>
      * @param value The token to set.
      * @return This builder for chaining.
      */
-    public Builder setToken(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+    public Builder setToken(long value) {
+      bitField0_ |= 0x00000004;
       token_ = value;
       onChanged();
       return this;
@@ -1073,32 +1008,12 @@ private static final long serialVersionUID = 0L;
      *token登录 userid+token
      * </pre>
      *
-     * <code>optional string token = 4;</code>
+     * <code>optional int64 token = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearToken() {
       bitField0_ = (bitField0_ & ~0x00000004);
-      token_ = getDefaultInstance().getToken();
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     *token登录 userid+token
-     * </pre>
-     *
-     * <code>optional string token = 4;</code>
-     * @param value The bytes for token to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTokenBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000004;
-      token_ = value;
+      token_ = 0L;
       onChanged();
       return this;
     }

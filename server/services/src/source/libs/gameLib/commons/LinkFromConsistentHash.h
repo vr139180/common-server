@@ -44,6 +44,7 @@ public:
 
 	void send_netprotocol(S_INT_64 key, BasicProtocol* pro);
 	void send_netprotocol(S_INT_32 hashkey, BasicProtocol* pro);
+	void send_protocol(S_INT_64 key, NetProtocol* pro);
 	//pro由调用者管理
 	void broadcast(BasicProtocol* pro);
 
@@ -131,12 +132,29 @@ void LinkFromConsistentHash<T>::send_netprotocol(S_INT_32 hashkey, BasicProtocol
 	{
 		ThreadLockWrapper guard(lock_);
 
-		S_INT_64 linkid = nethash_.get_netnode_byval(key);
-		plink = nethash_.get_netnode_byhash(hashkey);
+		S_INT_64 linkid = nethash_.get_netnode_byhash(key);
+		plink = get_servicelink_byiid(linkid);
 	}
 
 	if (plink)
 		plink->send_netprotocol(pro);
+	else
+		delete pro;
+}
+
+template<typename T>
+void LinkFromConsistentHash<T>::send_protocol(S_INT_64 key, NetProtocol* pro)
+{
+	T* plink = 0;
+	{
+		ThreadLockWrapper guard(lock_);
+
+		S_INT_64 linkid = nethash_.get_netnode_byval(key);
+		plink = get_servicelink_byiid(linkid);
+	}
+
+	if (plink)
+		plink->send_protocol(pro);
 	else
 		delete pro;
 }

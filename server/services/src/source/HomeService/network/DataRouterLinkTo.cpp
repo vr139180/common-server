@@ -143,6 +143,7 @@ void DataRouterLinkTo::on_connected( bool success)
     {
 		//ע�ᵽhome
 		PRO::Svr_ServiceBindService_req *req = new PRO::Svr_ServiceBindService_req();
+
 		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_HOME);
 		req->set_myiid(EurekaClusterClient::instance().get_myiid());
 		req->set_mytoken(EurekaClusterClient::instance().get_token());

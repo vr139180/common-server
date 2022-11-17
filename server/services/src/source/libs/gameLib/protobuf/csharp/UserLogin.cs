@@ -26,11 +26,11 @@ namespace com.cms.client.network.gpro {
           string.Concat(
             "ChB1c2VyX2xvZ2luLnByb3RvEgNQUk8aEWRiX2ludGVybmFsLnByb3RvIpgB",
             "Cg5Vc2VyX0xvZ2luX3JlcRIMCgR0eXBlGAEgASgFEhQKB2FjY291bnQYAiAB",
-            "KAlIAIgBARIQCgNwd2QYAyABKAlIAYgBARISCgV0b2tlbhgEIAEoCUgCiAEB",
+            "KAlIAIgBARIQCgNwd2QYAyABKAlIAYgBARISCgV0b2tlbhgEIAEoA0gCiAEB",
             "EhMKBnVzZXJpZBgFIAEoA0gDiAEBQgoKCF9hY2NvdW50QgYKBF9wd2RCCAoG",
             "X3Rva2VuQgkKB191c2VyaWQiegoOVXNlcl9Mb2dpbl9hY2sSDAoEdHlwZRgB",
             "IAEoBRIOCgZyZXN1bHQYAiABKAUSFQoIdXNlcl9paWQYAyABKANIAIgBARIX",
-            "Cgpsb2dpbnRva2VuGAQgASgJSAGIAQFCCwoJX3VzZXJfaWlkQg0KC19sb2dp",
+            "Cgpsb2dpbnRva2VuGAQgASgDSAGIAQFCCwoJX3VzZXJfaWlkQg0KC19sb2dp",
             "bnRva2VuIjgKEFVzZXJfUmVMb2dpbl9yZXESEAoIdXNlcl9paWQYASABKAMS",
             "EgoKbG9naW50b2tlbhgCIAEoAyJuChBVc2VyX1JlTG9naW5fYWNrEg4KBnJl",
             "c3VsdBgBIAEoBRIVCgh1c2VyX2lpZBgCIAEoA0gAiAEBEhcKCmxvZ2ludG9r",
@@ -198,29 +198,30 @@ namespace com.cms.client.network.gpro {
 
     /// <summary>Field number for the "token" field.</summary>
     public const int TokenFieldNumber = 4;
-    private string token_;
+    private long token_;
     /// <summary>
     ///token登录 userid+token
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Token {
-      get { return token_ ?? ""; }
+    public long Token {
+      get { if ((_hasBits0 & 1) != 0) { return token_; } else { return 0L; } }
       set {
-        token_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        _hasBits0 |= 1;
+        token_ = value;
       }
     }
     /// <summary>Gets whether the "token" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasToken {
-      get { return token_ != null; }
+      get { return (_hasBits0 & 1) != 0; }
     }
     /// <summary>Clears the value of the "token" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearToken() {
-      token_ = null;
+      _hasBits0 &= ~1;
     }
 
     /// <summary>Field number for the "userid" field.</summary>
@@ -229,9 +230,9 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Userid {
-      get { if ((_hasBits0 & 1) != 0) { return userid_; } else { return 0L; } }
+      get { if ((_hasBits0 & 2) != 0) { return userid_; } else { return 0L; } }
       set {
-        _hasBits0 |= 1;
+        _hasBits0 |= 2;
         userid_ = value;
       }
     }
@@ -239,13 +240,13 @@ namespace com.cms.client.network.gpro {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasUserid {
-      get { return (_hasBits0 & 1) != 0; }
+      get { return (_hasBits0 & 2) != 0; }
     }
     /// <summary>Clears the value of the "userid" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearUserid() {
-      _hasBits0 &= ~1;
+      _hasBits0 &= ~2;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -311,8 +312,8 @@ namespace com.cms.client.network.gpro {
         output.WriteString(Pwd);
       }
       if (HasToken) {
-        output.WriteRawTag(34);
-        output.WriteString(Token);
+        output.WriteRawTag(32);
+        output.WriteInt64(Token);
       }
       if (HasUserid) {
         output.WriteRawTag(40);
@@ -341,8 +342,8 @@ namespace com.cms.client.network.gpro {
         output.WriteString(Pwd);
       }
       if (HasToken) {
-        output.WriteRawTag(34);
-        output.WriteString(Token);
+        output.WriteRawTag(32);
+        output.WriteInt64(Token);
       }
       if (HasUserid) {
         output.WriteRawTag(40);
@@ -368,7 +369,7 @@ namespace com.cms.client.network.gpro {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Pwd);
       }
       if (HasToken) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Token);
       }
       if (HasUserid) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Userid);
@@ -427,8 +428,8 @@ namespace com.cms.client.network.gpro {
             Pwd = input.ReadString();
             break;
           }
-          case 34: {
-            Token = input.ReadString();
+          case 32: {
+            Token = input.ReadInt64();
             break;
           }
           case 40: {
@@ -462,8 +463,8 @@ namespace com.cms.client.network.gpro {
             Pwd = input.ReadString();
             break;
           }
-          case 34: {
-            Token = input.ReadString();
+          case 32: {
+            Token = input.ReadInt64();
             break;
           }
           case 40: {
@@ -586,29 +587,30 @@ namespace com.cms.client.network.gpro {
 
     /// <summary>Field number for the "logintoken" field.</summary>
     public const int LogintokenFieldNumber = 4;
-    private string logintoken_;
+    private long logintoken_;
     /// <summary>
     ///token登陆时用到的
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Logintoken {
-      get { return logintoken_ ?? ""; }
+    public long Logintoken {
+      get { if ((_hasBits0 & 2) != 0) { return logintoken_; } else { return 0L; } }
       set {
-        logintoken_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        _hasBits0 |= 2;
+        logintoken_ = value;
       }
     }
     /// <summary>Gets whether the "logintoken" field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasLogintoken {
-      get { return logintoken_ != null; }
+      get { return (_hasBits0 & 2) != 0; }
     }
     /// <summary>Clears the value of the "logintoken" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearLogintoken() {
-      logintoken_ = null;
+      _hasBits0 &= ~2;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -672,8 +674,8 @@ namespace com.cms.client.network.gpro {
         output.WriteInt64(UserIid);
       }
       if (HasLogintoken) {
-        output.WriteRawTag(34);
-        output.WriteString(Logintoken);
+        output.WriteRawTag(32);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -698,8 +700,8 @@ namespace com.cms.client.network.gpro {
         output.WriteInt64(UserIid);
       }
       if (HasLogintoken) {
-        output.WriteRawTag(34);
-        output.WriteString(Logintoken);
+        output.WriteRawTag(32);
+        output.WriteInt64(Logintoken);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -721,7 +723,7 @@ namespace com.cms.client.network.gpro {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(UserIid);
       }
       if (HasLogintoken) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Logintoken);
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Logintoken);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -774,8 +776,8 @@ namespace com.cms.client.network.gpro {
             UserIid = input.ReadInt64();
             break;
           }
-          case 34: {
-            Logintoken = input.ReadString();
+          case 32: {
+            Logintoken = input.ReadInt64();
             break;
           }
         }
@@ -805,8 +807,8 @@ namespace com.cms.client.network.gpro {
             UserIid = input.ReadInt64();
             break;
           }
-          case 34: {
-            Logintoken = input.ReadString();
+          case 32: {
+            Logintoken = input.ReadInt64();
             break;
           }
         }

@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "stdafx.h"
 
 #include <atlframe.h>
@@ -8,6 +23,9 @@
 
 #include "ThreadTestDlg.h"
 #include <gameLib/protobuf/Proto_all.h>
+#include <cmsLib/Log.h>
+#include <cmsLib/base/OSSystem.h>
+#include <cmsLib/httpcurl/HttpClient.h>
 
 CAppModule _Module;
 
@@ -40,7 +58,14 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 	//	HRESULT hRes = ::CoInitializeEx(NULL, COINIT_MULTITHREADED);
 	ATLASSERT(SUCCEEDED(hRes));
 
+	OSSystem::init();
+
+	std::string logfile = "log_settings.ini";
+	logInit(logfile.c_str());
+
 	ProtocolFactory::instance()->init_factory();
+
+	HttpClient::curl_init();
 
 	WSADATA wsa_data;
 	int error = WSAStartup (MAKEWORD (1, 1), &wsa_data);
@@ -63,7 +88,10 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 
 	::CoUninitialize();
 
+	HttpClient::curl_uninit();
 	ProtocolFactory::instance()->uinit();
+	logShutdown;
+	OSSystem::uninit();
 
 	return nRet;
 }
