@@ -36,13 +36,8 @@ MailServiceLinkFrom::~MailServiceLinkFrom()
 void MailServiceLinkFrom::init_protocolhead()
 {
 	s_head_.router_balance_ = false;
-	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_MAIL;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
 }
 
 void MailServiceLinkFrom::force_linkclose()
@@ -70,12 +65,12 @@ void MailServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 		{
 			PRO::Mail_SystemMail_ntf ntf;
 			ntf.set_mailiid( ack->mail().iid());
-			svrApp.broad_protocal_to_mails<PRO::Mail_SystemMail_ntf>(&ntf);
+			svrApp.broad_protocal_to_mails(&ntf);
 		}
 	}
 	else
 	{
-		S_INT_64 gateid = 0;
+		S_INT_64 gateid = pro->head_.get_token_gateiid();
 		svrApp.send_protocal_to_gate(gateid, p_msg.release());
 	}
 }
@@ -83,18 +78,9 @@ void MailServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 void MailServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_runtime, "MailService[%d] regist to me(RouterService)", get_iid());
+		logInfo( out_runtime, "MailService[%d] regist to me(ServiceRouter)", get_iid());
 	else
-		logInfo( out_runtime, "MailService[%d] disconnect from me(RouterService)", get_iid());
-}
-
-int MailServiceLinkFrom::get_mailhash()
-{
-	std::string str = this->get_ext_bykey(MAILSVR_MAILHASH_EXT);
-	if (str == "")
-		return -1;
-
-	return ShareUtil::atoi(str.c_str());
+		logInfo( out_runtime, "MailService[%d] disconnect from me(ServiceRouter)", get_iid());
 }
 
 void MailServiceLinkFrom::send_netprotocol(BasicProtocol* msg)

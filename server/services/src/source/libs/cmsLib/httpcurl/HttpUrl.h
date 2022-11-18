@@ -208,8 +208,6 @@ private:
 	std::string		m_parameters;
 	std::string		m_query;
 	std::string		m_fragment;
-
-	char*			m_portbuff;
 };
 
 #endif //__HTTP_URL_H__

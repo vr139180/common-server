@@ -5,7 +5,7 @@ const std::string HttpUtilities::TruncatePrefix( std::string& str, unsigned int 
 	std::string res;
 	if (str.length() < pos + skip)
 		return res;
-	res = str.substr(0,pos + skip);
+	res = str.substr(0, pos);
 	str = str.substr(pos + skip);
 	return res;
 }
@@ -16,7 +16,7 @@ const std::string HttpUtilities::TruncateSuffix( std::string& str, unsigned int 
 	if (str.length() < pos + skip)
 		return res;
 	res = str.substr(pos + skip);
-	str = str.substr(0,pos + skip);
+	str = str.substr(0,pos);
 	return res;
 }
 

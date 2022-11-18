@@ -17,6 +17,7 @@
 
 #include <cmsLib/base/OSSystem.h>
 #include <cmsLib/system/CommandBase.h>
+#include <cmsLib/httpcurl/HttpClient.h>
 #include <gameLib/LogExt.h>
 #include "gameLib/protobuf/Proto_all.h"
 
@@ -24,6 +25,52 @@ EurekaClusterClient& EurekaClusterClient::instance()
 {
 	static EurekaClusterClient s_eureka;
 	return s_eureka;
+}
+
+bool EurekaClusterClient::get_eureka_masterinfo( const char* eurekaurl, EurekaNodeInfo& info)
+{
+	HttpClient	http_client;
+
+	HttpUrl url(eurekaurl);
+	HttpResponse resp;
+	HttpStringWrite writer;
+	if (http_client.HttpGET(url, resp, writer))
+	{
+		try {
+			boost::json::parse_options opt;
+			opt.allow_comments = true;
+			opt.allow_trailing_commas = true;
+
+			boost::json::error_code ec;
+			boost::json::value root = boost::json::parse( writer.GetBody(), ec, {}, opt);
+			if (ec.failed())
+				return false;
+
+			boost::json::object& obj = root.as_object();
+			int result = JSONUtil::get_value<int>(obj, "code", 1);
+			if (result != 0)
+				return false;
+
+			if (!obj.contains("data"))
+				return false;
+
+			boost::json::object& data = obj.at("data").as_object();
+
+			info.iid = JSONUtil::get_int64(data, "iid");
+			info.ip = JSONUtil::get_string(data, "ip");
+			info.port = JSONUtil::get_value<int>(data, "port", 4001);
+			info.token = JSONUtil::get_int64(data, "token");
+
+			return true;
+		}
+		catch (...) {
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 
 EurekaClusterClient::EurekaClusterClient():
@@ -62,7 +109,7 @@ void EurekaClusterClient::release()
 
 void EurekaClusterClient::init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type
 	, const char* myip, int myport, EurekaServerExtParam extpms
-	, const char* eurekaip, int eurekaport
+	, EurekaNodeInfo& eureka
 	, std::list< NETSERVICE_TYPE>& subscribe_service
 	, std::list< NETSERVICE_TYPE>& subscribe_balance
 	, bool isrouter)
@@ -87,8 +134,7 @@ void EurekaClusterClient::init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type
 	this->InitNetMessage();
 
 	EurekaNodeInfo pnode;
-	pnode.ip = eurekaip;
-	pnode.port = eurekaport;
+	pnode = eureka;
 	pnode.ismaster = true;
 	EurekaClusterLink* plink = new EurekaClusterLink(this, pnode);
 

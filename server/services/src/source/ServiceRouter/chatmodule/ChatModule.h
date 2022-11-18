@@ -36,7 +36,7 @@ public:
 protected:
 	void on_customchannelid_req(S_INT_64 sidgid, S_INT_64 slottoken);
 	void on_userchannel_active(BasicProtocol* pro);
-	void on_user_say_somthing(BasicProtocol* pro);
+	void on_user_say_somthing(NetProtocol* pro);
 
 protected:
 	//新建新的编号

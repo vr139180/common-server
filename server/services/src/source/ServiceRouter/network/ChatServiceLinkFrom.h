@@ -19,9 +19,6 @@
 #include <gameLib/commons/NetLinkFromBase.h>
 #include "network/RouterSession.h"
 
-//chatservice À©Õ¹²ÎÊý
-#define CHATSVR_CHATHASH_EXT "chathash"
-
 class ChatServiceLinkFrom : public NetLinkFromBase<RouterSession>
 {
 public:
@@ -33,8 +30,6 @@ public:
 	virtual void on_connect_lost_netthread();
 	virtual void on_recv_protocol_netthread(NetProtocol* pro);
 	virtual void force_linkclose();
-
-	int get_chathash();
 
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_; }

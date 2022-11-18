@@ -38,19 +38,19 @@ public:
 	virtual T* regist_onlinelink(T* link);
 	T* get_servicelink_random();
 
-	template<class M>
-	void broadcast(M* pro)
+	//pro由调用者管理内存
+	void broadcast(BasicProtocol* pro)
 	{
 		ThreadLockWrapper guard(lock_);
 
 		typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
 		for (; iter != online_links_.end(); ++iter)
 		{
-			M* msg = new M();
+			BasicProtocol* msg = pro->New();
 			msg->CopyFrom(*pro);
 
 			T* link = iter->second;
-			link->send_protocol(msg);
+			link->send_netprotocol(msg);
 		}
 	}
 

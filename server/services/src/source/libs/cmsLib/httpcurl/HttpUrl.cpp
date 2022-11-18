@@ -5,6 +5,7 @@
 #include <vector>
 
 #include <cmsLib/httpcurl/HttpUtilities.h>
+#include <cmsLib/util/ShareUtil.h>
 
 namespace {
 
@@ -47,13 +48,11 @@ HttpUrl::HttpUrl(const std::string& url)
 , m_query("")
 , m_fragment("")
 {
-	m_portbuff = new char[50];
 	ParseURL(url);
 }
 
 HttpUrl::~HttpUrl() 
 {
-	delete[] m_portbuff;
 }
 
 // Description: Convert HTTPURL to its normal presentation.
@@ -75,18 +74,8 @@ const std::string HttpUrl::ConvertToString() const
 	result += m_host;
 	if (m_port != 0)
 	{
-#if defined(EW_PLATFORM_WINDOWS)
-		_snprintf( portbuff, 50, "%d", m_port);
-
-#elif defined(EW_PLATFORM_LINUX)
-		snprintf( portbuff, 50, "%d", m_port);
-
-#else
-#endif
-		//_itot_s(m_port,m_portbuff,50,10);
-
 		result += ":";
-		result += m_portbuff;
+		result += ShareUtil::str_format("%d", m_port).c_str();
 	}
 
 	result += "/" + m_path;
@@ -226,7 +215,7 @@ const std::string HttpUrl::Escape(const std::string& data)
 	char* pData = new char[data.length()+1];
 
 #if defined(EW_PLATFORM_WINDOWS)
-	_strncpy(pData,data.c_str(),data.length());
+	strncpy(pData,data.c_str(),data.length());
 
 #elif defined(EW_PLATFORM_LINUX)
 	strncpy(pData,data.c_str(),data.length());
@@ -243,15 +232,9 @@ const std::string HttpUrl::Escape(const std::string& data)
 		else
 		{
 			char buf[4];
+			std::string xstr = ShareUtil::str_format("%%%02X", static_cast<char>(pData[i]));
+			memcpy(&buf[0], xstr.c_str(), 4);
 
-#if defined(EW_PLATFORM_WINDOWS)
-			_sntprintf_s(buf,sizeof(buf),"%%%02X",static_cast<char>(pData[i]));
-
-#elif defined(EW_PLATFORM_LINUX)
-			sntprintf_s(buf,sizeof(buf),"%%%02X",static_cast<char>(pData[i]));
-
-#else
-#endif
 			result.push_back(buf[0]);
 			result.push_back(buf[1]);
 			result.push_back(buf[2]);
@@ -270,7 +253,7 @@ const std::string HttpUrl::UnEscape(const std::string& data)
 	char* pData = new char[data.length()+1];
 
 #if defined(EW_PLATFORM_WINDOWS)
-	_strncpy(pData,data.c_str(),data.length());
+	strncpy(pData,data.c_str(),data.length());
 
 #elif defined(EW_PLATFORM_LINUX)
 	strncpy(pData,data.c_str(),data.length());

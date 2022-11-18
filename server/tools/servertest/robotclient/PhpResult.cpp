@@ -36,16 +36,21 @@ PhpResult* PhpResult::build_from_str(const char* str)
 		std::unique_ptr<PhpResult> ptr(ret);
 
 		boost::json::object& obj = root.as_object();
-		int result = JSONUtil::get_value<int>(obj, "result", 0);
+		int result = JSONUtil::get_value<int>(obj, "code", 1);
 		ret->error_code_ = result;
-		if (result == 1)
+		if (result == 0)
 		{
-			ret->account_id_ = JSONUtil::get_int64(obj, "useriid", 0);
-
-			if (!obj.contains("gates"))
+			if (!obj.contains("data"))
 				return 0;
 
-			std::string strips = obj.at("gates").as_string().c_str();
+			boost::json::object& data = obj.at("data").as_object();
+
+			ret->account_id_ = JSONUtil::get_int64(data, "useriid", 0);
+
+			if (!data.contains("gates"))
+				return 0;
+
+			std::string strips = data.at("gates").as_string().c_str();
 			std::list<std::string> ips;
 			ShareUtil::splitstr2str(strips.c_str(), ",", ips);
 

@@ -32,10 +32,4 @@ MailModule& MailModule::instance()
 void MailModule::init_mailmodule(S_INT_64 myiid)
 {
 	//init plot
-	this->mhash_plot_ = svrApp.get_config()->mailhash_plot_;
-}
-
-int MailModule::receiver_to_mailhash(S_INT_64 receiver)
-{
-	return (receiver % mhash_plot_.mailmax);
 }

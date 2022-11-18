@@ -32,9 +32,6 @@ public:
 	void init_friendmodule(S_INT_64 myiid);
 
 	void process_friend_msg( NetProtocol* pro);
-
-	//receiver hash µ½mail·þÎñ
-	int user_to_frdhash(S_INT_64 useriid);
 };
 
 #endif //__FRIENDMODULE_H__

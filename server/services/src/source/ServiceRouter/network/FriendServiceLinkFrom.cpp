@@ -37,14 +37,9 @@ FriendServiceLinkFrom::~FriendServiceLinkFrom()
 
 void FriendServiceLinkFrom::init_protocolhead()
 {
-	s_head_.router_balance_ = true;
-	s_head_.hashkey_ = 0;
+	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_FRIEND;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
 }
 
 void FriendServiceLinkFrom::force_linkclose()
@@ -67,13 +62,12 @@ void FriendServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	if (msgid == PRO::FRIEND_PROTYPE::FRD_FRIENDCHANGEOTHER_NTF)
 	{
 		//系统邮件发送成功之后，在route广播通知各个mail 更新最新的系统邮件
-		PRO::Frd_FriendChangeOther_ntf* ack = dynamic_cast<PRO::Frd_FriendChangeOther_ntf*>(pro->msg_);
-		int lind = FriendModule::instance().user_to_frdhash(ack->notify_roleiid());
-		svrApp.send_protocal_to_friend(lind, p_msg.release());
+		//PRO::Frd_FriendChangeOther_ntf* ack = dynamic_cast<PRO::Frd_FriendChangeOther_ntf*>(pro->msg_);
+		svrApp.send_protocal_to_friend(p_msg.release());
 	}
 	else
 	{
-		S_INT_64 gateid = 0;
+		S_INT_64 gateid = pro->head_.get_token_gateiid();
 		svrApp.send_protocal_to_gate(gateid, p_msg.release());
 	}
 }
@@ -81,18 +75,9 @@ void FriendServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 void FriendServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_runtime, "FriendService[%d] regist to me(RouterService)", get_iid());
+		logInfo( out_runtime, "FriendService[%d] regist to me(ServiceRouter)", get_iid());
 	else
-		logInfo( out_runtime, "FriendService[%d] disconnect from me(RouterService)", get_iid());
-}
-
-int FriendServiceLinkFrom::get_frdhash()
-{
-	std::string str = this->get_ext_bykey(FRIENDSVR_FRDHASH_EXT);
-	if (str == "")
-		return -1;
-
-	return ShareUtil::atoi(str.c_str());
+		logInfo( out_runtime, "FriendService[%d] disconnect from me(ServiceRouter)", get_iid());
 }
 
 void FriendServiceLinkFrom::send_netprotocol(BasicProtocol* msg)

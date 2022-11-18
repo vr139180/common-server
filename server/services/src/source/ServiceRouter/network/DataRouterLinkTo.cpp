@@ -19,7 +19,7 @@
 
 #include <gameLib/LogExt.h>
 
-#include "FightRouterApp.h"
+#include "ServiceRouterApp.h"
 
 DataRouterLinkTo::DataRouterLinkTo() :LinkToBase()
 , node_(0)

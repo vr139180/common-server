@@ -50,9 +50,9 @@ void CommandTestImpl::get_serverinfo()
 {
 	ret_desc_ = "";
 
-	if (1)
+	if (0)
 	{
-		PhpResult* info = PhpResult::build_from_str("{\"result\":1,\"useriid\":1,\"gates\":\"127.0.0.1:8001\"}");
+		PhpResult* info = PhpResult::build_from_str("{\"code\":0,\"data\":{\"useriid\":1,\"gates\":\"127.0.0.1:8001\"}}");
 
 		svrinfo_.reset(info);
 

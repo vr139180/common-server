@@ -40,10 +40,6 @@
 #include "network/FriendServiceLinkFrom.h"
 #include "network/DataRouterLinkTo.h"
 
-#include "chatmodule/ChatLinkerHolder.h"
-#include "mailmodule/MailLinkerHolder.h"
-#include "friends/FriendLinkerHolder.h"
-
 class ServiceRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
 private:
@@ -59,21 +55,24 @@ public:
 
 public:
 	void send_protocal_to_gate( S_INT_64 gateiid, BasicProtocol* msg);
+	void send_protocal_to_gate(S_INT_64 gateiid, NetProtocol* msg);
 
-	template<class T>
-	void broad_protocal_to_gate(T* msg) {
-		gate_links_from_.broadcast<T>(msg);
+	void broad_protocal_to_gate(BasicProtocol* msg) {
+		gate_links_from_.broadcast(msg);
 	}
 
 	void send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg);
-	void send_protocal_to_mail(S_INT_64 mailhash, BasicProtocol* msg);
-	void send_protocal_to_mail_circle( BasicProtocol* msg);
-	template<class T>
-	void broad_protocal_to_mails(T* msg) {
-		mail_links_from_.broadcast<T>(msg);
+
+	void send_protocal_to_mail(S_INT_64 roleid, BasicProtocol* msg);
+	void send_protocal_to_mail(NetProtocol* msg);
+	void send_protocal_to_mail_circle(NetProtocol* msg);
+
+	void broad_protocal_to_mails(BasicProtocol* msg) {
+		mail_links_from_.broadcast(msg);
 	}
 
-	void send_protocal_to_friend(int frdhash, BasicProtocol* msg);
+	void send_protocal_to_friend(S_INT_64 roleiid, BasicProtocol* msg);
+	void send_protocal_to_friend(NetProtocol* msg);
 
 public:
 

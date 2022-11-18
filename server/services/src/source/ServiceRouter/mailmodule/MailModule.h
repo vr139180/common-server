@@ -33,13 +33,6 @@ public:
 
 	void process_mail_msg(NetProtocol* pro);
 
-protected:
-
-	//receiver hash µ½mail·þÎñ
-	int receiver_to_mailhash(S_INT_64 receiver);
-
-private:
-	MailHashPlot			mhash_plot_;
 };
 
 #endif //__MAILMODULE_H__

@@ -57,20 +57,23 @@ void ServiceRouterApp::on_mth_servicebindservice_req( NetProtocol* pro, bool& au
 	//来自gate的注册
 	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GATE)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		GateServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		GateServiceLinkFrom *pLink = gate_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = gate_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		gate_links_from_.regist_onlinelink(pLink);
-
+			//设置当前gatelinke
+			gate_links_from_.regist_onlinelink(pLink);
+		}
+		
 		pLink->registinfo_tolog(true);
 
 		ack->set_result(0);
@@ -78,42 +81,47 @@ void ServiceRouterApp::on_mth_servicebindservice_req( NetProtocol* pro, bool& au
 	}
 	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_CHAT)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		ChatServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		ChatServiceLinkFrom *pLink = chat_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = chat_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		chat_links_from_.regist_onlinelink(pLink);
-
+			//设置当前gatelinke
+			chat_links_from_.regist_onlinelink(pLink);
+		}
+		
 		pLink->registinfo_tolog(true);
 
 		ack->set_result(0);
-		
 		pLink->send_netprotocol(ptr.release());
 	}
 	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MAIL)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		MailServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		MailServiceLinkFrom *pLink = mail_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = mail_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		mail_links_from_.regist_onlinelink(pLink);
-
+			//设置当前gatelinke
+			mail_links_from_.regist_onlinelink(pLink);
+		}
+		
 		pLink->registinfo_tolog(true);
 
 		ack->set_result(0);
@@ -121,47 +129,57 @@ void ServiceRouterApp::on_mth_servicebindservice_req( NetProtocol* pro, bool& au
 	}
 	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_FRIEND)
 	{
-		ThreadLockWrapper guard(get_threadlock());
+		FriendServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
 
-		session_from_.remove_waitsession_mth(psession);
-		FriendServiceLinkFrom *pLink = friend_links_from_.ask_free_link();
+			session_from_.remove_waitsession_mth(psession);
+			pLink = friend_links_from_.ask_free_link();
 
-		pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
 
-		psession->auth();
-		pLink->set_session(psession);
-		psession->set_netlinkbase(pLink);
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
 
-		//设置当前gatelinke
-		friend_links_from_.regist_onlinelink(pLink);
-
+			//设置当前gatelinke
+			friend_links_from_.regist_onlinelink(pLink);
+		}
+		
 		pLink->registinfo_tolog(true);
 
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
-	else // other sevices
-	{
-
-	}
-
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
-void ServiceRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE,
+void ServiceRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
+	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka",
+		NetServiceType::to_string(type).c_str(), nodes.size(), deliids.size());
 
+	if (type == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
+		datarouter_link_mth_.sync_eureka_services(nodes, deliids);
 }
 
-void ServiceRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs)
+void ServiceRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE type, std::list<S_INT_64>& svrs)
 {
+	logInfo(out_runtime, "ServiceRouter recv a balance notify[type:%s, size:%d]",
+		NetServiceType::to_string(type).c_str(), svrs.size());
 
+	if (type == NETSERVICE_TYPE::ERK_SERVICE_MAIL)
+		mail_links_from_.sync_balance_services(svrs);
+	else if (type == NETSERVICE_TYPE::ERK_SERVICE_FRIEND)
+		friend_links_from_.sync_balance_services(svrs);
+	else if (type == NETSERVICE_TYPE::ERK_SERVICE_CHAT)
+		chat_links_from_.sync_balance_services(svrs);
 }
 
 void ServiceRouterApp::mth_service_registed(S_INT_64 sid)
 {
-	logInfo(out_runtime, "<<<<<<<<<<<< router service node:%lld online to eureka >>>>>>>>>>>>", sid);
+	logInfo(out_runtime, "<<<<<<<<<<<< ServiceRouter node:%lld online to eureka >>>>>>>>>>>>", sid);
 	
 	this->is_ready_ = true;
 
@@ -175,6 +193,6 @@ void ServiceRouterApp::mth_eureka_losted()
 {
 	this->is_ready_ = false;
 
-	logError(out_runtime, "router service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
+	logError(out_runtime, "ServiceRouter[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }

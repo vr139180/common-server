@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "UnionServiceApp.h"
 
 #include <cmsLib/base/OSSystem.h>
@@ -74,6 +89,11 @@ UnionConfig* UnionServiceApp::load_unionconfig()
 	return xptr.release();
 }
 
+UnionConfig* UnionServiceApp::get_config()
+{
+	return conf_.get();
+}
+
 bool UnionServiceApp::pre_init()
 {
 	//eureka init
@@ -82,21 +102,26 @@ bool UnionServiceApp::pre_init()
 
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER);
+	std::list< NETSERVICE_TYPE> router_types;
+
+	EurekaNodeInfo enode;
+	if (!EurekaClusterClient::get_eureka_masterinfo(gopt.eureka_.c_str(), enode))
+	{
+		logError(out_runtime, "xxxxxxxxxx-- access url:%s get eureka master failed......", gopt.eureka_.c_str());
+		return false;
+	}
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_UNION,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
-		gopt.eip.c_str(), gopt.eport, subscribe_types);
+		enode, subscribe_types, router_types, false);
 
 	return true;
 }
 
 bool UnionServiceApp::init_network()
 {
-    int cpu = ConfigHelper::instance().get_cpunum();
-	//MutexAllocator::getInstance().init_allocator(500);
-
-	cpu =cpu*2+2;
-	if( !NetDriverX::getInstance().initNetDriver(cpu))
+	int neths = ConfigHelper::instance().get_netthreads();
+	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
 		logFatal( out_runtime, ("UnionService init network failed"));
 		return false;
@@ -122,6 +147,7 @@ void UnionServiceApp::uninit_network()
 {
 	NetDriverX::getInstance().uninitNetDriver();
 
+	servicerouter_link_mth_.free_all();
 	EurekaClusterClient::instance().uninit();
 }
 
@@ -177,4 +203,14 @@ void UnionServiceApp::main_loop()
 
 void UnionServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
+}
+
+void UnionServiceApp::on_servicerouter_regist_result(ServiceRouterLinkTo* plink)
+{
+	servicerouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void UnionServiceApp::on_disconnected_with_servicerouter(ServiceRouterLinkTo* plink)
+{
+	servicerouter_link_mth_.on_linkto_disconnected(plink);
 }

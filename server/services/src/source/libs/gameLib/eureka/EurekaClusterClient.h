@@ -57,6 +57,8 @@ class EurekaClusterClient : public MessageProcess
 public:
 	static EurekaClusterClient& instance();
 
+	static bool get_eureka_masterinfo(const char* eurekaurl, EurekaNodeInfo& info);
+
 private:
 	EurekaClusterClient();
 
@@ -64,7 +66,7 @@ public:
 	virtual ~EurekaClusterClient();
 
 	void init(IEurekaClientIntegrate* app, NETSERVICE_TYPE type, const char* myip, int myport, 
-		EurekaServerExtParam extpms, const char* eurekaip, int eurekaport, 
+		EurekaServerExtParam extpms, EurekaNodeInfo& eureka, 
 		std::list< NETSERVICE_TYPE>& subscribe_service,
 		std::list< NETSERVICE_TYPE>& subscribe_balance,
 		bool isrouter = false);

@@ -39,13 +39,8 @@ GateServiceLinkFrom::~GateServiceLinkFrom()
 void GateServiceLinkFrom::init_protocolhead()
 {
 	s_head_.router_balance_ = false;
-	s_head_.hashkey_ = 0;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_GATE;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
 }
 
 void GateServiceLinkFrom::force_linkclose()
@@ -82,9 +77,9 @@ void GateServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 void GateServiceLinkFrom::registinfo_tolog( bool bregist)
 {
 	if( bregist)
-		logInfo( out_runtime, "GateService[%d] regist to me(RouterSession)", get_iid());
+		logInfo( out_runtime, "GateService[%d] regist to me(ServiceRouter)", get_iid());
 	else
-		logInfo( out_runtime, "GateService[%d] disconnect from me(RouterSession)", get_iid());
+		logInfo( out_runtime, "GateService[%d] disconnect from me(ServiceRouter)", get_iid());
 }
 
 void GateServiceLinkFrom::send_netprotocol(BasicProtocol* msg)

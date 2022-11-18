@@ -25,10 +25,6 @@ USE_PROTOCOL_NAMESPACE
 void FriendModule::process_friend_msg( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
-	S_INT_64 uid = 0;
-
 	logDebug(out_runtime, "resend msg:%d to friend service\r\n", pro->get_msg());
-
-	int frdhash = user_to_frdhash(uid);
-	svrApp.send_protocal_to_friend(frdhash, p_msg.release());
+	svrApp.send_protocal_to_friend( p_msg.release());
 }

@@ -26,7 +26,7 @@ void StateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
 	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka",
-		NetServiceType::to_string(type), nodes.size(), deliids.size());
+		NetServiceType::to_string(type).c_str(), nodes.size(), deliids.size());
 
 	//sync res service
 	if (type == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)

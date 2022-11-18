@@ -81,8 +81,6 @@ RouterConfig* ServiceRouterApp::load_routerconfig()
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
 	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 
-	config->redis_.load_from_xml(rds);
-
 	return xptr.release();
 }
 
@@ -108,8 +106,15 @@ bool ServiceRouterApp::pre_init()
 	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FRIEND);
 	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_CHAT);
 
+	EurekaNodeInfo enode;
+	if (!EurekaClusterClient::get_eureka_masterinfo(gopt.eureka_.c_str(), enode))
+	{
+		logError(out_runtime, "xxxxxxxxxx-- access url:%s get eureka master failed......", gopt.eureka_.c_str());
+		return false;
+	}
+
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER, cf.get_ip().c_str(), cf.get_port(), 
-		EurekaServerExtParam(), gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, true);
+		EurekaServerExtParam(), enode, subscribe_types, router_types, true);
 
 	return true;
 }
@@ -345,24 +350,46 @@ void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* ms
 	plink->send_netprotocol(msg);
 }
 
+void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, NetProtocol* msg)
+{
+	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
+	if (plink == 0)
+	{
+		delete msg;
+		return;
+	}
+
+	plink->send_protocol(msg);
+}
+
 void ServiceRouterApp::send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg)
 {
-	chat_links_from_.send_protocol(chathash, msg);
+	chat_links_from_.send_netprotocol(chathash, msg);
 }
 
-void ServiceRouterApp::send_protocal_to_mail(S_INT_64 mailhash, BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_mail(S_INT_64 roleiid, BasicProtocol* msg)
 {
-	mail_links_from_.send_protocol(mailhash, msg);
+	mail_links_from_.send_netprotocol(roleiid, msg);
 }
 
-void ServiceRouterApp::send_protocal_to_mail_circle(BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_mail(NetProtocol* msg)
+{
+	mail_links_from_.send_protocol(msg->get_roleiid(), msg);
+}
+
+void ServiceRouterApp::send_protocal_to_mail_circle(NetProtocol* msg)
 {
 	//mail_links_from_.send_mth_protocol_circle(msg);
 }
 
-void ServiceRouterApp::send_protocal_to_friend(S_INT_64 frdhash, BasicProtocol* msg)
+void ServiceRouterApp::send_protocal_to_friend(S_INT_64 roleiid, BasicProtocol* msg)
 {
-	friend_links_from_.send_protocol(frdhash, msg);
+	friend_links_from_.send_netprotocol(roleiid, msg);
+}
+
+void ServiceRouterApp::send_protocal_to_friend(NetProtocol* msg)
+{
+	friend_links_from_.send_protocol(msg->get_roleiid(), msg);
 }
 
 void ServiceRouterApp::on_disconnected_with_mailservice(MailServiceLinkFrom* plink)

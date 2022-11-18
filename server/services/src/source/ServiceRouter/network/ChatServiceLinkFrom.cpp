@@ -35,14 +35,9 @@ ChatServiceLinkFrom::~ChatServiceLinkFrom()
 
 void ChatServiceLinkFrom::init_protocolhead()
 {
-	s_head_.router_balance_ = true;
-	s_head_.hashkey_ = 0;
+	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_CHAT;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
-	s_head_.token_gidrid_ = 0;
-	s_head_.token_slottoken_ = 0;
 }
 
 void ChatServiceLinkFrom::force_linkclose()
@@ -63,12 +58,11 @@ void ChatServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	std::unique_ptr<NetProtocol> p_msg(pro);
 	if (msgid == PRO::CHAT_PROTYPE::CHAT_GLOBALMSG_NTF)
 	{
-		PRO::Chat_GlobalMsg_ntf *ntf = dynamic_cast<PRO::Chat_GlobalMsg_ntf*>(pro);
-		svrApp.broad_protocal_to_gate< PRO::Chat_GlobalMsg_ntf>(ntf);
+		svrApp.broad_protocal_to_gate(pro->msg_);
 	}
 	else if (msgid == PRO::CHAT_PROTYPE::CHAT_CHATMSG_NTF)
 	{
-		PRO::Chat_ChatMsg_ntf* ntf = dynamic_cast<PRO::Chat_ChatMsg_ntf*>(pro);
+		PRO::Chat_ChatMsg_ntf* ntf = dynamic_cast<PRO::Chat_ChatMsg_ntf*>(pro->msg_);
 		S_INT_64 gateid = 0;
 		svrApp.send_protocal_to_gate(gateid, p_msg.release());
 	}
@@ -80,15 +74,6 @@ void ChatServiceLinkFrom::registinfo_tolog( bool bregist)
 		logInfo( out_runtime, "ChatService[%d] regist to me(RouterService)", get_iid());
 	else
 		logInfo( out_runtime, "ChatService[%d] disconnect from me(RouterService)", get_iid());
-}
-
-int ChatServiceLinkFrom::get_chathash()
-{
-	std::string str = this->get_ext_bykey(CHATSVR_CHATHASH_EXT);
-	if (str == "")
-		return -1;
-
-	return ShareUtil::atoi(str.c_str());
 }
 
 void ChatServiceLinkFrom::send_netprotocol(BasicProtocol* msg)

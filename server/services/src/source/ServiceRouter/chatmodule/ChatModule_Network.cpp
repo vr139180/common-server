@@ -118,10 +118,10 @@ void ChatModule::on_userchannel_active(BasicProtocol* pro)
 	}
 }
 
-void ChatModule::on_user_say_somthing(BasicProtocol* pro)
+void ChatModule::on_user_say_somthing(NetProtocol* pro)
 {
 	//you need to manage pro object destroy or somthing
-	Chat_UserMsg_say* say = dynamic_cast<Chat_UserMsg_say*>(pro);
+	Chat_UserMsg_say* say = dynamic_cast<Chat_UserMsg_say*>(pro->msg_);
 	const ChatChannelInfo& cl = say->channel();
 	int chatiid = channelid_to_chathash(cl.type(), cl.channeldid());
 

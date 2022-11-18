@@ -1,4 +1,4 @@
-﻿<app cpu="2" confsrc="filesrc">
+﻿<app neths="2" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
 </app>

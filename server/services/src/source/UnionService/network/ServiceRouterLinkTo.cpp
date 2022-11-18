@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "network/ServiceRouterLinkTo.h"
 
 #include <cmsLib/system/CommandBase.h>
@@ -23,8 +38,7 @@ void ServiceRouterLinkTo::init_protocolhead()
 	//设置通用协议头
 	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_UNION;
-	s_head_.to_broadcast_ = false;
-	s_head_.unpack_protocol_ = true;
+	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
 }
 
 void ServiceRouterLinkTo::send_netprotocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg)
@@ -66,7 +80,7 @@ void ServiceRouterLinkTo::connect()
     if( is_connected() || is_connecting())
         return;
 
-	logInfo(out_runtime, "me(HomeService) try to connect to DataRouter(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(UnionService) try to connect to ServiceRouter(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -76,7 +90,7 @@ void ServiceRouterLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_runtime, "------me(HomeService) cant connect to DataRouter(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(UnionService) cant connect to ServiceRouter(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -88,7 +102,7 @@ void ServiceRouterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_runtime, "++++++me(GateService) connected to Router Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(UnionService) connected to ServiceRouter(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -125,19 +139,20 @@ void ServiceRouterLinkTo::on_connected( bool success)
     {
 		//注册到home
 		PRO::Svr_ServiceBindService_req *req = new PRO::Svr_ServiceBindService_req();
-		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_HOME);
+
+		req->set_svr_type(NETSERVICE_TYPE::ERK_SERVICE_UNION);
 		req->set_myiid(EurekaClusterClient::instance().get_myiid());
 		req->set_mytoken(EurekaClusterClient::instance().get_token());
 		req->set_toiid(node_->iid);
 		req->set_totoken(node_->token);
 
-		this->send_netprotocol(PRO::ERK_SERVICE_DATAROUTER, req);
+		this->send_netprotocol(PRO::ERK_SERVICE_SVRROUTER, req);
     }
     else
     {
-		logError(out_runtime, "me(GateService) can't connect to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logError(out_runtime, "me(UnionService) can't connect to ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 
-		svrApp.on_disconnected_with_datarouter(this);
+		svrApp.on_disconnected_with_servicerouter(this);
     }
 }
 
@@ -145,15 +160,15 @@ void ServiceRouterLinkTo::on_authed( bool success)
 {
     if( success)
     {
-		logInfo(out_runtime, "me(GateService) connected to DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(UnionService) connected to ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
 		this->set_authed( true);
 
 		//sync your regist service
-		svrApp.on_datarouter_regist_result( this);
+		svrApp.on_servicerouter_regist_result( this);
 	}
     else
     {
-		logInfo(out_runtime, "me(GateService) connect to DataRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(UnionService) connect to ServiceRouter[ip:%s port:%d] failed", node_->ip.c_str(), node_->port);
     }
 
 }
@@ -163,10 +178,10 @@ void ServiceRouterLinkTo::on_disconnected()
     //need notify server, connection error
     if( this->is_authed())
     {
-		logInfo(out_runtime, "me(GateService) disconnect from DataRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
+		logInfo(out_runtime, "me(UnionService) disconnect from ServiceRouter[ip:%s port:%d]", node_->ip.c_str(), node_->port);
     }
 
-	svrApp.on_disconnected_with_datarouter(this);
+	svrApp.on_disconnected_with_servicerouter(this);
 }
 
 void ServiceRouterLinkTo::heart_beat()
@@ -180,8 +195,7 @@ NetProtocol* ServiceRouterLinkTo::get_livekeep_msg()
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
 
 	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
-	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_DATAROUTER;
+	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 
 	return pro;
 }

@@ -154,6 +154,7 @@ public:
 	S_UINT_16 get_msg() { return head_.get_msgid(); }
 	bool is_routerbalance() { return head_.router_balance_; }
 	S_INT_64 get_useriid() { return head_.get_token_useriid(); }
+	S_INT_64 get_roleiid() { return head_.get_role_iid(); }
 
 	NetProtocol* clone();
 

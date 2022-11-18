@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cms.center.mybits.mapper.UserMapper">
+
+    <!-- user baseinfo  -->
+    <resultMap id="UserAccount" type="com.cms.center.mybits.entity.User_Account" >
+        <id column="user_iid" property="user_iid" jdbcType="BIGINT" />
+        <result column="account" property="account" jdbcType="VARCHAR" />
+        <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="SMALLINT" />
+    </resultMap>
+
+    <insert id="createUserAccount" parameterType="com.cms.center.mybits.entity.User_Account" useGeneratedKeys="true"
+            keyProperty="user_iid">
+        insert into user_account( account, pwd, state) values ( #{account}, #{pwd}, #{state})
+    </insert>
+
+    <select id="getUserAccount" resultMap="UserAccount" parameterType="string">
+        select user_iid, account, pwd, state from user_account
+        where account = #{account}
+    </select>
+
+</mapper>

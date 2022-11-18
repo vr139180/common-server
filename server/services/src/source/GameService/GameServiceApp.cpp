@@ -98,9 +98,16 @@ bool GameServiceApp::pre_init()
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER);
 	std::list< NETSERVICE_TYPE> router_types;
 
+	EurekaNodeInfo enode;
+	if (!EurekaClusterClient::get_eureka_masterinfo(gopt.eureka_.c_str(), enode))
+	{
+		logError(out_runtime, "xxxxxxxxxx-- access url:%s get eureka master failed......", gopt.eureka_.c_str());
+		return false;
+	}
+
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GAME,
 		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
-		gopt.eip.c_str(), gopt.eport, subscribe_types, router_types, false);
+		enode, subscribe_types, router_types, false);
 
 	return true;
 }

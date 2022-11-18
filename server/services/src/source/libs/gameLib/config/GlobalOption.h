@@ -25,8 +25,7 @@ namespace config {
 		int svrnum_min;
 
 		//eureka首届点
-		std::string eip;
-		int eport;
+		std::string eureka_;
 	}GlobalOption;
 }
 

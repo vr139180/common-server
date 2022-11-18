@@ -117,8 +117,7 @@ bool ConfigHelper::load_globaloption()
 	tinyxml2::XMLElement* root = doc.RootElement();
 	global_.svrnum_min = XmlUtil::GetXmlAttrInt(root, "svrnum_min", 1000);
 
-	global_.eip = XmlUtil::GetXmlAttrStr(root, "eip", "127.0.0.1");
-	global_.eport = XmlUtil::GetXmlAttrInt(root, "eport", 8888);
+	global_.eureka_ = XmlUtil::GetXmlAttrStr(root, "eureka", "http://127.0.0.1:8080/gate/eureka");
 
 	return true;
 }

@@ -34,8 +34,6 @@ public:
 	virtual void on_recv_protocol_netthread(NetProtocol* pro);
 	virtual void force_linkclose();
 
-	int get_mailhash();
-
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
 
