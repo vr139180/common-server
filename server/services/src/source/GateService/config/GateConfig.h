@@ -17,15 +17,25 @@
 #define __GATECONFIG_H__
 
 #include <string>
+#include <cmsLib/core_type.h>
 
 class GateConfig
 {
 public:
-	GateConfig(){}
+	GateConfig():gate_type_(NetSessionType::NSType_TCP){}
+
+	void set_gate_type(const std::string& t) {
+		if (t == "ws")
+			gate_type_ = NetSessionType::NSType_WebSocket;
+		else
+			gate_type_ = NetSessionType::NSType_TCP;
+	}
 
 public:
 	//现成一次tick循环次数
 	int loopnum_;
+	//gate的类型 tcp or websocket
+	NetSessionType	gate_type_;
 };
 
 #endif //__GATECONFIG_H__

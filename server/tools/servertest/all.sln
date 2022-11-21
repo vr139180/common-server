@@ -4,13 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.1300
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobotClient", "robotclient\RobotTest.vcxproj", "{12FE9412-9046-44DB-8923-7DAC3861575B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RobotServer", "robotserver\RobotSvr.vcxproj", "{16B36124-4D49-478A-B4AA-28816EEB93DE}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmsLib", "..\..\services\src\project\cmsLib.vcxproj", "{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +21,6 @@ Global
 		{16B36124-4D49-478A-B4AA-28816EEB93DE}.Debug|x64.Build.0 = Debug|x64
 		{16B36124-4D49-478A-B4AA-28816EEB93DE}.Release|x64.ActiveCfg = Release|x64
 		{16B36124-4D49-478A-B4AA-28816EEB93DE}.Release|x64.Build.0 = Release|x64
-		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Debug|x64.ActiveCfg = Debug|x64
-		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Debug|x64.Build.0 = Debug|x64
-		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Release|x64.ActiveCfg = Release|x64
-		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

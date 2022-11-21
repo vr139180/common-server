@@ -75,7 +75,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>.;../;../../../services/src/sdk/include;../../../services/src/sdk/include/protobuf/include;../../../services/src/source/libs;../../../services/src/sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WIN32;CURL_STATICLIB;_WINDOWS;STRICT;_DEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WIN32;CURL_STATICLIB;_WINDOWS;STRICT;_DEBUG;_CRT_SECURE_NO_WARNINGS;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -89,7 +89,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;libprotobufd.lib;libmysql.lib;mysqlcppconn-static_d.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../../../services/src/sdk/lib64;../../../services/src/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -113,7 +113,7 @@
     </Midl>
     <ClCompile>
       <AdditionalIncludeDirectories>.;../;../../../services/src/sdk/include;../../../services/src/sdk/include/protobuf/include;../../../services/src/source/libs;../../../services/src/sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDOWS;STRICT;NDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;STRICT;NDEBUG;_CRT_SECURE_NO_WARNINGS;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>
       </ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
@@ -129,7 +129,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;ewwLib.lib;ewwLogSystem.lib;apr-1.lib;aprutil-1.lib;xml.lib;apriconv-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;xml.lib;libmysql.lib;mysqlcppconn-static_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../../../services/src/sdk/lib64;../../../services/src/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AboutDlg.h" />
+    <ClInclude Include="LogSaveUtil.h" />
     <ClInclude Include="MainDlg.h" />
     <ClInclude Include="OptionUtil.h" />
     <ClInclude Include="resource.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="TcpAcceptUser.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LogSaveUtil.cpp" />
     <ClCompile Include="maindlg.cpp" />
     <ClCompile Include="RobotSvr.cpp" />
     <ClCompile Include="SelTypeDlg.cpp" />

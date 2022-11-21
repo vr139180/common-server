@@ -190,7 +190,7 @@ void LogSaveUtil::do_save(sql::Connection* p_connection, std::list<LogData*>& xl
 			column = 1;
 			prep_stmt->setInt64(column++, pData->timestamp);
 			prep_stmt->setString(column++, pData->openid.c_str());
-			prep_stmt->setString(column++, pData->accountid.c_str());
+			prep_stmt->setInt64(column++, pData->accountid);
 			prep_stmt->setString(column++, pData->action.c_str());
 			prep_stmt->setString(column++, pData->protoid.c_str());
 			prep_stmt->setInt(column++, pData->delay);
@@ -229,7 +229,7 @@ void LogSaveUtil::save_log(const char* strlog)
 		boost::json::object& obj = root.as_object();
 		ret->timestamp = JSONUtil::get_int64(obj, "timestamp", 0);
 		ret->openid = JSONUtil::get_string(obj, "openid");
-		ret->accountid = JSONUtil::get_string(obj, "accountid");
+		ret->accountid = JSONUtil::get_int64(obj, "accountid");
 		ret->action = JSONUtil::get_string(obj, "action");
 		ret->protoid = JSONUtil::get_string(obj, "protoid","0");
 		ret->delay = JSONUtil::get_value<int>(obj, "delay", 0);

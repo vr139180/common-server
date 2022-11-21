@@ -16,13 +16,15 @@
 #include <cmsLib/net/NetSession.h>
 #include <cmsLib/Log.h>
 #include <cmsLib/base/Profile.h>
+#include <cmsLib/util/ShareUtil.h>
 
-NetSession::NetSession( ThreadLock* lock, ThreadLock* queuelock, NetSessionBindEvent* cb):
+NetSession::NetSession( ThreadLock* lock, ThreadLock* queuelock, NetSessionBindEvent* cb, NetSessionType nstype):
 lock_(lock),
 queue_lock_( queuelock),
 lock_delete_( false),
 bind_event_cb_( cb),
-is_initialized( false)
+is_initialized( false),
+socket_type_( nstype)
 {
 	if( lock_ == 0)
 	{
@@ -34,6 +36,9 @@ is_initialized( false)
 
 	//only use to do reset
 	is_initialized =true;
+
+	//TODO: only to debug
+	//socket_type_ = NetSessionType::NSType_WebSocket;
 
 	this->reset_nomutex();
 }
@@ -63,6 +68,14 @@ std::string NetSession::get_ip()
 		return "";
 }
 
+bool NetSession::is_socket_valid()
+{
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
+		return websocket_ != 0;
+	else
+		return socket_ != 0;
+}
+
 void NetSession::attachToSocket( boost::asio::io_service& ios)
 {
 	ThreadLockWrapper guard( *lock_);
@@ -75,7 +88,38 @@ void NetSession::attachToSocket( boost::asio::io_service& ios)
 	this->io_service_ =&ios;
 	assert( io_service_);
 
-	socket_.reset( new boost::asio::ip::tcp::socket( ios));
+	//socket_.reset( new boost::asio::ip::tcp::socket( ios));
+
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
+	{
+		websocket_.reset(new WebSocketStream(boost::asio::make_strand(ios)));
+	}
+	else
+	{
+		socket_.reset(new boost::asio::ip::tcp::socket(ios));
+	}
+}
+
+boost::asio::ip::tcp::socket& NetSession::get_socket()
+{
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
+	{
+		return get_lowest_layer(*websocket_).socket();
+	}
+	else
+	{
+		return *socket_;
+	}
+}
+
+boost::asio::ip::tcp::socket& NetSession::get_tcpsocket()
+{
+	return *socket_;
+}
+
+NetSession::WebSocketStream& NetSession::get_websocket()
+{
+	return *websocket_;
 }
 
 void NetSession::force_reset()
@@ -97,13 +141,27 @@ void NetSession::reset_nomutex()
 
 	recv_buff_pos_ =0;
 
-	if( socket_ != 0 && socket_->is_open())
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
 	{
-		boost::system::error_code err;
-		socket_->close( err);
+		if (websocket_ != 0 && websocket_->is_open())
+		{
+			websocket::close_reason err;
+			websocket_->close(err);
+		}
+
+		websocket_.reset();
+	}
+	else
+	{
+		if (socket_ != 0 && socket_->is_open())
+		{
+			boost::system::error_code err;
+			socket_->close(err);
+		}
+
+		socket_.reset();
 	}
 
-	socket_.reset();
 	io_service_ =0;
 
 	this->freeSendQueue();
@@ -121,6 +179,93 @@ void NetSession::freeSendQueue()
 	}
 
 	send_queue_.clear();
+}
+
+void NetSession::on_connectto_result_ws(bool success, const char* ip, int port)
+{
+	if (success)
+	{
+		// Turn off the timeout on the tcp_stream, because
+		// the websocket stream has its own timeout system.
+		beast::get_lowest_layer(*websocket_).expires_never();
+
+		// Set suggested timeout settings for the websocket
+		websocket_->set_option( websocket::stream_base::timeout::suggested( beast::role_type::client));
+
+		// Set a decorator to change the User-Agent of the handshake
+		websocket_->set_option(websocket::stream_base::decorator(
+			[](websocket::request_type& req)
+			{ req.set(beast::http::field::user_agent, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-client-async"); }));
+
+		// Update the host_ string. This will provide the value of the
+		// Host HTTP header during the WebSocket handshake.
+		// See https://tools.ietf.org/html/rfc7230#section-5.4
+		std::string host = ShareUtil::str_format("%s:%d", ip, port);
+
+		// Perform the websocket handshake
+		websocket_->async_handshake( host.c_str(), "/",
+			boost::bind(&NetSession::on_handshake_ws, this, boost::placeholders::_1));
+	}
+	else
+	{
+		dealwith_connect_tows_result(success);
+	}
+
+	if (bind_event_cb_)
+	{
+		if (!success)
+			bind_event_cb_->on_cant_connectedto();
+	}
+}
+
+void NetSession::on_handshake_ws(beast::error_code ec)
+{
+	dealwith_connect_tows_result(!ec);
+
+	if (bind_event_cb_)
+	{
+		if (ec)
+			bind_event_cb_->on_cant_connectedto();
+		else
+			bind_event_cb_->on_connectedto_done();
+	}
+}
+
+void NetSession::dealwith_connect_tows_result(bool success)
+{
+	std::list<NetProtocol*> recvs;
+	{
+		ThreadLockWrapper guard(*lock_);
+
+		if (success)
+		{
+			is_initialized = true;
+
+			try_read_nomutext(0, recvs);
+		}
+		else
+		{
+			//only use to do reset
+			is_initialized = true;
+
+			this->reset_nomutex();
+			return;
+		}
+	}
+
+	if (success)
+	{
+		std::list<NetProtocol*>::iterator iter = recvs.begin(), eiter = recvs.end();
+		for (; iter != eiter; ++iter)
+		{
+			NetProtocol* pr = (*iter);
+			if (bind_event_cb_)
+				bind_event_cb_->on_recv_protocol_netthread(pr);
+			else
+				delete pr;
+		}
+		recvs.clear();
+	}
 }
 
 void NetSession::on_connectto_result(bool success)
@@ -149,13 +294,31 @@ void NetSession::dealwith_connect_result(bool success)
 
 		if (success)
 		{
-			is_initialized = true;
+			//根据不同的socket实现，进行参数设置
+			if (socket_type_ == NetSessionType::NSType_WebSocket)
+			{
+				websocket_->set_option(websocket::stream_base::timeout::suggested(
+					beast::role_type::server));
 
-			boost::asio::socket_base::keep_alive option(true);
-			boost::system::error_code err;
-			socket_->set_option(option, err);
+				websocket_->set_option(websocket::stream_base::decorator(
+					[](websocket::response_type& res)
+					{
+					res.set(beast::http::field::server, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-server-async");
+					}));
 
-			try_read_nomutext(0, recvs);
+				websocket_->async_accept(
+					boost::bind(&NetSession::on_accept_websocket, this, boost::placeholders::_1));
+			}
+			else
+			{
+				is_initialized = true;
+
+				boost::asio::socket_base::keep_alive option(true);
+				boost::system::error_code err;
+				socket_->set_option(option, err);
+
+				try_read_nomutext(0, recvs);
+			}
 		}
 		else
 		{
@@ -175,6 +338,38 @@ void NetSession::dealwith_connect_result(bool success)
 			NetProtocol* pr = (*iter);
 			if (bind_event_cb_)
 				bind_event_cb_->on_recv_protocol_netthread( pr);
+			else
+				delete pr;
+		}
+		recvs.clear();
+	}
+}
+
+void  NetSession::on_accept_websocket(beast::error_code ec)
+{
+	if (ec)
+	{
+		logError(out_runtime, "NetSession:WebSocket on_accept_websocket failed:%d", ec);
+		this->on_connect_lost_netthread();
+	}
+	else
+	{
+		std::list<NetProtocol*> recvs;
+
+		{
+			ThreadLockWrapper guard(*lock_);
+
+			is_initialized = true;
+
+			try_read_nomutext(0, recvs);
+		}
+
+		std::list<NetProtocol*>::iterator iter = recvs.begin(), eiter = recvs.end();
+		for (; iter != eiter; ++iter)
+		{
+			NetProtocol* pr = (*iter);
+			if (bind_event_cb_)
+				bind_event_cb_->on_recv_protocol_netthread(pr);
 			else
 				delete pr;
 		}
@@ -202,7 +397,24 @@ bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<NetProtocol*>
 		return true;
 
 	//move tail point to free space begin position
-	recv_buff_pos_ += alreadyrecvsize;
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
+	{
+		if (alreadyrecvsize > 0)
+		{
+			S_UINT_8 *pdata = recv_buff_ + recv_buff_pos_;
+			//recv_buff_ws_.data();
+			memcpy(pdata, (void *)recv_buff_ws_.data().data(), alreadyrecvsize);
+
+		}
+
+		recv_buff_ws_.consume(recv_buff_ws_.size());
+
+		recv_buff_pos_ += alreadyrecvsize;
+	}
+	else
+	{
+		recv_buff_pos_ += alreadyrecvsize;
+	}
 
 	int len =analy_package_nomutex( readpro);
 	if( len < 0)
@@ -224,9 +436,18 @@ bool NetSession::try_read_nomutext( int alreadyrecvsize, std::list<NetProtocol*>
 
 	S_UINT_8* pbuf =recv_buff_ + recv_buff_pos_;
 	
-	socket_->async_read_some(
-		boost::asio::buffer( pbuf, freespace),
-		boost::bind( &NetSession::handle_read, this, boost::placeholders::_1, boost::placeholders::_2));
+	if (socket_type_ == NetSessionType::NSType_WebSocket)
+	{
+		websocket_->async_read(
+			recv_buff_ws_,
+			boost::bind(&NetSession::handle_read, this, boost::placeholders::_1, boost::placeholders::_2));
+	}
+	else
+	{
+		socket_->async_read_some(
+			boost::asio::buffer(pbuf, freespace),
+			boost::bind(&NetSession::handle_read, this, boost::placeholders::_1, boost::placeholders::_2));
+	}
 
 	return true;
 }
@@ -293,9 +514,19 @@ void NetSession::try_write_nomutext( int alreadysendsize)
 	{
 		is_sending_ =true;
 
-		socket_->async_write_some(
-			boost::asio::buffer( send_buff_, send_buff_pos_),
-			boost::bind( &NetSession::handle_write, this, boost::placeholders::_1, boost::placeholders::_2));
+		if (socket_type_ == NetSessionType::NSType_WebSocket)
+		{
+			websocket_->binary(true);
+			websocket_->async_write(
+				boost::asio::buffer(send_buff_, send_buff_pos_),
+				boost::bind(&NetSession::handle_write, this, boost::placeholders::_1, boost::placeholders::_2));
+		}
+		else
+		{
+			socket_->async_write_some(
+				boost::asio::buffer(send_buff_, send_buff_pos_),
+				boost::bind(&NetSession::handle_write, this, boost::placeholders::_1, boost::placeholders::_2));
+		}
 	}
 }
 
@@ -361,6 +592,8 @@ void NetSession::fill_writebuffer_nomutex( int alreadysendsize)
 
 void NetSession::handle_read( boost::system::error_code error, size_t bytes_transferred)
 {
+	//logDebug(out_runtime, "ws recv msg code:%d, size:%d", error.value(), bytes_transferred);
+
 	if( error)
 		on_connect_lost_netthread();
 	else
@@ -396,6 +629,8 @@ void NetSession::handle_read( boost::system::error_code error, size_t bytes_tran
 
 void NetSession::handle_write( boost::system::error_code error, size_t bytes_transferred)
 {
+	//logDebug(out_runtime, "ws send msg code:%d, size:%d", error.value(), bytes_transferred);
+
 	if( error)
 		on_connect_lost_netthread();
 	else

@@ -33,7 +33,7 @@ using namespace PRO;
 #define WM_ERRORNOTIFY  WM_USER+0x101
 
 #define MAXCASE_PRETHREAD	10
-#define MAX_BUFFER_LEN		1024*16
+
 #define ROBOT_SOCKET_BUF	1024*512	//512k
 
 class CAboutDlg :public CDialogImpl<CAboutDlg>
@@ -67,6 +67,7 @@ public:
 	enum { IDD = IDD_THREADTEST_DIALOG };
 
 	CThreadTestDlg();
+	virtual ~CThreadTestDlg();
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg)
 	{
@@ -150,6 +151,10 @@ protected:
 protected:
 	char			buffer_[ROBOT_SOCKET_BUF];
 	int				read_buffer_pos_;
+
+	char			*send_buffer_;
+
+	CProtocolHead	head_;
 
 	ThreadWrapper	*tests_;
 	int				thread_num_;

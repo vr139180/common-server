@@ -24,7 +24,7 @@
 typedef struct tagLogData {
 	S_INT_64 timestamp;
 	std::string openid;
-	std::string accountid;
+	S_INT_64 accountid;
 	std::string action;
 	std::string protoid;
 	S_INT_32 delay;

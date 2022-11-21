@@ -37,6 +37,9 @@
     <ClInclude Include="TcpAcceptUser.h">
       <Filter>net</Filter>
     </ClInclude>
+    <ClInclude Include="LogSaveUtil.h">
+      <Filter>framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="maindlg.cpp">
@@ -56,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="TcpAcceptUser.cpp">
       <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="LogSaveUtil.cpp">
+      <Filter>framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

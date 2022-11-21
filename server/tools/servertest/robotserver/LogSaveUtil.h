@@ -13,8 +13,35 @@
 // limitations under the License.
 //
 
-#include "stdafx.h"
+#ifndef __LOGSAVEUTIL_H__
+#define __LOGSAVEUTIL_H__
 
-#if (_ATL_VER < 0x0700)
-#include <atlimpl.cpp>
-#endif //(_ATL_VER < 0x0700)
+#include <cmsLib/core_type.h>
+#include <cmsLib/ThreadLock.h>
+#include <boost/thread/condition_variable.hpp>
+#include <mysqlc++/mysql_connection.h>
+
+typedef struct tagLogData {
+	S_INT_64 timestamp;
+	std::string openid;
+	std::string accountid;
+	std::string action;
+	S_INT_32 delay;
+	S_INT_32 result;
+}LogData;
+
+class LogSaveUtil
+{
+public:
+	LogSaveUtil();
+	~LogSaveUtil();
+
+	void start_save();
+
+protected:
+
+	void clear_logs(sql::Connection* p_connection);
+
+};
+
+#endif //__UPLOADLOGUTIL_H__

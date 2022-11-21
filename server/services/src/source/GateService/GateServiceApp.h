@@ -45,6 +45,7 @@ public:
 	virtual ~GateServiceApp();
 
 	virtual void main_loop();
+	GateConfig* get_config() { return conf_.get(); }
 
 public:
 	void route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
@@ -94,7 +95,7 @@ protected:
 
 protected:
 	//network
-	std::shared_ptr<NetAcceptor>	acceptor_;
+	std::shared_ptr<NetAcceptor>		acceptor_;
 
 	LinkToHolder<DataRouterLinkTo>		datarouter_link_mth_;
 	LinkToHolder<ServiceRouterLinkTo>	svrrouter_link_mth_;

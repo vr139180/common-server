@@ -513,5 +513,8 @@
     </ClInclude>
     <ClInclude Include="..\source\libs\cmsLib\core_type.h" />
     <ClInclude Include="..\source\libs\cmsLib\common_result.h" />
+    <ClInclude Include="..\source\libs\cmsLib\net\ws_custom_static_buffer.h">
+      <Filter>net</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

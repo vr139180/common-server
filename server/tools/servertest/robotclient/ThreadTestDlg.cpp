@@ -46,6 +46,17 @@ CThreadTestDlg::CThreadTestDlg():
 	need_recon = false;
 	g_mainwnd =this;
 	g_logsave = &logsave_util_;
+
+	head_.encryption_ = false;
+	head_.version_ = 1;
+	head_.channel_ = 1;
+
+	send_buffer_ = new char[ROBOT_SOCKET_BUF];
+}
+
+CThreadTestDlg::~CThreadTestDlg()
+{
+	delete[] send_buffer_;
 }
 
 LRESULT CThreadTestDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
@@ -147,7 +158,7 @@ void CThreadTestDlg::OnReceive()
 	}
 
 	char *pbuf = buffer_ + read_buffer_pos_;
-	int len = MAX_PACK_LEN - read_buffer_pos_;
+	int len = ROBOT_SOCKET_BUF - read_buffer_pos_;
 
 	int rlen = ::recv(m_hSocket, pbuf, len, 0);
 
@@ -175,29 +186,47 @@ void CThreadTestDlg::OnReceive()
 	//分析现有数据
 	if (read_buffer_pos_ < sizeof(S_UINT_32))
 		return;
-	pbuf = buffer_;
 
-	S_UINT_32 hd = *((S_UINT_32*)pbuf);
+	//-------------------------------------------------------------------
+	//分析现有数据
+	S_UINT_8* pdata = (S_UINT_8*)buffer_;
+	S_UINT_32 prolen = *((S_UINT_32*)pdata);
+	{
+		S_UINT_32 offset = 0;
+		CProtoHeadBase::Decode(pdata, (S_UINT_32)read_buffer_pos_, offset, prolen);
+	}
 
-	S_UINT_16 len2 = 0;
-	S_UINT_16 proid = 0;
-
-	if (len2 > read_buffer_pos_ - sizeof(S_UINT_32))
+	if (read_buffer_pos_ < prolen)
 		return;
 
-	pbuf += sizeof(S_UINT_32);
+	CProtocolHead chead;
+	if (!chead.decode_head(pdata, prolen))
+		return;
 
-	BasicProtocol *ret = ProtocolFactory::instance()->iid_to_proto(proid, pbuf, len2);
+	BasicProtocol *ret = 0;
 
-	//移动内存
-	read_buffer_pos_ -= sizeof(S_UINT_32);
-	read_buffer_pos_ -= len2;
-	pbuf += len2;
-	memmove(&(buffer_[0]), pbuf, read_buffer_pos_);
+	pdata = (S_UINT_8*)buffer_ + (S_UINT_32)chead.get_headlen();
+	try {
+		ret = ProtocolFactory::instance()->iid_to_proto(chead.get_msgid(), pdata, chead.get_msglen());
+		if (ret == 0)
+			return;
+
+		//移动内存
+		read_buffer_pos_ -= prolen;
+		if (read_buffer_pos_ > 0)
+		{
+			pdata = (S_UINT_8*)buffer_ + prolen;
+			memmove(&(buffer_[0]), pdata, read_buffer_pos_);
+		}
+	}
+	catch (...) {
+		return;
+	}
+	//-------------------------------------------------------------------
 
 	if (ret)
 	{
-		switch (proid)
+		switch (chead.get_msgid())
 		{
 		case ROBOTOTEST_ROBOT_CONFIG_ACK:
 		{
@@ -210,7 +239,7 @@ void CThreadTestDlg::OnReceive()
 
 				m_startplayer.Format("%d", ack->startuserid());
 				m_playernums.Format("%d", ack->users());
-				
+
 				m_user = ack->startuserid();
 				m_usernum = ack->users();
 
@@ -218,7 +247,7 @@ void CThreadTestDlg::OnReceive()
 				logsave_util_.dbpwd_ = ack->dbpwd().c_str();
 				logsave_util_.dbname_ = ack->dbname().c_str();
 				logsave_util_.dbip_ = ack->dbip().c_str();
-				
+
 				m_robotstatus = "config success";
 				DoDataExchange(DDX_LOAD);
 
@@ -235,7 +264,7 @@ void CThreadTestDlg::OnReceive()
 		case ROBOTOTEST_ROBOT_START_ACK:
 		{
 			Robot_Start_Ack* ack = reinterpret_cast<Robot_Start_Ack*>(ret);
-			
+
 			g_xml = ack->behavior(0).c_str();
 
 			DoDataExchange(DDX_LOAD);
@@ -300,8 +329,9 @@ void CThreadTestDlg::OnReceive()
 			}
 		}
 		break;
+		}
 	}
-	}
+
 }
 
 void CThreadTestDlg::OnClose()
@@ -435,18 +465,47 @@ bool CThreadTestDlg::connect_2_server(){
 	return TRUE;
 }
 
-void CThreadTestDlg::send_proto(BasicProtocol* msg)
+void CThreadTestDlg::send_proto(BasicProtocol* p)
 {
-	uint8_t *pbuf = 0;
-	uint32_t len = 0;
+	//协议号递增
+	++head_.seqno_;
 
-	uint32_t len2 = 0;
-	while ((len2 = ::send(m_hSocket, (const char*)pbuf, len, 0)) != SOCKET_ERROR)
+	S_UINT_8 *pbuf = (S_UINT_8*)send_buffer_;
+	S_UINT_8 *pdata = (S_UINT_8*)pbuf;
+
+	S_UINT_16 proiid = ProtocolFactory::instance()->proto_to_iid( p);
+	if (proiid == 0)
+		return;
+	//设置协议id
+	head_.set_msgid(proiid);
+
+	if (!head_.encode_head(pdata, ROBOT_SOCKET_BUF))
+		return;
+
+	S_UINT_32 len2 = (S_UINT_32)p->ByteSizeLong();
+	if (head_.get_headlen() + len2 > ROBOT_SOCKET_BUF)
+		return;
+
+	try {
+		pdata = pbuf + head_.get_headlen();
+		if (!p->SerializeToArray(pdata, len2))
+			return;
+	}
+	catch (...) {
+		return;
+	}
+
+	head_.encode_totlelen(pbuf, ROBOT_SOCKET_BUF, len2);
+	int totlen = head_.get_totlelen();
+
+	pdata = pbuf;
+	len2 = 0;
+	while ((len2 = ::send(m_hSocket, (const char*)pdata, totlen, 0)) != SOCKET_ERROR)
 	{
-		len -= len2;
-		if (len <= 0)
+		totlen -= len2;
+		if (totlen <= 0)
 			break;
-		pbuf = pbuf + len2;
+		pdata = pdata + len2;
 	}
 }
 

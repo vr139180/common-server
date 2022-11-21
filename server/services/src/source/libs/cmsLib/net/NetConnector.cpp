@@ -33,6 +33,9 @@ bool NetConnector::connect_to( const char* ip, int port)
 	if( is_connecting_)
 		return false;
 
+	this->ip_ = ip;
+	this->port_ = port;
+
 	net_session_->attachToSocket( NetDriverX::getInstance().get_ioservice());
 
 	boost::asio::ip::tcp::endpoint endpoint( boost::asio::ip::tcp::v4(), port);
@@ -46,10 +49,21 @@ bool NetConnector::connect_to( const char* ip, int port)
 		return false;
 	}
 
-	is_connecting_ =true;
+	is_connecting_ = true;
 
-	net_session_->get_socket().async_connect( endpoint,
-		boost::bind( &NetConnector::handle_connect, this, boost::placeholders::_1));
+	//timeout 30 s
+	if (net_session_->get_session_type() == NetSessionType::NSType_WebSocket)
+	{
+		beast::get_lowest_layer( net_session_->get_websocket()).expires_after(std::chrono::seconds(30));
+
+		beast::get_lowest_layer(net_session_->get_websocket()).async_connect(endpoint,
+			boost::bind(&NetConnector::handle_connect_websocket, this, boost::placeholders::_1));
+	}
+	else
+	{
+		net_session_->get_tcpsocket().async_connect(endpoint,
+			boost::bind(&NetConnector::handle_connect, this, boost::placeholders::_1));
+	}
 
 	return true;
 }
@@ -57,6 +71,13 @@ bool NetConnector::connect_to( const char* ip, int port)
 void NetConnector::handle_connect( boost::system::error_code error)
 {
 	net_session_->on_connectto_result(!error);
+
+	is_connecting_ = false;
+}
+
+void NetConnector::handle_connect_websocket(beast::error_code error)
+{
+	net_session_->on_connectto_result_ws(!error, ip_.c_str(), port_);
 
 	is_connecting_ = false;
 }

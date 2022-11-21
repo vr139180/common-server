@@ -26,13 +26,15 @@
 #include "player/PlayerChannel.h"
 #include "player/GamePlayerCtrl.h"
 #include "GateServiceApp.h"
-
+#include "config/GateConfig.h"
 
 GamePlayer::GamePlayer():slot_(-1)
 , cur_state_(PlayerState::PlayerState_Free)
 , role_iid_(0)
 {
-	session_.reset(new NetSession(0, 0, this));
+	GateConfig* pConf = svrApp.get_config();
+
+	session_.reset(new NetSession(0, 0, this, pConf->gate_type_));
 
 	this->init_protocolhead();
 }

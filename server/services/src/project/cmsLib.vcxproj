@@ -176,7 +176,9 @@
     <ClCompile Include="..\source\libs\cmsLib\net\NetAcceptor.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\net\NetConnector.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\net\NetDriverX.cpp" />
-    <ClCompile Include="..\source\libs\cmsLib\net\NetSession.cpp" />
+    <ClCompile Include="..\source\libs\cmsLib\net\NetSession.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
     <ClCompile Include="..\source\libs\cmsLib\system\CommandBase.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\ServerAppBase.cpp" />
     <ClCompile Include="..\source\libs\cmsLib\ServerAppWrapper.cpp" />
@@ -220,6 +222,7 @@
     <ClInclude Include="..\source\libs\cmsLib\lua\ScriptContext.h" />
     <ClInclude Include="..\source\libs\cmsLib\net\LinkToBase.h" />
     <ClInclude Include="..\source\libs\cmsLib\net\NetHashingWithVNode.h" />
+    <ClInclude Include="..\source\libs\cmsLib\net\ws_custom_static_buffer.h" />
     <ClInclude Include="..\source\libs\cmsLib\OSDriver.h" />
     <ClInclude Include="..\source\libs\cmsLib\os\win32\OSDriverWin32.h" />
     <ClInclude Include="..\source\libs\cmsLib\os\linux\OSDriverLinux.h" />

@@ -42,9 +42,13 @@ public:
 public:
 	
 	void handle_connect( boost::system::error_code error);
+	void handle_connect_websocket(beast::error_code error);
 
 private:
 	bool			is_connecting_;
+
+	std::string		ip_;
+	int				port_;
 
 	NetSession*		net_session_;
 };

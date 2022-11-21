@@ -1,6 +1,17 @@
-// MainDlg.h : interface of the CMainDlg class
+// Copyright 2021 common-server Authors
 //
-/////////////////////////////////////////////////////////////////////////////
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
 
 #pragma once
 
@@ -16,6 +27,9 @@
 #include <list>
 
 extern OptionUtil g_opt;
+extern CWindow	*g_mainwnd;
+
+#include "LogSaveUtil.h"
 
 #define ICON_UNKNOW 0
 #define ICON_CONNECTED 1
@@ -52,10 +66,15 @@ public:
 		COMMAND_HANDLER(IDC_BTN_STOPALL, BN_CLICKED, OnBnClickedBtnStopall)
 		COMMAND_HANDLER(IDC_BTN_START_SEL, BN_CLICKED, OnBnClickedBtnStartSel)
 		COMMAND_HANDLER(IDC_BTN_STOP_SEL, BN_CLICKED, OnBnClickedBtnStopSel)
+		COMMAND_HANDLER(IDC_ANALYSSISCLEAR_BNT, BN_CLICKED, OnBnClickedBtnAnalysisClear)
+		COMMAND_HANDLER(IDC_STOPUPLOADBTN, BN_CLICKED, OnBnClickedBtnAnalysisStop)
+		COMMAND_HANDLER(IDC_MODIFYPREFIXBUT, BN_CLICKED, OnBnClickedModifyPrefix)
 	END_MSG_MAP()
 
 	LRESULT OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 	{
+		g_mainwnd = this;
+
 		// center the dialog on the screen
 		CenterWindow();
 
@@ -78,6 +97,12 @@ public:
 		lstclients_ = GetDlgItem( IDC_LST_CLIENTS);
 		lstclients_.SetExtendedListViewStyle(LVS_EX_FULLROWSELECT);
 
+		log_txt_ = GetDlgItem(IDC_EDT_LOG);
+		log_ = "init....";
+		log_txt_.AppendText("..........log here.......\r\n");
+
+		openid_prefix_ = GetDlgItem(IDC_PRFIXEDT);
+
 		CImageList img;
 		img.Create( 16, 16, ILC_COLOR8, 4, 0);
 		hIcon = LoadIcon ( _Module.GetResourceInstance(), MAKEINTRESOURCE(IDI_ICON_UNKNOW));
@@ -95,10 +120,10 @@ public:
 		lstclients_.InsertColumn(1, _T("名称"), LVCFMT_LEFT, 80);
 		lstclients_.InsertColumn(2, _T("IP地址"), LVCFMT_LEFT, 90);
 		lstclients_.InsertColumn(3, _T("端口"), LVCFMT_RIGHT, 44);
-		lstclients_.InsertColumn(4, _T("时间"), LVCFMT_RIGHT, 60);
-		lstclients_.InsertColumn(5, _T("开始ID"), LVCFMT_RIGHT, 50);
-		lstclients_.InsertColumn(6, _T("用户数"), LVCFMT_RIGHT, 50);
-		lstclients_.InsertColumn(7, _T("用户范围"), LVCFMT_RIGHT, 50);
+		lstclients_.InsertColumn(4, _T("时间"), LVCFMT_RIGHT, 80);
+		lstclients_.InsertColumn(5, _T("开始ID"), LVCFMT_RIGHT, 80);
+		lstclients_.InsertColumn(6, _T("用户数"), LVCFMT_RIGHT, 80);
+		lstclients_.InsertColumn(7, _T("status"), LVCFMT_RIGHT, 250);
 
 		if ( !g_opt.load( "robotserver.ini"))
 		{
@@ -124,8 +149,7 @@ public:
 			lstclients_.SetItem(item, 5, LVIF_TEXT, text, 0, 0, 0, 0);
 			sprintf(text, "%u", des.users_);
 			lstclients_.SetItem(item, 6, LVIF_TEXT, text, 0, 0, 0, 0);
-			sprintf(text, "%u", des.usersrange_);
-			lstclients_.SetItem(item, 7, LVIF_TEXT, text, 0, 0, 0, 0);
+			lstclients_.SetItem(item, 7, LVIF_TEXT, "", 0, 0, 0, 0);
 
 			lstclients_.SetItemData( item, 0);
 
@@ -142,6 +166,8 @@ public:
 		}
 
 		SetTimer( 1000, 10, NULL);
+
+		openid_prefix_.SetWindowText(g_opt.openprefix_.c_str());
 
 		return TRUE;
 	}
@@ -186,7 +212,12 @@ private:
 private:
 	TcpAcceptListener	listener_;
 	CListViewCtrl		lstclients_;
-	CString		log_;
+	CString				log_;
+	CEdit				log_txt_;
+
+	CEdit				openid_prefix_;
+
+	LogSaveUtil			save_util_;
 
 public:
 	LRESULT OnTimer(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/);
@@ -195,4 +226,8 @@ public:
 	LRESULT OnBnClickedBtnStopall(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedBtnStartSel(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
 	LRESULT OnBnClickedBtnStopSel(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedBtnAnalysisClear(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedBtnAnalysisStop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+	LRESULT OnBnClickedModifyPrefix(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/);
+
 };

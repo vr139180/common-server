@@ -82,6 +82,9 @@ GateConfig* GateServiceApp::load_gateconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
+	std::string ws = XmlUtil::GetXmlAttrStr(root, "type", "tcp");
+	ShareUtil::to_lower(ws);
+	config->set_gate_type(ws);
 
 	return xptr.release();
 }

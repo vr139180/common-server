@@ -46,15 +46,20 @@
 #define IDC_RDO_COMBAT_TOW              1026
 #define IDC_SLIDER1                     1034
 #define IDC_LST_BEV                     1039
+#define IDC_ANALYSSISCLEAR_BNT          1040
+#define IDC_STOPUPLOADBTN               1041
+#define IDC_EDIT1                       1042
+#define IDC_PRFIXEDT                    1042
+#define IDC_MODIFYPREFIXBUT             1043
 #define IDC_RDO_COMBAT_PVP              1099
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        207
+#define _APS_NEXT_RESOURCE_VALUE        208
 #define _APS_NEXT_COMMAND_VALUE         32772
-#define _APS_NEXT_CONTROL_VALUE         1040
+#define _APS_NEXT_CONTROL_VALUE         1044
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

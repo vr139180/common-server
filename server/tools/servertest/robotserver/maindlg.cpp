@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 #include "StdAfx.h"
 
 #include <gameLib/protobuf/Proto_all.h>
@@ -9,6 +24,7 @@
 #include "SelTypeDlg.h"
 
 extern OptionUtil g_opt;
+CWindow	*g_mainwnd = 0;
 
 using namespace PRO;
 
@@ -67,12 +83,66 @@ void CMainDlg::onRecvProtocol( S_UINT_16 proid, BasicProtocol* p, SOCKET socket)
 
 	switch( proid) 
 	{
+	case ROBOTOTEST_RECORD_REG:
+	{
+		Robot_Record_req* req = dynamic_cast<Robot_Record_req*>(p);
+		OptionUtil::RobotDesctiption* des = g_opt.find_robot_byid(req->robotid());
+		if (des != 0)
+		{
+			des->totles_ = req->logs();
+		}
+		break;
+	}
+	case ROBOTOTEST_STARTRECORD_REG:
+	{
+		Robot_StartRecord_req* req = dynamic_cast<Robot_StartRecord_req*>(p);
+		OptionUtil::RobotDesctiption* des = g_opt.find_robot_byid(req->robotid());
+		if (des == 0)
+			return;
+
+		des->totles_ = 0;
+
+		S_INT_32 item = FindLstItemByName(des->robotname_);
+		if (item == -1)
+			return;
+		if (-1 != item)
+		{
+			lstclients_.SetItem(item, 7, LVIF_TEXT, "log uploading", 0, 0, 0, 0);
+		}
+
+		break;
+	}
+	case ROBOTOTEST_ENDRECORD_REG:
+	{
+		Robot_EndRecord_req* req = dynamic_cast<Robot_EndRecord_req*>(p);
+		OptionUtil::RobotDesctiption* des = g_opt.find_robot_byid(req->robotid());
+		if (des == 0)
+			return;
+
+		S_INT_32 item = FindLstItemByName(des->robotname_);
+		if (item == -1)
+			return;
+		if (-1 != item)
+		{
+			char text[256];
+			sprintf(text, "log upload end. totle:%d", des->totles_);
+			lstclients_.SetItem(item, 7, LVIF_TEXT, text, 0, 0, 0, 0);
+		}
+
+		break;
+	}
 	case ROBOTOTEST_ROBOT_CONFIG_REQ:
 		{
 			Robot_Config_Req* req = dynamic_cast <Robot_Config_Req*>(p);
 
 			Robot_Config_Ack* ack = new Robot_Config_Ack();
 			ack->set_version(ROBOT_VERSION);
+			ack->set_urladdr(g_opt.get_urladdr().c_str());
+			ack->set_openprefix(g_opt.get_openprefix().c_str());
+			ack->set_dbuser(g_opt.db_.dbuser_.c_str());
+			ack->set_dbpwd(g_opt.db_.dbpwd_.c_str());
+			ack->set_dbname(g_opt.db_.dbname_.c_str());
+			ack->set_dbip(g_opt.db_.dbip_.c_str());
 
 			OptionUtil::RobotDesctiption* des = g_opt.find_robot_byname( req->robotname());
 			if ( des)
@@ -90,9 +160,6 @@ void CMainDlg::onRecvProtocol( S_UINT_16 proid, BasicProtocol* p, SOCKET socket)
 						ack->set_robotid(des->robotid_);
 						ack->set_startuserid( des->startuserid_);
 						ack->set_users( des->users_);
-						ack->set_usersrange( des->usersrange_);
-						ack->set_lgsip( des->lgsip_);
-						ack->set_lgsport( des->lgsport_);
 						ack->set_result(0);
 
 						S_INT_32 item = FindLstItemByName( des->robotname_);
@@ -107,18 +174,18 @@ void CMainDlg::onRecvProtocol( S_UINT_16 proid, BasicProtocol* p, SOCKET socket)
 							sockaddr_in sa;
 							int   salen;
 							salen = sizeof(sa);
-							if( getpeername( socket, (sockaddr*)&sa, &salen ) == 0 )
+							if (getpeername(socket, (sockaddr*)&sa, &salen) == 0)
 							{
-								sprintf( text, "%s", inet_ntoa( sa.sin_addr));
+								sprintf(text, "%s", inet_ntoa(sa.sin_addr));
 								lstclients_.SetItem(item, 2, LVIF_TEXT, text, 0, 0, 0, 0);
-								sprintf( text, "%d", ntohs( sa.sin_port));
+								sprintf(text, "%d", ntohs(sa.sin_port));
 								lstclients_.SetItem(item, 3, LVIF_TEXT, text, 0, 0, 0, 0);
 							}
 							else
 							{
-								sprintf( text, "peer ip error");
+								sprintf(text, "peer ip error");
 								lstclients_.SetItem(item, 2, LVIF_TEXT, text, 0, 0, 0, 0);
-								sprintf( text, "%d", ntohs( sa.sin_port));
+								sprintf(text, "%d", ntohs(sa.sin_port));
 								lstclients_.SetItem(item, 3, LVIF_TEXT, text, 0, 0, 0, 0);
 							}
 
@@ -129,12 +196,9 @@ void CMainDlg::onRecvProtocol( S_UINT_16 proid, BasicProtocol* p, SOCKET socket)
 							lstclients_.SetItem(item, 5, LVIF_TEXT, text, 0, 0, 0, 0);
 							sprintf(text, "%u", des->users_);
 							lstclients_.SetItem(item, 6, LVIF_TEXT, text, 0, 0, 0, 0);
-							sprintf(text, "%u", des->usersrange_);
-							lstclients_.SetItem(item, 7, LVIF_TEXT, text, 0, 0, 0, 0);
-							sprintf(text, "%u", 0);
-							lstclients_.SetItem(item, 8, LVIF_TEXT, text, 0, 0, 0, 0);
-							lstclients_.SetItemData( item, socket);
-							lstclients_.SetItem( item, 0, LVIF_IMAGE, "", ICON_CONNECTED, 0, 0, 0);
+							lstclients_.SetItem(item, 7, LVIF_TEXT, "", 0, 0, 0, 0);
+							lstclients_.SetItemData(item, socket);
+							lstclients_.SetItem(item, 0, LVIF_IMAGE, "", ICON_CONNECTED, 0, 0, 0);
 						}
 					}
 				}
@@ -326,6 +390,74 @@ LRESULT CMainDlg::OnBnClickedBtnStopSel(WORD /*wNotifyCode*/, WORD /*wID*/, HWND
 	}
 
 	::SetFocus( GetDlgItem( IDC_LST_CLIENTS));
+
+	return 0;
+}
+
+LRESULT CMainDlg::OnBnClickedBtnAnalysisClear(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	log_txt_.AppendText("begin upload logs to database......\r\n");
+	save_util_.start_save();
+
+	S_INT_32 count = lstclients_.GetItemCount();
+	char text[256];
+	for (S_INT_32 i = 0; i < count; i++)
+	{
+		S_UINT_32 data = lstclients_.GetItemData(i);
+		if (data != 0)
+		{
+			SOCKET socket = (SOCKET)data;
+			Robot_UploadLogs_ntf* upload = new Robot_UploadLogs_ntf();
+			listener_.send_protocol(socket, upload);
+		}
+	}
+
+	return 0;
+}
+
+LRESULT CMainDlg::OnBnClickedBtnAnalysisStop(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	log_txt_.AppendText("clear all client logs......\r\n");
+
+	S_INT_32 count = lstclients_.GetItemCount();
+	char text[256];
+	for (S_INT_32 i = 0; i < count; i++)
+	{
+		S_UINT_32 data = lstclients_.GetItemData(i);
+		if (data != 0)
+		{
+			SOCKET socket = (SOCKET)data;
+			Robot_ClearLogs_ntf* ack = new Robot_ClearLogs_ntf();
+			listener_.send_protocol(socket, ack);
+		}
+	}
+
+	return 0;
+}
+
+LRESULT CMainDlg::OnBnClickedModifyPrefix(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+{
+	CString prefix;
+	openid_prefix_.GetWindowText(prefix);
+	g_opt.openprefix_ = (LPCTSTR)prefix;
+
+	CString log;
+	log.Format("set new account prefix:%s ......\r\n", g_opt.openprefix_.c_str());
+	log_txt_.AppendText((LPCTSTR)log);
+
+	S_INT_32 count = lstclients_.GetItemCount();
+	char text[256];
+	for (S_INT_32 i = 0; i < count; i++)
+	{
+		S_UINT_32 data = lstclients_.GetItemData(i);
+		if (data != 0)
+		{
+			SOCKET socket = (SOCKET)data;
+			Robot_UserPrefixChg_ntf* ack = new Robot_UserPrefixChg_ntf();
+			ack->set_prefix(g_opt.openprefix_.c_str());
+			listener_.send_protocol(socket, ack);
+		}
+	}
 
 	return 0;
 }

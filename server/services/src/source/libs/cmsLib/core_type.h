@@ -25,6 +25,11 @@
 
 #include <cmsLib/GlobalSettings.h>
 
+typedef enum tagNetSessionType {
+	NSType_TCP,
+	NSType_WebSocket,
+}NetSessionType;
+
 #define PROTOCOL_NAMESPACE_BEGIN	namespace PRO {
 #define PROTOCOL_NAMESPACE_END		}
 #define USE_PROTOCOL_NAMESPACE		using namespace PRO;
