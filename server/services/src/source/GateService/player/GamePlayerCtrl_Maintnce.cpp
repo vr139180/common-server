@@ -23,17 +23,6 @@
 
 USE_PROTOCOL_NAMESPACE
 
-void GamePlayerCtrl::ask_gateslot_sync()
-{
-	SystemCommand<GamePlayerCtrl>* pcmd = new SystemCommand<GamePlayerCtrl>(
-		boost::bind(&GamePlayerCtrl::on_mth_gateslot_sync, this, this));
-	svrApp.regist_syscmd(pcmd);
-}
-
-void GamePlayerCtrl::on_mth_gateslot_sync(void*)
-{
-}
-
 void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish)
 {
 	if (1)
@@ -61,13 +50,6 @@ void GamePlayerCtrl::maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, 
 			wait_auth_slot_num_ = wait_auth_slots_queue_.size();
 			free_slot_num_ = free_slots_.size();
 		}
-
-		//10s 无freeslot请求，则强制同步
-		if (last_freeslot_ask_ + 10 * 1000 < tnow)
-			bsync = true;
 	}
 
-	//如果需要通知，发送通知
-	if (bsync)
-		on_mth_gateslot_sync(0);
 }

@@ -81,7 +81,7 @@ void GamePlayerCtrl::stop()
 	}
 }
 
-GamePlayer* GamePlayerCtrl::ask_free_slot()
+GamePlayer* GamePlayerCtrl::ask_free_slot(S_INT_64 gateid)
 {
 	ThreadLockWrapper tl(lock_);
 
@@ -110,7 +110,7 @@ GamePlayer* GamePlayerCtrl::ask_free_slot()
 		wait_auth_slot_num_ = wait_auth_slots_queue_.size();
 
 		//记录等待开始验证的时间
-		gp->pre_start();
+		gp->pre_start( gateid);
 
 		return gp;
 	}
@@ -156,7 +156,16 @@ bool GamePlayerCtrl::auth_wait_slot(int slot)
 PlayerChannel* GamePlayerCtrl::get_channel_by_slot(int slot)
 {
 	int pindex = get_pieceindex_from_slot(slot);
+	if (pindex == -1)
+		return 0;
+
 	return &(all_channels_[pindex]);
+}
+
+PlayerChannel* GamePlayerCtrl::get_channel_by_head(const SProtocolHead& head)
+{
+	S_INT_32 slot = head.get_token_slot();
+	return get_channel_by_slot(slot);
 }
 
 void GamePlayerCtrl::post_slot_cmd(CommandBase* cmd, int slot)
@@ -175,13 +184,12 @@ void GamePlayerCtrl::post_slot_cmd(CommandBase* cmd, int slot)
 
 void GamePlayerCtrl::route_msg_to_player(NetProtocol* msg)
 {
-	int slot = msg->head_.get_token_slot();
-	int pindex = get_pieceindex_from_slot(slot);
-	if (pindex == -1)
+	PlayerChannel* pchannel = get_channel_by_head(msg->head_);
+	if (pchannel == 0)
 	{
 		delete msg;
 		return;
 	}
 
-	all_channels_[pindex].send_msg_to_player(msg, slot);
+	pchannel->send_msg_to_player(msg);
 }

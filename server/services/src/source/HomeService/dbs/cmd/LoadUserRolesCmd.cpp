@@ -20,7 +20,7 @@
 
 #include "HomeServiceApp.h"
 
-LoadUserRolesCmd::LoadUserRolesCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p) :BaseDBCmd(uid, token, p)
+LoadUserRolesCmd::LoadUserRolesCmd(const SProtocolHead& head, LobbyService* p) :BaseDBCmd( head, p)
 , success_(false)
 {
 
@@ -34,7 +34,7 @@ void LoadUserRolesCmd::run_in_db_thread(sql::Connection* p_connection)
 		prep_stmt.reset(p_connection->createStatement());
 
 		std::stringstream sql;
-		sql << "select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = " << user_iid_ << ";";
+		sql << "select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = " << head_.get_token_useriid() << ";";
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
 		//role list
@@ -59,7 +59,7 @@ void LoadUserRolesCmd::run()
 	if (!success_)
 		return;
 
-	LobbyUser* puser = lobby_->get_userofsame_from_x(user_iid_, protoken_);
+	LobbyUser* puser = lobby_->get_userbyid_from_msg( head_);
 	if (puser == 0) return;
 
 	puser->on_db_rolelist_update( true, roles_data_);

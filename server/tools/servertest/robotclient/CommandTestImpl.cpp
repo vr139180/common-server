@@ -39,6 +39,7 @@ socket2_( INVALID_SOCKET)
 	context_.regist_2_context<CommandTestImpl>( "cmd", this);
 
 	//init
+	last_active_time_ = 0;
 	user_iid_ = NO_INITVALUE;
 	user_token_ = NO_INITVALUE;
 	role_iid_ = NO_INITVALUE;
@@ -224,6 +225,7 @@ BasicProtocol* CommandTestImpl::recv_from_gts(S_UINT_16& proid)
 			memmove(&(gts_recv_buffer_[0]), pdata, gts_data_len_);
 		}
 
+		proid = chead.get_msgid();
 		return bp;
 	}
 	catch (...) {

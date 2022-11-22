@@ -107,16 +107,24 @@ public:
 	bool decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
 
 	void set_token_giduid(S_INT_64 gateiid, S_INT_64 userid);
+	void set_token_gateid(S_INT_64 gateiid);
+	void set_token_userid(S_INT_64 userid);
 	S_INT_64 get_token_gateiid() const;
 	S_INT_64 get_token_useriid() const;
+
 	void set_token_slottoken(S_INT_32 slot, S_INT_64 token);
 	S_INT_32 get_token_slot() const;
 	S_INT_64 get_token_token() const;
+
 	S_INT_64 get_role_iid() { return role_iid_; }
 	void set_role_iid(S_INT_64 id) { role_iid_ = id; }
 
 	bool is_same_session(const SProtocolHead& head) {
 		return get_token_useriid() == head.get_token_useriid() && get_token_token() == head.get_token_token();
+	}
+
+	bool is_same_token(const SProtocolHead& head) {
+		return get_token_token() == head.get_token_token();
 	}
 
 public:
@@ -155,6 +163,7 @@ public:
 	bool is_routerbalance() { return head_.router_balance_; }
 	S_INT_64 get_useriid() { return head_.get_token_useriid(); }
 	S_INT_64 get_roleiid() { return head_.get_role_iid(); }
+	S_INT_8 get_to() { return head_.to_type_; }
 
 	NetProtocol* clone();
 

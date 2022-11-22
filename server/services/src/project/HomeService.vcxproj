@@ -177,6 +177,7 @@
     <ClInclude Include="..\source\HomeService\HomeServiceApp.h" />
     <ClInclude Include="..\source\HomeService\lobby\LobbyService.h" />
     <ClInclude Include="..\source\HomeService\lobby\LobbyUser.h" />
+    <ClInclude Include="..\source\HomeService\lobby\LobbyUserContainer.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserBase.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserBuildings.h" />
     <ClInclude Include="..\source\HomeService\lobby\user\UserCacheData.h" />

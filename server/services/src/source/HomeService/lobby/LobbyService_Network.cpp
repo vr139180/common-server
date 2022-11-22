@@ -45,7 +45,7 @@ void LobbyService::InitNetMessage()
 
 void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	logDebug(out_runtime, "recv user:%lld logount request", puser->get_user_iid());
@@ -54,7 +54,7 @@ void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	User_RoleCreate_req* req = dynamic_cast<User_RoleCreate_req*>(pro->msg_);
@@ -64,7 +64,7 @@ void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	User_RoleCreate_req* req = dynamic_cast<User_RoleCreate_req*>(pro->msg_);
@@ -74,7 +74,7 @@ void LobbyService::on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	User_RoleSelect_req* req = dynamic_cast<User_RoleSelect_req*>(pro->msg_);
 
@@ -83,7 +83,7 @@ void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	Build_AddItem_req* req = dynamic_cast<Build_AddItem_req*>(pro->msg_);
 
@@ -102,7 +102,7 @@ void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	Build_DelItem_req* req = dynamic_cast<Build_DelItem_req*>(pro->msg_);
 
@@ -117,7 +117,7 @@ void LobbyService::on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_pet_adoptone_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	Pet_AdoptOne_req* req = dynamic_cast<Pet_AdoptOne_req*>(pro->msg_);
 
@@ -134,7 +134,7 @@ void LobbyService::on_lb_pet_adoptone_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_pet_releaseone_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	Pet_ReleaseOne_req* req = dynamic_cast<Pet_ReleaseOne_req*>(pro->msg_);
 
@@ -150,7 +150,7 @@ void LobbyService::on_lb_pet_releaseone_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_task_waitlist_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	
 	BasicProtocol* ack = puser->task_get_waitlist();
@@ -159,7 +159,7 @@ void LobbyService::on_lb_task_waitlist_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_task_mytasks_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 	
 	BasicProtocol* ack = puser->task_get_mytasks();
@@ -169,7 +169,7 @@ void LobbyService::on_lb_task_mytasks_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_task_get_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	Task_GetTask_req* req = dynamic_cast<Task_GetTask_req*>(pro->msg_);
@@ -180,7 +180,7 @@ void LobbyService::on_lb_task_get_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_task_submit_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	Task_SubmitTask_req* req = dynamic_cast<Task_SubmitTask_req*>(pro->msg_);
@@ -191,7 +191,7 @@ void LobbyService::on_lb_task_submit_req(NetProtocol* pro, bool& autorelease)
 
 void LobbyService::on_lb_task_giveup_req(NetProtocol* pro, bool& autorelease)
 {
-	LobbyUser *puser = get_userofsame_from_msg(pro);
+	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
 	Task_GiveupTask_req* req = dynamic_cast<Task_GiveupTask_req*>(pro->msg_);

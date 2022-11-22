@@ -33,7 +33,6 @@
 class GamePlayerCtrl : public GHUsersSeparate<GamePlayer>
 {
 	typedef GHUsersSeparate<GamePlayer> base;
-	typedef boost::unordered::unordered_map<int, S_INT_64> AUTH_MAP;
 public:
 	GamePlayerCtrl();
 	static GamePlayerCtrl& instance();
@@ -47,8 +46,9 @@ public:
 
 	void post_slot_cmd(CommandBase* cmd, int slot);
 	PlayerChannel* get_channel_by_slot(int slot);
+	PlayerChannel* get_channel_by_head(const SProtocolHead& head);
 
-	GamePlayer* ask_free_slot();
+	GamePlayer* ask_free_slot( S_INT_64 gateid);
 	void return_slot_to_free(int slot);
 	bool auth_wait_slot(int slot);
 
@@ -57,10 +57,8 @@ public:
 	void chat_globalmsg_notify(NetProtocol* msg);
 
 public:
-	void ask_gateslot_sync();
 	//µÇÂ½Î¬»¤¶¨Ê±Æ÷
 	void maintnce_proxylogin_timer(u64 tnow, int interval, u64 iid, bool& finish);
-	void on_mth_gateslot_sync(void*);
 
 protected:
 	//lobby service

@@ -404,3 +404,18 @@ void DataRouterApp::router_to_home(NetProtocol* pro)
 {
 	home_links_from_.send_protocol(pro->get_useriid(), pro);
 }
+
+void DataRouterApp::router_to_gate(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> ptr(pro);
+
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d", 
+		NetServiceType::to_string( (NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	S_INT_64 gateid = pro->head_.get_token_gateiid();
+	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateid);
+	if (plink)
+		plink->send_protocol(ptr.release());
+}

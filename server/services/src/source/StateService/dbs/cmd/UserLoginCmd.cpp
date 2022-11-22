@@ -20,18 +20,16 @@
 #include "StateServiceApp.h"
 
 UserLoginCmd::UserLoginCmd(const char* uname, const char* pwd, StateService* p):BaseDBCmd( p)
-, success_(false)
+, result_(0)
 , user_iid_(0)
-, user_token_(0)
 {
 	username_ = uname;
 	pwd_ = pwd;
 }
 
-void UserLoginCmd::reuse_cmd(S_INT_64 uid, S_INT_64 token)
+void UserLoginCmd::reuse_cmd(const SProtocolHead& h)
 {
-	this->user_iid_ = uid;
-	this->user_token_ = token;
+	this->head_ = h;
 }
 
 void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
@@ -40,7 +38,7 @@ void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
 	try
 	{
 		prep_stmt.reset(p_connection->prepareStatement(
-			"select user_iid, pwd, state from user_account where account=?);"));
+			"select user_iid, pwd, state from user_account where account = ?;"));
 
 		prep_stmt->setString(1, username_.c_str());
 
@@ -48,15 +46,24 @@ void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
 
 		if (res->next())
 		{
-			success_ = true;
 			user_iid_ = res->getInt64(1);
 			user_pwd_ = res->getString(2).c_str();
 			user_state_ = res->getInt(3);
+
+			if (user_state_ != 0)
+				result_ = 1;
+			else if (user_pwd_ != pwd_)
+				result_ = 3;
+		}
+		else
+		{
+			result_ = 2;
 		}
 	}
 	catch (sql::SQLException& err)
 	{
 		logError(out_runtime, "database UserLoginCmd error:%s", err.what());
+		result_ = 4;
 	}
 
 	release_dboperator(prep_stmt.get());
@@ -64,6 +71,6 @@ void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
 
 void UserLoginCmd::run()
 {
-	if (!success_) return;
-
+	//在state线程回调
+	state_->on_db_user_login_act(head_, result_, 1, username_.c_str(), user_iid_);
 }

@@ -24,16 +24,12 @@
 USED_REDISKEY_USER_NS
 
 UserCacheData::UserCacheData():user_iid_(-1)
-, slottoken_(0)
-, giduid_(0)
 {
 }
 
 void UserCacheData::reset_usercache()
 {
 	this->user_iid_ = -1;
-	this->slottoken_ = 0;
-	this->giduid_ = 0;
 
 	base_data_.reset_data();
 	home_data_.reset_data();

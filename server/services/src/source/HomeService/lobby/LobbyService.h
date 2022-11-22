@@ -29,6 +29,7 @@
 #include <taskLib/service/ITaskEnv.h>
 
 #include "lobby/LobbyUser.h"
+#include "lobby/LobbyUserContainer.h"
 
 class LobbyService : public VirtualMainThread , public MessageProcess, public IGlobalDataEnv
 {
@@ -37,14 +38,12 @@ public:
 	LobbyService();
 	virtual ~LobbyService();
 
-	void init_lobby(int pindex);
+	void init_lobby();
 	void reset_syscmd();
 
-	LobbyUser* get_user_byslot(int slot);
-	LobbyUser* get_user_byslot(int slot, S_INT_64 token);
-	LobbyUser* get_userbyslot_from_msg(NetProtocol* msg);
-	LobbyUser* get_userofsame_from_msg(NetProtocol* msg);
-	LobbyUser* get_userofsame_from_x(S_INT_64 uid, S_INT_64 token);
+	LobbyUser* get_usercheck_from_msg(NetProtocol* msg);
+	LobbyUser* get_userbyid_from_msg(NetProtocol* msg);
+	LobbyUser* get_userbyid_from_msg(const SProtocolHead& head);
 
 protected:
 	void init_luacontext();
@@ -91,8 +90,7 @@ protected:
 
 private:
 	//users
-	std::vector<LobbyUser*>		users_;
-	int piece_index_;
+	LobbyUserContainer<LobbyUser>	lobby_users_;
 
 	RedisClient					redis_;
 	RedisProtoBufThreadCache	redisproto_cache_;

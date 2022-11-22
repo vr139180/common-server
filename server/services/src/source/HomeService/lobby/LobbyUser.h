@@ -48,10 +48,7 @@ public:
 	void init_user(S_INT_64 giduid, S_INT_64 slottoken);
 	void rest_user();
 
-	bool is_samesession(S_INT_64 utoken);
-
-	void set_userslot(int slot) { slot_ = slot; }
-	int get_userslot() { return slot_; }
+	bool is_samesession( const SProtocolHead& head);
 
 	UserState get_userstate() { return cur_state_; }
 	bool is_user_ready() { return cur_state_ == UserState::UserState_Ready; }
@@ -90,6 +87,7 @@ protected:
 	bool sync_rolelist();
 
 protected:
+	SProtocolHead	s_head_;
 	//ÓÃ»§×´Ì¬
 	UserState	cur_state_;
 
@@ -97,18 +95,13 @@ protected:
 	UserRoles	roles_data_;
 
 protected:
-	//slot
-	int				slot_;
 	LobbyService*	owner_;
 };
 
 inline
-bool LobbyUser::is_samesession(S_INT_64 utoken)
+bool LobbyUser::is_samesession(const SProtocolHead& head)
 {
-	int slot = -1;
-	S_INT_64 ptoken = 0;
-
-	return (this->slot_ == slot && slottoken_ == utoken);
+	return s_head_.is_same_session(head);
 }
 
 #endif //__LOBBYUSER_H__

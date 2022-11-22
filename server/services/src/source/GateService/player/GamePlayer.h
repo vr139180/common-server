@@ -43,12 +43,15 @@ public:
 	bool is_samesession(S_INT_64 utoken);
 	bool is_samesession(S_INT_64 uid, S_INT_64 utoken);
 	bool is_samesession(const SProtocolHead& head);
+	bool is_same_token(const SProtocolHead& head);
 
 	int get_userslot() { return slot_; }
 	void set_userslot(int s) { slot_ = s; }
 
 	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Logon && cur_state_ < PlayerState::PlayerState_RoleReady); }
 	bool is_roleready() { return cur_state_ >= PlayerState::PlayerState_RoleReady; }
+	bool is_login() { return cur_state_ >= PlayerState::PlayerState_Logon; }
+
 	S_INT_64 get_roleiid() { return this->role_iid_; }
 	//角色选择确定后切换giduid为gateid+role_iid_
 	void role_selected_done(S_INT_64 rid, S_INT_64 gateiid);
@@ -59,7 +62,7 @@ public:
 	void send_netprotocol(NetProtocol* pro) { session_->send_protocol(pro); }
 	void send_netprotocol(BasicProtocol* msg);
 
-	S_INT_64 get_iid() { return role_iid_; }
+	S_INT_64 get_iid() { return user_iid_; }
 
 public:
 	boost::shared_ptr<NetSession> get_session() { return session_; }
@@ -75,16 +78,17 @@ public:
 	}
 
 	void reuse();
-	void pre_start();
+	void pre_start( S_INT_64 gateid);
 	S_INT_64 get_starttime() { return start_timestamp_;}
 	//完成验证
-	void auth(S_INT_64 token, S_INT_64 uid, S_INT_64 gateiid);
+	void auth( S_INT_64 uid);
 	bool is_auth() { return cur_state_ > PlayerState_Loginning; }
 
 	void update(u64 tnow);
 
 protected:
 	PlayerState	cur_state_;
+	S_INT_64	user_iid_;
 	S_INT_64	role_iid_;
 	//开始使用时间
 	S_INT_64	start_timestamp_;
@@ -128,6 +132,12 @@ inline
 bool GamePlayer::is_samesession(const SProtocolHead& head)
 {
 	return s_head_.is_same_session( head);
+}
+
+inline
+bool GamePlayer::is_same_token(const SProtocolHead& head)
+{
+	return s_head_.is_same_token(head);
 }
 
 #endif //__GAMEPLAYER_H__

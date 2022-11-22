@@ -92,7 +92,7 @@ void GamePlayer::update(u64 tnow)
 
 NetProtocol* GamePlayer::unpack_protocol(S_UINT_8 *pbuf, S_UINT_32 prolen)
 {
-	NetProtocol* pro = new NetProtocol();
+	NetProtocol* pro = new NetProtocol( s_head_);
 	std::unique_ptr<NetProtocol> ptr(pro);
 
 	S_UINT_8 *pdata = pbuf;
@@ -128,10 +128,9 @@ NetProtocol* GamePlayer::unpack_protocol(S_UINT_8 *pbuf, S_UINT_32 prolen)
 		memcpy(pro->msg_data_, pdata, pro->data_len_);
 	}
 
-	SProtocolHead& head = pro->head_;
+	SProtocolHead& head = pro->write_head();
 	head.unpack_protocol_ = chead.unpack_protocol_;
 	head.set_msgid(chead.get_msgid());
-	head.router_balance_ = false;
 
 	return ptr.release();
 }

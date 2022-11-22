@@ -18,14 +18,13 @@
 #include "config/HomeConfig.h"
 #include "HomeServiceApp.h"
 
-LobbyService::LobbyService():base(),piece_index_(-1)
+LobbyService::LobbyService():base()
 {
 }
 
 LobbyService::~LobbyService()
 {
 	uninit_luacontext();
-	users_.clear();
 }
 
 void LobbyService::thread_worker()
@@ -70,11 +69,10 @@ void LobbyService::thread_worker()
 	svrApp.get_luacontext_thread().release();
 }
 
-void LobbyService::init_lobby(int pindex)
+void LobbyService::init_lobby()
 {
-	this->piece_index_ = pindex;
-
 	this->InitNetMessage();
+	lobby_users_.init_cap(this, 2000);
 
 	//³õÊ¼»¯redisÉèÖÃ
 	HomeConfig *conf_ = svrApp.get_config();
@@ -96,52 +94,20 @@ void LobbyService::reset_syscmd()
 	this->regist_syscmd(cmd);
 }
 
-LobbyUser* LobbyService::get_user_byslot(int slot)
+LobbyUser* LobbyService::get_usercheck_from_msg(NetProtocol* msg)
 {
+	LobbyUser* puser = lobby_users_.get_lobbyuser(msg->get_useriid());
+	if (puser->is_samesession(msg->head_))
+		return puser;
 	return 0;
 }
 
-LobbyUser* LobbyService::get_user_byslot(int slot, S_INT_64 token)
+LobbyUser* LobbyService::get_userbyid_from_msg(NetProtocol* msg)
 {
-	LobbyUser *p = get_user_byslot(slot);
-	if (p == 0)
-		return 0;
-
-	if (p->is_samesession(token) == false)
-		return 0;
-
-	return p;
+	return lobby_users_.get_lobbyuser(msg->get_useriid());
 }
 
-LobbyUser* LobbyService::get_userbyslot_from_msg(NetProtocol* msg)
+LobbyUser* LobbyService::get_userbyid_from_msg(const SProtocolHead& head)
 {
-	//return get_user_byslot(msg->head_.get_token_slot());
-	return 0;
-}
-
-LobbyUser* LobbyService::get_userofsame_from_msg(NetProtocol* msg)
-{
-	S_INT_64 uid = 0, tks = 0;
-	uid = msg->head_.get_role_iid();
-	tks = msg->head_.get_token_token();
-	int slot = msg->head_.get_token_slot();
-
-	LobbyUser *puser = get_user_byslot(slot);
-	if (puser == 0)
-		return 0;
-	if (puser->get_user_iid() != uid || puser->is_samesession(tks) == false)
-		return 0;
-	return puser;
-}
-
-LobbyUser* LobbyService::get_userofsame_from_x(S_INT_64 uid, S_INT_64 token)
-{
-	int slot = 0;
-
-	LobbyUser *puser = get_user_byslot(slot);
-	if (puser == 0)
-		return 0;
-	if (puser->get_user_iid() != uid || puser->is_samesession(token) == false)
-		return 0;
-	return puser;
+	return lobby_users_.get_lobbyuser( head.get_token_useriid());
 }

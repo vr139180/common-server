@@ -46,10 +46,7 @@ public:
 
 	S_INT_64 get_user_iid() { return user_iid_; }
 	void set_user_iid(S_INT_64 uid) { this->user_iid_ = uid; }
-	S_INT_64 get_slottoken() { return slottoken_; }
-	void set_slottoken(S_INT_64 t) { this->slottoken_ = t; }
-	S_INT_64 get_giduid() { return giduid_; }
-	void set_giduid(S_INT_64 v) { this->giduid_ = v; }
+
 	S_INT_64 get_role_iid() { return role_iid_; }
 	void set_role_iid(S_INT_64 rid) { this->role_iid_ = rid; }
 
@@ -130,9 +127,6 @@ protected:
 	//当前role iid
 	S_INT_64	role_iid_;
 	S_INT_64	user_iid_;
-	//proto token
-	S_INT_64	slottoken_;
-	S_INT_64	giduid_;
 
 protected:
 	//cache中的版本信息

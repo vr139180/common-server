@@ -39,6 +39,7 @@ public:
 
 	void send_mth_protocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_mth_protocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
+	void send_mth_protocol(const SProtocolHead& head, BasicProtocol* msg);
 
 	template<class M>
 	void broadcast(M* pro)
@@ -214,6 +215,13 @@ void LinkToHolder<T>::send_mth_protocol(PRO::ERK_SERVICETYPE to, BasicProtocol* 
 		cur_online_link_ = 0;
 
 	online_links_[cur_online_link_]->send_netprotocol(to, pro);
+}
+
+template<typename T>
+void LinkToHolder<T>::send_mth_protocol(const SProtocolHead& head, BasicProtocol* msg)
+{
+	NetProtocol *pro = new NetProtocol(head, msg);
+	send_mth_protocol( (PRO::ERK_SERVICETYPE)head.to_type_, pro);
 }
 
 template<typename T>

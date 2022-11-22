@@ -145,6 +145,9 @@
     <ClInclude Include="..\source\HomeService\network\DataRouterLinkTo.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\HomeService\lobby\LobbyUserContainer.h">
+      <Filter>lobby</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\source\HomeService\ReadMe.txt" />

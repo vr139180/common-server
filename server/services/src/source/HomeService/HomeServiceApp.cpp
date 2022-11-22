@@ -118,7 +118,7 @@ bool HomeServiceApp::pre_init()
 	this->all_lobbys_.reset(new LobbyService[HOME_LOBBY_THREADNUM]);
 	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 	{
-		all_lobbys_[ii].init_lobby(ii);
+		all_lobbys_[ii].init_lobby();
 		lobby_hash_.add_realnode( ii, ii);
 	}
 	lobby_hash_.build_nethashing();

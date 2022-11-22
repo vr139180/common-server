@@ -50,7 +50,7 @@ void LobbyUser::on_ls_rolecreate_req(const char* nickname)
 		return;
 	}
 
-	CreateUserRoleCmd* pcmd = new CreateUserRoleCmd( user_iid_, slottoken_, owner_);
+	CreateUserRoleCmd* pcmd = new CreateUserRoleCmd( s_head_, owner_);
 	pcmd->ls_create_new_role(nickname);
 
 	dbsStore->post_db_cmd(pcmd);
@@ -101,7 +101,7 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 	{
 		cur_state_ = UserState::UserState_RoleDetailLoading;
 
-		BaseDBCmd* pcmd = new LoadUserInfoCmd(role_iid_, user_iid_, slottoken_, owner_);
+		BaseDBCmd* pcmd = new LoadUserInfoCmd( s_head_, owner_);
 		dbsStore->post_db_cmd(pcmd);
 	}
 }

@@ -92,6 +92,16 @@ std::string RedisClient::build_rediskey(const char* fmt, ...)
 	return buf;
 }
 
+bool RedisClient::has_hashmember(const char* hkey, const char* field)
+{
+	try {
+		return redis_->hexists(hkey, field);
+	}
+	catch (...) {
+		return false;
+	}
+}
+
 bool RedisClient::del_hashmember(const char* hkey, const char* field)
 {
 	try {

@@ -47,6 +47,8 @@ public:
 	virtual void main_loop();
 	GateConfig* get_config() { return conf_.get(); }
 
+	S_INT_64	get_gateid();
+
 public:
 	void route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_to_datarouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);

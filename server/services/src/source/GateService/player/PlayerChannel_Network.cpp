@@ -27,6 +27,8 @@ USE_PROTOCOL_NAMESPACE
 
 void PlayerChannel::InitNetMessage()
 {
+	REGISTERMSG(USER_PROTYPE::USER_LOGIN_ACK, &PlayerChannel::on_pc_userlogin_ack, this);
+
 	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &PlayerChannel::on_pc_userlogout_ntf, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_ACK, &PlayerChannel::on_pc_roleselect_ack, this);
 
@@ -38,32 +40,29 @@ void PlayerChannel::on_disconnected_with_player(GamePlayer* plink)
 	force_pc_close_player(plink);
 }
 
-void PlayerChannel::on_cth_userlogin_ack(NetProtocol* pro, bool& autorelease)
+void PlayerChannel::on_pc_userlogin_ack(NetProtocol* pro, bool& autorelease)
 {
-	User_Login_ack* ack = dynamic_cast<User_Login_ack*>(pro->msg_);
-
-	GamePlayer* pLink = get_player_frommsg(pro);
-	//TODO:disconnected
+	GamePlayer* pLink = get_player_bytoken(pro);
 	if (pLink == 0)
 		return;
+
+	User_Login_ack* ack = dynamic_cast<User_Login_ack*>(pro->msg_);
+
+	logDebug(out_runtime, "user:%lld login:%d", ack->user_iid(), ack->result());
+
 	autorelease = false;
 
-	//auth check
-	if (parent_->auth_wait_slot(pLink->get_userslot()) == false)
+	//ÉèÖÃ×´Ì¬
+	if (ack->result() == 0)
 	{
-		pLink->send_netprotocol(ack);
-		return;
+		//auth check
+		parent_->auth_wait_slot(pLink->get_userslot());
+
+		pLink->auth(ack->user_iid());
+		pLink->registinfo_tolog(true);
 	}
 
-	online_users_[pLink->get_iid()] = pLink;
-	online_user_nums_ = online_users_.size();
-
-	pLink->registinfo_tolog(true);
-
-	ack->set_result(0);
 	pLink->send_netprotocol(ack);
-
-	logDebug(out_runtime, "user:%lld login success", ack->user_iid());
 }
 
 void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
@@ -94,6 +93,7 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 void PlayerChannel::on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autorelease)
 {
 	Chat_GlobalMsg_ntf *ntf = dynamic_cast<Chat_GlobalMsg_ntf*>(pro->msg_);
+	/*
 	for (ONLINE_PLAYER_MAP::iterator iter = online_users_.begin(); iter != online_users_.end(); ++iter)
 	{
 		GamePlayer *p = iter->second;
@@ -103,4 +103,5 @@ void PlayerChannel::on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autor
 
 		p->send_netprotocol( msg);
 	}
+	*/
 }

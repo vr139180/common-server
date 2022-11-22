@@ -30,7 +30,7 @@
 class CreateUserRoleCmd : public BaseDBCmd
 {
 public:
-	CreateUserRoleCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p);
+	CreateUserRoleCmd(const SProtocolHead& head, LobbyService* p);
 
 	//run in db thread
 	virtual void run_in_db_thread(sql::Connection* p_connection);

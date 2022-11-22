@@ -43,6 +43,8 @@ REDIS_FIELD_DEF(USER_UINFO_F_DISABLE, "disable");
 REDIS_FIELD_DEF(USER_UINFO_F_LOGINTIME, "logintime");
 REDIS_FIELD_DEF(USER_UINFO_F_RELOGIN, "relogin");
 REDIS_FIELD_DEF(USER_UINFO_F_ROLES, "roles");
+REDIS_FIELD_DEF(USER_UINFO_F_GIDUID, "giduid");
+REDIS_FIELD_DEF(USER_UINFO_F_SLOTTOKEN, "slottoken");
 
 //在线用户信息 set %d=0
 //score userid, value timestamp

@@ -87,6 +87,8 @@ public:
     static time_t getLastRefreshTime( time_t checktime, int hour, int min = 0, int sec = 0 );
     // 返回1-7表示周一到周日 
     static int getTodayWeekday();
+
+	static S_INT_64 get_token();
 };
 
 template<int BUF_LEN>

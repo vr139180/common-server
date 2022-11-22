@@ -26,7 +26,7 @@ class UserLoginCmd : public BaseDBCmd
 public:
 	UserLoginCmd( const char* uname, const char* pwd, StateService* p);
 
-	void reuse_cmd(S_INT_64 uid, S_INT_64 token);
+	void reuse_cmd( const SProtocolHead& h);
 
 	//run in db thread
 	virtual void run_in_db_thread(sql::Connection* p_connection);
@@ -37,14 +37,15 @@ public:
 
 protected:
 	//input parameters
-	std::string username_;
-	std::string pwd_;
+	std::string		username_;
+	std::string		pwd_;
+	SProtocolHead	head_;
 
 	//output
-	bool success_;
+	//0:成功 1:账号被禁用 2:账号不存在 3:验证错误 4:系统错误 5:登陆排队中
+	S_INT_32	result_;
 	std::string user_pwd_;
 	S_INT_64	user_iid_;
-	S_INT_64	user_token_;
 	S_INT_32	user_state_;
 };
 

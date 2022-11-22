@@ -33,7 +33,7 @@ public class UserHomeServiceImpl implements UserHomeService
 		{
 			user = new User_Account();
 			user.setAccount( account);
-			user.setPwd(MD5Util.MD5Encode(""));
+			user.setPwd(MD5Util.MD5Encode("123456"));
 			user.setState( 0);
 
 			userMapper.createUserAccount(user);

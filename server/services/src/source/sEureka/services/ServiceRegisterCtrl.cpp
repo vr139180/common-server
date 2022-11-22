@@ -273,7 +273,7 @@ void ServiceRegisterCtrl::notify_service_online(S_INT_64 iid)
 			ntf->set_myiid(pfrom->get_iid());
 			ntf->set_svr_type(ctype);
 			PRO::ServerNode* psvr = ntf->add_newsvrs();
-			pfrom->get_node()->copy_to(psvr);
+			pNew->copy_to(psvr);
 
 			pfrom->send_to_service(ntf);
 		}

@@ -109,6 +109,18 @@ void SProtocolHead::set_token_giduid(S_INT_64 gateiid, S_INT_64 useriid)
 	MAKE_USERGATE(gateiid, useriid, token_giduid_);
 }
 
+void SProtocolHead::set_token_gateid(S_INT_64 gateiid)
+{
+	S_INT_64 uid = get_token_useriid();
+	set_token_giduid(gateiid, uid);
+}
+
+void SProtocolHead::set_token_userid(S_INT_64 userid)
+{
+	S_INT_64 gid = get_token_gateiid();
+	set_token_giduid(gid, userid);
+}
+
 S_INT_64 SProtocolHead::get_token_gateiid() const
 {
 	S_INT_64 gid = 0;

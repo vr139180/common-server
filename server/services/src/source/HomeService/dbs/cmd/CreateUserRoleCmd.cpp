@@ -25,7 +25,7 @@
 
 #include "HomeServiceApp.h"
 
-CreateUserRoleCmd::CreateUserRoleCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p) :BaseDBCmd(uid, token,p)
+CreateUserRoleCmd::CreateUserRoleCmd(const SProtocolHead& head, LobbyService* p) :BaseDBCmd(head,p)
 , success_(false)
 {
 
@@ -72,7 +72,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
 			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = ?;"));
-		prep_stmt->setInt64(1, user_iid_);
+		prep_stmt->setInt64(1, head_.get_token_useriid());
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery());
 		roles_data_.load_from_database(*res.get());
@@ -95,7 +95,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 
 void CreateUserRoleCmd::run()
 {
-	LobbyUser* puser = lobby_->get_userofsame_from_x(user_iid_, protoken_);
+	LobbyUser* puser = lobby_->get_userbyid_from_msg( head_);
 	if (puser == 0) return;
 
 	PRO::User_RoleCreate_ack *ack = new PRO::User_RoleCreate_ack();
@@ -120,6 +120,6 @@ void CreateUserRoleCmd::ls_create_new_role(const char* nickname)
 {
 	RedisClient* rdv = svrApp.get_redisclient();
 
-	base_data_.new_rolebaseinfo(rdv, user_iid_, nickname);
+	base_data_.new_rolebaseinfo(rdv, head_.get_token_useriid(), nickname);
 	home_data_.new_userhome( base_data_.data().ver_(), base_data_.data().role_iid(), nickname, rdv);
 }

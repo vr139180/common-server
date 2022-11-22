@@ -59,6 +59,8 @@ public:
 
 	void get_ipinfo(std::string& ip, int& port);
 
+	void user_active();
+
 public:
 	//状态信息
 	CString		ret_desc_;
@@ -101,6 +103,8 @@ public:
 
 	S_INT_64		role_iid_;
 
+	S_INT_64		last_active_time_;
+
 public:
 	//实现的脚本功能
 	void get_serverinfo();
@@ -115,6 +119,7 @@ public:
 
 	void logout();
 
+	void rolelist();
 	void on_rolelist_ack(BasicProtocol* pro, CString* pRetMsg);
 
 	void roleselect(S_INT_64 rid);

@@ -27,8 +27,7 @@
 
 #include "HomeServiceApp.h"
 
-LobbyUser::LobbyUser() :slot_(0), owner_(0)
-, cur_state_(UserState::UserState_Free)
+LobbyUser::LobbyUser() :owner_(0), cur_state_(UserState::UserState_Free)
 {
 }
 
@@ -48,8 +47,6 @@ void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
 
 	S_INT_64 uid = 0;
 	this->set_user_iid(uid);
-	this->set_giduid(giduid);
-	this->set_slottoken(slottoken);
 
 	this->cur_state_ = UserState::UserState_Free;
 	
@@ -58,7 +55,7 @@ void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
 		this->cur_state_ = UserState::UserState_RolesLoading;
 
 		//load from database
-		BaseDBCmd* pcmd = new LoadUserRolesCmd(user_iid_, slottoken_, owner_);
+		BaseDBCmd* pcmd = new LoadUserRolesCmd(s_head_, owner_);
 		dbsStore->post_db_cmd(pcmd);
 	}
 	else

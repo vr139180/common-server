@@ -114,6 +114,10 @@ void NetHashingWithVNode<T>::build_nethashing()
 template<class T>
 T NetHashingWithVNode<T>::get_netnode_byhash(S_INT_32 hash)
 {
+	//无任何内容
+	if (net_nodes_.size() == 0)
+		return 0;
+
 	std::map<S_INT_32, VNodeWrap>::iterator iter = net_nodes_.upper_bound(hash);
 	if (iter == net_nodes_.end())
 		iter = net_nodes_.begin();

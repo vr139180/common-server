@@ -26,7 +26,7 @@
 class LoadUserRolesCmd : public BaseDBCmd
 {
 public:
-	LoadUserRolesCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p);
+	LoadUserRolesCmd(const SProtocolHead& head, LobbyService* p);
 
 	//run in db thread
 	virtual void run_in_db_thread(sql::Connection* p_connection);

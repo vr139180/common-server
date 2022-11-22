@@ -15,10 +15,14 @@
 
 #include "states/StateService.h"
 
+#include <cmsLib/util/ShareUtil.h>
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
+#include <gameLib/redis/user_redis_const.h>
 
 #include "StateServiceApp.h"
+#include "dbs/DBSCtrl.h"
+#include "dbs/cmd/UserLoginCmd.h"
 
 USE_PROTOCOL_NAMESPACE
 
@@ -34,6 +38,61 @@ void StateService::on_user_login_req(NetProtocol* pro, bool& autorelease)
 	User_Login_req* req = dynamic_cast<User_Login_req*>(pro->msg_);
 
 	logDebug(out_runtime, "recv user:%s login req...", req->account().c_str());
+	std::string acc = req->account().c_str();
+	ShareUtil::to_lower(acc);
+
+	RedisClient* rdv = svrApp.get_redisclient();
+	S_INT_64 useriid = 0;
+	if (check_user_disable(rdv, acc.c_str(), useriid))
+	{
+		User_Login_ack *ack = new User_Login_ack();
+		ack->set_type(req->type());
+		ack->set_result(1);
+
+		svrApp.send_protocol_to_gate(pro->head_, ack);
+		return;
+	}
+	else if (useriid > 0 && check_user_in_onlinequeue( rdv, useriid))
+	{
+		//检测是否已经在线
+		User_Login_ack *ack = new User_Login_ack();
+		ack->set_type(req->type());
+		ack->set_result(6);
+
+		svrApp.send_protocol_to_gate(pro->head_, ack);
+		return;
+	}
+
+	UserLoginCmd *pcmd = new UserLoginCmd(req->account().c_str(), req->pwd().c_str(), this);
+	pcmd->reuse_cmd(pro->head_);
+
+	DBSCtrl::instance()->post_head_db_cmd( pcmd);
+}
+
+void StateService::on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type, const char* account, S_INT_64 uid)
+{
+	//验证成功检测 是否在线
+	if (result == 0 && check_user_in_onlinequeue(0, uid))
+		result = 6;
+
+	User_Login_ack *ack = new User_Login_ack();
+	ack->set_type(type);
+	ack->set_result(result);
+
+	//验证成功
+	if (result == 0 || result == 1)
+	{
+		//登陆使用的token为gate传递过来的
+		S_INT_64 token = head.get_token_token();
+
+		ack->set_user_iid(uid);
+		ack->set_logintoken( token);
+
+		//save to redis
+		redis_save_userinfo(0, head, account, uid, token, (result == 1));
+	}
+
+	svrApp.send_protocol_to_gate( head, ack);
 }
 
 void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
@@ -43,5 +102,5 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 
 void StateService::on_user_active_ntf(NetProtocol* pro, bool& autorelease)
 {
-	User_Active_ntf* ntf = dynamic_cast<User_Active_ntf*>(pro->msg_);
+	redis_update_onlinestate( 0, pro->get_useriid(), pro->head_);
 }

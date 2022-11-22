@@ -17,11 +17,14 @@
 
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/base/OSSystem.h>
+
 #include <gameLib/LogExt.h>
 #include <gameLib/global_const.h>
-
 #include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/config/ConfigHelper.h>
+
 #include <player/GamePlayerCtrl.h>
+#include "config/GateConfig.h"
 
 USE_PROTOCOL_NAMESPACE
 
@@ -48,6 +51,18 @@ void GateServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 void GateServiceApp::mth_service_registed(S_INT_64 sid)
 {
 	logInfo(out_runtime, "<<<<<<<<<<<< gate service node:%lld online to eureka >>>>>>>>>>>>", sid);
+
+	//注册成功之后发起监听
+	ConfigHelper& cf = ConfigHelper::instance();
+	if (acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), GATE_PLAYER_MAX))
+	{
+		logInfo(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
+	}
+	else
+	{
+		logFatal(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
+		quit_app();
+	}
 }
 
 void GateServiceApp::mth_eureka_losted()

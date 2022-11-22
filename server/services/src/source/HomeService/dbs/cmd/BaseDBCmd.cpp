@@ -17,9 +17,7 @@
 
 #include "lobby/LobbyService.h"
 
-BaseDBCmd::BaseDBCmd(S_INT_64 uid, S_INT_64 token, LobbyService* p):user_iid_(uid)
-,protoken_( token)
-,lobby_( p)
+BaseDBCmd::BaseDBCmd(const SProtocolHead& head, LobbyService* p):head_( head),lobby_( p)
 {
 }
 

@@ -29,6 +29,8 @@ void CommandTestImpl::gts_linkdo()
 	if( socket2_ == INVALID_SOCKET)
 		return;
 
+	this->user_active();
+
 	S_UINT_16 proiid = 0;
 	BasicProtocol *recv =recv_from_gts(proiid);
 	if( recv == 0)
@@ -110,6 +112,7 @@ void ScriptDlg::regist()
 	add_function("login('test1','123456')", "db登陆\r\nusername,password");
 	add_function("logintoken()", "token登陆\r\n");
 	add_function("logout()", "注销");
+	add_function("rolelist()", "获取角色列表");
 	add_function("rolecreate('test')", "创建角色");
 	add_function("roleselect(1)", "选择角色");
 
@@ -159,6 +162,7 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("login", (void (CommandTestImpl::*)(const char*, const char*))&CommandTestImpl::login)
 		.addFunction("logintoken", (void (CommandTestImpl::*)(void))&CommandTestImpl::logintoken)
 		.addFunction("logout", (void (CommandTestImpl::*)(void))&CommandTestImpl::logout)
+		.addFunction("rolelist", (void (CommandTestImpl::*)(void))&CommandTestImpl::rolelist)
 		.addFunction("rolecreate", (void (CommandTestImpl::*)(const char*))&CommandTestImpl::rolecreate)
 		.addFunction("roleselect", (void (CommandTestImpl::*)(S_INT_64))&CommandTestImpl::roleselect)
 		.addFunction("build_additem", (void (CommandTestImpl::*)(S_INT_64,S_INT_64))&CommandTestImpl::build_additem)

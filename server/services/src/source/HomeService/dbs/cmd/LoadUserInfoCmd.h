@@ -30,9 +30,9 @@
 class LoadUserInfoCmd : public BaseDBCmd
 {
 public:
-	LoadUserInfoCmd(S_INT_64 rid, S_INT_64 uid, S_INT_64 token, LobbyService* p);
+	LoadUserInfoCmd( const SProtocolHead& head, LobbyService* p);
 
-	void reuse_cmd(S_INT_64 uid, S_INT_64 token);
+	void reuse_cmd(const SProtocolHead& head);
 
 	//run in db thread
 	virtual void run_in_db_thread(sql::Connection* p_connection);

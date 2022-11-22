@@ -119,9 +119,6 @@ bool GateServiceApp::pre_init()
 
 bool GateServiceApp::init_network()
 {
-	//MutexAllocator::getInstance().init_allocator(1000);
-	//int cpu = boost::thread::hardware_concurrency();
-
 	int neths = ConfigHelper::instance().get_netthreads();
 	if( !NetDriverX::getInstance().initNetDriver(neths))
 	{
@@ -143,16 +140,6 @@ bool GateServiceApp::init_network()
 bool GateServiceApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
-
-    if( acceptor_->begin_listen(cf.get_ip().c_str(), cf.get_port(), GATE_PLAYER_MAX))
-    {
-		logInfo(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d>>>>>>>>>>>> \n"), cf.get_ip().c_str(), cf.get_port());
-    }
-    else
-    {
-		logFatal(out_runtime, ("<<<<<<<<<<<<GateService listen at %s:%d failed>>>>>>>>>>>>\n"), cf.get_ip().c_str(), cf.get_port());
-		return false;
-    }
 
 	GamePlayerCtrl::instance().start();
 
@@ -238,7 +225,7 @@ void GateServiceApp::main_loop()
 
 NetAcceptorEvent::NetSessionPtr GateServiceApp::ask_free_netsession()
 {
-	GamePlayer* player = GamePlayerCtrl::instance().ask_free_slot();
+	GamePlayer* player = GamePlayerCtrl::instance().ask_free_slot( get_gateid());
 	if (player == 0)
 	{
 		NetAcceptorEvent::NetSessionPtr new_session;
@@ -268,6 +255,11 @@ void GateServiceApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 	{
 		logInfo(out_runtime, "me(GateService) listen a connected request, and create a connection successfully");
 	}
+}
+
+S_INT_64 GateServiceApp::get_gateid()
+{
+	return EurekaClusterClient::instance().get_myiid();
 }
 
 void GateServiceApp::route_to_datarouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)

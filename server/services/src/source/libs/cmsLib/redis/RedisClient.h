@@ -63,6 +63,7 @@ public:
 	bool del_hashmember(const char* hkey, const char* field);
 	bool set_hashmember(const char* hkey, const char* field, const char* val);
 	bool set_hashmember_ul(const char* hkey, const char* field, S_INT_64 val);
+	bool has_hashmember(const char* hkey, const char* field);
 
 	template<typename T>
 	bool set_hashmember(const char* hkey, std::initializer_list<T> il);

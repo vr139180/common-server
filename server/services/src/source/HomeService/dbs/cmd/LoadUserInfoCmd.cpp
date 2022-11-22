@@ -20,16 +20,15 @@
 
 #include "HomeServiceApp.h"
 
-LoadUserInfoCmd::LoadUserInfoCmd(S_INT_64 rid, S_INT_64 uid, S_INT_64 token, LobbyService* p):BaseDBCmd(uid,token,p)
+LoadUserInfoCmd::LoadUserInfoCmd(const SProtocolHead& head, LobbyService* p):BaseDBCmd(head,p)
 , success_(false)
-, role_iid_(rid)
 {
+	role_iid_ = head_.get_role_iid();
 }
 
-void LoadUserInfoCmd::reuse_cmd(S_INT_64 uid, S_INT_64 token)
+void LoadUserInfoCmd::reuse_cmd(const SProtocolHead& head)
 {
-	this->user_iid_ = uid;
-	this->protoken_ = token;
+	this->head_ = head;
 }
 
 void LoadUserInfoCmd::run_in_db_thread(sql::Connection* p_connection)
@@ -96,7 +95,7 @@ void LoadUserInfoCmd::run()
 {
 	if (!success_) return;
 
-	LobbyUser* puser = lobby_->get_userofsame_from_x(user_iid_, protoken_);
+	LobbyUser* puser = lobby_->get_userbyid_from_msg(head_);
 	if (puser == 0) return;
 
 	puser->on_db_roledata_sync1( base_data_, home_data_, building_data_, pet_data_, task_data_);

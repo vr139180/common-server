@@ -21,14 +21,16 @@
 #define GATE_PIECE_NUM_MAX		2000
 
 //home正常设计容量
-#define HOME_LOBBY_THREADNUM	4		//lobby线程数
-#define HOME_LOBBY_PLAYERS		1000	//每个lobby的用户数
+#define HOME_LOBBY_THREADNUM	4				//lobby线程数
+#define HOME_LOBBY_PLAYERS		1000			//每个lobby的用户数
+#define HOME_LOBBUSER_TIMEOUT	20*60*60*1000	//20 hour不活跃清楚数据
 
 //eureka定义 8seconds
 #define EUREKA_LOST_TIMEOUT		8*1000
 #define EUREKA_LOST_RETRY		8
 
 //state容量设计
-#define STATE_SERVICE_THREADNUM	4		//state服务线程数
+#define STATE_SERVICE_THREADNUM		4		//state服务线程数
+#define STATE_ONLINEQUEUE_HASHNUM	1		//-USERS:ONLINE:#hash的取模数
 
 #endif //__GLOBAL_CONST_H__

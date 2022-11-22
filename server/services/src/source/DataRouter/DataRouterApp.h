@@ -61,6 +61,7 @@ public:
 
 	void router_to_state(NetProtocol* pro);
 	void router_to_home(NetProtocol* pro);
+	void router_to_gate(NetProtocol* pro);
 
 public:
 

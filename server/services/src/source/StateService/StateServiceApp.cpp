@@ -241,9 +241,13 @@ StateService* StateServiceApp::get_next_dispatcher()
 	return &(all_states_[cur_state_index_]);
 }
 
-void StateServiceApp::send_protocol_to_gate(BasicProtocol* pro)
+void StateServiceApp::send_protocol_to_gate( SProtocolHead& head, BasicProtocol* pro)
 {
-	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
+	head.router_balance_ = false;
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+
+	datarouter_link_mth_.send_mth_protocol( head, pro);
 }
 
 void StateServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)

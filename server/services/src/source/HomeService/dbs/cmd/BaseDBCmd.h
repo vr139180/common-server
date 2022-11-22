@@ -33,7 +33,7 @@ class LobbyService;
 class BaseDBCmd : public CommandBase
 {
 public:
-	BaseDBCmd( S_INT_64 uid, S_INT_64 token, LobbyService* p);
+	BaseDBCmd( const SProtocolHead& head, LobbyService* p);
 	virtual ~BaseDBCmd() {}
 
 	//run in db thread
@@ -64,8 +64,7 @@ protected:
 protected:
 	LobbyService*	lobby_;
 
-	S_INT_64 user_iid_;
-	S_INT_64 protoken_;
+	SProtocolHead	head_;
 };
 
 #endif //__BASEDBCMD_H__

@@ -19,6 +19,11 @@
 #include <stdlib.h>
 #include <cmsLib/base/OSSystem.h>
 
+S_INT_64 ShareUtil::get_token()
+{
+	return OSSystem::mOS->GetTimestamp();
+}
+
 bool ShareUtil::splitstr2str( const char* src, const char* splitchr, std::list<std::string>& ret)
 {
 	if( src == 0 || strlen( src) == 0)

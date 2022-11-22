@@ -40,6 +40,21 @@ void CommandTestImpl::ping()
     startThread();
 }
 
+void CommandTestImpl::user_active()
+{
+	if (!islogon())
+		return;
+
+	S_INT_64 tnow = ShareUtil::get_token();
+	if (last_active_time_ + 10 * 1000 > tnow)
+		return;
+
+	last_active_time_ = tnow;
+
+	User_Active_ntf* ntf = new User_Active_ntf();
+	send_to_gts(ntf);
+}
+
 void CommandTestImpl::on_ping_ntf(BasicProtocol* pro, CString* pRetMsg)
 {
 	pRetMsg->Format("Ping 测试回包");
@@ -188,6 +203,23 @@ void CommandTestImpl::logout()
 	if( !send_to_gts( req))
 	{
 		ret_desc_ ="发送协议失败\r\n";
+		return;
+	}
+}
+
+void CommandTestImpl::rolelist()
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	User_RoleList_req *req = new User_RoleList_req();
+	if (!send_to_gts(req))
+	{
+		ret_desc_ = "发送协议失败\r\n";
 		return;
 	}
 }

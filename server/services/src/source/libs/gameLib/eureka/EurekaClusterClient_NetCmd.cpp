@@ -103,19 +103,7 @@ void EurekaClusterClient::on_service_subscribe_ntf(NetProtocol* message, bool& a
 
 		//新增服务
 		ServiceNodeInfo* ps = new ServiceNodeInfo();
-		ps->iid = node.iid();
-		ps->token = node.token();
-		ps->ip = node.ip();
-		ps->port = node.port();
-		if (node.exts_size() > 0)
-		{
-			const google::protobuf::Map<std::string, std::string>& kvs = node.exts();
-			for (google::protobuf::Map<std::string, std::string>::const_iterator xiter = kvs.cbegin();
-				xiter != kvs.cend(); ++xiter)
-			{
-				ps->extparams[xiter->first] = xiter->second;
-			}
-		}
+		ps->copy_from(&node);
 
 		s_nodes[ps->iid] = ps;
 

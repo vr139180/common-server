@@ -25,7 +25,6 @@ PlayerChannel::PlayerChannel() :VirtualMainThread()
 , piece_start_(0)
 , piece_end_(0)
 ,parent_(0)
-,online_user_nums_(0)
 {
 }
 
@@ -75,9 +74,6 @@ void PlayerChannel::init_channel(GamePlayerCtrl* p, int pindex, int nums, std::v
 
 	this->users_.clear();
 
-	this->online_user_nums_ = 0;
-
-	online_users_.clear();
 	for (int ii = 0; ii < lus.size(); ++ii)
 		users_.push_back(lus[ii]);
 
@@ -86,9 +82,6 @@ void PlayerChannel::init_channel(GamePlayerCtrl* p, int pindex, int nums, std::v
 
 void PlayerChannel::reset_channel(void*)
 {
-	this->online_user_nums_ = 0;
-
-	online_users_.clear();
 }
 
 void PlayerChannel::reset_syscmd()
@@ -106,22 +99,21 @@ GamePlayer* PlayerChannel::get_player_byslot(int slot)
 	return users_[slot-piece_start_];
 }
 
-GamePlayer* PlayerChannel::get_player_byslot(int slot, S_INT_64 token)
+GamePlayer* PlayerChannel::get_player_bytoken(NetProtocol* pro)
 {
-	GamePlayer *p = get_player_byslot(slot);
-	if (p == 0)
+	int slot = pro->head_.get_token_slot();
+	GamePlayer *user = get_player_byslot(slot);
+	if (user == 0)
+		return 0;
+	if (user->is_same_token(pro->head_) == false)
 		return 0;
 
-	if (p->is_samesession(token) == false)
-		return 0;
-
-	return p;
+	return user;
 }
 
 GamePlayer* PlayerChannel::get_player_frommsg(NetProtocol* pro)
 {
 	int slot = pro->head_.get_token_slot();
-
 	GamePlayer *user = get_player_byslot(slot);
 	if (user == 0)
 		return 0;
@@ -133,9 +125,6 @@ GamePlayer* PlayerChannel::get_player_frommsg(NetProtocol* pro)
 
 void PlayerChannel::force_pc_close_player(GamePlayer* puser)
 {
-	online_users_.erase(puser->get_iid());
-	online_user_nums_ = online_users_.size();
-
 	puser->registinfo_tolog(false);
 
 	puser->reset();
@@ -144,9 +133,9 @@ void PlayerChannel::force_pc_close_player(GamePlayer* puser)
 	parent_->return_slot_to_free(puser->get_userslot());
 }
 
-void PlayerChannel::send_msg_to_player(NetProtocol* msg, int slot)
+void PlayerChannel::send_msg_to_player(NetProtocol* msg)
 {
-	GamePlayer *p = get_player_byslot(slot);
+	GamePlayer *p = get_player_byslot( msg->head_.get_token_slot());
 	if (p == 0)
 	{
 		delete msg;

@@ -38,11 +38,11 @@ public:
 	void init_channel(GamePlayerCtrl* p, int pindex, int nums, std::vector<GamePlayer*>& lus);
 	void reset_syscmd();
 
-	void send_msg_to_player(NetProtocol* msg, int slot);
+	void send_msg_to_player(NetProtocol* msg);
 
 	GamePlayer* get_player_byslot(int slot);
-	GamePlayer* get_player_byslot(int slot, S_INT_64 token);
 	GamePlayer* get_player_frommsg(NetProtocol* pro);
+	GamePlayer* get_player_bytoken(NetProtocol* pro);
 	void force_pc_close_player(GamePlayer* puser);
 
 public:
@@ -57,10 +57,6 @@ protected:
 	virtual void thread_worker();
 
 private:
-	//可分配slot数量
-	int volatile				online_user_nums_;
-	ONLINE_PLAYER_MAP			online_users_;
-
 	//users
 	std::vector<GamePlayer*>	users_;
 	int piece_index_;
@@ -73,11 +69,10 @@ public:
 	void on_connection_timeout(GamePlayer* player);
 
 	void on_disconnected_with_player(GamePlayer* player);
-	void on_player_login(GamePlayer* player);
 
 	//net command
 public:
-	void on_cth_userlogin_ack(NetProtocol* message, bool& autorelease);
+	void on_pc_userlogin_ack(NetProtocol* message, bool& autorelease);
 
 	void on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease);
 	void on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease);
