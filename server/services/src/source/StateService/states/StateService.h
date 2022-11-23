@@ -25,6 +25,7 @@
 #include <cmsLib/redis/RedisClient.h>
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
 #include <cmsLib/lua/ScriptContext.h>
+#include <gameLib/protobuf/cpp/db_internal.pb.h>
 
 class StateService : public VirtualMainThread , public MessageProcess
 {
@@ -57,14 +58,16 @@ protected:
 	//useriid > 0表示，用户存在于redis
 	bool check_user_disable(RedisClient* rdv, const char* acc, S_INT_64& useriid);
 	//保存账户关联到redis
-	void redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc, S_INT_64 uid, S_INT_64 token, bool disable);
+	void redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc
+		, bool disable, bool saverole, PRO::DBUserRoles& roles);
 	//更新激活时间
 	void redis_update_onlinestate(RedisClient* rdv, S_INT_64 userid, const SProtocolHead& head);
 
 public:
 	void on_user_login_req(NetProtocol* pro, bool& autorelease);
 	//result 0: 成功 1:账号被禁用 2:账号不存在 3:验证错误 4:系统错误 5:登陆排队中
-	void on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type, const char* account, S_INT_64 uid);
+	void on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type
+		, const char* account, bool saverole, PRO::DBUserRoles& roles);
 
 	void on_user_relogin_req(NetProtocol* pro, bool& autorelease);
 	void on_user_active_ntf(NetProtocol* pro, bool& autorelease);

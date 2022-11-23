@@ -195,4 +195,12 @@ public:
 
 	void task_giveup(S_INT_32 taskiid);
 	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);
+
+	//-----------------test
+	void user_get_simpleinfo(S_INT_64 uid, S_INT_64 rid);
+	void on_user_get_simpleinfo(BasicProtocol* pro, CString* pRetMsg);
+
+	void game_userstate_sync();
+	void on_game_userstate_sync(BasicProtocol* pro, CString* pRetMsg);
+	void on_game_users_sync(BasicProtocol* pro, CString* pRetMsg);
 };

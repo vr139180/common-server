@@ -79,6 +79,9 @@ void ProtocolFactory::init_factory()
 	regist_protocal<User_RoleDetailB_ntf>(USER_PROTYPE::USER_ROLEDETAILB_NTF);
 	regist_protocal<User_RoleDetailEnd_ntf>(USER_PROTYPE::USER_ROLEDETAILEND_NTF);
 
+	regist_protocal<User_QuerySimpleInfo_req>(USER_PROTYPE::USER_QUERY_SIMPLEINFO_REQ);
+	regist_protocal<User_QuerySimpleInfo_ack>(USER_PROTYPE::USER_QUERY_SIMPLEINFO_ACK);
+
 	//building
 	regist_protocal<Build_AddItem_req>(BUILD_PROTYPE::BUILD_ADDITEM_REQ);
 	regist_protocal<Build_AddItem_ack>(BUILD_PROTYPE::BUILD_ADDITEM_ACK);
@@ -151,4 +154,8 @@ void ProtocolFactory::init_factory()
 	//matchmaking system
 	regist_protocal<MMS_MatchMaking_req>(MMS_PROTYPE::MMS_MATCHMAKING_REQ);
 	regist_protocal<MMS_MatchMaking_ack>(MMS_PROTYPE::MMS_MATCHMAKING_ACK);
+
+	//game system
+	regist_protocal<Game_Users_sync>(GMS_PROTYPE::GAME_USERS_SYN);
+	regist_protocal<Game_UserState_sync>(GMS_PROTYPE::GAME_USERSTATE_SYN);
 }

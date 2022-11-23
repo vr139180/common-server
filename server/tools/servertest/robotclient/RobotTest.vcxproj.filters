@@ -112,6 +112,9 @@
     <ClCompile Include="PhpResult.cpp">
       <Filter>framework</Filter>
     </ClCompile>
+    <ClCompile Include="CommandTestImpl_Cmd_Test.cpp">
+      <Filter>cmdtest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommandTestImpl.h">

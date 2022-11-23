@@ -39,6 +39,7 @@ public:
 
 	T* ask_free_link();
 	T* get_servicelink_byiid(S_INT_64 iid);
+	T* get_servicelink_byiid_nomutex(S_INT_64 iid);
 	virtual void return_freelink(T* link);
 	virtual T* regist_onlinelink(T* link);
 
@@ -115,8 +116,9 @@ void LinkFromConsistentHash<T>::send_netprotocol(S_INT_64 key, BasicProtocol* pr
 	T* plink = 0;
 	{
 		ThreadLockWrapper guard(lock_);
+
 		S_INT_64 linkid = nethash_.get_netnode_byval(key);
-		plink = get_servicelink_byiid(linkid);
+		plink = get_servicelink_byiid_nomutex(linkid);
 	}
 
 	if (plink)
@@ -133,7 +135,7 @@ void LinkFromConsistentHash<T>::send_netprotocol(S_INT_32 hashkey, BasicProtocol
 		ThreadLockWrapper guard(lock_);
 
 		S_INT_64 linkid = nethash_.get_netnode_byhash(key);
-		plink = get_servicelink_byiid(linkid);
+		plink = get_servicelink_byiid_nomutex(linkid);
 	}
 
 	if (plink)
@@ -150,7 +152,7 @@ void LinkFromConsistentHash<T>::send_protocol(S_INT_64 key, NetProtocol* pro)
 		ThreadLockWrapper guard(lock_);
 
 		S_INT_64 linkid = nethash_.get_netnode_byval(key);
-		plink = get_servicelink_byiid(linkid);
+		plink = get_servicelink_byiid_nomutex(linkid);
 	}
 
 	if (plink)
@@ -219,6 +221,12 @@ T* LinkFromConsistentHash<T>::get_servicelink_byiid(S_INT_64 iid)
 {
 	ThreadLockWrapper guard(lock_);
 
+	return get_servicelink_byiid_nomutex(iid);
+}
+
+template<typename T>
+T* LinkFromConsistentHash<T>::get_servicelink_byiid_nomutex(S_INT_64 iid)
+{
 	typename boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
 	if (fiter == online_links_.end())
 		return 0;

@@ -168,7 +168,6 @@ void UnionServiceApp::register_timer()
 void UnionServiceApp::main_loop()
 {
 	OSSystem::mOS->UpdateNowTick();
-	u64 st =OSSystem::mOS->GetTicks();
 	int loopnum = conf_->loopnum_;
 
 	int sleepstep =0;

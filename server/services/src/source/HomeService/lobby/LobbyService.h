@@ -58,6 +58,7 @@ public:
 	//---------------------------MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
 	virtual void ProcessMessage(NetProtocol* message, bool& autorelease) {}
+	virtual void NetProcessMessage(NetProtocol* message, bool& autorelease);
 
 public:
 	//---------------------------IGlobalDataEnv interface -------------------------------
@@ -75,6 +76,8 @@ protected:
 	void on_lb_rolelist_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_roleselect_req(NetProtocol* pro, bool& autorelease);
+
+	void on_lb_querysimpleinfo_req(NetProtocol* pro, bool& autorelease);
 
 	void on_lb_build_additem_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease);

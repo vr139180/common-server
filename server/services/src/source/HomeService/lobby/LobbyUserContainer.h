@@ -47,7 +47,13 @@ protected:
 
 		bool need_move() {
 			S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
-			return (last_time_ + 10 * 1000) < tnow;
+			if ((last_time_ + 10 * 1000) < tnow)
+			{
+				last_time_ = tnow;
+				return true;
+			}
+			else
+				return false;
 		}
 
 		T* data() {
@@ -58,6 +64,22 @@ protected:
 			this->pre_ = 0;
 			this->next_ = head;
 			head->pre_ = this;
+		}
+
+		void move_to_head(DoubleLinkNode* head, DoubleLinkNode** tail) {
+			if (this == head)
+				return;
+
+			if (this == *tail)
+				*tail = this->pre_;
+
+			DoubleLinkNode* next = this->next_;
+			if (pre_ != 0)
+				pre_->next_ = next;
+			if (next != 0)
+				next->pre_ = pre_;
+
+			add_head(head);
 		}
 
 	private:
@@ -183,6 +205,11 @@ T* LobbyUserContainer<T>::get_lobbyuser(S_INT_64 userid)
 		{
 			pnod->add_head(head_);
 		}
+	}
+
+	if (pnod->need_move())
+	{
+		pnod->move_to_head(head_, &tail_);
 	}
 
 	return pnod->data();

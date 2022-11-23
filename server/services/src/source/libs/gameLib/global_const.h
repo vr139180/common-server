@@ -21,7 +21,7 @@
 #define GATE_PIECE_NUM_MAX		2000
 
 //home正常设计容量
-#define HOME_LOBBY_THREADNUM	4				//lobby线程数
+#define HOME_LOBBY_THREADNUM	1				//lobby线程数
 #define HOME_LOBBY_PLAYERS		1000			//每个lobby的用户数
 #define HOME_LOBBUSER_TIMEOUT	20*60*60*1000	//20 hour不活跃清楚数据
 

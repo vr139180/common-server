@@ -90,6 +90,11 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 			svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 			return;
 		}
+		else if (msgid > PRO::GMS_PROTYPE::GMS_MSG_BEGIN && msgid < PRO::GMS_PROTYPE::GMS_MSG_END)
+		{
+			svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, p_msg.release());
+			return;
+		}
 		else //default, route to datarouter
 		{
 			svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());

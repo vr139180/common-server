@@ -30,6 +30,8 @@ void LobbyService::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_ROLECREATE_REQ, &LobbyService::on_lb_rolecreate_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_REQ, &LobbyService::on_lb_roleselect_req, this);
 
+	REGISTERMSG(USER_PROTYPE::USER_QUERY_SIMPLEINFO_REQ, &LobbyService::on_lb_querysimpleinfo_req, this);
+
 	REGISTERMSG(BUILD_PROTYPE::BUILD_ADDITEM_REQ, &LobbyService::on_lb_build_additem_req, this);
 	REGISTERMSG(BUILD_PROTYPE::BUILD_DELITEM_REQ, &LobbyService::on_lb_build_delitem_req, this);
 
@@ -41,6 +43,15 @@ void LobbyService::InitNetMessage()
 	REGISTERMSG(TASK_PROTYPE::TASK_GETTASK_REQ, &LobbyService::on_lb_task_get_req, this);
 	REGISTERMSG(TASK_PROTYPE::TASK_SUBMITTASK_REQ, &LobbyService::on_lb_task_submit_req, this);
 	REGISTERMSG(TASK_PROTYPE::TASK_GIVEUPTASK_REQ, &LobbyService::on_lb_task_giveup_req, this);
+}
+
+void LobbyService::NetProcessMessage(NetProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userbyid_from_msg(pro);
+	if (puser != 0)
+		puser->sync_head( pro->head_);
+
+	MessageProcess::NetProcessMessage(pro, autorelease);
 }
 
 void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
@@ -57,9 +68,9 @@ void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)
 	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
-	User_RoleCreate_req* req = dynamic_cast<User_RoleCreate_req*>(pro->msg_);
+	User_RoleList_req* req = dynamic_cast<User_RoleList_req*>(pro->msg_);
 
-	puser->on_ls_rolecreate_req(req->nickname().c_str());
+	puser->on_ls_rolelist_req();
 }
 
 void LobbyService::on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease)
@@ -76,15 +87,29 @@ void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 {
 	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
+
 	User_RoleSelect_req* req = dynamic_cast<User_RoleSelect_req*>(pro->msg_);
 
 	puser->on_ls_roleselect_req(req->role_iid());
+}
+
+void LobbyService::on_lb_querysimpleinfo_req(NetProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userbyid_from_msg(pro);
+	if (puser == 0) return;
+
+	User_QuerySimpleInfo_req* req = dynamic_cast<User_QuerySimpleInfo_req*>(pro->msg_);
+
+	User_QuerySimpleInfo_ack* ack = new User_QuerySimpleInfo_ack();
+
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)
 {
 	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
+
 	Build_AddItem_req* req = dynamic_cast<Build_AddItem_req*>(pro->msg_);
 
 	S_INT_32 ret = 0;
@@ -97,7 +122,7 @@ void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)
 	if (pitem != 0)
 		ack->mutable_item()->CopyFrom(*pitem);
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease)
@@ -112,7 +137,7 @@ void LobbyService::on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease)
 	ack->set_building_iid(req->building_iid());
 	ack->set_result(ret);
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_pet_adoptone_req(NetProtocol* pro, bool& autorelease)
@@ -129,7 +154,7 @@ void LobbyService::on_lb_pet_adoptone_req(NetProtocol* pro, bool& autorelease)
 	if (pitem != 0)
 		ack->mutable_pet()->CopyFrom(*pitem);
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_pet_releaseone_req(NetProtocol* pro, bool& autorelease)
@@ -145,7 +170,7 @@ void LobbyService::on_lb_pet_releaseone_req(NetProtocol* pro, bool& autorelease)
 	ack->set_mypet_iid(req->mypet_iid());
 	ack->set_result(ret);
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_task_waitlist_req(NetProtocol* pro, bool& autorelease)
@@ -154,7 +179,7 @@ void LobbyService::on_lb_task_waitlist_req(NetProtocol* pro, bool& autorelease)
 	if (puser == 0) return;
 	
 	BasicProtocol* ack = puser->task_get_waitlist();
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_task_mytasks_req(NetProtocol* pro, bool& autorelease)
@@ -164,7 +189,7 @@ void LobbyService::on_lb_task_mytasks_req(NetProtocol* pro, bool& autorelease)
 	
 	BasicProtocol* ack = puser->task_get_mytasks();
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_task_get_req(NetProtocol* pro, bool& autorelease)
@@ -175,7 +200,7 @@ void LobbyService::on_lb_task_get_req(NetProtocol* pro, bool& autorelease)
 	Task_GetTask_req* req = dynamic_cast<Task_GetTask_req*>(pro->msg_);
 	BasicProtocol* ack = puser->task_get_from_waitlist( req->task_iid());
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_task_submit_req(NetProtocol* pro, bool& autorelease)
@@ -186,7 +211,7 @@ void LobbyService::on_lb_task_submit_req(NetProtocol* pro, bool& autorelease)
 	Task_SubmitTask_req* req = dynamic_cast<Task_SubmitTask_req*>(pro->msg_);
 	BasicProtocol* ack = puser->task_submit_one(req->task_iid());
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }
 
 void LobbyService::on_lb_task_giveup_req(NetProtocol* pro, bool& autorelease)
@@ -197,5 +222,5 @@ void LobbyService::on_lb_task_giveup_req(NetProtocol* pro, bool& autorelease)
 	Task_GiveupTask_req* req = dynamic_cast<Task_GiveupTask_req*>(pro->msg_);
 	BasicProtocol* ack = puser->task_giveup_task(req->task_iid());
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 }

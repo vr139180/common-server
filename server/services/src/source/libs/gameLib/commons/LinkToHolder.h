@@ -37,6 +37,7 @@ public:
 	//和eureka同步服务
 	void sync_eureka_services(std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
 
+	void send_mth_protocol( NetProtocol* pro);
 	void send_mth_protocol(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_mth_protocol(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 	void send_mth_protocol(const SProtocolHead& head, BasicProtocol* msg);
@@ -187,6 +188,34 @@ void LinkToHolder<T>::send_mth_protocol(PRO::ERK_SERVICETYPE to, NetProtocol* pr
 		cur_online_link_ = 0;
 
 	online_links_[cur_online_link_]->send_netprotocol(to, pro);
+}
+
+template<typename T>
+void LinkToHolder<T>::send_mth_protocol(NetProtocol* pro)
+{
+	size_t num = online_links_.size();
+	if (num == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	ThreadLockWrapper guard(lock_);
+
+	num = online_links_.size();
+	if (num == 0)
+	{
+		delete pro;
+		return;
+	}
+
+	++cur_online_link_;
+	if (cur_online_link_ >= num)
+		cur_online_link_ = 0;
+	else if (cur_online_link_ < 0)
+		cur_online_link_ = 0;
+
+	online_links_[cur_online_link_]->send_protocol( pro);
 }
 
 template<typename T>

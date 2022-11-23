@@ -112,7 +112,7 @@
     <ClCompile>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>.;../;../../../services/src/sdk/include;../../../services/src/sdk/include/protobuf/include;../../../services/src/source/libs;../../../services/src/sdk/include/lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;CPPCONN_LIB_BUILD;MYSQLCLIENT_STATIC_BINDING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -132,7 +132,7 @@
       <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl.lib;cmsLib.lib;gameLib.lib;libprotobuf.lib;libmysql.lib;mysqlcppconn-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Ws2_32.lib;mswsock.lib;libcurl.lib;cmsLib.lib;gameLib.lib;libprotobuf.lib;libmysql.lib;mysqlcppconn-static.lib;Crypt32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>../../../services/src/sdk/lib64/opt;../../../services/src/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -154,6 +154,7 @@
     <ClCompile Include="CommandTestImpl_Cmd_Friend.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Mail.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Pets.cpp" />
+    <ClCompile Include="CommandTestImpl_Cmd_Test.cpp" />
     <ClCompile Include="CommandTestImpl_Script.cpp" />
     <ClCompile Include="LogonDlg.cpp" />
     <ClCompile Include="PhpResult.cpp" />

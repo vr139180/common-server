@@ -16,6 +16,9 @@
     <ClCompile Include="..\source\FightRouter\network\DataRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\FightRouter\network\GateServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\FightRouter\FightRouterApp.h" />
@@ -32,6 +35,9 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="..\source\FightRouter\network\DataRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\FightRouter\network\GateServiceLinkFrom.h">
       <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>

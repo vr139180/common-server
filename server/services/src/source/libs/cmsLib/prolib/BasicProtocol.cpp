@@ -104,6 +104,13 @@ S_INT_64 SProtocolHead::build_token_slottoken(S_INT_32 slot, S_INT_64 token)
 	return r;
 }
 
+void SProtocolHead::sync_token(const SProtocolHead& head)
+{
+	this->token_giduid_ = head.token_giduid_;
+	this->token_slottoken_ = head.token_slottoken_;
+	this->role_iid_ = head.role_iid_;
+}
+
 void SProtocolHead::set_token_giduid(S_INT_64 gateiid, S_INT_64 useriid)
 {
 	MAKE_USERGATE(gateiid, useriid, token_giduid_);

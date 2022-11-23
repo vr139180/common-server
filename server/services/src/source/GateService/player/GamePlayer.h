@@ -54,7 +54,7 @@ public:
 
 	S_INT_64 get_roleiid() { return this->role_iid_; }
 	//角色选择确定后切换giduid为gateid+role_iid_
-	void role_selected_done(S_INT_64 rid, S_INT_64 gateiid);
+	void role_selected_done(S_INT_64 rid);
 
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_;}

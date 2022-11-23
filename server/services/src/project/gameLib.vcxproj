@@ -33,6 +33,7 @@
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\friend_system_internal.pb.cc" />
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\item_warehouse.pb.cc" />
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\mail_system.pb.cc" />
@@ -80,6 +81,7 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\eureka_internal.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\friend_system.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\friend_system_internal.pb.h" />
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\global_internal.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\item_warehouse.pb.h" />
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\mail_system.pb.h" />

@@ -133,6 +133,7 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 	}
 	else
 	{
+		logDebug(out_runtime, "home recv msg:%d from:%s....", msgid, NetServiceType::to_string((NETSERVICE_TYPE)pro->get_to()).c_str());
 		svrApp.dispatch_to_lobby(p_msg.release());
 	}
 }

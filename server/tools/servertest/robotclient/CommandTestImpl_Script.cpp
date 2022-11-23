@@ -89,6 +89,11 @@ void CommandTestImpl::gts_linkdo()
 	CMDMESSAGE(TASK_PROTYPE::TASK_OBTAINREWARD_NTF, on_task_obtainreward_ntf);
 	CMDMESSAGE(TASK_PROTYPE::TASK_GIVEUPTASK_ACK, on_task_giveup_ack);
 
+	//test
+	CMDMESSAGE(USER_PROTYPE::USER_QUERY_SIMPLEINFO_ACK, on_user_get_simpleinfo);
+	CMDMESSAGE(GMS_PROTYPE::GAME_USERS_SYN, on_game_users_sync);
+	CMDMESSAGE(GMS_PROTYPE::GAME_USERSTATE_SYN, on_game_userstate_sync);
+
 	default:
 		if (proiid != 0)
 		{
@@ -115,6 +120,10 @@ void ScriptDlg::regist()
 	add_function("rolelist()", "获取角色列表");
 	add_function("rolecreate('test')", "创建角色");
 	add_function("roleselect(1)", "选择角色");
+
+	//test
+	add_function("get_user_info(1,1)", "查询其他用户信息");
+	add_function("game_userstate_sync()", "同步自己的状态");
 
 	//building
 	add_function("build_additem(0,1)", "加一个建筑");
@@ -185,6 +194,8 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("task_get", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_get)
 		.addFunction("task_submit", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_submit)
 		.addFunction("task_giveup", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_giveup)
+		.addFunction("get_user_info", (void (CommandTestImpl::*)(S_INT_64, S_INT_64))&CommandTestImpl::user_get_simpleinfo)
+		.addFunction("game_userstate_sync", (void (CommandTestImpl::*)(void))&CommandTestImpl::game_userstate_sync)
 		.endClass()
 		.endNamespace();
 }

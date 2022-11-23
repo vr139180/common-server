@@ -106,11 +106,11 @@ void CreateUserRoleCmd::run()
 	else
 		ack->set_role_iid(base_data_.data().role_iid());
 
-	svrApp.send_protocol_to_gate(ack);
+	puser->send_to_gate(ack);
 
 	if (success_)
 	{
-		puser->on_db_rolelist_update(false, roles_data_);
+		puser->on_db_rolelist_update( roles_data_);
 	}
 }
 

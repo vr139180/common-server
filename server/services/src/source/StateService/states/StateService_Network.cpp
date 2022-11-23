@@ -63,14 +63,16 @@ void StateService::on_user_login_req(NetProtocol* pro, bool& autorelease)
 		return;
 	}
 
-	UserLoginCmd *pcmd = new UserLoginCmd(req->account().c_str(), req->pwd().c_str(), this);
+	UserLoginCmd *pcmd = new UserLoginCmd(req->account().c_str(), req->pwd().c_str(), (useriid <= 0), this);
 	pcmd->reuse_cmd(pro->head_);
 
 	DBSCtrl::instance()->post_head_db_cmd( pcmd);
 }
 
-void StateService::on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type, const char* account, S_INT_64 uid)
+void StateService::on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type
+	, const char* account, bool saverole, PRO::DBUserRoles& roles)
 {
+	S_INT_64 uid = head.get_token_useriid();
 	//验证成功检测 是否在线
 	if (result == 0 && check_user_in_onlinequeue(0, uid))
 		result = 6;
@@ -89,7 +91,7 @@ void StateService::on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S
 		ack->set_logintoken( token);
 
 		//save to redis
-		redis_save_userinfo(0, head, account, uid, token, (result == 1));
+		redis_save_userinfo(0, head, account, (result == 1), saverole, roles);
 	}
 
 	svrApp.send_protocol_to_gate( head, ack);

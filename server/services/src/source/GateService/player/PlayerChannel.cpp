@@ -34,9 +34,6 @@ PlayerChannel::~PlayerChannel()
 
 void PlayerChannel::thread_worker()
 {
-	OSSystem::mOS->UpdateNowTick();
-	u64 st = OSSystem::mOS->GetTicks();
-
 	int sleepstep = 0;
 	while (1)
 	{
@@ -48,9 +45,6 @@ void PlayerChannel::thread_worker()
 		++sleepstep;
 
 		if (will_quit_) break;
-
-		//update time
-		OSSystem::mOS->UpdateNowTick();
 
 		CommandBase *pCmd = pop_one_cmd();
 		std::unique_ptr<CommandBase> a_pcmd(pCmd);

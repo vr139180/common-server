@@ -20,7 +20,8 @@
 
 #include "HomeServiceApp.h"
 
-LoadUserInfoCmd::LoadUserInfoCmd(const SProtocolHead& head, LobbyService* p):BaseDBCmd(head,p)
+LoadUserInfoCmd::LoadUserInfoCmd(const SProtocolHead& head, bool onlyload, LobbyService* p):BaseDBCmd(head,p)
+, only_load_( onlyload)
 , success_(false)
 {
 	role_iid_ = head_.get_role_iid();
@@ -99,5 +100,8 @@ void LoadUserInfoCmd::run()
 	if (puser == 0) return;
 
 	puser->on_db_roledata_sync1( base_data_, home_data_, building_data_, pet_data_, task_data_);
-	puser->role_selected_done();
+	if (only_load_)
+		puser->db_sync_load_done();
+	else
+		puser->db_role_selected_done();
 }

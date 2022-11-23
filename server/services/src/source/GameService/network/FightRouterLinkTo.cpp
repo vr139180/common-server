@@ -80,7 +80,7 @@ void FightRouterLinkTo::connect()
 	if (is_connected() || is_connecting())
 		return;
 
-	logInfo(out_runtime, "me(GameService) try to connect to FightRouter Service(iid:%ld ip:%s port:%d)",
+	logInfo(out_runtime, "me(GameService) try to connect to FightRouter(iid:%ld ip:%s port:%d)",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	connect_to(node_->ip.c_str(), node_->port);
@@ -90,7 +90,7 @@ void FightRouterLinkTo::on_cant_connectedto()
 {
 	LinkToBase::on_cant_connectedto();
 
-	logInfo(out_runtime, "------me(GameService) cant connect to FightRouter Service(iid:%ld ip:%s port:%d)------",
+	logInfo(out_runtime, "------me(GameService) cant connect to FightRouter(iid:%ld ip:%s port:%d)------",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(
@@ -102,7 +102,7 @@ void FightRouterLinkTo::on_connectedto_done()
 {
 	LinkToBase::on_connectedto_done();
 
-	logInfo(out_runtime, "++++++me(GameService) connected to FightRouter Service(iid:%ld ip:%s port:%d)++++++",
+	logInfo(out_runtime, "++++++me(GameService) connected to FightRouter(iid:%ld ip:%s port:%d)++++++",
 		node_->iid, node_->ip.c_str(), node_->port);
 
 	SystemCommand2<bool>* cmd = new SystemCommand2<bool>(

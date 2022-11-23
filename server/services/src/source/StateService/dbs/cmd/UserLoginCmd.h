@@ -24,7 +24,7 @@
 class UserLoginCmd : public BaseDBCmd
 {
 public:
-	UserLoginCmd( const char* uname, const char* pwd, StateService* p);
+	UserLoginCmd( const char* uname, const char* pwd, bool bloadroles, StateService* p);
 
 	void reuse_cmd( const SProtocolHead& h);
 
@@ -39,14 +39,16 @@ protected:
 	//input parameters
 	std::string		username_;
 	std::string		pwd_;
+	bool			b_need_load_roles_;
 	SProtocolHead	head_;
 
 	//output
 	//0:成功 1:账号被禁用 2:账号不存在 3:验证错误 4:系统错误 5:登陆排队中
-	S_INT_32	result_;
-	std::string user_pwd_;
-	S_INT_64	user_iid_;
-	S_INT_32	user_state_;
+	S_INT_32			result_;
+	std::string			user_pwd_;
+	S_INT_64			user_iid_;
+	S_INT_32			user_state_;
+	PRO::DBUserRoles	roles_data_;
 };
 
 #endif //__USERLOGINCMD_H__

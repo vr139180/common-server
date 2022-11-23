@@ -46,4 +46,6 @@
 
 #include <gameLib/protobuf/cpp/matchmaking_system.pb.h>
 
+#include <gameLib/protobuf/cpp/game_system.pb.h>
+
 #endif //__PROTO_ALL_H__

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package PRO;
+
+//option optimize_for = LITE_RUNTIME;
+option go_package = "gamelib/protobuf/gpro";
+option csharp_namespace = "com.cms.client.network.gpro";
+option java_multiple_files = true;
+option java_package = "com.cms.client.network.gpro";
+
+message Vector3d {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message GameUserInfo {
+  int64 user_iid = 1;
+  int64 role_iid = 2;
+  Vector3d pos = 3;
+}
+
+//在线用户同步
+message Game_Users_sync{
+  repeated GameUserInfo new_users = 1;
+  repeated int64 offline_users = 2;
+}
+
+//用户状态同步
+message Game_UserState_sync{
+  int64 user_iid = 1;
+  Vector3d pos = 2;
+}

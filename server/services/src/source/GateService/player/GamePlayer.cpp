@@ -59,7 +59,7 @@ void GamePlayer::auth( S_INT_64 uid)
 	s_head_.set_token_userid( uid);
 }
 
-void GamePlayer::role_selected_done(S_INT_64 rid, S_INT_64 gateiid)
+void GamePlayer::role_selected_done(S_INT_64 rid)
 {
 	cur_state_ = PlayerState::PlayerState_RoleReady;
 	role_iid_ = rid;

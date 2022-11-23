@@ -28,9 +28,6 @@ StateService::~StateService()
 
 void StateService::thread_worker()
 {
-	OSSystem::mOS->UpdateNowTick();
-	u64 st = OSSystem::mOS->GetTicks();
-
 	//bind to thread
 	svrApp.get_redisclient_thread().reset(&redis_);
 	svrApp.get_rpcache_thread().reset(&redisproto_cache_);
@@ -46,9 +43,6 @@ void StateService::thread_worker()
 		++sleepstep;
 
 		if (will_quit_) break;
-
-		//update time
-		OSSystem::mOS->UpdateNowTick();
 
 		CommandBase *pCmd = pop_one_cmd();
 		std::unique_ptr<CommandBase> a_pcmd(pCmd);

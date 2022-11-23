@@ -130,6 +130,10 @@ void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&FightRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
+	else
+	{
+		GamePlayerCtrl::instance().route_msg_to_player(p_msg.release());
+	}
 }
 
 void FightRouterLinkTo::on_connected( bool success)

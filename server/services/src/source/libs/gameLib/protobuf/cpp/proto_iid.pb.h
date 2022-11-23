@@ -75,12 +75,14 @@ enum USER_PROTYPE : int {
   USER_ROLEDETAILA_NTF = 1025,
   USER_ROLEDETAILB_NTF = 1026,
   USER_ROLEDETAILEND_NTF = 1027,
+  USER_QUERY_SIMPLEINFO_REQ = 1028,
+  USER_QUERY_SIMPLEINFO_ACK = 1029,
   USER_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   USER_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool USER_PROTYPE_IsValid(int value);
 constexpr USER_PROTYPE USER_PROTYPE_MIN = UNIVERSAL_1000;
-constexpr USER_PROTYPE USER_PROTYPE_MAX = USER_ROLEDETAILEND_NTF;
+constexpr USER_PROTYPE USER_PROTYPE_MAX = USER_QUERY_SIMPLEINFO_ACK;
 constexpr int USER_PROTYPE_ARRAYSIZE = USER_PROTYPE_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* USER_PROTYPE_descriptor();
@@ -357,6 +359,35 @@ inline bool MMS_PROTYPE_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<MMS_PROTYPE>(
     MMS_PROTYPE_descriptor(), name, value);
 }
+enum GMS_PROTYPE : int {
+  UNIVERSAL_4000 = 0,
+  GMS_MSG_BEGIN = 4000,
+  GAME_USERS_SYN = 4001,
+  GAME_USERSTATE_SYN = 4002,
+  GMS_MSG_END = 4900,
+  GMS_MSGALL_END = 4999,
+  GMS_PROTYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  GMS_PROTYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool GMS_PROTYPE_IsValid(int value);
+constexpr GMS_PROTYPE GMS_PROTYPE_MIN = UNIVERSAL_4000;
+constexpr GMS_PROTYPE GMS_PROTYPE_MAX = GMS_MSGALL_END;
+constexpr int GMS_PROTYPE_ARRAYSIZE = GMS_PROTYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* GMS_PROTYPE_descriptor();
+template<typename T>
+inline const std::string& GMS_PROTYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, GMS_PROTYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function GMS_PROTYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    GMS_PROTYPE_descriptor(), enum_t_value);
+}
+inline bool GMS_PROTYPE_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, GMS_PROTYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<GMS_PROTYPE>(
+    GMS_PROTYPE_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -423,6 +454,11 @@ template <> struct is_proto_enum< ::PRO::MMS_PROTYPE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::PRO::MMS_PROTYPE>() {
   return ::PRO::MMS_PROTYPE_descriptor();
+}
+template <> struct is_proto_enum< ::PRO::GMS_PROTYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::PRO::GMS_PROTYPE>() {
+  return ::PRO::GMS_PROTYPE_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

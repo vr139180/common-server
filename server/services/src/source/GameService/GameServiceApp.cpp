@@ -163,7 +163,6 @@ void GameServiceApp::register_timer()
 void GameServiceApp::main_loop()
 {
 	OSSystem::mOS->UpdateNowTick();
-	u64 st =OSSystem::mOS->GetTicks();
 	int loopnum = conf_->loopnum_;
 
 	int sleepstep =0;

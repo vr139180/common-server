@@ -46,7 +46,8 @@ u64 OSDriverLinux::timeGetTimeMy()
 
 u64 OSDriverLinux::GetTimestamp()
 {
-	return timeGetTimeMy();
+	//return timeGetTimeMy();
+	return mNowTickTime;
 }
 
 void OSDriverLinux::UpdateNowTick()

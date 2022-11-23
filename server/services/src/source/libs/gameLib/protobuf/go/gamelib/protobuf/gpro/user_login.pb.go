@@ -111,7 +111,7 @@ type User_LoginAck struct {
 
 	//登录类型 1:用户名密码 2:token登录
 	Type int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"`
-	//0:成功 1:用户名不存在 2:密码错误 3:token错误 4：没有资源 5:系统错误 6:登陆排队中
+	//0:成功 1:账号被禁用 2:账号不存在 3:验证错误 4:系统错误 5:登陆排队中 6:用户已上线
 	Result int32 `protobuf:"varint,2,opt,name=result,proto3" json:"result,omitempty"`
 	//成功返回 用户iid
 	UserIid *int64 `protobuf:"varint,3,opt,name=user_iid,json=userIid,proto3,oneof" json:"user_iid,omitempty"`
@@ -851,6 +851,100 @@ func (*User_RoleDetailEndNtf) Descriptor() ([]byte, []int) {
 	return file_user_login_proto_rawDescGZIP(), []int{15}
 }
 
+//获取角色基本信息
+type User_QuerySimpleInfoReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserIid int64 `protobuf:"varint,1,opt,name=user_iid,json=userIid,proto3" json:"user_iid,omitempty"`
+	RoleIid int64 `protobuf:"varint,2,opt,name=role_iid,json=roleIid,proto3" json:"role_iid,omitempty"`
+}
+
+func (x *User_QuerySimpleInfoReq) Reset() {
+	*x = User_QuerySimpleInfoReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_login_proto_msgTypes[16]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *User_QuerySimpleInfoReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User_QuerySimpleInfoReq) ProtoMessage() {}
+
+func (x *User_QuerySimpleInfoReq) ProtoReflect() protoreflect.Message {
+	mi := &file_user_login_proto_msgTypes[16]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User_QuerySimpleInfoReq.ProtoReflect.Descriptor instead.
+func (*User_QuerySimpleInfoReq) Descriptor() ([]byte, []int) {
+	return file_user_login_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *User_QuerySimpleInfoReq) GetUserIid() int64 {
+	if x != nil {
+		return x.UserIid
+	}
+	return 0
+}
+
+func (x *User_QuerySimpleInfoReq) GetRoleIid() int64 {
+	if x != nil {
+		return x.RoleIid
+	}
+	return 0
+}
+
+type User_QuerySimpleInfoAck struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *User_QuerySimpleInfoAck) Reset() {
+	*x = User_QuerySimpleInfoAck{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_user_login_proto_msgTypes[17]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *User_QuerySimpleInfoAck) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*User_QuerySimpleInfoAck) ProtoMessage() {}
+
+func (x *User_QuerySimpleInfoAck) ProtoReflect() protoreflect.Message {
+	mi := &file_user_login_proto_msgTypes[17]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use User_QuerySimpleInfoAck.ProtoReflect.Descriptor instead.
+func (*User_QuerySimpleInfoAck) Descriptor() ([]byte, []int) {
+	return file_user_login_proto_rawDescGZIP(), []int{17}
+}
+
 var File_user_login_proto protoreflect.FileDescriptor
 
 var file_user_login_proto_rawDesc = []byte{
@@ -930,13 +1024,20 @@ var file_user_login_proto_rawDesc = []byte{
 	0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x50, 0x52, 0x4f, 0x2e, 0x44,
 	0x42, 0x55, 0x73, 0x65, 0x72, 0x50, 0x65, 0x74, 0x73, 0x52, 0x04, 0x70, 0x65, 0x74, 0x73, 0x22,
 	0x18, 0x0a, 0x16, 0x55, 0x73, 0x65, 0x72, 0x5f, 0x52, 0x6f, 0x6c, 0x65, 0x44, 0x65, 0x74, 0x61,
-	0x69, 0x6c, 0x45, 0x6e, 0x64, 0x5f, 0x6e, 0x74, 0x66, 0x42, 0x54, 0x0a, 0x1b, 0x63, 0x6f, 0x6d,
-	0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77,
-	0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50, 0x01, 0x5a, 0x15, 0x67, 0x61, 0x6d, 0x65,
-	0x6c, 0x69, 0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x67, 0x70, 0x72,
-	0x6f, 0xaa, 0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65,
-	0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x6c, 0x45, 0x6e, 0x64, 0x5f, 0x6e, 0x74, 0x66, 0x22, 0x50, 0x0a, 0x18, 0x55, 0x73, 0x65,
+	0x72, 0x5f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x69, 0x6d, 0x70, 0x6c, 0x65, 0x49, 0x6e, 0x66,
+	0x6f, 0x5f, 0x72, 0x65, 0x71, 0x12, 0x19, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x75, 0x73, 0x65, 0x72, 0x49, 0x69, 0x64,
+	0x12, 0x19, 0x0a, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x69, 0x64, 0x22, 0x1a, 0x0a, 0x18, 0x55,
+	0x73, 0x65, 0x72, 0x5f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x53, 0x69, 0x6d, 0x70, 0x6c, 0x65, 0x49,
+	0x6e, 0x66, 0x6f, 0x5f, 0x61, 0x63, 0x6b, 0x42, 0x54, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63,
+	0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72,
+	0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x50, 0x01, 0x5a, 0x15, 0x67, 0x61, 0x6d, 0x65, 0x6c, 0x69,
+	0x62, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x67, 0x70, 0x72, 0x6f, 0xaa,
+	0x02, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x63, 0x6d, 0x73, 0x2e, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x2e, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x2e, 0x67, 0x70, 0x72, 0x6f, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -951,34 +1052,36 @@ func file_user_login_proto_rawDescGZIP() []byte {
 	return file_user_login_proto_rawDescData
 }
 
-var file_user_login_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_user_login_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_user_login_proto_goTypes = []interface{}{
-	(*User_LoginReq)(nil),         // 0: PRO.User_Login_req
-	(*User_LoginAck)(nil),         // 1: PRO.User_Login_ack
-	(*User_ReLoginReq)(nil),       // 2: PRO.User_ReLogin_req
-	(*User_ReLoginAck)(nil),       // 3: PRO.User_ReLogin_ack
-	(*User_LogoutNtf)(nil),        // 4: PRO.User_Logout_ntf
-	(*User_GateLostNtf)(nil),      // 5: PRO.User_GateLost_ntf
-	(*User_ActiveNtf)(nil),        // 6: PRO.User_Active_ntf
-	(*User_RoleListReq)(nil),      // 7: PRO.User_RoleList_req
-	(*User_RoleListAck)(nil),      // 8: PRO.User_RoleList_ack
-	(*User_RoleCreateReq)(nil),    // 9: PRO.User_RoleCreate_req
-	(*User_RoleCreateAck)(nil),    // 10: PRO.User_RoleCreate_ack
-	(*User_RoleSelectReq)(nil),    // 11: PRO.User_RoleSelect_req
-	(*User_RoleSelectAck)(nil),    // 12: PRO.User_RoleSelect_ack
-	(*User_RoleDetailANtf)(nil),   // 13: PRO.User_RoleDetailA_ntf
-	(*User_RoleDetailBNtf)(nil),   // 14: PRO.User_RoleDetailB_ntf
-	(*User_RoleDetailEndNtf)(nil), // 15: PRO.User_RoleDetailEnd_ntf
-	(*DBUserRoles)(nil),           // 16: PRO.DBUserRoles
-	(*DBUserHome)(nil),            // 17: PRO.DBUserHome
-	(*DBUserHomeStructure)(nil),   // 18: PRO.DBUserHomeStructure
-	(*DBUserPets)(nil),            // 19: PRO.DBUserPets
+	(*User_LoginReq)(nil),           // 0: PRO.User_Login_req
+	(*User_LoginAck)(nil),           // 1: PRO.User_Login_ack
+	(*User_ReLoginReq)(nil),         // 2: PRO.User_ReLogin_req
+	(*User_ReLoginAck)(nil),         // 3: PRO.User_ReLogin_ack
+	(*User_LogoutNtf)(nil),          // 4: PRO.User_Logout_ntf
+	(*User_GateLostNtf)(nil),        // 5: PRO.User_GateLost_ntf
+	(*User_ActiveNtf)(nil),          // 6: PRO.User_Active_ntf
+	(*User_RoleListReq)(nil),        // 7: PRO.User_RoleList_req
+	(*User_RoleListAck)(nil),        // 8: PRO.User_RoleList_ack
+	(*User_RoleCreateReq)(nil),      // 9: PRO.User_RoleCreate_req
+	(*User_RoleCreateAck)(nil),      // 10: PRO.User_RoleCreate_ack
+	(*User_RoleSelectReq)(nil),      // 11: PRO.User_RoleSelect_req
+	(*User_RoleSelectAck)(nil),      // 12: PRO.User_RoleSelect_ack
+	(*User_RoleDetailANtf)(nil),     // 13: PRO.User_RoleDetailA_ntf
+	(*User_RoleDetailBNtf)(nil),     // 14: PRO.User_RoleDetailB_ntf
+	(*User_RoleDetailEndNtf)(nil),   // 15: PRO.User_RoleDetailEnd_ntf
+	(*User_QuerySimpleInfoReq)(nil), // 16: PRO.User_QuerySimpleInfo_req
+	(*User_QuerySimpleInfoAck)(nil), // 17: PRO.User_QuerySimpleInfo_ack
+	(*DBUserRoles)(nil),             // 18: PRO.DBUserRoles
+	(*DBUserHome)(nil),              // 19: PRO.DBUserHome
+	(*DBUserHomeStructure)(nil),     // 20: PRO.DBUserHomeStructure
+	(*DBUserPets)(nil),              // 21: PRO.DBUserPets
 }
 var file_user_login_proto_depIdxs = []int32{
-	16, // 0: PRO.User_RoleList_ack.roles:type_name -> PRO.DBUserRoles
-	17, // 1: PRO.User_RoleDetailA_ntf.home:type_name -> PRO.DBUserHome
-	18, // 2: PRO.User_RoleDetailA_ntf.homeitems:type_name -> PRO.DBUserHomeStructure
-	19, // 3: PRO.User_RoleDetailB_ntf.pets:type_name -> PRO.DBUserPets
+	18, // 0: PRO.User_RoleList_ack.roles:type_name -> PRO.DBUserRoles
+	19, // 1: PRO.User_RoleDetailA_ntf.home:type_name -> PRO.DBUserHome
+	20, // 2: PRO.User_RoleDetailA_ntf.homeitems:type_name -> PRO.DBUserHomeStructure
+	21, // 3: PRO.User_RoleDetailB_ntf.pets:type_name -> PRO.DBUserPets
 	4,  // [4:4] is the sub-list for method output_type
 	4,  // [4:4] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
@@ -1185,6 +1288,30 @@ func file_user_login_proto_init() {
 				return nil
 			}
 		}
+		file_user_login_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*User_QuerySimpleInfoReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_user_login_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*User_QuerySimpleInfoAck); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_user_login_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	file_user_login_proto_msgTypes[1].OneofWrappers = []interface{}{}
@@ -1196,7 +1323,7 @@ func file_user_login_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_user_login_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

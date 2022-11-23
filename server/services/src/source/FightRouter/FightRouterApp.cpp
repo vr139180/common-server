@@ -94,6 +94,7 @@ bool FightRouterApp::pre_init()
 {
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 
+	gate_links_from_.init_holder();
 	matchmaking_links_from_.init_holder();
 	game_links_from_.init_holder(800);
 
@@ -169,6 +170,7 @@ void FightRouterApp::uninit_network()
 		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
+	gate_links_from_.uninit_holder();
 	game_links_from_.uninit_holder();
 	matchmaking_links_from_.uninit_holder();
 	datarouter_link_mth_.free_all();
@@ -198,7 +200,6 @@ void FightRouterApp::register_timer()
 void FightRouterApp::main_loop()
 {
 	OSSystem::mOS->UpdateNowTick();
-	u64 st =OSSystem::mOS->GetTicks();
 	int loopnum = conf_->loopnum_;
 
 	int sleepstep =0;
@@ -327,6 +328,27 @@ void FightRouterApp::on_disconnected_with_matchmakingservice(MatchMakingServiceL
 	}
 }
 
+void FightRouterApp::on_disconnected_with_gateservice(GateServiceLinkFrom* plink)
+{
+	FightRouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//¶Ï¿ªÓ³Éä¹ØÏµ
+		gate_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
 void FightRouterApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
 {
 	datarouter_link_mth_.on_linkto_regist_result(plink);
@@ -335,4 +357,24 @@ void FightRouterApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
 void FightRouterApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 {
 	datarouter_link_mth_.on_linkto_disconnected(plink);
+}
+
+void FightRouterApp::router_to_game(NetProtocol* pro)
+{
+	game_links_from_.send_protocol(pro->get_useriid(), pro);
+}
+
+void FightRouterApp::router_to_gate(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> ptr(pro);
+
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	S_INT_64 gateid = pro->head_.get_token_gateiid();
+	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateid);
+	if (plink)
+		plink->send_protocol(ptr.release());
 }

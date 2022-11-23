@@ -30,7 +30,7 @@
 class LoadUserInfoCmd : public BaseDBCmd
 {
 public:
-	LoadUserInfoCmd( const SProtocolHead& head, LobbyService* p);
+	LoadUserInfoCmd( const SProtocolHead& head, bool onlyload, LobbyService* p);
 
 	void reuse_cmd(const SProtocolHead& head);
 
@@ -42,6 +42,11 @@ public:
 	virtual bool reused() { return true; }
 
 protected:
+	//input
+	//true: 仅仅加载，不发送通知
+	bool			only_load_;
+
+	//output
 	UserBase		base_data_;
 	UserHome		home_data_;
 	UserBuildings	building_data_;

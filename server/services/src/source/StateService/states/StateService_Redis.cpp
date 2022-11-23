@@ -70,11 +70,14 @@ bool StateService::check_user_disable(RedisClient* rdv, const char* acc, S_INT_6
 	return false;
 }
 
-void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc, S_INT_64 uid, S_INT_64 token, bool disable)
+void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc
+	, bool disable, bool saverole, PRO::DBUserRoles& roles)
 {
 	if (rdv == 0)
 		rdv = svrApp.get_redisclient();
 
+	S_INT_64 uid = head.get_token_useriid();
+	S_INT_64 token = head.get_token_token();
 	//acount
 	std::string key = rdv->build_rediskey(rdkey::user::USER_ACCOUNT, acc);
 	rdv->set_hashmember(key.c_str(), {
@@ -88,10 +91,16 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 	rdv->set_hashmember(key.c_str(), {
 		std::make_pair(rdkey::user::USER_UINFO_F_USERID, std::to_string(uid).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_TOKEN, std::to_string(token).c_str()),
-		std::make_pair(rdkey::user::USER_UINFO_F_LOGINTIME, std::to_string(token).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_LOGINTIME, std::to_string(OSSystem::mOS->GetTimestamp()).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
 	});
+
+	//account会直接加载rolelist
+	if (saverole)
+		rdv->set_hashobject(key.c_str(), rdkey::user::USER_UINFO_F_ROLES, &roles, svrApp.get_redisprotocache());
+
 	if (disable)
 		rdv->set_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_DISABLE, "1");
 
@@ -115,6 +124,7 @@ void StateService::redis_update_onlinestate(RedisClient* rdv, S_INT_64 userid, c
 	rdv->set_hashmember(key.c_str(), {
 		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
 		});
 
 	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();

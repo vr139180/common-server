@@ -106,6 +106,7 @@ public:
 	bool encode_totlelen(S_UINT_8 *pbuf, S_UINT_32 maxlen, S_UINT_32 msglen);
 	bool decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
 
+	void sync_token(const SProtocolHead& head);
 	void set_token_giduid(S_INT_64 gateiid, S_INT_64 userid);
 	void set_token_gateid(S_INT_64 gateiid);
 	void set_token_userid(S_INT_64 userid);

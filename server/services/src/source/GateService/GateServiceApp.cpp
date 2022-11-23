@@ -190,7 +190,6 @@ void GateServiceApp::register_timer()
 void GateServiceApp::main_loop()
 {
 	OSSystem::mOS->UpdateNowTick();
-	u64 st =OSSystem::mOS->GetTicks();
 	int loopnum = conf_->loopnum_;
 
 	int sleepstep =0;
@@ -285,6 +284,7 @@ void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtoco
 
 void GateServiceApp::route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
+	logDebug(out_runtime, "recv msg:%d from player, router to fightrouter", pro->get_msg());
 	fightrouter_link_mth_.send_mth_protocol(to, pro);
 }
 

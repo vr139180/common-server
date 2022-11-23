@@ -21,6 +21,8 @@
 #include <cmsLib/encryption/md5/md5.h>
 #include <cmsLib/encryption/md5/md5.h>
 #include <cmsLib/json/JSONUtil.h>
+#include <cmsLib/base/OSSystem.h>
+
 #include "PhpResult.h"
 
 USE_PROTOCOL_NAMESPACE;
@@ -44,8 +46,8 @@ void CommandTestImpl::user_active()
 {
 	if (!islogon())
 		return;
-
-	S_INT_64 tnow = ShareUtil::get_token();
+	OSSystem::mOS->UpdateNowTick();
+	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
 	if (last_active_time_ + 10 * 1000 > tnow)
 		return;
 

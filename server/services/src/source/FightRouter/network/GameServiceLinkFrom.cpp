@@ -53,6 +53,9 @@ void GameServiceLinkFrom::on_connect_lost_netthread()
 void GameServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
+	if (pro->get_to() == (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE) {
+		svrApp.router_to_gate(p_msg.release());
+	}
 }
 
 void GameServiceLinkFrom::registinfo_tolog( bool bregist)

@@ -28,7 +28,6 @@ class LobbyService;
 typedef enum tagUserState {
 	//空闲
 	UserState_Free = 0,
-	UserState_RolesLoading,
 	UserState_RolesReady,
 	//等待db加载
 	UserState_RoleDetailLoading,
@@ -45,15 +44,23 @@ public:
 	LobbyService* get_owner() { return owner_; }
 	void set_context(LobbyService* p);
 
-	void init_user(S_INT_64 giduid, S_INT_64 slottoken);
+	void sync_head(const SProtocolHead& head);
 	void rest_user();
+
+	virtual S_INT_64 get_user_iid() { return s_head_.get_token_useriid(); }
 
 	bool is_samesession( const SProtocolHead& head);
 
 	UserState get_userstate() { return cur_state_; }
 	bool is_user_ready() { return cur_state_ == UserState::UserState_Ready; }
+	bool is_user_free() { return cur_state_ == UserState::UserState_Free; }
 
-	void role_selected_done();
+	//选择角色后的通知
+	void db_role_selected_done();
+	//加载后台的通知
+	void db_sync_load_done();
+
+	void send_to_gate(BasicProtocol* msg);
 
 public:
 	//from network
@@ -64,8 +71,7 @@ public:
 
 public:
 	//from database
-	//true:init false update
-	void on_db_rolelist_update(bool initorupdate, UserRoles& from);
+	void on_db_rolelist_update( UserRoles& from);
 	void notify_roledetail_to_user();
 
 public:
@@ -84,7 +90,8 @@ public:
 	virtual std::string get_luaojb_name();
 
 protected:
-	bool sync_rolelist();
+	//从redis同步角色列表
+	bool redis_sync_rolelist();
 
 protected:
 	SProtocolHead	s_head_;

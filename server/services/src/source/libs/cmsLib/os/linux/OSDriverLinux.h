@@ -30,7 +30,6 @@ public:
 	virtual u64				GetTimestamp();
 
 	virtual u64             GetTicks();
-	virtual u64             GetTicksRealtime();
     virtual ulong           GetCalendarTime() const;
     virtual void            Sleep( u32 ms );
 
@@ -48,8 +47,11 @@ public:
 
 	virtual void			thread_yield();
 
+protected:
+	virtual u64             GetTicksRealtime();
+
 private:
-	u64                     mNowTickTime;
+	volatile u64			mNowTickTime;
 };
 
 #endif // EW_PLATFORM_LINUX 

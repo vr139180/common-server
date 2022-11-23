@@ -31,24 +31,26 @@ REDISKEY_USER_NS_BEGIN
 
 //---------------------------登陆相关-------------------------------------
 //和账户相关的信息 hash %s=account
-REDIS_KEY_DEF(USER_ACCOUNT, "-USERS:ACC:#%s");
+REDIS_KEY_DEF(USER_ACCOUNT, "-LOGIN:ACC:#%s");
 REDIS_FIELD_DEF(USER_ACCOUNT_F_USERID, "userid");
 REDIS_FIELD_DEF(USER_ACCOUNT_F_TOKEN, "token");
 
 //userid账户相关 hash %lld=userid
-REDIS_KEY_DEF(USER_USERINFO, "-USERS:USR:#%lld");
+REDIS_KEY_DEF(USER_USERINFO, "-LOGIN:USR:#%lld");
 REDIS_FIELD_DEF(USER_UINFO_F_USERID, "userid");
 REDIS_FIELD_DEF(USER_UINFO_F_TOKEN, "token");
 REDIS_FIELD_DEF(USER_UINFO_F_DISABLE, "disable");
 REDIS_FIELD_DEF(USER_UINFO_F_LOGINTIME, "logintime");
 REDIS_FIELD_DEF(USER_UINFO_F_RELOGIN, "relogin");
 REDIS_FIELD_DEF(USER_UINFO_F_ROLES, "roles");
+//以下和session相关
 REDIS_FIELD_DEF(USER_UINFO_F_GIDUID, "giduid");
 REDIS_FIELD_DEF(USER_UINFO_F_SLOTTOKEN, "slottoken");
+REDIS_FIELD_DEF(USER_UINFO_F_ROLEID, "roleid");
 
 //在线用户信息 set %d=0
 //score userid, value timestamp
-REDIS_KEY_DEF(USER_ONLINES, "-USERS:ONLINE:#%d");
+REDIS_KEY_DEF(USER_ONLINES, "-LOGIN:ONLINE:#%d");
 
 //用户激活定时 10s
 #define USER_ACTIVE_TIME_STEP	10*1000

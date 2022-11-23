@@ -23,9 +23,8 @@
 
 USED_REDISKEY_USER_NS
 
-bool LobbyUser::sync_rolelist()
+bool LobbyUser::redis_sync_rolelist()
 {
 	RedisClient* rds = svrApp.get_redisclient();
-	return roles_data_.load_from_redis(user_iid_, rds);
+	return roles_data_.load_from_redis( get_user_iid(), rds);
 }
-

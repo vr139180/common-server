@@ -69,7 +69,7 @@ private:
 		timer_object( u64 id, APPTIMER_FUN_MAP f):
 			iid_(id),fun_(f),before_node_(0),next_node_(0)
 		{
-			last_time_ = OSSystem::mOS->GetTicksRealtime();
+			last_time_ = OSSystem::mOS->GetTimestamp();
 		}
 
 		bool is_timeout( u64 tnow, int interval){

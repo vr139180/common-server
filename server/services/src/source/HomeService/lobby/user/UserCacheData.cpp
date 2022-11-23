@@ -23,14 +23,12 @@
 
 USED_REDISKEY_USER_NS
 
-UserCacheData::UserCacheData():user_iid_(-1)
+UserCacheData::UserCacheData()
 {
 }
 
 void UserCacheData::reset_usercache()
 {
-	this->user_iid_ = -1;
-
 	base_data_.reset_data();
 	home_data_.reset_data();
 	building_data_.reset_data();

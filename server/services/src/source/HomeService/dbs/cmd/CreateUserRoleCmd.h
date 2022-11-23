@@ -39,6 +39,7 @@ public:
 
 	virtual bool reused() { return true; }
 
+	//创建数据
 	void ls_create_new_role(const char* nickname);
 
 protected:

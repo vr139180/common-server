@@ -41,40 +41,60 @@ void LobbyUser::set_context(LobbyService* p)
 	task_resolver_.init_env(this->owner_, this, this);
 }
 
-void LobbyUser::init_user(S_INT_64 giduid, S_INT_64 slottoken)
-{
-	this->rest_user();
-
-	S_INT_64 uid = 0;
-	this->set_user_iid(uid);
-
-	this->cur_state_ = UserState::UserState_Free;
-	
-	if (this->sync_rolelist() == false)
-	{
-		this->cur_state_ = UserState::UserState_RolesLoading;
-
-		//load from database
-		BaseDBCmd* pcmd = new LoadUserRolesCmd(s_head_, owner_);
-		dbsStore->post_db_cmd(pcmd);
-	}
-	else
-	{
-		this->cur_state_ = UserState::UserState_RolesReady;
-
-		//nootify user
-		PRO::User_RoleList_ack *ack = new PRO::User_RoleList_ack();
-
-		ack->set_allocated_roles( roles_data_.clone_data<PRO::DBUserRoles>());
-
-		svrApp.send_protocol_to_gate(ack);
-	}
-}
-
 void LobbyUser::rest_user()
 {
 	this->cur_state_ = UserState::UserState_Free;
 	
 	this->roles_data_.reset_data();
 	this->reset_usercache();
+}
+
+void LobbyUser::send_to_gate(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(s_head_, msg);
+	SProtocolHead& head = pro->write_head();
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_HOME;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+
+	svrApp.send_netprotocol(pro);
+}
+
+void LobbyUser::sync_head(const SProtocolHead& head)
+{
+	// SH:LJFU:TODO
+	// 在home发生切换时，如何从redis同步最新数据
+	// 
+	if (cur_state_ == UserState::UserState_Free)
+	{
+		s_head_ = head;
+
+		redis_sync_rolelist();
+		cur_state_ = UserState::UserState_RolesReady;
+		
+		S_INT_64 roleid = s_head_.get_role_iid();
+		if (roleid <= 0)
+			return;
+
+		//如果有role加载它
+		reset_usercache();
+		set_role_iid(roleid);
+
+		if (sync_all())
+		{
+			cur_state_ = UserState::UserState_Ready;
+		}
+		else
+		{
+			cur_state_ = UserState::UserState_RoleDetailLoading;
+
+			//数据库中加载
+			BaseDBCmd* pcmd = new LoadUserInfoCmd(s_head_, true, owner_);
+			dbsStore->post_db_cmd(pcmd);
+		}
+	}
+	else
+	{
+		//only sync token part
+		s_head_.sync_token(head);
+	}
 }

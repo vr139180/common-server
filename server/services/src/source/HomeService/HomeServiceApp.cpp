@@ -242,9 +242,9 @@ void HomeServiceApp::main_loop()
 	}
 }
 
-void HomeServiceApp::send_protocol_to_gate(BasicProtocol* pro)
+void HomeServiceApp::send_netprotocol(NetProtocol* pro)
 {
-	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
+	datarouter_link_mth_.send_mth_protocol(pro);
 }
 
 void HomeServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)

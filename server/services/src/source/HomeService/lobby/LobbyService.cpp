@@ -49,9 +49,6 @@ void LobbyService::thread_worker()
 
 		if (will_quit_) break;
 
-		//update time
-		OSSystem::mOS->UpdateNowTick();
-
 		CommandBase *pCmd = pop_one_cmd();
 		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 

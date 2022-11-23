@@ -49,6 +49,6 @@ Profile::~Profile()
 	u64 d = OSSystem::mOS->GetTicks() - mStartTime;
 	if (d >= mDelay)
 	{
-		printf("%s \n\t\tcost %u ms, run %u times, user data %d\n", mFuncName, d, mRunTimes, (s32)mUserData);
+		printf("%s \n\t\tcost %lld ms, run %d times, user data %d\n", mFuncName, d, mRunTimes, (s32)mUserData);
 	}
 }

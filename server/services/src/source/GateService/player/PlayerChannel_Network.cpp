@@ -42,8 +42,8 @@ void PlayerChannel::on_disconnected_with_player(GamePlayer* plink)
 
 void PlayerChannel::on_pc_userlogin_ack(NetProtocol* pro, bool& autorelease)
 {
-	GamePlayer* pLink = get_player_bytoken(pro);
-	if (pLink == 0)
+	GamePlayer* puser = get_player_bytoken(pro);
+	if (puser == 0)
 		return;
 
 	User_Login_ack* ack = dynamic_cast<User_Login_ack*>(pro->msg_);
@@ -56,13 +56,13 @@ void PlayerChannel::on_pc_userlogin_ack(NetProtocol* pro, bool& autorelease)
 	if (ack->result() == 0)
 	{
 		//auth check
-		parent_->auth_wait_slot(pLink->get_userslot());
+		parent_->auth_wait_slot(puser->get_userslot());
 
-		pLink->auth(ack->user_iid());
-		pLink->registinfo_tolog(true);
+		puser->auth(ack->user_iid());
+		puser->registinfo_tolog(true);
 	}
 
-	pLink->send_netprotocol(ack);
+	puser->send_netprotocol(ack);
 }
 
 void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
@@ -83,11 +83,11 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 	User_RoleSelect_ack *ack = dynamic_cast<User_RoleSelect_ack*>(pro->msg_);
 	if (ack->result() == 0)
 	{
-		puser->role_selected_done(ack->role_iid(), EurekaClusterClient::instance().get_myiid());
+		puser->role_selected_done(ack->role_iid());
 	}
 
 	autorelease = false;
-	//puser->send_protocol(pro);
+	puser->send_netprotocol(ack);
 }
 
 void PlayerChannel::on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autorelease)

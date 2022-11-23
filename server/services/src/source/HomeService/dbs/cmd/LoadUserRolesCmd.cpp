@@ -62,5 +62,5 @@ void LoadUserRolesCmd::run()
 	LobbyUser* puser = lobby_->get_userbyid_from_msg( head_);
 	if (puser == 0) return;
 
-	puser->on_db_rolelist_update( true, roles_data_);
+	puser->on_db_rolelist_update( roles_data_);
 }

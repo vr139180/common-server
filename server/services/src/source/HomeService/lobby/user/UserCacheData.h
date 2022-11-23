@@ -44,11 +44,10 @@ public:
 
 	void reset_usercache();
 
-	S_INT_64 get_user_iid() { return user_iid_; }
-	void set_user_iid(S_INT_64 uid) { this->user_iid_ = uid; }
+	virtual S_INT_64 get_user_iid() = 0;
 
 	S_INT_64 get_role_iid() { return role_iid_; }
-	void set_role_iid(S_INT_64 rid) { this->role_iid_ = rid; }
+	void set_role_iid(S_INT_64 rid) { role_iid_ = rid; }
 
 	S_UINT_32 inc_cachever(RedisClient* rdv = 0);
 	S_INT_64 get_dbver_from_redis(RedisClient* rdv = 0);
@@ -126,7 +125,6 @@ protected:
 protected:
 	//当前role iid
 	S_INT_64	role_iid_;
-	S_INT_64	user_iid_;
 
 protected:
 	//cache中的版本信息

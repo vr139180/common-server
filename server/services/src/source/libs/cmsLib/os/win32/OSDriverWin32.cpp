@@ -85,7 +85,8 @@ u64 OSDriverWin32::GetTicksRealtime()
 
 u64 OSDriverWin32::GetTimestamp()
 {
-	return GetTicksRealtime();
+	//return GetTicksRealtime();
+	return mNowTickTime;
 }
 
 ulong OSDriverWin32::GetCalendarTime() const

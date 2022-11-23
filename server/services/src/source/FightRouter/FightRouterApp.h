@@ -36,6 +36,7 @@
 #include "network/GameServiceLinkFrom.h"
 #include "network/MatchMakingServiceLinkFrom.h"
 #include "network/DataRouterLinkTo.h"
+#include "network/GateServiceLinkFrom.h"
 
 class FightRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -49,6 +50,10 @@ public:
 	virtual void main_loop();
 
 	FightRouterConfig* get_config() { return conf_.get(); }
+
+public:
+	void router_to_game(NetProtocol* pro);
+	void router_to_gate(NetProtocol* pro);
 
 public:
 
@@ -96,6 +101,7 @@ protected:
 
 	LinkToHolder<DataRouterLinkTo>				datarouter_link_mth_;
 	LinkFromHolder<MatchMakingServiceLinkFrom>	matchmaking_links_from_;
+	LinkFromHolder<GateServiceLinkFrom>			gate_links_from_;
 
 	//¸ºÔØ¾ùºâ
 	LinkFromConsistentHash<GameServiceLinkFrom>	game_links_from_;
@@ -107,6 +113,7 @@ public:
 
 	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
 
+	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 	void on_disconnected_with_gameservice(GameServiceLinkFrom* plink);
 	void on_disconnected_with_matchmakingservice(MatchMakingServiceLinkFrom* plink);
 

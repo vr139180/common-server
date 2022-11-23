@@ -137,6 +137,9 @@
     <ClInclude Include="..\source\libs\gameLib\commons\LinkFromConsistentHash.h">
       <Filter>commons</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -262,6 +265,9 @@
       <Filter>protobuf\cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\robot_test_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.cc">
       <Filter>protobuf\cpp</Filter>
     </ClCompile>
   </ItemGroup>

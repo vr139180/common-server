@@ -53,7 +53,7 @@ public:
 	void dispatch_to_lobby(NetProtocol* msg);
 
 public:
-	void send_protocol_to_gate(BasicProtocol* pro);
+	void send_netprotocol(NetProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }

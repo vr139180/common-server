@@ -39,7 +39,6 @@ public:
 
     virtual void            UpdateNowTick() = 0;
     virtual u64             GetTicks() = 0;
-	virtual u64             GetTicksRealtime() = 0;
 	virtual u64				GetTimestamp() =0;
     virtual ulong           GetCalendarTime() const = 0;
 
@@ -56,6 +55,10 @@ public:
     virtual ulong           GetProcessId() = 0;
 
 	virtual void			thread_yield() =0;
+
+protected:
+	virtual u64             GetTicksRealtime() = 0;
+
 };
 
 #endif //OSDRIVER_H
