@@ -418,3 +418,20 @@ void DataRouterApp::router_to_gate(NetProtocol* pro)
 	if (plink)
 		plink->send_protocol(ptr.release());
 }
+
+void DataRouterApp::router_to_game(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> ptr(pro);
+
+	SProtocolHead& head = pro->write_head();
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
+
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	FightRouterLinkFrom* plink = fightrouter_links_from_.get_servicelink_random();
+	if (plink)
+		plink->send_protocol(ptr.release());
+}

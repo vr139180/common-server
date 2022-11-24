@@ -27,6 +27,7 @@ class ServiceNodeInfo : public IRedisSerializer
 {
 public:
 	ServiceNodeInfo();
+	virtual ~ServiceNodeInfo() {}
 
 	ServiceNodeInfo* clone();
 

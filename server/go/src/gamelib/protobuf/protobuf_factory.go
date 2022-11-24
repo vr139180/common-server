@@ -60,35 +60,33 @@ func (pb *ProtobufFactory) IdToProto(id uint16) (pro proto.Message, err error) {
 
 func (pb *ProtobufFactory) initFactory() {
 	// 处理eureka注册中心节点同步
+	pb.registMessage(&gpro.Erk_EurekaRegistReq{}, int(gpro.ERK_PROTYPE_ERK_EUREKAREGIST_REQ))
+	pb.registMessage(&gpro.Erk_EurekaRegistAck{}, int(gpro.ERK_PROTYPE_ERK_EUREKAREGIST_ACK))
+	pb.registMessage(&gpro.Erk_EurekaBindReq{}, int(gpro.ERK_PROTYPE_ERK_EUREKABIND_REQ))
+	pb.registMessage(&gpro.Erk_EurekaBindAck{}, int(gpro.ERK_PROTYPE_ERK_EUREKABIND_ACK))
 	pb.registMessage(&gpro.Erk_EurekaUpdateNtf{}, int(gpro.ERK_PROTYPE_ERK_EUREKAUPDATE_NTF))
-	pb.registMessage(&gpro.Erk_EurekaSync{}, int(gpro.ERK_PROTYPE_ERK_EUREKA_SYNC))
+	pb.registMessage(&gpro.Erk_MasterChangeNtf{}, int(gpro.ERK_PROTYPE_ERK_MASTERCHANGE_NTF))
 	// 处理服务注册
 	pb.registMessage(&gpro.Erk_ServiceRegistReq{}, int(gpro.ERK_PROTYPE_ERK_SERVICEREGIST_REQ))
 	pb.registMessage(&gpro.Erk_ServiceRegistAck{}, int(gpro.ERK_PROTYPE_ERK_SERVICEREGIST_ACK))
-	pb.registMessage(&gpro.Erk_ServiceRegist_Confirm{}, int(gpro.ERK_PROTYPE_ERK_SERVICEREGIST_CONFIRM))
+	pb.registMessage(&gpro.Erk_ServiceSyncNtf{}, int(gpro.ERK_PROTYPE_ERK_SERVICESYNC_NTF))
 	pb.registMessage(&gpro.Erk_ServiceBindReq{}, int(gpro.ERK_PROTYPE_ERK_SERVICEBIND_REQ))
 	pb.registMessage(&gpro.Erk_ServiceBindAck{}, int(gpro.ERK_PROTYPE_ERK_SERVICEBIND_ACK))
 	pb.registMessage(&gpro.Erk_ServiceSubscribeReq{}, int(gpro.ERK_PROTYPE_ERK_SERVICESUBSCRIBE_REQ))
-	pb.registMessage(&gpro.Erk_ServiceSubscribeAck{}, int(gpro.ERK_PROTYPE_ERK_SERVICESUBSCRIBE_ACK))
-	pb.registMessage(&gpro.Erk_ServiceShutdownNtf{}, int(gpro.ERK_PROTYPE_ERK_SERVICESHUTDOWN_NTF))
+	pb.registMessage(&gpro.Erk_ServiceSubscribeNtf{}, int(gpro.ERK_PROTYPE_ERK_SERVICESUBSCRIBE_NTF))
+	pb.registMessage(&gpro.Erk_RouterSubscribeReq{}, int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_REQ))
+	pb.registMessage(&gpro.Erk_RouterSubscribeNtf{}, int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_NTF))
+	pb.registMessage(&gpro.Erk_RouterOnlineReq{}, int(gpro.ERK_PROTYPE_ERK_ROUTERONLINE_REQ))
 
 	pb.registMessage(&gpro.Svr_LiveTickNtf{}, int(gpro.ERK_PROTYPE_SVR_LIVETICK_NTF))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceReq{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_REQ))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceAck{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK))
+	pb.registMessage(&gpro.Svr_RouterOnlineNtf{}, int(gpro.ERK_PROTYPE_SVR_ROUTERONLINE_NTF))
 
-	//res_internal.proto
-	pb.registMessage(&gpro.Res_SyncGateSlotNtf{}, int(gpro.ERK_PROTYPE_RES_SYNCGATESLOT_NTF))
-
-	//gatehome_internal.proto
-	pb.registMessage(&gpro.GHS_UserInitReq{}, int(gpro.GATEHOME_PROTYPE_GHS_USERINIT_REQ))
-	pb.registMessage(&gpro.GHS_UserLogoutNtf{}, int(gpro.GATEHOME_PROTYPE_GHS_USERLOGOUT_NTF))
-	pb.registMessage(&gpro.GHS_RoleDetailAsk{}, int(gpro.GATEHOME_PROTYPE_GHS_ROLEDETAIL_ASK))
-
+	//-----------------------------------------------------------------------------------------------------
 	//user proto
 	pb.registMessage(&gpro.User_LoginReq{}, int(gpro.USER_PROTYPE_USER_LOGIN_REQ))
 	pb.registMessage(&gpro.User_LoginAck{}, int(gpro.USER_PROTYPE_USER_LOGIN_ACK))
-	pb.registMessage(&gpro.User_ProxyLoginReq{}, int(gpro.USER_PROTYPE_USER_PROXYLOGIN_REQ))
-	pb.registMessage(&gpro.User_ProxyLoginAck{}, int(gpro.USER_PROTYPE_USER_PROXYLOGIN_ACK))
 	pb.registMessage(&gpro.User_LogoutNtf{}, int(gpro.USER_PROTYPE_USER_LOGOUT_NTF))
 
 	pb.registMessage(&gpro.User_RoleListAck{}, int(gpro.USER_PROTYPE_USER_ROLELIST_ACK))
@@ -173,4 +171,6 @@ func (pb *ProtobufFactory) initFactory() {
 	//matchmaking
 	pb.registMessage(&gpro.MMS_MatchMakingReq{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_REQ))
 	pb.registMessage(&gpro.MMS_MatchMakingAck{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_ACK))
+
+	//test
 }

@@ -142,7 +142,7 @@ T* LinkFromHolder<T>::get_servicelink_byiid(S_INT_64 iid)
 {
 	ThreadLockWrapper guard(lock_);
 
-	boost::unordered_map<S_INT_64, T*>::iterator fiter = online_links_.find(iid);
+	typename SERVICEMAP::iterator fiter = online_links_.find(iid);
 	if (fiter == online_links_.end())
 		return 0;
 	return fiter->second;
@@ -159,7 +159,7 @@ T* LinkFromHolder<T>::get_servicelink_random()
 	if (random_online_ >= online_links_.size())
 		random_online_ = 0;
 
-	boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
+	typename SERVICEMAP::iterator iter = online_links_.begin();
 	for (int ii = 0; ii < random_online_; ++ii)
 		++iter;
 	return iter->second;

@@ -21,8 +21,8 @@
 
 NetDriverX::NetDriverX():
 bInitialized_(false),
-index_next_ioservice_(0),
-thread_nums_(0)
+thread_nums_(0),
+index_next_ioservice_(0)
 {
 }
 

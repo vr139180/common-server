@@ -37,6 +37,14 @@ bool GamePlayer::is_need_unpack_protocol(S_UINT_16 msgid)
 	return true;
 }
 
+void GamePlayer::force_user_active()
+{
+	PRO::User_Active_ntf* ntf = new PRO::User_Active_ntf();
+	ntf->set_gameid(game_iid_);
+
+	this->send_to_state(ntf);
+}
+
 void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
@@ -63,6 +71,8 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		if (!is_login())
 			return;
 
+		PRO::User_Active_ntf* ntf = dynamic_cast<PRO::User_Active_ntf*>(pro->msg_);
+		ntf->set_gameid(game_iid_);
 		svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, p_msg.release());
 	}
 	else

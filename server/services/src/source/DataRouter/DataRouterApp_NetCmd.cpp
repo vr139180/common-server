@@ -178,7 +178,7 @@ void DataRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)
 {
 	logDebug(out_runtime, "recv new service type:%s node:%d unvalide node:%d from eureka",
-		NetServiceType::to_string(type), nodes.size(), deliids.size());
+		NetServiceType::to_string(type).c_str(), nodes.size(), deliids.size());
 }
 
 void DataRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE ctype, std::list<S_INT_64>& svrs)

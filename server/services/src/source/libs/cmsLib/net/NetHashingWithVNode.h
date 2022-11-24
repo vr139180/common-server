@@ -98,7 +98,7 @@ void NetHashingWithVNode<T>::build_nethashing()
 {
 	net_nodes_.clear();
 
-	for (std::list<VNodeWrap>::iterator iter = real_nodes_.begin(); iter != real_nodes_.end(); ++iter)
+	for (typename std::list<VNodeWrap>::iterator iter = real_nodes_.begin(); iter != real_nodes_.end(); ++iter)
 	{
 		const VNodeWrap& v = (*iter);
 		for (int ii = 0; ii < virtual_nodes_; ++ii)
@@ -118,7 +118,7 @@ T NetHashingWithVNode<T>::get_netnode_byhash(S_INT_32 hash)
 	if (net_nodes_.size() == 0)
 		return 0;
 
-	std::map<S_INT_32, VNodeWrap>::iterator iter = net_nodes_.upper_bound(hash);
+	typename std::map<S_INT_32, VNodeWrap>::iterator iter = net_nodes_.upper_bound(hash);
 	if (iter == net_nodes_.end())
 		iter = net_nodes_.begin();
 

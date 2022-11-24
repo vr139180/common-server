@@ -15,6 +15,7 @@
 
 #include "cmsLib/redis/RedisClient.h"
 #include <cmsLib/Log.h>
+#include <cmsLib/util/ShareUtil.h>
 
 RedisClient::RedisClient():
 	redis_( 0)
@@ -102,6 +103,27 @@ bool RedisClient::has_hashmember(const char* hkey, const char* field)
 	}
 }
 
+bool RedisClient::get_hashallmember(const char* hkey, boost::unordered_map<std::string, std::string>& membs)
+{
+	try {
+		std::vector< std::pair<std::string, std::string>> vecs;
+		redis_->hgetall(hkey, std::back_inserter(vecs));
+		for (int ii = 0; ii < vecs.size(); ++ii)
+		{
+			std::pair<std::string, std::string>& v = vecs[ii];
+			std::string& n = v.first;
+			std::string& xv = v.second;
+
+			membs[n] = xv;
+		}
+
+		return true;
+	}
+	catch (...) {
+		return false;
+	}
+}
+
 bool RedisClient::del_hashmember(const char* hkey, const char* field)
 {
 	try {
@@ -127,9 +149,8 @@ bool RedisClient::set_hashmember(const char* hkey, const char* field, const char
 bool RedisClient::set_hashmember_ul(const char* hkey, const char* field, S_INT_64 val)
 {
 	try {
-		char buf[10] = { 0, };
-		sprintf(buf, "%lld", val);
-		redis_->hset(hkey, field, buf);
+		std::string strval = ShareUtil::str_format<10>("%lld", val);
+		redis_->hset(hkey, field, strval.c_str());
 
 		return true;
 	}

@@ -242,7 +242,7 @@ void EurekaLinkToHolder<T>::send_mth_protocol( NetProtocol* pro)
 	else if (cur_online_link_ < 0)
 		cur_online_link_ = 0;
 
-	online_links_[cur_online_link_]->send_to_eureka(to, pro);
+	online_links_[cur_online_link_]->send_protocol( pro);
 }
 
 template<typename T>

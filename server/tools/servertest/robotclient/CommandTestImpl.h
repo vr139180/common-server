@@ -108,6 +108,8 @@ public:
 public:
 	//实现的脚本功能
 	void get_serverinfo();
+	void logout();
+	void close_connect();
 
 	//实现的脚本功能
 	void ping();
@@ -117,7 +119,8 @@ public:
 	void logintoken();
 	void on_login_ack(BasicProtocol* pro, CString* pRetMsg);
 
-	void logout();
+	void relogin();
+	void on_relogin_ack(BasicProtocol* pro, CString* pRetMsg);
 
 	void rolelist();
 	void on_rolelist_ack(BasicProtocol* pro, CString* pRetMsg);

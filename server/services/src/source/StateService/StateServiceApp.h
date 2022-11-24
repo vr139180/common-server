@@ -49,7 +49,8 @@ public:
 	virtual void main_loop();
 
 public:
-	void send_protocol_to_gate( SProtocolHead& head, BasicProtocol* pro);
+	void send_to_gate( SProtocolHead& head, BasicProtocol* pro);
+	void send_to_datarouter(NetProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }
 	RedisClient* get_redisclient() { return redis_inthread_.get(); }
@@ -89,6 +90,7 @@ protected:
 protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
+	void online_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
 	//注册成功之后标注为true

@@ -128,6 +128,12 @@ void SProtocolHead::set_token_userid(S_INT_64 userid)
 	set_token_giduid(gid, userid);
 }
 
+void SProtocolHead::set_token_token(S_INT_64 token)
+{
+	S_INT_32 slot = get_token_slot();
+	set_token_slottoken(slot, token);
+}
+
 S_INT_64 SProtocolHead::get_token_gateiid() const
 {
 	S_INT_64 gid = 0;

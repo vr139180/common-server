@@ -31,6 +31,8 @@ void StateService::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_LOGIN_REQ, &StateService::on_user_login_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_RELOGIN_REQ, &StateService::on_user_relogin_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ACTIVE_NTF, &StateService::on_user_active_ntf, this);
+	REGISTERMSG(USER_PROTYPE::USER_GATELOST_NTF, &StateService::on_user_gatelost_ntf, this);
+	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &StateService::on_user_logout_ntf, this);
 }
 
 void StateService::on_user_login_req(NetProtocol* pro, bool& autorelease)
@@ -49,7 +51,7 @@ void StateService::on_user_login_req(NetProtocol* pro, bool& autorelease)
 		ack->set_type(req->type());
 		ack->set_result(1);
 
-		svrApp.send_protocol_to_gate(pro->head_, ack);
+		svrApp.send_to_gate(pro->head_, ack);
 		return;
 	}
 	else if (useriid > 0 && check_user_in_onlinequeue( rdv, useriid))
@@ -59,7 +61,7 @@ void StateService::on_user_login_req(NetProtocol* pro, bool& autorelease)
 		ack->set_type(req->type());
 		ack->set_result(6);
 
-		svrApp.send_protocol_to_gate(pro->head_, ack);
+		svrApp.send_to_gate(pro->head_, ack);
 		return;
 	}
 
@@ -94,15 +96,55 @@ void StateService::on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S
 		redis_save_userinfo(0, head, account, (result == 1), saverole, roles);
 	}
 
-	svrApp.send_protocol_to_gate( head, ack);
+	svrApp.send_to_gate( head, ack);
 }
 
 void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 {
 	User_ReLogin_req* req = dynamic_cast<User_ReLogin_req*>(pro->msg_);
+
+	logDebug(out_runtime, "recv user:[%lld,%lld] relogin req...", req->user_iid(), req->logintoken());
+
+	RedisClient* rdv = svrApp.get_redisclient();
+	S_INT_64 roleid = 0, gameid = 0, userid = 0, newtoken = 0;
+	userid = req->user_iid();
+	newtoken = req->logintoken();
+	bool succ = redis_user_relogin_check( rdv, pro->head_, userid, newtoken, roleid, gameid);
+	
+	User_ReLogin_ack* ack = new User_ReLogin_ack();
+	ack->set_result(1);
+	if (succ)
+	{
+		ack->set_result(0);
+		ack->set_user_iid(userid);
+		ack->set_logintoken(newtoken);
+		ack->set_role_iid(roleid);
+		ack->set_gameid(gameid);
+	}
+
+	SProtocolHead head = pro->head_;
+	svrApp.send_to_gate(head, ack);
 }
 
 void StateService::on_user_active_ntf(NetProtocol* pro, bool& autorelease)
 {
-	redis_update_onlinestate( 0, pro->get_useriid(), pro->head_);
+	User_Active_ntf *ntf = dynamic_cast<User_Active_ntf*>(pro->msg_);
+	redis_update_onlinestate( 0, pro->head_, ntf->gameid());
+}
+
+void StateService::on_user_gatelost_ntf(NetProtocol* pro, bool& autorelease)
+{
+	redis_gatelost_ntf(0, pro->get_useriid(), pro->head_.get_token_token());
+}
+
+void StateService::on_user_logout_ntf(NetProtocol* pro, bool& autorelease)
+{
+	if (redis_user_logout( 0, pro->get_useriid(), pro->head_.get_token_token()))
+	{
+		User_Logout_ntf* ntf = dynamic_cast<User_Logout_ntf*>(pro->msg_);
+
+		//logout成功，返回datarouter. 同时抄送game
+		autorelease = false;
+		svrApp.send_to_datarouter(pro);
+	}
 }

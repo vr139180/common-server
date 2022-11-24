@@ -23,6 +23,7 @@
 class IConfigContentSource
 {
 public:
+	virtual ~IConfigContentSource() {}
 	/**
 	* 初始化数据源
 	* @param prop

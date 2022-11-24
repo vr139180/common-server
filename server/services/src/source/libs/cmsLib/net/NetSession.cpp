@@ -19,12 +19,12 @@
 #include <cmsLib/util/ShareUtil.h>
 
 NetSession::NetSession( ThreadLock* lock, ThreadLock* queuelock, NetSessionBindEvent* cb, NetSessionType nstype):
-lock_(lock),
-queue_lock_( queuelock),
-lock_delete_( false),
-bind_event_cb_( cb),
-is_initialized( false),
-socket_type_( nstype)
+	is_initialized(false),
+	bind_event_cb_(cb),
+	socket_type_(nstype),
+	lock_(lock),
+	queue_lock_( queuelock),
+	lock_delete_( false)
 {
 	if( lock_ == 0)
 	{
@@ -187,15 +187,15 @@ void NetSession::on_connectto_result_ws(bool success, const char* ip, int port)
 	{
 		// Turn off the timeout on the tcp_stream, because
 		// the websocket stream has its own timeout system.
-		beast::get_lowest_layer(*websocket_).expires_never();
+		boost::beast::get_lowest_layer(*websocket_).expires_never();
 
 		// Set suggested timeout settings for the websocket
-		websocket_->set_option( websocket::stream_base::timeout::suggested( beast::role_type::client));
+		websocket_->set_option( boost::beast::websocket::stream_base::timeout::suggested( boost::beast::role_type::client));
 
 		// Set a decorator to change the User-Agent of the handshake
-		websocket_->set_option(websocket::stream_base::decorator(
-			[](websocket::request_type& req)
-			{ req.set(beast::http::field::user_agent, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-client-async"); }));
+		websocket_->set_option(boost::beast::websocket::stream_base::decorator(
+			[](boost::beast::websocket::request_type& req)
+			{ req.set(boost::beast::http::field::user_agent, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-client-async"); }));
 
 		// Update the host_ string. This will provide the value of the
 		// Host HTTP header during the WebSocket handshake.
@@ -218,7 +218,7 @@ void NetSession::on_connectto_result_ws(bool success, const char* ip, int port)
 	}
 }
 
-void NetSession::on_handshake_ws(beast::error_code ec)
+void NetSession::on_handshake_ws(boost::beast::error_code ec)
 {
 	dealwith_connect_tows_result(!ec);
 
@@ -297,13 +297,13 @@ void NetSession::dealwith_connect_result(bool success)
 			//根据不同的socket实现，进行参数设置
 			if (socket_type_ == NetSessionType::NSType_WebSocket)
 			{
-				websocket_->set_option(websocket::stream_base::timeout::suggested(
-					beast::role_type::server));
+				websocket_->set_option(boost::beast::websocket::stream_base::timeout::suggested(
+					boost::beast::role_type::server));
 
-				websocket_->set_option(websocket::stream_base::decorator(
-					[](websocket::response_type& res)
+				websocket_->set_option(boost::beast::websocket::stream_base::decorator(
+					[](boost::beast::websocket::response_type& res)
 					{
-					res.set(beast::http::field::server, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-server-async");
+					res.set(boost::beast::http::field::server, std::string(BOOST_BEAST_VERSION_STRING) + " websocket-server-async");
 					}));
 
 				websocket_->async_accept(
@@ -345,7 +345,7 @@ void NetSession::dealwith_connect_result(bool success)
 	}
 }
 
-void  NetSession::on_accept_websocket(beast::error_code ec)
+void  NetSession::on_accept_websocket(boost::beast::error_code ec)
 {
 	if (ec)
 	{
@@ -456,7 +456,7 @@ int NetSession::analy_package_nomutex( std::list<NetProtocol*>& readpro)
 {
 	int reduce_len =0;
 
-	if( recv_buff_pos_ < sizeof(S_UINT_32))
+	if( recv_buff_pos_ < (int)sizeof(S_UINT_32))
 		return reduce_len;
 
 	int len =recv_buff_pos_;
@@ -464,7 +464,7 @@ int NetSession::analy_package_nomutex( std::list<NetProtocol*>& readpro)
 	{
 		S_UINT_8 *pdata =recv_buff_ + reduce_len;
 
-		if( len < sizeof(S_UINT_32))
+		if( len < (int)sizeof(S_UINT_32))
 			break;
 		
 		S_UINT_32 len2 = *((S_UINT_32*)pdata);

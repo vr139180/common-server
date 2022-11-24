@@ -27,7 +27,7 @@ class FileConfigSourceImpl : public IConfigContentSource
 {
 public:
 	FileConfigSourceImpl();
-	~FileConfigSourceImpl();
+	virtual ~FileConfigSourceImpl();
 
 public:
 	//-----------------------implement IConfigContentSource------------------------

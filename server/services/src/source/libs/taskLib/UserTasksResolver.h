@@ -32,7 +32,7 @@ class UserTasksResolver : public ITaskContext
 	typedef boost::unordered_map<S_INT_32, TaskGroupCellRT*>	TASKGROUPCELLRT_MAP;
 public:
 	UserTasksResolver();
-	~UserTasksResolver();
+	virtual ~UserTasksResolver();
 	void init_env(IGlobalDataEnv* genv, IUserDataEnv* uenv, ITaskDataUpdateCB* cb);
 
 	void reset_resolver();

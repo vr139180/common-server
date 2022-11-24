@@ -42,7 +42,7 @@ public:
 public:
 	
 	void handle_connect( boost::system::error_code error);
-	void handle_connect_websocket(beast::error_code error);
+	void handle_connect_websocket(boost::beast::error_code error);
 
 private:
 	bool			is_connecting_;

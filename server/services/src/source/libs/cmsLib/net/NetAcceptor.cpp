@@ -18,11 +18,11 @@
 #include "cmsLib/Log.h"
 
 NetAcceptor::NetAcceptor( NetAcceptorEvent& cb):
+is_initialied_(false),
 event_cb_( cb),
+port_(0),
 acceptor_( 0),
-max_sessions_( 0),
-port_( 0),
-is_initialied_( false)
+max_sessions_( 0)
 {
 }
 

@@ -61,7 +61,14 @@ protected:
 	void redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc
 		, bool disable, bool saverole, PRO::DBUserRoles& roles);
 	//更新激活时间
-	void redis_update_onlinestate(RedisClient* rdv, S_INT_64 userid, const SProtocolHead& head);
+	void redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, S_INT_64 gameid);
+
+	//退出登录
+	bool redis_user_logout(RedisClient* rdv, S_INT_64 userid, S_INT_64 token, bool checktoken = true);
+	void redis_gatelost_ntf(RedisClient* rdv, S_INT_64 userid, S_INT_64 token);
+
+	bool redis_user_relogin_check(RedisClient* rdv, SProtocolHead& head, S_INT_64 userid, 
+		S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid);
 
 public:
 	void on_user_login_req(NetProtocol* pro, bool& autorelease);
@@ -71,6 +78,8 @@ public:
 
 	void on_user_relogin_req(NetProtocol* pro, bool& autorelease);
 	void on_user_active_ntf(NetProtocol* pro, bool& autorelease);
+	void on_user_gatelost_ntf(NetProtocol* pro, bool& autorelease);
+	void on_user_logout_ntf(NetProtocol* pro, bool& autorelease);
 };
 
 #endif //__STATESERVICE_H__

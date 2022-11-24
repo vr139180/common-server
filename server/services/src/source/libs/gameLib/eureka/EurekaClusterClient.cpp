@@ -74,15 +74,15 @@ bool EurekaClusterClient::get_eureka_masterinfo( const char* eurekaurl, EurekaNo
 }
 
 EurekaClusterClient::EurekaClusterClient():
-service_iid_(0)
-, token_(0)
-, cur_link_index_(0)
-, app_proxy_(0)
-, master_link_(0)
-, cur_state_( EurekaState::Eureka_WaitInit)
-, is_router_node_( false)
-, master_eureka_iid_( 0)
-, master_eureka_token_( 0)
+	service_iid_(0)
+	, token_(0)
+	, cur_state_(EurekaState::Eureka_WaitInit)
+	, master_eureka_iid_(0)
+	, master_eureka_token_(0)
+	, app_proxy_(0)
+	, is_router_node_(false)
+	, master_link_(0)
+	, cur_link_index_(0)
 {
 }
 
@@ -150,7 +150,7 @@ void EurekaClusterClient::uninit()
 
 void EurekaClusterClient::send_mth_protocol(BasicProtocol* pro, bool balance)
 {
-	size_t num = online_links_.size();
+	int num = (int)online_links_.size();
 	if (num == 0)
 	{
 		delete pro;
@@ -228,7 +228,7 @@ bool EurekaClusterClient::is_eurekanode_exist(S_INT_64 sid)
 
 bool EurekaClusterClient::is_eurekanode_connected(S_INT_64 sid)
 {
-	for (int ii = 0; ii < online_links_.size(); ++ii)
+	for (int ii = 0; ii < (int)online_links_.size(); ++ii)
 	{
 		EurekaClusterLink* plink = online_links_[ii];
 		if (plink->get_iid() == sid)

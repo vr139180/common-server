@@ -29,6 +29,9 @@ public:
 		std::string ret = "";
 		switch (t)
 		{
+		case NETSERVICE_TYPE::ERK_SERVICE_EUREKA:
+			ret = "eureka";
+			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER:
 			ret = "datarouter";
 			break;
@@ -67,6 +70,8 @@ public:
 			break;
 		case NETSERVICE_TYPE::ERK_SERVICE_DATASYNC:
 			ret = "datasync";
+			break;
+		default:
 			break;
 		}
 

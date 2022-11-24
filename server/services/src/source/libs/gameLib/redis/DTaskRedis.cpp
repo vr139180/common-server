@@ -19,16 +19,18 @@
 #include <cmsLib/util/Random.h>
 #include <cmsLib/base/OSSystem.h>
 
-DTaskRedis::DTaskRedis():service_iid(0)
-, start_time(0)
-, task_step(0)
+DTaskRedis::DTaskRedis():
+	service_iid(0)
+	, start_time(0)
+	, task_step(0)
 {
 }
 
-DTaskRedis::DTaskRedis(const char* name, S_INT_64 serviceiid, S_INT_32 step):start_time(0)
-, service_iid(serviceiid)
-, task_name(name)
-, task_step(step)
+DTaskRedis::DTaskRedis(const char* name, S_INT_64 serviceiid, S_INT_32 step):
+	service_iid(serviceiid)
+	, task_name(name)
+	,start_time(0)
+	, task_step(step)
 {
 	this->start_time = (S_INT_64)OSSystem::mOS->GetTimestamp();
 }

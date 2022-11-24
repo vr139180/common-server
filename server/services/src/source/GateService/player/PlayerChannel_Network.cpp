@@ -28,6 +28,7 @@ USE_PROTOCOL_NAMESPACE
 void PlayerChannel::InitNetMessage()
 {
 	REGISTERMSG(USER_PROTYPE::USER_LOGIN_ACK, &PlayerChannel::on_pc_userlogin_ack, this);
+	REGISTERMSG(USER_PROTYPE::USER_RELOGIN_ACK, &PlayerChannel::on_pc_userrelogin_ack, this);
 
 	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &PlayerChannel::on_pc_userlogout_ntf, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_ACK, &PlayerChannel::on_pc_roleselect_ack, this);
@@ -37,6 +38,9 @@ void PlayerChannel::InitNetMessage()
 
 void PlayerChannel::on_disconnected_with_player(GamePlayer* plink)
 {
+	User_GateLost_ntf* ntf = new User_GateLost_ntf();
+	plink->send_to_state(ntf);
+
 	force_pc_close_player(plink);
 }
 
@@ -58,7 +62,37 @@ void PlayerChannel::on_pc_userlogin_ack(NetProtocol* pro, bool& autorelease)
 		//auth check
 		parent_->auth_wait_slot(puser->get_userslot());
 
-		puser->auth(ack->user_iid());
+		puser->auth(ack->user_iid(), ack->logintoken());
+		puser->registinfo_tolog(true);
+	}
+
+	puser->send_netprotocol(ack);
+}
+
+void PlayerChannel::on_pc_userrelogin_ack(NetProtocol* pro, bool& autorelease)
+{
+	GamePlayer* puser = get_player_bytoken(pro);
+	if (puser == 0)
+		return;
+
+	User_ReLogin_ack* ack = dynamic_cast<User_ReLogin_ack*>(pro->msg_);
+
+	logDebug(out_runtime, "user:%lld relogin:%d", ack->user_iid(), ack->result());
+
+	autorelease = false;
+
+	//设置状态
+	if (ack->result() == 0)
+	{
+		//auth check
+		parent_->auth_wait_slot(puser->get_userslot());
+
+		//设置相关状态
+		puser->auth(ack->user_iid(), ack->logintoken());
+		if (ack->role_iid() > 0)
+			puser->role_selected_done(ack->role_iid());
+		puser->set_gameid(ack->gameid());
+		
 		puser->registinfo_tolog(true);
 	}
 
@@ -70,7 +104,13 @@ void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 	GamePlayer *puser = get_player_frommsg(pro);
 	if (puser == 0) return;
 
-	//svrApp.send_to_homeservice(ntf);
+	User_Logout_ntf* ntf = dynamic_cast<User_Logout_ntf*>(pro->msg_);
+	ntf->set_user_iid(puser->get_iid());
+	ntf->set_role_iid(puser->get_roleiid());
+	ntf->set_gameid(puser->get_gameid());
+
+	autorelease = false;
+	svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, pro);
 
 	force_pc_close_player(puser);
 }
@@ -84,6 +124,8 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 	if (ack->result() == 0)
 	{
 		puser->role_selected_done(ack->role_iid());
+
+		puser->force_user_active();
 	}
 
 	autorelease = false;
@@ -104,4 +146,18 @@ void PlayerChannel::on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autor
 		p->send_netprotocol( msg);
 	}
 	*/
+}
+
+void PlayerChannel::on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease)
+{
+	GamePlayer *puser = get_player_frommsg(pro);
+	if (puser == 0) return;
+
+	Game_EnterGame_ntf *ntf = dynamic_cast<Game_EnterGame_ntf*>(pro->msg_);
+	puser->set_gameid(ntf->game_iid());
+
+	puser->force_user_active();
+
+	autorelease = false;
+	puser->send_netprotocol( pro);
 }

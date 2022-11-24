@@ -820,7 +820,9 @@ class User_ReLogin_ack final :
 
   enum : int {
     kUserIidFieldNumber = 2,
-    kLogintokenFieldNumber = 3,
+    kRoleIidFieldNumber = 3,
+    kGameidFieldNumber = 4,
+    kLogintokenFieldNumber = 5,
     kResultFieldNumber = 1,
   };
   // optional int64 user_iid = 2;
@@ -836,7 +838,33 @@ class User_ReLogin_ack final :
   void _internal_set_user_iid(int64_t value);
   public:
 
-  // optional int64 logintoken = 3;
+  // optional int64 role_iid = 3;
+  bool has_role_iid() const;
+  private:
+  bool _internal_has_role_iid() const;
+  public:
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
+  // optional int64 gameid = 4;
+  bool has_gameid() const;
+  private:
+  bool _internal_has_gameid() const;
+  public:
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
+  private:
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
+  public:
+
+  // optional int64 logintoken = 5;
   bool has_logintoken() const;
   private:
   bool _internal_has_logintoken() const;
@@ -868,6 +896,8 @@ class User_ReLogin_ack final :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   int64_t user_iid_;
+  int64_t role_iid_;
+  int64_t gameid_;
   int64_t logintoken_;
   int32_t result_;
   friend struct ::TableStruct_user_5flogin_2eproto;
@@ -875,9 +905,10 @@ class User_ReLogin_ack final :
 // -------------------------------------------------------------------
 
 class User_Logout_ntf final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.User_Logout_ntf) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_Logout_ntf) */ {
  public:
   inline User_Logout_ntf() : User_Logout_ntf(nullptr) {}
+  ~User_Logout_ntf() override;
   explicit constexpr User_Logout_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   User_Logout_ntf(const User_Logout_ntf& from);
@@ -950,15 +981,27 @@ class User_Logout_ntf final :
   User_Logout_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<User_Logout_ntf>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const User_Logout_ntf& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const User_Logout_ntf& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const User_Logout_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const User_Logout_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(User_Logout_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -969,6 +1012,8 @@ class User_Logout_ntf final :
   explicit User_Logout_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -980,6 +1025,64 @@ class User_Logout_ntf final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kUserIidFieldNumber = 1,
+    kRoleIidFieldNumber = 2,
+    kTokenFieldNumber = 3,
+    kGameidFieldNumber = 4,
+  };
+  // optional int64 user_iid = 1;
+  bool has_user_iid() const;
+  private:
+  bool _internal_has_user_iid() const;
+  public:
+  void clear_user_iid();
+  int64_t user_iid() const;
+  void set_user_iid(int64_t value);
+  private:
+  int64_t _internal_user_iid() const;
+  void _internal_set_user_iid(int64_t value);
+  public:
+
+  // optional int64 role_iid = 2;
+  bool has_role_iid() const;
+  private:
+  bool _internal_has_role_iid() const;
+  public:
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
+  // optional int64 token = 3;
+  bool has_token() const;
+  private:
+  bool _internal_has_token() const;
+  public:
+  void clear_token();
+  int64_t token() const;
+  void set_token(int64_t value);
+  private:
+  int64_t _internal_token() const;
+  void _internal_set_token(int64_t value);
+  public:
+
+  // optional int64 gameid = 4;
+  bool has_gameid() const;
+  private:
+  bool _internal_has_gameid() const;
+  public:
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
+  private:
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.User_Logout_ntf)
  private:
   class _Internal;
@@ -987,7 +1090,12 @@ class User_Logout_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  int64_t user_iid_;
+  int64_t role_iid_;
+  int64_t token_;
+  int64_t gameid_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1111,9 +1219,10 @@ class User_GateLost_ntf final :
 // -------------------------------------------------------------------
 
 class User_Active_ntf final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.User_Active_ntf) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_Active_ntf) */ {
  public:
   inline User_Active_ntf() : User_Active_ntf(nullptr) {}
+  ~User_Active_ntf() override;
   explicit constexpr User_Active_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   User_Active_ntf(const User_Active_ntf& from);
@@ -1186,15 +1295,27 @@ class User_Active_ntf final :
   User_Active_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<User_Active_ntf>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const User_Active_ntf& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const User_Active_ntf& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const User_Active_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const User_Active_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(User_Active_ntf* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -1205,6 +1326,8 @@ class User_Active_ntf final :
   explicit User_Active_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -1216,6 +1339,22 @@ class User_Active_ntf final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kGameidFieldNumber = 1,
+  };
+  // optional int64 gameid = 1;
+  bool has_gameid() const;
+  private:
+  bool _internal_has_gameid() const;
+  public:
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
+  private:
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.User_Active_ntf)
  private:
   class _Internal;
@@ -1223,7 +1362,9 @@ class User_Active_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  int64_t gameid_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2723,9 +2864,10 @@ class User_QuerySimpleInfo_req final :
 // -------------------------------------------------------------------
 
 class User_QuerySimpleInfo_ack final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.User_QuerySimpleInfo_ack) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_QuerySimpleInfo_ack) */ {
  public:
   inline User_QuerySimpleInfo_ack() : User_QuerySimpleInfo_ack(nullptr) {}
+  ~User_QuerySimpleInfo_ack() override;
   explicit constexpr User_QuerySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   User_QuerySimpleInfo_ack(const User_QuerySimpleInfo_ack& from);
@@ -2798,15 +2940,27 @@ class User_QuerySimpleInfo_ack final :
   User_QuerySimpleInfo_ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<User_QuerySimpleInfo_ack>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const User_QuerySimpleInfo_ack& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const User_QuerySimpleInfo_ack& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
-  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const User_QuerySimpleInfo_ack& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const User_QuerySimpleInfo_ack& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(User_QuerySimpleInfo_ack* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -2817,6 +2971,8 @@ class User_QuerySimpleInfo_ack final :
   explicit User_QuerySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -2828,6 +2984,28 @@ class User_QuerySimpleInfo_ack final :
 
   // accessors -------------------------------------------------------
 
+  enum : int {
+    kUserIidFieldNumber = 1,
+    kRoleIidFieldNumber = 2,
+  };
+  // int64 user_iid = 1;
+  void clear_user_iid();
+  int64_t user_iid() const;
+  void set_user_iid(int64_t value);
+  private:
+  int64_t _internal_user_iid() const;
+  void _internal_set_user_iid(int64_t value);
+  public:
+
+  // int64 role_iid = 2;
+  void clear_role_iid();
+  int64_t role_iid() const;
+  void set_role_iid(int64_t value);
+  private:
+  int64_t _internal_role_iid() const;
+  void _internal_set_role_iid(int64_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:PRO.User_QuerySimpleInfo_ack)
  private:
   class _Internal;
@@ -2835,6 +3013,8 @@ class User_QuerySimpleInfo_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  int64_t user_iid_;
+  int64_t role_iid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
@@ -3259,9 +3439,65 @@ inline void User_ReLogin_ack::set_user_iid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.User_ReLogin_ack.user_iid)
 }
 
-// optional int64 logintoken = 3;
-inline bool User_ReLogin_ack::_internal_has_logintoken() const {
+// optional int64 role_iid = 3;
+inline bool User_ReLogin_ack::_internal_has_role_iid() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool User_ReLogin_ack::has_role_iid() const {
+  return _internal_has_role_iid();
+}
+inline void User_ReLogin_ack::clear_role_iid() {
+  role_iid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline int64_t User_ReLogin_ack::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t User_ReLogin_ack::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_ReLogin_ack.role_iid)
+  return _internal_role_iid();
+}
+inline void User_ReLogin_ack::_internal_set_role_iid(int64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  role_iid_ = value;
+}
+inline void User_ReLogin_ack::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_ReLogin_ack.role_iid)
+}
+
+// optional int64 gameid = 4;
+inline bool User_ReLogin_ack::_internal_has_gameid() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool User_ReLogin_ack::has_gameid() const {
+  return _internal_has_gameid();
+}
+inline void User_ReLogin_ack::clear_gameid() {
+  gameid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline int64_t User_ReLogin_ack::_internal_gameid() const {
+  return gameid_;
+}
+inline int64_t User_ReLogin_ack::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_ReLogin_ack.gameid)
+  return _internal_gameid();
+}
+inline void User_ReLogin_ack::_internal_set_gameid(int64_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  gameid_ = value;
+}
+inline void User_ReLogin_ack::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_ReLogin_ack.gameid)
+}
+
+// optional int64 logintoken = 5;
+inline bool User_ReLogin_ack::_internal_has_logintoken() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool User_ReLogin_ack::has_logintoken() const {
@@ -3269,7 +3505,7 @@ inline bool User_ReLogin_ack::has_logintoken() const {
 }
 inline void User_ReLogin_ack::clear_logintoken() {
   logintoken_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline int64_t User_ReLogin_ack::_internal_logintoken() const {
   return logintoken_;
@@ -3279,7 +3515,7 @@ inline int64_t User_ReLogin_ack::logintoken() const {
   return _internal_logintoken();
 }
 inline void User_ReLogin_ack::_internal_set_logintoken(int64_t value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000008u;
   logintoken_ = value;
 }
 inline void User_ReLogin_ack::set_logintoken(int64_t value) {
@@ -3291,6 +3527,118 @@ inline void User_ReLogin_ack::set_logintoken(int64_t value) {
 
 // User_Logout_ntf
 
+// optional int64 user_iid = 1;
+inline bool User_Logout_ntf::_internal_has_user_iid() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool User_Logout_ntf::has_user_iid() const {
+  return _internal_has_user_iid();
+}
+inline void User_Logout_ntf::clear_user_iid() {
+  user_iid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline int64_t User_Logout_ntf::_internal_user_iid() const {
+  return user_iid_;
+}
+inline int64_t User_Logout_ntf::user_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Logout_ntf.user_iid)
+  return _internal_user_iid();
+}
+inline void User_Logout_ntf::_internal_set_user_iid(int64_t value) {
+  _has_bits_[0] |= 0x00000001u;
+  user_iid_ = value;
+}
+inline void User_Logout_ntf::set_user_iid(int64_t value) {
+  _internal_set_user_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_Logout_ntf.user_iid)
+}
+
+// optional int64 role_iid = 2;
+inline bool User_Logout_ntf::_internal_has_role_iid() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool User_Logout_ntf::has_role_iid() const {
+  return _internal_has_role_iid();
+}
+inline void User_Logout_ntf::clear_role_iid() {
+  role_iid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline int64_t User_Logout_ntf::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t User_Logout_ntf::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Logout_ntf.role_iid)
+  return _internal_role_iid();
+}
+inline void User_Logout_ntf::_internal_set_role_iid(int64_t value) {
+  _has_bits_[0] |= 0x00000002u;
+  role_iid_ = value;
+}
+inline void User_Logout_ntf::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_Logout_ntf.role_iid)
+}
+
+// optional int64 token = 3;
+inline bool User_Logout_ntf::_internal_has_token() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool User_Logout_ntf::has_token() const {
+  return _internal_has_token();
+}
+inline void User_Logout_ntf::clear_token() {
+  token_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline int64_t User_Logout_ntf::_internal_token() const {
+  return token_;
+}
+inline int64_t User_Logout_ntf::token() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Logout_ntf.token)
+  return _internal_token();
+}
+inline void User_Logout_ntf::_internal_set_token(int64_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  token_ = value;
+}
+inline void User_Logout_ntf::set_token(int64_t value) {
+  _internal_set_token(value);
+  // @@protoc_insertion_point(field_set:PRO.User_Logout_ntf.token)
+}
+
+// optional int64 gameid = 4;
+inline bool User_Logout_ntf::_internal_has_gameid() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool User_Logout_ntf::has_gameid() const {
+  return _internal_has_gameid();
+}
+inline void User_Logout_ntf::clear_gameid() {
+  gameid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline int64_t User_Logout_ntf::_internal_gameid() const {
+  return gameid_;
+}
+inline int64_t User_Logout_ntf::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Logout_ntf.gameid)
+  return _internal_gameid();
+}
+inline void User_Logout_ntf::_internal_set_gameid(int64_t value) {
+  _has_bits_[0] |= 0x00000008u;
+  gameid_ = value;
+}
+inline void User_Logout_ntf::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_Logout_ntf.gameid)
+}
+
 // -------------------------------------------------------------------
 
 // User_GateLost_ntf
@@ -3298,6 +3646,34 @@ inline void User_ReLogin_ack::set_logintoken(int64_t value) {
 // -------------------------------------------------------------------
 
 // User_Active_ntf
+
+// optional int64 gameid = 1;
+inline bool User_Active_ntf::_internal_has_gameid() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool User_Active_ntf::has_gameid() const {
+  return _internal_has_gameid();
+}
+inline void User_Active_ntf::clear_gameid() {
+  gameid_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline int64_t User_Active_ntf::_internal_gameid() const {
+  return gameid_;
+}
+inline int64_t User_Active_ntf::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Active_ntf.gameid)
+  return _internal_gameid();
+}
+inline void User_Active_ntf::_internal_set_gameid(int64_t value) {
+  _has_bits_[0] |= 0x00000001u;
+  gameid_ = value;
+}
+inline void User_Active_ntf::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_Active_ntf.gameid)
+}
 
 // -------------------------------------------------------------------
 
@@ -3885,6 +4261,46 @@ inline void User_QuerySimpleInfo_req::set_role_iid(int64_t value) {
 // -------------------------------------------------------------------
 
 // User_QuerySimpleInfo_ack
+
+// int64 user_iid = 1;
+inline void User_QuerySimpleInfo_ack::clear_user_iid() {
+  user_iid_ = int64_t{0};
+}
+inline int64_t User_QuerySimpleInfo_ack::_internal_user_iid() const {
+  return user_iid_;
+}
+inline int64_t User_QuerySimpleInfo_ack::user_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_ack.user_iid)
+  return _internal_user_iid();
+}
+inline void User_QuerySimpleInfo_ack::_internal_set_user_iid(int64_t value) {
+  
+  user_iid_ = value;
+}
+inline void User_QuerySimpleInfo_ack::set_user_iid(int64_t value) {
+  _internal_set_user_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_ack.user_iid)
+}
+
+// int64 role_iid = 2;
+inline void User_QuerySimpleInfo_ack::clear_role_iid() {
+  role_iid_ = int64_t{0};
+}
+inline int64_t User_QuerySimpleInfo_ack::_internal_role_iid() const {
+  return role_iid_;
+}
+inline int64_t User_QuerySimpleInfo_ack::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_ack.role_iid)
+  return _internal_role_iid();
+}
+inline void User_QuerySimpleInfo_ack::_internal_set_role_iid(int64_t value) {
+  
+  role_iid_ = value;
+}
+inline void User_QuerySimpleInfo_ack::set_role_iid(int64_t value) {
+  _internal_set_role_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_ack.role_iid)
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop

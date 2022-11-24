@@ -17,8 +17,8 @@
 #include "cmsLib/net/NetDriverX.h"
 
 NetConnector::NetConnector():
-net_session_( 0),
-is_connecting_( false)
+	is_connecting_(false),
+	net_session_(0)
 {
 
 }
@@ -54,9 +54,9 @@ bool NetConnector::connect_to( const char* ip, int port)
 	//timeout 30 s
 	if (net_session_->get_session_type() == NetSessionType::NSType_WebSocket)
 	{
-		beast::get_lowest_layer( net_session_->get_websocket()).expires_after(std::chrono::seconds(30));
+		boost::beast::get_lowest_layer( net_session_->get_websocket()).expires_after(std::chrono::seconds(30));
 
-		beast::get_lowest_layer(net_session_->get_websocket()).async_connect(endpoint,
+		boost::beast::get_lowest_layer(net_session_->get_websocket()).async_connect(endpoint,
 			boost::bind(&NetConnector::handle_connect_websocket, this, boost::placeholders::_1));
 	}
 	else
@@ -75,7 +75,7 @@ void NetConnector::handle_connect( boost::system::error_code error)
 	is_connecting_ = false;
 }
 
-void NetConnector::handle_connect_websocket(beast::error_code error)
+void NetConnector::handle_connect_websocket(boost::beast::error_code error)
 {
 	net_session_->on_connectto_result_ws(!error, ip_.c_str(), port_);
 

@@ -187,7 +187,7 @@ template<typename T>
 T* LobbyUserContainer<T>::get_lobbyuser(S_INT_64 userid)
 {
 	DoubleLinkNode* pnod = 0;
-	USER_MAP_DATA::iterator fiter = user_map_.find(userid);
+	typename USER_MAP_DATA::iterator fiter = user_map_.find(userid);
 	if (fiter != user_map_.end())
 		pnod = fiter->second;
 
@@ -222,15 +222,15 @@ void LobbyUserContainer<T>::release()
 	head_ = 0;
 	tail_ = 0;
 
-	for (USER_MAP_DATA::iterator iter = user_map_.begin(); iter != user_map_.end(); ++iter)
+	for (typename USER_MAP_DATA::iterator iter = user_map_.begin(); iter != user_map_.end(); ++iter)
 		delete iter->second;
 	user_map_.clear();
 
-	for (std::list<DoubleLinkNode*>::iterator iter = free_nodes_.begin(); iter != free_nodes_.end(); ++iter)
+	for (typename std::list<DoubleLinkNode*>::iterator iter = free_nodes_.begin(); iter != free_nodes_.end(); ++iter)
 		delete (*iter);
 	free_nodes_.clear();
 
-	for (std::list<T*>::iterator iter = all_datas_.begin(); iter != all_datas_.end(); ++iter)
+	for (typename std::list<T*>::iterator iter = all_datas_.begin(); iter != all_datas_.end(); ++iter)
 		delete (*iter);
 	all_datas_.clear();
 }

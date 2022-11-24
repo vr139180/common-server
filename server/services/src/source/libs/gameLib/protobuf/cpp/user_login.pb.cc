@@ -64,6 +64,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ReLogin_reqDefaultTypeInte
 constexpr User_ReLogin_ack::User_ReLogin_ack(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : user_iid_(int64_t{0})
+  , role_iid_(int64_t{0})
+  , gameid_(int64_t{0})
   , logintoken_(int64_t{0})
   , result_(0){}
 struct User_ReLogin_ackDefaultTypeInternal {
@@ -76,7 +78,11 @@ struct User_ReLogin_ackDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_ReLogin_ackDefaultTypeInternal _User_ReLogin_ack_default_instance_;
 constexpr User_Logout_ntf::User_Logout_ntf(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : user_iid_(int64_t{0})
+  , role_iid_(int64_t{0})
+  , token_(int64_t{0})
+  , gameid_(int64_t{0}){}
 struct User_Logout_ntfDefaultTypeInternal {
   constexpr User_Logout_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -98,7 +104,8 @@ struct User_GateLost_ntfDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_GateLost_ntfDefaultTypeInternal _User_GateLost_ntf_default_instance_;
 constexpr User_Active_ntf::User_Active_ntf(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : gameid_(int64_t{0}){}
 struct User_Active_ntfDefaultTypeInternal {
   constexpr User_Active_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -231,7 +238,9 @@ struct User_QuerySimpleInfo_reqDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_QuerySimpleInfo_reqDefaultTypeInternal _User_QuerySimpleInfo_req_default_instance_;
 constexpr User_QuerySimpleInfo_ack::User_QuerySimpleInfo_ack(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : user_iid_(int64_t{0})
+  , role_iid_(int64_t{0}){}
 struct User_QuerySimpleInfo_ackDefaultTypeInternal {
   constexpr User_QuerySimpleInfo_ackDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -293,28 +302,42 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, result_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, role_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, gameid_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_ReLogin_ack, logintoken_),
   ~0u,
   0,
   1,
-  ~0u,  // no _has_bits_
+  2,
+  3,
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, role_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, token_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Logout_ntf, gameid_),
+  0,
+  1,
+  2,
+  3,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_GateLost_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, gameid_),
+  0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::User_RoleList_req, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -395,26 +418,28 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_QuerySimpleInfo_ack, user_iid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::User_QuerySimpleInfo_ack, role_iid_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 11, -1, sizeof(::PRO::User_Login_req)},
   { 16, 26, -1, sizeof(::PRO::User_Login_ack)},
   { 30, -1, -1, sizeof(::PRO::User_ReLogin_req)},
-  { 38, 47, -1, sizeof(::PRO::User_ReLogin_ack)},
-  { 50, -1, -1, sizeof(::PRO::User_Logout_ntf)},
-  { 56, -1, -1, sizeof(::PRO::User_GateLost_ntf)},
-  { 62, -1, -1, sizeof(::PRO::User_Active_ntf)},
-  { 68, -1, -1, sizeof(::PRO::User_RoleList_req)},
-  { 74, -1, -1, sizeof(::PRO::User_RoleList_ack)},
-  { 81, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
-  { 88, 96, -1, sizeof(::PRO::User_RoleCreate_ack)},
-  { 98, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
-  { 105, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
-  { 113, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
-  { 121, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
-  { 128, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
-  { 134, -1, -1, sizeof(::PRO::User_QuerySimpleInfo_req)},
-  { 142, -1, -1, sizeof(::PRO::User_QuerySimpleInfo_ack)},
+  { 38, 49, -1, sizeof(::PRO::User_ReLogin_ack)},
+  { 54, 64, -1, sizeof(::PRO::User_Logout_ntf)},
+  { 68, -1, -1, sizeof(::PRO::User_GateLost_ntf)},
+  { 74, 81, -1, sizeof(::PRO::User_Active_ntf)},
+  { 82, -1, -1, sizeof(::PRO::User_RoleList_req)},
+  { 88, -1, -1, sizeof(::PRO::User_RoleList_ack)},
+  { 95, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
+  { 102, 110, -1, sizeof(::PRO::User_RoleCreate_ack)},
+  { 112, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
+  { 119, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
+  { 127, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
+  { 135, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
+  { 142, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
+  { 148, -1, -1, sizeof(::PRO::User_QuerySimpleInfo_req)},
+  { 156, -1, -1, sizeof(::PRO::User_QuerySimpleInfo_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -448,35 +473,41 @@ const char descriptor_table_protodef_user_5flogin_2eproto[] PROTOBUF_SECTION_VAR
   "\002 \001(\005\022\025\n\010user_iid\030\003 \001(\003H\000\210\001\001\022\027\n\nlogintok"
   "en\030\004 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013_logintoke"
   "n\"8\n\020User_ReLogin_req\022\020\n\010user_iid\030\001 \001(\003\022"
-  "\022\n\nlogintoken\030\002 \001(\003\"n\n\020User_ReLogin_ack\022"
-  "\016\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022\027"
-  "\n\nlogintoken\030\003 \001(\003H\001\210\001\001B\013\n\t_user_iidB\r\n\013"
-  "_logintoken\"\021\n\017User_Logout_ntf\"\023\n\021User_G"
-  "ateLost_ntf\"\021\n\017User_Active_ntf\"\023\n\021User_R"
-  "oleList_req\"4\n\021User_RoleList_ack\022\037\n\005role"
-  "s\030\001 \001(\0132\020.PRO.DBUserRoles\"\'\n\023User_RoleCr"
-  "eate_req\022\020\n\010nickname\030\001 \001(\t\"I\n\023User_RoleC"
-  "reate_ack\022\016\n\006result\030\001 \001(\005\022\025\n\010role_iid\030\002 "
-  "\001(\003H\000\210\001\001B\013\n\t_role_iid\"\'\n\023User_RoleSelect"
-  "_req\022\020\n\010role_iid\030\001 \001(\003\"7\n\023User_RoleSelec"
-  "t_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010role_iid\030\002 \001(\003\""
-  "b\n\024User_RoleDetailA_ntf\022\035\n\004home\030\001 \001(\0132\017."
-  "PRO.DBUserHome\022+\n\thomeitems\030\002 \001(\0132\030.PRO."
-  "DBUserHomeStructure\"5\n\024User_RoleDetailB_"
-  "ntf\022\035\n\004pets\030\001 \001(\0132\017.PRO.DBUserPets\"\030\n\026Us"
-  "er_RoleDetailEnd_ntf\">\n\030User_QuerySimple"
-  "Info_req\022\020\n\010user_iid\030\001 \001(\003\022\020\n\010role_iid\030\002"
-  " \001(\003\"\032\n\030User_QuerySimpleInfo_ackBT\n\033com."
-  "cms.client.network.gproP\001Z\025gamelib/proto"
-  "buf/gpro\252\002\033com.cms.client.network.gprob\006"
-  "proto3"
+  "\022\n\nlogintoken\030\002 \001(\003\"\262\001\n\020User_ReLogin_ack"
+  "\022\016\n\006result\030\001 \001(\005\022\025\n\010user_iid\030\002 \001(\003H\000\210\001\001\022"
+  "\025\n\010role_iid\030\003 \001(\003H\001\210\001\001\022\023\n\006gameid\030\004 \001(\003H\002"
+  "\210\001\001\022\027\n\nlogintoken\030\005 \001(\003H\003\210\001\001B\013\n\t_user_ii"
+  "dB\013\n\t_role_iidB\t\n\007_gameidB\r\n\013_logintoken"
+  "\"\227\001\n\017User_Logout_ntf\022\025\n\010user_iid\030\001 \001(\003H\000"
+  "\210\001\001\022\025\n\010role_iid\030\002 \001(\003H\001\210\001\001\022\022\n\005token\030\003 \001("
+  "\003H\002\210\001\001\022\023\n\006gameid\030\004 \001(\003H\003\210\001\001B\013\n\t_user_iid"
+  "B\013\n\t_role_iidB\010\n\006_tokenB\t\n\007_gameid\"\023\n\021Us"
+  "er_GateLost_ntf\"1\n\017User_Active_ntf\022\023\n\006ga"
+  "meid\030\001 \001(\003H\000\210\001\001B\t\n\007_gameid\"\023\n\021User_RoleL"
+  "ist_req\"4\n\021User_RoleList_ack\022\037\n\005roles\030\001 "
+  "\001(\0132\020.PRO.DBUserRoles\"\'\n\023User_RoleCreate"
+  "_req\022\020\n\010nickname\030\001 \001(\t\"I\n\023User_RoleCreat"
+  "e_ack\022\016\n\006result\030\001 \001(\005\022\025\n\010role_iid\030\002 \001(\003H"
+  "\000\210\001\001B\013\n\t_role_iid\"\'\n\023User_RoleSelect_req"
+  "\022\020\n\010role_iid\030\001 \001(\003\"7\n\023User_RoleSelect_ac"
+  "k\022\016\n\006result\030\001 \001(\005\022\020\n\010role_iid\030\002 \001(\003\"b\n\024U"
+  "ser_RoleDetailA_ntf\022\035\n\004home\030\001 \001(\0132\017.PRO."
+  "DBUserHome\022+\n\thomeitems\030\002 \001(\0132\030.PRO.DBUs"
+  "erHomeStructure\"5\n\024User_RoleDetailB_ntf\022"
+  "\035\n\004pets\030\001 \001(\0132\017.PRO.DBUserPets\"\030\n\026User_R"
+  "oleDetailEnd_ntf\">\n\030User_QuerySimpleInfo"
+  "_req\022\020\n\010user_iid\030\001 \001(\003\022\020\n\010role_iid\030\002 \001(\003"
+  "\">\n\030User_QuerySimpleInfo_ack\022\020\n\010user_iid"
+  "\030\001 \001(\003\022\020\n\010role_iid\030\002 \001(\003BT\n\033com.cms.clie"
+  "nt.network.gproP\001Z\025gamelib/protobuf/gpro"
+  "\252\002\033com.cms.client.network.gprob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5flogin_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5flogin_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5flogin_2eproto = {
-  false, false, 1206, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
+  false, false, 1478, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
   &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 18,
   schemas, file_default_instances, TableStruct_user_5flogin_2eproto::offsets,
   file_level_metadata_user_5flogin_2eproto, file_level_enum_descriptors_user_5flogin_2eproto, file_level_service_descriptors_user_5flogin_2eproto,
@@ -1363,8 +1394,14 @@ class User_ReLogin_ack::_Internal {
   static void set_has_user_iid(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_logintoken(HasBits* has_bits) {
+  static void set_has_role_iid(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
+  }
+  static void set_has_gameid(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_logintoken(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
   }
 };
 
@@ -1422,7 +1459,7 @@ void User_ReLogin_ack::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x0000000fu) {
     ::memset(&user_iid_, 0, static_cast<size_t>(
         reinterpret_cast<char*>(&logintoken_) -
         reinterpret_cast<char*>(&user_iid_)) + sizeof(logintoken_));
@@ -1456,9 +1493,27 @@ const char* User_ReLogin_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
         } else
           goto handle_unusual;
         continue;
-      // optional int64 logintoken = 3;
+      // optional int64 role_iid = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _Internal::set_has_role_iid(&has_bits);
+          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 gameid = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _Internal::set_has_gameid(&has_bits);
+          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 logintoken = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _Internal::set_has_logintoken(&has_bits);
           logintoken_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
@@ -1507,10 +1562,22 @@ uint8_t* User_ReLogin_ack::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_user_iid(), target);
   }
 
-  // optional int64 logintoken = 3;
+  // optional int64 role_iid = 3;
+  if (_internal_has_role_iid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_role_iid(), target);
+  }
+
+  // optional int64 gameid = 4;
+  if (_internal_has_gameid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_gameid(), target);
+  }
+
+  // optional int64 logintoken = 5;
   if (_internal_has_logintoken()) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_logintoken(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(5, this->_internal_logintoken(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1530,14 +1597,24 @@ size_t User_ReLogin_ack::ByteSizeLong() const {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x0000000fu) {
     // optional int64 user_iid = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
     }
 
-    // optional int64 logintoken = 3;
+    // optional int64 role_iid = 3;
     if (cached_has_bits & 0x00000002u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
+    }
+
+    // optional int64 gameid = 4;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_gameid());
+    }
+
+    // optional int64 logintoken = 5;
+    if (cached_has_bits & 0x00000008u) {
       total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_logintoken());
     }
 
@@ -1570,11 +1647,17 @@ void User_ReLogin_ack::MergeFrom(const User_ReLogin_ack& from) {
   (void) cached_has_bits;
 
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       user_iid_ = from.user_iid_;
     }
     if (cached_has_bits & 0x00000002u) {
+      role_iid_ = from.role_iid_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      gameid_ = from.gameid_;
+    }
+    if (cached_has_bits & 0x00000008u) {
       logintoken_ = from.logintoken_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -1618,34 +1701,283 @@ void User_ReLogin_ack::InternalSwap(User_ReLogin_ack* other) {
 
 class User_Logout_ntf::_Internal {
  public:
+  using HasBits = decltype(std::declval<User_Logout_ntf>()._has_bits_);
+  static void set_has_user_iid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_role_iid(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_token(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_gameid(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
 };
 
 User_Logout_ntf::User_Logout_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:PRO.User_Logout_ntf)
 }
 User_Logout_ntf::User_Logout_ntf(const User_Logout_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&user_iid_, &from.user_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&gameid_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(gameid_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_Logout_ntf)
 }
 
+inline void User_Logout_ntf::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&gameid_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(gameid_));
+}
 
+User_Logout_ntf::~User_Logout_ntf() {
+  // @@protoc_insertion_point(destructor:PRO.User_Logout_ntf)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
 
+inline void User_Logout_ntf::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
 
+void User_Logout_ntf::ArenaDtor(void* object) {
+  User_Logout_ntf* _this = reinterpret_cast< User_Logout_ntf* >(object);
+  (void)_this;
+}
+void User_Logout_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void User_Logout_ntf::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void User_Logout_ntf::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_Logout_ntf)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    ::memset(&user_iid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&gameid_) -
+        reinterpret_cast<char*>(&user_iid_)) + sizeof(gameid_));
+  }
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* User_Logout_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional int64 user_iid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_user_iid(&has_bits);
+          user_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 role_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_role_iid(&has_bits);
+          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 token = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _Internal::set_has_token(&has_bits);
+          token_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int64 gameid = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _Internal::set_has_gameid(&has_bits);
+          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* User_Logout_ntf::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_Logout_ntf)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional int64 user_iid = 1;
+  if (_internal_has_user_iid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_user_iid(), target);
+  }
+
+  // optional int64 role_iid = 2;
+  if (_internal_has_role_iid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_role_iid(), target);
+  }
+
+  // optional int64 token = 3;
+  if (_internal_has_token()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_token(), target);
+  }
+
+  // optional int64 gameid = 4;
+  if (_internal_has_gameid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(4, this->_internal_gameid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_Logout_ntf)
+  return target;
+}
+
+size_t User_Logout_ntf::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_Logout_ntf)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    // optional int64 user_iid = 1;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
+    }
+
+    // optional int64 role_iid = 2;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
+    }
+
+    // optional int64 token = 3;
+    if (cached_has_bits & 0x00000004u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_token());
+    }
+
+    // optional int64 gameid = 4;
+    if (cached_has_bits & 0x00000008u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_gameid());
+    }
+
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_Logout_ntf::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    User_Logout_ntf::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_Logout_ntf::GetClassData() const { return &_class_data_; }
 
+void User_Logout_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<User_Logout_ntf *>(to)->MergeFrom(
+      static_cast<const User_Logout_ntf &>(from));
+}
 
 
+void User_Logout_ntf::MergeFrom(const User_Logout_ntf& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_Logout_ntf)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
+  cached_has_bits = from._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      user_iid_ = from.user_iid_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      role_iid_ = from.role_iid_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      token_ = from.token_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      gameid_ = from.gameid_;
+    }
+    _has_bits_[0] |= cached_has_bits;
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
 
+void User_Logout_ntf::CopyFrom(const User_Logout_ntf& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_Logout_ntf)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
 
+bool User_Logout_ntf::IsInitialized() const {
+  return true;
+}
+
+void User_Logout_ntf::InternalSwap(User_Logout_ntf* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(User_Logout_ntf, gameid_)
+      + sizeof(User_Logout_ntf::gameid_)
+      - PROTOBUF_FIELD_OFFSET(User_Logout_ntf, user_iid_)>(
+          reinterpret_cast<char*>(&user_iid_),
+          reinterpret_cast<char*>(&other->user_iid_));
+}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_Logout_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
@@ -1696,34 +2028,184 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_GateLost_ntf::GetClassDat
 
 class User_Active_ntf::_Internal {
  public:
+  using HasBits = decltype(std::declval<User_Active_ntf>()._has_bits_);
+  static void set_has_gameid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 User_Active_ntf::User_Active_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:PRO.User_Active_ntf)
 }
 User_Active_ntf::User_Active_ntf(const User_Active_ntf& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  gameid_ = from.gameid_;
   // @@protoc_insertion_point(copy_constructor:PRO.User_Active_ntf)
 }
 
+inline void User_Active_ntf::SharedCtor() {
+gameid_ = int64_t{0};
+}
 
+User_Active_ntf::~User_Active_ntf() {
+  // @@protoc_insertion_point(destructor:PRO.User_Active_ntf)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
 
+inline void User_Active_ntf::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
 
+void User_Active_ntf::ArenaDtor(void* object) {
+  User_Active_ntf* _this = reinterpret_cast< User_Active_ntf* >(object);
+  (void)_this;
+}
+void User_Active_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void User_Active_ntf::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void User_Active_ntf::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_Active_ntf)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  gameid_ = int64_t{0};
+  _has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* User_Active_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // optional int64 gameid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _Internal::set_has_gameid(&has_bits);
+          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* User_Active_ntf::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_Active_ntf)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // optional int64 gameid = 1;
+  if (_internal_has_gameid()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_gameid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_Active_ntf)
+  return target;
+}
+
+size_t User_Active_ntf::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_Active_ntf)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // optional int64 gameid = 1;
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_gameid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_Active_ntf::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    User_Active_ntf::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_Active_ntf::GetClassData() const { return &_class_data_; }
 
+void User_Active_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<User_Active_ntf *>(to)->MergeFrom(
+      static_cast<const User_Active_ntf &>(from));
+}
 
 
+void User_Active_ntf::MergeFrom(const User_Active_ntf& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_Active_ntf)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
+  if (from._internal_has_gameid()) {
+    _internal_set_gameid(from._internal_gameid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
 
+void User_Active_ntf::CopyFrom(const User_Active_ntf& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_Active_ntf)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
 
+bool User_Active_ntf::IsInitialized() const {
+  return true;
+}
+
+void User_Active_ntf::InternalSwap(User_Active_ntf* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(gameid_, other->gameid_);
+}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_Active_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
@@ -3502,30 +3984,203 @@ class User_QuerySimpleInfo_ack::_Internal {
 
 User_QuerySimpleInfo_ack::User_QuerySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
   // @@protoc_insertion_point(arena_constructor:PRO.User_QuerySimpleInfo_ack)
 }
 User_QuerySimpleInfo_ack::User_QuerySimpleInfo_ack(const User_QuerySimpleInfo_ack& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&user_iid_, &from.user_iid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&role_iid_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(role_iid_));
   // @@protoc_insertion_point(copy_constructor:PRO.User_QuerySimpleInfo_ack)
 }
 
+inline void User_QuerySimpleInfo_ack::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&user_iid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&role_iid_) -
+    reinterpret_cast<char*>(&user_iid_)) + sizeof(role_iid_));
+}
 
+User_QuerySimpleInfo_ack::~User_QuerySimpleInfo_ack() {
+  // @@protoc_insertion_point(destructor:PRO.User_QuerySimpleInfo_ack)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
 
+inline void User_QuerySimpleInfo_ack::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
 
+void User_QuerySimpleInfo_ack::ArenaDtor(void* object) {
+  User_QuerySimpleInfo_ack* _this = reinterpret_cast< User_QuerySimpleInfo_ack* >(object);
+  (void)_this;
+}
+void User_QuerySimpleInfo_ack::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void User_QuerySimpleInfo_ack::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void User_QuerySimpleInfo_ack::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_QuerySimpleInfo_ack)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&user_iid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&role_iid_) -
+      reinterpret_cast<char*>(&user_iid_)) + sizeof(role_iid_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* User_QuerySimpleInfo_ack::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int64 user_iid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          user_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 role_iid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          role_iid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* User_QuerySimpleInfo_ack::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_QuerySimpleInfo_ack)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 user_iid = 1;
+  if (this->_internal_user_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_user_iid(), target);
+  }
+
+  // int64 role_iid = 2;
+  if (this->_internal_role_iid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_role_iid(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_QuerySimpleInfo_ack)
+  return target;
+}
+
+size_t User_QuerySimpleInfo_ack::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_QuerySimpleInfo_ack)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 user_iid = 1;
+  if (this->_internal_user_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_user_iid());
+  }
+
+  // int64 role_iid = 2;
+  if (this->_internal_role_iid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_role_iid());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_QuerySimpleInfo_ack::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    User_QuerySimpleInfo_ack::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_QuerySimpleInfo_ack::GetClassData() const { return &_class_data_; }
 
+void User_QuerySimpleInfo_ack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<User_QuerySimpleInfo_ack *>(to)->MergeFrom(
+      static_cast<const User_QuerySimpleInfo_ack &>(from));
+}
 
 
+void User_QuerySimpleInfo_ack::MergeFrom(const User_QuerySimpleInfo_ack& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_QuerySimpleInfo_ack)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
+  if (from._internal_user_iid() != 0) {
+    _internal_set_user_iid(from._internal_user_iid());
+  }
+  if (from._internal_role_iid() != 0) {
+    _internal_set_role_iid(from._internal_role_iid());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
 
+void User_QuerySimpleInfo_ack::CopyFrom(const User_QuerySimpleInfo_ack& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_QuerySimpleInfo_ack)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
 
+bool User_QuerySimpleInfo_ack::IsInitialized() const {
+  return true;
+}
+
+void User_QuerySimpleInfo_ack::InternalSwap(User_QuerySimpleInfo_ack* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(User_QuerySimpleInfo_ack, role_iid_)
+      + sizeof(User_QuerySimpleInfo_ack::role_iid_)
+      - PROTOBUF_FIELD_OFFSET(User_QuerySimpleInfo_ack, user_iid_)>(
+          reinterpret_cast<char*>(&user_iid_),
+          reinterpret_cast<char*>(&other->user_iid_));
+}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata User_QuerySimpleInfo_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(

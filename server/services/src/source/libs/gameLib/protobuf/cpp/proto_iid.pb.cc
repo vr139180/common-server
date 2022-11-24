@@ -87,17 +87,18 @@ const char descriptor_table_protodef_proto_5fiid_2eproto[] PROTOBUF_SECTION_VARI
   "END\020\267\027*\220\001\n\013MMS_PROTYPE\022\022\n\016UNIVERSAL_3000"
   "\020\000\022\022\n\rMMS_MSG_BEGIN\020\270\027\022\030\n\023MMS_MATCHMAKIN"
   "G_REQ\020\271\027\022\030\n\023MMS_MATCHMAKING_ACK\020\272\027\022\020\n\013MM"
-  "S_MSG_END\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031*\212\001\n\013GM"
+  "S_MSG_END\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031*\240\001\n\013GM"
   "S_PROTYPE\022\022\n\016UNIVERSAL_4000\020\000\022\022\n\rGMS_MSG"
-  "_BEGIN\020\240\037\022\023\n\016GAME_USERS_SYN\020\241\037\022\027\n\022GAME_U"
-  "SERSTATE_SYN\020\242\037\022\020\n\013GMS_MSG_END\020\244&\022\023\n\016GMS"
-  "_MSGALL_END\020\207\'BT\n\033com.cms.client.network"
-  ".gproP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms"
-  ".client.network.gprob\006proto3"
+  "_BEGIN\020\240\037\022\026\n\021GMS_ENTERGAME_NTF\020\241\037\022\022\n\rGMS"
+  "_USERS_SYN\020\242\037\022\026\n\021GMS_USERSTATE_SYN\020\243\037\022\020\n"
+  "\013GMS_MSG_END\020\244&\022\023\n\016GMS_MSGALL_END\020\207\'BT\n\033"
+  "com.cms.client.network.gproP\001Z\025gamelib/p"
+  "rotobuf/gpro\252\002\033com.cms.client.network.gp"
+  "rob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_2eproto = {
-  false, false, 2748, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
+  false, false, 2770, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
   &descriptor_table_proto_5fiid_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_2eproto, file_level_service_descriptors_proto_5fiid_2eproto,
@@ -323,6 +324,7 @@ bool GMS_PROTYPE_IsValid(int value) {
     case 4000:
     case 4001:
     case 4002:
+    case 4003:
     case 4900:
     case 4999:
       return true;

@@ -134,7 +134,7 @@ void LinkFromConsistentHash<T>::send_netprotocol(S_INT_32 hashkey, BasicProtocol
 	{
 		ThreadLockWrapper guard(lock_);
 
-		S_INT_64 linkid = nethash_.get_netnode_byhash(key);
+		S_INT_64 linkid = nethash_.get_netnode_byhash( hashkey);
 		plink = get_servicelink_byiid_nomutex(linkid);
 	}
 

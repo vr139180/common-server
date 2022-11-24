@@ -20,6 +20,11 @@ message GameUserInfo {
   Vector3d pos = 3;
 }
 
+//第一次进入game servre发的通知
+message Game_EnterGame_ntf{
+  int64 game_iid = 1;
+}
+
 //在线用户同步
 message Game_Users_sync{
   repeated GameUserInfo new_users = 1;

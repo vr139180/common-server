@@ -17,11 +17,12 @@
 
 #include <cmsLib/json/JSONUtil.h>
 
-ServiceNodeInfo::ServiceNodeInfo() :iid(0)
-, port(0)
-, token(0)
-, type(NETSERVICE_TYPE::ERK_SERVICE_NONE)
-, isrouter(false)
+ServiceNodeInfo::ServiceNodeInfo() :
+	iid(0)
+	, token(0)
+	, type(NETSERVICE_TYPE::ERK_SERVICE_NONE)
+	, port(0)
+	, isrouter(false)
 {
 }
 

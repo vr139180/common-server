@@ -54,14 +54,15 @@ public:
 	RouterConfig* get_config() { return conf_.get(); }
 
 public:
-	template<class T>
-	void broad_protocal_to_gate(T* msg) {
-		gate_links_from_.broadcast<T>(msg);
+	
+	void broad_protocal_to_gate(BasicProtocol* msg) {
+		gate_links_from_.broadcast(msg);
 	}
 
 	void router_to_state(NetProtocol* pro);
 	void router_to_home(NetProtocol* pro);
 	void router_to_gate(NetProtocol* pro);
+	void router_to_game(NetProtocol* pro);
 
 public:
 

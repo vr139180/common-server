@@ -19,8 +19,10 @@
 
 #include <taskLib/TaskMetaHome.h>
 
-UserTasksResolver::UserTasksResolver():user_dataenv_( 0)
-, global_dataenv_( 0), data_cb_(0)
+UserTasksResolver::UserTasksResolver():
+	global_dataenv_(0)
+	,user_dataenv_( 0)
+	,data_cb_(0)
 {
 }
 

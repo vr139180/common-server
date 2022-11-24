@@ -32,6 +32,8 @@ class RedisClient;
 class IRedisSerializer
 {
 	friend class RedisClient;
+public:
+	virtual ~IRedisSerializer() {}
 
 protected:
 	virtual bool to_json(std::string& val) = 0;
@@ -56,6 +58,7 @@ public:
 	bool get_hashobject(const char* hkey, const char* field, T& obj);
 	template<typename T>
 	bool get_hashallobj(const char* hkey, boost::unordered_map<std::string,T*>& vals);
+	bool get_hashallmember(const char* hkey, boost::unordered_map<std::string, std::string>& membs);
 
 	template<class T>
 	bool set_hashobject(const char* hkey, const char* field, T& obj);

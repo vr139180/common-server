@@ -38,9 +38,6 @@
 #define NET_RECVBUFF_SIZE_MAX			NET_SINGLE_PACKAGE_SIZE_MAX*2	//double single package
 #define NET_SENDBUFF_SIZE_MAX			NET_SINGLE_PACKAGE_SIZE_MAX*2	//double single package
 
-namespace beast = boost::beast;
-namespace websocket = beast::websocket;
-using tcp = boost::asio::ip::tcp;
 
 class NetSession
 {
@@ -50,9 +47,9 @@ public:
 	typedef std::deque<NetProtocol*>				NetProtocolQueue_t;
 	typedef std::deque<NetProtocol*>::iterator		NetProtocolQueueIt_t;
 
-	typedef boost::shared_ptr< boost::asio::ip::tcp::socket >	SocketPtr_t;
-	typedef websocket::stream<beast::tcp_stream>				WebSocketStream;
-	typedef boost::shared_ptr< WebSocketStream >				WebSocketPtr_t;
+	typedef boost::shared_ptr<boost::asio::ip::tcp::socket>				SocketPtr_t;
+	typedef boost::beast::websocket::stream<boost::beast::tcp_stream>	WebSocketStream;
+	typedef boost::shared_ptr<WebSocketStream>							WebSocketPtr_t;
 
 public:
 	explicit NetSession( ThreadLock* lock, ThreadLock* queuelock, 
@@ -79,7 +76,7 @@ public:
 	void handle_write( boost::system::error_code error, size_t bytes_transferred);
 	void handle_read( boost::system::error_code error, size_t bytes_transferred);
 
-	void on_accept_websocket(beast::error_code ec);
+	void on_accept_websocket(boost::beast::error_code ec);
 
 protected:
 	
@@ -89,7 +86,7 @@ protected:
 	WebSocketStream& get_websocket();
 
 	void on_connectto_result_ws(bool success, const char* ip, int port);
-	void on_handshake_ws(beast::error_code ec);
+	void on_handshake_ws(boost::beast::error_code ec);
 
 	void on_connectto_result(bool success);
 	void on_connectfrom_result(bool success);
@@ -128,7 +125,7 @@ private:
 	S_UINT_8		recv_buff_[NET_RECVBUFF_SIZE_MAX];
 	volatile  int	recv_buff_pos_;
 	//ws_custom_static_buffer< NET_RECVBUFF_SIZE_MAX>		recv_buff_ws_;
-	beast::flat_static_buffer<NET_SINGLE_PACKAGE_SIZE_MAX>	recv_buff_ws_;
+	boost::beast::flat_static_buffer<NET_SINGLE_PACKAGE_SIZE_MAX>	recv_buff_ws_;
 
 	S_UINT_8		send_buff_[NET_SENDBUFF_SIZE_MAX];
 	volatile  int	send_buff_pos_;

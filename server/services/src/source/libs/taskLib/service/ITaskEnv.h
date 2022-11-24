@@ -74,6 +74,9 @@ class TaskCellRT;
 class ITaskDataUpdateCB
 {
 public:
+	virtual ~ITaskDataUpdateCB() {}
+
+public:
 	//触发新的任务线
 	virtual void notify_new_taskgroup( TaskGroupCellRT* gcrt) = 0;
 	//任务线进入下个节点
@@ -93,6 +96,8 @@ public:
 class ITaskContext
 {
 public:
+	virtual ~ITaskContext() {}
+
 	virtual IGlobalDataEnv* get_globalevn() = 0;
 	virtual IUserDataEnv* get_userenv() = 0;
 

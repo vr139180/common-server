@@ -17,10 +17,10 @@
 #include <cmsLib/base/OSSystem.h>
 
 TimerContainer::TimerSequence::TimerSequence( int t):
-	timer_id_generator_( 1),
-	time_inverval_( t),
-	header_( 0),
-	tail_( 0)
+	header_(0),
+	tail_(0),
+	time_inverval_(t),
+	timer_id_generator_( 1)
 {
 }
 

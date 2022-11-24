@@ -21,7 +21,7 @@ S_INT_32 HashUtil::fnv1_32_hash(const std::string& str)
 {
 	const S_INT_32 p = 16777619;
 	S_INT_32 hash = (S_INT_32)2166136261L;
-	for (int i = 0; i < str.length(); i++) {
+	for (int i = 0; i < (int)str.length(); i++) {
 		hash = (hash ^ str[i]) * p;
 	}
 	hash += hash << 13;
@@ -53,7 +53,7 @@ S_INT_32 HashUtil::rs_hash(const std::string& str)
 	S_INT_32 a = 63689;
 	S_INT_32 hash = 0;
 
-	for (int i = 0; i < str.length(); i++)
+	for (int i = 0; i < (int)str.length(); i++)
 	{
 		hash = hash * a + str[i];
 		a = a * b;

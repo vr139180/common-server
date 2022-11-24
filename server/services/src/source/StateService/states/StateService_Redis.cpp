@@ -42,7 +42,9 @@ bool StateService::check_user_in_onlinequeue(RedisClient* rdv, S_INT_64 userid)
 	if (ltm > 0)
 	{
 		//最后一次更新时间是否超过30s
-		return (ltm + USER_LOSTCONN_TIME) > OSSystem::mOS->GetTimestamp();
+		S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
+		logDebug(out_runtime, "redis user online check, last:%lld now:%lld", ltm, tnow);
+		return (ltm + USER_LOSTCONN_TIME) > tnow;
 	}
 	else
 	{
@@ -97,6 +99,9 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
 	});
 
+	//清楚relogin标记
+	rdv->del_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN);
+
 	//account会直接加载rolelist
 	if (saverole)
 		rdv->set_hashobject(key.c_str(), rdkey::user::USER_UINFO_F_ROLES, &roles, svrApp.get_redisprotocache());
@@ -114,20 +119,131 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 	}
 }
 
-void StateService::redis_update_onlinestate(RedisClient* rdv, S_INT_64 userid, const SProtocolHead& head)
+void StateService::redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, S_INT_64 gameid)
 {
 	if (rdv == 0)
 		rdv = svrApp.get_redisclient();
 
+	S_INT_64 userid = head.get_token_useriid();
 	//更新用户gate信息
 	std::string key = rdv->build_rediskey(rdkey::user::USER_USERINFO, userid);
 	rdv->set_hashmember(key.c_str(), {
 		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GAMEID, std::to_string(gameid).c_str()),
 		});
 
 	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
-	key = rdv->build_rediskey(rdkey::user::USER_ONLINES, get_onlinequeue_hash(userid));
+	key = rdv->build_rediskey(rdkey::user::USER_ONLINES, get_onlinequeue_hash( userid));
 	rdv->add_zset(key.c_str(), std::to_string(userid).c_str(), tnow, UpdateType::EXIST);
+}
+
+bool StateService::redis_user_logout(RedisClient* rdv, S_INT_64 userid, S_INT_64 token, bool checktoken)
+{
+	if (rdv == 0)
+		rdv = svrApp.get_redisclient();
+
+	std::string key = rdv->build_rediskey(rdkey::user::USER_USERINFO, userid);
+	
+	S_INT_64 rdtoken = 0;
+	//数据不存在
+	if (!rdv->get_hashmember_ul(key.c_str(), rdkey::user::USER_UINFO_F_TOKEN, rdtoken))
+		return false;
+
+	if (checktoken)
+	{
+		if (token != rdtoken)
+			return false;
+	}
+
+	//清除relogin标记
+	rdv->del_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN);
+
+	//清除login状态
+	key = rdv->build_rediskey(rdkey::user::USER_ONLINES, get_onlinequeue_hash(userid));
+	rdv->del_zsetmember(key.c_str(), std::to_string(userid).c_str());
+
+	logDebug(out_runtime, "redis user:[%lld] do logout", userid);
+
+	return true;
+}
+
+void StateService::redis_gatelost_ntf(RedisClient* rdv, S_INT_64 userid, S_INT_64 token)
+{
+	if (rdv == 0)
+		rdv = svrApp.get_redisclient();
+
+	std::string key = rdv->build_rediskey(rdkey::user::USER_USERINFO, userid);
+	S_INT_64 rdtoken = 0;
+	//数据不存在
+	if (!rdv->get_hashmember_ul(key.c_str(), rdkey::user::USER_UINFO_F_TOKEN, rdtoken))
+		return;
+
+	if (token != rdtoken)
+		return;
+
+	rdv->set_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN, "yes");
+
+	logDebug(out_runtime, "redis user:[%lld] gatelost set flag", userid);
+}
+
+bool StateService::redis_user_relogin_check(RedisClient* rdv, SProtocolHead& head, S_INT_64 userid, 
+	S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid)
+{
+	if (rdv == 0)
+		rdv = svrApp.get_redisclient();
+
+	S_INT_64 token = ntoken;
+
+	//必须在线
+	if (!check_user_in_onlinequeue(rdv, userid))
+		return false;
+
+	std::string key = rdv->build_rediskey(rdkey::user::USER_USERINFO, userid);
+
+	boost::unordered_map<std::string, std::string> datas;
+	//数据不存在
+	if (!rdv->get_hashallmember(key.c_str(), datas))
+		return false;
+
+	boost::unordered_map<std::string, std::string>::iterator fiter = datas.find(rdkey::user::USER_UINFO_F_TOKEN);
+	if (fiter == datas.end())
+		return false;
+	S_INT_64 rdtoken = ShareUtil::atoi64(fiter->second.c_str());
+
+	if (rdtoken != token)
+		return false;
+
+	//检测relogin标记
+	fiter = datas.find(rdkey::user::USER_UINFO_F_RELOGIN);
+	if (fiter == datas.end())
+		return false;
+
+	//清除标记
+	//清除relogin标记
+	rdv->del_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN);
+
+	//获取一个新的token
+	ntoken = ShareUtil::get_token();
+
+	//更新缓冲
+	rdv->set_hashmember(key.c_str(), {
+		std::make_pair(rdkey::user::USER_UINFO_F_TOKEN, std::to_string(ntoken).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
+		});
+
+	fiter = datas.find(rdkey::user::USER_UINFO_F_ROLEID);
+	roleid = ShareUtil::atoi64(fiter->second.c_str());
+
+	fiter = datas.find(rdkey::user::USER_UINFO_F_GAMEID);
+	if (fiter == datas.end())
+		gameid = 0;
+	else
+		gameid = ShareUtil::atoi64(fiter->second.c_str());
+
+	logDebug(out_runtime, "relogin user:[%lld] success, roleid:%lld gameid:%lld", userid, roleid, gameid);
+
+	return true;
 }

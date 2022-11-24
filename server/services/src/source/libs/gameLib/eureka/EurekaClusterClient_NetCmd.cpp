@@ -170,5 +170,5 @@ void EurekaClusterClient::on_eurekamaster_change_ntf(NetProtocol* message, bool&
 
 void EurekaClusterClient::on_routeronline_ntf(NetProtocol* pro, bool& autorelease)
 {
-	Svr_RouterOnline_ntf* ntf = dynamic_cast<Svr_RouterOnline_ntf*>(pro->msg_);
+	//Svr_RouterOnline_ntf* ntf = dynamic_cast<Svr_RouterOnline_ntf*>(pro->msg_);
 }

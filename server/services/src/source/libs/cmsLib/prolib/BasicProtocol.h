@@ -116,6 +116,7 @@ public:
 	void set_token_slottoken(S_INT_32 slot, S_INT_64 token);
 	S_INT_32 get_token_slot() const;
 	S_INT_64 get_token_token() const;
+	void set_token_token(S_INT_64 token);
 
 	S_INT_64 get_role_iid() { return role_iid_; }
 	void set_role_iid(S_INT_64 id) { role_iid_ = id; }

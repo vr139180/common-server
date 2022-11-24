@@ -48,6 +48,8 @@ void CommandTestImpl::gts_linkdo()
 	{
 	//CMDMESSAGE(CLIENT_PING_NTF,         on_ping_ntf);
 	CMDMESSAGE(USER_PROTYPE::USER_LOGIN_ACK, on_login_ack);
+	CMDMESSAGE(USER_PROTYPE::USER_RELOGIN_ACK, on_relogin_ack);
+
 	CMDMESSAGE(USER_PROTYPE::USER_ROLELIST_ACK, on_rolelist_ack);
 	CMDMESSAGE(USER_PROTYPE::USER_ROLECREATE_ACK, on_rolecreate_ack);
 
@@ -91,8 +93,8 @@ void CommandTestImpl::gts_linkdo()
 
 	//test
 	CMDMESSAGE(USER_PROTYPE::USER_QUERY_SIMPLEINFO_ACK, on_user_get_simpleinfo);
-	CMDMESSAGE(GMS_PROTYPE::GAME_USERS_SYN, on_game_users_sync);
-	CMDMESSAGE(GMS_PROTYPE::GAME_USERSTATE_SYN, on_game_userstate_sync);
+	CMDMESSAGE(GMS_PROTYPE::GMS_USERS_SYN, on_game_users_sync);
+	CMDMESSAGE(GMS_PROTYPE::GMS_USERSTATE_SYN, on_game_userstate_sync);
 
 	default:
 		if (proiid != 0)
@@ -113,10 +115,12 @@ void ScriptDlg::regist()
 {
 	//支持的脚本函数
 	add_function("serverinfo()", "获取服务器信息");
-	add_function("ping()", "Ping 服务器");
-	add_function("login('test1','123456')", "db登陆\r\nusername,password");
-	add_function("logintoken()", "token登陆\r\n");
 	add_function("logout()", "注销");
+	add_function("close_connect()", "强制断开连接");
+
+	add_function("login('test1','123456')", "db登陆\r\nusername,password");
+	add_function("relogin()", "断线重连");
+	//add_function("logintoken()", "token登陆\r\n");
 	add_function("rolelist()", "获取角色列表");
 	add_function("rolecreate('test')", "创建角色");
 	add_function("roleselect(1)", "选择角色");
@@ -167,10 +171,12 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.beginClass <CommandTestImpl>("CommandTest")
 		.addConstructor <void(*) (void)>()
 		.addFunction("serverinfo", &CommandTestImpl::get_serverinfo)
+		.addFunction("logout", (void (CommandTestImpl::*)(void))&CommandTestImpl::logout)
+		.addFunction("close_connect", (void (CommandTestImpl::*)(void))&CommandTestImpl::close_connect)
 		.addFunction("ping", &CommandTestImpl::ping)
 		.addFunction("login", (void (CommandTestImpl::*)(const char*, const char*))&CommandTestImpl::login)
+		.addFunction("relogin", (void (CommandTestImpl::*)(void))&CommandTestImpl::relogin)
 		.addFunction("logintoken", (void (CommandTestImpl::*)(void))&CommandTestImpl::logintoken)
-		.addFunction("logout", (void (CommandTestImpl::*)(void))&CommandTestImpl::logout)
 		.addFunction("rolelist", (void (CommandTestImpl::*)(void))&CommandTestImpl::rolelist)
 		.addFunction("rolecreate", (void (CommandTestImpl::*)(const char*))&CommandTestImpl::rolecreate)
 		.addFunction("roleselect", (void (CommandTestImpl::*)(S_INT_64))&CommandTestImpl::roleselect)

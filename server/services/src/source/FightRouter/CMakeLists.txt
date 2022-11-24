@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-set(PRJ_NAME "FightRouterService")
+set(PRJ_NAME "FightRouter")
 
 project (${PRJ_NAME})
 

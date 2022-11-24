@@ -193,6 +193,9 @@ void StateServiceApp::register_timer()
 	this->add_apptimer( 1000*5, boost::BOOST_BIND( &StateServiceApp::auto_connect_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
+	this->add_apptimer( 1000*2, boost::BOOST_BIND(&StateServiceApp::online_user_maintance_timer, this,
+		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
+
 	EurekaClusterClient::instance().regist_timer();
 }
 
@@ -240,13 +243,22 @@ StateService* StateServiceApp::get_next_dispatcher()
 	return &(all_states_[cur_state_index_]);
 }
 
-void StateServiceApp::send_protocol_to_gate( SProtocolHead& head, BasicProtocol* pro)
+void StateServiceApp::send_to_gate( SProtocolHead& head, BasicProtocol* pro)
 {
 	head.router_balance_ = false;
 	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
 	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
 
 	datarouter_link_mth_.send_mth_protocol( head, pro);
+}
+
+void StateServiceApp::send_to_datarouter(NetProtocol* pro)
+{
+	SProtocolHead& head = pro->write_head();
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
+
+	datarouter_link_mth_.send_mth_protocol(pro);
 }
 
 void StateServiceApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
@@ -262,4 +274,9 @@ void StateServiceApp::on_datarouter_regist_result(DataRouterLinkTo* plink)
 void StateServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 {
 	datarouter_link_mth_.on_linkto_disconnected(plink);
+}
+
+void StateServiceApp::online_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish)
+{
+
 }

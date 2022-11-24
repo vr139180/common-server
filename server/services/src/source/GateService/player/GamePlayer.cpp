@@ -21,12 +21,15 @@
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
 
+#include "GateServiceApp.h"
+
 void GamePlayer::init(int s)
 {
 	this->slot_ = s;
 	this->cur_state_ = PlayerState::PlayerState_Free;
 	this->role_iid_ = 0;
 	this->user_iid_ = 0;
+	this->game_iid_ = 0;
 }
 
 void GamePlayer::reuse()
@@ -52,11 +55,12 @@ void GamePlayer::pre_start(S_INT_64 gateid)
 	this->start_timestamp_ = OSSystem::mOS->GetTimestamp();
 }
 
-void GamePlayer::auth( S_INT_64 uid)
+void GamePlayer::auth( S_INT_64 uid, S_INT_64 token)
 {
 	cur_state_ = PlayerState_Logon;
 	user_iid_ = uid;
 	s_head_.set_token_userid( uid);
+	s_head_.set_token_token(token);
 }
 
 void GamePlayer::role_selected_done(S_INT_64 rid)
@@ -70,4 +74,10 @@ void GamePlayer::send_netprotocol(BasicProtocol* msg)
 {
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
 	session_->send_protocol(pro);
+}
+
+void GamePlayer::send_to_state(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, pro);
 }

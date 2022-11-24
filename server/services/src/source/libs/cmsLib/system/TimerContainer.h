@@ -67,7 +67,7 @@ private:
 	struct timer_object
 	{
 		timer_object( u64 id, APPTIMER_FUN_MAP f):
-			iid_(id),fun_(f),before_node_(0),next_node_(0)
+			before_node_(0),next_node_(0), iid_(id), fun_(f)
 		{
 			last_time_ = OSSystem::mOS->GetTimestamp();
 		}

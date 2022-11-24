@@ -192,6 +192,53 @@ void CommandTestImpl::on_login_ack( BasicProtocol* pro, CString* pRetMsg)
 	*pRetMsg += "\r\n";
 }
 
+void CommandTestImpl::relogin()
+{
+	ret_desc_ = "";
+	if (socket2_ == INVALID_SOCKET)
+	{
+		if (!connect_to_gts())
+		{
+			ret_desc_ = "login socket打开错误，服务器可能没有运行！\r\n";
+			return;
+		}
+	}
+
+	startThread();
+
+	User_ReLogin_req *req = new User_ReLogin_req();
+	req->set_user_iid(user_iid_);
+	req->set_logintoken(user_token_);
+
+	if (!send_to_gts(req))
+	{
+		ret_desc_ = "发送协议失败\r\n";
+		return;
+	}
+}
+
+void CommandTestImpl::on_relogin_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	User_ReLogin_ack* ack = dynamic_cast<User_ReLogin_ack*>(pro);
+
+	if (ack->result() != 0)
+	{
+		pRetMsg->Format("Gate 重连失败....result:[%d]\r\n", ack->result());
+		disconnect_to_gts();
+
+		return;
+	}
+
+	this->user_token_ = ack->logintoken();
+	this->role_iid_ = ack->role_iid();
+
+	CString str1;
+	str1.Format("Gate重连成功 userid:%lld \r\n", user_iid_);
+	*pRetMsg += str1;
+
+	*pRetMsg += "\r\n";
+}
+
 void CommandTestImpl::logout()
 {
 	ret_desc_ ="";
@@ -207,6 +254,19 @@ void CommandTestImpl::logout()
 		ret_desc_ ="发送协议失败\r\n";
 		return;
 	}
+}
+
+void CommandTestImpl::close_connect()
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	disconnect_to_gts();
+	stopThread();
 }
 
 void CommandTestImpl::rolelist()

@@ -47,19 +47,27 @@ message User_ReLogin_ack{
   int32 result = 1;
   //用户iid
   optional int64 user_iid = 2;
-  //logintoken
-  optional int64 logintoken = 3;
+  optional int64 role_iid = 3;
+  optional int64 gameid = 4;
+  optional int64 logintoken = 5;
 }
 
 //user logout
 message User_Logout_ntf{
+  optional int64 user_iid = 1;
+  optional int64 role_iid = 2;
+  optional int64 token = 3;
+  optional int64 gameid = 4;
 }
 
+//断线后通知state
 message User_GateLost_ntf{
 }
 
 //状态激活协议
 message User_Active_ntf{
+  //最后的game服id
+  optional int64 gameid = 1;
 }
 
 message User_RoleList_req{

@@ -132,7 +132,8 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&DataRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
-	else if (msgid == PRO::USER_PROTYPE::USER_LOGIN_ACK || msgid == PRO::USER_PROTYPE::USER_LOGOUT_NTF
+	else if (msgid == PRO::USER_PROTYPE::USER_LOGIN_ACK || msgid == PRO::USER_PROTYPE::USER_RELOGIN_ACK
+		|| msgid == PRO::USER_PROTYPE::USER_LOGOUT_NTF
 		|| msgid == PRO::USER_PROTYPE::USER_ROLESELECT_ACK || msgid == PRO::CHAT_PROTYPE::CHAT_GLOBALMSG_NTF )
 	{
 		PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_head(pro->head_);

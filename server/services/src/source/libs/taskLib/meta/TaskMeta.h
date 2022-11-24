@@ -37,11 +37,12 @@ class TaskMetaBase
 {
 protected:
 	TaskMetaBase();
+
 	virtual void release();
 
 public:
 	static TaskMetaBase* load_taskmeta(const char* file, TaskGroupCellMeta* p);
-	~TaskMetaBase();
+	virtual ~TaskMetaBase();
 
 	virtual std::string get_impl() = 0;
 	virtual bool load_from_xml(tinyxml2::XMLElement* e);

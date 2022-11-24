@@ -40,6 +40,8 @@ public:
 	void reset();
 	void force_close();
 
+	void send_to_state(BasicProtocol* msg);
+
 	bool is_samesession(S_INT_64 utoken);
 	bool is_samesession(S_INT_64 uid, S_INT_64 utoken);
 	bool is_samesession(const SProtocolHead& head);
@@ -47,10 +49,15 @@ public:
 
 	int get_userslot() { return slot_; }
 	void set_userslot(int s) { slot_ = s; }
+	void set_gameid(S_INT_64 gid) { game_iid_ = gid; }
+	S_INT_64 get_gameid() { return game_iid_; }
 
 	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Logon && cur_state_ < PlayerState::PlayerState_RoleReady); }
 	bool is_roleready() { return cur_state_ >= PlayerState::PlayerState_RoleReady; }
 	bool is_login() { return cur_state_ >= PlayerState::PlayerState_Logon; }
+
+	//强制更新状态
+	void force_user_active();
 
 	S_INT_64 get_roleiid() { return this->role_iid_; }
 	//角色选择确定后切换giduid为gateid+role_iid_
@@ -81,7 +88,7 @@ public:
 	void pre_start( S_INT_64 gateid);
 	S_INT_64 get_starttime() { return start_timestamp_;}
 	//完成验证
-	void auth( S_INT_64 uid);
+	void auth( S_INT_64 uid, S_INT_64 token);
 	bool is_auth() { return cur_state_ > PlayerState_Loginning; }
 
 	void update(u64 tnow);
@@ -90,6 +97,7 @@ protected:
 	PlayerState	cur_state_;
 	S_INT_64	user_iid_;
 	S_INT_64	role_iid_;
+	S_INT_64	game_iid_;
 	//开始使用时间
 	S_INT_64	start_timestamp_;
 
