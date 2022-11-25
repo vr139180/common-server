@@ -15,6 +15,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "taskLib", "taskLib.vcxproj"
 		{53D53FF1-2475-485F-9343-407DE29E8AC6} = {53D53FF1-2475-485F-9343-407DE29E8AC6}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "worldsLib", "worldsLib.vcxproj", "{06583059-6FE2-4844-B2C3-C88FCAB58874}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,10 @@ Global
 		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Debug|x64.Build.0 = Debug|x64
 		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Release|x64.ActiveCfg = Release|x64
 		{E89EB0ED-8A42-436E-A2B9-FC818E9A6DB9}.Release|x64.Build.0 = Release|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Debug|x64.ActiveCfg = Debug|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Debug|x64.Build.0 = Debug|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Release|x64.ActiveCfg = Release|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

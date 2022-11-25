@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cmsLib", "cmsLib.vcxproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameService", "GameService.vcxproj", "{02E28F3C-7C43-4F6F-B019-0F023585DA09}"
 	ProjectSection(ProjectDependencies) = postProject
+		{06583059-6FE2-4844-B2C3-C88FCAB58874} = {06583059-6FE2-4844-B2C3-C88FCAB58874}
+		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
 		{53D53FF1-2475-485F-9343-407DE29E8AC6} = {53D53FF1-2475-485F-9343-407DE29E8AC6}
 	EndProjectSection
 EndProject
@@ -14,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gameLib", "gameLib.vcxproj"
 	ProjectSection(ProjectDependencies) = postProject
 		{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7} = {4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "worldsLib", "worldsLib.vcxproj", "{06583059-6FE2-4844-B2C3-C88FCAB58874}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,10 @@ Global
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Debug|x64.Build.0 = Debug|x64
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.ActiveCfg = Release|x64
 		{53D53FF1-2475-485F-9343-407DE29E8AC6}.Release|x64.Build.0 = Release|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Debug|x64.ActiveCfg = Debug|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Debug|x64.Build.0 = Debug|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Release|x64.ActiveCfg = Release|x64
+		{06583059-6FE2-4844-B2C3-C88FCAB58874}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
