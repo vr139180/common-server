@@ -96,7 +96,7 @@ bool FightRouterApp::pre_init()
 
 	gate_links_from_.init_holder();
 	matchmaking_links_from_.init_holder();
-	game_links_from_.init_holder(800);
+	game_links_from_.init_holder();
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -106,7 +106,7 @@ bool FightRouterApp::pre_init()
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
 
 	std::list< NETSERVICE_TYPE> router_types;
-	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_GAME);
+	//router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_GAME);
 
 	EurekaNodeInfo enode;
 	if (!EurekaClusterClient::get_eureka_masterinfo(gopt.eureka_.c_str(), enode))
@@ -266,6 +266,7 @@ void FightRouterApp::accept_netsession( NetAcceptorEvent::NetSessionPtr session,
 
 void FightRouterApp::auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish)
 {
+	datarouter_link_mth_.connect_to();
 }
 
 void FightRouterApp::service_maintnce_check(u64 tnow, int interval, u64 iid, bool& finish)
@@ -361,7 +362,13 @@ void FightRouterApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 
 void FightRouterApp::router_to_game(NetProtocol* pro)
 {
-	game_links_from_.send_protocol(pro->get_useriid(), pro);
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	GameServiceLinkFrom* plink = game_links_from_.get_servicelink_random();
+	plink->send_protocol(pro);
 }
 
 void FightRouterApp::router_to_gate(NetProtocol* pro)

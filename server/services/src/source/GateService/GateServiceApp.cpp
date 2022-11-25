@@ -323,10 +323,23 @@ void GateServiceApp::on_disconnected_with_svrrouter(ServiceRouterLinkTo* plink)
 
 void GateServiceApp::on_disconnected_with_fightrouter(FightRouterLinkTo* plink)
 {
-	fightrouter_link_mth_.on_linkto_regist_result(plink);
+	fightrouter_link_mth_.on_linkto_disconnected(plink);
 }
 
 void GateServiceApp::on_fightrouter_regist_result(FightRouterLinkTo* plink)
 {
-	fightrouter_link_mth_.on_linkto_disconnected(plink);
+	fightrouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void GateServiceApp::dispatch_gate_process(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> p_msg(pro);
+	PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_head(pro->head_);
+	if (pchannel)
+	{
+		NETCMD_FUN_MAP fun = boost::bind(&PlayerChannel::NetProcessMessage, pchannel,
+			boost::placeholders::_1, boost::placeholders::_2);
+		NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
+		pchannel->regist_netcmd(pcmd);
+	}
 }

@@ -129,8 +129,8 @@ bool GameServiceApp::init_finish()
 	ConfigHelper& cf = ConfigHelper::instance();
 
 	char app_title_[200];
-	sprintf(app_title_, "GameService VER: %s REV: %s PID: %d PORT: %d\n",
-		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
+	sprintf(app_title_, "GameService VER: %s REV: %s PID: %d\n",
+		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId());
 
 	OSSystem::mOS->SetAppTitle(app_title_);
 

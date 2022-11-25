@@ -58,6 +58,8 @@ public:
 	RedisProtoBufThreadCache* get_redisprotocache() { return rpcache_inthread_.get(); }
 
 	StateService* get_next_dispatcher();
+	//发送logout处理
+	void dispath_userlogout_process(S_INT_64 userid);
 
 public:
 
@@ -91,6 +93,7 @@ protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
 	void online_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish);
+	void offline_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish);
 
 protected:
 	//注册成功之后标注为true

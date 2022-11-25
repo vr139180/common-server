@@ -59,6 +59,8 @@ public:
 	void route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro);
 	void send_to_fightrouter(PRO::ERK_SERVICETYPE to, BasicProtocol* msg);
 
+	void dispatch_gate_process(NetProtocol* pro);
+
 public:
 
 	//------------------------------implement NetAcceptorEvent ------------------------------//

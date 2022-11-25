@@ -46,6 +46,7 @@ void CommandTestImpl::user_active()
 {
 	if (!islogon())
 		return;
+
 	OSSystem::mOS->UpdateNowTick();
 	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
 	if (last_active_time_ + 10 * 1000 > tnow)

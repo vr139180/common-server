@@ -170,8 +170,8 @@ bool HomeServiceApp::init_finish()
 	}
 
 	std::string verfmt = ShareUtil::str_format<128>(
-		"HomeService VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
-		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
+		"HomeService VER:%s SVN:%s PID:%d\n",
+		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId());
 
 	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 

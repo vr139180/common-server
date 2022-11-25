@@ -160,8 +160,8 @@ bool StateServiceApp::init_finish()
 	}
 
 	std::string verfmt = ShareUtil::str_format<128>(
-		"StateService VER:%s SVN:%s PID:%d Listen On PORT: %d\n",
-		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId(), cf.get_port());
+		"StateService VER:%s SVN:%s PID:%d\n",
+		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId());
 
 	OSSystem::mOS->SetAppTitle(verfmt.c_str());
 
@@ -194,6 +194,9 @@ void StateServiceApp::register_timer()
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	this->add_apptimer( 1000*2, boost::BOOST_BIND(&StateServiceApp::online_user_maintance_timer, this,
+		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
+
+	this->add_apptimer(1000 * 10, boost::BOOST_BIND(&StateServiceApp::offline_user_maintance_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 
 	EurekaClusterClient::instance().regist_timer();
@@ -278,5 +281,23 @@ void StateServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 
 void StateServiceApp::online_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish)
 {
+	//每次随机派发到一个线程处理
+	StateService* pstate = get_next_dispatcher();
+	SystemCommand<void>* pcmd = new SystemCommand<void>(boost::bind(&StateService::on_onlineuser_maintance, pstate, pstate));
+	pstate->regist_syscmd(pcmd);
+}
 
+void StateServiceApp::offline_user_maintance_timer(u64 tnow, int interval, u64 iid, bool& finish)
+{
+	StateService* pstate = get_next_dispatcher();
+	SystemCommand<void>* pcmd = new SystemCommand<void>(boost::bind(&StateService::on_offlineuser_maintance, pstate, pstate));
+	pstate->regist_syscmd(pcmd);
+}
+
+void StateServiceApp::dispath_userlogout_process(S_INT_64 userid)
+{
+	StateService* pstate = get_next_dispatcher();
+	SystemCommand2<S_INT_64>* pcmd = new SystemCommand2<S_INT_64>(
+		boost::bind(&StateService::on_user_logout_process, pstate, boost::placeholders::_1), userid);
+	pstate->regist_syscmd(pcmd);
 }

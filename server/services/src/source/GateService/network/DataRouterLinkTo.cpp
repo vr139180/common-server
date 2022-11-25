@@ -133,13 +133,23 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 		svrApp.regist_syscmd(cmd);
 	}
 	else if (msgid == PRO::USER_PROTYPE::USER_LOGIN_ACK || msgid == PRO::USER_PROTYPE::USER_RELOGIN_ACK
-		|| msgid == PRO::USER_PROTYPE::USER_LOGOUT_NTF
 		|| msgid == PRO::USER_PROTYPE::USER_ROLESELECT_ACK || msgid == PRO::CHAT_PROTYPE::CHAT_GLOBALMSG_NTF )
 	{
 		PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_head(pro->head_);
 		if (pchannel)
 		{
 			NETCMD_FUN_MAP fun = boost::bind(&PlayerChannel::NetProcessMessage, pchannel,
+				boost::placeholders::_1, boost::placeholders::_2);
+			NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
+			pchannel->regist_netcmd(pcmd);
+		}
+	}
+	else if (msgid == PRO::USER_PROTYPE::USER_LOGOUT_NTF)
+	{
+		PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_head(pro->head_);
+		if (pchannel)
+		{
+			NETCMD_FUN_MAP fun = boost::bind(&PlayerChannel::on_pc_userlogout_force_ntf, pchannel,
 				boost::placeholders::_1, boost::placeholders::_2);
 			NetCommand *pcmd = new NetCommand(p_msg.release(), fun);
 			pchannel->regist_netcmd(pcmd);

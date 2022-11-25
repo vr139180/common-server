@@ -52,11 +52,15 @@ REDIS_FIELD_DEF(USER_UINFO_F_GAMEID, "gameid");
 //在线用户信息 set %d=0
 //score userid, value timestamp
 REDIS_KEY_DEF(USER_ONLINES, "-LOGIN:ONLINE:#%d");
+//在线监测，从online获取离线信息，放入offline中，处理完成之后从offline删除确认。或者超时之后放回online等待继续处理
+REDIS_KEY_DEF(USER_OFFLINES, "-LOGIN:OFFLINE:#%d");
 
 //用户激活定时 10s
 #define USER_ACTIVE_TIME_STEP	10*1000
 //断线超时 30s
 #define USER_LOSTCONN_TIME		30*1000
+//offline处理超时 30s
+#define USER_OFFDEAL_TIME		30*1000
 
 //---------------------------用户数据相关-----------------------------------
 //datasync 使用的用户数据变更set

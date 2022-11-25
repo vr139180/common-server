@@ -90,6 +90,8 @@ public:
 	//完成验证
 	void auth( S_INT_64 uid, S_INT_64 token);
 	bool is_auth() { return cur_state_ > PlayerState_Loginning; }
+	bool trigger_gatelost();
+	void set_gatelost_untrigger() { b_trige_gatelost_ = false; }
 
 	void update(u64 tnow);
 
@@ -100,6 +102,8 @@ protected:
 	S_INT_64	game_iid_;
 	//开始使用时间
 	S_INT_64	start_timestamp_;
+	//是否需要出发gatelost,缺省会触发
+	bool		b_trige_gatelost_;
 
 private:
 	CProtocolHead	c_head_;

@@ -75,7 +75,31 @@ void FightRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autor
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
-	if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING)
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+	{
+		GateServiceLinkFrom *pLink = 0;
+		{
+			ThreadLockWrapper guard(get_threadlock());
+
+			session_from_.remove_waitsession_mth(psession);
+			pLink = gate_links_from_.ask_free_link();
+
+			pLink->set_linkbase_info(req->myiid(), req->mytoken(), req->myexts());
+
+			psession->auth();
+			pLink->set_session(psession);
+			psession->set_netlinkbase(pLink);
+
+			//ÉèÖÃµ±Ç°gatelinke
+			gate_links_from_.regist_onlinelink(pLink);
+
+			pLink->registinfo_tolog(true);
+		}
+
+		ack->set_result(0);
+		pLink->send_netprotocol(ptr.release());
+	}
+	else if (ctype == NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING)
 	{
 		MatchMakingServiceLinkFrom *pLink = 0;
 		{
@@ -99,6 +123,7 @@ void FightRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autor
 		ack->set_result(0);
 		pLink->send_netprotocol(ptr.release());
 	}
+	
 }
 
 //-------------------------------------------------------eureka cluster---------------------------------------
@@ -116,9 +141,6 @@ void FightRouterApp::mth_notify_routerbalance_new(NETSERVICE_TYPE type, std::lis
 {
 	logInfo(out_runtime, "FightRouter recv a balance notify[type:%s, size:%d]",
 		NetServiceType::to_string(type).c_str(), svrs.size());
-
-	if (type == NETSERVICE_TYPE::ERK_SERVICE_GAME)
-		game_links_from_.sync_balance_services(svrs);
 }
 
 void FightRouterApp::mth_service_registed(S_INT_64 sid)

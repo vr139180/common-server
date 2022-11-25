@@ -75,6 +75,13 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		ntf->set_gameid(game_iid_);
 		svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, p_msg.release());
 	}
+	else if (msgid == PRO::USER_LOGOUT_NTF)
+	{
+		if (!is_login())
+			return;
+
+		svrApp.dispatch_gate_process(p_msg.release());
+	}
 	else
 	{
 		if( !is_roleready())

@@ -100,11 +100,10 @@ protected:
 	SessionMthHolder<FightRouterSession>		session_from_;
 
 	LinkToHolder<DataRouterLinkTo>				datarouter_link_mth_;
+
 	LinkFromHolder<MatchMakingServiceLinkFrom>	matchmaking_links_from_;
 	LinkFromHolder<GateServiceLinkFrom>			gate_links_from_;
-
-	//¸ºÔØ¾ùºâ
-	LinkFromConsistentHash<GameServiceLinkFrom>	game_links_from_;
+	LinkFromHolder<GameServiceLinkFrom>			game_links_from_;
 
 	boost::scoped_ptr<FightRouterConfig>		conf_;
 

@@ -38,8 +38,11 @@ void PlayerChannel::InitNetMessage()
 
 void PlayerChannel::on_disconnected_with_player(GamePlayer* plink)
 {
-	User_GateLost_ntf* ntf = new User_GateLost_ntf();
-	plink->send_to_state(ntf);
+	if (plink->trigger_gatelost())
+	{
+		User_GateLost_ntf* ntf = new User_GateLost_ntf();
+		plink->send_to_state(ntf);
+	}
 
 	force_pc_close_player(plink);
 }
@@ -104,6 +107,7 @@ void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 	GamePlayer *puser = get_player_frommsg(pro);
 	if (puser == 0) return;
 
+	/*
 	User_Logout_ntf* ntf = dynamic_cast<User_Logout_ntf*>(pro->msg_);
 	ntf->set_user_iid(puser->get_iid());
 	ntf->set_role_iid(puser->get_roleiid());
@@ -111,6 +115,24 @@ void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 
 	autorelease = false;
 	svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, pro);
+	*/
+
+	//主动断开，不触发gatelost
+	puser->set_gatelost_untrigger();
+
+	puser->force_close();
+}
+
+void PlayerChannel::on_pc_userlogout_force_ntf(NetProtocol* pro, bool& autorelease)
+{
+	GamePlayer *puser = get_player_frommsg(pro);
+	if (puser == 0) return;
+
+	autorelease = false;
+	send_msg_to_player(pro);
+
+	//state检测强制断开，不触发gatelost
+	puser->set_gatelost_untrigger();
 
 	force_pc_close_player(puser);
 }

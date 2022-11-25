@@ -71,6 +71,12 @@ protected:
 		S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid);
 
 public:
+	//------------------------------------maintance-------------------------------------
+	void on_onlineuser_maintance(void*);
+	void on_offlineuser_maintance(void*);
+	void on_user_logout_process(S_INT_64 userid);
+
+	//-------------------------------------net process----------------------------------
 	void on_user_login_req(NetProtocol* pro, bool& autorelease);
 	//result 0: 成功 1:账号被禁用 2:账号不存在 3:验证错误 4:系统错误 5:登陆排队中
 	void on_db_user_login_act( SProtocolHead& head, S_INT_32 result, S_INT_32 type

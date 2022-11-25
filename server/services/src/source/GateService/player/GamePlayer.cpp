@@ -42,6 +42,20 @@ void GamePlayer::force_linkclose()
 	force_close();
 }
 
+bool GamePlayer::trigger_gatelost()
+{
+	if (!is_auth())
+		return false;
+
+	if (b_trige_gatelost_)
+	{
+		b_trige_gatelost_ = false;
+		return true;
+	}
+
+	return false;
+}
+
 void GamePlayer::pre_start(S_INT_64 gateid)
 {
 	//slot+token只在pre_start时设置一次
@@ -53,6 +67,7 @@ void GamePlayer::pre_start(S_INT_64 gateid)
 	this->user_iid_ = 0;
 	this->role_iid_ = 0;
 	this->start_timestamp_ = OSSystem::mOS->GetTimestamp();
+	b_trige_gatelost_ = true;
 }
 
 void GamePlayer::auth( S_INT_64 uid, S_INT_64 token)

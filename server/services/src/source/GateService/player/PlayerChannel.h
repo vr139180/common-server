@@ -76,6 +76,7 @@ public:
 	void on_pc_userrelogin_ack(NetProtocol* message, bool& autorelease);
 
 	void on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease);
+	void on_pc_userlogout_force_ntf(NetProtocol* pro, bool& autorelease);
 	void on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease);
 
 	void on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease);

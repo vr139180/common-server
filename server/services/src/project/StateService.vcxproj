@@ -143,6 +143,7 @@
     <ClCompile Include="..\source\StateService\network\DataRouterLinkTo.cpp" />
     <ClCompile Include="..\source\StateService\sMain.cpp" />
     <ClCompile Include="..\source\StateService\states\StateService.cpp" />
+    <ClCompile Include="..\source\StateService\states\StateService_Maintance.cpp" />
     <ClCompile Include="..\source\StateService\states\StateService_Network.cpp" />
     <ClCompile Include="..\source\StateService\states\StateService_Redis.cpp" />
   </ItemGroup>

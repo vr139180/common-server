@@ -28,6 +28,9 @@
     <ClCompile Include="..\source\StateService\states\StateService_Redis.cpp">
       <Filter>states</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\StateService\states\StateService_Maintance.cpp">
+      <Filter>states</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\StateService\StateServiceApp.h" />

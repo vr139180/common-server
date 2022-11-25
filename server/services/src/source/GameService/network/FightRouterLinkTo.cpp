@@ -121,6 +121,7 @@ void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
 	S_UINT_16 msgid = pro->get_msg();
+	logDebug(out_runtime, ".......gameservice recv msg:%d", msgid);
 	if (msgid == PRO::ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK)
 	{
 		PRO::Svr_ServiceBindService_ack *ack = dynamic_cast<PRO::Svr_ServiceBindService_ack*>(pro->msg_);
