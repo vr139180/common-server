@@ -102,6 +102,21 @@ bool ConfigHelper::load_svrno()
 	else
 		return false;
 
+	tinyxml2::XMLElement* pexts = root->FirstChildElement("exts");
+	if (pexts)
+	{
+		for (tinyxml2::XMLElement* pe = pexts->FirstChildElement("ext"); pe != 0; pe = pe->NextSiblingElement("ext"))
+		{
+			std::string k = XmlUtil::GetXmlAttrStr(pe, "k", "");
+			std::string v = XmlUtil::GetXmlAttrStr(pe, "v", "");
+			if (k == "" || v == "")
+				continue;
+			ShareUtil::to_lower(k);
+			ShareUtil::to_lower(v);
+			extprop_[k] = v;
+		}
+	}
+
 	return true;
 }
 

@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#ifndef __GAMECONFIG_H__
-#define __GAMECONFIG_H__
 
-#include <string>
+#include "region/RegionChannelService.h"
 
-class GameConfig
+#include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/LogExt.h>
+
+#include "GameServiceApp.h"
+
+USE_PROTOCOL_NAMESPACE
+
+void RegionChannelService::InitNetMessage()
 {
-public:
-	GameConfig(){}
 
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-	//channel数量
-	int channel_num_;
-};
+}
 
-#endif //__GAMECONFIG_H__
+void RegionChannelService::NetProcessMessage(NetProtocol* pro, bool& autorelease)
+{
+	MessageProcess::NetProcessMessage(pro, autorelease);
+}

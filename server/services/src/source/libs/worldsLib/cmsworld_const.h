@@ -16,4 +16,21 @@
 #ifndef __CMSWORLD_CONST_H__
 #define __CMSWORLD_CONST_H__
 
+//region中一个cell的边长 m
+#define REGION_CELL_SIZE		30
+//人眼能看到的最远距离是3个cell的长度，90m
+#define PLAYER_EYESEE_CELL_MAX	3
+
+//步行速度 1.5m/s
+#define GAME_PLAYER_WALKSPEED	1.5
+//跑步速度 2.5m/s
+#define GAME_PLAYER_RUNSPEED	2.5
+
+//-------------------------------------------------------
+//地图的制作要求
+//长宽必须是30m的整数倍
+//地图的原点(0,0)在地图的左下角
+//地图切割成的region的长宽必须是30m的整数倍
+//-------------------------------------------------------
+
 #endif //__CMSWORLD_CONST_H__

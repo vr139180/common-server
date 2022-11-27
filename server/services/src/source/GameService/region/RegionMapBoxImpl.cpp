@@ -13,13 +13,9 @@
 // limitations under the License.
 //
 
-#ifndef __WORLDREGIONHELPER_H__
-#define __WORLDREGIONHELPER_H__
+#include "region/RegionMapBoxImpl.h"
 
-class WorldRegionHelper
+RegionMapBoxImpl::~RegionMapBoxImpl()
 {
-public:
-	WorldRegionHelper();
-};
 
-#endif //__WORLDREGIONHELPER_H__
+}

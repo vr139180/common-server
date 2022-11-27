@@ -1,3 +1,6 @@
 <worlds width="1024" height="1024">
-	<region id="1" name="test" start="(0, 1023)" width="1024" height="1024" />
+	<startpoints>
+		<startpoint pos="{100,100}" />
+	</startpoints>
+	<region id="1" name="test" start="{0,1023}" width="1024" height="1024" leftjoin="0" rightjoin="0" topjoin="0" buttomjoin="0" />
 </worlds>

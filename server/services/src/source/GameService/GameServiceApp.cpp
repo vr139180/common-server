@@ -78,7 +78,7 @@ GameConfig* GameServiceApp::load_gameconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
+	config->channel_num_ = XmlUtil::GetXmlAttrInt(root, "channels", 1);
 
 	return xptr.release();
 }
@@ -90,6 +90,13 @@ GameConfig* GameServiceApp::get_config()
 
 bool GameServiceApp::pre_init()
 {
+	channel_num_ = get_config()->channel_num_;
+	this->all_channels_.reset(new RegionChannelService[channel_num_]);
+	for (int ii = 0; ii < channel_num_; ++ii)
+	{
+		all_channels_[ii].init_channel();
+	}
+
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
 	const config::GlobalOption& gopt = cf.get_globaloption();
@@ -106,7 +113,7 @@ bool GameServiceApp::pre_init()
 	}
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GAME,
-		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
+		cf.get_ip().c_str(), cf.get_port(), cf.get_exts(),
 		enode, subscribe_types, router_types, false);
 
 	return true;
@@ -128,6 +135,12 @@ bool GameServiceApp::init_finish()
 {
 	ConfigHelper& cf = ConfigHelper::instance();
 
+	for (int ii = 0; ii < channel_num_; ++ii)
+	{
+		all_channels_[ii].init(100);
+		all_channels_[ii].start();
+	}
+
 	char app_title_[200];
 	sprintf(app_title_, "GameService VER: %s REV: %s PID: %d\n",
 		get_version().c_str(), get_svn_reversion().c_str(), OSSystem::mOS->GetProcessId());
@@ -140,6 +153,11 @@ bool GameServiceApp::init_finish()
 void GameServiceApp::uninit_network()
 {
 	NetDriverX::getInstance().uninitNetDriver();
+
+	for (int ii = 0; ii < channel_num_; ++ii)
+	{
+		all_channels_[ii].stop();
+	}
 
 	fightrouter_link_mth_.free_all();
 

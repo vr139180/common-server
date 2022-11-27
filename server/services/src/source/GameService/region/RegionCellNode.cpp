@@ -12,21 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#ifndef __GAMECONFIG_H__
-#define __GAMECONFIG_H__
 
-#include <string>
+#include "region/RegionCellNode.h"
 
-class GameConfig
+RegionCellNode::RegionCellNode()
 {
-public:
-	GameConfig(){}
 
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-	//channel数量
-	int channel_num_;
-};
-
-#endif //__GAMECONFIG_H__
+}

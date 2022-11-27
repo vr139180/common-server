@@ -13,9 +13,20 @@
 // limitations under the License.
 //
 
-#include <worldsLib/WorldRegionHelper.h>
+#ifndef __REGIONMAPBOXIMPL_H__
+#define __REGIONMAPBOXIMPL_H__
 
-WorldRegionHelper::WorldRegionHelper()
+#include "region/IRegionMap.h"
+#include "region/RegionCellNode.h"
+
+class RegionMapBoxImpl : public IRegionMap
 {
+public:
+	virtual ~RegionMapBoxImpl();
 
-}
+private:
+	//box类型的节点
+	RegionCellNode			cell_nodes_;
+};
+
+#endif //__REGIONMAPBOXIMPL_H__

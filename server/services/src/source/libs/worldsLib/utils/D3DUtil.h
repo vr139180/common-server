@@ -12,21 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#ifndef __GAMECONFIG_H__
-#define __GAMECONFIG_H__
 
-#include <string>
+#ifndef __D3DUTIL_H__
+#define __D3DUTIL_H__
 
-class GameConfig
+class D3DUtil
 {
-public:
-	GameConfig(){}
-
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-	//channel数量
-	int channel_num_;
+private:
+	D3DUtil() {}
 };
 
-#endif //__GAMECONFIG_H__
+#endif //__D3DUTIL_H__

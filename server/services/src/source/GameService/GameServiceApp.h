@@ -27,6 +27,7 @@
 #include <gameLib/commons/SessionMthHolder.h>
 
 #include "network/FightRouterLinkTo.h"
+#include "region/RegionChannelService.h"
 
 #include "config/GameConfig.h"
 
@@ -81,7 +82,10 @@ protected:
 	bool							is_ready_;
 
 	//network
-	LinkToHolder<FightRouterLinkTo>	fightrouter_link_mth_;
+	LinkToHolder<FightRouterLinkTo>				fightrouter_link_mth_;
+
+	boost::scoped_array<RegionChannelService>	all_channels_;
+	int											channel_num_;
 
 	boost::scoped_ptr<GameConfig>	conf_;
 

@@ -12,21 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#ifndef __GAMECONFIG_H__
-#define __GAMECONFIG_H__
 
-#include <string>
+#ifndef __GAMEREGIONMETA_H__
+#define __GAMEREGIONMETA_H__
 
-class GameConfig
+class GameRegionMeta
 {
 public:
-	GameConfig(){}
-
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-	//channel数量
-	int channel_num_;
+	GameRegionMeta();
 };
 
-#endif //__GAMECONFIG_H__
+#endif //__GAMEREGIONMETA_H__

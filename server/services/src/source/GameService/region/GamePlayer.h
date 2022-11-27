@@ -12,21 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-#ifndef __GAMECONFIG_H__
-#define __GAMECONFIG_H__
 
-#include <string>
+#ifndef __GAMEPLAYER_H__
+#define __GAMEPLAYER_H__
 
-class GameConfig
+#include <cmsLib/core_type.h>
+
+class GamePlayer
 {
 public:
-	GameConfig(){}
+	GamePlayer();
+	virtual ~GamePlayer() {}
 
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-	//channel数量
-	int channel_num_;
+private:
+	S_INT_64 user_iid_;
 };
 
-#endif //__GAMECONFIG_H__
+#endif //__GAMEPLAYER_H__

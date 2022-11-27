@@ -2,9 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="..\source\libs\worldsLib\cmsworld_const.h" />
-    <ClInclude Include="..\source\libs\worldsLib\WorldRegionHelper.h" />
+    <ClInclude Include="..\source\libs\worldsLib\GameRegionMeta.h" />
+    <ClInclude Include="..\source\libs\worldsLib\GameWorldHelper.h" />
+    <ClInclude Include="..\source\libs\worldsLib\RegionCellMeta.h" />
+    <ClInclude Include="..\source\libs\worldsLib\utils\D3DUtil.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\source\libs\worldsLib\WorldRegionHelper.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\GameRegionMeta.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\GameWorldHelper.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\RegionCellMeta.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\utils\D3DUtil.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{d92b37da-5a5c-4b3e-9776-ed5c90e1ab17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

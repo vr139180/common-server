@@ -50,6 +50,8 @@ public:
 	std::string get_ip() { return ip_; }
 	int get_port() { return port_; }
 
+	const boost::unordered_map<std::string, std::string>& get_exts() { return extprop_; }
+
 	config::GlobalOption& get_globaloption() { return global_; }
 
 public:
@@ -72,6 +74,8 @@ private:
 	int nets_;
 	std::string ip_;
 	int port_;
+
+	boost::unordered_map<std::string, std::string> extprop_;
 
 	std::map< std::string, std::string> cnfprop_;
 	//全局配置

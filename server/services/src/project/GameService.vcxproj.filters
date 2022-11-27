@@ -7,6 +7,24 @@
     <ClCompile Include="..\source\GameService\network\FightRouterLinkTo.cpp">
       <Filter>network</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\GameService\region\GamePlayer.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\IRegionMap.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionChannelService.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionMapBoxImpl.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionCellNode.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionChannelService_Network.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GameService\GameServiceApp.h" />
@@ -15,6 +33,24 @@
     </ClInclude>
     <ClInclude Include="..\source\GameService\network\FightRouterLinkTo.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\GamePlayer.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\IRegionMap.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\RegionChannelService.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\RegionMapBoxImpl.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\RegionPlayerContainer.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GameService\region\RegionCellNode.h">
+      <Filter>region</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +62,9 @@
     </Filter>
     <Filter Include="config">
       <UniqueIdentifier>{9335a345-3d24-4d0d-8947-e5c1829d7912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="region">
+      <UniqueIdentifier>{81d5743c-2cb8-4d86-921d-c3371868f182}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

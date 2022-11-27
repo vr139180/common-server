@@ -1,4 +1,7 @@
-﻿<app ip="127.0.0.1" port="4301"  cpu="2" confsrc="filesrc">
+﻿<app cpu="2" confsrc="filesrc" loopnum="100" channels="1">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
+	<exts>
+		<ext k="region" v="1"/>
+	</exts>
 </app>
