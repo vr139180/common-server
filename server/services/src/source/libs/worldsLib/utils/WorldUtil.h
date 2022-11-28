@@ -13,13 +13,18 @@
 // limitations under the License.
 //
 
-#ifndef __REGIONCELLMETA_H__
-#define __REGIONCELLMETA_H__
+#ifndef __WORLDUTIL_H__
+#define __WORLDUTIL_H__
 
-class RegionCellMeta
+#include <cmsLib/core_type.h>
+
+class WorldUtil
 {
+private:
+	WorldUtil() {}
+
 public:
-	RegionCellMeta();
+	static S_INT_64 build_gameid(S_INT_64 serviceid, S_INT_32 channel);
 };
 
-#endif //__REGIONCELLMETA_H__
+#endif //__WORLDUTIL_H__

@@ -51,6 +51,7 @@ public:
 	int get_port() { return port_; }
 
 	const boost::unordered_map<std::string, std::string>& get_exts() { return extprop_; }
+	std::string find_ext(const char* name);
 
 	config::GlobalOption& get_globaloption() { return global_; }
 

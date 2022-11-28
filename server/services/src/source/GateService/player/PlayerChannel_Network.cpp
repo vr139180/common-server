@@ -175,7 +175,7 @@ void PlayerChannel::on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease)
 	GamePlayer *puser = get_player_frommsg(pro);
 	if (puser == 0) return;
 
-	Game_EnterGame_ntf *ntf = dynamic_cast<Game_EnterGame_ntf*>(pro->msg_);
+	Game_EnterGame_ack *ntf = dynamic_cast<Game_EnterGame_ack*>(pro->msg_);
 	puser->set_gameid(ntf->game_iid());
 
 	puser->force_user_active();

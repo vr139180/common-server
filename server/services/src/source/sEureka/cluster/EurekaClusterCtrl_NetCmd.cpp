@@ -42,7 +42,6 @@ void EurekaClusterCtrl::on_eurekaregist_req(NetProtocol* pro, bool& autorelease,
 	if (!is_master() || !is_boosted())
 	{
 		SProtocolHead head;
-		head.router_balance_ = false;
 		head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 		head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 
@@ -108,7 +107,6 @@ void EurekaClusterCtrl::on_eurekabind_req(NetProtocol* pro, bool& autorelease, v
 	if ( pnode == 0 || (!is_boosted()))
 	{
 		SProtocolHead head;
-		head.router_balance_ = false;
 		head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 		head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 

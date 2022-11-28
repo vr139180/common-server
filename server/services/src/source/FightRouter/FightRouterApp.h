@@ -37,6 +37,7 @@
 #include "network/MatchMakingServiceLinkFrom.h"
 #include "network/DataRouterLinkTo.h"
 #include "network/GateServiceLinkFrom.h"
+#include "network/GameRegionResolver.h"
 
 class FightRouterApp : public ServerAppBase, public NetAcceptorEvent, public IEurekaClientIntegrate
 {
@@ -103,7 +104,7 @@ protected:
 
 	LinkFromHolder<MatchMakingServiceLinkFrom>	matchmaking_links_from_;
 	LinkFromHolder<GateServiceLinkFrom>			gate_links_from_;
-	LinkFromHolder<GameServiceLinkFrom>			game_links_from_;
+	GameRegionResolver							game_links_from_;
 
 	boost::scoped_ptr<FightRouterConfig>		conf_;
 
@@ -111,6 +112,7 @@ public:
 	void on_connection_timeout(FightRouterSession* session);
 
 	void on_mth_servicebindservice_req(NetProtocol* pro, bool& autorelease, void* session);
+	void on_mth_gameregion_regist_ntf(NetProtocol* pro, bool& autorelease);
 
 	void on_disconnected_with_gateservice(GateServiceLinkFrom* plink);
 	void on_disconnected_with_gameservice(GameServiceLinkFrom* plink);

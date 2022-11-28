@@ -395,8 +395,22 @@ struct Svr_ServiceBindService_ackDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Svr_ServiceBindService_ackDefaultTypeInternal _Svr_ServiceBindService_ack_default_instance_;
+constexpr GsFr_GameRegionRegist_ntf::GsFr_GameRegionRegist_ntf(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : gameid_(int64_t{0})
+  , regionid_(0)
+  , channels_(0){}
+struct GsFr_GameRegionRegist_ntfDefaultTypeInternal {
+  constexpr GsFr_GameRegionRegist_ntfDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~GsFr_GameRegionRegist_ntfDefaultTypeInternal() {}
+  union {
+    GsFr_GameRegionRegist_ntf _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT GsFr_GameRegionRegist_ntfDefaultTypeInternal _GsFr_GameRegionRegist_ntf_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_eureka_5finternal_2eproto[26];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_eureka_5finternal_2eproto[27];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_eureka_5finternal_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_eureka_5finternal_2eproto = nullptr;
 
@@ -666,6 +680,15 @@ const uint32_t TableStruct_eureka_5finternal_2eproto::offsets[] PROTOBUF_SECTION
   PROTOBUF_FIELD_OFFSET(::PRO::Svr_ServiceBindService_ack, svr_type_),
   PROTOBUF_FIELD_OFFSET(::PRO::Svr_ServiceBindService_ack, toiid_),
   PROTOBUF_FIELD_OFFSET(::PRO::Svr_ServiceBindService_ack, totoken_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::GsFr_GameRegionRegist_ntf, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::GsFr_GameRegionRegist_ntf, gameid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::GsFr_GameRegionRegist_ntf, regionid_),
+  PROTOBUF_FIELD_OFFSET(::PRO::GsFr_GameRegionRegist_ntf, channels_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::PRO::EurekaServerNode)},
@@ -694,6 +717,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 233, 241, -1, sizeof(::PRO::Svr_ServiceBindService_req_MyextsEntry_DoNotUse)},
   { 243, -1, -1, sizeof(::PRO::Svr_ServiceBindService_req)},
   { 255, -1, -1, sizeof(::PRO::Svr_ServiceBindService_ack)},
+  { 265, -1, -1, sizeof(::PRO::GsFr_GameRegionRegist_ntf)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -723,6 +747,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Svr_ServiceBindService_req_MyextsEntry_DoNotUse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Svr_ServiceBindService_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Svr_ServiceBindService_ack_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_GsFr_GameRegionRegist_ntf_default_instance_),
 };
 
 const char descriptor_table_protodef_eureka_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -789,24 +814,26 @@ const char descriptor_table_protodef_eureka_5finternal_2eproto[] PROTOBUF_SECTIO
   "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"^\n\032Svr_Servi"
   "ceBindService_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010svr"
   "_type\030\002 \001(\005\022\r\n\005toiid\030\003 \001(\003\022\017\n\007totoken\030\004 "
-  "\001(\003*\223\003\n\017ERK_SERVICETYPE\022\024\n\020ERK_SERVICE_N"
-  "ONE\020\000\022\026\n\022ERK_SERVICE_EUREKA\020\001\022\032\n\026ERK_SER"
-  "VICE_DATAROUTER\020\002\022\025\n\021ERK_SERVICE_STATE\020\003"
-  "\022\024\n\020ERK_SERVICE_GATE\020\004\022\024\n\020ERK_SERVICE_HO"
-  "ME\020\005\022\031\n\025ERK_SERVICE_SVRROUTER\020\006\022\024\n\020ERK_S"
-  "ERVICE_CHAT\020\007\022\024\n\020ERK_SERVICE_MAIL\020\010\022\026\n\022E"
-  "RK_SERVICE_FRIEND\020\t\022\033\n\027ERK_SERVICE_FIGHT"
-  "ROUTER\020\n\022\033\n\027ERK_SERVICE_MATCHMAKING\020\013\022\024\n"
-  "\020ERK_SERVICE_GAME\020\014\022\030\n\024ERK_SERVICE_DATAS"
-  "YNC\020\r\022\025\n\021ERK_SERVICE_UNION\020\016\022\023\n\017ERK_SERV"
-  "ICE_MAX\020\017BT\n\033com.cms.client.network.gpro"
-  "P\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clie"
-  "nt.network.gprob\006proto3"
+  "\001(\003\"O\n\031GsFr_GameRegionRegist_ntf\022\016\n\006game"
+  "id\030\001 \001(\003\022\020\n\010regionid\030\002 \001(\005\022\020\n\010channels\030\003"
+  " \001(\005*\223\003\n\017ERK_SERVICETYPE\022\024\n\020ERK_SERVICE_"
+  "NONE\020\000\022\026\n\022ERK_SERVICE_EUREKA\020\001\022\032\n\026ERK_SE"
+  "RVICE_DATAROUTER\020\002\022\025\n\021ERK_SERVICE_STATE\020"
+  "\003\022\024\n\020ERK_SERVICE_GATE\020\004\022\024\n\020ERK_SERVICE_H"
+  "OME\020\005\022\031\n\025ERK_SERVICE_SVRROUTER\020\006\022\024\n\020ERK_"
+  "SERVICE_CHAT\020\007\022\024\n\020ERK_SERVICE_MAIL\020\010\022\026\n\022"
+  "ERK_SERVICE_FRIEND\020\t\022\033\n\027ERK_SERVICE_FIGH"
+  "TROUTER\020\n\022\033\n\027ERK_SERVICE_MATCHMAKING\020\013\022\024"
+  "\n\020ERK_SERVICE_GAME\020\014\022\030\n\024ERK_SERVICE_DATA"
+  "SYNC\020\r\022\025\n\021ERK_SERVICE_UNION\020\016\022\023\n\017ERK_SER"
+  "VICE_MAX\020\017BT\n\033com.cms.client.network.gpr"
+  "oP\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.cli"
+  "ent.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_eureka_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_eureka_5finternal_2eproto = {
-  false, false, 3023, descriptor_table_protodef_eureka_5finternal_2eproto, "eureka_internal.proto", 
-  &descriptor_table_eureka_5finternal_2eproto_once, nullptr, 0, 26,
+  false, false, 3104, descriptor_table_protodef_eureka_5finternal_2eproto, "eureka_internal.proto", 
+  &descriptor_table_eureka_5finternal_2eproto_once, nullptr, 0, 27,
   schemas, file_default_instances, TableStruct_eureka_5finternal_2eproto::offsets,
   file_level_metadata_eureka_5finternal_2eproto, file_level_enum_descriptors_eureka_5finternal_2eproto, file_level_service_descriptors_eureka_5finternal_2eproto,
 };
@@ -6995,6 +7022,240 @@ void Svr_ServiceBindService_ack::InternalSwap(Svr_ServiceBindService_ack* other)
       file_level_metadata_eureka_5finternal_2eproto[25]);
 }
 
+// ===================================================================
+
+class GsFr_GameRegionRegist_ntf::_Internal {
+ public:
+};
+
+GsFr_GameRegionRegist_ntf::GsFr_GameRegionRegist_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.GsFr_GameRegionRegist_ntf)
+}
+GsFr_GameRegionRegist_ntf::GsFr_GameRegionRegist_ntf(const GsFr_GameRegionRegist_ntf& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&gameid_, &from.gameid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&channels_) -
+    reinterpret_cast<char*>(&gameid_)) + sizeof(channels_));
+  // @@protoc_insertion_point(copy_constructor:PRO.GsFr_GameRegionRegist_ntf)
+}
+
+inline void GsFr_GameRegionRegist_ntf::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&gameid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&channels_) -
+    reinterpret_cast<char*>(&gameid_)) + sizeof(channels_));
+}
+
+GsFr_GameRegionRegist_ntf::~GsFr_GameRegionRegist_ntf() {
+  // @@protoc_insertion_point(destructor:PRO.GsFr_GameRegionRegist_ntf)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void GsFr_GameRegionRegist_ntf::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void GsFr_GameRegionRegist_ntf::ArenaDtor(void* object) {
+  GsFr_GameRegionRegist_ntf* _this = reinterpret_cast< GsFr_GameRegionRegist_ntf* >(object);
+  (void)_this;
+}
+void GsFr_GameRegionRegist_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void GsFr_GameRegionRegist_ntf::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void GsFr_GameRegionRegist_ntf::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.GsFr_GameRegionRegist_ntf)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&gameid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&channels_) -
+      reinterpret_cast<char*>(&gameid_)) + sizeof(channels_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GsFr_GameRegionRegist_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int64 gameid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 regionid = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          regionid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 channels = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          channels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GsFr_GameRegionRegist_ntf::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.GsFr_GameRegionRegist_ntf)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 gameid = 1;
+  if (this->_internal_gameid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_gameid(), target);
+  }
+
+  // int32 regionid = 2;
+  if (this->_internal_regionid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_regionid(), target);
+  }
+
+  // int32 channels = 3;
+  if (this->_internal_channels() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_channels(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.GsFr_GameRegionRegist_ntf)
+  return target;
+}
+
+size_t GsFr_GameRegionRegist_ntf::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.GsFr_GameRegionRegist_ntf)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 gameid = 1;
+  if (this->_internal_gameid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64SizePlusOne(this->_internal_gameid());
+  }
+
+  // int32 regionid = 2;
+  if (this->_internal_regionid() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_regionid());
+  }
+
+  // int32 channels = 3;
+  if (this->_internal_channels() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_channels());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GsFr_GameRegionRegist_ntf::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    GsFr_GameRegionRegist_ntf::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GsFr_GameRegionRegist_ntf::GetClassData() const { return &_class_data_; }
+
+void GsFr_GameRegionRegist_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<GsFr_GameRegionRegist_ntf *>(to)->MergeFrom(
+      static_cast<const GsFr_GameRegionRegist_ntf &>(from));
+}
+
+
+void GsFr_GameRegionRegist_ntf::MergeFrom(const GsFr_GameRegionRegist_ntf& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.GsFr_GameRegionRegist_ntf)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_gameid() != 0) {
+    _internal_set_gameid(from._internal_gameid());
+  }
+  if (from._internal_regionid() != 0) {
+    _internal_set_regionid(from._internal_regionid());
+  }
+  if (from._internal_channels() != 0) {
+    _internal_set_channels(from._internal_channels());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GsFr_GameRegionRegist_ntf::CopyFrom(const GsFr_GameRegionRegist_ntf& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.GsFr_GameRegionRegist_ntf)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GsFr_GameRegionRegist_ntf::IsInitialized() const {
+  return true;
+}
+
+void GsFr_GameRegionRegist_ntf::InternalSwap(GsFr_GameRegionRegist_ntf* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(GsFr_GameRegionRegist_ntf, channels_)
+      + sizeof(GsFr_GameRegionRegist_ntf::channels_)
+      - PROTOBUF_FIELD_OFFSET(GsFr_GameRegionRegist_ntf, gameid_)>(
+          reinterpret_cast<char*>(&gameid_),
+          reinterpret_cast<char*>(&other->gameid_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GsFr_GameRegionRegist_ntf::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_eureka_5finternal_2eproto_getter, &descriptor_table_eureka_5finternal_2eproto_once,
+      file_level_metadata_eureka_5finternal_2eproto[26]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
@@ -7075,6 +7336,9 @@ template<> PROTOBUF_NOINLINE ::PRO::Svr_ServiceBindService_req* Arena::CreateMay
 }
 template<> PROTOBUF_NOINLINE ::PRO::Svr_ServiceBindService_ack* Arena::CreateMaybeMessage< ::PRO::Svr_ServiceBindService_ack >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::Svr_ServiceBindService_ack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::GsFr_GameRegionRegist_ntf* Arena::CreateMaybeMessage< ::PRO::GsFr_GameRegionRegist_ntf >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::GsFr_GameRegionRegist_ntf >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

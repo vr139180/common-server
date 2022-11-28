@@ -37,7 +37,6 @@ FriendServiceLinkFrom::~FriendServiceLinkFrom()
 
 void FriendServiceLinkFrom::init_protocolhead()
 {
-	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 	s_head_.to_type_ = (S_INT_8)PRO::ERK_SERVICE_FRIEND;
 }

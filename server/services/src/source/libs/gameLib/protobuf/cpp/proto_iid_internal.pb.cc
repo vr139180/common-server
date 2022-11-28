@@ -25,7 +25,7 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema* schemas = n
 static constexpr ::PROTOBUF_NAMESPACE_ID::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_proto_5fiid_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\030proto_iid_internal.proto\022\003PRO*\267\004\n\013ERK_"
+  "\n\030proto_iid_internal.proto\022\003PRO*\326\004\n\013ERK_"
   "PROTYPE\022\017\n\013UNIVERSAL_1\020\000\022\030\n\024ERK_EUREKARE"
   "GIST_REQ\020\001\022\030\n\024ERK_EUREKAREGIST_ACK\020\002\022\026\n\022"
   "ERK_EUREKABIND_REQ\020\003\022\026\n\022ERK_EUREKABIND_A"
@@ -40,22 +40,23 @@ const char descriptor_table_protodef_proto_5fiid_5finternal_2eproto[] PROTOBUF_S
   "INE_REQ\020\023\022\024\n\020SVR_LIVETICK_NTF\0201\022\036\n\032SVR_S"
   "ERVICEBINDSERVICE_REQ\0202\022\036\n\032SVR_SERVICEBI"
   "NDSERVICE_ACK\0203\022\030\n\024SVR_ROUTERONLINE_NTF\020"
-  "4*\365\002\n\021ROBOTTEST_PROTYPE\022\021\n\rUNIVERSAL_300"
-  "\020\000\022 \n\033ROBOTOTEST_ROBOT_CONFIG_REQ\020\255\002\022 \n\033"
-  "ROBOTOTEST_ROBOT_CONFIG_ACK\020\256\002\022\037\n\032ROBOTO"
-  "TEST_ROBOT_START_ACK\020\257\002\022\036\n\031ROBOTOTEST_RO"
-  "BOT_STOP_ACK\020\260\002\022#\n\036ROBOTOTEST_UPLOADLOGS"
-  "ROBOT_NTF\020\261\002\022\"\n\035ROBOTOTEST_CLEARLOGSROBO"
-  "T_NTF\020\262\002\022#\n\036ROBOTOTEST_USERPREFIXROBOT_N"
-  "TF\020\263\002\022\037\n\032ROBOTOTEST_STARTRECORD_REG\020\264\002\022\035"
-  "\n\030ROBOTOTEST_ENDRECORD_REG\020\265\002\022\032\n\025ROBOTOT"
-  "EST_RECORD_REG\020\266\002BT\n\033com.cms.client.netw"
-  "ork.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com."
-  "cms.client.network.gprob\006proto3"
+  "4\022\035\n\031GSFR_GAMEREGIONREGIST_NTF\020<*\365\002\n\021ROB"
+  "OTTEST_PROTYPE\022\021\n\rUNIVERSAL_300\020\000\022 \n\033ROB"
+  "OTOTEST_ROBOT_CONFIG_REQ\020\255\002\022 \n\033ROBOTOTES"
+  "T_ROBOT_CONFIG_ACK\020\256\002\022\037\n\032ROBOTOTEST_ROBO"
+  "T_START_ACK\020\257\002\022\036\n\031ROBOTOTEST_ROBOT_STOP_"
+  "ACK\020\260\002\022#\n\036ROBOTOTEST_UPLOADLOGSROBOT_NTF"
+  "\020\261\002\022\"\n\035ROBOTOTEST_CLEARLOGSROBOT_NTF\020\262\002\022"
+  "#\n\036ROBOTOTEST_USERPREFIXROBOT_NTF\020\263\002\022\037\n\032"
+  "ROBOTOTEST_STARTRECORD_REG\020\264\002\022\035\n\030ROBOTOT"
+  "EST_ENDRECORD_REG\020\265\002\022\032\n\025ROBOTOTEST_RECOR"
+  "D_REG\020\266\002BT\n\033com.cms.client.network.gproP"
+  "\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clien"
+  "t.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_5finternal_2eproto = {
-  false, false, 1071, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
+  false, false, 1102, descriptor_table_protodef_proto_5fiid_5finternal_2eproto, "proto_iid_internal.proto", 
   &descriptor_table_proto_5fiid_5finternal_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_5finternal_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_5finternal_2eproto, file_level_service_descriptors_proto_5fiid_5finternal_2eproto,
@@ -94,6 +95,7 @@ bool ERK_PROTYPE_IsValid(int value) {
     case 50:
     case 51:
     case 52:
+    case 60:
       return true;
     default:
       return false;

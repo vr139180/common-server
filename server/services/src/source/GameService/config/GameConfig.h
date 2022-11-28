@@ -17,6 +17,8 @@
 
 #include <string>
 
+#define GAME_EXT_PARAMS_KEY "region"
+
 class GameConfig
 {
 public:

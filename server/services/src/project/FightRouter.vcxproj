@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\source\FightRouter\network\DataRouterLinkTo.cpp" />
+    <ClCompile Include="..\source\FightRouter\network\GameRegionResolver.cpp" />
     <ClCompile Include="..\source\FightRouter\network\GameServiceLinkFrom.cpp" />
     <ClCompile Include="..\source\FightRouter\network\FightRouterSession.cpp" />
     <ClCompile Include="..\source\FightRouter\FightRouterApp.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="..\source\FightRouter\config\FightRouterConfig.h" />
     <ClInclude Include="..\source\FightRouter\network\DataRouterLinkTo.h" />
+    <ClInclude Include="..\source\FightRouter\network\GameRegionResolver.h" />
     <ClInclude Include="..\source\FightRouter\network\GameServiceLinkFrom.h" />
     <ClInclude Include="..\source\FightRouter\network\FightRouterSession.h" />
     <ClInclude Include="..\source\FightRouter\FightRouterApp.h" />

@@ -24,6 +24,7 @@
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
+#include <worldsLib/GameWorldHelper.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -60,6 +61,12 @@ bool FightRouterApp::load_config()
 	}
 
 	this->conf_.reset(cf);
+
+	if (!GameWorldHelper::instance().init_gameworld())
+	{
+		logFatal(out_runtime, "FightRouter load worldregion.xml file failed");
+		return false;
+	}
 
 	return true;
 }

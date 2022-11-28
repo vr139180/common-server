@@ -14,14 +14,14 @@
     <ClInclude Include="..\source\libs\worldsLib\cmsworld_const.h" />
     <ClInclude Include="..\source\libs\worldsLib\GameRegionMeta.h" />
     <ClInclude Include="..\source\libs\worldsLib\GameWorldHelper.h" />
-    <ClInclude Include="..\source\libs\worldsLib\RegionCellMeta.h" />
-    <ClInclude Include="..\source\libs\worldsLib\utils\D3DUtil.h" />
+    <ClInclude Include="..\source\libs\worldsLib\geometry\common_types.h" />
+    <ClInclude Include="..\source\libs\worldsLib\utils\WorldUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\source\libs\worldsLib\GameRegionMeta.cpp" />
     <ClCompile Include="..\source\libs\worldsLib\GameWorldHelper.cpp" />
-    <ClCompile Include="..\source\libs\worldsLib\RegionCellMeta.cpp" />
-    <ClCompile Include="..\source\libs\worldsLib\utils\D3DUtil.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\geometry\common_types.cpp" />
+    <ClCompile Include="..\source\libs\worldsLib\utils\WorldUtil.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{06583059-6FE2-4844-B2C3-C88FCAB58874}</ProjectGuid>

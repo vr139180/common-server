@@ -39,6 +39,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Erk_RouterSubscribe_req>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_REQ);
 	regist_protocal<Erk_RouterSubscribe_ntf>(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_NTF);
 	regist_protocal<Erk_RouterOnline_req>(ERK_PROTYPE::ERK_ROUTERONLINE_REQ);
+	regist_protocal<GsFr_GameRegionRegist_ntf>(ERK_PROTYPE::GSFR_GAMEREGIONREGIST_NTF);
 
 	regist_protocal<Svr_LiveTick_ntf>(ERK_PROTYPE::SVR_LIVETICK_NTF);
 	regist_protocal<Svr_ServiceBindService_req>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ);
@@ -79,8 +80,8 @@ void ProtocolFactory::init_factory()
 	regist_protocal<User_RoleDetailB_ntf>(USER_PROTYPE::USER_ROLEDETAILB_NTF);
 	regist_protocal<User_RoleDetailEnd_ntf>(USER_PROTYPE::USER_ROLEDETAILEND_NTF);
 
-	regist_protocal<User_QuerySimpleInfo_req>(USER_PROTYPE::USER_QUERY_SIMPLEINFO_REQ);
-	regist_protocal<User_QuerySimpleInfo_ack>(USER_PROTYPE::USER_QUERY_SIMPLEINFO_ACK);
+	regist_protocal<User_MySimpleInfo_req>(USER_PROTYPE::USER_MYSIMPLEINFO_REQ);
+	regist_protocal<User_MySimpleInfo_ack>(USER_PROTYPE::USER_MYSIMPLEINFO_ACK);
 
 	//building
 	regist_protocal<Build_AddItem_req>(BUILD_PROTYPE::BUILD_ADDITEM_REQ);
@@ -156,7 +157,10 @@ void ProtocolFactory::init_factory()
 	regist_protocal<MMS_MatchMaking_ack>(MMS_PROTYPE::MMS_MATCHMAKING_ACK);
 
 	//game system
-	regist_protocal<Game_EnterGame_ntf>(GMS_PROTYPE::GMS_ENTERGAME_NTF);
-	regist_protocal<Game_Users_sync>(GMS_PROTYPE::GMS_USERS_SYN);
+	regist_protocal<Game_EnterGame_req>(GMS_PROTYPE::GMS_ENTERGAME_REQ);
+	regist_protocal<Game_EnterGame_ack>(GMS_PROTYPE::GMS_ENTERGAME_ACK);
+	regist_protocal<Game_UsersVisiable_ntf>(GMS_PROTYPE::GMS_USERSVISIBLE_NTF);
+	regist_protocal<Game_ServiceDisable_ntf>(GMS_PROTYPE::GMS_SERVICEDISABLE_NTF);
+
 	regist_protocal<Game_UserState_sync>(GMS_PROTYPE::GMS_USERSTATE_SYN);
 }

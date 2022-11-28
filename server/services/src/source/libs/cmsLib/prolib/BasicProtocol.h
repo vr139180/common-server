@@ -99,8 +99,8 @@ public:
 class SProtocolHead : public CProtoHeadBase
 {
 public:
-	SProtocolHead():router_balance_(true), from_type_(-1), to_type_(-1)
-		, token_giduid_(0), token_slottoken_(0),role_iid_(0), unpack_protocol_(true){}
+	SProtocolHead():from_type_(-1), to_type_(-1) , token_giduid_(0), token_slottoken_(0),
+		role_iid_(0), gameid_(0), unpack_protocol_(true){}
 
 	bool encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
 	bool encode_totlelen(S_UINT_8 *pbuf, S_UINT_32 maxlen, S_UINT_32 msglen);
@@ -120,6 +120,8 @@ public:
 
 	S_INT_64 get_role_iid() { return role_iid_; }
 	void set_role_iid(S_INT_64 id) { role_iid_ = id; }
+	S_INT_64 get_gameid() { return gameid_; }
+	void set_gameid(S_INT_64 gid) { gameid_ = gid; }
 
 	bool is_same_session(const SProtocolHead& head) {
 		return get_token_useriid() == head.get_token_useriid() && get_token_token() == head.get_token_token();
@@ -134,8 +136,6 @@ public:
 	static S_INT_64 build_token_slottoken(S_INT_32 slot, S_INT_64 token);
 
 public:
-	//是否需要负载均衡
-	bool		router_balance_;
 	//来自哪类服务器
 	S_INT_8		from_type_;
 	//发送给哪类服务器
@@ -144,6 +144,8 @@ public:
 	S_INT_64	token_giduid_;
 	S_INT_64	token_slottoken_;
 	S_INT_64	role_iid_;
+	//编码后的gameservice+channelid
+	S_INT_64	gameid_;
 	//是否需要解析协议,bindevent设置，缺省为true, false主要用于转发情况
 	bool		unpack_protocol_;
 };
@@ -162,9 +164,9 @@ public:
 	SProtocolHead& write_head() { return head_; }
 
 	S_UINT_16 get_msg() { return head_.get_msgid(); }
-	bool is_routerbalance() { return head_.router_balance_; }
 	S_INT_64 get_useriid() { return head_.get_token_useriid(); }
 	S_INT_64 get_roleiid() { return head_.get_role_iid(); }
+	S_INT_64 get_gameid() { return head_.get_gameid(); }
 	S_INT_8 get_to() { return head_.to_type_; }
 
 	NetProtocol* clone();

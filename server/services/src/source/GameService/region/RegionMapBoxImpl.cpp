@@ -15,7 +15,10 @@
 
 #include "region/RegionMapBoxImpl.h"
 
+RegionMapBoxImpl::RegionMapBoxImpl(RegionChannelService* p):base(), owner_( p)
+{
+}
+
 RegionMapBoxImpl::~RegionMapBoxImpl()
 {
-
 }

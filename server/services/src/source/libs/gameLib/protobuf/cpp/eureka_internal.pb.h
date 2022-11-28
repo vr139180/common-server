@@ -51,7 +51,7 @@ struct TableStruct_eureka_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[26]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -116,6 +116,9 @@ extern Erk_ServiceSync_ntfDefaultTypeInternal _Erk_ServiceSync_ntf_default_insta
 class EurekaServerNode;
 struct EurekaServerNodeDefaultTypeInternal;
 extern EurekaServerNodeDefaultTypeInternal _EurekaServerNode_default_instance_;
+class GsFr_GameRegionRegist_ntf;
+struct GsFr_GameRegionRegist_ntfDefaultTypeInternal;
+extern GsFr_GameRegionRegist_ntfDefaultTypeInternal _GsFr_GameRegionRegist_ntf_default_instance_;
 class ServerNode;
 struct ServerNodeDefaultTypeInternal;
 extern ServerNodeDefaultTypeInternal _ServerNode_default_instance_;
@@ -158,6 +161,7 @@ template<> ::PRO::Erk_ServiceSubscribe_req* Arena::CreateMaybeMessage<::PRO::Erk
 template<> ::PRO::Erk_ServiceSubscribe_req_svrinfo* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSubscribe_req_svrinfo>(Arena*);
 template<> ::PRO::Erk_ServiceSync_ntf* Arena::CreateMaybeMessage<::PRO::Erk_ServiceSync_ntf>(Arena*);
 template<> ::PRO::EurekaServerNode* Arena::CreateMaybeMessage<::PRO::EurekaServerNode>(Arena*);
+template<> ::PRO::GsFr_GameRegionRegist_ntf* Arena::CreateMaybeMessage<::PRO::GsFr_GameRegionRegist_ntf>(Arena*);
 template<> ::PRO::ServerNode* Arena::CreateMaybeMessage<::PRO::ServerNode>(Arena*);
 template<> ::PRO::ServerNode_ExtsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::ServerNode_ExtsEntry_DoNotUse>(Arena*);
 template<> ::PRO::Svr_LiveTick_ntf* Arena::CreateMaybeMessage<::PRO::Svr_LiveTick_ntf>(Arena*);
@@ -4552,6 +4556,174 @@ class Svr_ServiceBindService_ack final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
+// -------------------------------------------------------------------
+
+class GsFr_GameRegionRegist_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.GsFr_GameRegionRegist_ntf) */ {
+ public:
+  inline GsFr_GameRegionRegist_ntf() : GsFr_GameRegionRegist_ntf(nullptr) {}
+  ~GsFr_GameRegionRegist_ntf() override;
+  explicit constexpr GsFr_GameRegionRegist_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GsFr_GameRegionRegist_ntf(const GsFr_GameRegionRegist_ntf& from);
+  GsFr_GameRegionRegist_ntf(GsFr_GameRegionRegist_ntf&& from) noexcept
+    : GsFr_GameRegionRegist_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline GsFr_GameRegionRegist_ntf& operator=(const GsFr_GameRegionRegist_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GsFr_GameRegionRegist_ntf& operator=(GsFr_GameRegionRegist_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GsFr_GameRegionRegist_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GsFr_GameRegionRegist_ntf* internal_default_instance() {
+    return reinterpret_cast<const GsFr_GameRegionRegist_ntf*>(
+               &_GsFr_GameRegionRegist_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(GsFr_GameRegionRegist_ntf& a, GsFr_GameRegionRegist_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GsFr_GameRegionRegist_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GsFr_GameRegionRegist_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GsFr_GameRegionRegist_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GsFr_GameRegionRegist_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GsFr_GameRegionRegist_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const GsFr_GameRegionRegist_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GsFr_GameRegionRegist_ntf* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.GsFr_GameRegionRegist_ntf";
+  }
+  protected:
+  explicit GsFr_GameRegionRegist_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kGameidFieldNumber = 1,
+    kRegionidFieldNumber = 2,
+    kChannelsFieldNumber = 3,
+  };
+  // int64 gameid = 1;
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
+  private:
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
+  public:
+
+  // int32 regionid = 2;
+  void clear_regionid();
+  int32_t regionid() const;
+  void set_regionid(int32_t value);
+  private:
+  int32_t _internal_regionid() const;
+  void _internal_set_regionid(int32_t value);
+  public:
+
+  // int32 channels = 3;
+  void clear_channels();
+  int32_t channels() const;
+  void set_channels(int32_t value);
+  private:
+  int32_t _internal_channels() const;
+  void _internal_set_channels(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.GsFr_GameRegionRegist_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t gameid_;
+  int32_t regionid_;
+  int32_t channels_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
 // ===================================================================
 
 
@@ -6864,9 +7036,75 @@ inline void Svr_ServiceBindService_ack::set_totoken(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.Svr_ServiceBindService_ack.totoken)
 }
 
+// -------------------------------------------------------------------
+
+// GsFr_GameRegionRegist_ntf
+
+// int64 gameid = 1;
+inline void GsFr_GameRegionRegist_ntf::clear_gameid() {
+  gameid_ = int64_t{0};
+}
+inline int64_t GsFr_GameRegionRegist_ntf::_internal_gameid() const {
+  return gameid_;
+}
+inline int64_t GsFr_GameRegionRegist_ntf::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.GsFr_GameRegionRegist_ntf.gameid)
+  return _internal_gameid();
+}
+inline void GsFr_GameRegionRegist_ntf::_internal_set_gameid(int64_t value) {
+  
+  gameid_ = value;
+}
+inline void GsFr_GameRegionRegist_ntf::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.gameid)
+}
+
+// int32 regionid = 2;
+inline void GsFr_GameRegionRegist_ntf::clear_regionid() {
+  regionid_ = 0;
+}
+inline int32_t GsFr_GameRegionRegist_ntf::_internal_regionid() const {
+  return regionid_;
+}
+inline int32_t GsFr_GameRegionRegist_ntf::regionid() const {
+  // @@protoc_insertion_point(field_get:PRO.GsFr_GameRegionRegist_ntf.regionid)
+  return _internal_regionid();
+}
+inline void GsFr_GameRegionRegist_ntf::_internal_set_regionid(int32_t value) {
+  
+  regionid_ = value;
+}
+inline void GsFr_GameRegionRegist_ntf::set_regionid(int32_t value) {
+  _internal_set_regionid(value);
+  // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.regionid)
+}
+
+// int32 channels = 3;
+inline void GsFr_GameRegionRegist_ntf::clear_channels() {
+  channels_ = 0;
+}
+inline int32_t GsFr_GameRegionRegist_ntf::_internal_channels() const {
+  return channels_;
+}
+inline int32_t GsFr_GameRegionRegist_ntf::channels() const {
+  // @@protoc_insertion_point(field_get:PRO.GsFr_GameRegionRegist_ntf.channels)
+  return _internal_channels();
+}
+inline void GsFr_GameRegionRegist_ntf::_internal_set_channels(int32_t value) {
+  
+  channels_ = value;
+}
+inline void GsFr_GameRegionRegist_ntf::set_channels(int32_t value) {
+  _internal_set_channels(value);
+  // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.channels)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

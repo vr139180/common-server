@@ -37,8 +37,13 @@ void GameServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 void GameServiceApp::mth_service_registed(S_INT_64 sid)
 {
 	logInfo(out_runtime, "<<<<<<<<<<<< game service node:%lld online to eureka >>>>>>>>>>>>", sid);
-
 	this->is_ready_ = true;
+
+	//ππ‘Ïgameid
+	for (int ii = 0; ii < channel_num_; ++ii)
+	{
+		all_channels_[ii].build_gameid( sid);
+	}
 }
 
 void GameServiceApp::mth_eureka_losted()

@@ -15,7 +15,18 @@
 
 #include "region/GamePlayer.h"
 
-GamePlayer::GamePlayer()
+GamePlayer::GamePlayer():b_master_node_(true),
+player_state_( GamePlayerState::GamePlayerS_Free), user_iid_( 0), role_iid_( 0),
+gate_token_gidsid_( 0), gate_token_slottoken_( 0)
 {
+}
 
+void GamePlayer::reset()
+{
+	b_master_node_ = true;
+	player_state_ = GamePlayerState::GamePlayerS_Free;
+	user_iid_ = 0;
+	role_iid_ = 0;
+	gate_token_gidsid_ = 0;
+	gate_token_slottoken_ = 0;
 }

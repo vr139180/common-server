@@ -19,14 +19,20 @@
 #include "region/IRegionMap.h"
 #include "region/RegionCellNode.h"
 
+class RegionChannelService;
+
 class RegionMapBoxImpl : public IRegionMap
 {
+	typedef IRegionMap base;
 public:
+	RegionMapBoxImpl(RegionChannelService* p);
 	virtual ~RegionMapBoxImpl();
 
 private:
 	//box类型的节点
 	RegionCellNode			cell_nodes_;
+
+	RegionChannelService*	owner_;
 };
 
 #endif //__REGIONMAPBOXIMPL_H__

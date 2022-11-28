@@ -38,7 +38,6 @@ DataRouterLinkTo::DataRouterLinkTo(ServiceNodeInfo* pnode): LinkToBase()
 void DataRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
 }
@@ -222,7 +221,6 @@ NetProtocol* DataRouterLinkTo::get_livekeep_msg()
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
 
 	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
 	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_DATAROUTER;
 
 	return pro;

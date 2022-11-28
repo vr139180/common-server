@@ -41,6 +41,7 @@ public:
 	* @return
 	**/
 	static bool splitstr2int( const char* src, const char* splitchr, std::vector<int>& ret);
+	static bool splitstr2float(const char* src, const char* splitchr, std::vector<float>& ret);
 	static bool splitstr2int64(const char* src, const char* splitchr, std::vector<S_INT_64>& ret);
 
 	/**

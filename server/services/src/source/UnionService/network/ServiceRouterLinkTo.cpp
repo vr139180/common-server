@@ -36,7 +36,6 @@ ServiceRouterLinkTo::ServiceRouterLinkTo(ServiceNodeInfo* pnode): LinkToBase()
 void ServiceRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = true;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_UNION;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
 }

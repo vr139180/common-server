@@ -13,9 +13,12 @@
 // limitations under the License.
 //
 
-#include "worldsLib/RegionCellMeta.h"
+#include "network/GameRegionResolver.h"
 
-RegionCellMeta::RegionCellMeta()
+GameRegionResolver::GameRegionResolver():base()
 {
+}
 
+GameRegionResolver::~GameRegionResolver()
+{
 }

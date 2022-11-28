@@ -13,13 +13,19 @@
 // limitations under the License.
 //
 
-#ifndef __D3DUTIL_H__
-#define __D3DUTIL_H__
+#ifndef __GAMEREGIONRESOLVER_H__
+#define __GAMEREGIONRESOLVER_H__
 
-class D3DUtil
+#include <cmsLib/prolib/BasicProtocol.h>
+#include <gameLib/commons/LinkFromHolder.h>
+#include "network/GameServiceLinkFrom.h"
+
+class GameRegionResolver : public LinkFromHolder<GameServiceLinkFrom>
 {
-private:
-	D3DUtil() {}
+	typedef LinkFromHolder<GameServiceLinkFrom> base;
+public:
+	GameRegionResolver();
+	virtual ~GameRegionResolver();
 };
 
-#endif //__D3DUTIL_H__
+#endif //__GAMEREGIONRESOLVER_H__

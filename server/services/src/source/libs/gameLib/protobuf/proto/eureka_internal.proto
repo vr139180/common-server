@@ -275,3 +275,12 @@ message Svr_ServiceBindService_ack{
   int64 toiid = 3;
   int64 totoken = 4;
 }
+
+//gameservice注册到fightrouter
+message GsFr_GameRegionRegist_ntf{
+  int64 gameid = 1;
+  //区域编号
+  int32 regionid = 2;
+  //channel数量 
+  int32	channels = 3;
+}

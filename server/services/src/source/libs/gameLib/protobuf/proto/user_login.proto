@@ -111,13 +111,13 @@ message User_RoleDetailEnd_ntf{
 }
 
 //获取角色基本信息
-message User_QuerySimpleInfo_req{
-  int64 user_iid = 1;
-  int64 role_iid = 2;
+message User_MySimpleInfo_req{
+  int64 gameid = 1;
 }
 
-message User_QuerySimpleInfo_ack{
+message User_MySimpleInfo_ack{
   int64 user_iid = 1;
   int64 role_iid = 2;
-  
+  int64 gameid = 3;
+  string nickname = 4;
 }

@@ -16,10 +16,12 @@
 #ifndef __REGIONCHANNELSERVICE_H__
 #define __REGIONCHANNELSERVICE_H__
 
+#include <boost/scoped_ptr.hpp>
 #include <cmsLib/CommandListener.h>
 #include <cmsLib/system/VirtualMainThread.h>
 #include "region/GamePlayer.h"
 #include "region/RegionPlayerContainer.h"
+#include "region/IRegionMap.h"
 
 class RegionChannelService : public VirtualMainThread, public MessageProcess
 {
@@ -28,10 +30,17 @@ public:
 	RegionChannelService();
 	virtual ~RegionChannelService();
 
-	void init_channel();
+	void init_channel( S_INT_32 cid);
+	void build_gameid(S_INT_64 serviceid);
 
 private:
 	RegionPlayerContainer<GamePlayer>	channel_users_;
+
+	boost::scoped_ptr<IRegionMap>	region_map_;
+
+	//±àÂëºóµÄgameid
+	S_INT_64	gameid_;
+	S_INT_32	channel_index_;
 
 protected:
 	//---------------------------VirtualMainThread virtual function----------------------

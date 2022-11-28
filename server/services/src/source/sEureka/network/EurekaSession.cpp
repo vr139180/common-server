@@ -35,8 +35,6 @@ NetProtocol* EurekaSession::get_livekeep_msg()
 {
 	Svr_LiveTick_ntf* ntf = new Svr_LiveTick_ntf();
 	NetProtocol* pro = new NetProtocol(ntf);
-	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
 
 	return pro;
 }

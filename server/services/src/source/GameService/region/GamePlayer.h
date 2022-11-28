@@ -18,14 +18,34 @@
 
 #include <cmsLib/core_type.h>
 
+//用户状态
+typedef enum tagGamePlayerState {
+	GamePlayerS_Free = 0,
+	GamePlayerS_EnterWaitDetail,	//entergame，等待获取详细信息
+	GamePlayers_Ready,
+}GamePlayerState;
+
 class GamePlayer
 {
 public:
 	GamePlayer();
 	virtual ~GamePlayer() {}
 
+public:
+	void reset();
+
 private:
-	S_INT_64 user_iid_;
+
+	//多地图融合时确定是主节点还是副节点
+	bool	b_master_node_;
+	GamePlayerState player_state_;
+
+private:
+	S_INT_64	user_iid_;
+	S_INT_64	role_iid_;
+	//gate的token信息
+	S_INT_64	gate_token_gidsid_;
+	S_INT_64	gate_token_slottoken_;
 };
 
 #endif //__GAMEPLAYER_H__

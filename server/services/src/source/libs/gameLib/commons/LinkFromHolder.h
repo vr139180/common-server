@@ -28,7 +28,7 @@ class LinkFromHolder
 	typedef boost::unordered_map<S_INT_64, T*> SERVICEMAP;
 public:
 	LinkFromHolder();
-	~LinkFromHolder();
+	virtual ~LinkFromHolder();
 	void init_holder();
 	virtual void uninit_holder();
 

@@ -185,8 +185,6 @@ bool SProtocolHead::encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 	S_UINT_32 offset = sizeof(S_UINT_32);
 	if (Encode(pdata, maxlen, offset, msgid_) != SC_OK)
 		return false;
-	if (Encode(pdata, maxlen, offset, router_balance_) != SC_OK)
-		return false;
 	if (Encode(pdata, maxlen, offset, from_type_) != SC_OK)
 		return false;
 	if (Encode(pdata, maxlen, offset, to_type_) != SC_OK)
@@ -196,6 +194,8 @@ bool SProtocolHead::encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 	if (Encode(pdata, maxlen, offset, token_slottoken_) != SC_OK)
 		return false;
 	if (Encode(pdata, maxlen, offset, role_iid_) != SC_OK)
+		return false;
+	if (Encode(pdata, maxlen, offset, gameid_) != SC_OK)
 		return false;
 
 	this->head_len_ = offset;
@@ -213,8 +213,6 @@ bool SProtocolHead::decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 	S_UINT_32 offset = sizeof(S_UINT_32);
 	if (Decode(pdata, maxlen, offset, this->msgid_) != SC_OK)
 		return false;
-	if (Decode(pdata, maxlen, offset, this->router_balance_) != SC_OK)
-		return false;
 	if (Decode(pdata, maxlen, offset, this->from_type_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->to_type_) != SC_OK)
@@ -224,6 +222,8 @@ bool SProtocolHead::decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 	if (Decode(pdata, maxlen, offset, this->token_slottoken_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->role_iid_) != SC_OK)
+		return false;
+	if (Decode(pdata, maxlen, offset, this->gameid_) != SC_OK)
 		return false;
 
 	this->head_len_ = (S_INT_16)offset;

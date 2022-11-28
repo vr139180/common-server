@@ -202,7 +202,6 @@ NetProtocol* ServiceRouterLinkTo::get_livekeep_msg()
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
 
 	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
 	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_SVRROUTER;
 
 	return pro;

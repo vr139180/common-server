@@ -248,7 +248,6 @@ StateService* StateServiceApp::get_next_dispatcher()
 
 void StateServiceApp::send_to_gate( SProtocolHead& head, BasicProtocol* pro)
 {
-	head.router_balance_ = false;
 	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
 	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
 

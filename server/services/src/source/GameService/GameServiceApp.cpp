@@ -19,11 +19,13 @@
 #include <cmsLib/net/NetDriverX.h>
 #include <cmsLib/Version.h>
 #include <cmsLib/util/XmlUtil.h>
+#include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
+#include <worldsLib/GameRegionMeta.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -60,6 +62,20 @@ bool GameServiceApp::load_config()
 
 	this->conf_.reset(cf);
 
+	std::string strregion = ConfigHelper::instance().find_ext(GAME_EXT_PARAMS_KEY);
+	if (strregion == "")
+	{
+		logFatal(out_runtime, "gameservice svn config, need to setup 'region' exts");
+		return false;
+	}
+
+	S_INT_32 regionid = ShareUtil::atoi(strregion.c_str());
+	if (!GameRegionMeta::instance().load_region_config(regionid))
+	{
+		logFatal(out_runtime, "gameservice load cmsworld/regions/region_%d.xml failed", regionid);
+		return false;
+	}
+
 	return true;
 }
 
@@ -94,7 +110,7 @@ bool GameServiceApp::pre_init()
 	this->all_channels_.reset(new RegionChannelService[channel_num_]);
 	for (int ii = 0; ii < channel_num_; ++ii)
 	{
-		all_channels_[ii].init_channel();
+		all_channels_[ii].init_channel( ii);
 	}
 
 	//eureka init

@@ -71,12 +71,12 @@ extern User_Login_reqDefaultTypeInternal _User_Login_req_default_instance_;
 class User_Logout_ntf;
 struct User_Logout_ntfDefaultTypeInternal;
 extern User_Logout_ntfDefaultTypeInternal _User_Logout_ntf_default_instance_;
-class User_QuerySimpleInfo_ack;
-struct User_QuerySimpleInfo_ackDefaultTypeInternal;
-extern User_QuerySimpleInfo_ackDefaultTypeInternal _User_QuerySimpleInfo_ack_default_instance_;
-class User_QuerySimpleInfo_req;
-struct User_QuerySimpleInfo_reqDefaultTypeInternal;
-extern User_QuerySimpleInfo_reqDefaultTypeInternal _User_QuerySimpleInfo_req_default_instance_;
+class User_MySimpleInfo_ack;
+struct User_MySimpleInfo_ackDefaultTypeInternal;
+extern User_MySimpleInfo_ackDefaultTypeInternal _User_MySimpleInfo_ack_default_instance_;
+class User_MySimpleInfo_req;
+struct User_MySimpleInfo_reqDefaultTypeInternal;
+extern User_MySimpleInfo_reqDefaultTypeInternal _User_MySimpleInfo_req_default_instance_;
 class User_ReLogin_ack;
 struct User_ReLogin_ackDefaultTypeInternal;
 extern User_ReLogin_ackDefaultTypeInternal _User_ReLogin_ack_default_instance_;
@@ -117,8 +117,8 @@ template<> ::PRO::User_GateLost_ntf* Arena::CreateMaybeMessage<::PRO::User_GateL
 template<> ::PRO::User_Login_ack* Arena::CreateMaybeMessage<::PRO::User_Login_ack>(Arena*);
 template<> ::PRO::User_Login_req* Arena::CreateMaybeMessage<::PRO::User_Login_req>(Arena*);
 template<> ::PRO::User_Logout_ntf* Arena::CreateMaybeMessage<::PRO::User_Logout_ntf>(Arena*);
-template<> ::PRO::User_QuerySimpleInfo_ack* Arena::CreateMaybeMessage<::PRO::User_QuerySimpleInfo_ack>(Arena*);
-template<> ::PRO::User_QuerySimpleInfo_req* Arena::CreateMaybeMessage<::PRO::User_QuerySimpleInfo_req>(Arena*);
+template<> ::PRO::User_MySimpleInfo_ack* Arena::CreateMaybeMessage<::PRO::User_MySimpleInfo_ack>(Arena*);
+template<> ::PRO::User_MySimpleInfo_req* Arena::CreateMaybeMessage<::PRO::User_MySimpleInfo_req>(Arena*);
 template<> ::PRO::User_ReLogin_ack* Arena::CreateMaybeMessage<::PRO::User_ReLogin_ack>(Arena*);
 template<> ::PRO::User_ReLogin_req* Arena::CreateMaybeMessage<::PRO::User_ReLogin_req>(Arena*);
 template<> ::PRO::User_RoleCreate_ack* Arena::CreateMaybeMessage<::PRO::User_RoleCreate_ack>(Arena*);
@@ -2706,24 +2706,24 @@ class User_RoleDetailEnd_ntf final :
 };
 // -------------------------------------------------------------------
 
-class User_QuerySimpleInfo_req final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_QuerySimpleInfo_req) */ {
+class User_MySimpleInfo_req final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_MySimpleInfo_req) */ {
  public:
-  inline User_QuerySimpleInfo_req() : User_QuerySimpleInfo_req(nullptr) {}
-  ~User_QuerySimpleInfo_req() override;
-  explicit constexpr User_QuerySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline User_MySimpleInfo_req() : User_MySimpleInfo_req(nullptr) {}
+  ~User_MySimpleInfo_req() override;
+  explicit constexpr User_MySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  User_QuerySimpleInfo_req(const User_QuerySimpleInfo_req& from);
-  User_QuerySimpleInfo_req(User_QuerySimpleInfo_req&& from) noexcept
-    : User_QuerySimpleInfo_req() {
+  User_MySimpleInfo_req(const User_MySimpleInfo_req& from);
+  User_MySimpleInfo_req(User_MySimpleInfo_req&& from) noexcept
+    : User_MySimpleInfo_req() {
     *this = ::std::move(from);
   }
 
-  inline User_QuerySimpleInfo_req& operator=(const User_QuerySimpleInfo_req& from) {
+  inline User_MySimpleInfo_req& operator=(const User_MySimpleInfo_req& from) {
     CopyFrom(from);
     return *this;
   }
-  inline User_QuerySimpleInfo_req& operator=(User_QuerySimpleInfo_req&& from) noexcept {
+  inline User_MySimpleInfo_req& operator=(User_MySimpleInfo_req&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -2746,20 +2746,20 @@ class User_QuerySimpleInfo_req final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const User_QuerySimpleInfo_req& default_instance() {
+  static const User_MySimpleInfo_req& default_instance() {
     return *internal_default_instance();
   }
-  static inline const User_QuerySimpleInfo_req* internal_default_instance() {
-    return reinterpret_cast<const User_QuerySimpleInfo_req*>(
-               &_User_QuerySimpleInfo_req_default_instance_);
+  static inline const User_MySimpleInfo_req* internal_default_instance() {
+    return reinterpret_cast<const User_MySimpleInfo_req*>(
+               &_User_MySimpleInfo_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     16;
 
-  friend void swap(User_QuerySimpleInfo_req& a, User_QuerySimpleInfo_req& b) {
+  friend void swap(User_MySimpleInfo_req& a, User_MySimpleInfo_req& b) {
     a.Swap(&b);
   }
-  inline void Swap(User_QuerySimpleInfo_req* other) {
+  inline void Swap(User_MySimpleInfo_req* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -2772,7 +2772,7 @@ class User_QuerySimpleInfo_req final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(User_QuerySimpleInfo_req* other) {
+  void UnsafeArenaSwap(User_MySimpleInfo_req* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -2780,13 +2780,13 @@ class User_QuerySimpleInfo_req final :
 
   // implements Message ----------------------------------------------
 
-  User_QuerySimpleInfo_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<User_QuerySimpleInfo_req>(arena);
+  User_MySimpleInfo_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<User_MySimpleInfo_req>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const User_QuerySimpleInfo_req& from);
+  void CopyFrom(const User_MySimpleInfo_req& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const User_QuerySimpleInfo_req& from);
+  void MergeFrom(const User_MySimpleInfo_req& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -2803,15 +2803,15 @@ class User_QuerySimpleInfo_req final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(User_QuerySimpleInfo_req* other);
+  void InternalSwap(User_MySimpleInfo_req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.User_QuerySimpleInfo_req";
+    return "PRO.User_MySimpleInfo_req";
   }
   protected:
-  explicit User_QuerySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit User_MySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -2828,59 +2828,48 @@ class User_QuerySimpleInfo_req final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUserIidFieldNumber = 1,
-    kRoleIidFieldNumber = 2,
+    kGameidFieldNumber = 1,
   };
-  // int64 user_iid = 1;
-  void clear_user_iid();
-  int64_t user_iid() const;
-  void set_user_iid(int64_t value);
+  // int64 gameid = 1;
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
   private:
-  int64_t _internal_user_iid() const;
-  void _internal_set_user_iid(int64_t value);
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
   public:
 
-  // int64 role_iid = 2;
-  void clear_role_iid();
-  int64_t role_iid() const;
-  void set_role_iid(int64_t value);
-  private:
-  int64_t _internal_role_iid() const;
-  void _internal_set_role_iid(int64_t value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:PRO.User_QuerySimpleInfo_req)
+  // @@protoc_insertion_point(class_scope:PRO.User_MySimpleInfo_req)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t user_iid_;
-  int64_t role_iid_;
+  int64_t gameid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
 // -------------------------------------------------------------------
 
-class User_QuerySimpleInfo_ack final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_QuerySimpleInfo_ack) */ {
+class User_MySimpleInfo_ack final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_MySimpleInfo_ack) */ {
  public:
-  inline User_QuerySimpleInfo_ack() : User_QuerySimpleInfo_ack(nullptr) {}
-  ~User_QuerySimpleInfo_ack() override;
-  explicit constexpr User_QuerySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline User_MySimpleInfo_ack() : User_MySimpleInfo_ack(nullptr) {}
+  ~User_MySimpleInfo_ack() override;
+  explicit constexpr User_MySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  User_QuerySimpleInfo_ack(const User_QuerySimpleInfo_ack& from);
-  User_QuerySimpleInfo_ack(User_QuerySimpleInfo_ack&& from) noexcept
-    : User_QuerySimpleInfo_ack() {
+  User_MySimpleInfo_ack(const User_MySimpleInfo_ack& from);
+  User_MySimpleInfo_ack(User_MySimpleInfo_ack&& from) noexcept
+    : User_MySimpleInfo_ack() {
     *this = ::std::move(from);
   }
 
-  inline User_QuerySimpleInfo_ack& operator=(const User_QuerySimpleInfo_ack& from) {
+  inline User_MySimpleInfo_ack& operator=(const User_MySimpleInfo_ack& from) {
     CopyFrom(from);
     return *this;
   }
-  inline User_QuerySimpleInfo_ack& operator=(User_QuerySimpleInfo_ack&& from) noexcept {
+  inline User_MySimpleInfo_ack& operator=(User_MySimpleInfo_ack&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -2903,20 +2892,20 @@ class User_QuerySimpleInfo_ack final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const User_QuerySimpleInfo_ack& default_instance() {
+  static const User_MySimpleInfo_ack& default_instance() {
     return *internal_default_instance();
   }
-  static inline const User_QuerySimpleInfo_ack* internal_default_instance() {
-    return reinterpret_cast<const User_QuerySimpleInfo_ack*>(
-               &_User_QuerySimpleInfo_ack_default_instance_);
+  static inline const User_MySimpleInfo_ack* internal_default_instance() {
+    return reinterpret_cast<const User_MySimpleInfo_ack*>(
+               &_User_MySimpleInfo_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     17;
 
-  friend void swap(User_QuerySimpleInfo_ack& a, User_QuerySimpleInfo_ack& b) {
+  friend void swap(User_MySimpleInfo_ack& a, User_MySimpleInfo_ack& b) {
     a.Swap(&b);
   }
-  inline void Swap(User_QuerySimpleInfo_ack* other) {
+  inline void Swap(User_MySimpleInfo_ack* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -2929,7 +2918,7 @@ class User_QuerySimpleInfo_ack final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(User_QuerySimpleInfo_ack* other) {
+  void UnsafeArenaSwap(User_MySimpleInfo_ack* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -2937,13 +2926,13 @@ class User_QuerySimpleInfo_ack final :
 
   // implements Message ----------------------------------------------
 
-  User_QuerySimpleInfo_ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<User_QuerySimpleInfo_ack>(arena);
+  User_MySimpleInfo_ack* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<User_MySimpleInfo_ack>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const User_QuerySimpleInfo_ack& from);
+  void CopyFrom(const User_MySimpleInfo_ack& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const User_QuerySimpleInfo_ack& from);
+  void MergeFrom(const User_MySimpleInfo_ack& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -2960,15 +2949,15 @@ class User_QuerySimpleInfo_ack final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(User_QuerySimpleInfo_ack* other);
+  void InternalSwap(User_MySimpleInfo_ack* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PRO.User_QuerySimpleInfo_ack";
+    return "PRO.User_MySimpleInfo_ack";
   }
   protected:
-  explicit User_QuerySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit User_MySimpleInfo_ack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -2985,9 +2974,25 @@ class User_QuerySimpleInfo_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kNicknameFieldNumber = 4,
     kUserIidFieldNumber = 1,
     kRoleIidFieldNumber = 2,
+    kGameidFieldNumber = 3,
   };
+  // string nickname = 4;
+  void clear_nickname();
+  const std::string& nickname() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_nickname(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_nickname();
+  PROTOBUF_NODISCARD std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
   // int64 user_iid = 1;
   void clear_user_iid();
   int64_t user_iid() const;
@@ -3006,15 +3011,26 @@ class User_QuerySimpleInfo_ack final :
   void _internal_set_role_iid(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PRO.User_QuerySimpleInfo_ack)
+  // int64 gameid = 3;
+  void clear_gameid();
+  int64_t gameid() const;
+  void set_gameid(int64_t value);
+  private:
+  int64_t _internal_gameid() const;
+  void _internal_set_gameid(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.User_MySimpleInfo_ack)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
   int64_t user_iid_;
   int64_t role_iid_;
+  int64_t gameid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
@@ -4216,90 +4232,141 @@ inline void User_RoleDetailB_ntf::set_allocated_pets(::PRO::DBUserPets* pets) {
 
 // -------------------------------------------------------------------
 
-// User_QuerySimpleInfo_req
+// User_MySimpleInfo_req
 
-// int64 user_iid = 1;
-inline void User_QuerySimpleInfo_req::clear_user_iid() {
-  user_iid_ = int64_t{0};
+// int64 gameid = 1;
+inline void User_MySimpleInfo_req::clear_gameid() {
+  gameid_ = int64_t{0};
 }
-inline int64_t User_QuerySimpleInfo_req::_internal_user_iid() const {
-  return user_iid_;
+inline int64_t User_MySimpleInfo_req::_internal_gameid() const {
+  return gameid_;
 }
-inline int64_t User_QuerySimpleInfo_req::user_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_req.user_iid)
-  return _internal_user_iid();
+inline int64_t User_MySimpleInfo_req::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_req.gameid)
+  return _internal_gameid();
 }
-inline void User_QuerySimpleInfo_req::_internal_set_user_iid(int64_t value) {
+inline void User_MySimpleInfo_req::_internal_set_gameid(int64_t value) {
   
-  user_iid_ = value;
+  gameid_ = value;
 }
-inline void User_QuerySimpleInfo_req::set_user_iid(int64_t value) {
-  _internal_set_user_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_req.user_iid)
-}
-
-// int64 role_iid = 2;
-inline void User_QuerySimpleInfo_req::clear_role_iid() {
-  role_iid_ = int64_t{0};
-}
-inline int64_t User_QuerySimpleInfo_req::_internal_role_iid() const {
-  return role_iid_;
-}
-inline int64_t User_QuerySimpleInfo_req::role_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_req.role_iid)
-  return _internal_role_iid();
-}
-inline void User_QuerySimpleInfo_req::_internal_set_role_iid(int64_t value) {
-  
-  role_iid_ = value;
-}
-inline void User_QuerySimpleInfo_req::set_role_iid(int64_t value) {
-  _internal_set_role_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_req.role_iid)
+inline void User_MySimpleInfo_req::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_req.gameid)
 }
 
 // -------------------------------------------------------------------
 
-// User_QuerySimpleInfo_ack
+// User_MySimpleInfo_ack
 
 // int64 user_iid = 1;
-inline void User_QuerySimpleInfo_ack::clear_user_iid() {
+inline void User_MySimpleInfo_ack::clear_user_iid() {
   user_iid_ = int64_t{0};
 }
-inline int64_t User_QuerySimpleInfo_ack::_internal_user_iid() const {
+inline int64_t User_MySimpleInfo_ack::_internal_user_iid() const {
   return user_iid_;
 }
-inline int64_t User_QuerySimpleInfo_ack::user_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_ack.user_iid)
+inline int64_t User_MySimpleInfo_ack::user_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.user_iid)
   return _internal_user_iid();
 }
-inline void User_QuerySimpleInfo_ack::_internal_set_user_iid(int64_t value) {
+inline void User_MySimpleInfo_ack::_internal_set_user_iid(int64_t value) {
   
   user_iid_ = value;
 }
-inline void User_QuerySimpleInfo_ack::set_user_iid(int64_t value) {
+inline void User_MySimpleInfo_ack::set_user_iid(int64_t value) {
   _internal_set_user_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_ack.user_iid)
+  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.user_iid)
 }
 
 // int64 role_iid = 2;
-inline void User_QuerySimpleInfo_ack::clear_role_iid() {
+inline void User_MySimpleInfo_ack::clear_role_iid() {
   role_iid_ = int64_t{0};
 }
-inline int64_t User_QuerySimpleInfo_ack::_internal_role_iid() const {
+inline int64_t User_MySimpleInfo_ack::_internal_role_iid() const {
   return role_iid_;
 }
-inline int64_t User_QuerySimpleInfo_ack::role_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_QuerySimpleInfo_ack.role_iid)
+inline int64_t User_MySimpleInfo_ack::role_iid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.role_iid)
   return _internal_role_iid();
 }
-inline void User_QuerySimpleInfo_ack::_internal_set_role_iid(int64_t value) {
+inline void User_MySimpleInfo_ack::_internal_set_role_iid(int64_t value) {
   
   role_iid_ = value;
 }
-inline void User_QuerySimpleInfo_ack::set_role_iid(int64_t value) {
+inline void User_MySimpleInfo_ack::set_role_iid(int64_t value) {
   _internal_set_role_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_QuerySimpleInfo_ack.role_iid)
+  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.role_iid)
+}
+
+// int64 gameid = 3;
+inline void User_MySimpleInfo_ack::clear_gameid() {
+  gameid_ = int64_t{0};
+}
+inline int64_t User_MySimpleInfo_ack::_internal_gameid() const {
+  return gameid_;
+}
+inline int64_t User_MySimpleInfo_ack::gameid() const {
+  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.gameid)
+  return _internal_gameid();
+}
+inline void User_MySimpleInfo_ack::_internal_set_gameid(int64_t value) {
+  
+  gameid_ = value;
+}
+inline void User_MySimpleInfo_ack::set_gameid(int64_t value) {
+  _internal_set_gameid(value);
+  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.gameid)
+}
+
+// string nickname = 4;
+inline void User_MySimpleInfo_ack::clear_nickname() {
+  nickname_.ClearToEmpty();
+}
+inline const std::string& User_MySimpleInfo_ack::nickname() const {
+  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.nickname)
+  return _internal_nickname();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void User_MySimpleInfo_ack::set_nickname(ArgT0&& arg0, ArgT... args) {
+ 
+ nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.nickname)
+}
+inline std::string* User_MySimpleInfo_ack::mutable_nickname() {
+  std::string* _s = _internal_mutable_nickname();
+  // @@protoc_insertion_point(field_mutable:PRO.User_MySimpleInfo_ack.nickname)
+  return _s;
+}
+inline const std::string& User_MySimpleInfo_ack::_internal_nickname() const {
+  return nickname_.Get();
+}
+inline void User_MySimpleInfo_ack::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* User_MySimpleInfo_ack::_internal_mutable_nickname() {
+  
+  return nickname_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* User_MySimpleInfo_ack::release_nickname() {
+  // @@protoc_insertion_point(field_release:PRO.User_MySimpleInfo_ack.nickname)
+  return nickname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void User_MySimpleInfo_ack::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname,
+      GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (nickname_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
+    nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:PRO.User_MySimpleInfo_ack.nickname)
 }
 
 #ifdef __GNUC__

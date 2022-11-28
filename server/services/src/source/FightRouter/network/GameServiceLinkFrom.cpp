@@ -53,8 +53,18 @@ void GameServiceLinkFrom::on_connect_lost_netthread()
 void GameServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
-	if (pro->get_to() == (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE) {
+	NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
+	if ( to == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+	{
 		svrApp.router_to_gate(p_msg.release());
+	}
+	else if (to == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
+	{
+		S_UINT_16 msgid = pro->get_msg();
+		if (msgid == PRO::ERK_PROTYPE::GSFR_GAMEREGIONREGIST_NTF)
+		{
+
+		}
 	}
 }
 

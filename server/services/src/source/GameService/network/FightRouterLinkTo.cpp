@@ -36,7 +36,6 @@ FightRouterLinkTo::FightRouterLinkTo(ServiceNodeInfo* pnode) : LinkToBase()
 void FightRouterLinkTo::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER;
 }
@@ -131,6 +130,10 @@ void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&FightRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
+	else
+	{
+
+	}
 }
 
 void FightRouterLinkTo::on_connected(bool success)
@@ -193,9 +196,6 @@ NetProtocol* FightRouterLinkTo::get_livekeep_msg()
 {
 	PRO::Svr_LiveTick_ntf* ntf = new PRO::Svr_LiveTick_ntf();
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
-
-	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
 
 	return pro;
 }

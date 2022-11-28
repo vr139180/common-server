@@ -15,10 +15,13 @@
 
 #include "region/RegionChannelService.h"
 
+#include <worldsLib/utils/WorldUtil.h>
 #include "config/GameConfig.h"
+#include "region/RegionMapBoxImpl.h"
+
 #include "GameServiceApp.h"
 
-RegionChannelService::RegionChannelService() :base()
+RegionChannelService::RegionChannelService() :base(), gameid_( 0)
 {
 }
 
@@ -53,8 +56,17 @@ void RegionChannelService::thread_worker()
 	}
 }
 
-void RegionChannelService::init_channel()
+void RegionChannelService::init_channel( S_INT_32 cid)
 {
+	this->channel_index_ = cid;
+
 	this->InitNetMessage();
 	channel_users_.init_cap(1000);
+
+	region_map_.reset(new RegionMapBoxImpl( this));
+}
+
+void RegionChannelService::build_gameid(S_INT_64 serviceid)
+{
+	gameid_ = WorldUtil::build_gameid(serviceid, channel_index_);
 }

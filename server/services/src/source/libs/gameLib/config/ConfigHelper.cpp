@@ -120,6 +120,14 @@ bool ConfigHelper::load_svrno()
 	return true;
 }
 
+std::string ConfigHelper::find_ext(const char* name)
+{
+	boost::unordered_map<std::string, std::string>::iterator fiter = extprop_.find(name);
+	if (fiter == extprop_.end())
+		return "";
+	return fiter->second;
+}
+
 bool ConfigHelper::load_globaloption()
 {
 	std::string fstr = "/system/global.xml";

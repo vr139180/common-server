@@ -16,6 +16,8 @@
 #ifndef __IREGIONMAP_H__
 #define __IREGIONMAP_H__
 
+//regionmap功能接口定义
+//后续可以提供多种实现
 class IRegionMap
 {
 public:

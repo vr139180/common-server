@@ -37,7 +37,6 @@ EurekaLinkFrom::EurekaLinkFrom(EurekaNodeInfo pnode) : NetLinkFromBase<EurekaSes
 void EurekaLinkFrom::init_protocolhead()
 {
 	//设置通用协议头
-	s_head_.router_balance_ = false;
 	s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 	s_head_.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_EUREKA;
 }

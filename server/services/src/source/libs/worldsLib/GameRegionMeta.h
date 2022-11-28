@@ -16,10 +16,62 @@
 #ifndef __GAMEREGIONMETA_H__
 #define __GAMEREGIONMETA_H__
 
-class GameRegionMeta
+#include <cmsLib/core_type.h>
+#include <cmsLib/tinyxml2/tinyxml2.h>
+#include <worldsLib/cmsworld_const.h>
+#include <worldsLib/geometry/common_types.h>
+
+typedef enum tagRegionJoinType {
+	RegionJT_Left = 0,
+	RegionJT_LeftTop,
+	RegionJT_Top,
+	RegionJT_TopRight,
+	RegionJT_Right,
+	RegionJT_RightButtom,
+	RegionJT_Buttom,
+	RegionJT_ButtomLeft,
+	RegionJT_NUM,
+}RegionJoinType;
+
+//连接处配置
+class RegionJoinMeta
 {
 public:
+	RegionJoinMeta();
+
+	bool load_from_xml( tinyxml2::XMLElement* e);
+	bool can_join() { return b_joined_; }
+	S_INT_32 combine_cells() { return combine_cell_num_; }
+
+private:
+	//是否连通
+	bool b_joined_;
+
+	//b_joined == true, 一下配置有效
+	S_INT_32	to_regionid_;
+	//连接处合并的cell数量
+	S_INT_32	combine_cell_num_;
+};
+
+class GameRegionMeta
+{
+private:
 	GameRegionMeta();
+
+public:
+	static GameRegionMeta& instance();
+
+	virtual ~GameRegionMeta();
+
+	bool load_region_config( S_INT_32 regionid);
+
+private:
+	S_INT_32	regionid_;
+
+	CMSBox		region_box_;
+
+	//连接点配置
+	RegionJoinMeta	region_join_[RegionJT_NUM];
 };
 
 #endif //__GAMEREGIONMETA_H__

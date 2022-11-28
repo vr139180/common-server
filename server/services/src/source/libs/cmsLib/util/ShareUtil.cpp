@@ -67,6 +67,28 @@ bool ShareUtil::splitstr2int( const char* src, const char* splitchr, std::vector
 	return true;
 }
 
+bool ShareUtil::splitstr2float(const char* src, const char* splitchr, std::vector<float>& ret)
+{
+	if (src == 0 || strlen(src) == 0)
+		return false;
+	if (splitchr == 0 || strlen(splitchr) == 0)
+		return false;
+
+	char* token = 0;
+	char* s = (char*)src;
+
+	token = strtok(s, splitchr);
+	while (token != NULL)
+	{
+		float v = (float)atof(token);
+		ret.push_back(v);
+
+		token = strtok(NULL, splitchr);
+	}
+
+	return true;
+}
+
 bool ShareUtil::splitstr2int64(const char* src, const char* splitchr, std::vector<S_INT_64>& ret)
 {
 	if (src == 0 || strlen(src) == 0)

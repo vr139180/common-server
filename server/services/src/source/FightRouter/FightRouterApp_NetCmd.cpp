@@ -126,6 +126,11 @@ void FightRouterApp::on_mth_servicebindservice_req(NetProtocol* pro, bool& autor
 	
 }
 
+void FightRouterApp::on_mth_gameregion_regist_ntf(NetProtocol* pro, bool& autorelease)
+{
+
+}
+
 //-------------------------------------------------------eureka cluster---------------------------------------
 void FightRouterApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids)

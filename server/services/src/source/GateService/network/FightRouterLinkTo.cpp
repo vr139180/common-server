@@ -130,7 +130,7 @@ void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&FightRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
-	else if (msgid == PRO::GMS_PROTYPE::GMS_ENTERGAME_NTF)
+	else if (msgid == PRO::GMS_PROTYPE::GMS_ENTERGAME_ACK)
 	{
 		PlayerChannel* pchannel = GamePlayerCtrl::instance().get_channel_by_head(pro->head_);
 		if (pchannel)
@@ -208,7 +208,6 @@ NetProtocol* FightRouterLinkTo::get_livekeep_msg()
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), ntf);
 
 	SProtocolHead& head = pro->write_head();
-	head.router_balance_ = false;
 	head.to_type_ = (S_INT_8)PRO::ERK_SERVICE_FIGHTROUTER;
 
 	return pro;
