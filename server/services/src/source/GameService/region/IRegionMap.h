@@ -22,6 +22,8 @@ class IRegionMap
 {
 public:
 	virtual ~IRegionMap();
+
+	virtual void init_region() = 0;
 };
 
 #endif //__IREGIONMAP_H__

@@ -157,6 +157,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<MMS_MatchMaking_ack>(MMS_PROTYPE::MMS_MATCHMAKING_ACK);
 
 	//game system
+	regist_protocal<Game_UserAlive_ntf>(GMS_PROTYPE::GMS_USERALIVE_NTF);
 	regist_protocal<Game_EnterGame_req>(GMS_PROTYPE::GMS_ENTERGAME_REQ);
 	regist_protocal<Game_EnterGame_ack>(GMS_PROTYPE::GMS_ENTERGAME_ACK);
 	regist_protocal<Game_UsersVisiable_ntf>(GMS_PROTYPE::GMS_USERSVISIBLE_NTF);

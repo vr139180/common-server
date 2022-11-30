@@ -43,17 +43,6 @@ protected:
 			last_time_ = OSSystem::mOS->GetTimestamp();
 		}
 
-		bool need_move() {
-			S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
-			if ((last_time_ + 10 * 1000) < tnow)
-			{
-				last_time_ = tnow;
-				return true;
-			}
-			else
-				return false;
-		}
-
 		T* data() {
 			return data_;
 		}
@@ -78,6 +67,8 @@ protected:
 				next->pre_ = pre_;
 
 			add_head(head);
+
+			this->last_time_ = OSSystem::mOS->GetTimestamp();
 		}
 
 	private:
@@ -101,6 +92,9 @@ public:
 
 	//获取用户，如果没有加入
 	T* get_gameuser(S_INT_64 userid);
+	T* get_gameuser_exist(S_INT_64 userid, bool move = false);
+
+	S_INT_32 get_online_playernum();
 
 protected:
 	void release();
@@ -178,6 +172,29 @@ void RegionPlayerContainer<T>::init_cap( int minsize)
 }
 
 template<typename T>
+S_INT_32 RegionPlayerContainer<T>::get_online_playernum()
+{
+	return (S_INT_32)(all_datas_.size() - free_data_.size());
+}
+
+template<typename T>
+T* RegionPlayerContainer<T>::get_gameuser_exist(S_INT_64 userid, bool move)
+{
+	DoubleLinkNode* pnod = 0;
+	typename USER_MAP_DATA::iterator fiter = user_map_.find(userid);
+	if (fiter != user_map_.end())
+		pnod = fiter->second;
+
+	if (pnod == 0)
+		return 0;
+
+	if( move)
+		pnod->move_to_head(head_, &tail_);
+
+	return pnod->data();
+}
+
+template<typename T>
 T* RegionPlayerContainer<T>::get_gameuser(S_INT_64 userid)
 {
 	DoubleLinkNode* pnod = 0;
@@ -199,11 +216,6 @@ T* RegionPlayerContainer<T>::get_gameuser(S_INT_64 userid)
 		{
 			pnod->add_head(head_);
 		}
-	}
-
-	if (pnod->need_move())
-	{
-		pnod->move_to_head(head_, &tail_);
 	}
 
 	return pnod->data();

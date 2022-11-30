@@ -4680,35 +4680,15 @@ class GsFr_GameRegionRegist_ntf final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kGameidFieldNumber = 1,
-    kRegionidFieldNumber = 2,
-    kChannelsFieldNumber = 3,
+    kRegionidFieldNumber = 1,
   };
-  // int64 gameid = 1;
-  void clear_gameid();
-  int64_t gameid() const;
-  void set_gameid(int64_t value);
-  private:
-  int64_t _internal_gameid() const;
-  void _internal_set_gameid(int64_t value);
-  public:
-
-  // int32 regionid = 2;
+  // int32 regionid = 1;
   void clear_regionid();
   int32_t regionid() const;
   void set_regionid(int32_t value);
   private:
   int32_t _internal_regionid() const;
   void _internal_set_regionid(int32_t value);
-  public:
-
-  // int32 channels = 3;
-  void clear_channels();
-  int32_t channels() const;
-  void set_channels(int32_t value);
-  private:
-  int32_t _internal_channels() const;
-  void _internal_set_channels(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:PRO.GsFr_GameRegionRegist_ntf)
@@ -4718,9 +4698,7 @@ class GsFr_GameRegionRegist_ntf final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t gameid_;
   int32_t regionid_;
-  int32_t channels_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_eureka_5finternal_2eproto;
 };
@@ -7040,27 +7018,7 @@ inline void Svr_ServiceBindService_ack::set_totoken(int64_t value) {
 
 // GsFr_GameRegionRegist_ntf
 
-// int64 gameid = 1;
-inline void GsFr_GameRegionRegist_ntf::clear_gameid() {
-  gameid_ = int64_t{0};
-}
-inline int64_t GsFr_GameRegionRegist_ntf::_internal_gameid() const {
-  return gameid_;
-}
-inline int64_t GsFr_GameRegionRegist_ntf::gameid() const {
-  // @@protoc_insertion_point(field_get:PRO.GsFr_GameRegionRegist_ntf.gameid)
-  return _internal_gameid();
-}
-inline void GsFr_GameRegionRegist_ntf::_internal_set_gameid(int64_t value) {
-  
-  gameid_ = value;
-}
-inline void GsFr_GameRegionRegist_ntf::set_gameid(int64_t value) {
-  _internal_set_gameid(value);
-  // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.gameid)
-}
-
-// int32 regionid = 2;
+// int32 regionid = 1;
 inline void GsFr_GameRegionRegist_ntf::clear_regionid() {
   regionid_ = 0;
 }
@@ -7078,26 +7036,6 @@ inline void GsFr_GameRegionRegist_ntf::_internal_set_regionid(int32_t value) {
 inline void GsFr_GameRegionRegist_ntf::set_regionid(int32_t value) {
   _internal_set_regionid(value);
   // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.regionid)
-}
-
-// int32 channels = 3;
-inline void GsFr_GameRegionRegist_ntf::clear_channels() {
-  channels_ = 0;
-}
-inline int32_t GsFr_GameRegionRegist_ntf::_internal_channels() const {
-  return channels_;
-}
-inline int32_t GsFr_GameRegionRegist_ntf::channels() const {
-  // @@protoc_insertion_point(field_get:PRO.GsFr_GameRegionRegist_ntf.channels)
-  return _internal_channels();
-}
-inline void GsFr_GameRegionRegist_ntf::_internal_set_channels(int32_t value) {
-  
-  channels_ = value;
-}
-inline void GsFr_GameRegionRegist_ntf::set_channels(int32_t value) {
-  _internal_set_channels(value);
-  // @@protoc_insertion_point(field_set:PRO.GsFr_GameRegionRegist_ntf.channels)
 }
 
 #ifdef __GNUC__

@@ -13,17 +13,20 @@
 // limitations under the License.
 //
 
-#include "region/RegionCellNode.h"
+#ifndef __PROTOUTIL_H__
+#define __PROTOUTIL_H__
 
-#include "region/GamePlayer.h"
+#include <cmsLib/prolib/BasicProtocol.h>
+#include <gameLib/commons/GLoc3D.h>
 
-RegionCellNode::RegionCellNode():b_join_region_(false), owner_regionid_(0),
-x_(0), y_(0)
+class ProtoUtil
 {
+private:
+	ProtoUtil() {}
 
-}
+public:
+	static bool get_location_from_msg(BasicProtocol* msg, GLoc3D& loc);
+	static bool set_location_to_msg(BasicProtocol* msg, const GLoc3D& loc);
+};
 
-void RegionCellNode::freeze()
-{
-	node_players_.clear();
-}
+#endif //__PROTOUTIL_H__

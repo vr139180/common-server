@@ -22,3 +22,8 @@ RegionMapBoxImpl::RegionMapBoxImpl(RegionChannelService* p):base(), owner_( p)
 RegionMapBoxImpl::~RegionMapBoxImpl()
 {
 }
+
+void RegionMapBoxImpl::init_region()
+{
+
+}

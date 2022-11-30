@@ -30,7 +30,7 @@ void LobbyService::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_ROLECREATE_REQ, &LobbyService::on_lb_rolecreate_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_REQ, &LobbyService::on_lb_roleselect_req, this);
 
-	REGISTERMSG(USER_PROTYPE::USER_QUERY_SIMPLEINFO_REQ, &LobbyService::on_lb_querysimpleinfo_req, this);
+	REGISTERMSG(USER_PROTYPE::USER_MYSIMPLEINFO_REQ, &LobbyService::on_lb_mysimpleinfo_req, this);
 
 	REGISTERMSG(BUILD_PROTYPE::BUILD_ADDITEM_REQ, &LobbyService::on_lb_build_additem_req, this);
 	REGISTERMSG(BUILD_PROTYPE::BUILD_DELITEM_REQ, &LobbyService::on_lb_build_delitem_req, this);
@@ -93,16 +93,16 @@ void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 	puser->on_ls_roleselect_req(req->role_iid());
 }
 
-void LobbyService::on_lb_querysimpleinfo_req(NetProtocol* pro, bool& autorelease)
+void LobbyService::on_lb_mysimpleinfo_req(NetProtocol* pro, bool& autorelease)
 {
 	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
-	User_QuerySimpleInfo_req* req = dynamic_cast<User_QuerySimpleInfo_req*>(pro->msg_);
+	User_MySimpleInfo_ack* ack = new User_MySimpleInfo_ack();
+	const UserBase& base = puser->get_user_baseinfo();
+	ack->set_nickname(base.get_nickname());
 
-	User_QuerySimpleInfo_ack* ack = new User_QuerySimpleInfo_ack();
-
-	puser->send_to_gate(ack);
+	puser->send_to_game(ack, pro->get_gameid());
 }
 
 void LobbyService::on_lb_build_additem_req(NetProtocol* pro, bool& autorelease)

@@ -819,12 +819,31 @@ class User_ReLogin_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kRolePosFieldNumber = 5,
     kUserIidFieldNumber = 2,
     kRoleIidFieldNumber = 3,
     kGameidFieldNumber = 4,
-    kLogintokenFieldNumber = 5,
+    kLogintokenFieldNumber = 6,
     kResultFieldNumber = 1,
   };
+  // optional .PRO.Location3D role_pos = 5;
+  bool has_role_pos() const;
+  private:
+  bool _internal_has_role_pos() const;
+  public:
+  void clear_role_pos();
+  const ::PRO::Location3D& role_pos() const;
+  PROTOBUF_NODISCARD ::PRO::Location3D* release_role_pos();
+  ::PRO::Location3D* mutable_role_pos();
+  void set_allocated_role_pos(::PRO::Location3D* role_pos);
+  private:
+  const ::PRO::Location3D& _internal_role_pos() const;
+  ::PRO::Location3D* _internal_mutable_role_pos();
+  public:
+  void unsafe_arena_set_allocated_role_pos(
+      ::PRO::Location3D* role_pos);
+  ::PRO::Location3D* unsafe_arena_release_role_pos();
+
   // optional int64 user_iid = 2;
   bool has_user_iid() const;
   private:
@@ -864,7 +883,7 @@ class User_ReLogin_ack final :
   void _internal_set_gameid(int64_t value);
   public:
 
-  // optional int64 logintoken = 5;
+  // optional int64 logintoken = 6;
   bool has_logintoken() const;
   private:
   bool _internal_has_logintoken() const;
@@ -895,6 +914,7 @@ class User_ReLogin_ack final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PRO::Location3D* role_pos_;
   int64_t user_iid_;
   int64_t role_iid_;
   int64_t gameid_;
@@ -1340,20 +1360,25 @@ class User_Active_ntf final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kGameidFieldNumber = 1,
+    kRolePosFieldNumber = 1,
   };
-  // optional int64 gameid = 1;
-  bool has_gameid() const;
+  // optional .PRO.Location3D role_pos = 1;
+  bool has_role_pos() const;
   private:
-  bool _internal_has_gameid() const;
+  bool _internal_has_role_pos() const;
   public:
-  void clear_gameid();
-  int64_t gameid() const;
-  void set_gameid(int64_t value);
+  void clear_role_pos();
+  const ::PRO::Location3D& role_pos() const;
+  PROTOBUF_NODISCARD ::PRO::Location3D* release_role_pos();
+  ::PRO::Location3D* mutable_role_pos();
+  void set_allocated_role_pos(::PRO::Location3D* role_pos);
   private:
-  int64_t _internal_gameid() const;
-  void _internal_set_gameid(int64_t value);
+  const ::PRO::Location3D& _internal_role_pos() const;
+  ::PRO::Location3D* _internal_mutable_role_pos();
   public:
+  void unsafe_arena_set_allocated_role_pos(
+      ::PRO::Location3D* role_pos);
+  ::PRO::Location3D* unsafe_arena_release_role_pos();
 
   // @@protoc_insertion_point(class_scope:PRO.User_Active_ntf)
  private:
@@ -1364,7 +1389,7 @@ class User_Active_ntf final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  int64_t gameid_;
+  ::PRO::Location3D* role_pos_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
 // -------------------------------------------------------------------
@@ -2223,9 +2248,28 @@ class User_RoleSelect_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kLocFieldNumber = 3,
     kRoleIidFieldNumber = 2,
     kResultFieldNumber = 1,
   };
+  // .PRO.Location3D loc = 3;
+  bool has_loc() const;
+  private:
+  bool _internal_has_loc() const;
+  public:
+  void clear_loc();
+  const ::PRO::Location3D& loc() const;
+  PROTOBUF_NODISCARD ::PRO::Location3D* release_loc();
+  ::PRO::Location3D* mutable_loc();
+  void set_allocated_loc(::PRO::Location3D* loc);
+  private:
+  const ::PRO::Location3D& _internal_loc() const;
+  ::PRO::Location3D* _internal_mutable_loc();
+  public:
+  void unsafe_arena_set_allocated_loc(
+      ::PRO::Location3D* loc);
+  ::PRO::Location3D* unsafe_arena_release_loc();
+
   // int64 role_iid = 2;
   void clear_role_iid();
   int64_t role_iid() const;
@@ -2251,6 +2295,7 @@ class User_RoleSelect_ack final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PRO::Location3D* loc_;
   int64_t role_iid_;
   int32_t result_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -2707,10 +2752,9 @@ class User_RoleDetailEnd_ntf final :
 // -------------------------------------------------------------------
 
 class User_MySimpleInfo_req final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_MySimpleInfo_req) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PRO.User_MySimpleInfo_req) */ {
  public:
   inline User_MySimpleInfo_req() : User_MySimpleInfo_req(nullptr) {}
-  ~User_MySimpleInfo_req() override;
   explicit constexpr User_MySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   User_MySimpleInfo_req(const User_MySimpleInfo_req& from);
@@ -2783,27 +2827,15 @@ class User_MySimpleInfo_req final :
   User_MySimpleInfo_req* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<User_MySimpleInfo_req>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const User_MySimpleInfo_req& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const User_MySimpleInfo_req& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const User_MySimpleInfo_req& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const User_MySimpleInfo_req& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(this, from);
+  }
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(User_MySimpleInfo_req* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -2814,8 +2846,6 @@ class User_MySimpleInfo_req final :
   explicit User_MySimpleInfo_req(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
   public:
 
   static const ClassData _class_data_;
@@ -2827,18 +2857,6 @@ class User_MySimpleInfo_req final :
 
   // accessors -------------------------------------------------------
 
-  enum : int {
-    kGameidFieldNumber = 1,
-  };
-  // int64 gameid = 1;
-  void clear_gameid();
-  int64_t gameid() const;
-  void set_gameid(int64_t value);
-  private:
-  int64_t _internal_gameid() const;
-  void _internal_set_gameid(int64_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:PRO.User_MySimpleInfo_req)
  private:
   class _Internal;
@@ -2846,7 +2864,6 @@ class User_MySimpleInfo_req final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  int64_t gameid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
@@ -2974,12 +2991,9 @@ class User_MySimpleInfo_ack final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNicknameFieldNumber = 4,
-    kUserIidFieldNumber = 1,
-    kRoleIidFieldNumber = 2,
-    kGameidFieldNumber = 3,
+    kNicknameFieldNumber = 1,
   };
-  // string nickname = 4;
+  // string nickname = 1;
   void clear_nickname();
   const std::string& nickname() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -2993,33 +3007,6 @@ class User_MySimpleInfo_ack final :
   std::string* _internal_mutable_nickname();
   public:
 
-  // int64 user_iid = 1;
-  void clear_user_iid();
-  int64_t user_iid() const;
-  void set_user_iid(int64_t value);
-  private:
-  int64_t _internal_user_iid() const;
-  void _internal_set_user_iid(int64_t value);
-  public:
-
-  // int64 role_iid = 2;
-  void clear_role_iid();
-  int64_t role_iid() const;
-  void set_role_iid(int64_t value);
-  private:
-  int64_t _internal_role_iid() const;
-  void _internal_set_role_iid(int64_t value);
-  public:
-
-  // int64 gameid = 3;
-  void clear_gameid();
-  int64_t gameid() const;
-  void set_gameid(int64_t value);
-  private:
-  int64_t _internal_gameid() const;
-  void _internal_set_gameid(int64_t value);
-  public:
-
   // @@protoc_insertion_point(class_scope:PRO.User_MySimpleInfo_ack)
  private:
   class _Internal;
@@ -3028,9 +3015,6 @@ class User_MySimpleInfo_ack final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
-  int64_t user_iid_;
-  int64_t role_iid_;
-  int64_t gameid_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_user_5flogin_2eproto;
 };
@@ -3429,7 +3413,7 @@ inline void User_ReLogin_ack::set_result(int32_t value) {
 
 // optional int64 user_iid = 2;
 inline bool User_ReLogin_ack::_internal_has_user_iid() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
 inline bool User_ReLogin_ack::has_user_iid() const {
@@ -3437,7 +3421,7 @@ inline bool User_ReLogin_ack::has_user_iid() const {
 }
 inline void User_ReLogin_ack::clear_user_iid() {
   user_iid_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline int64_t User_ReLogin_ack::_internal_user_iid() const {
   return user_iid_;
@@ -3447,7 +3431,7 @@ inline int64_t User_ReLogin_ack::user_iid() const {
   return _internal_user_iid();
 }
 inline void User_ReLogin_ack::_internal_set_user_iid(int64_t value) {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
   user_iid_ = value;
 }
 inline void User_ReLogin_ack::set_user_iid(int64_t value) {
@@ -3457,7 +3441,7 @@ inline void User_ReLogin_ack::set_user_iid(int64_t value) {
 
 // optional int64 role_iid = 3;
 inline bool User_ReLogin_ack::_internal_has_role_iid() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
 inline bool User_ReLogin_ack::has_role_iid() const {
@@ -3465,7 +3449,7 @@ inline bool User_ReLogin_ack::has_role_iid() const {
 }
 inline void User_ReLogin_ack::clear_role_iid() {
   role_iid_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline int64_t User_ReLogin_ack::_internal_role_iid() const {
   return role_iid_;
@@ -3475,7 +3459,7 @@ inline int64_t User_ReLogin_ack::role_iid() const {
   return _internal_role_iid();
 }
 inline void User_ReLogin_ack::_internal_set_role_iid(int64_t value) {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
   role_iid_ = value;
 }
 inline void User_ReLogin_ack::set_role_iid(int64_t value) {
@@ -3485,7 +3469,7 @@ inline void User_ReLogin_ack::set_role_iid(int64_t value) {
 
 // optional int64 gameid = 4;
 inline bool User_ReLogin_ack::_internal_has_gameid() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
 inline bool User_ReLogin_ack::has_gameid() const {
@@ -3493,7 +3477,7 @@ inline bool User_ReLogin_ack::has_gameid() const {
 }
 inline void User_ReLogin_ack::clear_gameid() {
   gameid_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline int64_t User_ReLogin_ack::_internal_gameid() const {
   return gameid_;
@@ -3503,7 +3487,7 @@ inline int64_t User_ReLogin_ack::gameid() const {
   return _internal_gameid();
 }
 inline void User_ReLogin_ack::_internal_set_gameid(int64_t value) {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
   gameid_ = value;
 }
 inline void User_ReLogin_ack::set_gameid(int64_t value) {
@@ -3511,9 +3495,97 @@ inline void User_ReLogin_ack::set_gameid(int64_t value) {
   // @@protoc_insertion_point(field_set:PRO.User_ReLogin_ack.gameid)
 }
 
-// optional int64 logintoken = 5;
+// optional .PRO.Location3D role_pos = 5;
+inline bool User_ReLogin_ack::_internal_has_role_pos() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || role_pos_ != nullptr);
+  return value;
+}
+inline bool User_ReLogin_ack::has_role_pos() const {
+  return _internal_has_role_pos();
+}
+inline const ::PRO::Location3D& User_ReLogin_ack::_internal_role_pos() const {
+  const ::PRO::Location3D* p = role_pos_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Location3D&>(
+      ::PRO::_Location3D_default_instance_);
+}
+inline const ::PRO::Location3D& User_ReLogin_ack::role_pos() const {
+  // @@protoc_insertion_point(field_get:PRO.User_ReLogin_ack.role_pos)
+  return _internal_role_pos();
+}
+inline void User_ReLogin_ack::unsafe_arena_set_allocated_role_pos(
+    ::PRO::Location3D* role_pos) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  role_pos_ = role_pos;
+  if (role_pos) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.User_ReLogin_ack.role_pos)
+}
+inline ::PRO::Location3D* User_ReLogin_ack::release_role_pos() {
+  _has_bits_[0] &= ~0x00000001u;
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::Location3D* User_ReLogin_ack::unsafe_arena_release_role_pos() {
+  // @@protoc_insertion_point(field_release:PRO.User_ReLogin_ack.role_pos)
+  _has_bits_[0] &= ~0x00000001u;
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+  return temp;
+}
+inline ::PRO::Location3D* User_ReLogin_ack::_internal_mutable_role_pos() {
+  _has_bits_[0] |= 0x00000001u;
+  if (role_pos_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::Location3D>(GetArenaForAllocation());
+    role_pos_ = p;
+  }
+  return role_pos_;
+}
+inline ::PRO::Location3D* User_ReLogin_ack::mutable_role_pos() {
+  ::PRO::Location3D* _msg = _internal_mutable_role_pos();
+  // @@protoc_insertion_point(field_mutable:PRO.User_ReLogin_ack.role_pos)
+  return _msg;
+}
+inline void User_ReLogin_ack::set_allocated_role_pos(::PRO::Location3D* role_pos) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  if (role_pos) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos));
+    if (message_arena != submessage_arena) {
+      role_pos = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, role_pos, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  role_pos_ = role_pos;
+  // @@protoc_insertion_point(field_set_allocated:PRO.User_ReLogin_ack.role_pos)
+}
+
+// optional int64 logintoken = 6;
 inline bool User_ReLogin_ack::_internal_has_logintoken() const {
-  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
 inline bool User_ReLogin_ack::has_logintoken() const {
@@ -3521,7 +3593,7 @@ inline bool User_ReLogin_ack::has_logintoken() const {
 }
 inline void User_ReLogin_ack::clear_logintoken() {
   logintoken_ = int64_t{0};
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline int64_t User_ReLogin_ack::_internal_logintoken() const {
   return logintoken_;
@@ -3531,7 +3603,7 @@ inline int64_t User_ReLogin_ack::logintoken() const {
   return _internal_logintoken();
 }
 inline void User_ReLogin_ack::_internal_set_logintoken(int64_t value) {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
   logintoken_ = value;
 }
 inline void User_ReLogin_ack::set_logintoken(int64_t value) {
@@ -3663,32 +3735,92 @@ inline void User_Logout_ntf::set_gameid(int64_t value) {
 
 // User_Active_ntf
 
-// optional int64 gameid = 1;
-inline bool User_Active_ntf::_internal_has_gameid() const {
+// optional .PRO.Location3D role_pos = 1;
+inline bool User_Active_ntf::_internal_has_role_pos() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || role_pos_ != nullptr);
   return value;
 }
-inline bool User_Active_ntf::has_gameid() const {
-  return _internal_has_gameid();
+inline bool User_Active_ntf::has_role_pos() const {
+  return _internal_has_role_pos();
 }
-inline void User_Active_ntf::clear_gameid() {
-  gameid_ = int64_t{0};
+inline const ::PRO::Location3D& User_Active_ntf::_internal_role_pos() const {
+  const ::PRO::Location3D* p = role_pos_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Location3D&>(
+      ::PRO::_Location3D_default_instance_);
+}
+inline const ::PRO::Location3D& User_Active_ntf::role_pos() const {
+  // @@protoc_insertion_point(field_get:PRO.User_Active_ntf.role_pos)
+  return _internal_role_pos();
+}
+inline void User_Active_ntf::unsafe_arena_set_allocated_role_pos(
+    ::PRO::Location3D* role_pos) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  role_pos_ = role_pos;
+  if (role_pos) {
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.User_Active_ntf.role_pos)
+}
+inline ::PRO::Location3D* User_Active_ntf::release_role_pos() {
   _has_bits_[0] &= ~0x00000001u;
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
 }
-inline int64_t User_Active_ntf::_internal_gameid() const {
-  return gameid_;
+inline ::PRO::Location3D* User_Active_ntf::unsafe_arena_release_role_pos() {
+  // @@protoc_insertion_point(field_release:PRO.User_Active_ntf.role_pos)
+  _has_bits_[0] &= ~0x00000001u;
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+  return temp;
 }
-inline int64_t User_Active_ntf::gameid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_Active_ntf.gameid)
-  return _internal_gameid();
-}
-inline void User_Active_ntf::_internal_set_gameid(int64_t value) {
+inline ::PRO::Location3D* User_Active_ntf::_internal_mutable_role_pos() {
   _has_bits_[0] |= 0x00000001u;
-  gameid_ = value;
+  if (role_pos_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::Location3D>(GetArenaForAllocation());
+    role_pos_ = p;
+  }
+  return role_pos_;
 }
-inline void User_Active_ntf::set_gameid(int64_t value) {
-  _internal_set_gameid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_Active_ntf.gameid)
+inline ::PRO::Location3D* User_Active_ntf::mutable_role_pos() {
+  ::PRO::Location3D* _msg = _internal_mutable_role_pos();
+  // @@protoc_insertion_point(field_mutable:PRO.User_Active_ntf.role_pos)
+  return _msg;
+}
+inline void User_Active_ntf::set_allocated_role_pos(::PRO::Location3D* role_pos) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  if (role_pos) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos));
+    if (message_arena != submessage_arena) {
+      role_pos = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, role_pos, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000001u;
+  } else {
+    _has_bits_[0] &= ~0x00000001u;
+  }
+  role_pos_ = role_pos;
+  // @@protoc_insertion_point(field_set_allocated:PRO.User_Active_ntf.role_pos)
 }
 
 // -------------------------------------------------------------------
@@ -3958,6 +4090,92 @@ inline void User_RoleSelect_ack::_internal_set_role_iid(int64_t value) {
 inline void User_RoleSelect_ack::set_role_iid(int64_t value) {
   _internal_set_role_iid(value);
   // @@protoc_insertion_point(field_set:PRO.User_RoleSelect_ack.role_iid)
+}
+
+// .PRO.Location3D loc = 3;
+inline bool User_RoleSelect_ack::_internal_has_loc() const {
+  return this != internal_default_instance() && loc_ != nullptr;
+}
+inline bool User_RoleSelect_ack::has_loc() const {
+  return _internal_has_loc();
+}
+inline const ::PRO::Location3D& User_RoleSelect_ack::_internal_loc() const {
+  const ::PRO::Location3D* p = loc_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Location3D&>(
+      ::PRO::_Location3D_default_instance_);
+}
+inline const ::PRO::Location3D& User_RoleSelect_ack::loc() const {
+  // @@protoc_insertion_point(field_get:PRO.User_RoleSelect_ack.loc)
+  return _internal_loc();
+}
+inline void User_RoleSelect_ack::unsafe_arena_set_allocated_loc(
+    ::PRO::Location3D* loc) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(loc_);
+  }
+  loc_ = loc;
+  if (loc) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.User_RoleSelect_ack.loc)
+}
+inline ::PRO::Location3D* User_RoleSelect_ack::release_loc() {
+  
+  ::PRO::Location3D* temp = loc_;
+  loc_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::Location3D* User_RoleSelect_ack::unsafe_arena_release_loc() {
+  // @@protoc_insertion_point(field_release:PRO.User_RoleSelect_ack.loc)
+  
+  ::PRO::Location3D* temp = loc_;
+  loc_ = nullptr;
+  return temp;
+}
+inline ::PRO::Location3D* User_RoleSelect_ack::_internal_mutable_loc() {
+  
+  if (loc_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::Location3D>(GetArenaForAllocation());
+    loc_ = p;
+  }
+  return loc_;
+}
+inline ::PRO::Location3D* User_RoleSelect_ack::mutable_loc() {
+  ::PRO::Location3D* _msg = _internal_mutable_loc();
+  // @@protoc_insertion_point(field_mutable:PRO.User_RoleSelect_ack.loc)
+  return _msg;
+}
+inline void User_RoleSelect_ack::set_allocated_loc(::PRO::Location3D* loc) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(loc_);
+  }
+  if (loc) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(loc));
+    if (message_arena != submessage_arena) {
+      loc = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, loc, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  loc_ = loc;
+  // @@protoc_insertion_point(field_set_allocated:PRO.User_RoleSelect_ack.loc)
 }
 
 // -------------------------------------------------------------------
@@ -4234,91 +4452,11 @@ inline void User_RoleDetailB_ntf::set_allocated_pets(::PRO::DBUserPets* pets) {
 
 // User_MySimpleInfo_req
 
-// int64 gameid = 1;
-inline void User_MySimpleInfo_req::clear_gameid() {
-  gameid_ = int64_t{0};
-}
-inline int64_t User_MySimpleInfo_req::_internal_gameid() const {
-  return gameid_;
-}
-inline int64_t User_MySimpleInfo_req::gameid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_req.gameid)
-  return _internal_gameid();
-}
-inline void User_MySimpleInfo_req::_internal_set_gameid(int64_t value) {
-  
-  gameid_ = value;
-}
-inline void User_MySimpleInfo_req::set_gameid(int64_t value) {
-  _internal_set_gameid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_req.gameid)
-}
-
 // -------------------------------------------------------------------
 
 // User_MySimpleInfo_ack
 
-// int64 user_iid = 1;
-inline void User_MySimpleInfo_ack::clear_user_iid() {
-  user_iid_ = int64_t{0};
-}
-inline int64_t User_MySimpleInfo_ack::_internal_user_iid() const {
-  return user_iid_;
-}
-inline int64_t User_MySimpleInfo_ack::user_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.user_iid)
-  return _internal_user_iid();
-}
-inline void User_MySimpleInfo_ack::_internal_set_user_iid(int64_t value) {
-  
-  user_iid_ = value;
-}
-inline void User_MySimpleInfo_ack::set_user_iid(int64_t value) {
-  _internal_set_user_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.user_iid)
-}
-
-// int64 role_iid = 2;
-inline void User_MySimpleInfo_ack::clear_role_iid() {
-  role_iid_ = int64_t{0};
-}
-inline int64_t User_MySimpleInfo_ack::_internal_role_iid() const {
-  return role_iid_;
-}
-inline int64_t User_MySimpleInfo_ack::role_iid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.role_iid)
-  return _internal_role_iid();
-}
-inline void User_MySimpleInfo_ack::_internal_set_role_iid(int64_t value) {
-  
-  role_iid_ = value;
-}
-inline void User_MySimpleInfo_ack::set_role_iid(int64_t value) {
-  _internal_set_role_iid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.role_iid)
-}
-
-// int64 gameid = 3;
-inline void User_MySimpleInfo_ack::clear_gameid() {
-  gameid_ = int64_t{0};
-}
-inline int64_t User_MySimpleInfo_ack::_internal_gameid() const {
-  return gameid_;
-}
-inline int64_t User_MySimpleInfo_ack::gameid() const {
-  // @@protoc_insertion_point(field_get:PRO.User_MySimpleInfo_ack.gameid)
-  return _internal_gameid();
-}
-inline void User_MySimpleInfo_ack::_internal_set_gameid(int64_t value) {
-  
-  gameid_ = value;
-}
-inline void User_MySimpleInfo_ack::set_gameid(int64_t value) {
-  _internal_set_gameid(value);
-  // @@protoc_insertion_point(field_set:PRO.User_MySimpleInfo_ack.gameid)
-}
-
-// string nickname = 4;
+// string nickname = 1;
 inline void User_MySimpleInfo_ack::clear_nickname() {
   nickname_.ClearToEmpty();
 }

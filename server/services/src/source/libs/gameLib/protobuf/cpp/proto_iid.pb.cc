@@ -87,19 +87,20 @@ const char descriptor_table_protodef_proto_5fiid_2eproto[] PROTOBUF_SECTION_VARI
   "\001\n\013MMS_PROTYPE\022\022\n\016UNIVERSAL_3000\020\000\022\022\n\rMM"
   "S_MSG_BEGIN\020\270\027\022\030\n\023MMS_MATCHMAKING_REQ\020\271\027"
   "\022\030\n\023MMS_MATCHMAKING_ACK\020\272\027\022\020\n\013MMS_MSG_EN"
-  "D\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031*\334\001\n\013GMS_PROTYP"
+  "D\020\250\031\022\023\n\016MMS_MSGALL_END\020\261\031*\364\001\n\013GMS_PROTYP"
   "E\022\022\n\016UNIVERSAL_4000\020\000\022\022\n\rGMS_MSG_BEGIN\020\240"
-  "\037\022\026\n\021GMS_ENTERGAME_REQ\020\241\037\022\026\n\021GMS_ENTERGA"
-  "ME_ACK\020\242\037\022\031\n\024GMS_USERSVISIBLE_NTF\020\243\037\022\033\n\026"
-  "GMS_SERVICEDISABLE_NTF\020\244\037\022\026\n\021GMS_USERSTA"
-  "TE_SYN\020\253\037\022\020\n\013GMS_MSG_END\020\244&\022\023\n\016GMS_MSGAL"
-  "L_END\020\207\'BT\n\033com.cms.client.network.gproP"
-  "\001Z\025gamelib/protobuf/gpro\252\002\033com.cms.clien"
-  "t.network.gprob\006proto3"
+  "\037\022\026\n\021GMS_ENTERGAME_ACK\020\242\037\022\031\n\024GMS_USERSVI"
+  "SIBLE_NTF\020\243\037\022\033\n\026GMS_SERVICEDISABLE_NTF\020\244"
+  "\037\022\026\n\021GMS_USERSTATE_SYN\020\253\037\022\020\n\013GMS_MSG_END"
+  "\020\244&\022\026\n\021GMS_ENTERGAME_REQ\020\245&\022\026\n\021GMS_USERA"
+  "LIVE_NTF\020\246&\022\023\n\016GMS_MSGALL_END\020\207\'BT\n\033com."
+  "cms.client.network.gproP\001Z\025gamelib/proto"
+  "buf/gpro\252\002\033com.cms.client.network.gprob\006"
+  "proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_proto_5fiid_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_5fiid_2eproto = {
-  false, false, 2822, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
+  false, false, 2846, descriptor_table_protodef_proto_5fiid_2eproto, "proto_iid.proto", 
   &descriptor_table_proto_5fiid_2eproto_once, nullptr, 0, 0,
   schemas, file_default_instances, TableStruct_proto_5fiid_2eproto::offsets,
   nullptr, file_level_enum_descriptors_proto_5fiid_2eproto, file_level_service_descriptors_proto_5fiid_2eproto,
@@ -323,12 +324,13 @@ bool GMS_PROTYPE_IsValid(int value) {
   switch (value) {
     case 0:
     case 4000:
-    case 4001:
     case 4002:
     case 4003:
     case 4004:
     case 4011:
     case 4900:
+    case 4901:
+    case 4902:
     case 4999:
       return true;
     default:

@@ -16,10 +16,29 @@
 #ifndef __REGIONCELLNODE_H__
 #define __REGIONCELLNODE_H__
 
+#include <vector>
+#include <cmsLib/core_type.h>
+
+class GamePlayer;
+
 class RegionCellNode
 {
 public:
 	RegionCellNode();
+
+	void freeze();
+
+private:
+	//是否地图交汇处
+	bool		b_join_region_;
+	//所属 region
+	S_INT_32	owner_regionid_;
+	//节点包含的用户信息
+	std::vector<GamePlayer*>	node_players_;
+
+	//node (x,y)
+	S_INT_32 x_;
+	S_INT_32 y_;
 };
 
 #endif //__REGIONCELLNODE_H__

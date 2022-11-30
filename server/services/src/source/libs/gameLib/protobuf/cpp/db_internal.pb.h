@@ -49,7 +49,7 @@ struct TableStruct_db_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[24]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[25]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -129,6 +129,9 @@ extern DBUserTaskItemDefaultTypeInternal _DBUserTaskItem_default_instance_;
 class DBUserTasks;
 struct DBUserTasksDefaultTypeInternal;
 extern DBUserTasksDefaultTypeInternal _DBUserTasks_default_instance_;
+class Location3D;
+struct Location3DDefaultTypeInternal;
+extern Location3DDefaultTypeInternal _Location3D_default_instance_;
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PRO::DBPetCategory* Arena::CreateMaybeMessage<::PRO::DBPetCategory>(Arena*);
@@ -155,10 +158,179 @@ template<> ::PRO::DBUserTaskGroupEnds* Arena::CreateMaybeMessage<::PRO::DBUserTa
 template<> ::PRO::DBUserTaskGroups* Arena::CreateMaybeMessage<::PRO::DBUserTaskGroups>(Arena*);
 template<> ::PRO::DBUserTaskItem* Arena::CreateMaybeMessage<::PRO::DBUserTaskItem>(Arena*);
 template<> ::PRO::DBUserTasks* Arena::CreateMaybeMessage<::PRO::DBUserTasks>(Arena*);
+template<> ::PRO::Location3D* Arena::CreateMaybeMessage<::PRO::Location3D>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PRO {
 
 // ===================================================================
+
+class Location3D final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Location3D) */ {
+ public:
+  inline Location3D() : Location3D(nullptr) {}
+  ~Location3D() override;
+  explicit constexpr Location3D(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Location3D(const Location3D& from);
+  Location3D(Location3D&& from) noexcept
+    : Location3D() {
+    *this = ::std::move(from);
+  }
+
+  inline Location3D& operator=(const Location3D& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Location3D& operator=(Location3D&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Location3D& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Location3D* internal_default_instance() {
+    return reinterpret_cast<const Location3D*>(
+               &_Location3D_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(Location3D& a, Location3D& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Location3D* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Location3D* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Location3D* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Location3D>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Location3D& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Location3D& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Location3D* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Location3D";
+  }
+  protected:
+  explicit Location3D(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+  };
+  // float x = 1;
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // float y = 2;
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // float z = 3;
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Location3D)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  float x_;
+  float y_;
+  float z_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_db_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
 
 class DBRowDel final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.DBRowDel) */ {
@@ -208,7 +380,7 @@ class DBRowDel final :
                &_DBRowDel_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(DBRowDel& a, DBRowDel& b) {
     a.Swap(&b);
@@ -365,7 +537,7 @@ class DBRowDeletes final :
                &_DBRowDeletes_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(DBRowDeletes& a, DBRowDeletes& b) {
     a.Swap(&b);
@@ -520,7 +692,7 @@ class DBRoleBaseInfo final :
                &_DBRoleBaseInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(DBRoleBaseInfo& a, DBRoleBaseInfo& b) {
     a.Swap(&b);
@@ -595,6 +767,7 @@ class DBRoleBaseInfo final :
 
   enum : int {
     kNicknameFieldNumber = 4,
+    kLocFieldNumber = 7,
     kRoleIidFieldNumber = 2,
     kUserIidFieldNumber = 3,
     kVerFieldNumber = 1,
@@ -614,6 +787,24 @@ class DBRoleBaseInfo final :
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_nickname(const std::string& value);
   std::string* _internal_mutable_nickname();
   public:
+
+  // .PRO.Location3D loc = 7;
+  bool has_loc() const;
+  private:
+  bool _internal_has_loc() const;
+  public:
+  void clear_loc();
+  const ::PRO::Location3D& loc() const;
+  PROTOBUF_NODISCARD ::PRO::Location3D* release_loc();
+  ::PRO::Location3D* mutable_loc();
+  void set_allocated_loc(::PRO::Location3D* loc);
+  private:
+  const ::PRO::Location3D& _internal_loc() const;
+  ::PRO::Location3D* _internal_mutable_loc();
+  public:
+  void unsafe_arena_set_allocated_loc(
+      ::PRO::Location3D* loc);
+  ::PRO::Location3D* unsafe_arena_release_loc();
 
   // int64 role_iid = 2;
   void clear_role_iid();
@@ -668,6 +859,7 @@ class DBRoleBaseInfo final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PRO::Location3D* loc_;
   int64_t role_iid_;
   int64_t user_iid_;
   uint32_t ver__;
@@ -726,7 +918,7 @@ class DBUserRoles final :
                &_DBUserRoles_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(DBUserRoles& a, DBUserRoles& b) {
     a.Swap(&b);
@@ -881,7 +1073,7 @@ class DBUserHome final :
                &_DBUserHome_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(DBUserHome& a, DBUserHome& b) {
     a.Swap(&b);
@@ -1130,7 +1322,7 @@ class DBUserHomeStructureItem final :
                &_DBUserHomeStructureItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(DBUserHomeStructureItem& a, DBUserHomeStructureItem& b) {
     a.Swap(&b);
@@ -1363,7 +1555,7 @@ class DBUserHomeStructure final :
                &_DBUserHomeStructure_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(DBUserHomeStructure& a, DBUserHomeStructure& b) {
     a.Swap(&b);
@@ -1518,7 +1710,7 @@ class DBPetCategory final :
                &_DBPetCategory_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(DBPetCategory& a, DBPetCategory& b) {
     a.Swap(&b);
@@ -1713,7 +1905,7 @@ class DBUserPetItem final :
                &_DBUserPetItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(DBUserPetItem& a, DBUserPetItem& b) {
     a.Swap(&b);
@@ -1914,7 +2106,7 @@ class DBUserPets final :
                &_DBUserPets_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(DBUserPets& a, DBUserPets& b) {
     a.Swap(&b);
@@ -2094,7 +2286,7 @@ class DBTaskAttrData final :
                &_DBTaskAttrData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(DBTaskAttrData& a, DBTaskAttrData& b) {
     a.Swap(&b);
@@ -2253,7 +2445,7 @@ class DBUserTaskItem final :
                &_DBUserTaskItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(DBUserTaskItem& a, DBUserTaskItem& b) {
     a.Swap(&b);
@@ -2567,7 +2759,7 @@ class DBUserTasks final :
                &_DBUserTasks_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(DBUserTasks& a, DBUserTasks& b) {
     a.Swap(&b);
@@ -2722,7 +2914,7 @@ class DBUserTaskEndItem final :
                &_DBUserTaskEndItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(DBUserTaskEndItem& a, DBUserTaskEndItem& b) {
     a.Swap(&b);
@@ -2912,7 +3104,7 @@ class DBUserTaskEnds final :
                &_DBUserTaskEnds_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(DBUserTaskEnds& a, DBUserTaskEnds& b) {
     a.Swap(&b);
@@ -3090,7 +3282,7 @@ class DBTaskGAttrData final :
                &_DBTaskGAttrData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(DBTaskGAttrData& a, DBTaskGAttrData& b) {
     a.Swap(&b);
@@ -3249,7 +3441,7 @@ class DBUserTaskGroup final :
                &_DBUserTaskGroup_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    19;
 
   friend void swap(DBUserTaskGroup& a, DBUserTaskGroup& b) {
     a.Swap(&b);
@@ -3503,7 +3695,7 @@ class DBUserTaskGroups final :
                &_DBUserTaskGroups_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    20;
 
   friend void swap(DBUserTaskGroups& a, DBUserTaskGroups& b) {
     a.Swap(&b);
@@ -3658,7 +3850,7 @@ class DBUserTaskGroupEnd final :
                &_DBUserTaskGroupEnd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    21;
 
   friend void swap(DBUserTaskGroupEnd& a, DBUserTaskGroupEnd& b) {
     a.Swap(&b);
@@ -3848,7 +4040,7 @@ class DBUserTaskGroupEnds final :
                &_DBUserTaskGroupEnds_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    22;
 
   friend void swap(DBUserTaskGroupEnds& a, DBUserTaskGroupEnds& b) {
     a.Swap(&b);
@@ -4003,7 +4195,7 @@ class DBUserBattleInfo final :
                &_DBUserBattleInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    23;
 
   friend void swap(DBUserBattleInfo& a, DBUserBattleInfo& b) {
     a.Swap(&b);
@@ -4215,7 +4407,7 @@ class DBUserBattles final :
                &_DBUserBattles_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    24;
 
   friend void swap(DBUserBattles& a, DBUserBattles& b) {
     a.Swap(&b);
@@ -4329,6 +4521,70 @@ class DBUserBattles final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// Location3D
+
+// float x = 1;
+inline void Location3D::clear_x() {
+  x_ = 0;
+}
+inline float Location3D::_internal_x() const {
+  return x_;
+}
+inline float Location3D::x() const {
+  // @@protoc_insertion_point(field_get:PRO.Location3D.x)
+  return _internal_x();
+}
+inline void Location3D::_internal_set_x(float value) {
+  
+  x_ = value;
+}
+inline void Location3D::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:PRO.Location3D.x)
+}
+
+// float y = 2;
+inline void Location3D::clear_y() {
+  y_ = 0;
+}
+inline float Location3D::_internal_y() const {
+  return y_;
+}
+inline float Location3D::y() const {
+  // @@protoc_insertion_point(field_get:PRO.Location3D.y)
+  return _internal_y();
+}
+inline void Location3D::_internal_set_y(float value) {
+  
+  y_ = value;
+}
+inline void Location3D::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:PRO.Location3D.y)
+}
+
+// float z = 3;
+inline void Location3D::clear_z() {
+  z_ = 0;
+}
+inline float Location3D::_internal_z() const {
+  return z_;
+}
+inline float Location3D::z() const {
+  // @@protoc_insertion_point(field_get:PRO.Location3D.z)
+  return _internal_z();
+}
+inline void Location3D::_internal_set_z(float value) {
+  
+  z_ = value;
+}
+inline void Location3D::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:PRO.Location3D.z)
+}
+
+// -------------------------------------------------------------------
+
 // DBRowDel
 
 // uint32 ver_ = 1;
@@ -4568,6 +4824,96 @@ inline void DBRoleBaseInfo::_internal_set_levels(int32_t value) {
 inline void DBRoleBaseInfo::set_levels(int32_t value) {
   _internal_set_levels(value);
   // @@protoc_insertion_point(field_set:PRO.DBRoleBaseInfo.levels)
+}
+
+// .PRO.Location3D loc = 7;
+inline bool DBRoleBaseInfo::_internal_has_loc() const {
+  return this != internal_default_instance() && loc_ != nullptr;
+}
+inline bool DBRoleBaseInfo::has_loc() const {
+  return _internal_has_loc();
+}
+inline void DBRoleBaseInfo::clear_loc() {
+  if (GetArenaForAllocation() == nullptr && loc_ != nullptr) {
+    delete loc_;
+  }
+  loc_ = nullptr;
+}
+inline const ::PRO::Location3D& DBRoleBaseInfo::_internal_loc() const {
+  const ::PRO::Location3D* p = loc_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Location3D&>(
+      ::PRO::_Location3D_default_instance_);
+}
+inline const ::PRO::Location3D& DBRoleBaseInfo::loc() const {
+  // @@protoc_insertion_point(field_get:PRO.DBRoleBaseInfo.loc)
+  return _internal_loc();
+}
+inline void DBRoleBaseInfo::unsafe_arena_set_allocated_loc(
+    ::PRO::Location3D* loc) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(loc_);
+  }
+  loc_ = loc;
+  if (loc) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.DBRoleBaseInfo.loc)
+}
+inline ::PRO::Location3D* DBRoleBaseInfo::release_loc() {
+  
+  ::PRO::Location3D* temp = loc_;
+  loc_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::Location3D* DBRoleBaseInfo::unsafe_arena_release_loc() {
+  // @@protoc_insertion_point(field_release:PRO.DBRoleBaseInfo.loc)
+  
+  ::PRO::Location3D* temp = loc_;
+  loc_ = nullptr;
+  return temp;
+}
+inline ::PRO::Location3D* DBRoleBaseInfo::_internal_mutable_loc() {
+  
+  if (loc_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::Location3D>(GetArenaForAllocation());
+    loc_ = p;
+  }
+  return loc_;
+}
+inline ::PRO::Location3D* DBRoleBaseInfo::mutable_loc() {
+  ::PRO::Location3D* _msg = _internal_mutable_loc();
+  // @@protoc_insertion_point(field_mutable:PRO.DBRoleBaseInfo.loc)
+  return _msg;
+}
+inline void DBRoleBaseInfo::set_allocated_loc(::PRO::Location3D* loc) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete loc_;
+  }
+  if (loc) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::PRO::Location3D>::GetOwningArena(loc);
+    if (message_arena != submessage_arena) {
+      loc = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, loc, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  loc_ = loc;
+  // @@protoc_insertion_point(field_set_allocated:PRO.DBRoleBaseInfo.loc)
 }
 
 // -------------------------------------------------------------------
@@ -6788,6 +7134,8 @@ DBUserBattles::infos() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

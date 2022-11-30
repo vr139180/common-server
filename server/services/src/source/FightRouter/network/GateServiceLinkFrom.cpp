@@ -52,11 +52,12 @@ void GateServiceLinkFrom::on_connect_lost_netthread()
 
 void GateServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
+	std::unique_ptr<NetProtocol> p_msg(pro);
+
 	S_UINT_16 msgid = pro->get_msg();
 	if( pro->get_to() == (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME)
 	{
-		logDebug(out_runtime, "recv msg:%d from gate to game", msgid);
-		svrApp.router_to_game(pro);
+		svrApp.router_to_game(p_msg.release());
 	}
 }
 

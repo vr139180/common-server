@@ -53,8 +53,14 @@ void HomeServiceLinkFrom::on_connect_lost_netthread()
 void HomeServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
-	if (pro->get_to() == (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE) {
+	NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
+	if (to == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+	{
 		svrApp.router_to_gate(p_msg.release());
+	}
+	else if (to == NETSERVICE_TYPE::ERK_SERVICE_GAME)
+	{
+		svrApp.router_to_game(p_msg.release());
 	}
 }
 

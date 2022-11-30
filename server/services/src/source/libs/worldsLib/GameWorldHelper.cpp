@@ -45,6 +45,12 @@ GameRegionSimpleMeta* GameRegionSimpleMeta::build_from(tinyxml2::XMLElement* e)
 	return xptr.release();
 }
 
+bool GameRegionSimpleMeta::is_point_in_region(const GLoc3D& loc)
+{
+	CMSPointXY xy(loc.x(), loc.y());
+	return region_.is_point_in_box(xy);
+}
+
 //--------------------------------------GameWorldHelper----------------------------
 GameWorldHelper& GameWorldHelper::instance()
 {
@@ -83,6 +89,19 @@ bool GameWorldHelper::init_gameworld()
 	total_width_ = XmlUtil::GetXmlAttrFloat(root, "width");
 	total_height_ = XmlUtil::GetXmlAttrFloat(root, "height");
 
+	tinyxml2::XMLElement* starts = root->FirstChildElement("startpoints");
+	if (starts == 0)
+		return false;
+
+	for (tinyxml2::XMLElement* re = starts->FirstChildElement("startpoint"); re != 0; re = re->NextSiblingElement("startpoint"))
+	{
+		GLoc3D loc;
+		if (!GLoc3D::build_from_str(XmlUtil::GetXmlAttrStr(re, "pos", ""), loc))
+			return false;
+
+		start_points_.push_back(loc);
+	}
+
 	for (tinyxml2::XMLElement* re = root->FirstChildElement("region"); re != 0; re = re->NextSiblingElement("region"))
 	{
 		GameRegionSimpleMeta* pmeta = GameRegionSimpleMeta::build_from(re);
@@ -95,10 +114,43 @@ bool GameWorldHelper::init_gameworld()
 	return true;
 }
 
+const GLoc3D& GameWorldHelper::get_startpoint()
+{
+	return *(start_points_.begin());
+}
+
 GameRegionSimpleMeta* GameWorldHelper::find_region_byid(S_INT_32 regionid)
 {
 	REGIONS_MAP::iterator fiter = all_regions_.find(regionid);
 	if (fiter == all_regions_.end())
 		return 0;
 	return fiter->second;
+}
+
+void GameWorldHelper::get_hello_world(GLoc3D& loc, S_INT_32 regionid)
+{
+	loc = get_startpoint();
+	get_regionid_from_loc(loc, regionid);
+}
+
+bool GameWorldHelper::get_regionid_from_loc(const GLoc3D& loc, S_INT_32& regionid)
+{
+	if (loc.x() < 0 || loc.x() >= total_width_)
+		return false;
+	if (loc.y() < 0 || loc.y() >= total_height_)
+		return false;
+
+	//从点获取区域
+	//TODO: 未来用RTree数优化查找
+	for (REGIONS_MAP::iterator iter = all_regions_.begin(); iter != all_regions_.end(); ++iter)
+	{
+		GameRegionSimpleMeta* pr = iter->second;
+		if (pr->is_point_in_region(loc))
+		{
+			regionid = pr->region();
+			return true;
+		}
+	}
+
+	return false;
 }

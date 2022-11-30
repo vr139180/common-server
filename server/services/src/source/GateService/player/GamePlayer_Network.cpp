@@ -19,6 +19,7 @@
 
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
+#include <gameLib/protobuf/ProtoUtil.h>
 
 #include "player/GamePlayerCtrl.h"
 #include "GateServiceApp.h"
@@ -40,7 +41,11 @@ bool GamePlayer::is_need_unpack_protocol(S_UINT_16 msgid)
 void GamePlayer::force_user_active()
 {
 	PRO::User_Active_ntf* ntf = new PRO::User_Active_ntf();
-	ntf->set_gameid(game_iid_);
+	
+	PRO::Location3D* pos = ntf->mutable_role_pos();
+	pos->set_x(game_loc_.x());
+	pos->set_y(game_loc_.y());
+	pos->set_z(game_loc_.z());
 
 	this->send_to_state(ntf);
 }
@@ -72,8 +77,23 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 			return;
 
 		PRO::User_Active_ntf* ntf = dynamic_cast<PRO::User_Active_ntf*>(pro->msg_);
-		ntf->set_gameid(game_iid_);
+		
+		PRO::Location3D* pos = ntf->mutable_role_pos();
+		pos->set_x(game_loc_.x());
+		pos->set_y(game_loc_.y());
+		pos->set_z(game_loc_.z());
+
 		svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, p_msg.release());
+
+		//如果有gameservice服务，需要定时去激活
+		if (game_iid_ > 0)
+		{
+			PRO::Game_UserAlive_ntf* ntf = new PRO::Game_UserAlive_ntf();
+			NetProtocol* xpro = new NetProtocol(s_head_, ntf);
+			ProtoUtil::set_location_to_msg(ntf, game_loc_);
+
+			svrApp.route_to_fightrouter( PRO::ERK_SERVICE_GAME, xpro);
+		}
 	}
 	else if (msgid == PRO::USER_LOGOUT_NTF)
 	{
@@ -109,6 +129,8 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		}
 		else if (msgid > PRO::GMS_PROTYPE::GMS_MSG_BEGIN && msgid < PRO::GMS_PROTYPE::GMS_MSG_END)
 		{
+			ProtoUtil::set_location_to_msg(pro->msg_, this->game_loc_);
+
 			svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, p_msg.release());
 			return;
 		}

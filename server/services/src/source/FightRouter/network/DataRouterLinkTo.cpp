@@ -130,6 +130,14 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&DataRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
+	else
+	{
+		NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
+		if (to == NETSERVICE_TYPE::ERK_SERVICE_GAME)
+		{
+			svrApp.router_to_game_from_othsvr(p_msg.release());
+		}
+	}
 }
 
 void DataRouterLinkTo::on_connected( bool success)

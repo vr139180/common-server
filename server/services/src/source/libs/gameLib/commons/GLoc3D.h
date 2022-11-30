@@ -13,23 +13,39 @@
 // limitations under the License.
 //
 
-#ifndef __WORLDUTIL_H__
-#define __WORLDUTIL_H__
+#ifndef __GLOC3D_H__
+#define __GLOC3D_H__
 
+#include <string>
 #include <cmsLib/core_type.h>
 
-class WorldUtil
+class GLoc3D
 {
-private:
-	WorldUtil() {}
+public:
+	static const GLoc3D& zero_point();
+
+	static bool build_from_str(std::string& str, GLoc3D& p);
 
 public:
-	//ππ‘Ïgameid
-	static S_INT_64 build_gameid(S_INT_64 serviceid, S_INT_32 channel, S_INT_32 regionid);
-	static S_INT_64 get_svrid_from_gameid(S_INT_64 gameid);
-	static S_INT_32 get_channel_from_gameid(S_INT_64 gameid);
-	static S_INT_32 get_regionid_from_gameid(S_INT_64 gameid);
+	GLoc3D() :x_(0.0), y_(0.0), z_(0.0) {}
+	GLoc3D(float x, float y, float z) :x_(x), y_(y), z_(z) {}
 
+	GLoc3D& operator = (const GLoc3D& v);
+
+	float x()const { return x_; }
+	void set_x(float x) { x_ = x; }
+	float y()const { return y_; }
+	void set_y(float y) { y_ = y; }
+	float z()const { return z_; }
+	void set_z(float z) { z_ = z; }
+
+	std::string to_string() const;
+	bool is_zero_point() const;
+
+private:
+	float x_;
+	float y_;
+	float z_;
 };
 
-#endif //__WORLDUTIL_H__
+#endif //__GLOC3D_H__

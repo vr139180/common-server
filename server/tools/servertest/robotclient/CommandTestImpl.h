@@ -23,6 +23,7 @@
 #include <gameLib/protobuf/Proto_all.h>
 #include <cmsLib/lua/ScriptContext.h>
 #include <cmsLib/httpcurl/HttpClient.h>
+#include <gameLib/commons/GLoc3D.h>
 #include "PhpResult.h"
 
 #include <string>
@@ -102,6 +103,7 @@ public:
 	S_INT_64		user_token_;
 
 	S_INT_64		role_iid_;
+	GLoc3D			role_pos_;
 
 	S_INT_64		last_active_time_;
 
@@ -200,9 +202,6 @@ public:
 	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);
 
 	//-----------------test
-	void user_get_simpleinfo(S_INT_64 uid, S_INT_64 rid);
-	void on_user_get_simpleinfo(BasicProtocol* pro, CString* pRetMsg);
-
 	void game_userstate_sync();
 	void on_game_userstate_sync(BasicProtocol* pro, CString* pRetMsg);
 	void on_game_users_sync(BasicProtocol* pro, CString* pRetMsg);

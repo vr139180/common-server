@@ -16,17 +16,33 @@
 #include "region/GamePlayer.h"
 
 GamePlayer::GamePlayer():b_master_node_(true),
-player_state_( GamePlayerState::GamePlayerS_Free), user_iid_( 0), role_iid_( 0),
-gate_token_gidsid_( 0), gate_token_slottoken_( 0)
+player_state_( GamePlayerState::GamePlayerS_Free)
 {
+}
+
+void GamePlayer::copy_location(const GLoc3D& loc, PRO::Location3D* pos)
+{
+	pos->set_x(loc.x());
+	pos->set_y(loc.y());
+	pos->set_z(loc.z());
 }
 
 void GamePlayer::reset()
 {
 	b_master_node_ = true;
 	player_state_ = GamePlayerState::GamePlayerS_Free;
-	user_iid_ = 0;
-	role_iid_ = 0;
-	gate_token_gidsid_ = 0;
-	gate_token_slottoken_ = 0;
+	s_head_ = SProtocolHead();
+}
+
+void GamePlayer::sync_head(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc)
+{
+	s_head_.sync_token(head);
+	s_head_.set_gameid(gameid);
+
+	user_simple_info_.set_user_iid(head.get_token_useriid());
+	user_simple_info_.set_role_iid(head.get_role_iid());
+	
+	user_simple_info_.set_nickname("");
+	PRO::Location3D* pos = user_simple_info_.mutable_pos();
+	copy_location(loc, pos);
 }

@@ -61,6 +61,7 @@ public:
 	void db_sync_load_done();
 
 	void send_to_gate(BasicProtocol* msg);
+	void send_to_game(BasicProtocol* msg, S_INT_64 gameid);
 
 public:
 	//from network

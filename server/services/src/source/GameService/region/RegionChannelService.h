@@ -33,10 +33,18 @@ public:
 	void init_channel( S_INT_32 cid);
 	void build_gameid(S_INT_64 serviceid);
 
+	S_INT_64 get_gameid() { return gameid_; }
+	RegionPlayerContainer<GamePlayer>& get_users() { return channel_users_; }
+
+	bool is_max_performance();
+
+public:
+	GamePlayer* get_userbyid_from_msg(NetProtocol* msg, bool mustexist = true);
+
 private:
 	RegionPlayerContainer<GamePlayer>	channel_users_;
 
-	boost::scoped_ptr<IRegionMap>	region_map_;
+	boost::scoped_ptr<IRegionMap>		region_map_;
 
 	//±àÂëºóµÄgameid
 	S_INT_64	gameid_;
@@ -50,9 +58,14 @@ public:
 	//---------------------------MessageProcess interface--------------------------------
 	virtual void InitNetMessage();
 	virtual void ProcessMessage(NetProtocol* message, bool& autorelease) {}
-	virtual void NetProcessMessage(NetProtocol* message, bool& autorelease);
 
 protected:
+	void on_gate_enter_game_req(NetProtocol* pro, bool& autorelease);
+	void on_gate_userlive_ntf(NetProtocol* pro, bool& autorelease);
+	void on_home_mysimpleinfo_ack(NetProtocol* pro, bool& autorelease);
+
+	//-------------------------------------------------------------------
+	void on_pl_userstate_sync(NetProtocol* pro, bool& autorelease);
 };
 
 #endif //__REGIONCHANNELSERVICE_H__

@@ -26,6 +26,7 @@
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
 #include <worldsLib/GameRegionMeta.h>
+#include <worldsLib/utils/WorldUtil.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -252,4 +253,42 @@ void GameServiceApp::on_disconnected_with_fightrouter(FightRouterLinkTo* plink)
 void GameServiceApp::on_fightrouter_regist_result(FightRouterLinkTo* plink)
 {
 	fightrouter_link_mth_.on_linkto_regist_result(plink);
+}
+
+void GameServiceApp::dispatch_msg_to_channel(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> p_msg(pro);
+	S_INT_64 gameid = pro->get_gameid();
+	S_INT_32 channel = WorldUtil::get_channel_from_gameid(gameid);
+	if (channel >= channel_num_ || channel < 0)
+		return;
+
+	RegionChannelService* psvr = &(all_channels_[channel]);
+
+	NETCMD_FUN_MAP fun = boost::bind(&RegionChannelService::NetProcessMessage, psvr,
+		boost::placeholders::_1, boost::placeholders::_2);
+	NetCommand *pcmd = new NetCommand( p_msg.release(), fun);
+	psvr->regist_netcmd(pcmd);
+}
+
+void GameServiceApp::assign_user_to_channel(NetProtocol* pro)
+{
+	//选出性能较优的channel
+	S_INT_32 cid = 0;
+	for (int ii = 0; ii < channel_num_; ++ii)
+	{
+		RegionChannelService* pservice = &(all_channels_[ii]);
+		if (!pservice->is_max_performance())
+		{
+			cid = ii;
+			break;
+		}
+	}
+
+	RegionChannelService* psvr = &(all_channels_[cid]);
+
+	NETCMD_FUN_MAP fun = boost::bind(&RegionChannelService::NetProcessMessage, psvr,
+		boost::placeholders::_1, boost::placeholders::_2);
+	NetCommand *pcmd = new NetCommand( pro, fun);
+	psvr->regist_netcmd(pcmd);
 }

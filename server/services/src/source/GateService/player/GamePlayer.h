@@ -19,6 +19,7 @@
 #include <cmsLib/core_type.h>
 #include <cmsLib/net/NetSession.h>
 #include <cmsLib/net/NetSessionBindEvent.h>
+#include <gameLib/commons/GLoc3D.h>
 
 typedef enum tagPlayerState {
 	PlayerState_Free = 0,
@@ -49,8 +50,9 @@ public:
 
 	int get_userslot() { return slot_; }
 	void set_userslot(int s) { slot_ = s; }
-	void set_gameid(S_INT_64 gid) { game_iid_ = gid; }
+	void set_gameid(S_INT_64 gid);
 	S_INT_64 get_gameid() { return game_iid_; }
+	void set_game_loc(const GLoc3D& pos) { game_loc_ = pos; }
 
 	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Logon && cur_state_ < PlayerState::PlayerState_RoleReady); }
 	bool is_roleready() { return cur_state_ >= PlayerState::PlayerState_RoleReady; }
@@ -61,7 +63,7 @@ public:
 
 	S_INT_64 get_roleiid() { return this->role_iid_; }
 	//角色选择确定后切换giduid为gateid+role_iid_
-	void role_selected_done(S_INT_64 rid);
+	void role_selected_done(S_INT_64 rid, const GLoc3D& pos);
 
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_;}
@@ -99,6 +101,8 @@ protected:
 	PlayerState	cur_state_;
 	S_INT_64	user_iid_;
 	S_INT_64	role_iid_;
+	//所在世界坐标
+	GLoc3D		game_loc_;
 	S_INT_64	game_iid_;
 	//开始使用时间
 	S_INT_64	start_timestamp_;

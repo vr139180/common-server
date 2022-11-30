@@ -65,6 +65,9 @@ public:
 
 	bool load_region_config( S_INT_32 regionid);
 
+public:
+	S_INT_32 get_regionid() { return regionid_; }
+
 private:
 	S_INT_32	regionid_;
 

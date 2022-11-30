@@ -118,7 +118,7 @@ public:
 	S_INT_64 get_token_token() const;
 	void set_token_token(S_INT_64 token);
 
-	S_INT_64 get_role_iid() { return role_iid_; }
+	S_INT_64 get_role_iid() const { return role_iid_; }
 	void set_role_iid(S_INT_64 id) { role_iid_ = id; }
 	S_INT_64 get_gameid() { return gameid_; }
 	void set_gameid(S_INT_64 gid) { gameid_ = gid; }

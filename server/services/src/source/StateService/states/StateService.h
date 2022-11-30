@@ -26,6 +26,7 @@
 #include <cmsLib/redis/RedisProtoBufThreadCache.h>
 #include <cmsLib/lua/ScriptContext.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
+#include <gameLib/commons/GLoc3D.h>
 
 class StateService : public VirtualMainThread , public MessageProcess
 {
@@ -61,14 +62,14 @@ protected:
 	void redis_save_userinfo(RedisClient* rdv, const SProtocolHead& head, const char* acc
 		, bool disable, bool saverole, PRO::DBUserRoles& roles);
 	//更新激活时间
-	void redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, S_INT_64 gameid);
+	void redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, const GLoc3D& pos);
 
 	//退出登录
 	bool redis_user_logout(RedisClient* rdv, S_INT_64 userid, S_INT_64 token, bool checktoken = true);
 	void redis_gatelost_ntf(RedisClient* rdv, S_INT_64 userid, S_INT_64 token);
 
 	bool redis_user_relogin_check(RedisClient* rdv, SProtocolHead& head, S_INT_64 userid, 
-		S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid);
+		S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid, GLoc3D& pos);
 
 public:
 	//------------------------------------maintance-------------------------------------

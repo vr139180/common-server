@@ -53,6 +53,14 @@ void FightRouterLinkFrom::on_connect_lost_netthread()
 void FightRouterLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
+
+	S_UINT_16 msgid = pro->get_msg();
+	NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
+	if (to == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	{
+		logDebug(out_runtime, "recv msg:%d from fightrouter to home", msgid);
+		svrApp.router_to_home(pro);
+	}
 }
 
 void FightRouterLinkFrom::registinfo_tolog( bool bregist)

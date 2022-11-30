@@ -140,6 +140,12 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.h">
       <Filter>protobuf\cpp</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\commons\GLoc3D.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\protobuf\ProtoUtil.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -269,6 +275,12 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\cpp\game_system.pb.cc">
       <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\commons\GLoc3D.cpp">
+      <Filter>commons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\protobuf\ProtoUtil.cpp">
+      <Filter>protobuf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

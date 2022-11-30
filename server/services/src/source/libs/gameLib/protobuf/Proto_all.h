@@ -14,6 +14,7 @@
 //
 
 #ifndef __PROTO_ALL_H__
+#define __PROTO_ALL_H__
 
 #include <cmsLib/prolib/BasicProtocol.h>
 #include <cmsLib/prolib/ProtocolFactory.h>

@@ -33,6 +33,8 @@ void PlayerChannel::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &PlayerChannel::on_pc_userlogout_ntf, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_ACK, &PlayerChannel::on_pc_roleselect_ack, this);
 
+	REGISTERMSG(GMS_PROTYPE::GMS_ENTERGAME_ACK, &PlayerChannel::on_pc_entergame_ntf, this);
+
 	REGISTERMSG(CHAT_PROTYPE::CHAT_GLOBALMSG_NTF, &PlayerChannel::on_pc_broadcast_chat_globalmsg, this);
 }
 
@@ -93,8 +95,17 @@ void PlayerChannel::on_pc_userrelogin_ack(NetProtocol* pro, bool& autorelease)
 		//设置相关状态
 		puser->auth(ack->user_iid(), ack->logintoken());
 		if (ack->role_iid() > 0)
-			puser->role_selected_done(ack->role_iid());
-		puser->set_gameid(ack->gameid());
+		{
+			puser->set_gameid(ack->gameid());
+
+			const Location3D& xpos = ack->role_pos();
+			GLoc3D pos;
+			pos.set_x(xpos.x());
+			pos.set_y(xpos.y());
+			pos.set_z(xpos.z());
+
+			puser->role_selected_done(ack->role_iid(), pos);
+		}
 		
 		puser->registinfo_tolog(true);
 	}
@@ -106,16 +117,6 @@ void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 {
 	GamePlayer *puser = get_player_frommsg(pro);
 	if (puser == 0) return;
-
-	/*
-	User_Logout_ntf* ntf = dynamic_cast<User_Logout_ntf*>(pro->msg_);
-	ntf->set_user_iid(puser->get_iid());
-	ntf->set_role_iid(puser->get_roleiid());
-	ntf->set_gameid(puser->get_gameid());
-
-	autorelease = false;
-	svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, pro);
-	*/
 
 	//主动断开，不触发gatelost
 	puser->set_gatelost_untrigger();
@@ -145,7 +146,13 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 	User_RoleSelect_ack *ack = dynamic_cast<User_RoleSelect_ack*>(pro->msg_);
 	if (ack->result() == 0)
 	{
-		puser->role_selected_done(ack->role_iid());
+		const Location3D& xpos = ack->loc();
+		GLoc3D pos;
+		pos.set_x(xpos.x());
+		pos.set_y(xpos.y());
+		pos.set_z(xpos.z());
+
+		puser->role_selected_done(ack->role_iid(), pos);
 
 		puser->force_user_active();
 	}
@@ -176,9 +183,19 @@ void PlayerChannel::on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease)
 	if (puser == 0) return;
 
 	Game_EnterGame_ack *ntf = dynamic_cast<Game_EnterGame_ack*>(pro->msg_);
-	puser->set_gameid(ntf->game_iid());
+	if (ntf->result() == 0)
+	{
+		puser->set_gameid(ntf->game_iid());
 
-	puser->force_user_active();
+		const Location3D& xpos = ntf->pos();
+		GLoc3D pos;
+		pos.set_x(xpos.x());
+		pos.set_y(xpos.y());
+		pos.set_z(xpos.z());
+		puser->set_game_loc(pos);
+
+		puser->force_user_active();
+	}
 
 	autorelease = false;
 	puser->send_netprotocol( pro);

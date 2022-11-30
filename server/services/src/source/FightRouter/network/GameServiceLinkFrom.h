@@ -34,11 +34,16 @@ public:
 	virtual void init_protocolhead();
 	virtual const SProtocolHead& get_protocolhead() { return s_head_; }
 
+	void bind_region(S_INT_32 rid) { regionid_ = rid; }
+	S_INT_32 get_bind_regionid() { return regionid_; }
+
 public:
 	void send_netprotocol(BasicProtocol* msg);
 
 protected:
 	SProtocolHead	s_head_;
+	//gameservice 注册region之后，做个绑定
+	S_INT_32		regionid_;
 };
 
 #endif	//__GAMESERVICELINKFROM_H__

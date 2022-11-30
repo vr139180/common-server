@@ -33,4 +33,7 @@
 #define STATE_SERVICE_THREADNUM		4		//state服务线程数
 #define STATE_ONLINEQUEUE_HASHNUM	1		//-USERS:ONLINE:#hash的取模数
 
+//game容量设计
+#define GAME_CHANNEL_MAXPLAYER		1000	//gameservice each channel, max players
+
 #endif //__GLOBAL_CONST_H__

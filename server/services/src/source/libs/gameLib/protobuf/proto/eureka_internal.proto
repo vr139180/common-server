@@ -278,9 +278,6 @@ message Svr_ServiceBindService_ack{
 
 //gameservice注册到fightrouter
 message GsFr_GameRegionRegist_ntf{
-  int64 gameid = 1;
   //区域编号
-  int32 regionid = 2;
-  //channel数量 
-  int32	channels = 3;
+  int32 regionid = 1;
 }

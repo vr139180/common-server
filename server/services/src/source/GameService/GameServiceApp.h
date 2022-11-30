@@ -47,6 +47,9 @@ public:
 	void send_protocol_to_gate(BasicProtocol* pro);
 	void send_protocol_to_home(BasicProtocol* pro);
 
+	void dispatch_msg_to_channel(NetProtocol* pro);
+	void assign_user_to_channel(NetProtocol* pro);
+
 public:
 
 	//------------------------------implement IEurekaClientIntegrate-------------------------//

@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "db_internal.proto";
+
 package PRO;
 
 //option optimize_for = LITE_RUNTIME;
@@ -8,42 +10,44 @@ option csharp_namespace = "com.cms.client.network.gpro";
 option java_multiple_files = true;
 option java_package = "com.cms.client.network.gpro";
 
-message Vector3d {
-  float x = 1;
-  float y = 2;
-  float z = 3;
-}
-
 message GameUserInfo {
   int64 user_iid = 1;
   int64 role_iid = 2;
   string nickname = 3;
-  Vector3d pos = 4;
+  Location3D pos = 4;
+}
+
+//用户主动激活game service,用来管理用户状态
+message Game_UserAlive_ntf{
 }
 
 //第一次进入game servre发的通知
 message Game_EnterGame_req{
-  int64 game_iid = 1;
-}
-
-message Game_EnterGame_ack{
-  //0:success 1:failed
-  int32 result = 1;
+  optional Location3D role_pos = 1;
+  //==0表示是新进入的，其他的表示relogin进入
   int64 game_iid = 2;
 }
 
+message Game_EnterGame_ack{
+  //0:success 1:failed 2:位置错误 3:region无相关服务
+  int32 result = 1;
+  optional int64 game_iid = 2;
+  optional Location3D pos = 3;
+}
+
+//fightrouter转发协议时，检测到对应服务不可用
 message Game_ServiceDisable_ntf{
-  int64 game_iid = 1;
 }
 
 //用户同步
 message Game_UsersVisiable_ntf{
-  repeated GameUserInfo online_users = 1;
-  repeated int64 offline_users = 2;
+  optional Location3D role_pos = 1;
+  repeated GameUserInfo online_users = 2;
+  repeated int64 offline_users = 3;
 }
 
 //用户状态同步
 message Game_UserState_sync{
-  int64 user_iid = 1;
-  Vector3d pos = 2;
+  optional Location3D role_pos = 1;
+  int64 user_iid = 2;
 }

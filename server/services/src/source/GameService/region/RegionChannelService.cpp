@@ -15,7 +15,10 @@
 
 #include "region/RegionChannelService.h"
 
+#include <gameLib/global_const.h>
 #include <worldsLib/utils/WorldUtil.h>
+#include <worldsLib/GameRegionMeta.h>
+
 #include "config/GameConfig.h"
 #include "region/RegionMapBoxImpl.h"
 
@@ -64,9 +67,23 @@ void RegionChannelService::init_channel( S_INT_32 cid)
 	channel_users_.init_cap(1000);
 
 	region_map_.reset(new RegionMapBoxImpl( this));
+	region_map_->init_region();
 }
 
 void RegionChannelService::build_gameid(S_INT_64 serviceid)
 {
-	gameid_ = WorldUtil::build_gameid(serviceid, channel_index_);
+	gameid_ = WorldUtil::build_gameid(serviceid, channel_index_, GameRegionMeta::instance().get_regionid());
+}
+
+bool RegionChannelService::is_max_performance()
+{
+	return channel_users_.get_online_playernum() >= GAME_CHANNEL_MAXPLAYER;
+}
+
+GamePlayer* RegionChannelService::get_userbyid_from_msg(NetProtocol* msg, bool mustexist)
+{
+	if( mustexist)
+		return channel_users_.get_gameuser_exist(msg->get_useriid());
+	else
+		return channel_users_.get_gameuser(msg->get_useriid());
 }

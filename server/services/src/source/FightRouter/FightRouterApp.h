@@ -54,7 +54,11 @@ public:
 
 public:
 	void router_to_game(NetProtocol* pro);
+	void router_to_game_from_othsvr(NetProtocol* pro);
 	void router_to_gate(NetProtocol* pro);
+	void router_to_home(NetProtocol* pro);
+
+	void do_gameservice_bind_region(GameServiceLinkFrom* plink, S_INT_32 regionid);
 
 public:
 

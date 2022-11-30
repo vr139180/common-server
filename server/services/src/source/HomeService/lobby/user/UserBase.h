@@ -48,6 +48,7 @@ public:
 	void new_rolebaseinfo(RedisClient* rdv, S_INT_64 uid, const char* nickname);
 
 	S_INT_32 get_levels() { return base_data_.levels(); }
+	const char* get_nickname() const { return base_data_.nickname().c_str(); }
 
 public:
 	PRO::DBRoleBaseInfo& data() { return base_data_; }

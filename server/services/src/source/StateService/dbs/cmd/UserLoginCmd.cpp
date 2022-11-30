@@ -68,7 +68,7 @@ void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
 			release_dboperator(prep_stmt.get());
 
 			prep_stmt.reset(p_connection->prepareStatement(
-				"select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = ?;"));
+				"select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels,location_x,location_y,location_z from role_baseinfo where user_iid = ?;"));
 			prep_stmt->setInt64(1, user_iid_);
 			res.reset(prep_stmt->executeQuery());
 			while (res->next())
@@ -84,6 +84,10 @@ void UserLoginCmd::run_in_db_thread(sql::Connection* p_connection)
 				prinfo->set_nickname(rss->getString(column++).c_str());
 				prinfo->set_registime(rss->getInt(column++));
 				prinfo->set_levels(rss->getInt(column++));
+				PRO::Location3D* pos = prinfo->mutable_loc();
+				pos->set_x((float)rss->getDouble(column++));
+				pos->set_y((float)rss->getDouble(column++));
+				pos->set_z((float)rss->getDouble(column++));
 			}
 		}
 	}

@@ -59,6 +59,18 @@ void LobbyUser::send_to_gate(BasicProtocol* msg)
 	svrApp.send_netprotocol(pro);
 }
 
+void LobbyUser::send_to_game(BasicProtocol* msg, S_INT_64 gameid)
+{
+	NetProtocol* pro = new NetProtocol(s_head_, msg);
+	SProtocolHead& head = pro->write_head();
+
+	head.set_gameid(gameid);
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_HOME;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
+
+	svrApp.send_netprotocol(pro);
+}
+
 void LobbyUser::sync_head(const SProtocolHead& head)
 {
 	// SH:LJFU:TODO

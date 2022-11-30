@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     7/22/2022 12:14:01 PM                        */
+/* Created on:     11/30/2022 8:42:18 AM                        */
 /*==============================================================*/
 
 
@@ -19,6 +19,8 @@ drop table if exists sys_mail;
 drop table if exists user_account;
 
 drop table if exists user_bag_item;
+
+drop table if exists user_battle_info;
 
 drop table if exists user_home;
 
@@ -119,8 +121,12 @@ create table role_baseinfo
    role_iid             bigint not null,
    user_iid             bigint not null comment '角色所属用户',
    nickname             varchar(32) not null,
+   location_x           float not null default 0 comment '0',
+   location_y           float not null default 0,
+   location_z           float not null default 0,
    registime            datetime not null,
    ver_                 int unsigned not null default 1,
+   levels               int not null default 1 comment '角色等级',
    primary key (role_iid)
 )
 engine =  innodb;
@@ -213,6 +219,47 @@ create index index_2 on user_bag_item
 );
 
 /*==============================================================*/
+/* Table: user_battle_info                                      */
+/*==============================================================*/
+create table user_battle_info
+(
+   iid                  bigint not null,
+   ver_                 int unsigned not null default 1,
+   role_iid             bigint not null,
+   levels               int not null comment '等级',
+   victory              int not null default 0,
+   defeat               int not null default 0,
+   draw                 int not null default 0,
+   primary key (iid)
+)
+engine =  innodb;
+
+/*==============================================================*/
+/* Index: index_1                                               */
+/*==============================================================*/
+create unique index index_1 on user_battle_info
+(
+   iid
+);
+
+/*==============================================================*/
+/* Index: index_2                                               */
+/*==============================================================*/
+create index index_2 on user_battle_info
+(
+   role_iid
+);
+
+/*==============================================================*/
+/* Index: index_3                                               */
+/*==============================================================*/
+create unique index index_3 on user_battle_info
+(
+   role_iid,
+   levels
+);
+
+/*==============================================================*/
 /* Table: user_home                                             */
 /*==============================================================*/
 create table user_home
@@ -225,6 +272,7 @@ create table user_home
    reside_time          int default 0,
    last_residedate      datetime,
    ver_                 int unsigned not null default 1,
+   levels               int not null default 1 comment '基地等级',
    primary key (role_iid)
 )
 engine =  innodb;
@@ -249,6 +297,7 @@ create table user_home_structure
    look_at              varchar(64),
    building_pos         varchar(32),
    ver_                 int unsigned not null default 1,
+   levels               int not null default 1 comment '等级',
    primary key (building_iid)
 )
 engine =  innodb;
@@ -503,14 +552,14 @@ delimiter //
 create procedure get_role_data(in uid bigint)
 begin 
     
-    select ver_,role_iid,user_iid,nickname,from_unixtime(registime) from role_baseinfo where role_iid=uid;
-    select ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,from_unixtime(last_residedate) from user_home where role_iid=uid;
-    select ver_,building_iid,home_iid,parent_building,building_resid,look_at,building_pos from user_home_structure where home_iid=uid;
-    select ver_,mypet_iid,role_iid,pet_iid,pet_age,from_unixtime(birthday) from user_pets where role_iid=uid;
-    select gstate,ver_,iid,role_iid,task_group,group_cell,cell_data,trigg_level,from_unixtime(createtime),from_unixtime(endtime) 
+    select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where role_iid=uid;
+    select ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,unix_timestamp(last_residedate),levels from user_home where role_iid=uid;
+    select ver_,building_iid,home_iid,parent_building,building_resid,look_at,building_pos,levels from user_home_structure where home_iid=uid;
+    select ver_,mypet_iid,role_iid,pet_iid,pet_age,unix_timestamp(birthday) from user_pets where role_iid=uid;
+    select gstate,ver_,iid,role_iid,task_group,group_cell,cell_data,trigg_level,unix_timestamp(createtime),unix_timestamp(endtime) 
         from user_taskgroup where role_iid=uid order by gstate asc, iid desc;
     select qstate,ver_,iid,role_iid,task_iid,my_taskgroup,task_group,accept_level,cycle_task,cycle_num,
-        from_unixtime(createtime),from_unixtime(firstupdatetime),from_unixtime(lastupdatetime),task_datas,source_iid
+        unix_timestamp(createtime),unix_timestamp(firstupdatetime),unix_timestamp(lastupdatetime),task_datas,source_iid
         from user_taskinfo where role_iid = uid order by qstate asc, iid desc;
 end
 //

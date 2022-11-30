@@ -89,6 +89,7 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 	rdv->pexpire(key.c_str(), REDIS_USER_LIFETIME);
 
 	//user
+	GLoc3D defpos = GLoc3D::zero_point();
 	key = rdv->build_rediskey(rdkey::user::USER_USERINFO, uid);
 	rdv->set_hashmember(key.c_str(), {
 		std::make_pair(rdkey::user::USER_UINFO_F_USERID, std::to_string(uid).c_str()),
@@ -97,6 +98,8 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GAMEID, std::to_string(head.gameid_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GAMELOC, defpos.to_string().c_str()),
 	});
 
 	//Çå³þrelogin±ê¼Ç
@@ -119,7 +122,7 @@ void StateService::redis_save_userinfo(RedisClient* rdv, const SProtocolHead& he
 	}
 }
 
-void StateService::redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, S_INT_64 gameid)
+void StateService::redis_update_onlinestate(RedisClient* rdv, const SProtocolHead& head, const GLoc3D& pos)
 {
 	if (rdv == 0)
 		rdv = svrApp.get_redisclient();
@@ -131,7 +134,8 @@ void StateService::redis_update_onlinestate(RedisClient* rdv, const SProtocolHea
 		std::make_pair(rdkey::user::USER_UINFO_F_GIDUID, std::to_string(head.token_giduid_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_SLOTTOKEN, std::to_string(head.token_slottoken_).c_str()),
 		std::make_pair(rdkey::user::USER_UINFO_F_ROLEID, std::to_string(head.role_iid_).c_str()),
-		std::make_pair(rdkey::user::USER_UINFO_F_GAMEID, std::to_string(gameid).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GAMEID, std::to_string(head.gameid_).c_str()),
+		std::make_pair(rdkey::user::USER_UINFO_F_GAMELOC, pos.to_string().c_str()),
 		});
 
 	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
@@ -189,7 +193,7 @@ void StateService::redis_gatelost_ntf(RedisClient* rdv, S_INT_64 userid, S_INT_6
 }
 
 bool StateService::redis_user_relogin_check(RedisClient* rdv, SProtocolHead& head, S_INT_64 userid, 
-	S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid)
+	S_INT_64& ntoken, S_INT_64& roleid, S_INT_64& gameid, GLoc3D& pos)
 {
 	if (rdv == 0)
 		rdv = svrApp.get_redisclient();
@@ -243,7 +247,13 @@ bool StateService::redis_user_relogin_check(RedisClient* rdv, SProtocolHead& hea
 	else
 		gameid = ShareUtil::atoi64(fiter->second.c_str());
 
-	logDebug(out_runtime, "relogin user:[%lld] success, roleid:%lld gameid:%lld", userid, roleid, gameid);
+	fiter = datas.find(rdkey::user::USER_UINFO_F_GAMELOC);
+	if (fiter == datas.end())
+		pos = GLoc3D::zero_point();
+	else
+		GLoc3D::build_from_str(fiter->second, pos);
+
+	logDebug(out_runtime, "relogin user:[%lld] success, roleid:%lld gameid:%lld loc:%s", userid, roleid, gameid, pos.to_string().c_str());
 
 	return true;
 }

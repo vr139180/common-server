@@ -367,6 +367,11 @@ void FightRouterApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 	datarouter_link_mth_.on_linkto_disconnected(plink);
 }
 
+void FightRouterApp::do_gameservice_bind_region(GameServiceLinkFrom* plink, S_INT_32 regionid)
+{
+	game_links_from_.bind_to_region(plink, regionid);
+}
+
 void FightRouterApp::router_to_game(NetProtocol* pro)
 {
 	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
@@ -374,8 +379,17 @@ void FightRouterApp::router_to_game(NetProtocol* pro)
 		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
 		pro->get_msg());
 
-	GameServiceLinkFrom* plink = game_links_from_.get_servicelink_random();
-	plink->send_protocol(pro);
+	game_links_from_.dispath_to_game(pro);
+}
+
+void FightRouterApp::router_to_game_from_othsvr(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	game_links_from_.dispatch_to_game_from_othsvr(pro);
 }
 
 void FightRouterApp::router_to_gate(NetProtocol* pro)
@@ -391,4 +405,14 @@ void FightRouterApp::router_to_gate(NetProtocol* pro)
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateid);
 	if (plink)
 		plink->send_protocol(ptr.release());
+}
+
+void FightRouterApp::router_to_home(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_HOME, pro);
 }

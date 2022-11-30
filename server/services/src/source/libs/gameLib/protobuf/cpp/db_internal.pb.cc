@@ -17,6 +17,20 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace PRO {
+constexpr Location3D::Location3D(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : x_(0)
+  , y_(0)
+  , z_(0){}
+struct Location3DDefaultTypeInternal {
+  constexpr Location3DDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Location3DDefaultTypeInternal() {}
+  union {
+    Location3D _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Location3DDefaultTypeInternal _Location3D_default_instance_;
 constexpr DBRowDel::DBRowDel(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : id_(int64_t{0})
@@ -45,6 +59,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DBRowDeletesDefaultTypeInternal
 constexpr DBRoleBaseInfo::DBRoleBaseInfo(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : nickname_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , loc_(nullptr)
   , role_iid_(int64_t{0})
   , user_iid_(int64_t{0})
   , ver__(0u)
@@ -371,11 +386,20 @@ struct DBUserBattlesDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DBUserBattlesDefaultTypeInternal _DBUserBattles_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_db_5finternal_2eproto[24];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_db_5finternal_2eproto[25];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_db_5finternal_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_db_5finternal_2eproto = nullptr;
 
 const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::Location3D, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Location3D, x_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Location3D, y_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Location3D, z_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::DBRowDel, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -403,6 +427,7 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, nickname_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, registime_),
   PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, levels_),
+  PROTOBUF_FIELD_OFFSET(::PRO::DBRoleBaseInfo, loc_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserRoles, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -619,33 +644,35 @@ const uint32_t TableStruct_db_5finternal_2eproto::offsets[] PROTOBUF_SECTION_VAR
   PROTOBUF_FIELD_OFFSET(::PRO::DBUserBattles, infos_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::PRO::DBRowDel)},
-  { 8, -1, -1, sizeof(::PRO::DBRowDeletes)},
-  { 15, -1, -1, sizeof(::PRO::DBRoleBaseInfo)},
-  { 27, -1, -1, sizeof(::PRO::DBUserRoles)},
-  { 34, -1, -1, sizeof(::PRO::DBUserHome)},
-  { 49, -1, -1, sizeof(::PRO::DBUserHomeStructureItem)},
-  { 63, -1, -1, sizeof(::PRO::DBUserHomeStructure)},
-  { 70, -1, -1, sizeof(::PRO::DBPetCategory)},
-  { 81, -1, -1, sizeof(::PRO::DBUserPetItem)},
-  { 93, -1, -1, sizeof(::PRO::DBUserPets)},
-  { 100, 108, -1, sizeof(::PRO::DBTaskAttrData_DatasEntry_DoNotUse)},
-  { 110, -1, -1, sizeof(::PRO::DBTaskAttrData)},
-  { 117, -1, -1, sizeof(::PRO::DBUserTaskItem)},
-  { 138, -1, -1, sizeof(::PRO::DBUserTasks)},
-  { 145, -1, -1, sizeof(::PRO::DBUserTaskEndItem)},
-  { 156, -1, -1, sizeof(::PRO::DBUserTaskEnds)},
-  { 163, 171, -1, sizeof(::PRO::DBTaskGAttrData_DatasEntry_DoNotUse)},
-  { 173, -1, -1, sizeof(::PRO::DBTaskGAttrData)},
-  { 180, -1, -1, sizeof(::PRO::DBUserTaskGroup)},
-  { 196, -1, -1, sizeof(::PRO::DBUserTaskGroups)},
-  { 203, -1, -1, sizeof(::PRO::DBUserTaskGroupEnd)},
-  { 214, -1, -1, sizeof(::PRO::DBUserTaskGroupEnds)},
-  { 221, -1, -1, sizeof(::PRO::DBUserBattleInfo)},
-  { 234, -1, -1, sizeof(::PRO::DBUserBattles)},
+  { 0, -1, -1, sizeof(::PRO::Location3D)},
+  { 9, -1, -1, sizeof(::PRO::DBRowDel)},
+  { 17, -1, -1, sizeof(::PRO::DBRowDeletes)},
+  { 24, -1, -1, sizeof(::PRO::DBRoleBaseInfo)},
+  { 37, -1, -1, sizeof(::PRO::DBUserRoles)},
+  { 44, -1, -1, sizeof(::PRO::DBUserHome)},
+  { 59, -1, -1, sizeof(::PRO::DBUserHomeStructureItem)},
+  { 73, -1, -1, sizeof(::PRO::DBUserHomeStructure)},
+  { 80, -1, -1, sizeof(::PRO::DBPetCategory)},
+  { 91, -1, -1, sizeof(::PRO::DBUserPetItem)},
+  { 103, -1, -1, sizeof(::PRO::DBUserPets)},
+  { 110, 118, -1, sizeof(::PRO::DBTaskAttrData_DatasEntry_DoNotUse)},
+  { 120, -1, -1, sizeof(::PRO::DBTaskAttrData)},
+  { 127, -1, -1, sizeof(::PRO::DBUserTaskItem)},
+  { 148, -1, -1, sizeof(::PRO::DBUserTasks)},
+  { 155, -1, -1, sizeof(::PRO::DBUserTaskEndItem)},
+  { 166, -1, -1, sizeof(::PRO::DBUserTaskEnds)},
+  { 173, 181, -1, sizeof(::PRO::DBTaskGAttrData_DatasEntry_DoNotUse)},
+  { 183, -1, -1, sizeof(::PRO::DBTaskGAttrData)},
+  { 190, -1, -1, sizeof(::PRO::DBUserTaskGroup)},
+  { 206, -1, -1, sizeof(::PRO::DBUserTaskGroups)},
+  { 213, -1, -1, sizeof(::PRO::DBUserTaskGroupEnd)},
+  { 224, -1, -1, sizeof(::PRO::DBUserTaskGroupEnds)},
+  { 231, -1, -1, sizeof(::PRO::DBUserBattleInfo)},
+  { 244, -1, -1, sizeof(::PRO::DBUserBattles)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Location3D_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBRowDel_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBRowDeletes_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_DBRoleBaseInfo_default_instance_),
@@ -673,74 +700,75 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_db_5finternal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\021db_internal.proto\022\003PRO\"$\n\010DBRowDel\022\014\n\004"
-  "ver_\030\001 \001(\r\022\n\n\002id\030\002 \001(\003\"+\n\014DBRowDeletes\022\033"
-  "\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"w\n\016DBRoleBas"
-  "eInfo\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002 \001(\003\022\020\n"
-  "\010user_iid\030\003 \001(\003\022\020\n\010nickname\030\004 \001(\t\022\021\n\treg"
-  "istime\030\005 \001(\005\022\016\n\006levels\030\006 \001(\005\"1\n\013DBUserRo"
-  "les\022\"\n\005roles\030\001 \003(\0132\023.PRO.DBRoleBaseInfo\""
-  "\265\001\n\nDBUserHome\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid"
-  "\030\002 \001(\003\022\021\n\thome_name\030\003 \001(\t\022\024\n\014ground_resi"
-  "d\030\004 \001(\003\022\017\n\007look_at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001("
-  "\t\022\023\n\013reside_time\030\007 \001(\005\022\027\n\017last_residedat"
-  "e\030\010 \001(\005\022\016\n\006levels\030\t \001(\005\"\267\001\n\027DBUserHomeSt"
-  "ructureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014building_ii"
-  "d\030\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017parent_buil"
-  "ding\030\004 \001(\003\022\026\n\016building_resid\030\005 \001(\003\022\017\n\007lo"
-  "ok_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001(\t\022\016\n\006lev"
-  "els\030\010 \001(\005\"B\n\023DBUserHomeStructure\022+\n\005item"
-  "s\030\001 \003(\0132\034.PRO.DBUserHomeStructureItem\"h\n"
-  "\rDBPetCategory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_t"
-  "ype\030\003 \001(\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030"
-  "\005 \001(\005\022\020\n\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem"
-  "\022\014\n\004ver_\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010rol"
-  "e_iid\030\003 \001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030"
-  "\005 \001(\005\022\020\n\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n"
-  "\004pets\030\001 \003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTas"
-  "kAttrData\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAtt"
-  "rData.DatasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 "
-  "\001(\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskIte"
-  "m\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid"
-  "\030\003 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup"
-  "\030\005 \001(\003\022\022\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001"
-  "(\005\022\024\n\014accept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t"
-  " \001(\010\022\021\n\tcycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 "
-  "\001(\005\022\027\n\017firstupdatetime\030\014 \001(\005\022\026\n\016lastupda"
-  "tetime\030\r \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.D"
-  "BTaskAttrData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBU"
-  "serTasks\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTask"
-  "Item\"h\n\021DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022"
-  "\013\n\003iid\030\002 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate"
-  "\030\007 \001(\005\022\026\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUser"
-  "TaskEnds\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTask"
-  "EndItem\"o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003("
-  "\0132\037.PRO.DBTaskGAttrData.DatasEntry\032,\n\nDa"
-  "tasEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001"
-  "\"\331\001\n\017DBUserTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii"
-  "d\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030"
-  "\004 \001(\005\022\022\n\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006"
-  " \001(\0132\024.PRO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001"
-  "(\005\022\023\n\013trigg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t "
-  "\001(\005\022\017\n\007endtime\030\n \001(\005\"8\n\020DBUserTaskGroups"
-  "\022$\n\006groups\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d"
-  "\n\022DBUserTaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003ii"
-  "d\030\002 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 "
-  "\001(\005\022\017\n\007endtime\030\n \001(\005\">\n\023DBUserTaskGroupE"
-  "nds\022\'\n\006groups\030\001 \003(\0132\027.PRO.DBUserTaskGrou"
-  "pEnd\"~\n\020DBUserBattleInfo\022\014\n\004ver_\030\001 \001(\r\022\013"
-  "\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\016\n\006levels\030"
-  "\004 \001(\005\022\017\n\007victory\030\005 \001(\005\022\016\n\006defeat\030\006 \001(\005\022\014"
-  "\n\004draw\030\007 \001(\005\"5\n\rDBUserBattles\022$\n\005infos\030\001"
-  " \003(\0132\025.PRO.DBUserBattleInfoBT\n\033com.cms.c"
-  "lient.network.gproP\001Z\025gamelib/protobuf/g"
-  "pro\252\002\033com.cms.client.network.gprob\006proto"
-  "3"
+  "\n\021db_internal.proto\022\003PRO\"-\n\nLocation3D\022\t"
+  "\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\"$\n\010DBRow"
+  "Del\022\014\n\004ver_\030\001 \001(\r\022\n\n\002id\030\002 \001(\003\"+\n\014DBRowDe"
+  "letes\022\033\n\004dels\030\001 \003(\0132\r.PRO.DBRowDel\"\225\001\n\016D"
+  "BRoleBaseInfo\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030"
+  "\002 \001(\003\022\020\n\010user_iid\030\003 \001(\003\022\020\n\010nickname\030\004 \001("
+  "\t\022\021\n\tregistime\030\005 \001(\005\022\016\n\006levels\030\006 \001(\005\022\034\n\003"
+  "loc\030\007 \001(\0132\017.PRO.Location3D\"1\n\013DBUserRole"
+  "s\022\"\n\005roles\030\001 \003(\0132\023.PRO.DBRoleBaseInfo\"\265\001"
+  "\n\nDBUserHome\022\014\n\004ver_\030\001 \001(\r\022\020\n\010role_iid\030\002"
+  " \001(\003\022\021\n\thome_name\030\003 \001(\t\022\024\n\014ground_resid\030"
+  "\004 \001(\003\022\017\n\007look_at\030\005 \001(\t\022\017\n\007geo_pos\030\006 \001(\t\022"
+  "\023\n\013reside_time\030\007 \001(\005\022\027\n\017last_residedate\030"
+  "\010 \001(\005\022\016\n\006levels\030\t \001(\005\"\267\001\n\027DBUserHomeStru"
+  "ctureItem\022\014\n\004ver_\030\001 \001(\r\022\024\n\014building_iid\030"
+  "\002 \001(\003\022\020\n\010home_iid\030\003 \001(\003\022\027\n\017parent_buildi"
+  "ng\030\004 \001(\003\022\026\n\016building_resid\030\005 \001(\003\022\017\n\007look"
+  "_at\030\006 \001(\t\022\024\n\014building_pos\030\007 \001(\t\022\016\n\006level"
+  "s\030\010 \001(\005\"B\n\023DBUserHomeStructure\022+\n\005items\030"
+  "\001 \003(\0132\034.PRO.DBUserHomeStructureItem\"h\n\rD"
+  "BPetCategory\022\017\n\007pet_iid\030\002 \001(\003\022\020\n\010pet_typ"
+  "e\030\003 \001(\005\022\021\n\tpet_resid\030\004 \001(\003\022\017\n\007pet_sex\030\005 "
+  "\001(\005\022\020\n\010pet_name\030\006 \001(\t\"v\n\rDBUserPetItem\022\014"
+  "\n\004ver_\030\001 \001(\r\022\021\n\tmypet_iid\030\002 \001(\003\022\020\n\010role_"
+  "iid\030\003 \001(\003\022\017\n\007pet_iid\030\004 \001(\003\022\017\n\007pet_age\030\005 "
+  "\001(\005\022\020\n\010birthday\030\006 \001(\005\".\n\nDBUserPets\022 \n\004p"
+  "ets\030\001 \003(\0132\022.PRO.DBUserPetItem\"m\n\016DBTaskA"
+  "ttrData\022-\n\005datas\030\001 \003(\0132\036.PRO.DBTaskAttrD"
+  "ata.DatasEntry\032,\n\nDatasEntry\022\013\n\003key\030\001 \001("
+  "\t\022\r\n\005value\030\002 \001(\003:\0028\001\"\310\002\n\016DBUserTaskItem\022"
+  "\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030\002 \001(\003\022\020\n\010role_iid\030\003"
+  " \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\024\n\014my_taskgroup\030\005"
+  " \001(\003\022\022\n\ntask_group\030\006 \001(\005\022\016\n\006qstate\030\007 \001(\005"
+  "\022\024\n\014accept_level\030\010 \001(\005\022\022\n\ncycle_task\030\t \001"
+  "(\010\022\021\n\tcycle_num\030\n \001(\005\022\022\n\ncreatetime\030\013 \001("
+  "\005\022\027\n\017firstupdatetime\030\014 \001(\005\022\026\n\016lastupdate"
+  "time\030\r \001(\005\022\'\n\ntask_datas\030\016 \001(\0132\023.PRO.DBT"
+  "askAttrData\022\022\n\nsource_iid\030\017 \001(\t\"1\n\013DBUse"
+  "rTasks\022\"\n\005items\030\001 \003(\0132\023.PRO.DBUserTaskIt"
+  "em\"h\n\021DBUserTaskEndItem\022\014\n\004ver_\030\001 \001(\r\022\013\n"
+  "\003iid\030\002 \001(\003\022\020\n\010task_iid\030\004 \001(\005\022\016\n\006qstate\030\007"
+  " \001(\005\022\026\n\016lastupdatetime\030\r \001(\005\"7\n\016DBUserTa"
+  "skEnds\022%\n\005items\030\001 \003(\0132\026.PRO.DBUserTaskEn"
+  "dItem\"o\n\017DBTaskGAttrData\022.\n\005datas\030\001 \003(\0132"
+  "\037.PRO.DBTaskGAttrData.DatasEntry\032,\n\nData"
+  "sEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"\331"
+  "\001\n\017DBUserTaskGroup\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030"
+  "\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\022\n\ntask_group\030\004 "
+  "\001(\005\022\022\n\ngroup_cell\030\005 \001(\005\022\'\n\tcell_data\030\006 \001"
+  "(\0132\024.PRO.DBTaskGAttrData\022\016\n\006gstate\030\007 \001(\005"
+  "\022\023\n\013trigg_level\030\010 \001(\005\022\022\n\ncreatetime\030\t \001("
+  "\005\022\017\n\007endtime\030\n \001(\005\"8\n\020DBUserTaskGroups\022$"
+  "\n\006groups\030\001 \003(\0132\024.PRO.DBUserTaskGroup\"d\n\022"
+  "DBUserTaskGroupEnd\022\014\n\004ver_\030\001 \001(\r\022\013\n\003iid\030"
+  "\002 \001(\003\022\022\n\ntask_group\030\004 \001(\005\022\016\n\006gstate\030\007 \001("
+  "\005\022\017\n\007endtime\030\n \001(\005\">\n\023DBUserTaskGroupEnd"
+  "s\022\'\n\006groups\030\001 \003(\0132\027.PRO.DBUserTaskGroupE"
+  "nd\"~\n\020DBUserBattleInfo\022\014\n\004ver_\030\001 \001(\r\022\013\n\003"
+  "iid\030\002 \001(\003\022\020\n\010role_iid\030\003 \001(\003\022\016\n\006levels\030\004 "
+  "\001(\005\022\017\n\007victory\030\005 \001(\005\022\016\n\006defeat\030\006 \001(\005\022\014\n\004"
+  "draw\030\007 \001(\005\"5\n\rDBUserBattles\022$\n\005infos\030\001 \003"
+  "(\0132\025.PRO.DBUserBattleInfoBT\n\033com.cms.cli"
+  "ent.network.gproP\001Z\025gamelib/protobuf/gpr"
+  "o\252\002\033com.cms.client.network.gprob\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_db_5finternal_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_db_5finternal_2eproto = {
-  false, false, 2481, descriptor_table_protodef_db_5finternal_2eproto, "db_internal.proto", 
-  &descriptor_table_db_5finternal_2eproto_once, nullptr, 0, 24,
+  false, false, 2559, descriptor_table_protodef_db_5finternal_2eproto, "db_internal.proto", 
+  &descriptor_table_db_5finternal_2eproto_once, nullptr, 0, 25,
   schemas, file_default_instances, TableStruct_db_5finternal_2eproto::offsets,
   file_level_metadata_db_5finternal_2eproto, file_level_enum_descriptors_db_5finternal_2eproto, file_level_service_descriptors_db_5finternal_2eproto,
 };
@@ -751,6 +779,276 @@ PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_db_5finternal_2eproto(&descriptor_table_db_5finternal_2eproto);
 namespace PRO {
+
+// ===================================================================
+
+class Location3D::_Internal {
+ public:
+};
+
+Location3D::Location3D(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Location3D)
+}
+Location3D::Location3D(const Location3D& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&x_, &from.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  // @@protoc_insertion_point(copy_constructor:PRO.Location3D)
+}
+
+inline void Location3D::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+}
+
+Location3D::~Location3D() {
+  // @@protoc_insertion_point(destructor:PRO.Location3D)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Location3D::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Location3D::ArenaDtor(void* object) {
+  Location3D* _this = reinterpret_cast< Location3D* >(object);
+  (void)_this;
+}
+void Location3D::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Location3D::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Location3D::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Location3D)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Location3D::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float x = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Location3D::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Location3D)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+  }
+
+  // float y = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+  }
+
+  // float z = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Location3D)
+  return target;
+}
+
+size_t Location3D::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Location3D)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float x = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = this->_internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float y = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = this->_internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float z = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = this->_internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Location3D::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Location3D::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Location3D::GetClassData() const { return &_class_data_; }
+
+void Location3D::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Location3D *>(to)->MergeFrom(
+      static_cast<const Location3D &>(from));
+}
+
+
+void Location3D::MergeFrom(const Location3D& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Location3D)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_x = from._internal_x();
+  uint32_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_y = from._internal_y();
+  uint32_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _internal_set_y(from._internal_y());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_z = from._internal_z();
+  uint32_t raw_z;
+  memcpy(&raw_z, &tmp_z, sizeof(tmp_z));
+  if (raw_z != 0) {
+    _internal_set_z(from._internal_z());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Location3D::CopyFrom(const Location3D& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Location3D)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Location3D::IsInitialized() const {
+  return true;
+}
+
+void Location3D::InternalSwap(Location3D* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Location3D, z_)
+      + sizeof(Location3D::z_)
+      - PROTOBUF_FIELD_OFFSET(Location3D, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Location3D::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
+      file_level_metadata_db_5finternal_2eproto[0]);
+}
 
 // ===================================================================
 
@@ -961,7 +1259,7 @@ void DBRowDel::InternalSwap(DBRowDel* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBRowDel::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[0]);
+      file_level_metadata_db_5finternal_2eproto[1]);
 }
 
 // ===================================================================
@@ -1146,15 +1444,20 @@ void DBRowDeletes::InternalSwap(DBRowDeletes* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBRowDeletes::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[1]);
+      file_level_metadata_db_5finternal_2eproto[2]);
 }
 
 // ===================================================================
 
 class DBRoleBaseInfo::_Internal {
  public:
+  static const ::PRO::Location3D& loc(const DBRoleBaseInfo* msg);
 };
 
+const ::PRO::Location3D&
+DBRoleBaseInfo::_Internal::loc(const DBRoleBaseInfo* msg) {
+  return *msg->loc_;
+}
 DBRoleBaseInfo::DBRoleBaseInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -1175,6 +1478,11 @@ DBRoleBaseInfo::DBRoleBaseInfo(const DBRoleBaseInfo& from)
     nickname_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_nickname(), 
       GetArenaForAllocation());
   }
+  if (from._internal_has_loc()) {
+    loc_ = new ::PRO::Location3D(*from.loc_);
+  } else {
+    loc_ = nullptr;
+  }
   ::memcpy(&role_iid_, &from.role_iid_,
     static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
     reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
@@ -1187,9 +1495,9 @@ nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlr
   nickname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&role_iid_) - reinterpret_cast<char*>(this)),
+    reinterpret_cast<char*>(&loc_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&levels_) -
-    reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
+    reinterpret_cast<char*>(&loc_)) + sizeof(levels_));
 }
 
 DBRoleBaseInfo::~DBRoleBaseInfo() {
@@ -1202,6 +1510,7 @@ DBRoleBaseInfo::~DBRoleBaseInfo() {
 inline void DBRoleBaseInfo::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete loc_;
 }
 
 void DBRoleBaseInfo::ArenaDtor(void* object) {
@@ -1221,6 +1530,10 @@ void DBRoleBaseInfo::Clear() {
   (void) cached_has_bits;
 
   nickname_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && loc_ != nullptr) {
+    delete loc_;
+  }
+  loc_ = nullptr;
   ::memset(&role_iid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&levels_) -
       reinterpret_cast<char*>(&role_iid_)) + sizeof(levels_));
@@ -1279,6 +1592,14 @@ const char* DBRoleBaseInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           levels_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .PRO.Location3D loc = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          ptr = ctx->ParseMessage(_internal_mutable_loc(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1352,6 +1673,14 @@ uint8_t* DBRoleBaseInfo::_InternalSerialize(
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_levels(), target);
   }
 
+  // .PRO.Location3D loc = 7;
+  if (this->_internal_has_loc()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        7, _Internal::loc(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1373,6 +1702,13 @@ size_t DBRoleBaseInfo::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_nickname());
+  }
+
+  // .PRO.Location3D loc = 7;
+  if (this->_internal_has_loc()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *loc_);
   }
 
   // int64 role_iid = 2;
@@ -1425,6 +1761,9 @@ void DBRoleBaseInfo::MergeFrom(const DBRoleBaseInfo& from) {
   if (!from._internal_nickname().empty()) {
     _internal_set_nickname(from._internal_nickname());
   }
+  if (from._internal_has_loc()) {
+    _internal_mutable_loc()->::PRO::Location3D::MergeFrom(from._internal_loc());
+  }
   if (from._internal_role_iid() != 0) {
     _internal_set_role_iid(from._internal_role_iid());
   }
@@ -1467,15 +1806,15 @@ void DBRoleBaseInfo::InternalSwap(DBRoleBaseInfo* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, levels_)
       + sizeof(DBRoleBaseInfo::levels_)
-      - PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, role_iid_)>(
-          reinterpret_cast<char*>(&role_iid_),
-          reinterpret_cast<char*>(&other->role_iid_));
+      - PROTOBUF_FIELD_OFFSET(DBRoleBaseInfo, loc_)>(
+          reinterpret_cast<char*>(&loc_),
+          reinterpret_cast<char*>(&other->loc_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata DBRoleBaseInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[2]);
+      file_level_metadata_db_5finternal_2eproto[3]);
 }
 
 // ===================================================================
@@ -1660,7 +1999,7 @@ void DBUserRoles::InternalSwap(DBUserRoles* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserRoles::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[3]);
+      file_level_metadata_db_5finternal_2eproto[4]);
 }
 
 // ===================================================================
@@ -2109,7 +2448,7 @@ void DBUserHome::InternalSwap(DBUserHome* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserHome::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[4]);
+      file_level_metadata_db_5finternal_2eproto[5]);
 }
 
 // ===================================================================
@@ -2509,7 +2848,7 @@ void DBUserHomeStructureItem::InternalSwap(DBUserHomeStructureItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserHomeStructureItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[5]);
+      file_level_metadata_db_5finternal_2eproto[6]);
 }
 
 // ===================================================================
@@ -2694,7 +3033,7 @@ void DBUserHomeStructure::InternalSwap(DBUserHomeStructure* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserHomeStructure::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[6]);
+      file_level_metadata_db_5finternal_2eproto[7]);
 }
 
 // ===================================================================
@@ -3001,7 +3340,7 @@ void DBPetCategory::InternalSwap(DBPetCategory* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBPetCategory::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[7]);
+      file_level_metadata_db_5finternal_2eproto[8]);
 }
 
 // ===================================================================
@@ -3301,7 +3640,7 @@ void DBUserPetItem::InternalSwap(DBUserPetItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserPetItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[8]);
+      file_level_metadata_db_5finternal_2eproto[9]);
 }
 
 // ===================================================================
@@ -3486,7 +3825,7 @@ void DBUserPets::InternalSwap(DBUserPets* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserPets::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[9]);
+      file_level_metadata_db_5finternal_2eproto[10]);
 }
 
 // ===================================================================
@@ -3500,7 +3839,7 @@ void DBTaskAttrData_DatasEntry_DoNotUse::MergeFrom(const DBTaskAttrData_DatasEnt
 ::PROTOBUF_NAMESPACE_ID::Metadata DBTaskAttrData_DatasEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[10]);
+      file_level_metadata_db_5finternal_2eproto[11]);
 }
 
 // ===================================================================
@@ -3725,7 +4064,7 @@ void DBTaskAttrData::InternalSwap(DBTaskAttrData* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBTaskAttrData::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[11]);
+      file_level_metadata_db_5finternal_2eproto[12]);
 }
 
 // ===================================================================
@@ -4271,7 +4610,7 @@ void DBUserTaskItem::InternalSwap(DBUserTaskItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[12]);
+      file_level_metadata_db_5finternal_2eproto[13]);
 }
 
 // ===================================================================
@@ -4456,7 +4795,7 @@ void DBUserTasks::InternalSwap(DBUserTasks* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTasks::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[13]);
+      file_level_metadata_db_5finternal_2eproto[14]);
 }
 
 // ===================================================================
@@ -4734,7 +5073,7 @@ void DBUserTaskEndItem::InternalSwap(DBUserTaskEndItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskEndItem::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[14]);
+      file_level_metadata_db_5finternal_2eproto[15]);
 }
 
 // ===================================================================
@@ -4919,7 +5258,7 @@ void DBUserTaskEnds::InternalSwap(DBUserTaskEnds* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskEnds::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[15]);
+      file_level_metadata_db_5finternal_2eproto[16]);
 }
 
 // ===================================================================
@@ -4933,7 +5272,7 @@ void DBTaskGAttrData_DatasEntry_DoNotUse::MergeFrom(const DBTaskGAttrData_DatasE
 ::PROTOBUF_NAMESPACE_ID::Metadata DBTaskGAttrData_DatasEntry_DoNotUse::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[16]);
+      file_level_metadata_db_5finternal_2eproto[17]);
 }
 
 // ===================================================================
@@ -5147,7 +5486,7 @@ void DBTaskGAttrData::InternalSwap(DBTaskGAttrData* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBTaskGAttrData::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[17]);
+      file_level_metadata_db_5finternal_2eproto[18]);
 }
 
 // ===================================================================
@@ -5554,7 +5893,7 @@ void DBUserTaskGroup::InternalSwap(DBUserTaskGroup* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskGroup::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[18]);
+      file_level_metadata_db_5finternal_2eproto[19]);
 }
 
 // ===================================================================
@@ -5739,7 +6078,7 @@ void DBUserTaskGroups::InternalSwap(DBUserTaskGroups* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskGroups::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[19]);
+      file_level_metadata_db_5finternal_2eproto[20]);
 }
 
 // ===================================================================
@@ -6017,7 +6356,7 @@ void DBUserTaskGroupEnd::InternalSwap(DBUserTaskGroupEnd* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskGroupEnd::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[20]);
+      file_level_metadata_db_5finternal_2eproto[21]);
 }
 
 // ===================================================================
@@ -6202,7 +6541,7 @@ void DBUserTaskGroupEnds::InternalSwap(DBUserTaskGroupEnds* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserTaskGroupEnds::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[21]);
+      file_level_metadata_db_5finternal_2eproto[22]);
 }
 
 // ===================================================================
@@ -6524,7 +6863,7 @@ void DBUserBattleInfo::InternalSwap(DBUserBattleInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserBattleInfo::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[22]);
+      file_level_metadata_db_5finternal_2eproto[23]);
 }
 
 // ===================================================================
@@ -6709,12 +7048,15 @@ void DBUserBattles::InternalSwap(DBUserBattles* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DBUserBattles::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_db_5finternal_2eproto_getter, &descriptor_table_db_5finternal_2eproto_once,
-      file_level_metadata_db_5finternal_2eproto[23]);
+      file_level_metadata_db_5finternal_2eproto[24]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::PRO::Location3D* Arena::CreateMaybeMessage< ::PRO::Location3D >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Location3D >(arena);
+}
 template<> PROTOBUF_NOINLINE ::PRO::DBRowDel* Arena::CreateMaybeMessage< ::PRO::DBRowDel >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::DBRowDel >(arena);
 }

@@ -19,6 +19,7 @@
 #include <cmsLib/util/ShareUtil.h>
 
 #include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/protobuf/ProtoUtil.h>
 #include <gameLib/LogExt.h>
 
 #include "GateServiceApp.h"
@@ -29,6 +30,7 @@ void GamePlayer::init(int s)
 	this->cur_state_ = PlayerState::PlayerState_Free;
 	this->role_iid_ = 0;
 	this->user_iid_ = 0;
+	this->game_loc_ = GLoc3D::zero_point();
 	this->game_iid_ = 0;
 }
 
@@ -66,6 +68,8 @@ void GamePlayer::pre_start(S_INT_64 gateid)
 	cur_state_ = PlayerState::PlayerState_Free;
 	this->user_iid_ = 0;
 	this->role_iid_ = 0;
+	this->game_loc_ = GLoc3D::zero_point();
+	this->game_iid_ = 0;
 	this->start_timestamp_ = OSSystem::mOS->GetTimestamp();
 	b_trige_gatelost_ = true;
 }
@@ -78,11 +82,24 @@ void GamePlayer::auth( S_INT_64 uid, S_INT_64 token)
 	s_head_.set_token_token(token);
 }
 
-void GamePlayer::role_selected_done(S_INT_64 rid)
+void GamePlayer::role_selected_done(S_INT_64 rid, const GLoc3D& pos)
 {
 	cur_state_ = PlayerState::PlayerState_RoleReady;
 	role_iid_ = rid;
+	game_loc_ = pos;
 	s_head_.set_role_iid( role_iid_);
+
+	PRO::Game_EnterGame_req* req = new PRO::Game_EnterGame_req();
+	ProtoUtil::set_location_to_msg(req, game_loc_);
+	req->set_game_iid(game_iid_);
+
+	svrApp.send_to_fightrouter(PRO::ERK_SERVICE_GAME, req);
+}
+
+void GamePlayer::set_gameid(S_INT_64 gid)
+{
+	game_iid_ = gid;
+	s_head_.set_gameid(game_iid_);
 }
 
 void GamePlayer::send_netprotocol(BasicProtocol* msg)

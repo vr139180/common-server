@@ -77,7 +77,7 @@ protected:
 	void on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_roleselect_req(NetProtocol* pro, bool& autorelease);
 
-	void on_lb_querysimpleinfo_req(NetProtocol* pro, bool& autorelease);
+	void on_lb_mysimpleinfo_req(NetProtocol* pro, bool& autorelease);
 
 	void on_lb_build_additem_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_build_delitem_req(NetProtocol* pro, bool& autorelease);

@@ -107,9 +107,10 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 
 	RedisClient* rdv = svrApp.get_redisclient();
 	S_INT_64 roleid = 0, gameid = 0, userid = 0, newtoken = 0;
+	GLoc3D pos;
 	userid = req->user_iid();
 	newtoken = req->logintoken();
-	bool succ = redis_user_relogin_check( rdv, pro->head_, userid, newtoken, roleid, gameid);
+	bool succ = redis_user_relogin_check( rdv, pro->head_, userid, newtoken, roleid, gameid, pos);
 	
 	User_ReLogin_ack* ack = new User_ReLogin_ack();
 	ack->set_result(1);
@@ -120,6 +121,10 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 		ack->set_logintoken(newtoken);
 		ack->set_role_iid(roleid);
 		ack->set_gameid(gameid);
+		PRO::Location3D* xpos = ack->mutable_role_pos();
+		xpos->set_x(pos.x());
+		xpos->set_y(pos.y());
+		xpos->set_z(pos.z());
 	}
 
 	SProtocolHead head = pro->head_;
@@ -129,7 +134,13 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 void StateService::on_user_active_ntf(NetProtocol* pro, bool& autorelease)
 {
 	User_Active_ntf *ntf = dynamic_cast<User_Active_ntf*>(pro->msg_);
-	redis_update_onlinestate( 0, pro->head_, ntf->gameid());
+	const Location3D& xpos = ntf->role_pos();
+	GLoc3D pos;
+	pos.set_x(xpos.x());
+	pos.set_y(xpos.y());
+	pos.set_z(xpos.z());
+
+	redis_update_onlinestate( 0, pro->head_, pos);
 }
 
 void StateService::on_user_gatelost_ntf(NetProtocol* pro, bool& autorelease)

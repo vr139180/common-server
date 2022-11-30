@@ -299,7 +299,7 @@ void CommandTestImpl::on_rolelist_ack(BasicProtocol* pro, CString* pRetMsg)
 		for (int ii = 0; ii < ack->roles().roles_size(); ++ii)
 		{
 			const DBRoleBaseInfo& r = ack->roles().roles(ii);
-			str1.Format("role iid:%lld nickname:%s ver:%d \r\n", r.role_iid(), r.nickname().c_str(), r.ver_());
+			str1.Format("role iid:%lld nickname:%s ver:%d\r\n", r.role_iid(), r.nickname().c_str(), r.ver_());
 			*pRetMsg += str1;
 		}
 	}
@@ -331,13 +331,23 @@ void CommandTestImpl::on_roleselect_ack(BasicProtocol* pro, CString* pRetMsg)
 {
 	User_RoleSelect_ack *ack = dynamic_cast<User_RoleSelect_ack*>(pro);
 
-	CString str1;
-	str1.Format("选择角色 返回 result:%d roleid:%lld \r\n", ack->result(), ack->role_iid());
-	*pRetMsg += str1;
-
 	if (ack->result() == 0)
 	{
 		this->role_iid_ = ack->role_iid();
+		const Location3D& pos = ack->loc();
+		this->role_pos_.set_x(pos.x());
+		role_pos_.set_y(pos.y());
+		role_pos_.set_z(pos.z());
+
+		CString str1;
+		str1.Format("选择角色 返回 result:%d roleid:%lld pos:%s \r\n", ack->result(), ack->role_iid(), role_pos_.to_string().c_str());
+		*pRetMsg += str1;
+	}
+	else
+	{
+		CString str1;
+		str1.Format("选择角色 返回 result:%d roleid:%lld \r\n", ack->result(), ack->role_iid());
+		*pRetMsg += str1;
 	}
 }
 

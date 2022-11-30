@@ -23,7 +23,7 @@
 
 #include "FightRouterApp.h"
 
-GameServiceLinkFrom::GameServiceLinkFrom() :NetLinkFromBase<FightRouterSession>()
+GameServiceLinkFrom::GameServiceLinkFrom() :NetLinkFromBase<FightRouterSession>(), regionid_(0)
 {
 	this->init_protocolhead();
 }
@@ -63,8 +63,13 @@ void GameServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 		S_UINT_16 msgid = pro->get_msg();
 		if (msgid == PRO::ERK_PROTYPE::GSFR_GAMEREGIONREGIST_NTF)
 		{
-
+			PRO::GsFr_GameRegionRegist_ntf* ntf = dynamic_cast<PRO::GsFr_GameRegionRegist_ntf*>(pro->msg_);
+			svrApp.do_gameservice_bind_region(this, ntf->regionid());
 		}
+	}
+	else if (to == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	{
+		svrApp.router_to_home(p_msg.release());
 	}
 }
 

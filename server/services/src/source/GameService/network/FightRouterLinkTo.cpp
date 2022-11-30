@@ -18,6 +18,7 @@
 #include <cmsLib/system/CommandBase.h>
 
 #include <gameLib/LogExt.h>
+#include <worldsLib/GameRegionMeta.h>
 
 #include <GameServiceApp.h>
 
@@ -130,9 +131,18 @@ void FightRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 			boost::bind(&FightRouterLinkTo::on_authed, this, boost::placeholders::_1), success);
 		svrApp.regist_syscmd(cmd);
 	}
+	else if( msgid == PRO::GMS_PROTYPE::GMS_ENTERGAME_REQ)
+	{
+		PRO::Game_EnterGame_req* req = dynamic_cast<PRO::Game_EnterGame_req*>(pro->msg_);
+		S_INT_64 gameid = req->game_iid();
+		if (gameid > 0)
+			svrApp.dispatch_msg_to_channel(p_msg.release());
+		else
+			svrApp.assign_user_to_channel(p_msg.release());
+	}
 	else
 	{
-
+		svrApp.dispatch_msg_to_channel(p_msg.release());
 	}
 }
 
@@ -168,6 +178,12 @@ void FightRouterLinkTo::on_authed(bool success)
 
 		//sync your regist service
 		svrApp.on_fightrouter_regist_result(this);
+
+		//°ó¶¨µ½fightrouter
+		PRO::GsFr_GameRegionRegist_ntf* ntf = new PRO::GsFr_GameRegionRegist_ntf();
+		ntf->set_regionid(GameRegionMeta::instance().get_regionid());
+
+		send_netprotocol(PRO::ERK_SERVICE_FIGHTROUTER, ntf);
 	}
 	else
 	{

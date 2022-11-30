@@ -49,7 +49,8 @@ message User_ReLogin_ack{
   optional int64 user_iid = 2;
   optional int64 role_iid = 3;
   optional int64 gameid = 4;
-  optional int64 logintoken = 5;
+  optional Location3D role_pos = 5;
+  optional int64 logintoken = 6;
 }
 
 //user logout
@@ -67,7 +68,7 @@ message User_GateLost_ntf{
 //状态激活协议
 message User_Active_ntf{
   //最后的game服id
-  optional int64 gameid = 1;
+  optional Location3D role_pos = 1;
 }
 
 message User_RoleList_req{
@@ -95,6 +96,7 @@ message User_RoleSelect_ack{
   //0:成功 1:role不存在 2:角色已选择
   int32 result = 1;
   int64 role_iid = 2;
+  Location3D loc = 3;
 }
 
 //role detail info
@@ -112,12 +114,8 @@ message User_RoleDetailEnd_ntf{
 
 //获取角色基本信息
 message User_MySimpleInfo_req{
-  int64 gameid = 1;
 }
 
 message User_MySimpleInfo_ack{
-  int64 user_iid = 1;
-  int64 role_iid = 2;
-  int64 gameid = 3;
-  string nickname = 4;
+  string nickname = 1;
 }

@@ -48,6 +48,8 @@ REDIS_FIELD_DEF(USER_UINFO_F_GIDUID, "giduid");
 REDIS_FIELD_DEF(USER_UINFO_F_SLOTTOKEN, "slottoken");
 REDIS_FIELD_DEF(USER_UINFO_F_ROLEID, "roleid");
 REDIS_FIELD_DEF(USER_UINFO_F_GAMEID, "gameid");
+//缓存的loc位置
+REDIS_FIELD_DEF(USER_UINFO_F_GAMELOC, "gameloc");
 
 //在线用户信息 set %d=0
 //score userid, value timestamp

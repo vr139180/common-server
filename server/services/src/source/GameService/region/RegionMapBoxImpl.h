@@ -28,6 +28,10 @@ public:
 	RegionMapBoxImpl(RegionChannelService* p);
 	virtual ~RegionMapBoxImpl();
 
+public:
+	//--------------------------IRegionMap implementation----------------------
+	virtual void init_region();
+
 private:
 	//box类型的节点
 	RegionCellNode			cell_nodes_;

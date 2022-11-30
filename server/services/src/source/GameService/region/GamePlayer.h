@@ -17,6 +17,9 @@
 #define __GAMEPLAYER_H__
 
 #include <cmsLib/core_type.h>
+#include <cmsLib/prolib/BasicProtocol.h>
+#include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/commons/GLoc3D.h>
 
 //用户状态
 typedef enum tagGamePlayerState {
@@ -33,19 +36,22 @@ public:
 
 public:
 	void reset();
+	
+	//更新头信息,只在entergame时触发
+	void sync_head(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc);
+
+protected:
+	void copy_location(const GLoc3D& loc, PRO::Location3D* pos);
 
 private:
 
 	//多地图融合时确定是主节点还是副节点
-	bool	b_master_node_;
+	bool			b_master_node_;
 	GamePlayerState player_state_;
 
 private:
-	S_INT_64	user_iid_;
-	S_INT_64	role_iid_;
-	//gate的token信息
-	S_INT_64	gate_token_gidsid_;
-	S_INT_64	gate_token_slottoken_;
+	SProtocolHead		s_head_;
+	PRO::GameUserInfo	user_simple_info_;
 };
 
 #endif //__GAMEPLAYER_H__

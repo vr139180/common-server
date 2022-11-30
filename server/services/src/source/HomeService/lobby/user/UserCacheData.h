@@ -56,6 +56,10 @@ public:
 	bool update_cachever_redis_cache(S_INT_64 ver, RedisClient* rdv = 0);
 
 public:
+	//base
+	const UserBase& get_user_baseinfo() { return base_data_; }
+
+public:
 	//building
 	/*
 	* @parent	父建筑id, =0直接建筑在基地
