@@ -145,11 +145,12 @@
     <ClCompile Include="..\source\GameService\GameServiceApp_NetCmd.cpp" />
     <ClCompile Include="..\source\GameService\network\FightRouterLinkTo.cpp" />
     <ClCompile Include="..\source\GameService\region\GamePlayer.cpp" />
-    <ClCompile Include="..\source\GameService\region\IRegionMap.cpp" />
     <ClCompile Include="..\source\GameService\region\RegionCellNode.cpp" />
     <ClCompile Include="..\source\GameService\region\RegionChannelService.cpp" />
+    <ClCompile Include="..\source\GameService\region\RegionChannelServiceTimer.cpp" />
     <ClCompile Include="..\source\GameService\region\RegionChannelService_Network.cpp" />
     <ClCompile Include="..\source\GameService\region\RegionMapBoxImpl.cpp" />
+    <ClCompile Include="..\source\GameService\region\RegionMapBoxImpl_InOut.cpp" />
     <ClCompile Include="..\source\GameService\sMain.cpp" />
   </ItemGroup>
   <ItemGroup>

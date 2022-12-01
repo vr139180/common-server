@@ -10,9 +10,6 @@
     <ClCompile Include="..\source\GameService\region\GamePlayer.cpp">
       <Filter>region</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\GameService\region\IRegionMap.cpp">
-      <Filter>region</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\GameService\region\RegionChannelService.cpp">
       <Filter>region</Filter>
     </ClCompile>
@@ -23,6 +20,12 @@
       <Filter>region</Filter>
     </ClCompile>
     <ClCompile Include="..\source\GameService\region\RegionChannelService_Network.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionChannelServiceTimer.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GameService\region\RegionMapBoxImpl_InOut.cpp">
       <Filter>region</Filter>
     </ClCompile>
   </ItemGroup>

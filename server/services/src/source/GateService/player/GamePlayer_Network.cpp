@@ -130,6 +130,11 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		else if (msgid > PRO::GMS_PROTYPE::GMS_MSG_BEGIN && msgid < PRO::GMS_PROTYPE::GMS_MSG_END)
 		{
 			ProtoUtil::set_location_to_msg(pro->msg_, this->game_loc_);
+			if (msgid == PRO::GMS_PROTYPE::GMS_ENTERGAME_REQ)
+			{
+				PRO::Game_EnterGame_req* req = dynamic_cast<PRO::Game_EnterGame_req*>(pro->msg_);
+				req->set_game_iid(game_iid_);
+			}
 
 			svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, p_msg.release());
 			return;

@@ -25,8 +25,10 @@
 typedef enum tagGamePlayerState {
 	GamePlayerS_Free = 0,
 	GamePlayerS_EnterWaitDetail,	//entergame，等待获取详细信息
-	GamePlayers_Ready,
+	GamePlayerS_Ready,
 }GamePlayerState;
+
+class RegionCellNode;
 
 class GamePlayer
 {
@@ -36,12 +38,33 @@ public:
 
 public:
 	void reset();
+
+	void send_to_gate(BasicProtocol* msg);
+	void send_to_home(BasicProtocol* msg);
 	
 	//更新头信息,只在entergame时触发
-	void sync_head(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc);
+	bool enter_game(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc);
+	bool on_myinfo_get(BasicProtocol* msg);
 
 protected:
-	void copy_location(const GLoc3D& loc, PRO::Location3D* pos);
+	void copy_to_location(const GLoc3D& loc, PRO::Location3D* pos);
+	void copy_to_location(PRO::Location3D* pos, GLoc3D& loc);
+
+public:
+	S_INT_64 get_useriid() const { return user_iid_; }
+	S_INT_64 get_roleiid() const { return role_iid_; }
+	const char* get_nickname() const { return nickname_.c_str(); }
+	GLoc3D& get_location() { return location_; }
+	void set_location( const GLoc3D& loc) { location_ = loc; }
+
+	RegionCellNode* get_region_owner() { return owner_cellnode_; }
+	void unbind_region_owner() { owner_cellnode_ = 0; }
+	void bind_region_owner(RegionCellNode*n) { owner_cellnode_ = n; }
+
+	bool is_free() const { return player_state_ == GamePlayerState::GamePlayerS_Free;}
+	bool is_ready() const { return player_state_ == GamePlayerState::GamePlayerS_Ready; }
+
+	void copy_user_info(PRO::GameUserInfo* pui);
 
 private:
 
@@ -49,9 +72,17 @@ private:
 	bool			b_master_node_;
 	GamePlayerState player_state_;
 
+	//基本信息
+	S_INT_64	user_iid_;
+	S_INT_64	role_iid_;
+	std::string	nickname_;
+	GLoc3D		location_;
+
+	//所属的node
+	RegionCellNode*		owner_cellnode_;
+
 private:
 	SProtocolHead		s_head_;
-	PRO::GameUserInfo	user_simple_info_;
 };
 
 #endif //__GAMEPLAYER_H__

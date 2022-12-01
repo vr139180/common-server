@@ -201,8 +201,12 @@ public:
 	void task_giveup(S_INT_32 taskiid);
 	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);
 
-	//-----------------test
+	//-----------------game------------------------------------
 	void game_userstate_sync();
 	void on_game_userstate_sync(BasicProtocol* pro, CString* pRetMsg);
-	void on_game_users_sync(BasicProtocol* pro, CString* pRetMsg);
+	void on_game_usersinout_sync(BasicProtocol* pro, CString* pRetMsg);
+
+	void game_user_entergame();
+	void on_game_enter_ack(BasicProtocol* pro, CString* pRetMsg);
+	void on_game_userinfo_sync(BasicProtocol* pro, CString* pRetMsg);
 };

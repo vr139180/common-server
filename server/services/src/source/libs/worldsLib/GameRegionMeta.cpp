@@ -31,6 +31,7 @@ combine_cell_num_(0)
 
 bool RegionJoinMeta::load_from_xml( tinyxml2::XMLElement* e)
 {
+	this->b_joined_ = false;
 	this->to_regionid_ = XmlUtil::GetXmlAttrInt(e, "toregion", 0);
 	if (to_regionid_ <= 0)
 		return true;
@@ -98,4 +99,9 @@ bool GameRegionMeta::load_region_config(S_INT_32 regionid)
 	}
 
 	return true;
+}
+
+const RegionJoinMeta& GameRegionMeta::get_region_join(RegionJoinType jt)
+{
+	return region_join_[jt];
 }

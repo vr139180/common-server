@@ -117,7 +117,14 @@ GameServiceLinkFrom* GameRegionResolver::ask_free_gameservice_random(S_INT_32 re
 
 void GameRegionResolver::dispatch_to_game_from_othsvr(NetProtocol* pro)
 {
+	std::unique_ptr<NetProtocol> xptr(pro);
 
+	S_INT_64 gsvrid = WorldUtil::get_svrid_from_gameid(pro->get_gameid());
+	GameServiceLinkFrom* plink = get_servicelink_byiid(gsvrid);
+	if (plink == 0)
+		return;
+	
+	plink->send_protocol(xptr.release());
 }
 
 void GameRegionResolver::dispath_to_game(NetProtocol* pro)

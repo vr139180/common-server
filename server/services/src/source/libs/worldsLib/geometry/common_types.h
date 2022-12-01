@@ -17,46 +17,61 @@
 #define __COMMON_TYPES_H__
 
 #include <string>
+#include <gameLib/commons/GLoc3D.h>
 
-class CMSPointXY
+class CMSPointXZ
 {
 public:
-	static const CMSPointXY& zero_point();
+	static const CMSPointXZ& zero_point();
 
-	static bool build_from_str(std::string& str, CMSPointXY& p);
+	static bool build_from_str(std::string& str, CMSPointXZ& p);
 
 public:
-	CMSPointXY() :x_(0.0), y_(0.0) {}
-	CMSPointXY(float x, float y) :x_(x), y_(y) {}
+	CMSPointXZ() :x_(0.0), z_(0.0) {}
+	CMSPointXZ(float x, float z) :x_(x), z_(z) {}
 
-	CMSPointXY& operator = (const CMSPointXY& v);
+	CMSPointXZ& operator = (const CMSPointXZ& v);
 
 	float x()const { return x_; }
 	void set_x(float x) { x_ = x; }
-	float y()const { return y_; }
-	void set_y(float y) { y_ = y; }
+	float z()const { return z_; }
+	void set_z(float z) { z_ = z; }
 
 	std::string to_string();
 
 private:
 	float x_;
-	float y_;
+	float z_;
 };
 
 class CMSBox
 {
 public:
 	CMSBox();
-	CMSBox(float x, float y, float w, float h);
+	CMSBox(float x, float z, float w, float h);
 
-	void init_box(const CMSPointXY& pos, float w, float h);
+	void init_box(const CMSPointXZ& pos, float w, float h);
+	void set_xz(float x, float z) { left_top_.set_x(x); left_top_.set_z(z); }
+	void set_wh(float w, float h) { width_ = w; height_ = h; }
 
-	bool is_point_in_box(const CMSPointXY& p);
+	bool is_point_in_box(const CMSPointXZ& p);
+	bool is_point_in_box(const GLoc3D& loc);
 
 	CMSBox& operator = (const CMSBox& v);
 
+	float width() const { return width_; }
+	float height() const { return height_; }
+
+	void extend_left( int cells);
+	void extend_right(int cells);
+	void extend_top(int cells);
+	void extend_buttom(int cells);
+
+	//根据给出的GLoc3D世界坐标normlize出一个相对坐标
+	CMSPointXZ normlize(const GLoc3D& loc);
+
 private:
-	CMSPointXY left_top_;
+	CMSPointXZ left_top_;
 	float width_;
 	float height_;
 };

@@ -45,7 +45,10 @@ public:
 	virtual void main_loop();
 
 	void send_protocol_to_gate(BasicProtocol* pro);
+	void send_protocol_to_gate(NetProtocol* pro);
+
 	void send_protocol_to_home(BasicProtocol* pro);
+	void send_protocol_to_home(NetProtocol* pro);
 
 	void dispatch_msg_to_channel(NetProtocol* pro);
 	void assign_user_to_channel(NetProtocol* pro);

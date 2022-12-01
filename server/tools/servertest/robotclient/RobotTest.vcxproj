@@ -152,9 +152,9 @@
     <ClCompile Include="CommandTestImpl_Cmd_Building.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_ChatTask.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Friend.cpp" />
+    <ClCompile Include="CommandTestImpl_Cmd_Game.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Mail.cpp" />
     <ClCompile Include="CommandTestImpl_Cmd_Pets.cpp" />
-    <ClCompile Include="CommandTestImpl_Cmd_Test.cpp" />
     <ClCompile Include="CommandTestImpl_Script.cpp" />
     <ClCompile Include="LogonDlg.cpp" />
     <ClCompile Include="PhpResult.cpp" />

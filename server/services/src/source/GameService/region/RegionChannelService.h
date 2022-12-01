@@ -19,6 +19,8 @@
 #include <boost/scoped_ptr.hpp>
 #include <cmsLib/CommandListener.h>
 #include <cmsLib/system/VirtualMainThread.h>
+#include <cmsLib/system/TimerContainer.h>
+
 #include "region/GamePlayer.h"
 #include "region/RegionPlayerContainer.h"
 #include "region/IRegionMap.h"
@@ -50,7 +52,14 @@ private:
 	S_INT_64	gameid_;
 	S_INT_32	channel_index_;
 
+	TimerContainer	channel_timer_;
+
 protected:
+	void regist_timer();
+
+	void on_userlive_check_timer(u64 tnow, int interval, u64 iid, bool& finish);
+	void on_userinout_check_timer(u64 tnow, int interval, u64 iid, bool& finish);
+
 	//---------------------------VirtualMainThread virtual function----------------------
 	virtual void thread_worker();
 

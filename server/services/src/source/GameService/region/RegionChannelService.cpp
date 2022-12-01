@@ -46,6 +46,8 @@ void RegionChannelService::thread_worker()
 
 		if (will_quit_) break;
 
+		channel_timer_.timer_tick(OSSystem::mOS->GetTimestamp());
+
 		CommandBase *pCmd = pop_one_cmd();
 		std::unique_ptr<CommandBase> a_pcmd(pCmd);
 
@@ -57,6 +59,8 @@ void RegionChannelService::thread_worker()
 
 		pCmd->run();
 	}
+
+	channel_timer_.reset();
 }
 
 void RegionChannelService::init_channel( S_INT_32 cid)
@@ -68,6 +72,8 @@ void RegionChannelService::init_channel( S_INT_32 cid)
 
 	region_map_.reset(new RegionMapBoxImpl( this));
 	region_map_->init_region();
+
+	regist_timer();
 }
 
 void RegionChannelService::build_gameid(S_INT_64 serviceid)

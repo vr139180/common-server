@@ -235,7 +235,17 @@ void GameServiceApp::send_protocol_to_gate(BasicProtocol* pro)
 	fightrouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
 }
 
+void GameServiceApp::send_protocol_to_gate(NetProtocol* pro)
+{
+	fightrouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_GATE, pro);
+}
+
 void GameServiceApp::send_protocol_to_home(BasicProtocol* pro)
+{
+	fightrouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_HOME, pro);
+}
+
+void GameServiceApp::send_protocol_to_home(NetProtocol* pro)
 {
 	fightrouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_HOME, pro);
 }

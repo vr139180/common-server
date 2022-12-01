@@ -91,8 +91,11 @@ void CommandTestImpl::gts_linkdo()
 	CMDMESSAGE(TASK_PROTYPE::TASK_OBTAINREWARD_NTF, on_task_obtainreward_ntf);
 	CMDMESSAGE(TASK_PROTYPE::TASK_GIVEUPTASK_ACK, on_task_giveup_ack);
 
-	//test
-	CMDMESSAGE(GMS_PROTYPE::GMS_USERSVISIBLE_NTF, on_game_users_sync);
+	//game
+	CMDMESSAGE(GMS_PROTYPE::GMS_ENTERGAME_ACK, on_game_enter_ack);
+	CMDMESSAGE(GMS_PROTYPE::GMS_USERSVISIBLE_NTF, on_game_usersinout_sync);
+	CMDMESSAGE(GMS_PROTYPE::GMS_USERINFO_SYNC, on_game_userinfo_sync);
+
 	CMDMESSAGE(GMS_PROTYPE::GMS_USERSTATE_SYN, on_game_userstate_sync);
 
 	default:
@@ -124,7 +127,8 @@ void ScriptDlg::regist()
 	add_function("rolecreate('test')", "创建角色");
 	add_function("roleselect(1)", "选择角色");
 
-	//test
+	//game
+	add_function("game_enter()", "进入游戏");
 	add_function("game_userstate_sync()", "同步自己的状态");
 
 	//building
@@ -198,6 +202,7 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("task_get", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_get)
 		.addFunction("task_submit", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_submit)
 		.addFunction("task_giveup", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_giveup)
+		.addFunction("game_enter", (void (CommandTestImpl::*)(void))&CommandTestImpl::game_user_entergame)
 		.addFunction("game_userstate_sync", (void (CommandTestImpl::*)(void))&CommandTestImpl::game_userstate_sync)
 		.endClass()
 		.endNamespace();

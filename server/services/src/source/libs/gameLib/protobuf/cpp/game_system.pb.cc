@@ -86,7 +86,7 @@ constexpr Game_UsersVisiable_ntf::Game_UsersVisiable_ntf(
   : online_users_()
   , offline_users_()
   , _offline_users_cached_byte_size_(0)
-  , role_pos_(nullptr){}
+  , full_(false){}
 struct Game_UsersVisiable_ntfDefaultTypeInternal {
   constexpr Game_UsersVisiable_ntfDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -96,6 +96,18 @@ struct Game_UsersVisiable_ntfDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Game_UsersVisiable_ntfDefaultTypeInternal _Game_UsersVisiable_ntf_default_instance_;
+constexpr Game_UserInfo_sync::Game_UserInfo_sync(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : info_(nullptr){}
+struct Game_UserInfo_syncDefaultTypeInternal {
+  constexpr Game_UserInfo_syncDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~Game_UserInfo_syncDefaultTypeInternal() {}
+  union {
+    Game_UserInfo_sync _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Game_UserInfo_syncDefaultTypeInternal _Game_UserInfo_sync_default_instance_;
 constexpr Game_UserState_sync::Game_UserState_sync(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : role_pos_(nullptr)
@@ -110,7 +122,7 @@ struct Game_UserState_syncDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT Game_UserState_syncDefaultTypeInternal _Game_UserState_sync_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_5fsystem_2eproto[7];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_game_5fsystem_2eproto[8];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_game_5fsystem_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_game_5fsystem_2eproto = nullptr;
 
@@ -159,18 +171,22 @@ const uint32_t TableStruct_game_5fsystem_2eproto::offsets[] PROTOBUF_SECTION_VAR
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, role_pos_),
+  PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, full_),
   PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, online_users_),
   PROTOBUF_FIELD_OFFSET(::PRO::Game_UsersVisiable_ntf, offline_users_),
-  0,
-  ~0u,
-  ~0u,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::Game_UserInfo_sync, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::Game_UserInfo_sync, info_),
   PROTOBUF_FIELD_OFFSET(::PRO::Game_UserState_sync, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::Game_UserState_sync, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -188,8 +204,9 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 16, 24, -1, sizeof(::PRO::Game_EnterGame_req)},
   { 26, 35, -1, sizeof(::PRO::Game_EnterGame_ack)},
   { 38, -1, -1, sizeof(::PRO::Game_ServiceDisable_ntf)},
-  { 44, 53, -1, sizeof(::PRO::Game_UsersVisiable_ntf)},
-  { 56, 64, -1, sizeof(::PRO::Game_UserState_sync)},
+  { 44, -1, -1, sizeof(::PRO::Game_UsersVisiable_ntf)},
+  { 53, -1, -1, sizeof(::PRO::Game_UserInfo_sync)},
+  { 60, 68, -1, sizeof(::PRO::Game_UserState_sync)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -199,6 +216,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Game_EnterGame_ack_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Game_ServiceDisable_ntf_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Game_UsersVisiable_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Game_UserInfo_sync_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_Game_UserState_sync_default_instance_),
 };
 
@@ -213,23 +231,23 @@ const char descriptor_table_protodef_game_5fsystem_2eproto[] PROTOBUF_SECTION_VA
   "\022\016\n\006result\030\001 \001(\005\022\025\n\010game_iid\030\002 \001(\003H\000\210\001\001\022"
   "!\n\003pos\030\003 \001(\0132\017.PRO.Location3DH\001\210\001\001B\013\n\t_g"
   "ame_iidB\006\n\004_pos\"\031\n\027Game_ServiceDisable_n"
-  "tf\"\215\001\n\026Game_UsersVisiable_ntf\022&\n\010role_po"
-  "s\030\001 \001(\0132\017.PRO.Location3DH\000\210\001\001\022\'\n\014online_"
-  "users\030\002 \003(\0132\021.PRO.GameUserInfo\022\025\n\rofflin"
-  "e_users\030\003 \003(\003B\013\n\t_role_pos\"\\\n\023Game_UserS"
-  "tate_sync\022&\n\010role_pos\030\001 \001(\0132\017.PRO.Locati"
-  "on3DH\000\210\001\001\022\020\n\010user_iid\030\002 \001(\003B\013\n\t_role_pos"
-  "BT\n\033com.cms.client.network.gproP\001Z\025gamel"
-  "ib/protobuf/gpro\252\002\033com.cms.client.networ"
-  "k.gprob\006proto3"
+  "tf\"f\n\026Game_UsersVisiable_ntf\022\014\n\004full\030\001 \001"
+  "(\010\022\'\n\014online_users\030\002 \003(\0132\021.PRO.GameUserI"
+  "nfo\022\025\n\roffline_users\030\003 \003(\003\"5\n\022Game_UserI"
+  "nfo_sync\022\037\n\004info\030\001 \001(\0132\021.PRO.GameUserInf"
+  "o\"\\\n\023Game_UserState_sync\022&\n\010role_pos\030\001 \001"
+  "(\0132\017.PRO.Location3DH\000\210\001\001\022\020\n\010user_iid\030\002 \001"
+  "(\003B\013\n\t_role_posBT\n\033com.cms.client.networ"
+  "k.gproP\001Z\025gamelib/protobuf/gpro\252\002\033com.cm"
+  "s.client.network.gprob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_game_5fsystem_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_game_5fsystem_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_game_5fsystem_2eproto = {
-  false, false, 734, descriptor_table_protodef_game_5fsystem_2eproto, "game_system.proto", 
-  &descriptor_table_game_5fsystem_2eproto_once, descriptor_table_game_5fsystem_2eproto_deps, 1, 7,
+  false, false, 749, descriptor_table_protodef_game_5fsystem_2eproto, "game_system.proto", 
+  &descriptor_table_game_5fsystem_2eproto_once, descriptor_table_game_5fsystem_2eproto_deps, 1, 8,
   schemas, file_default_instances, TableStruct_game_5fsystem_2eproto::offsets,
   file_level_metadata_game_5fsystem_2eproto, file_level_enum_descriptors_game_5fsystem_2eproto, file_level_service_descriptors_game_5fsystem_2eproto,
 };
@@ -1152,21 +1170,8 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Game_ServiceDisable_ntf::GetCl
 
 class Game_UsersVisiable_ntf::_Internal {
  public:
-  using HasBits = decltype(std::declval<Game_UsersVisiable_ntf>()._has_bits_);
-  static const ::PRO::Location3D& role_pos(const Game_UsersVisiable_ntf* msg);
-  static void set_has_role_pos(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
-const ::PRO::Location3D&
-Game_UsersVisiable_ntf::_Internal::role_pos(const Game_UsersVisiable_ntf* msg) {
-  return *msg->role_pos_;
-}
-void Game_UsersVisiable_ntf::clear_role_pos() {
-  if (role_pos_ != nullptr) role_pos_->Clear();
-  _has_bits_[0] &= ~0x00000001u;
-}
 Game_UsersVisiable_ntf::Game_UsersVisiable_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
@@ -1180,20 +1185,15 @@ Game_UsersVisiable_ntf::Game_UsersVisiable_ntf(::PROTOBUF_NAMESPACE_ID::Arena* a
 }
 Game_UsersVisiable_ntf::Game_UsersVisiable_ntf(const Game_UsersVisiable_ntf& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_),
       online_users_(from.online_users_),
       offline_users_(from.offline_users_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  if (from._internal_has_role_pos()) {
-    role_pos_ = new ::PRO::Location3D(*from.role_pos_);
-  } else {
-    role_pos_ = nullptr;
-  }
+  full_ = from.full_;
   // @@protoc_insertion_point(copy_constructor:PRO.Game_UsersVisiable_ntf)
 }
 
 inline void Game_UsersVisiable_ntf::SharedCtor() {
-role_pos_ = nullptr;
+full_ = false;
 }
 
 Game_UsersVisiable_ntf::~Game_UsersVisiable_ntf() {
@@ -1205,7 +1205,6 @@ Game_UsersVisiable_ntf::~Game_UsersVisiable_ntf() {
 
 inline void Game_UsersVisiable_ntf::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (this != internal_default_instance()) delete role_pos_;
 }
 
 void Game_UsersVisiable_ntf::ArenaDtor(void* object) {
@@ -1226,26 +1225,20 @@ void Game_UsersVisiable_ntf::Clear() {
 
   online_users_.Clear();
   offline_users_.Clear();
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(role_pos_ != nullptr);
-    role_pos_->Clear();
-  }
-  _has_bits_.Clear();
+  full_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* Game_UsersVisiable_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .PRO.Location3D role_pos = 1;
+      // bool full = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr = ctx->ParseMessage(_internal_mutable_role_pos(), ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          full_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1290,7 +1283,6 @@ const char* Game_UsersVisiable_ntf::_InternalParse(const char* ptr, ::PROTOBUF_N
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1304,12 +1296,10 @@ uint8_t* Game_UsersVisiable_ntf::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .PRO.Location3D role_pos = 1;
-  if (_internal_has_role_pos()) {
+  // bool full = 1;
+  if (this->_internal_full() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        1, _Internal::role_pos(this), target, stream);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(1, this->_internal_full(), target);
   }
 
   // repeated .PRO.GameUserInfo online_users = 2;
@@ -1367,12 +1357,9 @@ size_t Game_UsersVisiable_ntf::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // optional .PRO.Location3D role_pos = 1;
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *role_pos_);
+  // bool full = 1;
+  if (this->_internal_full() != 0) {
+    total_size += 1 + 1;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -1399,8 +1386,8 @@ void Game_UsersVisiable_ntf::MergeFrom(const Game_UsersVisiable_ntf& from) {
 
   online_users_.MergeFrom(from.online_users_);
   offline_users_.MergeFrom(from.offline_users_);
-  if (from._internal_has_role_pos()) {
-    _internal_mutable_role_pos()->::PRO::Location3D::MergeFrom(from._internal_role_pos());
+  if (from._internal_full() != 0) {
+    _internal_set_full(from._internal_full());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1419,16 +1406,210 @@ bool Game_UsersVisiable_ntf::IsInitialized() const {
 void Game_UsersVisiable_ntf::InternalSwap(Game_UsersVisiable_ntf* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   online_users_.InternalSwap(&other->online_users_);
   offline_users_.InternalSwap(&other->offline_users_);
-  swap(role_pos_, other->role_pos_);
+  swap(full_, other->full_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Game_UsersVisiable_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_5fsystem_2eproto_getter, &descriptor_table_game_5fsystem_2eproto_once,
       file_level_metadata_game_5fsystem_2eproto[5]);
+}
+
+// ===================================================================
+
+class Game_UserInfo_sync::_Internal {
+ public:
+  static const ::PRO::GameUserInfo& info(const Game_UserInfo_sync* msg);
+};
+
+const ::PRO::GameUserInfo&
+Game_UserInfo_sync::_Internal::info(const Game_UserInfo_sync* msg) {
+  return *msg->info_;
+}
+Game_UserInfo_sync::Game_UserInfo_sync(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.Game_UserInfo_sync)
+}
+Game_UserInfo_sync::Game_UserInfo_sync(const Game_UserInfo_sync& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_info()) {
+    info_ = new ::PRO::GameUserInfo(*from.info_);
+  } else {
+    info_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PRO.Game_UserInfo_sync)
+}
+
+inline void Game_UserInfo_sync::SharedCtor() {
+info_ = nullptr;
+}
+
+Game_UserInfo_sync::~Game_UserInfo_sync() {
+  // @@protoc_insertion_point(destructor:PRO.Game_UserInfo_sync)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void Game_UserInfo_sync::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete info_;
+}
+
+void Game_UserInfo_sync::ArenaDtor(void* object) {
+  Game_UserInfo_sync* _this = reinterpret_cast< Game_UserInfo_sync* >(object);
+  (void)_this;
+}
+void Game_UserInfo_sync::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Game_UserInfo_sync::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Game_UserInfo_sync::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.Game_UserInfo_sync)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && info_ != nullptr) {
+    delete info_;
+  }
+  info_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Game_UserInfo_sync::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .PRO.GameUserInfo info = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_info(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Game_UserInfo_sync::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.Game_UserInfo_sync)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .PRO.GameUserInfo info = 1;
+  if (this->_internal_has_info()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::info(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.Game_UserInfo_sync)
+  return target;
+}
+
+size_t Game_UserInfo_sync::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.Game_UserInfo_sync)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .PRO.GameUserInfo info = 1;
+  if (this->_internal_has_info()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *info_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Game_UserInfo_sync::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    Game_UserInfo_sync::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Game_UserInfo_sync::GetClassData() const { return &_class_data_; }
+
+void Game_UserInfo_sync::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<Game_UserInfo_sync *>(to)->MergeFrom(
+      static_cast<const Game_UserInfo_sync &>(from));
+}
+
+
+void Game_UserInfo_sync::MergeFrom(const Game_UserInfo_sync& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.Game_UserInfo_sync)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_info()) {
+    _internal_mutable_info()->::PRO::GameUserInfo::MergeFrom(from._internal_info());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Game_UserInfo_sync::CopyFrom(const Game_UserInfo_sync& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.Game_UserInfo_sync)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Game_UserInfo_sync::IsInitialized() const {
+  return true;
+}
+
+void Game_UserInfo_sync::InternalSwap(Game_UserInfo_sync* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(info_, other->info_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Game_UserInfo_sync::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_game_5fsystem_2eproto_getter, &descriptor_table_game_5fsystem_2eproto_once,
+      file_level_metadata_game_5fsystem_2eproto[6]);
 }
 
 // ===================================================================
@@ -1670,7 +1851,7 @@ void Game_UserState_sync::InternalSwap(Game_UserState_sync* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Game_UserState_sync::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_game_5fsystem_2eproto_getter, &descriptor_table_game_5fsystem_2eproto_once,
-      file_level_metadata_game_5fsystem_2eproto[6]);
+      file_level_metadata_game_5fsystem_2eproto[7]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1693,6 +1874,9 @@ template<> PROTOBUF_NOINLINE ::PRO::Game_ServiceDisable_ntf* Arena::CreateMaybeM
 }
 template<> PROTOBUF_NOINLINE ::PRO::Game_UsersVisiable_ntf* Arena::CreateMaybeMessage< ::PRO::Game_UsersVisiable_ntf >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::Game_UsersVisiable_ntf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::Game_UserInfo_sync* Arena::CreateMaybeMessage< ::PRO::Game_UserInfo_sync >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::Game_UserInfo_sync >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PRO::Game_UserState_sync* Arena::CreateMaybeMessage< ::PRO::Game_UserState_sync >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::Game_UserState_sync >(arena);

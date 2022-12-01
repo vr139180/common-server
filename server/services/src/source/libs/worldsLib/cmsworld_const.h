@@ -17,9 +17,9 @@
 #define __CMSWORLD_CONST_H__
 
 //region中一个cell的边长 m
-#define REGION_CELL_SIZE		30
-//人眼能看到的最远距离是3个cell的长度，90m
-#define PLAYER_EYESEE_CELL_MAX	3
+#define REGION_CELL_SIZE		100
+//人眼能看到的最远距离是1个cell的长度，100m
+#define PLAYER_EYESEE_CELL_MAX	1
 
 //步行速度 1.5m/s
 #define GAME_PLAYER_WALKSPEED	1.5
@@ -28,10 +28,10 @@
 
 //-------------------------------------------------------
 //地图的制作要求
-//长宽必须是30m的整数倍
+//长宽必须是100m的整数倍
 //地图的原点(0,0)在地图的左下角
 //地图切割成的region的长宽必须是30m的整数倍
-//地图分隔交汇的地方，如果允许穿越，边缘交汇处扩展3个cell 90m。
+//地图分隔交汇的地方，如果允许穿越，边缘交汇处扩展1个cell 100m。
 //game service的所有请求协议，必须定义optional Location3D role_pos = 1
 //-------------------------------------------------------
 

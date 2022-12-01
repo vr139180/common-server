@@ -21,6 +21,47 @@
 
 USE_PROTOCOL_NAMESPACE;
 
+void CommandTestImpl::game_user_entergame()
+{
+	ret_desc_ = "";
+	if (!islogon())
+	{
+		ret_desc_ = "用户未登陆\r\n";
+		return;
+	}
+
+	Game_EnterGame_req* sync = new Game_EnterGame_req();
+
+	if (!send_to_gts(sync))
+	{
+		ret_desc_ = "发送协议失败\r\n";
+		return;
+	}
+}
+
+void CommandTestImpl::on_game_enter_ack(BasicProtocol* pro, CString* pRetMsg)
+{
+	Game_EnterGame_ack* ack = dynamic_cast<Game_EnterGame_ack*>(pro);
+	CString str1;
+	str1.Format("用户进入游戏场景 result:%d\r\n", ack->result());
+	*pRetMsg += str1;
+}
+
+void CommandTestImpl::on_game_userinfo_sync(BasicProtocol* pro, CString* pRetMsg)
+{
+	Game_UserInfo_sync* sync = dynamic_cast<Game_UserInfo_sync*>(pro);
+	CString str1;
+	str1.Format("用户信息同步\r\n");
+	*pRetMsg += str1;
+}
+
+void CommandTestImpl::on_game_usersinout_sync(BasicProtocol* pro, CString* pRetMsg)
+{
+	Game_UsersVisiable_ntf* ack = dynamic_cast<Game_UsersVisiable_ntf*>(pro);
+	CString str1;
+	str1.Format("用户in out 通知 full:%d in:%d out:%d\r\n", ack->full(), ack->online_users_size(), ack->offline_users_size());
+	*pRetMsg += str1;
+}
 
 void CommandTestImpl::game_userstate_sync()
 {
@@ -44,9 +85,7 @@ void CommandTestImpl::game_userstate_sync()
 void CommandTestImpl::on_game_userstate_sync(BasicProtocol* pro, CString* pRetMsg)
 {
 	Game_UserState_sync* ack = dynamic_cast<Game_UserState_sync*>(pro);
-}
-
-void CommandTestImpl::on_game_users_sync(BasicProtocol* pro, CString* pRetMsg)
-{
-	Game_UsersVisiable_ntf* ack = dynamic_cast<Game_UsersVisiable_ntf*>(pro);
+	CString str1;
+	str1.Format("用户状态转发 uid:%lld\r\n", ack->user_iid());
+	*pRetMsg += str1;
 }

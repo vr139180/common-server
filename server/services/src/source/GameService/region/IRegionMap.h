@@ -16,14 +16,32 @@
 #ifndef __IREGIONMAP_H__
 #define __IREGIONMAP_H__
 
+#include <cmsLib/core_type.h>
+#include <cmsLib/prolib/BasicProtocol.h>
+
+class GamePlayer;
+
 //regionmap功能接口定义
 //后续可以提供多种实现
 class IRegionMap
 {
 public:
-	virtual ~IRegionMap();
+	virtual ~IRegionMap() {}
 
 	virtual void init_region() = 0;
+	virtual S_INT_32 get_region_id() = 0;
+
+	//玩家进入region
+	virtual void user_enter_region(GamePlayer* puser) = 0;
+	virtual void user_logout_region(GamePlayer* puser) = 0;
+	//用户移动
+	virtual void user_move_region(GamePlayer* puser) = 0;
+
+	//9格内广播
+	virtual void user_view_broadcast(GamePlayer* puser, BasicProtocol* msg) = 0;
+
+	//inout tick
+	virtual void user_inout_tick() = 0;
 };
 
 #endif //__IREGIONMAP_H__

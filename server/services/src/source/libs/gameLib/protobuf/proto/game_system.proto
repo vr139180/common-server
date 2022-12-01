@@ -41,9 +41,15 @@ message Game_ServiceDisable_ntf{
 
 //用户同步
 message Game_UsersVisiable_ntf{
-  optional Location3D role_pos = 1;
+  //true 全量数据
+  bool full = 1;
   repeated GameUserInfo online_users = 2;
   repeated int64 offline_users = 3;
+}
+
+//用户信息更新
+message Game_UserInfo_sync{
+  GameUserInfo info = 1;
 }
 
 //用户状态同步

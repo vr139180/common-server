@@ -162,6 +162,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Game_EnterGame_ack>(GMS_PROTYPE::GMS_ENTERGAME_ACK);
 	regist_protocal<Game_UsersVisiable_ntf>(GMS_PROTYPE::GMS_USERSVISIBLE_NTF);
 	regist_protocal<Game_ServiceDisable_ntf>(GMS_PROTYPE::GMS_SERVICEDISABLE_NTF);
+	regist_protocal<Game_UserInfo_sync>(GMS_PROTYPE::GMS_USERINFO_SYNC);
 
 	regist_protocal<Game_UserState_sync>(GMS_PROTYPE::GMS_USERSTATE_SYN);
 }

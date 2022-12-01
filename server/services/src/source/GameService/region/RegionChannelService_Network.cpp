@@ -21,6 +21,7 @@
 #include <gameLib/LogExt.h>
 #include <gameLib/commons/GLoc3D.h>
 
+#include "region/RegionCellNode.h"
 #include "GameServiceApp.h"
 
 USE_PROTOCOL_NAMESPACE
@@ -38,7 +39,7 @@ void RegionChannelService::InitNetMessage()
 void RegionChannelService::on_gate_userlive_ntf(NetProtocol* pro, bool& autorelease)
 {
 	//激活用户
-	GamePlayer* puser = channel_users_.get_gameuser_exist(pro->get_useriid(), true);
+	channel_users_.get_gameuser_exist(pro->get_useriid(), true);
 }
 
 void RegionChannelService::on_gate_enter_game_req(NetProtocol* pro, bool& autorelease)
@@ -51,7 +52,16 @@ void RegionChannelService::on_gate_enter_game_req(NetProtocol* pro, bool& autore
 	ProtoUtil::get_location_from_msg(pro->msg_, loc);
 
 	//更新头信息,只在entergame时触发
-	puser->sync_head(pro->head_, gameid_, loc);
+	puser->enter_game(pro->head_, gameid_, loc);
+	//同步到格式
+	region_map_->user_enter_region(puser);
+
+	Game_EnterGame_ack *ack = new Game_EnterGame_ack();
+	ack->set_result(0);
+	ack->set_game_iid(gameid_);
+	ProtoUtil::set_location_to_msg(ack, puser->get_location());
+
+	puser->send_to_gate(ack);
 }
 
 void RegionChannelService::on_home_mysimpleinfo_ack(NetProtocol* pro, bool& autorelease)
@@ -60,10 +70,33 @@ void RegionChannelService::on_home_mysimpleinfo_ack(NetProtocol* pro, bool& auto
 	if (puser == 0)
 		return;
 
+	if (!puser->on_myinfo_get(pro->msg_))
+		return;
 
+	if (puser->get_region_owner() == 0)
+		return;
+
+	//广播玩家信息更新
+	Game_UserInfo_sync* sync = new Game_UserInfo_sync();
+	std::unique_ptr<Game_UserInfo_sync> xptr(sync);
+	PRO::GameUserInfo* pui = sync->mutable_info();
+	puser->copy_user_info(pui);
+
+	puser->get_region_owner()->broadcast(sync);
 }
 
 void RegionChannelService::on_pl_userstate_sync(NetProtocol* pro, bool& autorelease)
 {
+	GamePlayer* puser = channel_users_.get_gameuser_exist(pro->get_useriid());
+	if (puser == 0)
+		return;
 
+	GLoc3D loc;
+	ProtoUtil::get_location_from_msg(pro->msg_, loc);
+	puser->set_location(loc);
+	
+	//move
+	region_map_->user_move_region(puser);
+
+	region_map_->user_view_broadcast( puser, pro->msg_);
 }

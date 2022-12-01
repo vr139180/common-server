@@ -40,8 +40,8 @@ public:
 	RegionJoinMeta();
 
 	bool load_from_xml( tinyxml2::XMLElement* e);
-	bool can_join() { return b_joined_; }
-	S_INT_32 combine_cells() { return combine_cell_num_; }
+	bool can_join() const { return b_joined_; }
+	S_INT_32 combine_cells() const { return combine_cell_num_; }
 
 private:
 	// «∑Ò¡¨Õ®
@@ -67,6 +67,9 @@ public:
 
 public:
 	S_INT_32 get_regionid() { return regionid_; }
+	const CMSBox& get_region() { return region_box_; }
+
+	const RegionJoinMeta& get_region_join(RegionJoinType jt);
 
 private:
 	S_INT_32	regionid_;

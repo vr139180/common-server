@@ -32,8 +32,8 @@ GameRegionSimpleMeta* GameRegionSimpleMeta::build_from(tinyxml2::XMLElement* e)
 		return 0;
 
 	std::string regstr = XmlUtil::GetXmlAttrStr(e, "start");
-	CMSPointXY startpos;
-	if (!CMSPointXY::build_from_str(regstr, startpos))
+	CMSPointXZ startpos;
+	if (!CMSPointXZ::build_from_str(regstr, startpos))
 		return 0;
 	float w = XmlUtil::GetXmlAttrFloat(e, "width");
 	float h = XmlUtil::GetXmlAttrFloat(e, "height");
@@ -47,8 +47,8 @@ GameRegionSimpleMeta* GameRegionSimpleMeta::build_from(tinyxml2::XMLElement* e)
 
 bool GameRegionSimpleMeta::is_point_in_region(const GLoc3D& loc)
 {
-	CMSPointXY xy(loc.x(), loc.y());
-	return region_.is_point_in_box(xy);
+	CMSPointXZ xz(loc.x(), loc.z());
+	return region_.is_point_in_box(xz);
 }
 
 //--------------------------------------GameWorldHelper----------------------------
