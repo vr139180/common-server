@@ -37,8 +37,6 @@ public:
 public:
 	void send_netprotocol(BasicProtocol* msg);
 
-	void to_datarouter_dealwith(NetProtocol* pro);
-
 protected:
 	SProtocolHead	s_head_;
 };

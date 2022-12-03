@@ -89,10 +89,9 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		if (game_iid_ > 0)
 		{
 			PRO::Game_UserAlive_ntf* ntf = new PRO::Game_UserAlive_ntf();
-			NetProtocol* xpro = new NetProtocol(s_head_, ntf);
 			ProtoUtil::set_location_to_msg(ntf, game_loc_);
 
-			svrApp.route_to_fightrouter( PRO::ERK_SERVICE_GAME, xpro);
+			send_to_game(ntf);
 		}
 	}
 	else if (msgid == PRO::USER_LOGOUT_NTF)
@@ -129,7 +128,9 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 		}
 		else if (msgid > PRO::GMS_PROTYPE::GMS_MSG_BEGIN && msgid < PRO::GMS_PROTYPE::GMS_MSG_END)
 		{
-			ProtoUtil::set_location_to_msg(pro->msg_, this->game_loc_);
+			if( msgid != PRO::GMS_PROTYPE::GMS_USERSTATE_SYN)
+				ProtoUtil::set_location_to_msg(pro->msg_, this->game_loc_);
+
 			if (msgid == PRO::GMS_PROTYPE::GMS_ENTERGAME_REQ)
 			{
 				PRO::Game_EnterGame_req* req = dynamic_cast<PRO::Game_EnterGame_req*>(pro->msg_);
@@ -139,7 +140,7 @@ void GamePlayer::on_recv_protocol_netthread( NetProtocol* pro)
 			svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, p_msg.release());
 			return;
 		}
-		else //default, route to datarouter
+		else if( msgid > PRO::USER_PROTYPE::USER_MSG_BEGIN && msgid < PRO::USER_PROTYPE::USER_MSG_END)
 		{
 			svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, p_msg.release());
 		}

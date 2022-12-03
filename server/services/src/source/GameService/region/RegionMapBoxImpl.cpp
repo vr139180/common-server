@@ -110,6 +110,28 @@ RegionCellNode* RegionMapBoxImpl::get_cellnode_byloc(const GLoc3D& loc)
 	return &cell_nodes_[xz_to_array(xc, zc)];
 }
 
+void RegionMapBoxImpl::get_ninecell_bycr(S_INT_32 c, S_INT_32 r, std::vector<S_INT_32>& nincecells)
+{
+	//获取九宫格变动数据
+	S_INT_32 start_c = c - 1;
+	if (start_c < 0)
+		start_c = 0;
+	S_INT_32 end_c = c + 1;
+	if (end_c >= max_column_cells_)
+		end_c = max_column_cells_ - 1;
+	S_INT_32 start_r = r - 1;
+	if (start_r < 0)
+		start_r = 0;
+	S_INT_32 end_r = r + 1;
+	if (end_r >= max_row_cells_)
+		end_r = max_row_cells_ - 1;
+
+	nincecells.push_back(start_c);
+	nincecells.push_back(end_c);
+	nincecells.push_back(start_r);
+	nincecells.push_back(end_r);
+}
+
 void RegionMapBoxImpl::user_view_broadcast(GamePlayer* puser, BasicProtocol* msg)
 {
 	RegionCellNode* pnode = puser->get_region_owner();
@@ -117,25 +139,46 @@ void RegionMapBoxImpl::user_view_broadcast(GamePlayer* puser, BasicProtocol* msg
 		return;
 
 	//获取九宫格变动数据
-	S_INT_32 start_c = pnode->column() - 1;
-	if (start_c < 0)
-		start_c = 0;
-	S_INT_32 end_c = pnode->column() + 1;
-	if (end_c >= max_column_cells_)
-		end_c = max_column_cells_ - 1;
-	S_INT_32 start_r = pnode->row() - 1;
-	if (start_r < 0)
-		start_r = 0;
-	S_INT_32 end_r = pnode->row() + 1;
-	if (end_r >= max_row_cells_)
-		end_r = max_row_cells_ - 1;
+	std::vector<S_INT_32> nine;
+	get_ninecell_bycr(pnode->column(), pnode->row(), nine);
 
-	for (int ii = start_c; ii <= end_c; ++ii)
+	for (int ii = nine[0]; ii <= nine[1]; ++ii)
 	{
-		for (int jj = start_r; jj <= end_r; ++jj)
+		for (int jj = nine[2]; jj <= nine[3]; ++jj)
 		{
 			RegionCellNode* pdata = &(cell_nodes_[xz_to_array(ii, jj)]);
 			pdata->broadcast(msg);
 		}
 	}
+}
+
+void RegionMapBoxImpl::user_view_first_sync(GamePlayer* puser)
+{
+	RegionCellNode* pnode = puser->get_region_owner();
+	if (pnode == 0)
+		return;
+
+	std::vector<S_INT_32> nine;
+	get_ninecell_bycr(pnode->column(), pnode->row(), nine);
+
+	PRO::Game_UsersVisiable_ntf *ntf = new PRO::Game_UsersVisiable_ntf();
+	ntf->set_full(true);
+
+	for (int ii = nine[0]; ii <= nine[1]; ++ii)
+	{
+		for (int jj = nine[2]; jj <= nine[3]; ++jj)
+		{
+			RegionCellNode* pdata = &(cell_nodes_[xz_to_array(ii, jj)]);
+			const std::set<GamePlayer*>& pls = pdata->all_node_players();
+
+			for (std::set<GamePlayer*>::const_iterator citer = pls.cbegin(); citer != pls.cend(); ++citer)
+			{
+				GamePlayer* p = (*citer);
+				PRO::GameUserInfo *pui = ntf->add_online_users();
+				p->copy_user_info(pui);
+			}
+		}
+	}
+
+	puser->send_to_gate(ntf);
 }

@@ -254,11 +254,38 @@ void StateServiceApp::send_to_gate( SProtocolHead& head, BasicProtocol* pro)
 	datarouter_link_mth_.send_mth_protocol( head, pro);
 }
 
+void StateServiceApp::send_to_gate(NetProtocol* pro)
+{
+	SProtocolHead& head = pro->write_head();
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+
+	datarouter_link_mth_.send_mth_protocol(pro);
+}
+
 void StateServiceApp::send_to_datarouter(NetProtocol* pro)
 {
 	SProtocolHead& head = pro->write_head();
 	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
 	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER;
+
+	datarouter_link_mth_.send_mth_protocol(pro);
+}
+
+void StateServiceApp::send_to_home(NetProtocol* pro)
+{
+	SProtocolHead& head = pro->write_head();
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_HOME;
+
+	datarouter_link_mth_.send_mth_protocol(pro);
+}
+
+void StateServiceApp::send_to_game(NetProtocol* pro)
+{
+	SProtocolHead& head = pro->write_head();
+	head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
+	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
 
 	datarouter_link_mth_.send_mth_protocol(pro);
 }

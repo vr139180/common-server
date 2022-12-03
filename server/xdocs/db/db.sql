@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     11/30/2022 8:42:18 AM                        */
+/* Created on:     12/2/2022 11:35:20 AM                        */
 /*==============================================================*/
 
 
@@ -552,7 +552,7 @@ delimiter //
 create procedure get_role_data(in uid bigint)
 begin 
     
-    select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where role_iid=uid;
+    select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels,location_x,location_y,location_z from role_baseinfo where role_iid=uid;
     select ver_,role_iid,home_name,ground_resid,look_at,geo_pos,reside_time,unix_timestamp(last_residedate),levels from user_home where role_iid=uid;
     select ver_,building_iid,home_iid,parent_building,building_resid,look_at,building_pos,levels from user_home_structure where home_iid=uid;
     select ver_,mypet_iid,role_iid,pet_iid,pet_age,unix_timestamp(birthday) from user_pets where role_iid=uid;

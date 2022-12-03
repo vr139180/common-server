@@ -46,9 +46,8 @@ public:
 	bool enter_game(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc);
 	bool on_myinfo_get(BasicProtocol* msg);
 
-protected:
-	void copy_to_location(const GLoc3D& loc, PRO::Location3D* pos);
-	void copy_to_location(PRO::Location3D* pos, GLoc3D& loc);
+	//±£¥ÊŒª÷√
+	void net_save_gameloc();
 
 public:
 	S_INT_64 get_useriid() const { return user_iid_; }

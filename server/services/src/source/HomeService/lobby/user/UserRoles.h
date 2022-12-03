@@ -18,6 +18,7 @@
 
 #include <cmsLib/redis/RedisClient.h>
 #include <gameLib/protobuf/cpp/db_internal.pb.h>
+#include <gameLib/commons/GLoc3D.h>
 
 #include "lobby/user/UserOperate.h"
 
@@ -41,6 +42,8 @@ public:
 	bool load_from_redis(S_INT_64 uid, RedisClient* rdv);
 
 	bool is_role_exist(S_INT_64 rid);
+
+	void role_update_loc(S_INT_64 uid, S_INT_64 rid, const GLoc3D& loc);
 
 protected:
 	PRO::DBUserRoles	roles_data_;

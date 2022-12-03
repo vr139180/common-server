@@ -104,6 +104,18 @@ struct User_GateLost_ntfDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_GateLost_ntfDefaultTypeInternal _User_GateLost_ntf_default_instance_;
+constexpr User_SaveRoleLoc_ntf::User_SaveRoleLoc_ntf(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : role_pos_(nullptr){}
+struct User_SaveRoleLoc_ntfDefaultTypeInternal {
+  constexpr User_SaveRoleLoc_ntfDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~User_SaveRoleLoc_ntfDefaultTypeInternal() {}
+  union {
+    User_SaveRoleLoc_ntf _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_SaveRoleLoc_ntfDefaultTypeInternal _User_SaveRoleLoc_ntf_default_instance_;
 constexpr User_Active_ntf::User_Active_ntf(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : role_pos_(nullptr){}
@@ -250,7 +262,7 @@ struct User_MySimpleInfo_ackDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT User_MySimpleInfo_ackDefaultTypeInternal _User_MySimpleInfo_ack_default_instance_;
 }  // namespace PRO
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_5flogin_2eproto[18];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_user_5flogin_2eproto[19];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_user_5flogin_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_user_5flogin_2eproto = nullptr;
 
@@ -331,6 +343,13 @@ const uint32_t TableStruct_user_5flogin_2eproto::offsets[] PROTOBUF_SECTION_VARI
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_SaveRoleLoc_ntf, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::PRO::User_SaveRoleLoc_ntf, role_pos_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::PRO::User_Active_ntf, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -427,18 +446,19 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 38, 50, -1, sizeof(::PRO::User_ReLogin_ack)},
   { 56, 66, -1, sizeof(::PRO::User_Logout_ntf)},
   { 70, -1, -1, sizeof(::PRO::User_GateLost_ntf)},
-  { 76, 83, -1, sizeof(::PRO::User_Active_ntf)},
-  { 84, -1, -1, sizeof(::PRO::User_RoleList_req)},
-  { 90, -1, -1, sizeof(::PRO::User_RoleList_ack)},
-  { 97, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
-  { 104, 112, -1, sizeof(::PRO::User_RoleCreate_ack)},
-  { 114, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
-  { 121, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
-  { 130, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
-  { 138, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
-  { 145, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
-  { 151, -1, -1, sizeof(::PRO::User_MySimpleInfo_req)},
-  { 157, -1, -1, sizeof(::PRO::User_MySimpleInfo_ack)},
+  { 76, -1, -1, sizeof(::PRO::User_SaveRoleLoc_ntf)},
+  { 83, 90, -1, sizeof(::PRO::User_Active_ntf)},
+  { 91, -1, -1, sizeof(::PRO::User_RoleList_req)},
+  { 97, -1, -1, sizeof(::PRO::User_RoleList_ack)},
+  { 104, -1, -1, sizeof(::PRO::User_RoleCreate_req)},
+  { 111, 119, -1, sizeof(::PRO::User_RoleCreate_ack)},
+  { 121, -1, -1, sizeof(::PRO::User_RoleSelect_req)},
+  { 128, -1, -1, sizeof(::PRO::User_RoleSelect_ack)},
+  { 137, -1, -1, sizeof(::PRO::User_RoleDetailA_ntf)},
+  { 145, -1, -1, sizeof(::PRO::User_RoleDetailB_ntf)},
+  { 152, -1, -1, sizeof(::PRO::User_RoleDetailEnd_ntf)},
+  { 158, -1, -1, sizeof(::PRO::User_MySimpleInfo_req)},
+  { 164, -1, -1, sizeof(::PRO::User_MySimpleInfo_ack)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -448,6 +468,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_ReLogin_ack_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Logout_ntf_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_GateLost_ntf_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_SaveRoleLoc_ntf_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_Active_ntf_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleList_req_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::PRO::_User_RoleList_ack_default_instance_),
@@ -482,34 +503,35 @@ const char descriptor_table_protodef_user_5flogin_2eproto[] PROTOBUF_SECTION_VAR
   "r_iid\030\001 \001(\003H\000\210\001\001\022\025\n\010role_iid\030\002 \001(\003H\001\210\001\001\022"
   "\022\n\005token\030\003 \001(\003H\002\210\001\001\022\023\n\006gameid\030\004 \001(\003H\003\210\001\001"
   "B\013\n\t_user_iidB\013\n\t_role_iidB\010\n\006_tokenB\t\n\007"
-  "_gameid\"\023\n\021User_GateLost_ntf\"F\n\017User_Act"
-  "ive_ntf\022&\n\010role_pos\030\001 \001(\0132\017.PRO.Location"
-  "3DH\000\210\001\001B\013\n\t_role_pos\"\023\n\021User_RoleList_re"
-  "q\"4\n\021User_RoleList_ack\022\037\n\005roles\030\001 \001(\0132\020."
-  "PRO.DBUserRoles\"\'\n\023User_RoleCreate_req\022\020"
-  "\n\010nickname\030\001 \001(\t\"I\n\023User_RoleCreate_ack\022"
-  "\016\n\006result\030\001 \001(\005\022\025\n\010role_iid\030\002 \001(\003H\000\210\001\001B\013"
-  "\n\t_role_iid\"\'\n\023User_RoleSelect_req\022\020\n\010ro"
-  "le_iid\030\001 \001(\003\"U\n\023User_RoleSelect_ack\022\016\n\006r"
-  "esult\030\001 \001(\005\022\020\n\010role_iid\030\002 \001(\003\022\034\n\003loc\030\003 \001"
-  "(\0132\017.PRO.Location3D\"b\n\024User_RoleDetailA_"
-  "ntf\022\035\n\004home\030\001 \001(\0132\017.PRO.DBUserHome\022+\n\tho"
-  "meitems\030\002 \001(\0132\030.PRO.DBUserHomeStructure\""
-  "5\n\024User_RoleDetailB_ntf\022\035\n\004pets\030\001 \001(\0132\017."
-  "PRO.DBUserPets\"\030\n\026User_RoleDetailEnd_ntf"
-  "\"\027\n\025User_MySimpleInfo_req\")\n\025User_MySimp"
-  "leInfo_ack\022\020\n\010nickname\030\001 \001(\tBT\n\033com.cms."
-  "client.network.gproP\001Z\025gamelib/protobuf/"
-  "gpro\252\002\033com.cms.client.network.gprob\006prot"
-  "o3"
+  "_gameid\"\023\n\021User_GateLost_ntf\"9\n\024User_Sav"
+  "eRoleLoc_ntf\022!\n\010role_pos\030\001 \001(\0132\017.PRO.Loc"
+  "ation3D\"F\n\017User_Active_ntf\022&\n\010role_pos\030\001"
+  " \001(\0132\017.PRO.Location3DH\000\210\001\001B\013\n\t_role_pos\""
+  "\023\n\021User_RoleList_req\"4\n\021User_RoleList_ac"
+  "k\022\037\n\005roles\030\001 \001(\0132\020.PRO.DBUserRoles\"\'\n\023Us"
+  "er_RoleCreate_req\022\020\n\010nickname\030\001 \001(\t\"I\n\023U"
+  "ser_RoleCreate_ack\022\016\n\006result\030\001 \001(\005\022\025\n\010ro"
+  "le_iid\030\002 \001(\003H\000\210\001\001B\013\n\t_role_iid\"\'\n\023User_R"
+  "oleSelect_req\022\020\n\010role_iid\030\001 \001(\003\"U\n\023User_"
+  "RoleSelect_ack\022\016\n\006result\030\001 \001(\005\022\020\n\010role_i"
+  "id\030\002 \001(\003\022\034\n\003loc\030\003 \001(\0132\017.PRO.Location3D\"b"
+  "\n\024User_RoleDetailA_ntf\022\035\n\004home\030\001 \001(\0132\017.P"
+  "RO.DBUserHome\022+\n\thomeitems\030\002 \001(\0132\030.PRO.D"
+  "BUserHomeStructure\"5\n\024User_RoleDetailB_n"
+  "tf\022\035\n\004pets\030\001 \001(\0132\017.PRO.DBUserPets\"\030\n\026Use"
+  "r_RoleDetailEnd_ntf\"\027\n\025User_MySimpleInfo"
+  "_req\")\n\025User_MySimpleInfo_ack\022\020\n\010nicknam"
+  "e\030\001 \001(\tBT\n\033com.cms.client.network.gproP\001"
+  "Z\025gamelib/protobuf/gpro\252\002\033com.cms.client"
+  ".network.gprob\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_user_5flogin_2eproto_deps[1] = {
   &::descriptor_table_db_5finternal_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_user_5flogin_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_user_5flogin_2eproto = {
-  false, false, 1522, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
-  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 18,
+  false, false, 1581, descriptor_table_protodef_user_5flogin_2eproto, "user_login.proto", 
+  &descriptor_table_user_5flogin_2eproto_once, descriptor_table_user_5flogin_2eproto_deps, 1, 19,
   schemas, file_default_instances, TableStruct_user_5flogin_2eproto::offsets,
   file_level_metadata_user_5flogin_2eproto, file_level_enum_descriptors_user_5flogin_2eproto, file_level_service_descriptors_user_5flogin_2eproto,
 };
@@ -2075,6 +2097,207 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_GateLost_ntf::GetClassDat
 
 // ===================================================================
 
+class User_SaveRoleLoc_ntf::_Internal {
+ public:
+  static const ::PRO::Location3D& role_pos(const User_SaveRoleLoc_ntf* msg);
+};
+
+const ::PRO::Location3D&
+User_SaveRoleLoc_ntf::_Internal::role_pos(const User_SaveRoleLoc_ntf* msg) {
+  return *msg->role_pos_;
+}
+void User_SaveRoleLoc_ntf::clear_role_pos() {
+  if (GetArenaForAllocation() == nullptr && role_pos_ != nullptr) {
+    delete role_pos_;
+  }
+  role_pos_ = nullptr;
+}
+User_SaveRoleLoc_ntf::User_SaveRoleLoc_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:PRO.User_SaveRoleLoc_ntf)
+}
+User_SaveRoleLoc_ntf::User_SaveRoleLoc_ntf(const User_SaveRoleLoc_ntf& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_role_pos()) {
+    role_pos_ = new ::PRO::Location3D(*from.role_pos_);
+  } else {
+    role_pos_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:PRO.User_SaveRoleLoc_ntf)
+}
+
+inline void User_SaveRoleLoc_ntf::SharedCtor() {
+role_pos_ = nullptr;
+}
+
+User_SaveRoleLoc_ntf::~User_SaveRoleLoc_ntf() {
+  // @@protoc_insertion_point(destructor:PRO.User_SaveRoleLoc_ntf)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void User_SaveRoleLoc_ntf::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete role_pos_;
+}
+
+void User_SaveRoleLoc_ntf::ArenaDtor(void* object) {
+  User_SaveRoleLoc_ntf* _this = reinterpret_cast< User_SaveRoleLoc_ntf* >(object);
+  (void)_this;
+}
+void User_SaveRoleLoc_ntf::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void User_SaveRoleLoc_ntf::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void User_SaveRoleLoc_ntf::Clear() {
+// @@protoc_insertion_point(message_clear_start:PRO.User_SaveRoleLoc_ntf)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && role_pos_ != nullptr) {
+    delete role_pos_;
+  }
+  role_pos_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* User_SaveRoleLoc_ntf::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .PRO.Location3D role_pos = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_role_pos(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* User_SaveRoleLoc_ntf::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:PRO.User_SaveRoleLoc_ntf)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .PRO.Location3D role_pos = 1;
+  if (this->_internal_has_role_pos()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        1, _Internal::role_pos(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:PRO.User_SaveRoleLoc_ntf)
+  return target;
+}
+
+size_t User_SaveRoleLoc_ntf::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:PRO.User_SaveRoleLoc_ntf)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .PRO.Location3D role_pos = 1;
+  if (this->_internal_has_role_pos()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *role_pos_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData User_SaveRoleLoc_ntf::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    User_SaveRoleLoc_ntf::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_SaveRoleLoc_ntf::GetClassData() const { return &_class_data_; }
+
+void User_SaveRoleLoc_ntf::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<User_SaveRoleLoc_ntf *>(to)->MergeFrom(
+      static_cast<const User_SaveRoleLoc_ntf &>(from));
+}
+
+
+void User_SaveRoleLoc_ntf::MergeFrom(const User_SaveRoleLoc_ntf& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:PRO.User_SaveRoleLoc_ntf)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_role_pos()) {
+    _internal_mutable_role_pos()->::PRO::Location3D::MergeFrom(from._internal_role_pos());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void User_SaveRoleLoc_ntf::CopyFrom(const User_SaveRoleLoc_ntf& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:PRO.User_SaveRoleLoc_ntf)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool User_SaveRoleLoc_ntf::IsInitialized() const {
+  return true;
+}
+
+void User_SaveRoleLoc_ntf::InternalSwap(User_SaveRoleLoc_ntf* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(role_pos_, other->role_pos_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata User_SaveRoleLoc_ntf::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
+      file_level_metadata_user_5flogin_2eproto[6]);
+}
+
+// ===================================================================
+
 class User_Active_ntf::_Internal {
  public:
   using HasBits = decltype(std::declval<User_Active_ntf>()._has_bits_);
@@ -2280,7 +2503,7 @@ void User_Active_ntf::InternalSwap(User_Active_ntf* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_Active_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[6]);
+      file_level_metadata_user_5flogin_2eproto[7]);
 }
 
 // ===================================================================
@@ -2319,7 +2542,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleList_req::GetClassDat
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleList_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[7]);
+      file_level_metadata_user_5flogin_2eproto[8]);
 }
 
 // ===================================================================
@@ -2520,7 +2743,7 @@ void User_RoleList_ack::InternalSwap(User_RoleList_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleList_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[8]);
+      file_level_metadata_user_5flogin_2eproto[9]);
 }
 
 // ===================================================================
@@ -2723,7 +2946,7 @@ void User_RoleCreate_req::InternalSwap(User_RoleCreate_req* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[9]);
+      file_level_metadata_user_5flogin_2eproto[10]);
 }
 
 // ===================================================================
@@ -2945,7 +3168,7 @@ void User_RoleCreate_ack::InternalSwap(User_RoleCreate_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleCreate_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[10]);
+      file_level_metadata_user_5flogin_2eproto[11]);
 }
 
 // ===================================================================
@@ -3123,7 +3346,7 @@ void User_RoleSelect_req::InternalSwap(User_RoleSelect_req* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[11]);
+      file_level_metadata_user_5flogin_2eproto[12]);
 }
 
 // ===================================================================
@@ -3382,7 +3605,7 @@ void User_RoleSelect_ack::InternalSwap(User_RoleSelect_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleSelect_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[12]);
+      file_level_metadata_user_5flogin_2eproto[13]);
 }
 
 // ===================================================================
@@ -3638,7 +3861,7 @@ void User_RoleDetailA_ntf::InternalSwap(User_RoleDetailA_ntf* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailA_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[13]);
+      file_level_metadata_user_5flogin_2eproto[14]);
 }
 
 // ===================================================================
@@ -3839,7 +4062,7 @@ void User_RoleDetailB_ntf::InternalSwap(User_RoleDetailB_ntf* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailB_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[14]);
+      file_level_metadata_user_5flogin_2eproto[15]);
 }
 
 // ===================================================================
@@ -3878,7 +4101,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_RoleDetailEnd_ntf::GetCla
 ::PROTOBUF_NAMESPACE_ID::Metadata User_RoleDetailEnd_ntf::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[15]);
+      file_level_metadata_user_5flogin_2eproto[16]);
 }
 
 // ===================================================================
@@ -3917,7 +4140,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*User_MySimpleInfo_req::GetClas
 ::PROTOBUF_NAMESPACE_ID::Metadata User_MySimpleInfo_req::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[16]);
+      file_level_metadata_user_5flogin_2eproto[17]);
 }
 
 // ===================================================================
@@ -4120,7 +4343,7 @@ void User_MySimpleInfo_ack::InternalSwap(User_MySimpleInfo_ack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata User_MySimpleInfo_ack::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_user_5flogin_2eproto_getter, &descriptor_table_user_5flogin_2eproto_once,
-      file_level_metadata_user_5flogin_2eproto[17]);
+      file_level_metadata_user_5flogin_2eproto[18]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -4143,6 +4366,9 @@ template<> PROTOBUF_NOINLINE ::PRO::User_Logout_ntf* Arena::CreateMaybeMessage< 
 }
 template<> PROTOBUF_NOINLINE ::PRO::User_GateLost_ntf* Arena::CreateMaybeMessage< ::PRO::User_GateLost_ntf >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::User_GateLost_ntf >(arena);
+}
+template<> PROTOBUF_NOINLINE ::PRO::User_SaveRoleLoc_ntf* Arena::CreateMaybeMessage< ::PRO::User_SaveRoleLoc_ntf >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::PRO::User_SaveRoleLoc_ntf >(arena);
 }
 template<> PROTOBUF_NOINLINE ::PRO::User_Active_ntf* Arena::CreateMaybeMessage< ::PRO::User_Active_ntf >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PRO::User_Active_ntf >(arena);

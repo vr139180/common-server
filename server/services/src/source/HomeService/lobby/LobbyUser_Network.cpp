@@ -54,8 +54,6 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 	S_INT_32 r = 0;
 	if (!roles_data_.is_role_exist(roleid))
 		r = 1; //role不存在
-	if (r == 0 && cur_state_ != UserState::UserState_RolesReady)
-		r = 2; //role已经选择
 
 	if (r != 0)
 	{
@@ -66,6 +64,30 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 		send_to_gate(ack);
 
 		return;
+	}
+
+	//role发生了切换
+	if (get_role_iid() != roleid)
+	{
+		//清除原有数据
+		reset_usercache();
+
+		cur_state_ = UserState::UserState_RolesReady;
+	}
+	else if (get_role_iid() != 0)
+	{
+		if (cur_state_ == UserState::UserState_RoleDetailLoading)
+		{
+			//加载中
+			return;
+		}
+
+		//角色已经加载
+		if (cur_state_ == UserState::UserState_Ready)
+		{
+			db_role_selected_done();
+			return;
+		}
 	}
 	
 	//设置当前role
@@ -83,6 +105,18 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 		BaseDBCmd* pcmd = new LoadUserInfoCmd( s_head_, false, owner_);
 		dbsStore->post_db_cmd(pcmd);
 	}
+}
+
+void LobbyUser::on_ls_rolelocsave_ntf(S_INT_64 roleid, const GLoc3D& loc)
+{
+	if (!is_user_ready())
+		return;
+
+	if (role_iid_ != roleid)
+		return;
+
+	roles_data_.role_update_loc(get_user_iid(), roleid, loc);
+	base_data_.update_role_loc(loc);
 }
 
 void LobbyUser::db_role_selected_done()

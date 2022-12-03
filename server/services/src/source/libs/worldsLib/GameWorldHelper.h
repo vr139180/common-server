@@ -55,7 +55,7 @@ public:
 	GameRegionSimpleMeta* find_region_byid(S_INT_32 regionid);
 
 	//say hello world
-	void get_hello_world(GLoc3D& loc, S_INT_32 regionid);
+	void get_hello_world(GLoc3D& loc, S_INT_32& regionid);
 	bool get_regionid_from_loc(const GLoc3D& loc, S_INT_32& regionid);
 
 protected:

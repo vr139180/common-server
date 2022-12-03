@@ -54,11 +54,7 @@ void GameServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
 	NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
-	if ( to == NETSERVICE_TYPE::ERK_SERVICE_GATE)
-	{
-		svrApp.router_to_gate(p_msg.release());
-	}
-	else if (to == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
+	if (to == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
 	{
 		S_UINT_16 msgid = pro->get_msg();
 		if (msgid == PRO::ERK_PROTYPE::GSFR_GAMEREGIONREGIST_NTF)
@@ -67,9 +63,9 @@ void GameServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 			svrApp.do_gameservice_bind_region(this, ntf->regionid());
 		}
 	}
-	else if (to == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	else
 	{
-		svrApp.router_to_home(p_msg.release());
+		svrApp.dispatch_to_router(p_msg.release(), false);
 	}
 }
 

@@ -132,11 +132,7 @@ void DataRouterLinkTo::on_recv_protocol_netthread( NetProtocol* pro)
 	}
 	else
 	{
-		NETSERVICE_TYPE to = (NETSERVICE_TYPE)pro->get_to();
-		if (to == NETSERVICE_TYPE::ERK_SERVICE_GAME)
-		{
-			svrApp.router_to_game_from_othsvr(p_msg.release());
-		}
+		svrApp.dispatch_to_router(p_msg.release(), true);
 	}
 }
 

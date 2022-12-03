@@ -52,7 +52,7 @@ void ServiceRouterLinkFrom::on_connect_lost_netthread()
 
 void ServiceRouterLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<NetProtocol> p_msg(pro);
+	svrApp.dispatch_to_router(pro);
 }
 
 void ServiceRouterLinkFrom::registinfo_tolog( bool bregist)

@@ -202,7 +202,7 @@ public:
 	void on_task_giveup_ack(BasicProtocol* pro, CString* pRetMsg);
 
 	//-----------------game------------------------------------
-	void game_userstate_sync();
+	void game_userstate_sync( int x, int z);
 	void on_game_userstate_sync(BasicProtocol* pro, CString* pRetMsg);
 	void on_game_usersinout_sync(BasicProtocol* pro, CString* pRetMsg);
 

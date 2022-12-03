@@ -76,6 +76,7 @@ protected:
 	void on_lb_rolelist_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_rolecreate_req(NetProtocol* pro, bool& autorelease);
 	void on_lb_roleselect_req(NetProtocol* pro, bool& autorelease);
+	void on_lb_saveroleloc_ntf(NetProtocol* pro, bool& autorelease);
 
 	void on_lb_mysimpleinfo_req(NetProtocol* pro, bool& autorelease);
 

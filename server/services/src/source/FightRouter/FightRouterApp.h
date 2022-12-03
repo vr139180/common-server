@@ -53,10 +53,12 @@ public:
 	FightRouterConfig* get_config() { return conf_.get(); }
 
 public:
+	void dispatch_to_router(NetProtocol* pro, bool fromothrouter);
+
 	void router_to_game(NetProtocol* pro);
 	void router_to_game_from_othsvr(NetProtocol* pro);
 	void router_to_gate(NetProtocol* pro);
-	void router_to_home(NetProtocol* pro);
+	void router_to_datarouter(NetProtocol* pro);
 
 	void do_gameservice_bind_region(GameServiceLinkFrom* plink, S_INT_32 regionid);
 

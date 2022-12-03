@@ -141,6 +141,8 @@ void StateService::redis_update_onlinestate(RedisClient* rdv, const SProtocolHea
 	S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
 	key = rdv->build_rediskey(rdkey::user::USER_ONLINES, get_onlinequeue_hash( userid));
 	rdv->add_zset(key.c_str(), std::to_string(userid).c_str(), tnow, UpdateType::EXIST);
+
+	logDebug(out_runtime, "user:%lld update state, gameid:%lld loc:%s", userid, head.get_gameid(), pos.to_string().c_str());
 }
 
 bool StateService::redis_user_logout(RedisClient* rdv, S_INT_64 userid, S_INT_64 token, bool checktoken)

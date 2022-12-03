@@ -80,6 +80,8 @@ public:
 	void on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease);
 
 	void on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease);
+	//from game service, save role pos
+	void on_pc_saveuserloc_ntf(NetProtocol* pro, bool& autorelease);
 
 	//聊天系统，全局聊天嵌入
 	void on_pc_broadcast_chat_globalmsg(NetProtocol* pro, bool& autorelease);

@@ -23,10 +23,25 @@ const GLoc3D& GLoc3D::zero_point()
 	return zero;
 }
 
+void GLoc3D::copy_to(const GLoc3D& loc, PRO::Location3D* pos)
+{
+	pos->set_x(loc.x());
+	pos->set_y(loc.y());
+	pos->set_z(loc.z());
+}
+
+void GLoc3D::copy_to(PRO::Location3D* pos, GLoc3D& loc)
+{
+	loc.set_x(pos->x());
+	loc.set_y(pos->y());
+	loc.set_z(pos->z());
+}
+
 GLoc3D& GLoc3D::operator = (const GLoc3D& v)
 {
 	this->x_ = v.x();
 	this->y_ = v.y();
+	this->z_ = v.z();
 
 	return *this;
 }
@@ -52,7 +67,7 @@ bool GLoc3D::build_from_str(std::string& str, GLoc3D& p)
 
 std::string GLoc3D::to_string() const
 {
-	return ShareUtil::str_format<64>("{%10.3f,%10.3f,%10.3f}", x_, y_, z_);
+	return ShareUtil::str_format<64>("{%.3f,%.3f,%.3f}", x_, y_, z_);
 }
 
 bool GLoc3D::is_zero_point() const

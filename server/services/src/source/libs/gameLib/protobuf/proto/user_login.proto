@@ -65,6 +65,11 @@ message User_Logout_ntf{
 message User_GateLost_ntf{
 }
 
+//保存用户位置信息
+message User_SaveRoleLoc_ntf{
+  Location3D role_pos = 1;
+}
+
 //状态激活协议
 message User_Active_ntf{
   //最后的game服id

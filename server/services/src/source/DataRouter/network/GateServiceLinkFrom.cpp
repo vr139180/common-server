@@ -52,17 +52,7 @@ void GateServiceLinkFrom::on_connect_lost_netthread()
 
 void GateServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	S_UINT_16 msgid = pro->get_msg();
-	if( pro->get_to() == (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE)
-	{
-		logDebug(out_runtime, "recv msg:%d from gate to state", msgid);
-		svrApp.router_to_state(pro);
-	}
-	else
-	{
-		logDebug(out_runtime, "recv msg:%d from gate to home", msgid);
-		svrApp.router_to_home(pro);
-	}
+	svrApp.dispatch_to_router(pro);
 }
 
 void GateServiceLinkFrom::registinfo_tolog( bool bregist)

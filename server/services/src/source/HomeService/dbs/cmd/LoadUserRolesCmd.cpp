@@ -34,7 +34,8 @@ void LoadUserRolesCmd::run_in_db_thread(sql::Connection* p_connection)
 		prep_stmt.reset(p_connection->createStatement());
 
 		std::stringstream sql;
-		sql << "select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = " << head_.get_token_useriid() << ";";
+		sql << "select ver_,role_iid,user_iid,nickname,unix_timestamp(registime),levels,location_x,location_y,location_z from role_baseinfo where user_iid = "
+			<< head_.get_token_useriid() << ";";
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery(sql.str().c_str()));
 		//role list

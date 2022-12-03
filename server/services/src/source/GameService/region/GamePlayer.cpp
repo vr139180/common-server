@@ -29,20 +29,6 @@ GamePlayer::GamePlayer():
 {
 }
 
-void GamePlayer::copy_to_location(const GLoc3D& loc, PRO::Location3D* pos)
-{
-	pos->set_x(loc.x());
-	pos->set_y(loc.y());
-	pos->set_z(loc.z());
-}
-
-void GamePlayer::copy_to_location(PRO::Location3D* pos, GLoc3D& loc)
-{
-	loc.set_x(pos->x());
-	loc.set_y(pos->y());
-	loc.set_z(pos->z());
-}
-
 void GamePlayer::reset()
 {
 	b_master_node_ = true;
@@ -61,7 +47,7 @@ void GamePlayer::copy_user_info(PRO::GameUserInfo* pui)
 	pui->set_role_iid(role_iid_);
 	pui->set_nickname(nickname_.c_str());
 	PRO::Location3D* pos = pui->mutable_pos();
-	copy_to_location(location_, pos);
+	GLoc3D::copy_to(location_, pos);
 }
 
 void GamePlayer::send_to_gate(BasicProtocol* msg)
@@ -95,6 +81,8 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 		//ÇëÇó½ÇÉ«ÏêÇé
 		PRO::User_MySimpleInfo_req* req = new PRO::User_MySimpleInfo_req();
 		this->send_to_home(req);
+
+		logDebug(out_runtime, "set free userinfo, uid:%lld rid:%lld", user_iid_, role_iid_);
 	}
 	else
 	{
@@ -104,6 +92,8 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 
 		role_iid_ = head.get_role_iid();
 		location_ = loc;
+
+		logDebug(out_runtime, "set exist userinfo, uid:%lld rid:%lld", user_iid_, role_iid_);
 	}
 
 	return true;
@@ -120,4 +110,15 @@ bool GamePlayer::on_myinfo_get(BasicProtocol* msg)
 	player_state_ = GamePlayerState::GamePlayerS_Ready;
 
 	return true;
+}
+
+void GamePlayer::net_save_gameloc()
+{
+	PRO::Game_SaveUserLoc_ntf* ntf = new PRO::Game_SaveUserLoc_ntf();
+	PRO::Location3D* pos = ntf->mutable_loc();
+	GLoc3D::copy_to(location_, pos);
+
+	send_to_gate(ntf);
+
+	logDebug(out_runtime, "user:%lld save loc:%s to gate, state, home", user_iid_, location_.to_string().c_str());
 }

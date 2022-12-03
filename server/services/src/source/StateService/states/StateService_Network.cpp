@@ -122,9 +122,7 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 		ack->set_role_iid(roleid);
 		ack->set_gameid(gameid);
 		PRO::Location3D* xpos = ack->mutable_role_pos();
-		xpos->set_x(pos.x());
-		xpos->set_y(pos.y());
-		xpos->set_z(pos.z());
+		GLoc3D::copy_to(pos, xpos);
 	}
 
 	SProtocolHead head = pro->head_;
@@ -134,11 +132,9 @@ void StateService::on_user_relogin_req(NetProtocol* pro, bool& autorelease)
 void StateService::on_user_active_ntf(NetProtocol* pro, bool& autorelease)
 {
 	User_Active_ntf *ntf = dynamic_cast<User_Active_ntf*>(pro->msg_);
-	const Location3D& xpos = ntf->role_pos();
+	Location3D* xpos = ntf->mutable_role_pos();
 	GLoc3D pos;
-	pos.set_x(xpos.x());
-	pos.set_y(xpos.y());
-	pos.set_z(xpos.z());
+	GLoc3D::copy_to(xpos, pos);
 
 	redis_update_onlinestate( 0, pro->head_, pos);
 }

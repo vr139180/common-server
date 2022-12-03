@@ -59,10 +59,13 @@ public:
 		gate_links_from_.broadcast(msg);
 	}
 
+	void dispatch_to_router(NetProtocol* pro);
+
 	void router_to_state(NetProtocol* pro);
 	void router_to_home(NetProtocol* pro);
 	void router_to_gate(NetProtocol* pro);
-	void router_to_game(NetProtocol* pro);
+	void router_to_fightrouter(NetProtocol* pro);
+	void router_to_servicerouter(NetProtocol* pro);
 
 public:
 

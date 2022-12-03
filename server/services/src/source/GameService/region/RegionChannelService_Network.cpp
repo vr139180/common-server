@@ -31,15 +31,31 @@ void RegionChannelService::InitNetMessage()
 	REGISTERMSG(GMS_PROTYPE::GMS_ENTERGAME_REQ, &RegionChannelService::on_gate_enter_game_req, this);
 	REGISTERMSG(GMS_PROTYPE::GMS_USERALIVE_NTF, &RegionChannelService::on_gate_userlive_ntf, this);
 
+	REGISTERMSG(USER_PROTYPE::USER_LOGOUT_NTF, &RegionChannelService::on_state_userlogout_ntf, this);
 	REGISTERMSG(USER_PROTYPE::USER_MYSIMPLEINFO_ACK, &RegionChannelService::on_home_mysimpleinfo_ack, this);
 
 	REGISTERMSG(GMS_PROTYPE::GMS_USERSTATE_SYN, &RegionChannelService::on_pl_userstate_sync, this);
 }
 
+void RegionChannelService::on_state_userlogout_ntf(NetProtocol* pro, bool& autorelease)
+{
+	GamePlayer* puser = channel_users_.get_gameuser_exist(pro->get_useriid(), true);
+	if (puser == 0)
+		return;
+
+	region_map_->user_logout_region(puser);
+
+	logDebug(out_runtime, "user:%lld logout gameid:%d", puser->get_useriid(), this->gameid_);
+}
+
 void RegionChannelService::on_gate_userlive_ntf(NetProtocol* pro, bool& autorelease)
 {
 	//激活用户
-	channel_users_.get_gameuser_exist(pro->get_useriid(), true);
+	GamePlayer* puser = channel_users_.get_gameuser_exist(pro->get_useriid(), true);
+	if (puser == 0)
+		return;
+
+	puser->net_save_gameloc();
 }
 
 void RegionChannelService::on_gate_enter_game_req(NetProtocol* pro, bool& autorelease)
@@ -61,7 +77,12 @@ void RegionChannelService::on_gate_enter_game_req(NetProtocol* pro, bool& autore
 	ack->set_game_iid(gameid_);
 	ProtoUtil::set_location_to_msg(ack, puser->get_location());
 
+	logDebug(out_runtime, "user:%lld entergame success, gameid:%lld", puser->get_useriid(), gameid_);
+
 	puser->send_to_gate(ack);
+
+	//进行第一次同步
+	region_map_->user_view_first_sync(puser);
 }
 
 void RegionChannelService::on_home_mysimpleinfo_ack(NetProtocol* pro, bool& autorelease)

@@ -129,7 +129,7 @@ void ScriptDlg::regist()
 
 	//game
 	add_function("game_enter()", "进入游戏");
-	add_function("game_userstate_sync()", "同步自己的状态");
+	add_function("user_move(210,210)", "场景内移动");
 
 	//building
 	add_function("build_additem(0,1)", "加一个建筑");
@@ -203,7 +203,7 @@ void CommandTestImpl::InitScriptBind(lua_State* l)
 		.addFunction("task_submit", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_submit)
 		.addFunction("task_giveup", (void (CommandTestImpl::*)(S_INT_32))&CommandTestImpl::task_giveup)
 		.addFunction("game_enter", (void (CommandTestImpl::*)(void))&CommandTestImpl::game_user_entergame)
-		.addFunction("game_userstate_sync", (void (CommandTestImpl::*)(void))&CommandTestImpl::game_userstate_sync)
+		.addFunction("user_move", (void (CommandTestImpl::*)(int,int))&CommandTestImpl::game_userstate_sync)
 		.endClass()
 		.endNamespace();
 }

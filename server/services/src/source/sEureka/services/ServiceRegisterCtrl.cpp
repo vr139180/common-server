@@ -93,7 +93,10 @@ void ServiceRegisterCtrl::add_service_to_subscribe(NETSERVICE_TYPE type, S_INT_6
 {
 	std::list<S_INT_64>& subs = get_subscribes_oftype(type);
 	if (std::find(subs.begin(), subs.end(), svriid) == subs.end())
-		subs.push_back( svriid);
+	{
+		subs.push_back(svriid);
+		logDebug(out_runtime, "service subscribe ++++++++++, type:%s, iid:%lld", NetServiceType::to_string(type).c_str(), svriid);
+	}
 }
 
 void ServiceRegisterCtrl::add_service_to_router(NETSERVICE_TYPE type, S_INT_64 svriid)
@@ -107,8 +110,12 @@ void ServiceRegisterCtrl::del_service_from_subscribe(NETSERVICE_TYPE type, S_INT
 {
 	std::list<S_INT_64>& subs = get_subscribes_oftype(type);
 	std::list<S_INT_64>::iterator fiter = std::find(subs.begin(), subs.end(), svriid);
-	if ( fiter != subs.end())
+	if (fiter != subs.end())
+	{
 		subs.erase(fiter);
+
+		logDebug(out_runtime, "service subscribe ---------, type:%s, iid:%lld", NetServiceType::to_string(type).c_str(), svriid);
+	}
 }
 
 void ServiceRegisterCtrl::del_service_from_router(NETSERVICE_TYPE type, S_INT_64 svriid)
@@ -259,33 +266,91 @@ void ServiceRegisterCtrl::notify_service_online(S_INT_64 iid)
 
 	NETSERVICE_TYPE ctype = pNew->type;
 	//subscribes notify
-	std::list<S_INT_64>& subs = get_subscribes_oftype(ctype);
-	if (subs.size() > 0)
 	{
-		for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+		std::list<S_INT_64>& subs = get_subscribes_oftype(ctype);
+		if (subs.size() > 0)
 		{
-			S_INT_64 tiid = (*iter);
-			ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
-			if (pfrom == 0)
-				continue;
+			for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+			{
+				S_INT_64 tiid = (*iter);
+				ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
+				if (pfrom == 0)
+					continue;
 
-			Erk_ServiceSubscribe_ntf* ntf = new Erk_ServiceSubscribe_ntf();
-			ntf->set_myiid(pfrom->get_iid());
-			ntf->set_svr_type(ctype);
-			PRO::ServerNode* psvr = ntf->add_newsvrs();
-			pNew->copy_to(psvr);
+				Erk_ServiceSubscribe_ntf* ntf = new Erk_ServiceSubscribe_ntf();
+				ntf->set_myiid(pfrom->get_iid());
+				ntf->set_svr_type(ctype);
+				PRO::ServerNode* psvr = ntf->add_newsvrs();
+				pNew->copy_to(psvr);
 
-			pfrom->send_to_service(ntf);
+				pfrom->send_to_service(ntf);
+			}
 		}
 	}
 
 	//router notify
-	subs = get_routers_oftype(ctype);
-	if (subs.size() > 0)
 	{
-		std::list<ServiceNodeInfo*>& svrs = get_service_node_oftype(ctype);
-		if (svrs.size() > 0)
+		std::list<S_INT_64>& subs = get_routers_oftype(ctype);
+		if (subs.size() > 0)
 		{
+			std::list<ServiceNodeInfo*>& svrs = get_service_node_oftype(ctype);
+			if (svrs.size() > 0)
+			{
+				for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+				{
+					S_INT_64 tiid = (*iter);
+					ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
+					if (pfrom == 0)
+						continue;
+
+					Erk_RouterSubscribe_ntf* ntf = new Erk_RouterSubscribe_ntf();
+					ntf->set_myiid(pfrom->get_iid());
+					ntf->set_svr_type(ctype);
+
+					for (std::list<ServiceNodeInfo*>::iterator iter = svrs.begin(); iter != svrs.end(); ++iter)
+					{
+						ServiceNodeInfo* pinf = (*iter);
+						ntf->add_svriids(pinf->iid);
+					}
+
+					pfrom->send_to_service(ntf);
+				}
+			}
+		}
+	}
+
+}
+
+void ServiceRegisterCtrl::notify_service_offline(S_INT_64 iid, NETSERVICE_TYPE ctype)
+{
+	//subscribes notify
+	{
+		std::list<S_INT_64>& subs = get_subscribes_oftype(ctype);
+		if (subs.size() > 0)
+		{
+			for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
+			{
+				S_INT_64 tiid = (*iter);
+				ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
+				if (pfrom == 0)
+					continue;
+
+				Erk_ServiceSubscribe_ntf* ntf = new Erk_ServiceSubscribe_ntf();
+				ntf->set_myiid(pfrom->get_iid());
+				ntf->set_svr_type(ctype);
+				ntf->add_offsvrs(iid);
+
+				pfrom->send_to_service(ntf);
+			}
+		}
+	}
+
+	//router notify
+	{
+		std::list<S_INT_64>& subs = get_routers_oftype(ctype);
+		if (subs.size() > 0)
+		{
+			std::list<ServiceNodeInfo*>& svrs = get_service_node_oftype(ctype);
 			for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
 			{
 				S_INT_64 tiid = (*iter);
@@ -300,60 +365,12 @@ void ServiceRegisterCtrl::notify_service_online(S_INT_64 iid)
 				for (std::list<ServiceNodeInfo*>::iterator iter = svrs.begin(); iter != svrs.end(); ++iter)
 				{
 					ServiceNodeInfo* pinf = (*iter);
-					ntf->add_svriids( pinf->iid);
+					ntf->add_svriids(pinf->iid);
 				}
 
 				pfrom->send_to_service(ntf);
 			}
 		}
 	}
-}
 
-void ServiceRegisterCtrl::notify_service_offline(S_INT_64 iid, NETSERVICE_TYPE ctype)
-{
-	//subscribes notify
-	std::list<S_INT_64>& subs = get_subscribes_oftype(ctype);
-	if (subs.size() > 0)
-	{
-		for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
-		{
-			S_INT_64 tiid = (*iter);
-			ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
-			if (pfrom == 0)
-				continue;
-
-			Erk_ServiceSubscribe_ntf* ntf = new Erk_ServiceSubscribe_ntf();
-			ntf->set_myiid(pfrom->get_iid());
-			ntf->set_svr_type(ctype);
-			ntf->add_offsvrs(iid);
-
-			pfrom->send_to_service(ntf);
-		}
-	}
-
-	//router notify
-	subs = get_routers_oftype(ctype);
-	if (subs.size() > 0)
-	{
-		std::list<ServiceNodeInfo*>& svrs = get_service_node_oftype(ctype);
-		for (std::list<S_INT_64>::iterator iter = subs.begin(); iter != subs.end(); ++iter)
-		{
-			S_INT_64 tiid = (*iter);
-			ServiceLinkFrom* pfrom = service_mth_links_.get_servicelink_byiid(tiid);
-			if (pfrom == 0)
-				continue;
-
-			Erk_RouterSubscribe_ntf* ntf = new Erk_RouterSubscribe_ntf();
-			ntf->set_myiid(pfrom->get_iid());
-			ntf->set_svr_type(ctype);
-
-			for (std::list<ServiceNodeInfo*>::iterator iter = svrs.begin(); iter != svrs.end(); ++iter)
-			{
-				ServiceNodeInfo* pinf = (*iter);
-				ntf->add_svriids(pinf->iid);
-			}
-
-			pfrom->send_to_service(ntf);
-		}
-	}
 }

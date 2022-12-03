@@ -43,9 +43,12 @@ public:
 	virtual void user_move_region(GamePlayer* puser);
 	virtual void user_view_broadcast(GamePlayer* puser, BasicProtocol* msg);
 	virtual void user_inout_tick();
+	virtual void user_view_first_sync(GamePlayer* puser);
 
 protected:
 	RegionCellNode* get_cellnode_byloc(const GLoc3D& loc);
+	//获取9格返回
+	void get_ninecell_bycr(S_INT_32 c, S_INT_32 r, std::vector<S_INT_32>& nincecells);
 
 	void notify_cellnode_inout(RegionCellNode* pnode);
 

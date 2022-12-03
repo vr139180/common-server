@@ -123,9 +123,13 @@ void RegionMapBoxImpl::notify_cellnode_inout(RegionCellNode* pnode)
 			{
 				GamePlayer* p = citer->first;
 				RegionCellNode* pn = citer->second;
-				//9格内的in out过滤
-				if (check_region.is_point_in_box(pn->center_point()))
-					continue;
+				//pn == 0 表示不是从其他格移动过来的，不需要进行过滤
+				if (pn != 0)
+				{
+					//9格内的in out过滤
+					if (check_region.is_point_in_box(pn->center_point()))
+						continue;
+				}
 
 				PRO::GameUserInfo* pui = ntf->add_online_users();
 				p->copy_user_info(pui);

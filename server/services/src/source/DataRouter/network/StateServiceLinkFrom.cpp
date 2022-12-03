@@ -52,36 +52,7 @@ void StateServiceLinkFrom::on_connect_lost_netthread()
 
 void StateServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
-	std::unique_ptr<NetProtocol> p_msg(pro);
-	NETSERVICE_TYPE gto = (NETSERVICE_TYPE)pro->get_to();
-	if (gto == NETSERVICE_TYPE::ERK_SERVICE_GATE) {
-		svrApp.router_to_gate(p_msg.release());
-	}
-	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER) {
-		//to 为datarouter的都是需要特殊处理的
-		to_datarouter_dealwith(p_msg.release());
-	}
-}
-
-void StateServiceLinkFrom::to_datarouter_dealwith(NetProtocol* pro)
-{
-	std::unique_ptr<NetProtocol> p_msg(pro);
-	int msgid = (int)pro->get_msg();
-	if (msgid == PRO::USER_PROTYPE::USER_LOGOUT_NTF)
-	{
-		//logout需要同步给 gate+game
-		PRO::User_Logout_ntf* ntf = dynamic_cast<PRO::User_Logout_ntf*>(pro->msg_);
-		if (ntf->gameid() > 0)
-		{
-			NetProtocol* np = pro->clone();
-			SProtocolHead& head = np->write_head();
-			head.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_STATE;
-
-			svrApp.router_to_game(np);
-		}
-
-		svrApp.router_to_gate(p_msg.release());
-	}
+	svrApp.dispatch_to_router(pro);
 }
 
 void StateServiceLinkFrom::registinfo_tolog( bool bregist)

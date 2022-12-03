@@ -72,6 +72,7 @@ protected:
 	void on_gate_enter_game_req(NetProtocol* pro, bool& autorelease);
 	void on_gate_userlive_ntf(NetProtocol* pro, bool& autorelease);
 	void on_home_mysimpleinfo_ack(NetProtocol* pro, bool& autorelease);
+	void on_state_userlogout_ntf(NetProtocol* pro, bool& autorelease);
 
 	//-------------------------------------------------------------------
 	void on_pl_userstate_sync(NetProtocol* pro, bool& autorelease);

@@ -105,7 +105,6 @@ public:
 	void on_db_roledata_sync1( UserBase& ubase, UserHome& uhome, 
 		UserBuildings& ubuilds, UserPets& upets, UserTasks& utasks);
 
-protected:
 	//sync first
 	//ret: false -> need to load data from database and save to redis
 	bool sync_all();

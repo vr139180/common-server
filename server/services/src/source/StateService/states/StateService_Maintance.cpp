@@ -115,13 +115,21 @@ void StateService::on_user_logout_process(S_INT_64 userid)
 		SProtocolHead& head = pro->write_head();
 		head.token_giduid_ = ShareUtil::atoi64(datas[rdkey::user::USER_UINFO_F_GIDUID].c_str());
 		head.token_slottoken_ = ShareUtil::atoi64(datas[rdkey::user::USER_UINFO_F_SLOTTOKEN].c_str());
+		head.set_role_iid(roleid);
+		head.set_gameid(gameid);
 		
-		svrApp.send_to_datarouter(pro);
+		svrApp.send_to_gate(pro);
+
+		//同时抄送game, home
+		if (roleid > 0)
+			svrApp.send_to_home(pro->clone());
+		if (gameid > 0)
+			svrApp.send_to_game(pro->clone());
 
 		//清除relogin标记
 		rdv->del_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN);
 
-		logDebug(out_runtime, "online user maintance -> user:%lld be forced to logout", userid);
+		logDebug(out_runtime, "online user maintance -> user:%lld be forced to logout, notify=> gate = y, home = %lld, game = %lld", userid, roleid, gameid);
 	}
 
 	std::string offlinekey = rdv->build_rediskey(rdkey::user::USER_OFFLINES, get_onlinequeue_hash(userid));

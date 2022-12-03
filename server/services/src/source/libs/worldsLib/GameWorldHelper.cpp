@@ -127,7 +127,7 @@ GameRegionSimpleMeta* GameWorldHelper::find_region_byid(S_INT_32 regionid)
 	return fiter->second;
 }
 
-void GameWorldHelper::get_hello_world(GLoc3D& loc, S_INT_32 regionid)
+void GameWorldHelper::get_hello_world(GLoc3D& loc, S_INT_32& regionid)
 {
 	loc = get_startpoint();
 	get_regionid_from_loc(loc, regionid);
@@ -137,7 +137,7 @@ bool GameWorldHelper::get_regionid_from_loc(const GLoc3D& loc, S_INT_32& regioni
 {
 	if (loc.x() < 0 || loc.x() >= total_width_)
 		return false;
-	if (loc.y() < 0 || loc.y() >= total_height_)
+	if (loc.z() < 0 || loc.z() >= total_height_)
 		return false;
 
 	//从点获取区域

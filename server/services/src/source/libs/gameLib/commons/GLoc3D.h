@@ -18,6 +18,7 @@
 
 #include <string>
 #include <cmsLib/core_type.h>
+#include <gameLib/protobuf/cpp/db_internal.pb.h>
 
 class GLoc3D
 {
@@ -25,6 +26,9 @@ public:
 	static const GLoc3D& zero_point();
 
 	static bool build_from_str(std::string& str, GLoc3D& p);
+
+	static void copy_to(const GLoc3D& loc, PRO::Location3D* pos);
+	static void copy_to(PRO::Location3D* pos, GLoc3D& loc);
 
 public:
 	GLoc3D() :x_(0.0), y_(0.0), z_(0.0) {}

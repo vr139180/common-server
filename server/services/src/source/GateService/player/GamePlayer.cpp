@@ -93,13 +93,15 @@ void GamePlayer::role_selected_done(S_INT_64 rid, const GLoc3D& pos)
 	ProtoUtil::set_location_to_msg(req, game_loc_);
 	req->set_game_iid(game_iid_);
 
-	svrApp.send_to_fightrouter(PRO::ERK_SERVICE_GAME, req);
+	send_to_game(req);
 }
 
 void GamePlayer::set_gameid(S_INT_64 gid)
 {
 	game_iid_ = gid;
 	s_head_.set_gameid(game_iid_);
+
+	logDebug(out_runtime, "-----set gameid:%lld", gid);
 }
 
 void GamePlayer::send_netprotocol(BasicProtocol* msg)
@@ -112,4 +114,37 @@ void GamePlayer::send_to_state(BasicProtocol* msg)
 {
 	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
 	svrApp.route_to_datarouter(PRO::ERK_SERVICE_STATE, pro);
+}
+
+void GamePlayer::send_to_home(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	svrApp.route_to_datarouter(PRO::ERK_SERVICE_HOME, pro);
+}
+
+void GamePlayer::send_to_game(BasicProtocol* msg)
+{
+	NetProtocol* pro = new NetProtocol(get_protocolhead(), msg);
+	svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, pro);
+}
+
+void GamePlayer::copy_location_to(PRO::Location3D* pos, GLoc3D& loc)
+{
+	loc.set_x(pos->x());
+	loc.set_y(pos->y());
+	loc.set_z(pos->z());
+}
+
+void GamePlayer::copy_location_to(const GLoc3D& loc, PRO::Location3D* pos)
+{
+	pos->set_x(loc.x());
+	pos->set_y(loc.y());
+	pos->set_z(loc.z());
+}
+
+void GamePlayer::update_location_from(PRO::Location3D* pos)
+{
+	copy_location_to(pos, game_loc_);
+
+	logDebug(out_runtime, "user:%lld save new loc:%s", user_iid_, game_loc_.to_string().c_str());
 }

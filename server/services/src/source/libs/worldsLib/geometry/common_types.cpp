@@ -125,5 +125,5 @@ void CMSBox::extend_buttom(int cells)
 
 CMSPointXZ CMSBox::normlize(const GLoc3D& loc)
 {
-	return CMSPointXZ(loc.x() - left_top_.x(), loc.z() - left_top_.z());
+	return CMSPointXZ(loc.x() - left_top_.x(), loc.z() - (left_top_.z() - height_));
 }

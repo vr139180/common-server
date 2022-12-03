@@ -387,16 +387,41 @@ void DataRouterApp::on_disconnected_with_servicerouter(ServiceRouterLinkFrom* pl
 	}
 }
 
+void DataRouterApp::dispatch_to_router(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	std::unique_ptr<NetProtocol> xptr(pro);
+	NETSERVICE_TYPE gto = (NETSERVICE_TYPE)pro->get_to();
+	if (gto == NETSERVICE_TYPE::ERK_SERVICE_GATE) {
+		router_to_gate(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_HOME) {
+		router_to_home(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_STATE) {
+		router_to_state(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GAME || gto == NETSERVICE_TYPE::ERK_SERVICE_MATCHMAKING) {
+		router_to_fightrouter(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_CHAT || gto == NETSERVICE_TYPE::ERK_SERVICE_FRIEND ||
+		gto == NETSERVICE_TYPE::ERK_SERVICE_MAIL || gto == NETSERVICE_TYPE::ERK_SERVICE_UNION)
+	{
+		router_to_servicerouter(xptr.release());
+	}
+}
+
 void DataRouterApp::router_to_state(NetProtocol* pro)
 {
-	StateServiceLinkFrom* plink = state_links_from_.get_servicelink_random();
-	if (plink == 0)
-	{
-		delete pro;
-		return;
-	}
+	std::unique_ptr<NetProtocol> ptr(pro);
 
-	plink->send_protocol(pro);
+	StateServiceLinkFrom* plink = state_links_from_.get_servicelink_random();
+	if (plink)
+		plink->send_protocol(ptr.release());
 }
 
 void DataRouterApp::router_to_home(NetProtocol* pro)
@@ -408,30 +433,24 @@ void DataRouterApp::router_to_gate(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> ptr(pro);
 
-	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d", 
-		NetServiceType::to_string( (NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
-		pro->get_msg());
-
 	S_INT_64 gateid = pro->head_.get_token_gateiid();
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateid);
 	if (plink)
 		plink->send_protocol(ptr.release());
 }
 
-void DataRouterApp::router_to_game(NetProtocol* pro)
+void DataRouterApp::router_to_fightrouter(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> ptr(pro);
-
-	SProtocolHead& head = pro->write_head();
-	head.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
-
-	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
-		pro->get_msg());
-
 	FightRouterLinkFrom* plink = fightrouter_links_from_.get_servicelink_random();
+	if (plink)
+		plink->send_protocol(ptr.release());
+}
+
+void DataRouterApp::router_to_servicerouter(NetProtocol* pro)
+{
+	std::unique_ptr<NetProtocol> ptr(pro);
+	ServiceRouterLinkFrom* plink = servicerouter_links_from_.get_servicelink_random();
 	if (plink)
 		plink->send_protocol(ptr.release());
 }

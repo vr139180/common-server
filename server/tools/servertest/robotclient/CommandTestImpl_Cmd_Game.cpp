@@ -63,7 +63,7 @@ void CommandTestImpl::on_game_usersinout_sync(BasicProtocol* pro, CString* pRetM
 	*pRetMsg += str1;
 }
 
-void CommandTestImpl::game_userstate_sync()
+void CommandTestImpl::game_userstate_sync(int x, int z)
 {
 	ret_desc_ = "";
 	if (!islogon())
@@ -74,6 +74,10 @@ void CommandTestImpl::game_userstate_sync()
 
 	Game_UserState_sync* sync = new Game_UserState_sync();
 	sync->set_user_iid(user_iid_);
+	PRO::Location3D* pos = sync->mutable_role_pos();
+	pos->set_x((float)x);
+	pos->set_z((float)z);
+	pos->set_y(0.0);
 
 	if (!send_to_gts(sync))
 	{

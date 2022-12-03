@@ -48,7 +48,7 @@ struct TableStruct_user_5flogin_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[18]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[19]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -110,6 +110,9 @@ extern User_RoleSelect_ackDefaultTypeInternal _User_RoleSelect_ack_default_insta
 class User_RoleSelect_req;
 struct User_RoleSelect_reqDefaultTypeInternal;
 extern User_RoleSelect_reqDefaultTypeInternal _User_RoleSelect_req_default_instance_;
+class User_SaveRoleLoc_ntf;
+struct User_SaveRoleLoc_ntfDefaultTypeInternal;
+extern User_SaveRoleLoc_ntfDefaultTypeInternal _User_SaveRoleLoc_ntf_default_instance_;
 }  // namespace PRO
 PROTOBUF_NAMESPACE_OPEN
 template<> ::PRO::User_Active_ntf* Arena::CreateMaybeMessage<::PRO::User_Active_ntf>(Arena*);
@@ -130,6 +133,7 @@ template<> ::PRO::User_RoleList_ack* Arena::CreateMaybeMessage<::PRO::User_RoleL
 template<> ::PRO::User_RoleList_req* Arena::CreateMaybeMessage<::PRO::User_RoleList_req>(Arena*);
 template<> ::PRO::User_RoleSelect_ack* Arena::CreateMaybeMessage<::PRO::User_RoleSelect_ack>(Arena*);
 template<> ::PRO::User_RoleSelect_req* Arena::CreateMaybeMessage<::PRO::User_RoleSelect_req>(Arena*);
+template<> ::PRO::User_SaveRoleLoc_ntf* Arena::CreateMaybeMessage<::PRO::User_SaveRoleLoc_ntf>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace PRO {
 
@@ -1238,6 +1242,161 @@ class User_GateLost_ntf final :
 };
 // -------------------------------------------------------------------
 
+class User_SaveRoleLoc_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_SaveRoleLoc_ntf) */ {
+ public:
+  inline User_SaveRoleLoc_ntf() : User_SaveRoleLoc_ntf(nullptr) {}
+  ~User_SaveRoleLoc_ntf() override;
+  explicit constexpr User_SaveRoleLoc_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  User_SaveRoleLoc_ntf(const User_SaveRoleLoc_ntf& from);
+  User_SaveRoleLoc_ntf(User_SaveRoleLoc_ntf&& from) noexcept
+    : User_SaveRoleLoc_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline User_SaveRoleLoc_ntf& operator=(const User_SaveRoleLoc_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline User_SaveRoleLoc_ntf& operator=(User_SaveRoleLoc_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const User_SaveRoleLoc_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const User_SaveRoleLoc_ntf* internal_default_instance() {
+    return reinterpret_cast<const User_SaveRoleLoc_ntf*>(
+               &_User_SaveRoleLoc_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(User_SaveRoleLoc_ntf& a, User_SaveRoleLoc_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(User_SaveRoleLoc_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(User_SaveRoleLoc_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  User_SaveRoleLoc_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<User_SaveRoleLoc_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const User_SaveRoleLoc_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const User_SaveRoleLoc_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(User_SaveRoleLoc_ntf* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.User_SaveRoleLoc_ntf";
+  }
+  protected:
+  explicit User_SaveRoleLoc_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRolePosFieldNumber = 1,
+  };
+  // .PRO.Location3D role_pos = 1;
+  bool has_role_pos() const;
+  private:
+  bool _internal_has_role_pos() const;
+  public:
+  void clear_role_pos();
+  const ::PRO::Location3D& role_pos() const;
+  PROTOBUF_NODISCARD ::PRO::Location3D* release_role_pos();
+  ::PRO::Location3D* mutable_role_pos();
+  void set_allocated_role_pos(::PRO::Location3D* role_pos);
+  private:
+  const ::PRO::Location3D& _internal_role_pos() const;
+  ::PRO::Location3D* _internal_mutable_role_pos();
+  public:
+  void unsafe_arena_set_allocated_role_pos(
+      ::PRO::Location3D* role_pos);
+  ::PRO::Location3D* unsafe_arena_release_role_pos();
+
+  // @@protoc_insertion_point(class_scope:PRO.User_SaveRoleLoc_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PRO::Location3D* role_pos_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_user_5flogin_2eproto;
+};
+// -------------------------------------------------------------------
+
 class User_Active_ntf final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.User_Active_ntf) */ {
  public:
@@ -1286,7 +1445,7 @@ class User_Active_ntf final :
                &_User_Active_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(User_Active_ntf& a, User_Active_ntf& b) {
     a.Swap(&b);
@@ -1441,7 +1600,7 @@ class User_RoleList_req final :
                &_User_RoleList_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(User_RoleList_req& a, User_RoleList_req& b) {
     a.Swap(&b);
@@ -1560,7 +1719,7 @@ class User_RoleList_ack final :
                &_User_RoleList_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(User_RoleList_ack& a, User_RoleList_ack& b) {
     a.Swap(&b);
@@ -1715,7 +1874,7 @@ class User_RoleCreate_req final :
                &_User_RoleCreate_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(User_RoleCreate_req& a, User_RoleCreate_req& b) {
     a.Swap(&b);
@@ -1866,7 +2025,7 @@ class User_RoleCreate_ack final :
                &_User_RoleCreate_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(User_RoleCreate_ack& a, User_RoleCreate_ack& b) {
     a.Swap(&b);
@@ -2028,7 +2187,7 @@ class User_RoleSelect_req final :
                &_User_RoleSelect_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(User_RoleSelect_req& a, User_RoleSelect_req& b) {
     a.Swap(&b);
@@ -2174,7 +2333,7 @@ class User_RoleSelect_ack final :
                &_User_RoleSelect_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(User_RoleSelect_ack& a, User_RoleSelect_ack& b) {
     a.Swap(&b);
@@ -2351,7 +2510,7 @@ class User_RoleDetailA_ntf final :
                &_User_RoleDetailA_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(User_RoleDetailA_ntf& a, User_RoleDetailA_ntf& b) {
     a.Swap(&b);
@@ -2526,7 +2685,7 @@ class User_RoleDetailB_ntf final :
                &_User_RoleDetailB_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(User_RoleDetailB_ntf& a, User_RoleDetailB_ntf& b) {
     a.Swap(&b);
@@ -2680,7 +2839,7 @@ class User_RoleDetailEnd_ntf final :
                &_User_RoleDetailEnd_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    16;
 
   friend void swap(User_RoleDetailEnd_ntf& a, User_RoleDetailEnd_ntf& b) {
     a.Swap(&b);
@@ -2798,7 +2957,7 @@ class User_MySimpleInfo_req final :
                &_User_MySimpleInfo_req_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    17;
 
   friend void swap(User_MySimpleInfo_req& a, User_MySimpleInfo_req& b) {
     a.Swap(&b);
@@ -2917,7 +3076,7 @@ class User_MySimpleInfo_ack final :
                &_User_MySimpleInfo_ack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    18;
 
   friend void swap(User_MySimpleInfo_ack& a, User_MySimpleInfo_ack& b) {
     a.Swap(&b);
@@ -3733,6 +3892,96 @@ inline void User_Logout_ntf::set_gameid(int64_t value) {
 
 // -------------------------------------------------------------------
 
+// User_SaveRoleLoc_ntf
+
+// .PRO.Location3D role_pos = 1;
+inline bool User_SaveRoleLoc_ntf::_internal_has_role_pos() const {
+  return this != internal_default_instance() && role_pos_ != nullptr;
+}
+inline bool User_SaveRoleLoc_ntf::has_role_pos() const {
+  return _internal_has_role_pos();
+}
+inline const ::PRO::Location3D& User_SaveRoleLoc_ntf::_internal_role_pos() const {
+  const ::PRO::Location3D* p = role_pos_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PRO::Location3D&>(
+      ::PRO::_Location3D_default_instance_);
+}
+inline const ::PRO::Location3D& User_SaveRoleLoc_ntf::role_pos() const {
+  // @@protoc_insertion_point(field_get:PRO.User_SaveRoleLoc_ntf.role_pos)
+  return _internal_role_pos();
+}
+inline void User_SaveRoleLoc_ntf::unsafe_arena_set_allocated_role_pos(
+    ::PRO::Location3D* role_pos) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  role_pos_ = role_pos;
+  if (role_pos) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:PRO.User_SaveRoleLoc_ntf.role_pos)
+}
+inline ::PRO::Location3D* User_SaveRoleLoc_ntf::release_role_pos() {
+  
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PRO::Location3D* User_SaveRoleLoc_ntf::unsafe_arena_release_role_pos() {
+  // @@protoc_insertion_point(field_release:PRO.User_SaveRoleLoc_ntf.role_pos)
+  
+  ::PRO::Location3D* temp = role_pos_;
+  role_pos_ = nullptr;
+  return temp;
+}
+inline ::PRO::Location3D* User_SaveRoleLoc_ntf::_internal_mutable_role_pos() {
+  
+  if (role_pos_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PRO::Location3D>(GetArenaForAllocation());
+    role_pos_ = p;
+  }
+  return role_pos_;
+}
+inline ::PRO::Location3D* User_SaveRoleLoc_ntf::mutable_role_pos() {
+  ::PRO::Location3D* _msg = _internal_mutable_role_pos();
+  // @@protoc_insertion_point(field_mutable:PRO.User_SaveRoleLoc_ntf.role_pos)
+  return _msg;
+}
+inline void User_SaveRoleLoc_ntf::set_allocated_role_pos(::PRO::Location3D* role_pos) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos_);
+  }
+  if (role_pos) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(role_pos));
+    if (message_arena != submessage_arena) {
+      role_pos = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, role_pos, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  role_pos_ = role_pos;
+  // @@protoc_insertion_point(field_set_allocated:PRO.User_SaveRoleLoc_ntf.role_pos)
+}
+
+// -------------------------------------------------------------------
+
 // User_Active_ntf
 
 // optional .PRO.Location3D role_pos = 1;
@@ -4510,6 +4759,8 @@ inline void User_MySimpleInfo_ack::set_allocated_nickname(std::string* nickname)
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

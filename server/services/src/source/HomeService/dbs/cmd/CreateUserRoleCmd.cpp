@@ -43,7 +43,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 		int column = 0;
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
-			"insert into role_baseinfo(ver_,role_iid,user_iid,nickname,registime,levels) values(?,?,?,?,from_unixtime(?),1);"));
+			"insert into role_baseinfo(ver_,role_iid,user_iid,nickname,registime,levels,location_x,location_y,location_z) values(?,?,?,?,from_unixtime(?),1,0,0,0);"));
 		column = 1;
 		prep_stmt->setUInt(column++, base_data_.data().ver_());
 
@@ -71,7 +71,7 @@ void CreateUserRoleCmd::run_in_db_thread(sql::Connection* p_connection)
 
 		//------------------------------------------------------------------------------------------------
 		prep_stmt.reset(p_connection->prepareStatement(
-			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime),levels from role_baseinfo where user_iid = ?;"));
+			"select ver_, role_iid,user_iid,nickname,unix_timestamp(registime),levels,location_x,location_y,location_z from role_baseinfo where user_iid = ?;"));
 		prep_stmt->setInt64(1, head_.get_token_useriid());
 
 		std::unique_ptr<sql::ResultSet> res(prep_stmt->executeQuery());

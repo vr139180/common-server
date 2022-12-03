@@ -372,23 +372,44 @@ void FightRouterApp::do_gameservice_bind_region(GameServiceLinkFrom* plink, S_IN
 	game_links_from_.bind_to_region(plink, regionid);
 }
 
-void FightRouterApp::router_to_game(NetProtocol* pro)
+void FightRouterApp::dispatch_to_router(NetProtocol* pro, bool fromothrouter)
 {
+	std::unique_ptr<NetProtocol> xptr(pro);
+
 	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
 		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
 		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
 		pro->get_msg());
 
+	NETSERVICE_TYPE gto = (NETSERVICE_TYPE)pro->get_to();
+	if (gto == NETSERVICE_TYPE::ERK_SERVICE_GAME)
+	{
+		if (fromothrouter)
+			router_to_game_from_othsvr(xptr.release());
+		else
+			router_to_game(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+	{
+		svrApp.router_to_gate(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_STATE || gto == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	{
+		svrApp.router_to_datarouter(xptr.release());
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_CHAT || gto == NETSERVICE_TYPE::ERK_SERVICE_FRIEND || 
+		gto == NETSERVICE_TYPE::ERK_SERVICE_MAIL || gto == NETSERVICE_TYPE::ERK_SERVICE_UNION)
+	{
+	}
+}
+
+void FightRouterApp::router_to_game(NetProtocol* pro)
+{
 	game_links_from_.dispath_to_game(pro);
 }
 
 void FightRouterApp::router_to_game_from_othsvr(NetProtocol* pro)
 {
-	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
-		pro->get_msg());
-
 	game_links_from_.dispatch_to_game_from_othsvr(pro);
 }
 
@@ -396,23 +417,13 @@ void FightRouterApp::router_to_gate(NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> ptr(pro);
 
-	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
-		pro->get_msg());
-
 	S_INT_64 gateid = pro->head_.get_token_gateiid();
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateid);
 	if (plink)
 		plink->send_protocol(ptr.release());
 }
 
-void FightRouterApp::router_to_home(NetProtocol* pro)
+void FightRouterApp::router_to_datarouter(NetProtocol* pro)
 {
-	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
-		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
-		pro->get_msg());
-
-	datarouter_link_mth_.send_mth_protocol(PRO::ERK_SERVICE_HOME, pro);
+	datarouter_link_mth_.send_mth_protocol((NETSERVICE_TYPE)pro->get_to(), pro);
 }

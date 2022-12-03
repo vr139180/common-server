@@ -1,6 +1,6 @@
 <worlds width="1024" height="1024">
 	<startpoints>
-		<startpoint pos="{100,100,0}" />
+		<startpoint pos="{100,0,100}" />
 	</startpoints>
 	<region id="1" name="test" start="{0,1000}" width="1000" height="1000" />
 </worlds>

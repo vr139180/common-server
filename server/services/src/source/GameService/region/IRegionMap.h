@@ -37,6 +37,9 @@ public:
 	//用户移动
 	virtual void user_move_region(GamePlayer* puser) = 0;
 
+	//第一次视野范围内用户同步
+	virtual void user_view_first_sync(GamePlayer* puser) = 0;
+
 	//9格内广播
 	virtual void user_view_broadcast(GamePlayer* puser, BasicProtocol* msg) = 0;
 

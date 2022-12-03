@@ -66,6 +66,11 @@ void UserRoles::load_from_database(sql::ResultSet& row)
 		prinfo->set_nickname(row.getString(column++).c_str());
 		prinfo->set_registime(row.getInt(column++));
 		prinfo->set_levels(row.getInt(column++));
+
+		PRO::Location3D* pos = prinfo->mutable_loc();
+		pos->set_x((float)row.getDouble(column++));
+		pos->set_y((float)row.getDouble(column++));
+		pos->set_z((float)row.getDouble(column++));
 	}
 }
 
@@ -89,4 +94,27 @@ bool UserRoles::update_redis_cache(S_INT_64 uid, RedisClient* rdv)
 		return true;
 	}
 	return true;
+}
+
+void UserRoles::role_update_loc(S_INT_64 uid, S_INT_64 rid, const GLoc3D& loc)
+{
+	PRO::DBRoleBaseInfo* prole = 0;
+	for (int ii = 0; ii < roles_data_.roles_size(); ++ii)
+	{
+		const PRO::DBRoleBaseInfo& r = roles_data_.roles(ii);
+		if (r.role_iid() == rid)
+		{
+			prole = (PRO::DBRoleBaseInfo*)&r;
+			break;
+		}
+	}
+
+	if (prole != 0)
+	{
+		PRO::Location3D* pos = prole->mutable_loc();
+		GLoc3D::copy_to(loc, pos);
+
+		RedisClient* rdv = svrApp.get_redisclient();
+		update_redis_cache(uid, rdv);
+	}
 }

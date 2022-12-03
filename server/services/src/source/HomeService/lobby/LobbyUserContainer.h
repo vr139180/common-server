@@ -82,6 +82,42 @@ protected:
 			add_head(head);
 		}
 
+		void free_node(DoubleLinkNode**head, DoubleLinkNode** tail) {
+			DoubleLinkNode* ph = *head;
+			DoubleLinkNode* pt = *tail;
+
+			if (this == ph)
+			{
+				if (ph->next_)
+					ph->next_->pre_ = 0;
+				*head = this->next_;
+				this->next_ = 0;
+			}
+			if (this == pt)
+			{
+				if (pt->pre_)
+					pt->pre_->next_ = 0;
+				*tail = pt->pre_;
+				this->pre_ = 0;
+			}
+			
+			ph = this->pre_;
+			pt = this->next_;
+			if (ph != 0)
+			{
+				ph->next_ = pt;
+				this->pre_ = 0;
+			}
+			if (pt != 0)
+			{
+				pt->pre_ = ph;
+				this->next_ = 0;
+			}
+
+			this->last_time_ = 0;
+			this->data_ = 0;
+		}
+
 	private:
 		DoubleLinkNode* pre_;
 		DoubleLinkNode* next_;
@@ -103,6 +139,7 @@ public:
 
 	//获取用户，如果没有加入
 	T* get_lobbyuser(S_INT_64 userid);
+	void free_lobbyuser(S_INT_64 userid);
 
 protected:
 	void release();
@@ -213,6 +250,24 @@ T* LobbyUserContainer<T>::get_lobbyuser(S_INT_64 userid)
 	}
 
 	return pnod->data();
+}
+
+template<typename T>
+void LobbyUserContainer<T>::free_lobbyuser(S_INT_64 userid)
+{
+	DoubleLinkNode* pnod = 0;
+	typename USER_MAP_DATA::iterator fiter = user_map_.find(userid);
+	if (fiter == user_map_.end())
+		return;
+		
+	pnod = fiter->second;
+	T* pdata = pnod->data();
+	
+	pnod->free_node( &head_, &tail_);
+	
+	free_nodes_.push_back(pnod);
+	pdata->rest_user();
+	free_data_.push_back(pdata);
 }
 
 template<typename T>

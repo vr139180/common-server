@@ -25,7 +25,6 @@ USED_REDISKEY_USER_NS
 
 UserBase::UserBase():base_data_update_(false)
 {
-
 }
 
 void UserBase::reset_data()
@@ -52,6 +51,11 @@ void UserBase::load_from_database(sql::ResultSet& row)
 		base_data_.set_nickname(row.getString(column++).c_str());
 		base_data_.set_registime(row.getInt(column++));
 		base_data_.set_levels(row.getInt(column++));
+
+		PRO::Location3D* pos = base_data_.mutable_loc();
+		pos->set_x((float)row.getDouble(column++));
+		pos->set_y((float)row.getDouble(column++));
+		pos->set_z((float)row.getDouble(column++));
 	}
 }
 
@@ -99,6 +103,16 @@ void UserBase::new_rolebaseinfo(RedisClient* rdv, S_INT_64 uid, const char* nick
 	base_data_.set_nickname(nickname);
 	base_data_.set_registime(OSSystem::mOS->GetUnixTimestamp());
 	base_data_.set_levels(1);
+ 	PRO::Location3D* pos = base_data_.mutable_loc();
+	GLoc3D::copy_to(GLoc3D::zero_point(), pos);
+
+	base_data_update_ = true;
+}
+
+void UserBase::update_role_loc(const GLoc3D& loc)
+{
+	PRO::Location3D* pos = base_data_.mutable_loc();
+	GLoc3D::copy_to(loc, pos);
 
 	base_data_update_ = true;
 }

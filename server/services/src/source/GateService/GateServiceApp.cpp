@@ -284,7 +284,7 @@ void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtoco
 
 void GateServiceApp::route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
-	logDebug(out_runtime, "recv msg:%d from player, router to fightrouter", pro->get_msg());
+	logDebug(out_runtime, "recv msg:%d from player, router to fightrouter. gameid:%lld", pro->get_msg(), pro->get_gameid());
 	fightrouter_link_mth_.send_mth_protocol(to, pro);
 }
 

@@ -68,6 +68,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<User_Logout_ntf>(USER_PROTYPE::USER_LOGOUT_NTF);
 	regist_protocal<User_GateLost_ntf>(USER_PROTYPE::USER_GATELOST_NTF);
 	regist_protocal<User_Active_ntf>(USER_PROTYPE::USER_ACTIVE_NTF);
+	regist_protocal<User_SaveRoleLoc_ntf>(USER_PROTYPE::USER_SAVEROLELOC_NTF);
 
 	regist_protocal<User_RoleList_req>(USER_PROTYPE::USER_ROLELIST_REQ);
 	regist_protocal<User_RoleList_ack>(USER_PROTYPE::USER_ROLELIST_ACK);
@@ -158,6 +159,7 @@ void ProtocolFactory::init_factory()
 
 	//game system
 	regist_protocal<Game_UserAlive_ntf>(GMS_PROTYPE::GMS_USERALIVE_NTF);
+	regist_protocal<Game_SaveUserLoc_ntf>(GMS_PROTYPE::GMS_SAVEUSERLOC_NTF);
 	regist_protocal<Game_EnterGame_req>(GMS_PROTYPE::GMS_ENTERGAME_REQ);
 	regist_protocal<Game_EnterGame_ack>(GMS_PROTYPE::GMS_ENTERGAME_ACK);
 	regist_protocal<Game_UsersVisiable_ntf>(GMS_PROTYPE::GMS_USERSVISIBLE_NTF);

@@ -20,6 +20,7 @@
 #include <cmsLib/net/NetSession.h>
 #include <cmsLib/net/NetSessionBindEvent.h>
 #include <gameLib/commons/GLoc3D.h>
+#include <gameLib/protobuf/Proto_all.h>
 
 typedef enum tagPlayerState {
 	PlayerState_Free = 0,
@@ -42,6 +43,8 @@ public:
 	void force_close();
 
 	void send_to_state(BasicProtocol* msg);
+	void send_to_home(BasicProtocol* msg);
+	void send_to_game(BasicProtocol* msg);
 
 	bool is_samesession(S_INT_64 utoken);
 	bool is_samesession(S_INT_64 uid, S_INT_64 utoken);
@@ -53,6 +56,7 @@ public:
 	void set_gameid(S_INT_64 gid);
 	S_INT_64 get_gameid() { return game_iid_; }
 	void set_game_loc(const GLoc3D& pos) { game_loc_ = pos; }
+	const GLoc3D& get_game_loc() const { return game_loc_; }
 
 	bool is_in_rolerange() { return (cur_state_ >= PlayerState::PlayerState_Logon && cur_state_ < PlayerState::PlayerState_RoleReady); }
 	bool is_roleready() { return cur_state_ >= PlayerState::PlayerState_RoleReady; }
@@ -72,6 +76,11 @@ public:
 	void send_netprotocol(BasicProtocol* msg);
 
 	S_INT_64 get_iid() { return user_iid_; }
+
+public:
+	void copy_location_to(PRO::Location3D* pos, GLoc3D& loc);
+	void copy_location_to(const GLoc3D& loc, PRO::Location3D* pos);
+	void update_location_from(PRO::Location3D* pos);
 
 public:
 	boost::shared_ptr<NetSession> get_session() { return session_; }

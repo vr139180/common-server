@@ -20,6 +20,9 @@
 #include <cmsLib/redis/RedisClient.h>
 #include <cmsLib/lua/ScriptContext.h>
 
+#include <gameLib/protobuf/cpp/db_internal.pb.h>
+#include <gameLib/commons/GLoc3D.h>
+
 #include "lobby/user/UserCacheData.h"
 #include "lobby/user/UserRoles.h"
 
@@ -69,6 +72,7 @@ public:
 	void on_ls_rolelist_req();
 	void on_ls_rolecreate_req(const char* nickname);
 	void on_ls_roleselect_req(S_INT_64 roleid);
+	void on_ls_rolelocsave_ntf(S_INT_64 roleid, const GLoc3D& loc);
 
 public:
 	//from database

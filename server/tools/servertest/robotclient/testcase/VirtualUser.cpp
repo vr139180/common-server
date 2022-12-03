@@ -127,7 +127,7 @@ void VirtualUser::php_login_result(PhpResult* ret)
 	svrinfo_.reset(ret);
 	if (ret != 0)
 	{
-		account_id_ = ret->account_id_;
+		account_id_ = ShareUtil::str_format<64>("%lld",ret->account_id_).c_str();
 	}
 }
 

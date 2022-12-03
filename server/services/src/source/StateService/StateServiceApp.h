@@ -50,6 +50,10 @@ public:
 
 public:
 	void send_to_gate( SProtocolHead& head, BasicProtocol* pro);
+	void send_to_gate(NetProtocol* pro);
+	void send_to_home(NetProtocol* pro);
+	void send_to_game(NetProtocol* pro);
+
 	void send_to_datarouter(NetProtocol* pro);
 
 	boost::thread_specific_ptr<RedisClient>& get_redisclient_thread() { return this->redis_inthread_; }

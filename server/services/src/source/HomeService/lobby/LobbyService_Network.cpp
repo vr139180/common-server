@@ -30,6 +30,8 @@ void LobbyService::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_ROLECREATE_REQ, &LobbyService::on_lb_rolecreate_req, this);
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_REQ, &LobbyService::on_lb_roleselect_req, this);
 
+	REGISTERMSG(USER_PROTYPE::USER_SAVEROLELOC_NTF, &LobbyService::on_lb_saveroleloc_ntf, this);
+
 	REGISTERMSG(USER_PROTYPE::USER_MYSIMPLEINFO_REQ, &LobbyService::on_lb_mysimpleinfo_req, this);
 
 	REGISTERMSG(BUILD_PROTYPE::BUILD_ADDITEM_REQ, &LobbyService::on_lb_build_additem_req, this);
@@ -60,7 +62,8 @@ void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 	if (puser == 0) return;
 
 	logDebug(out_runtime, "recv user:%lld logount request", puser->get_user_iid());
-	puser->rest_user();
+	//强制保存一下
+	puser->save_all(true);
 }
 
 void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)
@@ -91,6 +94,18 @@ void LobbyService::on_lb_roleselect_req(NetProtocol* pro, bool& autorelease)
 	User_RoleSelect_req* req = dynamic_cast<User_RoleSelect_req*>(pro->msg_);
 
 	puser->on_ls_roleselect_req(req->role_iid());
+}
+
+void LobbyService::on_lb_saveroleloc_ntf(NetProtocol* pro, bool& autorelease)
+{
+	LobbyUser *puser = get_userbyid_from_msg(pro);
+	if (puser == 0) return;
+
+	User_SaveRoleLoc_ntf* ntf = dynamic_cast<User_SaveRoleLoc_ntf*>(pro->msg_);
+	GLoc3D loc;
+	GLoc3D::copy_to(ntf->mutable_role_pos(), loc);
+
+	puser->on_ls_rolelocsave_ntf(pro->get_roleiid(), loc);
 }
 
 void LobbyService::on_lb_mysimpleinfo_req(NetProtocol* pro, bool& autorelease)

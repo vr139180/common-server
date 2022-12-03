@@ -186,17 +186,38 @@ void PlayerChannel::on_pc_entergame_ntf(NetProtocol* pro, bool& autorelease)
 	if (ntf->result() == 0)
 	{
 		puser->set_gameid(ntf->game_iid());
+		logDebug(out_runtime, "user:%lld enter game succc, gameid:%lld", puser->get_iid(), puser->get_gameid());
 
-		const Location3D& xpos = ntf->pos();
-		GLoc3D pos;
-		pos.set_x(xpos.x());
-		pos.set_y(xpos.y());
-		pos.set_z(xpos.z());
-		puser->set_game_loc(pos);
+		Location3D* xpos = ntf->mutable_pos();
+		puser->update_location_from(xpos);
 
 		puser->force_user_active();
 	}
 
 	autorelease = false;
 	puser->send_netprotocol( pro);
+}
+
+void PlayerChannel::on_pc_saveuserloc_ntf(NetProtocol* pro, bool& autorelease)
+{
+	GamePlayer *puser = get_player_frommsg(pro);
+	if (puser == 0) return;
+
+	{
+		Game_SaveUserLoc_ntf* ntf = dynamic_cast<Game_SaveUserLoc_ntf*>(pro->msg_);
+		PRO::Location3D* pos = ntf->mutable_loc();
+		puser->update_location_from(pos);
+	}
+
+	//to state
+	puser->force_user_active();
+
+	//to homeservice
+	{
+		User_SaveRoleLoc_ntf *xntf = new User_SaveRoleLoc_ntf();
+		Location3D* xpos = xntf->mutable_role_pos();
+		puser->copy_location_to(puser->get_game_loc(), xpos);
+
+		puser->send_to_home(xntf);
+	}
 }
