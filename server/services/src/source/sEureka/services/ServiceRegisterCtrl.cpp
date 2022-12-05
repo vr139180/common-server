@@ -132,6 +132,9 @@ void ServiceRegisterCtrl::offline_one_service(S_INT_64 iid)
 	if (pnod == 0)
 		return;
 
+	if (pnod->type == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+		unregist_gate_from_redis(*pnod);
+
 	for (std::list<NETSERVICE_TYPE>::iterator iter = pnod->subscribes_.begin(); iter != pnod->subscribes_.end(); ++iter)
 	{
 		NETSERVICE_TYPE ctype = (*iter);

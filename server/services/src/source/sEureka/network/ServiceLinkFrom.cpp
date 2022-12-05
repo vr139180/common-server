@@ -72,6 +72,9 @@ void ServiceLinkFrom::on_recv_protocol_netthread( NetProtocol* pro)
 {
 	std::unique_ptr<NetProtocol> p_msg(pro);
 
+	//logDebug(out_runtime, "eureka recv msg:%d from:%s", pro->get_msg(), 
+	//	NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str());
+
 	//缺省处理都在servie线程池中进行
 	NETCMD_FUN_MAP fun = boost::bind(
 		&ServiceRegisterCtrl::NetProcessMessage, svrApp.get_servicectrl(), boost::placeholders::_1, boost::placeholders::_2);

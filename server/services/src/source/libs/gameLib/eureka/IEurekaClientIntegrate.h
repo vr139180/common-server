@@ -50,6 +50,9 @@ public:
 	virtual void mth_service_registed(S_INT_64 sid) = 0;
 	//和eureka所有的链接丢失，应用退出
 	virtual void mth_eureka_losted() = 0;
+
+	//gate
+	virtual S_INT_32 get_gate_freeslot() { return 0; }
 };
 
 #endif //__IEUREKACLIENTINTEGRATE_H__

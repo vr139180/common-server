@@ -276,6 +276,14 @@ message Svr_ServiceBindService_ack{
   int64 totoken = 4;
 }
 
+//gate更新自身空闲的slot,10s更新一下
+message Svr_GateSlotUpdate_ntf{
+  //gateid
+  int64 iid = 1;
+  //空闲的slot数量
+  int32 frees = 2;
+}
+
 //gameservice注册到fightrouter
 message GsFr_GameRegionRegist_ntf{
   //区域编号

@@ -24,7 +24,7 @@ public class UserHomeServiceImpl implements UserHomeService
 	private UserMapper userMapper;
 
 	@Override
-	public APICallResult<GetUserAccountRTO> getUserAccount(String account)
+	public User_Account getUserAccount(String account)
 	{
 		account = account.toLowerCase();
 
@@ -39,10 +39,6 @@ public class UserHomeServiceImpl implements UserHomeService
 			userMapper.createUserAccount(user);
 		}
 
-		GetUserAccountRTO rto = new GetUserAccountRTO();
-		rto.setUseriid( user.getUser_iid());
-		rto.setGates( "127.0.0.1:8001");
-
-		return new APICallResult<>( APIResultCode.SUCCESS, rto);
+		return user;
 	}
 }

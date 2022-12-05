@@ -35,7 +35,7 @@ public:
 	void copy_to(PRO::ServerNode* pnode) const;
 	void copy_from(const PRO::ServerNode* pnode);
 
-	std::string get_extparam_bykey(const char* key);
+	std::string get_extparam_bykey(const char* key) const;
 
 	bool add_subscribe(NETSERVICE_TYPE st);
 	bool add_router(NETSERVICE_TYPE st);

@@ -1,7 +1,8 @@
-﻿<!--
-type: tcp/ws
--->
-<app ip="127.0.0.1" port="8001" neths="4" type="tcp" confsrc="filesrc">
+﻿<app ip="127.0.0.1" port="8001" neths="4" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
+	<exts>
+		<!-- tcp/ws -->
+		<ext k="linktype" v="tcp"/>
+	</exts>
 </app>

@@ -70,8 +70,8 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 		//请求最新的角色信息
 		player_state_ = GamePlayerState::GamePlayerS_EnterWaitDetail;
 
-		s_head_.sync_token(head);
-		s_head_.set_gameid(gameid);
+		s_head_ = head;
+		s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
 
 		user_iid_ = head.get_token_useriid();
 		role_iid_ = head.get_role_iid();
@@ -87,8 +87,8 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 	else
 	{
 		//可能是断线重连等导致的
-		s_head_.sync_token(head);
-		s_head_.set_gameid(gameid);
+		s_head_ = head;
+		s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
 
 		role_iid_ = head.get_role_iid();
 		location_ = loc;

@@ -27,6 +27,8 @@ public:
 public:
 	//现成一次tick循环次数
 	int loopnum_;
+	//虚拟节点数量
+	int vnode_;
 };
 
 #endif //__ROUTERCONFIG_H__

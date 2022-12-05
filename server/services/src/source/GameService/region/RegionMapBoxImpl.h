@@ -54,8 +54,17 @@ protected:
 
 protected:
 	S_INT_32 xz_to_array(S_INT_32 x, S_INT_32 z) { return (x + z * max_column_cells_); }
+	void region_node_user_changed(RegionCellNode* pnode);
+	void inout_change_tmp_record(RegionCellNode* pnode);
 
 private:
+	//记录有in out变化的region cell, 没次同步后清除
+	std::set<RegionCellNode*>	inout_change_tmp_;
+
+private:
+	//记录有玩家的地块节点信息
+	std::set<RegionCellNode*>	regionnodes_have_users_;
+
 	//包括融合的地块
 	CMSBox		max_region_;
 	S_INT_32	max_column_cells_;

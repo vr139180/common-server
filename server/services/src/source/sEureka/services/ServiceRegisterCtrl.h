@@ -72,6 +72,10 @@ protected:
 	void notify_service_online(S_INT_64 iid);
 	void notify_service_offline(S_INT_64 iid, NETSERVICE_TYPE ctype);
 
+	void regist_gate_to_redis(ServiceNodeInfo& info);
+	void unregist_gate_from_redis(ServiceNodeInfo& info);
+	void update_gate_to_redis(S_INT_64 sid, S_INT_32 freeslot);
+
 protected:
 	//活动的service连接,只在主线程中使用,代码保证线程安全
 	ServiceLinkFromHolder<ServiceLinkFrom>				service_mth_links_;
@@ -104,6 +108,8 @@ public:
 	void on_mth_servicesubscribe_req(NetProtocol* pro, bool& autorelease);
 	void on_mth_routersubscribe_req(NetProtocol* pro, bool& autorelease);
 	void on_mth_routeronline_req(NetProtocol* pro, bool& autorelease);
+
+	void on_mth_gateupdate_ntf(NetProtocol* pro, bool& autorelease);
 };
 
 

@@ -80,6 +80,7 @@ RouterConfig* DataRouterApp::load_routerconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
+	config->vnode_ = XmlUtil::GetXmlAttrInt(root, "vnode", 800);
 
 	return xptr.release();
 }
@@ -93,7 +94,7 @@ bool DataRouterApp::pre_init()
 	servicerouter_links_from_.init_holder();
 	state_links_from_.init_holder();
 
-	home_links_from_.init_holder(800);
+	home_links_from_.init_holder( conf_->vnode_);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();

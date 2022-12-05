@@ -52,6 +52,8 @@ public:
 	void return_slot_to_free(int slot);
 	bool auth_wait_slot(int slot);
 
+	S_INT_32 get_free_slot_num();
+
 public:
 	//聊天模块，全局聊天
 	void chat_globalmsg_notify(NetProtocol* msg);
@@ -66,7 +68,7 @@ protected:
 	int									channel_nums_;
 
 	std::set<GamePlayer*>	free_slots_;
-	int						free_slot_num_;
+	volatile int			free_slot_num_;
 	std::list<GamePlayer*>	wait_auth_slots_queue_;
 	int						wait_auth_slot_num_;
 	//同步用sequence编号，只在main thread发生变化

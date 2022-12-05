@@ -20,6 +20,7 @@
 #include <gameLib/redis/global_redis_const.h>
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/LogExt.h>
+#include <gameLib/eureka/GateNodeInfo.h>
 
 #include "sEurekaApp.h"
 
@@ -31,6 +32,7 @@ void ServiceRegisterCtrl::InitNetMessage()
 	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERSUBSCRIBE_REQ, &ServiceRegisterCtrl::on_mth_routersubscribe_req, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_ROUTERONLINE_REQ, &ServiceRegisterCtrl::on_mth_routeronline_req, this);
 	REGISTERMSG(ERK_PROTYPE::ERK_SERVICESYNC_NTF, &ServiceRegisterCtrl::on_mth_servicesync_ntf, this);
+	REGISTERMSG(ERK_PROTYPE::SVR_GATESLOTUPDATE_NTF, &ServiceRegisterCtrl::on_mth_gateupdate_ntf, this);
 }
 
 void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autorelease, void* session)
@@ -107,6 +109,9 @@ void ServiceRegisterCtrl::on_mth_serviceregist_req(NetProtocol* pro, bool& autor
 	pLink->registinfo_tolog(true);
 
 	regist_one_service(pnode);
+
+	if (pnode.type == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+		regist_gate_to_redis(pnode);
 
 	Erk_ServiceRegist_ack *ack = new Erk_ServiceRegist_ack();
 	ack->set_result(0);
@@ -508,4 +513,69 @@ void ServiceRegisterCtrl::on_mth_routeronline_req(NetProtocol* pro, bool& autore
 	pNode->copy_to(pnew);
 
 	svrApp.get_eurekactrl()->broadcast_to_eurekas(ntf);
+}
+
+void ServiceRegisterCtrl::on_mth_gateupdate_ntf(NetProtocol* pro, bool& autorelease)
+{
+	bool bmaster = svrApp.get_eurekactrl()->is_master();
+	if (!bmaster)
+		return;
+
+	PRO::Svr_GateSlotUpdate_ntf* ntf = dynamic_cast<PRO::Svr_GateSlotUpdate_ntf*>(pro->msg_);
+	this->update_gate_to_redis(ntf->iid(), ntf->frees());
+}
+
+void ServiceRegisterCtrl::regist_gate_to_redis(ServiceNodeInfo& info)
+{
+	RedisClient* rdv = svrApp.get_redisclient();
+	GateNodeInfo ginfo(info);
+
+	std::string key = rdv->build_rediskey(rdkey::global::GATE_NODE, ginfo.iid);
+	rdv->add(key.c_str(), ginfo, GATENODE_TIMEOUT);
+
+	if (ginfo.socket_type == GATE_LINKTYPE_TCP)
+		key = rdkey::global::GATE_TCP_LIST;
+	else
+		key = rdkey::global::GATE_WS_LIST;
+
+	rdv->add_zset(key.c_str(), std::to_string(ginfo.iid).c_str(), GATE_PLAYER_MAX);
+}
+
+void ServiceRegisterCtrl::unregist_gate_from_redis(ServiceNodeInfo& info)
+{
+	RedisClient* rdv = svrApp.get_redisclient();
+	GateNodeInfo ginfo(info);
+
+	std::string key = rdv->build_rediskey(rdkey::global::GATE_NODE, ginfo.iid);
+	rdv->del(key.c_str());
+
+	if (ginfo.socket_type == GATE_LINKTYPE_TCP)
+		key = rdkey::global::GATE_TCP_LIST;
+	else
+		key = rdkey::global::GATE_WS_LIST;
+	rdv->del_zsetmember(key.c_str(), std::to_string(ginfo.iid).c_str());
+}
+
+void ServiceRegisterCtrl::update_gate_to_redis(S_INT_64 sid, S_INT_32 freeslot)
+{
+	ServiceNodeInfo* pnod = find_servicenode_byiid(sid);
+	if (pnod == 0)
+		return;
+	GateNodeInfo ginfo( *pnod);
+
+	logDebug(out_runtime, "gate:%lld update free slot:%d to redis, type:%d", sid, freeslot, ginfo.socket_type);
+
+	RedisClient* rdv = svrApp.get_redisclient();
+
+	std::string lkey = "";
+	if (ginfo.socket_type == GATE_LINKTYPE_TCP)
+		lkey = rdkey::global::GATE_TCP_LIST;
+	else
+		lkey = rdkey::global::GATE_WS_LIST;
+
+	std::string key = rdv->build_rediskey(rdkey::global::GATE_NODE, sid);
+	if (rdv->pexpire(key.c_str(), GATENODE_TIMEOUT))
+		rdv->add_zset(lkey.c_str(), std::to_string(sid).c_str(), (S_INT_64)freeslot, UpdateType::EXIST);
+	else
+		rdv->del_zsetmember(lkey.c_str(), std::to_string(sid).c_str());
 }

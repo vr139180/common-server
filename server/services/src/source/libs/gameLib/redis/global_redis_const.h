@@ -47,6 +47,16 @@ REDIS_FIELD_DEF(FIELD_MASTER_NODE_SVR, "svrinfo");
 //master节点失效时间 4 seconds
 #define EUREKA_MASTER_NODE_TIMEOUT	4*1000
 
+//gateinfo , key 保存GateNodeInfo的json格式信息
+REDIS_KEY_DEF(GATE_NODE, "-GATE:NODE%lld");
+//不同的gate类型的 zset结构
+//tcp 连接
+REDIS_KEY_DEF(GATE_TCP_LIST, "-GATE:TCP-LIST");
+//websocket连接
+REDIS_KEY_DEF(GATE_WS_LIST, "-GATE:WS-LIST");
+//15秒失效
+#define GATENODE_TIMEOUT	15*1000
+
 REDISKEY_GLOBAL_NS_END
 
 #endif //__GLOBAL_REDIS_CONST_H__

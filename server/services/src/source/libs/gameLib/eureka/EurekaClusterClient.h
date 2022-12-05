@@ -101,6 +101,7 @@ protected:
 protected:
 	void auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish);
 	void router_autoconfirm_timer(u64 tnow, int interval, u64 iid, bool& finish);
+	void service_alive_timer(u64 tnow, int interval, u64 iid, bool& finish);
 
 	void on_link_disconnected( EurekaClusterLink* plink);
 	void on_link_regist_result( EurekaClusterLink* plink);

@@ -38,6 +38,12 @@ void RegionMapBoxImpl::user_enter_region(GamePlayer* puser)
 		pcell->player_out_node(puser, ncell, &fromsource);
 
 	ncell->player_join_node(puser, fromsource);
+
+	inout_change_tmp_record(pcell);
+	inout_change_tmp_record(ncell);
+
+	region_node_user_changed(pcell);
+	region_node_user_changed(ncell);
 }
 
 void RegionMapBoxImpl::user_logout_region(GamePlayer* puser)
@@ -47,6 +53,9 @@ void RegionMapBoxImpl::user_logout_region(GamePlayer* puser)
 		return;
 
 	pcell->player_logout_node(puser);
+
+	inout_change_tmp_record(pcell);
+	region_node_user_changed(pcell);
 }
 
 void RegionMapBoxImpl::user_move_region(GamePlayer* puser)
@@ -59,11 +68,19 @@ void RegionMapBoxImpl::user_move_region(GamePlayer* puser)
 	RegionCellNode* fromsource = 0;
 	pcell->player_out_node(puser, ncell, &fromsource);
 	ncell->player_join_node(puser, fromsource);
+
+	//----------------------------------
+	inout_change_tmp_record(pcell);
+	inout_change_tmp_record(ncell);
+
+	region_node_user_changed(pcell);
+	region_node_user_changed(ncell);
 }
 
 //TODO:用RTree优化 数据变化查询
 void RegionMapBoxImpl::user_inout_tick()
 {
+	/*
 	for (int xc = 0; xc < max_column_cells_; ++xc)
 	{
 		for (int zc = 0; zc < max_row_cells_; ++zc)
@@ -83,6 +100,25 @@ void RegionMapBoxImpl::user_inout_tick()
 			cell_nodes_[xz_to_array(xc, zc)].reset_frameinfo();
 		}
 	}
+	*/
+	for (std::set<RegionCellNode*>::iterator iter = regionnodes_have_users_.begin();
+		iter != regionnodes_have_users_.end(); ++iter)
+	{
+		RegionCellNode* pnode = (*iter);
+		if (pnode->is_empty_cell())
+			continue;
+
+		notify_cellnode_inout(pnode);
+	}
+
+	for (std::set<RegionCellNode*>::iterator iter = inout_change_tmp_.begin();
+		iter != inout_change_tmp_.end(); ++iter)
+	{
+		RegionCellNode* pnode = (*iter);
+		pnode->reset_frameinfo();
+	}
+
+	inout_change_tmp_.clear();
 }
 
 void RegionMapBoxImpl::notify_cellnode_inout(RegionCellNode* pnode)

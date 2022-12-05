@@ -104,6 +104,20 @@ S_INT_64 SProtocolHead::build_token_slottoken(S_INT_32 slot, S_INT_64 token)
 	return r;
 }
 
+SProtocolHead& SProtocolHead::operator = (const SProtocolHead& v)
+{
+	this->msgid_ = v.msgid_;
+
+	this->from_type_ = v.from_type_;
+	this->to_type_ = v.to_type_;
+	this->token_giduid_ = v.token_giduid_;
+	this->token_slottoken_ = v.token_slottoken_;
+	this->role_iid_ = v.role_iid_;
+	this->gameid_ = v.gameid_;
+
+	return *this;
+}
+
 void SProtocolHead::sync_token(const SProtocolHead& head)
 {
 	this->token_giduid_ = head.token_giduid_;

@@ -182,3 +182,28 @@ void RegionMapBoxImpl::user_view_first_sync(GamePlayer* puser)
 
 	puser->send_to_gate(ntf);
 }
+
+void RegionMapBoxImpl::region_node_user_changed( RegionCellNode* pnode)
+{
+	if (pnode == 0)
+		return;
+
+	if (pnode->is_empty_cell())
+	{
+		std::set<RegionCellNode*>::iterator fiter = std::find(regionnodes_have_users_.begin(), regionnodes_have_users_.end(), pnode);
+		if (fiter != regionnodes_have_users_.end())
+			regionnodes_have_users_.erase(fiter);
+	}
+	else
+	{
+		regionnodes_have_users_.insert(pnode);
+	}
+}
+
+void RegionMapBoxImpl::inout_change_tmp_record(RegionCellNode* pnode)
+{
+	if (pnode == 0)
+		return;
+
+	inout_change_tmp_.insert(pnode);
+}

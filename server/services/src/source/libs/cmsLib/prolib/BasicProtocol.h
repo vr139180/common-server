@@ -131,6 +131,8 @@ public:
 		return get_token_token() == head.get_token_token();
 	}
 
+	SProtocolHead& operator = (const SProtocolHead& v);
+
 public:
 	static S_INT_64 build_token_giduid(S_INT_64 gateiid, S_INT_64 useriid);
 	static S_INT_64 build_token_slottoken(S_INT_32 slot, S_INT_64 token);

@@ -160,7 +160,6 @@ EurekaConfig* ConfigHelper::load_eureka_config()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt( root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
 
 	tinyxml2::XMLElement* rds = root->FirstChildElement("redis");
 	if (rds == 0)

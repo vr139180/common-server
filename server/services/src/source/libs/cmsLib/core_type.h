@@ -26,7 +26,7 @@
 #include <cmsLib/GlobalSettings.h>
 
 typedef enum tagNetSessionType {
-	NSType_TCP,
+	NSType_TCP = 1,
 	NSType_WebSocket,
 }NetSessionType;
 

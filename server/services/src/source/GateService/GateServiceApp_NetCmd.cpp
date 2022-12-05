@@ -70,3 +70,8 @@ void GateServiceApp::mth_eureka_losted()
 	logError(out_runtime, "gate service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
 }
+
+S_INT_32 GateServiceApp::get_gate_freeslot()
+{
+	return GamePlayerCtrl::instance().get_free_slot_num();
+}

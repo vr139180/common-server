@@ -1,2 +1,2 @@
-<game loopnum="500" service_thread_num="4">
+<game loopnum="500" channels="1">
 </game>

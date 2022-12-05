@@ -146,6 +146,9 @@
     <ClInclude Include="..\source\libs\gameLib\protobuf\ProtoUtil.h">
       <Filter>protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="..\source\libs\gameLib\eureka\GateNodeInfo.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -281,6 +284,9 @@
     </ClCompile>
     <ClCompile Include="..\source\libs\gameLib\protobuf\ProtoUtil.cpp">
       <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\libs\gameLib\eureka\GateNodeInfo.cpp">
+      <Filter>eureka</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

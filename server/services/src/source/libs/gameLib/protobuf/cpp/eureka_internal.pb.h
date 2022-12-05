@@ -51,7 +51,7 @@ struct TableStruct_eureka_5finternal_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[27]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[28]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -125,6 +125,9 @@ extern ServerNodeDefaultTypeInternal _ServerNode_default_instance_;
 class ServerNode_ExtsEntry_DoNotUse;
 struct ServerNode_ExtsEntry_DoNotUseDefaultTypeInternal;
 extern ServerNode_ExtsEntry_DoNotUseDefaultTypeInternal _ServerNode_ExtsEntry_DoNotUse_default_instance_;
+class Svr_GateSlotUpdate_ntf;
+struct Svr_GateSlotUpdate_ntfDefaultTypeInternal;
+extern Svr_GateSlotUpdate_ntfDefaultTypeInternal _Svr_GateSlotUpdate_ntf_default_instance_;
 class Svr_LiveTick_ntf;
 struct Svr_LiveTick_ntfDefaultTypeInternal;
 extern Svr_LiveTick_ntfDefaultTypeInternal _Svr_LiveTick_ntf_default_instance_;
@@ -164,6 +167,7 @@ template<> ::PRO::EurekaServerNode* Arena::CreateMaybeMessage<::PRO::EurekaServe
 template<> ::PRO::GsFr_GameRegionRegist_ntf* Arena::CreateMaybeMessage<::PRO::GsFr_GameRegionRegist_ntf>(Arena*);
 template<> ::PRO::ServerNode* Arena::CreateMaybeMessage<::PRO::ServerNode>(Arena*);
 template<> ::PRO::ServerNode_ExtsEntry_DoNotUse* Arena::CreateMaybeMessage<::PRO::ServerNode_ExtsEntry_DoNotUse>(Arena*);
+template<> ::PRO::Svr_GateSlotUpdate_ntf* Arena::CreateMaybeMessage<::PRO::Svr_GateSlotUpdate_ntf>(Arena*);
 template<> ::PRO::Svr_LiveTick_ntf* Arena::CreateMaybeMessage<::PRO::Svr_LiveTick_ntf>(Arena*);
 template<> ::PRO::Svr_RouterOnline_ntf* Arena::CreateMaybeMessage<::PRO::Svr_RouterOnline_ntf>(Arena*);
 template<> ::PRO::Svr_ServiceBindService_ack* Arena::CreateMaybeMessage<::PRO::Svr_ServiceBindService_ack>(Arena*);
@@ -4558,6 +4562,163 @@ class Svr_ServiceBindService_ack final :
 };
 // -------------------------------------------------------------------
 
+class Svr_GateSlotUpdate_ntf final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.Svr_GateSlotUpdate_ntf) */ {
+ public:
+  inline Svr_GateSlotUpdate_ntf() : Svr_GateSlotUpdate_ntf(nullptr) {}
+  ~Svr_GateSlotUpdate_ntf() override;
+  explicit constexpr Svr_GateSlotUpdate_ntf(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Svr_GateSlotUpdate_ntf(const Svr_GateSlotUpdate_ntf& from);
+  Svr_GateSlotUpdate_ntf(Svr_GateSlotUpdate_ntf&& from) noexcept
+    : Svr_GateSlotUpdate_ntf() {
+    *this = ::std::move(from);
+  }
+
+  inline Svr_GateSlotUpdate_ntf& operator=(const Svr_GateSlotUpdate_ntf& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Svr_GateSlotUpdate_ntf& operator=(Svr_GateSlotUpdate_ntf&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Svr_GateSlotUpdate_ntf& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Svr_GateSlotUpdate_ntf* internal_default_instance() {
+    return reinterpret_cast<const Svr_GateSlotUpdate_ntf*>(
+               &_Svr_GateSlotUpdate_ntf_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    26;
+
+  friend void swap(Svr_GateSlotUpdate_ntf& a, Svr_GateSlotUpdate_ntf& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Svr_GateSlotUpdate_ntf* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Svr_GateSlotUpdate_ntf* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Svr_GateSlotUpdate_ntf* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Svr_GateSlotUpdate_ntf>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Svr_GateSlotUpdate_ntf& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Svr_GateSlotUpdate_ntf& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Svr_GateSlotUpdate_ntf* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "PRO.Svr_GateSlotUpdate_ntf";
+  }
+  protected:
+  explicit Svr_GateSlotUpdate_ntf(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIidFieldNumber = 1,
+    kFreesFieldNumber = 2,
+  };
+  // int64 iid = 1;
+  void clear_iid();
+  int64_t iid() const;
+  void set_iid(int64_t value);
+  private:
+  int64_t _internal_iid() const;
+  void _internal_set_iid(int64_t value);
+  public:
+
+  // int32 frees = 2;
+  void clear_frees();
+  int32_t frees() const;
+  void set_frees(int32_t value);
+  private:
+  int32_t _internal_frees() const;
+  void _internal_set_frees(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:PRO.Svr_GateSlotUpdate_ntf)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int64_t iid_;
+  int32_t frees_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_eureka_5finternal_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GsFr_GameRegionRegist_ntf final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PRO.GsFr_GameRegionRegist_ntf) */ {
  public:
@@ -4606,7 +4767,7 @@ class GsFr_GameRegionRegist_ntf final :
                &_GsFr_GameRegionRegist_ntf_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    27;
 
   friend void swap(GsFr_GameRegionRegist_ntf& a, GsFr_GameRegionRegist_ntf& b) {
     a.Swap(&b);
@@ -7016,6 +7177,50 @@ inline void Svr_ServiceBindService_ack::set_totoken(int64_t value) {
 
 // -------------------------------------------------------------------
 
+// Svr_GateSlotUpdate_ntf
+
+// int64 iid = 1;
+inline void Svr_GateSlotUpdate_ntf::clear_iid() {
+  iid_ = int64_t{0};
+}
+inline int64_t Svr_GateSlotUpdate_ntf::_internal_iid() const {
+  return iid_;
+}
+inline int64_t Svr_GateSlotUpdate_ntf::iid() const {
+  // @@protoc_insertion_point(field_get:PRO.Svr_GateSlotUpdate_ntf.iid)
+  return _internal_iid();
+}
+inline void Svr_GateSlotUpdate_ntf::_internal_set_iid(int64_t value) {
+  
+  iid_ = value;
+}
+inline void Svr_GateSlotUpdate_ntf::set_iid(int64_t value) {
+  _internal_set_iid(value);
+  // @@protoc_insertion_point(field_set:PRO.Svr_GateSlotUpdate_ntf.iid)
+}
+
+// int32 frees = 2;
+inline void Svr_GateSlotUpdate_ntf::clear_frees() {
+  frees_ = 0;
+}
+inline int32_t Svr_GateSlotUpdate_ntf::_internal_frees() const {
+  return frees_;
+}
+inline int32_t Svr_GateSlotUpdate_ntf::frees() const {
+  // @@protoc_insertion_point(field_get:PRO.Svr_GateSlotUpdate_ntf.frees)
+  return _internal_frees();
+}
+inline void Svr_GateSlotUpdate_ntf::_internal_set_frees(int32_t value) {
+  
+  frees_ = value;
+}
+inline void Svr_GateSlotUpdate_ntf::set_frees(int32_t value) {
+  _internal_set_frees(value);
+  // @@protoc_insertion_point(field_set:PRO.Svr_GateSlotUpdate_ntf.frees)
+}
+
+// -------------------------------------------------------------------
+
 // GsFr_GameRegionRegist_ntf
 
 // int32 regionid = 1;
@@ -7041,6 +7246,8 @@ inline void GsFr_GameRegionRegist_ntf::set_regionid(int32_t value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

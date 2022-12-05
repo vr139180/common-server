@@ -34,6 +34,7 @@ void PlayerChannel::InitNetMessage()
 	REGISTERMSG(USER_PROTYPE::USER_ROLESELECT_ACK, &PlayerChannel::on_pc_roleselect_ack, this);
 
 	REGISTERMSG(GMS_PROTYPE::GMS_ENTERGAME_ACK, &PlayerChannel::on_pc_entergame_ntf, this);
+	REGISTERMSG(GMS_PROTYPE::GMS_SAVEUSERLOC_NTF, &PlayerChannel::on_pc_saveuserloc_ntf, this);
 
 	REGISTERMSG(CHAT_PROTYPE::CHAT_GLOBALMSG_NTF, &PlayerChannel::on_pc_broadcast_chat_globalmsg, this);
 }

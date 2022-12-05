@@ -26,6 +26,7 @@
     <ClCompile Include="..\source\libs\gameLib\eureka\EurekaClusterClient_NetCmd.cpp" />
     <ClCompile Include="..\source\libs\gameLib\eureka\EurekaClusterLink.cpp" />
     <ClCompile Include="..\source\libs\gameLib\eureka\EurekaNodeInfo.cpp" />
+    <ClCompile Include="..\source\libs\gameLib\eureka\GateNodeInfo.cpp" />
     <ClCompile Include="..\source\libs\gameLib\eureka\ServiceNodeInfo.cpp" />
     <ClCompile Include="..\source\libs\gameLib\logstash\AppMonitorLog.cpp" />
     <ClCompile Include="..\source\libs\gameLib\logstash\GameDataLog.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="..\source\libs\gameLib\eureka\EurekaClusterClient.h" />
     <ClInclude Include="..\source\libs\gameLib\eureka\EurekaClusterLink.h" />
     <ClInclude Include="..\source\libs\gameLib\eureka\EurekaNodeInfo.h" />
+    <ClInclude Include="..\source\libs\gameLib\eureka\GateNodeInfo.h" />
     <ClInclude Include="..\source\libs\gameLib\eureka\IEurekaClientIntegrate.h" />
     <ClInclude Include="..\source\libs\gameLib\eureka\ServiceNodeInfo.h" />
     <ClInclude Include="..\source\libs\gameLib\GameDef.h" />

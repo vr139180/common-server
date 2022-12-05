@@ -35,6 +35,7 @@ ServiceNodeInfo& ServiceNodeInfo::operator = (const ServiceNodeInfo& v)
 	this->token = v.token;
 	this->isrouter = v.isrouter;
 	this->isonline = v.isonline;
+	this->extparams = v.extparams;
 
 	this->subscribes_ = v.subscribes_;
 	this->routers_ = v.routers_;
@@ -93,10 +94,10 @@ ServiceNodeInfo* ServiceNodeInfo::clone()
 	return r;
 }
 
-std::string ServiceNodeInfo::get_extparam_bykey(const char* key)
+std::string ServiceNodeInfo::get_extparam_bykey(const char* key) const
 {
-	boost::unordered_map<std::string, std::string>::iterator fiter = extparams.find(key);
-	if (fiter == extparams.end())
+	boost::unordered_map<std::string, std::string>::const_iterator fiter = extparams.find(key);
+	if (fiter == extparams.cend())
 		return "";
 	return fiter->second;
 }

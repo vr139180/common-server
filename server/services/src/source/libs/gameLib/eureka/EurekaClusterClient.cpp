@@ -196,6 +196,9 @@ void EurekaClusterClient::regist_timer()
 
 	auto_connect_tk_ = app_proxy_->add_apptimer_proxy(3 * 1000, boost::BOOST_BIND(&EurekaClusterClient::auto_connect_timer, this,
 		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
+
+	app_proxy_->add_apptimer_proxy(8 * 1000, boost::BOOST_BIND(&EurekaClusterClient::service_alive_timer, this,
+		boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 }
 
 void EurekaClusterClient::auto_connect_timer(u64 tnow, int interval, u64 iid, bool& finish)
@@ -431,4 +434,25 @@ void EurekaClusterClient::router_autoconfirm_timer(u64 tnow, int interval, u64 i
 	this->send_to_master(req);
 
 	app_proxy_->mth_service_registed(get_myiid());
+}
+
+void EurekaClusterClient::service_alive_timer(u64 tnow, int interval, u64 iid, bool& finish)
+{
+	if (!is_registed() || !has_eureka_masternode())
+		return;
+
+	if (svrtype_ == NETSERVICE_TYPE::ERK_SERVICE_GATE)
+	{
+		PRO::Svr_GateSlotUpdate_ntf *ntf = new PRO::Svr_GateSlotUpdate_ntf();
+		ntf->set_iid(service_iid_);
+		ntf->set_frees(app_proxy_->get_gate_freeslot());
+
+		master_link_->send_to_eureka( ntf);
+	}
+	else
+	{
+		PRO::Svr_LiveTick_ntf* ntf = new PRO::Svr_LiveTick_ntf();
+
+		master_link_->send_to_eureka(ntf);
+	}
 }

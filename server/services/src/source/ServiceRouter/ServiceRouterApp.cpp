@@ -79,7 +79,7 @@ RouterConfig* ServiceRouterApp::load_routerconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->service_thread_num_ = XmlUtil::GetXmlAttrInt(root, "service_thread_num", 4);
+	config->vnode_ = XmlUtil::GetXmlAttrInt(root, "vnode", 800);
 
 	return xptr.release();
 }
@@ -90,9 +90,9 @@ bool ServiceRouterApp::pre_init()
 
 	gate_links_from_.init_holder();
 
-	chat_links_from_.init_holder(800);
-	mail_links_from_.init_holder(800);
-	friend_links_from_.init_holder(800);
+	chat_links_from_.init_holder(conf_->vnode_);
+	mail_links_from_.init_holder(conf_->vnode_);
+	friend_links_from_.init_holder(conf_->vnode_);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();

@@ -12,4 +12,8 @@ public final class RedisKeyConst
 	public static final String FIELD_EUREAKMASTER_IID = "iid";
 	public static final String FIELD_EUREAKMASTER_SVR = "svrinfo";
 
+	//gate list
+	public static final String GATELIST_WS = "-GATE:WS-LIST";
+	public static final String GATELIST_TCP = "-GATE:TCP-LIST";
+	public static final String GATENODE_INFO = "-GATE:NODE%d";
 }

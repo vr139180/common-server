@@ -80,6 +80,8 @@ public:
 	virtual void mth_service_registed(S_INT_64 sid);
 	virtual void mth_eureka_losted();
 
+	virtual S_INT_32 get_gate_freeslot();
+
 protected:
 	virtual bool load_config();
 	virtual bool pre_init();
@@ -105,7 +107,7 @@ protected:
 	LinkToHolder<ServiceRouterLinkTo>	svrrouter_link_mth_;
 	LinkToHolder<FightRouterLinkTo>		fightrouter_link_mth_;
 
-	boost::scoped_ptr<GateConfig>	conf_;
+	boost::scoped_ptr<GateConfig>		conf_;
 public:
 	void on_disconnected_with_datarouter(DataRouterLinkTo* plink);
 	void on_datarouter_regist_result(DataRouterLinkTo* plink);

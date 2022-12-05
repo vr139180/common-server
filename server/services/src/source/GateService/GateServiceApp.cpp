@@ -82,7 +82,7 @@ GateConfig* GateServiceApp::load_gateconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	std::string ws = XmlUtil::GetXmlAttrStr(root, "type", "tcp");
+	std::string ws = ConfigHelper::instance().find_ext(GATE_INSTANCE_EXTPARAM);
 	ShareUtil::to_lower(ws);
 	config->set_gate_type(ws);
 
@@ -108,9 +108,12 @@ bool GateServiceApp::pre_init()
 		return false;
 	}
 
+	EurekaServerExtParam exts;
+	exts[GATE_INSTANCE_EXTPARAM] = std::to_string((S_INT_32)conf_->gate_type_);
+	std::string xx = exts[GATE_INSTANCE_EXTPARAM];
+
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
-		cf.get_ip().c_str(), cf.get_port(), EurekaServerExtParam(),
-		enode, subscribe_types, router_types);
+		cf.get_ip().c_str(), cf.get_port(), exts, enode, subscribe_types, router_types);
 
 	GamePlayerCtrl::instance().init_gameplayerctrl( GATE_PLAYER_MAX);
 
@@ -284,7 +287,6 @@ void GateServiceApp::send_to_servicerouter(PRO::ERK_SERVICETYPE to, BasicProtoco
 
 void GateServiceApp::route_to_fightrouter(PRO::ERK_SERVICETYPE to, NetProtocol* pro)
 {
-	logDebug(out_runtime, "recv msg:%d from player, router to fightrouter. gameid:%lld", pro->get_msg(), pro->get_gameid());
 	fightrouter_link_mth_.send_mth_protocol(to, pro);
 }
 

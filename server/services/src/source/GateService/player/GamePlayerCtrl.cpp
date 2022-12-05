@@ -81,6 +81,11 @@ void GamePlayerCtrl::stop()
 	}
 }
 
+S_INT_32 GamePlayerCtrl::get_free_slot_num()
+{
+	return free_slot_num_;
+}
+
 GamePlayer* GamePlayerCtrl::ask_free_slot(S_INT_64 gateid)
 {
 	ThreadLockWrapper tl(lock_);

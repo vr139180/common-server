@@ -45,6 +45,7 @@ void ProtocolFactory::init_factory()
 	regist_protocal<Svr_ServiceBindService_req>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_REQ);
 	regist_protocal<Svr_ServiceBindService_ack>(ERK_PROTYPE::SVR_SERVICEBINDSERVICE_ACK);
 	regist_protocal<Svr_RouterOnline_ntf>(ERK_PROTYPE::SVR_ROUTERONLINE_NTF);
+	regist_protocal<Svr_GateSlotUpdate_ntf>(ERK_PROTYPE::SVR_GATESLOTUPDATE_NTF);
 
 	//robot_test_internal.proto
 	regist_protocal<Robot_Config_Req>(ROBOTTEST_PROTYPE::ROBOTOTEST_ROBOT_CONFIG_REQ);
