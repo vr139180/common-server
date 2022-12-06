@@ -44,6 +44,7 @@ public:
 	bool is_role_exist(S_INT_64 rid);
 
 	void role_update_loc(S_INT_64 uid, S_INT_64 rid, const GLoc3D& loc);
+	void get_role_loc(S_INT_64 rid, GLoc3D& loc);
 
 protected:
 	PRO::DBUserRoles	roles_data_;

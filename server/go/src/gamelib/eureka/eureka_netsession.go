@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package eureka
 
 import (
@@ -10,39 +25,16 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// eureka节点信息描述
-type eurekaServerNode struct {
-	iid   int64
-	token int64
-	ip    string
-	port  int
-}
-
-func (s *eurekaServerNode) Clone() *eurekaServerNode {
-	cp := *s
-	return &cp
-}
-
-func newEurekaServerNode(iid int64, token int64, ip string, port int) (n *eurekaServerNode) {
-	n = new(eurekaServerNode)
-
-	n.iid = iid
-	n.token = token
-	n.ip = ip
-	n.port = port
-	return
-}
-
 // eureka的session
 type EurekaSession struct {
 	gnet.BaseNetSession
 
-	node   *eurekaServerNode
+	node   *EurekaNodeInfo
 	parent *EurekaCluster
 }
 
 // 创建一个eureka session
-func newEurekaSession(p *EurekaCluster, n *eurekaServerNode) (es *EurekaSession) {
+func newEurekaSession(p *EurekaCluster, n *EurekaNodeInfo) (es *EurekaSession) {
 	es = new(EurekaSession)
 	es.parent = p
 	es.node = n
@@ -53,8 +45,12 @@ func newEurekaSession(p *EurekaCluster, n *eurekaServerNode) (es *EurekaSession)
 
 // 注册协议处理函数
 func (e *EurekaSession) initMsgMapFun() {
-	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_EUREKAUPDATE_NTF), e.parent.onMthEurekaSync)
-	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_SERVICESUBSCRIBE_ACK), e.parent.onMthServiceSubScribeAck)
+	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_EUREKAUPDATE_NTF), e.parent.onMthEurekaUpdateNtf)
+	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_SERVICESUBSCRIBE_NTF), e.parent.onMthServiceSubScribeNtf)
+	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_NTF), e.parent.onMthRouterSubScribeNtf)
+	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_MASTERCHANGE_NTF), e.parent.onMthMasterChaneNtf)
+	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_NTF), e.parent.onMthRouterOnlineNtf)
+
 	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_SERVICEREGIST_ACK), e.parent.onMthServiceRegistAck)
 	e.RegistMsgMapFun(int(gpro.ERK_PROTYPE_ERK_SERVICEBIND_ACK), e.parent.onMthServiceBindAck)
 }
@@ -87,8 +83,9 @@ func (e *EurekaSession) registToEurekaCenter(t service.ServiceType) {
 	if e.parent.mynode.Exts != nil && len(e.parent.mynode.Exts) > 0 {
 		msg.Exts = e.parent.mynode.Exts
 	}
+	msg.Isrouter = e.parent.mynode.IsRouter
 
-	e.SendNetProtocol(msg)
+	e.SendToEureka(msg)
 }
 
 func (e *EurekaSession) bindToEurekaCenter(t service.ServiceType) {
@@ -96,15 +93,15 @@ func (e *EurekaSession) bindToEurekaCenter(t service.ServiceType) {
 	msg.SvrType = int32(t)
 	msg.Iid = e.parent.mynode.Iid
 	msg.Token = e.parent.mynode.Token
+	msg.Eurekatoken = e.parent.masterEurekaToken
 
-	e.SendNetProtocol(msg)
+	e.SendToEureka(msg)
 }
 
-func (e *EurekaSession) SendNetProtocol(msg proto.Message) {
+func (e *EurekaSession) SendToEureka(msg proto.Message) {
 	pro := protocolx.NewNetProtocolByMsg(msg)
 
 	head := pro.WriteHead()
-	head.RouterBalance = false
 	head.FromType = int8(e.parent.GetMyNode().SvrType)
 	head.ToType = int8(gpro.ERK_SERVICETYPE_ERK_SERVICE_EUREKA)
 

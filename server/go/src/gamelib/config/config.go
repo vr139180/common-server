@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package config
 
 import (
@@ -8,22 +23,22 @@ import (
 
 // 配置工具
 type ConfigTool struct {
-	SvrType  service.ServiceType //服务类型
-	AppIid   int64               //服务iid
-	AppToken int64               //服务token
+	SvrType service.ServiceType //服务类型
 
-	Ip       string //监听ip
-	Port     int    //监听port
+	Nets int    //netthreads
+	Ip   string //监听ip
+	Port int    //监听port
+	//扩展配置
+	ExtParams map[string]string
+	cnfProps  map[string]string //配置选项
+
+	GlobalOpt GlobalOption //全局配置
+
 	LogLevel string
 	LogDir   string
 	LogFile  string
-	//扩展配置
-	ExtParams map[string]string
 
-	cnfProps     map[string]string //配置选项
-	ConfigSource IConfigSource     //配置源
-
-	GlobalOpt GlobalOption //全局配置
+	ConfigSource IConfigSource //配置源
 }
 
 func NewConfig(stype service.ServiceType) (*ConfigTool, error) {
@@ -48,6 +63,7 @@ func (c *ConfigTool) loadLocalConfig() error {
 
 	c.Ip = svr.Ip
 	c.Port = svr.Port
+	c.Nets = svr.Nets
 	c.LogLevel = svr.LogLevel
 	c.LogDir = svr.LogDir
 	c.LogFile = svr.LogFile

@@ -1,1 +1,1 @@
-<global svrnum_min="100" eip="127.0.0.1" eport="7001"/>
+<global svrnum_min="100" eureka="http://127.0.0.1:3001/gate/eureka"/>

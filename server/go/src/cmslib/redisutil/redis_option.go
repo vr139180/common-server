@@ -13,34 +13,17 @@
 // limitations under the License.
 //
 
-package utilc
+package redisutil
 
-import (
-	"os"
-	"path/filepath"
-)
+import "encoding/xml"
 
-//TODO:
-var GDebugPath = ""
-
-// 获取当前工作目录
-func GetBinPath() (string, error) {
-	ex, err := os.Executable()
-	if err != nil {
-		return "", err
-	}
-
-	fp := filepath.Dir(ex)
-
-	realPath, err := filepath.EvalSymlinks(fp)
-	if err != nil {
-		return "", err
-	}
-
-	// TODO:debug
-	if len(GDebugPath) > 0 {
-		realPath = GDebugPath
-	}
-
-	return realPath, nil
+// redis配置
+type RedisOption struct {
+	XMLName       xml.Name `xml:"redis"`
+	Name          string   `xml:"name,attr"` //配置名称 master, slave
+	Ip            string   `xml:"ip,attr"`   //ip
+	Port          int      `xml:"port,attr"`
+	Auth          string   `xml:"auth,attr"` //口令
+	Db            int      `xml:"db,attr"`   //db
+	SocketTimeout int      `xml:"socket_timeout,attr"`
 }

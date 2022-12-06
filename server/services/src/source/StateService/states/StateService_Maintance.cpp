@@ -110,7 +110,7 @@ void StateService::on_user_logout_process(S_INT_64 userid)
 		ntf->set_user_iid(userid);
 		ntf->set_role_iid(roleid);
 		ntf->set_gameid(gameid);
-		
+
 		NetProtocol* pro = new NetProtocol(ntf);
 		SProtocolHead& head = pro->write_head();
 		head.token_giduid_ = ShareUtil::atoi64(datas[rdkey::user::USER_UINFO_F_GIDUID].c_str());
@@ -118,13 +118,13 @@ void StateService::on_user_logout_process(S_INT_64 userid)
 		head.set_role_iid(roleid);
 		head.set_gameid(gameid);
 		
-		svrApp.send_to_gate(pro);
-
 		//同时抄送game, home
 		if (roleid > 0)
 			svrApp.send_to_home(pro->clone());
 		if (gameid > 0)
 			svrApp.send_to_game(pro->clone());
+
+		svrApp.send_to_gate(pro);
 
 		//清除relogin标记
 		rdv->del_hashmember(key.c_str(), rdkey::user::USER_UINFO_F_RELOGIN);

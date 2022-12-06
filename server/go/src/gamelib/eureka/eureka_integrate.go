@@ -13,34 +13,19 @@
 // limitations under the License.
 //
 
-package utilc
+package eureka
 
-import (
-	"os"
-	"path/filepath"
-)
+import "gamelib/service"
 
-//TODO:
-var GDebugPath = ""
+// eureka通知消息
+type IEurekaNotify interface {
+	//服务注册成功
+	OnServiceRegisted(iid int64)
+	//服务注册丢失，需要重新注册。包括丢失所有注册连接产生的丢失
+	OnEurekaLosted()
 
-// 获取当前工作目录
-func GetBinPath() (string, error) {
-	ex, err := os.Executable()
-	if err != nil {
-		return "", err
-	}
-
-	fp := filepath.Dir(ex)
-
-	realPath, err := filepath.EvalSymlinks(fp)
-	if err != nil {
-		return "", err
-	}
-
-	// TODO:debug
-	if len(GDebugPath) > 0 {
-		realPath = GDebugPath
-	}
-
-	return realPath, nil
+	//订阅的服务发生变化
+	OnServiceChanged(stype service.ServiceType, newiids []*ServiceNodeInfo, deliids []int64)
+	//router的balance服务全列表
+	OnRouterBalanceNew(stype service.ServiceType, svrs []int64)
 }

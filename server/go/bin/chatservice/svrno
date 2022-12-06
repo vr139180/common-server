@@ -1,7 +1,4 @@
-<app loglevel="debug" logdir="" logfile="chatservice.log" confsrc="filesrc">
+<app neths="4" confsrc="filesrc" loglevel="debug" logdir="" logfile="chatservice.log">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
-	<exts>
-		<ext k="chathash" v="0"/>
-	</exts>
 </app>

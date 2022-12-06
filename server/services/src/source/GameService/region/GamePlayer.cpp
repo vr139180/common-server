@@ -39,6 +39,7 @@ void GamePlayer::reset()
 	role_iid_ = 0;
 	nickname_ = "";
 	location_ = GLoc3D::zero_point();
+	b_loc_changed_ = false;
 }
 
 void GamePlayer::copy_user_info(PRO::GameUserInfo* pui)
@@ -62,6 +63,14 @@ void GamePlayer::send_to_home(BasicProtocol* msg)
 	svrApp.send_protocol_to_home(pro);
 }
 
+void GamePlayer::set_location(const GLoc3D& loc)
+{
+	if (location_.is_loc_change(loc))
+		b_loc_changed_ = true;
+
+	location_ = loc;
+}
+
 bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GLoc3D& loc)
 {
 	if (player_state_ == GamePlayerState::GamePlayerS_Free)
@@ -76,7 +85,7 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 		user_iid_ = head.get_token_useriid();
 		role_iid_ = head.get_role_iid();
 		nickname_ = "";
-		location_ = loc;
+		set_location(loc);
 
 		//ÇëÇó½ÇÉ«ÏêÇé
 		PRO::User_MySimpleInfo_req* req = new PRO::User_MySimpleInfo_req();
@@ -91,7 +100,7 @@ bool GamePlayer::enter_game(const SProtocolHead& head, S_INT_64 gameid, const GL
 		s_head_.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GAME;
 
 		role_iid_ = head.get_role_iid();
-		location_ = loc;
+		set_location(loc);
 
 		logDebug(out_runtime, "set exist userinfo, uid:%lld rid:%lld", user_iid_, role_iid_);
 	}
@@ -114,6 +123,11 @@ bool GamePlayer::on_myinfo_get(BasicProtocol* msg)
 
 void GamePlayer::net_save_gameloc()
 {
+	if (!b_loc_changed_)
+		return;
+
+	b_loc_changed_ = false;
+
 	PRO::Game_SaveUserLoc_ntf* ntf = new PRO::Game_SaveUserLoc_ntf();
 	PRO::Location3D* pos = ntf->mutable_loc();
 	GLoc3D::copy_to(location_, pos);

@@ -18,6 +18,7 @@
 #include <cmsLib/redis/RedisClient.h>
 #include <gameLib/redis/user_redis_const.h>
 #include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/LogExt.h>
 
 #include "dbs/cmd/LoadUserInfoCmd.h"
 #include "dbs/cmd/CreateUserRoleCmd.h"
@@ -71,8 +72,9 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 	{
 		//清除原有数据
 		reset_usercache();
-
 		cur_state_ = UserState::UserState_RolesReady;
+
+		logDebug(out_runtime, "user:%lld select role, role switch to:%lld", get_user_iid(), roleid);
 	}
 	else if (get_role_iid() != 0)
 	{
@@ -85,6 +87,8 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 		//角色已经加载
 		if (cur_state_ == UserState::UserState_Ready)
 		{
+			logDebug(out_runtime, "user:%lld select role, role alreay in memory. role:%lld", get_user_iid(), roleid);
+
 			db_role_selected_done();
 			return;
 		}
@@ -97,6 +101,8 @@ void LobbyUser::on_ls_roleselect_req(S_INT_64 roleid)
 	if (this->sync_all())
 	{
 		db_role_selected_done();
+
+		logDebug(out_runtime, "user:%lld select role, role load from redis. role:%lld", get_user_iid(), roleid);
 	}
 	else
 	{
@@ -127,6 +133,11 @@ void LobbyUser::db_role_selected_done()
 
 	ack->set_role_iid(role_iid_);
 	ack->set_result(0);
+	//获取loc,定位世界坐标
+	GLoc3D loc;
+	roles_data_.get_role_loc(role_iid_, loc);
+	PRO::Location3D* pos = ack->mutable_loc();
+	GLoc3D::copy_to(loc, pos);
 
 	send_to_gate(ack);
 

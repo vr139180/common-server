@@ -43,9 +43,9 @@ void RegionChannelService::on_state_userlogout_ntf(NetProtocol* pro, bool& autor
 	if (puser == 0)
 		return;
 
-	region_map_->user_logout_region(puser);
-
 	logDebug(out_runtime, "user:%lld logout gameid:%d", puser->get_useriid(), this->gameid_);
+
+	region_map_->user_logout_region(puser);
 }
 
 void RegionChannelService::on_gate_userlive_ntf(NetProtocol* pro, bool& autorelease)
@@ -75,9 +75,10 @@ void RegionChannelService::on_gate_enter_game_req(NetProtocol* pro, bool& autore
 	Game_EnterGame_ack *ack = new Game_EnterGame_ack();
 	ack->set_result(0);
 	ack->set_game_iid(gameid_);
-	ProtoUtil::set_location_to_msg(ack, puser->get_location());
+	PRO::Location3D* pos = ack->mutable_pos();
+	GLoc3D::copy_to(puser->get_location(), pos);
 
-	logDebug(out_runtime, "user:%lld entergame success, gameid:%lld", puser->get_useriid(), gameid_);
+	logDebug(out_runtime, "user:%lld entergame success, gameid:%lld, loc:%s", puser->get_useriid(), gameid_, puser->get_location().to_string().c_str());
 
 	puser->send_to_gate(ack);
 

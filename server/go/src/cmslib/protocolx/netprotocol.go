@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package protocolx
 
 import (
@@ -205,92 +220,6 @@ func (p ProtoHeadBase) Encodeint64(pdata *bytes.Buffer, offset *uint32, val int6
 	return
 }
 
-//----------------------------------------------CProtocolHead--------------------------------------
-type CProtocolHead struct {
-	*ProtoHeadBase
-
-	Encryption     bool
-	Version        int16
-	Channel        int16
-	SeqNo          int32
-	UnpackProtocol bool
-}
-
-func (p *CProtocolHead) InitHead() {
-	p.Encryption = false
-	p.Version = 0
-	p.Channel = 0
-	p.SeqNo = 0
-	p.UnpackProtocol = true
-}
-
-func (p *CProtocolHead) EncodeHead(pdata *bytes.Buffer) bool {
-
-	var offset uint32 = 0
-	//占位长度
-	p.EncodeUint16(pdata, &offset, 0)
-
-	p.EncodeUint16(pdata, &offset, p.MsgId)
-
-	p.EncodeBool(pdata, &offset, p.Encryption)
-
-	p.Encodeint16(pdata, &offset, p.Version)
-
-	p.Encodeint16(pdata, &offset, p.Channel)
-
-	p.Encodeint32(pdata, &offset, p.SeqNo)
-
-	p.HeadLen = int16(offset)
-	p.TotleLen = offset
-
-	return true
-}
-
-func (p *CProtocolHead) EncodeTotleLen(pdata *bytes.Buffer, msglen uint32) bool {
-	p.TotleLen += msglen
-	pbuf := pdata.Bytes()
-
-	binary.BigEndian.PutUint32(pbuf, p.TotleLen)
-
-	return true
-}
-
-func (p *CProtocolHead) DecodeHead(pbuf []byte, maxlen uint32) bool {
-	p.TotleLen = maxlen
-
-	pdata := pbuf[0:]
-	var offset uint32 = 4
-
-	var succ bool = false
-	succ, p.MsgId = p.DecodeUint16(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.Encryption = p.DecodeBool(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.Version = p.Decodeint16(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.Channel = p.Decodeint16(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.SeqNo = p.Decodeint32(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	p.HeadLen = int16(offset)
-	return true
-}
-
 //----------------------------------------------UserToken--------------------------------------
 type UserToken struct {
 	TokenGidRid    int64
@@ -310,12 +239,14 @@ func (p *UserToken) SyncToken(token *UserToken) {
 	p.TokenSlotToken = token.TokenSlotToken
 }
 
+//20:gate 43:userid
 //0b0000000000000000000001111111111111111111111111111111111111111111
 const USERGATE_MASK_ZERO_H = uint64(0x7FFFFFFFFFF)
 
 //0b1111111111111111111110000000000000000000000000000000000000000000
 const USERGATE_MASK_ZERO_L = uint64(0xFFFFF80000000000)
 
+//14：slot 50:timestamp
 //0b0000000000000011111111111111111111111111111111111111111111111111
 const USERTOKEN_MASK_ZERO_H = uint64(0x3FFFFFFFFFFFF)
 
@@ -366,23 +297,21 @@ func (p *UserToken) GetTokenToken() int64 {
 type SProtocolHead struct {
 	*ProtoHeadBase
 
-	RouterBalance bool
-	HashKey       int32
-	FromType      int8
-	ToType        int8
-	ToBroadCast   bool
+	FromType int8
+	ToType   int8
 	//token信息
 	Token          UserToken
+	RoleId         int64
+	GameId         int64
 	UnpackProtocol bool
 }
 
 func (p *SProtocolHead) InitHead() {
-	p.RouterBalance = true
-	p.HashKey = 0
 	p.FromType = -1
 	p.ToType = -1
-	p.ToBroadCast = false
 	p.Token = UserToken{TokenGidRid: 0, TokenSlotToken: 0}
+	p.RoleId = 0
+	p.GameId = 0
 	p.UnpackProtocol = true
 }
 
@@ -394,19 +323,12 @@ func (p *SProtocolHead) EncodeHead(pdata *bytes.Buffer) bool {
 	p.EncodeUint16(pdata, &offset, 0)
 
 	p.EncodeUint16(pdata, &offset, p.MsgId)
-
-	p.EncodeBool(pdata, &offset, p.RouterBalance)
-
-	p.Encodeint32(pdata, &offset, p.HashKey)
-
 	p.Encodeint8(pdata, &offset, p.FromType)
-
 	p.Encodeint8(pdata, &offset, p.ToType)
-
-	p.EncodeBool(pdata, &offset, p.ToBroadCast)
-
 	p.Encodeint64(pdata, &offset, p.Token.TokenGidRid)
 	p.Encodeint64(pdata, &offset, p.Token.TokenSlotToken)
+	p.Encodeint64(pdata, &offset, p.RoleId)
+	p.Encodeint64(pdata, &offset, p.GameId)
 
 	p.HeadLen = int16(offset)
 	p.TotleLen = offset
@@ -435,27 +357,11 @@ func (p *SProtocolHead) DecodeHead(pbuf []byte, maxlen uint32) bool {
 		return false
 	}
 
-	succ, p.RouterBalance = p.DecodeBool(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.HashKey = p.Decodeint32(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
 	succ, p.FromType = p.Decodeint8(pdata, maxlen, &offset)
 	if !succ {
 		return false
 	}
-
 	succ, p.ToType = p.Decodeint8(pdata, maxlen, &offset)
-	if !succ {
-		return false
-	}
-
-	succ, p.ToBroadCast = p.DecodeBool(pdata, maxlen, &offset)
 	if !succ {
 		return false
 	}
@@ -465,8 +371,17 @@ func (p *SProtocolHead) DecodeHead(pbuf []byte, maxlen uint32) bool {
 	if !succ {
 		return false
 	}
-
 	succ, pToken.TokenSlotToken = p.Decodeint64(pdata, maxlen, &offset)
+	if !succ {
+		return false
+	}
+
+	succ, p.RoleId = p.Decodeint64(pdata, maxlen, &offset)
+	if !succ {
+		return false
+	}
+
+	succ, p.GameId = p.Decodeint64(pdata, maxlen, &offset)
 	if !succ {
 		return false
 	}

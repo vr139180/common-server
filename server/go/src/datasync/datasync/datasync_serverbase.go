@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package datasync
 
 import (
@@ -8,6 +23,7 @@ import (
 	"cmslib/utilc"
 	"datasync/dbserialize"
 	"encoding/xml"
+	"errors"
 	"gamelib/config"
 	"gamelib/eureka"
 	"gamelib/protobuf"
@@ -71,16 +87,22 @@ func (l *DataSync) LoadGameConfig() (err error) {
 func (l *DataSync) InitNetwork() (err error) {
 	// init factory
 	l.proFactory = protobuf.NewProtobufFactory()
+
 	// call parent initnetwork
 	l.TcpSvr, err = netx.NewTCPServer(l)
 	if err != nil {
 		return err
 	}
 
-	subs := [...]int{}
-	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_DataSync, l.configTool.Ip, l.configTool.Port, nil, subs[0:], l)
+	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
+	if !ok {
+		return errors.New("get eureka master node failed.")
+	}
 
-	l.Accept(l.configTool.Ip, l.configTool.Port)
+	subs := [...]int{}
+	balances := [...]int{}
+	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_DataSync, l.configTool.Ip, l.configTool.Port, nil,
+		node, subs[0:], balances[0:], false, l)
 
 	l.serializeTool = dbserialize.NewDBSerializePool(l.AppOption.SerializeLoopNum)
 
@@ -106,7 +128,7 @@ func (l *DataSync) InitDatabase() (err error) {
 func (l *DataSync) InitFinish() error {
 	l.ServerBase.InitFinish()
 
-	l.eureka.Start(l.configTool.GlobalOpt.EurekaIp, l.configTool.GlobalOpt.EurekaPort)
+	l.eureka.Start()
 
 	l.serializeTool.Start()
 

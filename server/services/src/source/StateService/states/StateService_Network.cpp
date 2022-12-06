@@ -150,8 +150,10 @@ void StateService::on_user_logout_ntf(NetProtocol* pro, bool& autorelease)
 	{
 		User_Logout_ntf* ntf = dynamic_cast<User_Logout_ntf*>(pro->msg_);
 
-		//logout成功，返回datarouter. 同时抄送game
-		autorelease = false;
-		svrApp.send_to_datarouter(pro);
+		//send to game , home
+		if (pro->get_roleiid() > 0)
+			svrApp.send_to_home(pro->clone());
+		if (pro->get_gameid() > 0)
+			svrApp.send_to_game(pro->clone());
 	}
 }

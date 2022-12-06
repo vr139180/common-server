@@ -150,6 +150,9 @@ void GameRegionResolver::dispath_to_game(NetProtocol* pro)
 
 		GLoc3D loc;
 		ProtoUtil::get_location_from_msg(req, loc);
+		
+		logDebug(out_runtime, "fightrouter recv user:%lld enter game request, loc:%s", pro->get_useriid(), loc.to_string().c_str());
+
 		if (loc.is_zero_point())
 		{
 			//获取进入世界的第一个点

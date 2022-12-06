@@ -69,9 +69,7 @@ bool ProtoUtil::set_location_to_msg(BasicProtocol* msg, const GLoc3D& loc)
 	if (pt == 0)
 		return false;
 
-	pt->set_x(loc.x());
-	pt->set_y(loc.y());
-	pt->set_z(loc.z());
+	GLoc3D::copy_to(loc, pt);
 
 	return true;
 }

@@ -46,6 +46,8 @@ public:
 	std::string to_string() const;
 	bool is_zero_point() const;
 
+	bool is_loc_change(const GLoc3D& loc);
+
 private:
 	float x_;
 	float y_;

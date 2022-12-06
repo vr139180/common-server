@@ -1,22 +1,25 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package config
 
 import "encoding/xml"
 
 // 全局配置
 type GlobalOption struct {
-	XMLName    xml.Name `xml:"global"`
-	SvrNumMax  int      `xml:"svrnum_min,attr"` //最大服务数
-	EurekaIp   string   `xml:"eip,attr"`        //连接的eureka节点ip
-	EurekaPort int      `xml:"eport,attr"`
-}
-
-// redis配置
-type RedisOption struct {
-	XMLName       xml.Name `xml:"redis"`
-	Name          string   `xml:"name,attr"` //配置名称 master, slave
-	Ip            string   `xml:"ip,attr"`   //ip
-	Port          int      `xml:"port,attr"`
-	Auth          string   `xml:"auth,attr"` //口令
-	Db            int      `xml:"db,attr"`   //db
-	SocketTimeout int      `xml:"socket_timeout,attr"`
+	XMLName   xml.Name `xml:"global"`
+	SvrNumMax int      `xml:"svrnum_min,attr"` //最大服务数
+	Eureka    string   `xml:"eureka,attr"`     //连接的eureka
 }

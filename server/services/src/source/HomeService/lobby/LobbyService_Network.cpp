@@ -61,7 +61,7 @@ void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 	LobbyUser *puser = get_userbyid_from_msg(pro);
 	if (puser == 0) return;
 
-	logDebug(out_runtime, "recv user:%lld logount request", puser->get_user_iid());
+	logDebug(out_runtime, "recv user:%lld logout notify, force save data to redis", puser->get_user_iid());
 	//强制保存一下
 	puser->save_all(true);
 }

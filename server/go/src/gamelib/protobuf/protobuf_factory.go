@@ -1,3 +1,18 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package protobuf
 
 import (
@@ -77,18 +92,26 @@ func (pb *ProtobufFactory) initFactory() {
 	pb.registMessage(&gpro.Erk_RouterSubscribeReq{}, int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_REQ))
 	pb.registMessage(&gpro.Erk_RouterSubscribeNtf{}, int(gpro.ERK_PROTYPE_ERK_ROUTERSUBSCRIBE_NTF))
 	pb.registMessage(&gpro.Erk_RouterOnlineReq{}, int(gpro.ERK_PROTYPE_ERK_ROUTERONLINE_REQ))
+	pb.registMessage(&gpro.GsFr_GameRegionRegistNtf{}, int(gpro.ERK_PROTYPE_GSFR_GAMEREGIONREGIST_NTF))
 
 	pb.registMessage(&gpro.Svr_LiveTickNtf{}, int(gpro.ERK_PROTYPE_SVR_LIVETICK_NTF))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceReq{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_REQ))
 	pb.registMessage(&gpro.Svr_ServiceBindServiceAck{}, int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK))
 	pb.registMessage(&gpro.Svr_RouterOnlineNtf{}, int(gpro.ERK_PROTYPE_SVR_ROUTERONLINE_NTF))
+	pb.registMessage(&gpro.Svr_GateSlotUpdateNtf{}, int(gpro.ERK_PROTYPE_SVR_GATESLOTUPDATE_NTF))
 
 	//-----------------------------------------------------------------------------------------------------
 	//user proto
 	pb.registMessage(&gpro.User_LoginReq{}, int(gpro.USER_PROTYPE_USER_LOGIN_REQ))
 	pb.registMessage(&gpro.User_LoginAck{}, int(gpro.USER_PROTYPE_USER_LOGIN_ACK))
+	pb.registMessage(&gpro.User_ReLoginReq{}, int(gpro.USER_PROTYPE_USER_RELOGIN_REQ))
+	pb.registMessage(&gpro.User_ReLoginAck{}, int(gpro.USER_PROTYPE_USER_RELOGIN_ACK))
 	pb.registMessage(&gpro.User_LogoutNtf{}, int(gpro.USER_PROTYPE_USER_LOGOUT_NTF))
+	pb.registMessage(&gpro.User_GateLostNtf{}, int(gpro.USER_PROTYPE_USER_GATELOST_NTF))
+	pb.registMessage(&gpro.User_ActiveNtf{}, int(gpro.USER_PROTYPE_USER_ACTIVE_NTF))
+	pb.registMessage(&gpro.User_SaveRoleLocNtf{}, int(gpro.USER_PROTYPE_USER_SAVEROLELOC_NTF))
 
+	pb.registMessage(&gpro.User_RoleListReq{}, int(gpro.USER_PROTYPE_USER_ROLELIST_REQ))
 	pb.registMessage(&gpro.User_RoleListAck{}, int(gpro.USER_PROTYPE_USER_ROLELIST_ACK))
 	pb.registMessage(&gpro.User_RoleSelectReq{}, int(gpro.USER_PROTYPE_USER_ROLESELECT_REQ))
 	pb.registMessage(&gpro.User_RoleSelectAck{}, int(gpro.USER_PROTYPE_USER_ROLESELECT_ACK))
@@ -102,6 +125,7 @@ func (pb *ProtobufFactory) initFactory() {
 	//building
 	pb.registMessage(&gpro.Build_AddItemReq{}, int(gpro.BUILD_PROTYPE_BUILD_ADDITEM_REQ))
 	pb.registMessage(&gpro.Build_AddItemAck{}, int(gpro.BUILD_PROTYPE_BUILD_ADDITEM_ACK))
+
 	pb.registMessage(&gpro.Build_DelItemReq{}, int(gpro.BUILD_PROTYPE_BUILD_DELITEM_REQ))
 	pb.registMessage(&gpro.Build_DelItemAck{}, int(gpro.BUILD_PROTYPE_BUILD_DELITEM_ACK))
 
@@ -126,7 +150,6 @@ func (pb *ProtobufFactory) initFactory() {
 
 	pb.registMessage(&gpro.Mail_NewMailReq{}, int(gpro.MAIL_PROTYPE_MAIL_NEWMAIL_REQ))
 	pb.registMessage(&gpro.Mail_NewMailAck{}, int(gpro.MAIL_PROTYPE_MAIL_NEWMAIL_ACK))
-
 	pb.registMessage(&gpro.Mail_NewMailNtf{}, int(gpro.MAIL_PROTYPE_MAIL_NEWMAIL_NTF))
 	pb.registMessage(&gpro.Mail_MailGetReq{}, int(gpro.MAIL_PROTYPE_MAIL_MAILGET_REQ))
 	pb.registMessage(&gpro.Mail_MailGetAck{}, int(gpro.MAIL_PROTYPE_MAIL_MAILGET_ACK))
@@ -172,5 +195,14 @@ func (pb *ProtobufFactory) initFactory() {
 	pb.registMessage(&gpro.MMS_MatchMakingReq{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_REQ))
 	pb.registMessage(&gpro.MMS_MatchMakingAck{}, int(gpro.MMS_PROTYPE_MMS_MATCHMAKING_ACK))
 
-	//test
+	//game system
+	pb.registMessage(&gpro.Game_UserAliveNtf{}, int(gpro.GMS_PROTYPE_GMS_USERALIVE_NTF))
+	pb.registMessage(&gpro.Game_SaveUserLocNtf{}, int(gpro.GMS_PROTYPE_GMS_SAVEUSERLOC_NTF))
+	pb.registMessage(&gpro.Game_EnterGameReq{}, int(gpro.GMS_PROTYPE_GMS_ENTERGAME_REQ))
+	pb.registMessage(&gpro.Game_EnterGameAck{}, int(gpro.GMS_PROTYPE_GMS_ENTERGAME_ACK))
+	pb.registMessage(&gpro.Game_UsersVisiableNtf{}, int(gpro.GMS_PROTYPE_GMS_USERSVISIBLE_NTF))
+	pb.registMessage(&gpro.Game_ServiceDisableNtf{}, int(gpro.GMS_PROTYPE_GMS_SERVICEDISABLE_NTF))
+	pb.registMessage(&gpro.Game_UserInfoSync{}, int(gpro.GMS_PROTYPE_GMS_USERINFO_SYNC))
+
+	pb.registMessage(&gpro.Game_UserStateSync{}, int(gpro.GMS_PROTYPE_GMS_USERSTATE_SYN))
 }

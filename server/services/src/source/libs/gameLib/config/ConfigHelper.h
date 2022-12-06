@@ -43,8 +43,6 @@ public:
 	bool init_config(NETSERVICE_TYPE mytype);
 
 	NETSERVICE_TYPE get_type() { return type_; }
-	S_INT_64 get_appsn(){ return appsn_;}
-	S_INT_64 get_token() { return token_; }
 
 	int get_netthreads(){ return nets_;}
 	std::string get_ip() { return ip_; }
@@ -67,9 +65,6 @@ protected:
 
 private:
 	NETSERVICE_TYPE	type_;
-
-	S_INT_64	appsn_;
-	S_INT_64	token_;
 
 	//网络线程数
 	int nets_;

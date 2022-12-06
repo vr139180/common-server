@@ -118,3 +118,23 @@ void UserRoles::role_update_loc(S_INT_64 uid, S_INT_64 rid, const GLoc3D& loc)
 		update_redis_cache(uid, rdv);
 	}
 }
+
+void UserRoles::get_role_loc(S_INT_64 rid, GLoc3D& loc)
+{
+	PRO::DBRoleBaseInfo* prole = 0;
+	for (int ii = 0; ii < roles_data_.roles_size(); ++ii)
+	{
+		const PRO::DBRoleBaseInfo& r = roles_data_.roles(ii);
+		if (r.role_iid() == rid)
+		{
+			prole = (PRO::DBRoleBaseInfo*)&r;
+			break;
+		}
+	}
+
+	if (prole != 0)
+	{
+		PRO::Location3D* pos = prole->mutable_loc();
+		GLoc3D::copy_to(pos, loc);
+	}
+}

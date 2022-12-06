@@ -68,7 +68,7 @@ REDIS_KEY_DEF(USER_OFFLINES, "-LOGIN:OFFLINE:#%d");
 //datasync 使用的用户数据变更set
 //memeber roleiid, field timestamp
 REDIS_KEY_DEF(DATASYNC_USERS, "-DATASYNC-:users");
-
+REDIS_KEY_DEF(DATASYNC_USERS_CONFIRM, "-DATASYNC-:users-confirm");
 
 //table id generator
 REDIS_KEY_DEF(DBID_ROLE_BASEINFO, "role_baseinfo");
@@ -82,7 +82,7 @@ REDIS_KEY_DEF(DBID_USER_TASKINFO, "user_taskinfo");
 #define REDIS_USER_LIFETIME	14*24*60*60*1000
 
 //role detail lld=role_iid
-REDIS_KEY_DEF(USER_DETAIL, "-USERS:#%lld");
+REDIS_KEY_DEF(USER_DETAIL, "-UROLE:#%lld");
 //userbase
 REDIS_FIELD_DEF(USER_DETAIL_USERBASE, "user:base");
 REDIS_FIELD_DEF(USER_DETAIL_USERHOME, "user:home");

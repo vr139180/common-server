@@ -89,6 +89,8 @@ void GamePlayer::role_selected_done(S_INT_64 rid, const GLoc3D& pos)
 	game_loc_ = pos;
 	s_head_.set_role_iid( role_iid_);
 
+	logDebug(out_runtime, "user:%lld try to endter game, loc:%s", s_head_.get_token_useriid(), game_loc_.to_string().c_str());
+
 	PRO::Game_EnterGame_req* req = new PRO::Game_EnterGame_req();
 	ProtoUtil::set_location_to_msg(req, game_loc_);
 	req->set_game_iid(game_iid_);
@@ -128,23 +130,9 @@ void GamePlayer::send_to_game(BasicProtocol* msg)
 	svrApp.route_to_fightrouter(PRO::ERK_SERVICE_GAME, pro);
 }
 
-void GamePlayer::copy_location_to(PRO::Location3D* pos, GLoc3D& loc)
-{
-	loc.set_x(pos->x());
-	loc.set_y(pos->y());
-	loc.set_z(pos->z());
-}
-
-void GamePlayer::copy_location_to(const GLoc3D& loc, PRO::Location3D* pos)
-{
-	pos->set_x(loc.x());
-	pos->set_y(loc.y());
-	pos->set_z(loc.z());
-}
-
 void GamePlayer::update_location_from(PRO::Location3D* pos)
 {
-	copy_location_to(pos, game_loc_);
+	GLoc3D::copy_to(pos, game_loc_);
 
 	logDebug(out_runtime, "user:%lld save new loc:%s", user_iid_, game_loc_.to_string().c_str());
 }

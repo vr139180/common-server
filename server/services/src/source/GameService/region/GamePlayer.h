@@ -54,7 +54,7 @@ public:
 	S_INT_64 get_roleiid() const { return role_iid_; }
 	const char* get_nickname() const { return nickname_.c_str(); }
 	GLoc3D& get_location() { return location_; }
-	void set_location( const GLoc3D& loc) { location_ = loc; }
+	void set_location(const GLoc3D& loc);
 
 	RegionCellNode* get_region_owner() { return owner_cellnode_; }
 	void unbind_region_owner() { owner_cellnode_ = 0; }
@@ -75,7 +75,9 @@ private:
 	S_INT_64	user_iid_;
 	S_INT_64	role_iid_;
 	std::string	nickname_;
+	//location
 	GLoc3D		location_;
+	bool		b_loc_changed_;
 
 	//ËùÊôµÄnode
 	RegionCellNode*		owner_cellnode_;

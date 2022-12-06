@@ -1,32 +1,21 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package redis
 
 //----------------------------分布式任务 前缀-------------------------------
 const GLOBAL_DTASK_PREFIX = "-DTASK:%s"
 
 const GLOBAL_DTASK_RES_SVRMAINTNCE = "res-maintnce"
-
-//-----------------------服务注册信息-------------------------------------
-//服务分类信息 hash结构
-const SERVICE_DETAIL_INFO = "_SERVICE:%d"
-
-//gate扩展项
-//存放gate最后一次同步的sequence
-const SERVICE_GATEEXT_SLOTSEQ = "ext:slotseq"
-
-//用户userslot资源分配结构
-const HOMEGATE_WATERSLOT = "_HOMEGATE:waterslot"
-const HOMEGATE_FLEXSLOT = "_HOMEGATE:flexslot"
-
-//每组gate+home的用户资源
-//homeid#gateid
-//资源分配中的userslot资源列表 zset结构 member: proxytoken score: timstamp
-const HOMEGATE_USERSLOT_AUTH = "_SLOT:%s:auth"
-
-//总的可用空闲slot
-const GLOBAL_USERSLOT_FREE = "_SLOT:total:free"
-
-//-----------------------------------------------
-//hash dataset
-const USERLOGIN_ONLINE_INFO = "_ONLINE:%d"
-const USERLOGIN_ONLINE_TOKEN = "token"
-const USERLOGIN_ONLINE_LASTUPDATE = "lastup"

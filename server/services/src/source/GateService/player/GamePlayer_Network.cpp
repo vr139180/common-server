@@ -156,3 +156,14 @@ void GamePlayer::registinfo_tolog(bool bregist)
 	else
 		logInfo(out_runtime, "Player[%d] disconnect from me(GateService)", get_iid());
 }
+
+void GamePlayer::notify_state_logout()
+{
+	PRO::User_Logout_ntf* ntf = new PRO::User_Logout_ntf();
+	ntf->set_user_iid(this->user_iid_);
+	ntf->set_role_iid(this->role_iid_);
+	ntf->set_token(s_head_.get_token_token());
+	ntf->set_gameid(this->game_iid_);
+
+	send_to_state(ntf);
+}

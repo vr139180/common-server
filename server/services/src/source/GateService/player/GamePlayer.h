@@ -75,11 +75,11 @@ public:
 	void send_netprotocol(NetProtocol* pro) { session_->send_protocol(pro); }
 	void send_netprotocol(BasicProtocol* msg);
 
+	void notify_state_logout();
+
 	S_INT_64 get_iid() { return user_iid_; }
 
 public:
-	void copy_location_to(PRO::Location3D* pos, GLoc3D& loc);
-	void copy_location_to(const GLoc3D& loc, PRO::Location3D* pos);
 	void update_location_from(PRO::Location3D* pos);
 
 public:

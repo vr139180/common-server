@@ -1,72 +1,36 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
 package eureka
 
 import (
 	"cmslib/netx"
-	"cmslib/protocolx"
 	"cmslib/server"
 	"cmslib/timerx"
 	"cmslib/utilc"
+	"encoding/json"
 	"errors"
+	"gamelib/protobuf/gpro"
 	"gamelib/service"
+	"io/ioutil"
+	"net/http"
 	"sync"
 
 	"github.com/emirpasic/gods/lists/arraylist"
 	"google.golang.org/protobuf/proto"
 )
-
-// eureka通知消息
-type IEurekaNotify interface {
-	//服务注册成功
-	OnServiceRegisted(iid int64)
-	//服务注册丢失，需要重新注册。包括丢失所有注册连接产生的丢失
-	OnEurekaLosted()
-	//订阅的服务发生变化
-	OnServiceChanged(stype service.ServiceType, newiids []*ServiceNodeInfo, deliids []int64)
-}
-
-// 服务节点信息
-type ServiceNodeInfo struct {
-	SvrType service.ServiceType
-	Iid     int64
-	Token   int64
-	Ip      string
-	Port    int
-	Exts    map[string]string
-}
-
-func (sn *ServiceNodeInfo) CloneExtParams() (r map[string]string) {
-	r = make(map[string]string)
-	if sn.Exts != nil && len(sn.Exts) > 0 {
-		for k, v := range sn.Exts {
-			r[k] = v
-		}
-	}
-
-	return
-}
-
-func (sn *ServiceNodeInfo) GetExtParamByKey(k string) (v string, ok bool) {
-	if sn.Exts == nil {
-		ok = false
-		return
-	}
-
-	v, ok = sn.Exts[k]
-	return
-}
-
-// 构建一个service节点描述信息
-func newServiceNodeInfo(s service.ServiceType, tid int64, token int64, ip string, port int, exts map[string]string) (n *ServiceNodeInfo) {
-	n = new(ServiceNodeInfo)
-	n.SvrType = s
-	n.Iid = tid
-	n.Token = token
-	n.Ip = ip
-	n.Port = port
-	n.Exts = exts
-
-	return n
-}
 
 var errEureakClusterShutdown = errors.New("eureak cluster shutdown")
 
@@ -93,15 +57,30 @@ type ServiceNodesType map[int64]*ServiceNodeInfo
 type EurekaCluster struct {
 	tcpServer *netx.TCPServer
 
-	subscribes   map[int]void                //订阅类型
-	serviceNodes map[int]ServiceNodesType    //service类型节点
-	eurekaNodes  map[int64]*eurekaServerNode //存在的eureka服务节点
+	subscribe_services map[int]void              //订阅类型
+	subscribe_balances map[int]void              //负载均衡的订阅类型
+	serviceNodes       map[int]ServiceNodesType  //service类型节点
+	eurekaNodes        map[int64]*EurekaNodeInfo //存在的eureka服务节点
 
-	eurekaVector      *arraylist.List
+	//master节点的 id+token
+	masterEurekaIid   int64
+	masterEurekaToken int64
+	//master节点的链接
+	masterLink *EurekaSession
+
 	curEurekaIndex    int
-	eurekaConnections map[int64]*EurekaSession    //连接的session
-	waitConnections   map[int64]*eurekaServerNode //等待连接的node
-	authsConnection   map[*EurekaSession]void     //存放等待完成认证的session
+	eurekaVector      *arraylist.List
+	eurekaConnections map[int64]*EurekaSession //完成认证的session
+
+	waitConnections map[int64]*EurekaNodeInfo //等待连接的node
+	authsConnection map[*EurekaSession]void   //存放等待完成认证的session
+
+	//本服务信息
+	mynode *ServiceNodeInfo
+	//当前状态
+	curState eurekaState
+	//是否router节点
+	IsRouterNode bool
 
 	timerContainer *timerx.TimerContainer //软件定时器
 	ch             chan interface{}
@@ -109,12 +88,52 @@ type EurekaCluster struct {
 	loopWG         sync.WaitGroup
 
 	appProxy IEurekaNotify
-	mynode   *ServiceNodeInfo
-	//当前状态
-	curState eurekaState
 }
 
-func NewEurekaCluster(ts *netx.TCPServer, s service.ServiceType, ip string, port int, exts map[string]string, subscribes []int, appProxy IEurekaNotify) (ec *EurekaCluster) {
+func GetEurekaMasterInfo(url string) (succ bool, node *EurekaNodeInfo) {
+	succ = false
+	node = nil
+
+	resp, err := http.Get(url)
+	if err != nil {
+		return
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+
+	var md map[string]interface{}
+	if err := json.Unmarshal(body, &md); err != nil {
+		return
+	}
+
+	code, ok := md["code"]
+	if !ok {
+		return
+	}
+	if code.(int) != 0 {
+		return
+	}
+
+	data, ok := md["data"]
+	if !ok {
+		return
+	}
+
+	mdata := data.(map[string]interface{})
+
+	node = newEurekaNodeInfo2(mdata)
+	succ = true
+	return
+}
+
+func NewEurekaCluster(ts *netx.TCPServer, s service.ServiceType, ip string, port int, exts map[string]string,
+	enode *EurekaNodeInfo, subscribes []int, balances []int, isrouter bool, appProxy IEurekaNotify) (ec *EurekaCluster) {
+
 	ec = new(EurekaCluster)
 	ec.tcpServer = ts
 	ec.ch = make(chan interface{}, 64)
@@ -127,33 +146,40 @@ func NewEurekaCluster(ts *netx.TCPServer, s service.ServiceType, ip string, port
 	ec.mynode.Port = port
 	ec.mynode.Exts = exts
 
-	ec.subscribes = make(map[int]void)
+	ec.subscribe_services = make(map[int]void)
 	for _, v := range subscribes {
-		ec.subscribes[v] = setEmptyMemeber
+		ec.subscribe_services[v] = setEmptyMemeber
 	}
+	ec.subscribe_balances = make(map[int]void)
+	for _, v := range balances {
+		ec.subscribe_balances[v] = setEmptyMemeber
+	}
+
+	ec.masterLink = nil
+
+	ec.curEurekaIndex = 0
 	ec.serviceNodes = make(map[int]ServiceNodesType)
 
-	ec.eurekaNodes = make(map[int64]*eurekaServerNode)
+	ec.eurekaNodes = make(map[int64]*EurekaNodeInfo)
 
 	ec.eurekaVector = arraylist.New()
-	ec.curEurekaIndex = 0
 
 	ec.eurekaConnections = make(map[int64]*EurekaSession)
-	ec.waitConnections = make(map[int64]*eurekaServerNode)
+	ec.waitConnections = make(map[int64]*EurekaNodeInfo)
 	ec.authsConnection = make(map[*EurekaSession]void)
 
 	ec.timerContainer = timerx.NewTimerContainer(500)
 
 	ec.registTimer()
 
+	// 构建注册节点完成服务注册
+	enode.ismaster = true
+	ec.waitConnections[enode.iid] = enode
+
 	return
 }
 
-func (ec *EurekaCluster) Start(eip string, eport int) {
-
-	// 构建注册节点完成服务注册
-	nod := &eurekaServerNode{iid: 0, ip: eip, port: eport}
-	ec.waitConnections[nod.iid] = nod
+func (ec *EurekaCluster) Start() {
 
 	ec.loopWG.Add(1)
 	go func() {
@@ -176,9 +202,9 @@ func (ec *EurekaCluster) RegistNetCmd(cmd server.ICommandBase) {
 
 func (ec *EurekaCluster) registTimer() {
 	//3s自动连接
-	ec.timerContainer.AddTimer(2.5*1000, ec.timerAutoConnect)
+	ec.timerContainer.AddTimer(3*1000, ec.timerAutoConnect)
 	//5s自动同步
-	ec.timerContainer.AddTimer(3*1000, ec.timerSyncEureka)
+	ec.timerContainer.AddTimer(8*1000, ec.timerServiceAlive)
 }
 
 func (ec *EurekaCluster) run() {
@@ -217,11 +243,6 @@ func (ec *EurekaCluster) GetMyNode() *ServiceNodeInfo {
 }
 
 func (ec *EurekaCluster) SendNetProtocol(msg proto.Message, balance bool) {
-	pro := protocolx.NewNetProtocolByMsg(msg)
-	ec.SendMessage(pro, balance)
-}
-
-func (ec *EurekaCluster) SendMessage(msg *protocolx.NetProtocol, balance bool) {
 	l := ec.eurekaVector.Size()
 	if l == 0 {
 		return
@@ -229,15 +250,28 @@ func (ec *EurekaCluster) SendMessage(msg *protocolx.NetProtocol, balance bool) {
 
 	if ec.curEurekaIndex >= l {
 		ec.curEurekaIndex = 0
+	} else if ec.curEurekaIndex < 0 {
+		ec.curEurekaIndex = 0
 	}
+
 	v, ok := ec.eurekaVector.Get(ec.curEurekaIndex)
-	if ok {
-		v.(*EurekaSession).SendMessage(msg)
+	if !ok {
+		return
 	}
+
+	v.(*EurekaSession).SendToEureka(msg)
 
 	if balance {
 		ec.curEurekaIndex++
 	}
+}
+
+func (ec *EurekaCluster) SendToMaster(msg proto.Message) {
+	if ec.masterLink == nil {
+		return
+	}
+
+	ec.masterLink.SendToEureka(msg)
 }
 
 func (ec *EurekaCluster) getServiceNodesByType(t int) ServiceNodesType {
@@ -266,4 +300,30 @@ func (ec *EurekaCluster) IsExistEurekaNode(iid int64) bool {
 func (ec *EurekaCluster) IsOnlineEurekaNode(iid int64) bool {
 	_, ok := ec.eurekaConnections[iid]
 	return ok
+}
+
+func (ec *EurekaCluster) HasEurekaMasterNode() bool {
+	return ec.masterLink != nil
+}
+
+func (ec *EurekaCluster) SubscribeToMasterNode() {
+	if len(ec.subscribe_services) > 0 {
+		req := &gpro.Erk_ServiceSubscribeReq{}
+		req.Myiid = ec.mynode.Iid
+		req.Mysvrtype = int32(ec.mynode.SvrType)
+
+		for k, v := range ec.subscribe_services {
+
+		}
+
+		ec.SendToMaster(req)
+	}
+
+	if len(ec.subscribe_balances) > 0 {
+		req := &gpro.Erk_RouterSubscribeReq{}
+		req.Myiid = ec.mynode.Iid
+		req.Mysvrtype = int32(ec.mynode.SvrType)
+
+		ec.SendToMaster(req)
+	}
 }

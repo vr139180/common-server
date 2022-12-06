@@ -99,11 +99,9 @@ void PlayerChannel::on_pc_userrelogin_ack(NetProtocol* pro, bool& autorelease)
 		{
 			puser->set_gameid(ack->gameid());
 
-			const Location3D& xpos = ack->role_pos();
+			Location3D* xpos = ack->mutable_role_pos();
 			GLoc3D pos;
-			pos.set_x(xpos.x());
-			pos.set_y(xpos.y());
-			pos.set_z(xpos.z());
+			GLoc3D::copy_to(xpos, pos);
 
 			puser->role_selected_done(ack->role_iid(), pos);
 		}
@@ -121,6 +119,8 @@ void PlayerChannel::on_pc_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 
 	//主动断开，不触发gatelost
 	puser->set_gatelost_untrigger();
+
+	puser->notify_state_logout();
 
 	puser->force_close();
 }
@@ -147,11 +147,9 @@ void PlayerChannel::on_pc_roleselect_ack(NetProtocol* pro, bool& autorelease)
 	User_RoleSelect_ack *ack = dynamic_cast<User_RoleSelect_ack*>(pro->msg_);
 	if (ack->result() == 0)
 	{
-		const Location3D& xpos = ack->loc();
+		Location3D* xpos = ack->mutable_loc();
 		GLoc3D pos;
-		pos.set_x(xpos.x());
-		pos.set_y(xpos.y());
-		pos.set_z(xpos.z());
+		GLoc3D::copy_to(xpos, pos);
 
 		puser->role_selected_done(ack->role_iid(), pos);
 
@@ -217,7 +215,7 @@ void PlayerChannel::on_pc_saveuserloc_ntf(NetProtocol* pro, bool& autorelease)
 	{
 		User_SaveRoleLoc_ntf *xntf = new User_SaveRoleLoc_ntf();
 		Location3D* xpos = xntf->mutable_role_pos();
-		puser->copy_location_to(puser->get_game_loc(), xpos);
+		GLoc3D::copy_to(puser->get_game_loc(), xpos);
 
 		puser->send_to_home(xntf);
 	}

@@ -100,6 +100,9 @@ void LoadUserInfoCmd::run()
 	if (puser == 0) return;
 
 	puser->on_db_roledata_sync1( base_data_, home_data_, building_data_, pet_data_, task_data_);
+
+	logDebug(out_runtime, "user:%lld select role, role load from database. role:%lld", puser->get_user_iid(), role_iid_);
+
 	if (only_load_)
 		puser->db_sync_load_done();
 	else

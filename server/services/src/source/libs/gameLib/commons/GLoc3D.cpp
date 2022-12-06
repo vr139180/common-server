@@ -76,3 +76,16 @@ bool GLoc3D::is_zero_point() const
 		return true;
 	return false;
 }
+
+bool GLoc3D::is_loc_change(const GLoc3D& loc)
+{
+	//变化精度到cm
+	if ((int)((x_ - loc.x_) * 100) != 0)
+		return true;
+	if ((int)((z_ - loc.z_) * 100) != 0)
+		return true;
+	if ((int)((y_ - loc.y_) * 100) != 0)
+		return true;
+
+	return false;
+}

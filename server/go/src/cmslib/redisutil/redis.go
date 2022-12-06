@@ -1,4 +1,17 @@
-//redis util
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
 
 package redisutil
 
@@ -17,23 +30,23 @@ type RedisUtil struct {
 	ctx context.Context
 }
 
-func NewRedisUtil(ip string, port int, pwd string, db int) (*RedisUtil, error) {
+func NewRedisUtil(opt RedisOption) (*RedisUtil, error) {
 	ru := RedisUtil{}
 
 	ru.ctx = context.Background()
 	ru.rdv = redis.NewClient(&redis.Options{
-		Addr:     ip + ":" + strconv.Itoa(port),
-		Password: pwd,
-		DB:       db,
+		Addr:     opt.Ip + ":" + strconv.Itoa(opt.Port),
+		Password: opt.Auth,
+		DB:       opt.Db,
 	})
 
 	_, err := ru.rdv.Ping(ru.ctx).Result()
 	if err != nil {
-		logx.Errorf("init redis[%s:%d db:%d] client failed", ip, port, db)
+		logx.Errorf("init redis[%s:%d db:%d] client failed", opt.Ip, opt.Port, opt.Db)
 		return nil, err
 	}
 
-	logx.Infof("init redis[%s:%d db:%d] client success", ip, port, db)
+	logx.Infof("init redis[%s:%d db:%d] client success", opt.Ip, opt.Port, opt.Db)
 	return &ru, nil
 }
 
