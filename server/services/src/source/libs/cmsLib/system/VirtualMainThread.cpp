@@ -31,7 +31,7 @@ VirtualMainThread::~VirtualMainThread()
 
 void VirtualMainThread::free_cmds()
 {
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	for( int ii =0; ii < 2; ++ii)
 	{
@@ -91,7 +91,7 @@ CommandBase* VirtualMainThread::pop_one_cmd()
 	{
 		if( system_cmds_[VMT_ANOTHER_CMD_LIST(cur_syscmds_)].size() > 0)
 		{
-			ThreadLockWrapper guard( lock_);
+			ThreadLockWrapper guard(cmd_lock_);
 
 			cur_syscmds_ =VMT_ANOTHER_CMD_LIST(cur_syscmds_);
 		}
@@ -99,7 +99,7 @@ CommandBase* VirtualMainThread::pop_one_cmd()
 		{
 			if( net_cmds_[VMT_ANOTHER_CMD_LIST(cur_netcmds_)].size() > 0)
 			{
-				ThreadLockWrapper guard( lock_);
+				ThreadLockWrapper guard(cmd_lock_);
 
 				cur_netcmds_ =VMT_ANOTHER_CMD_LIST( cur_netcmds_);
 			}
@@ -107,7 +107,7 @@ CommandBase* VirtualMainThread::pop_one_cmd()
 			{
 				if( user_cmds_[VMT_ANOTHER_CMD_LIST( cur_usercmds_)].size() > 0)
 				{
-					ThreadLockWrapper guard( lock_);
+					ThreadLockWrapper guard(cmd_lock_);
 
 					cur_usercmds_ =VMT_ANOTHER_CMD_LIST( cur_usercmds_);
 				}
@@ -124,7 +124,7 @@ void VirtualMainThread::regist_syscmd( CommandBase* p)
 
 	if( will_quit_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 	system_cmds_[VMT_ANOTHER_CMD_LIST( cur_syscmds_)].push_back( p_p.release());
 }
 
@@ -134,7 +134,7 @@ void VirtualMainThread::regist_netcmd( CommandBase *p)
 
 	if( will_quit_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	net_cmds_[VMT_ANOTHER_CMD_LIST( cur_netcmds_)].push_back( p_p.release());
 }
@@ -145,7 +145,7 @@ void VirtualMainThread::regist_usercmd( CommandBase *p)
 
 	if( will_quit_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	user_cmds_[VMT_ANOTHER_CMD_LIST( cur_usercmds_)].push_back( p_p.release());
 }

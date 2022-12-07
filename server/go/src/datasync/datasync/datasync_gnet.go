@@ -78,7 +78,7 @@ func (l *DataSync) OnTCPClosed(c gnet.Conn, err error) {
 	}
 }
 
-func (l *DataSync) OnRecvMessage(pro *protocolx.NetProtocol) {
+func (l *DataSync) OnRecvMessage(c gnet.Conn, pro *protocolx.NetProtocol) {
 	s := c.Context()
 	if s != nil {
 		ns, ok := s.(gnet.NetSession)

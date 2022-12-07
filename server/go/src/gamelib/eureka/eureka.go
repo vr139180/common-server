@@ -115,7 +115,7 @@ func GetEurekaMasterInfo(url string) (succ bool, node *EurekaNodeInfo) {
 	if !ok {
 		return
 	}
-	if code.(int) != 0 {
+	if int(code.(float64)) != 0 {
 		return
 	}
 
@@ -306,14 +306,31 @@ func (ec *EurekaCluster) HasEurekaMasterNode() bool {
 	return ec.masterLink != nil
 }
 
+func (ec *EurekaCluster) GetEurekaLinkById(iid int64) *EurekaSession {
+	v, ok := ec.eurekaConnections[iid]
+	if !ok {
+		return nil
+	}
+
+	return v
+}
+
 func (ec *EurekaCluster) SubscribeToMasterNode() {
 	if len(ec.subscribe_services) > 0 {
 		req := &gpro.Erk_ServiceSubscribeReq{}
 		req.Myiid = ec.mynode.Iid
 		req.Mysvrtype = int32(ec.mynode.SvrType)
 
-		for k, v := range ec.subscribe_services {
+		for k := range ec.subscribe_services {
+			sinfo := &gpro.Erk_ServiceSubscribeReqSvrinfo{}
+			sinfo.SvrType = int32(k)
 
+			snode := ec.getServiceNodesByType(k)
+			for v := range snode {
+				sinfo.Exits = append(sinfo.Exits, v)
+			}
+
+			req.SvrType = append(req.SvrType, sinfo)
 		}
 
 		ec.SendToMaster(req)
@@ -323,6 +340,10 @@ func (ec *EurekaCluster) SubscribeToMasterNode() {
 		req := &gpro.Erk_RouterSubscribeReq{}
 		req.Myiid = ec.mynode.Iid
 		req.Mysvrtype = int32(ec.mynode.SvrType)
+
+		for k := range ec.subscribe_balances {
+			req.SvrTypes = append(req.SvrTypes, int32(k))
+		}
 
 		ec.SendToMaster(req)
 	}

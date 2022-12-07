@@ -109,8 +109,10 @@ void UserBase::new_rolebaseinfo(RedisClient* rdv, S_INT_64 uid, const char* nick
 	base_data_update_ = true;
 }
 
-void UserBase::update_role_loc(const GLoc3D& loc)
+void UserBase::update_role_loc(S_UINT_32 ver, const GLoc3D& loc)
 {
+	base_data_.set_ver_(ver);
+
 	PRO::Location3D* pos = base_data_.mutable_loc();
 	GLoc3D::copy_to(loc, pos);
 

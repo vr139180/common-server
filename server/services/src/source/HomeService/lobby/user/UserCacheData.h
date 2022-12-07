@@ -58,6 +58,7 @@ public:
 public:
 	//base
 	const UserBase& get_user_baseinfo() { return base_data_; }
+	void role_move_to(const GLoc3D& loc);
 
 public:
 	//building

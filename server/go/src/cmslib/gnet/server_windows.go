@@ -74,6 +74,11 @@ func (svr *server) signalShutdownWithErr(err error) {
 }
 
 func (svr *server) startListener() {
+	// SH:Lujf:SH
+	if svr.opts.IgnoreListen {
+		return
+	}
+
 	svr.listenerWG.Add(1)
 	go func() {
 		svr.listenerRun(svr.opts.LockOSThread)
@@ -112,8 +117,11 @@ func (svr *server) stop(s Server) {
 	svr.eventHandler.OnShutdown(s)
 
 	// Close listener.
-	svr.ln.close()
-	svr.listenerWG.Wait()
+	// SH:Lujf:SH
+	if !svr.opts.IgnoreListen {
+		svr.ln.close()
+		svr.listenerWG.Wait()
+	}
 
 	// Notify all loops to close.
 	svr.lb.iterate(func(i int, el *eventloop) bool {

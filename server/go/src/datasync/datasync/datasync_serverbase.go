@@ -104,6 +104,8 @@ func (l *DataSync) InitNetwork() (err error) {
 	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_DataSync, l.configTool.Ip, l.configTool.Port, nil,
 		node, subs[0:], balances[0:], false, l)
 
+	l.Accept(l.configTool.Ip, l.configTool.Port, true)
+
 	l.serializeTool = dbserialize.NewDBSerializePool(l.AppOption.SerializeLoopNum)
 
 	return nil
@@ -116,7 +118,7 @@ func (l *DataSync) InitDatabase() (err error) {
 	}
 
 	ropt := &(l.AppOption.RedisOpt)
-	l.redisX, err = redisutil.NewRedisUtil(ropt.Ip, ropt.Port, ropt.Auth, ropt.Db)
+	l.redisX, err = redisutil.NewRedisUtil(ropt)
 	if err != nil {
 		logx.Errorf("init redis client failed")
 		return err

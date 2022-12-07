@@ -48,8 +48,8 @@ func (r *DBSerializePool) timer_roleserialize_queue(num int) {
 	keys := []string{redis.DATASYNC_USERS, redis.DATASYNC_USERS_CONFIRM}
 
 	//5 mins
-	modify_delay := 5 * 60 * 1000
-	//modify_delay := 5 * 1000
+	//modify_delay := 5 * 60 * 1000
+	modify_delay := 5 * 1000
 
 	//检查 用户缓存，是否在线
 	d := utilc.GetTimestamp()

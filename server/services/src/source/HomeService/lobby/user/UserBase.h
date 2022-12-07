@@ -48,7 +48,7 @@ public:
 public:
 	void new_rolebaseinfo(RedisClient* rdv, S_INT_64 uid, const char* nickname);
 
-	void update_role_loc(const GLoc3D& loc);
+	void update_role_loc(S_UINT_32 ver, const GLoc3D& loc);
 
 	S_INT_32 get_levels() { return base_data_.levels(); }
 	const char* get_nickname() const { return base_data_.nickname().c_str(); }

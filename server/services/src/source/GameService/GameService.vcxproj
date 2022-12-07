@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{02E28F3C-7C43-4F6F-B019-0F023585DA09}</ProjectGuid>
+    <RootNamespace>GameService</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CLRSupport>false</CLRSupport>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\server\$(ProjectName)\</OutDir>
+    <IntDir>..\..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\server\$(ProjectName)\</OutDir>
+    <IntDir>..\..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <LinkIncremental>false</LinkIncremental>
+    <EmbedManifest>true</EmbedManifest>
+    <IgnoreImportLibrary>false</IgnoreImportLibrary>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command />
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../sdk/include;../libs;./;../../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <StringPooling>
+      </StringPooling>
+      <FunctionLevelLinking>
+      </FunctionLevelLinking>
+      <DisableSpecificWarnings>4200;4267;4100</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libcurl_d.lib;cmsLib_d.lib;gameLib_d.lib;worldsLib_d.lib;libprotobufd.lib;libtcmalloc_minimal_d.lib;libssl.lib;libcrypto.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../sdk/lib64;../../libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ForceSymbolReferences>__tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command />
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../sdk/include;../libs;./;../../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WIN32;_CONSOLE;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <StringPooling>true</StringPooling>
+      <DisableSpecificWarnings>4200;4267;4100</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>cmsLib.lib;gameLib.lib;worldsLib.lib;libprotobuf.lib;libtcmalloc_minimal.lib;libcurl.lib;wldap32.lib;crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>../../sdk/lib64/opt;../../libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+      <LargeAddressAware>true</LargeAddressAware>
+      <ForceSymbolReferences>__tcmalloc;%(ForceSymbolReferences)</ForceSymbolReferences>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include=".\GameServiceApp.cpp" />
+    <ClCompile Include=".\GameServiceApp_NetCmd.cpp" />
+    <ClCompile Include=".\network\FightRouterLinkTo.cpp" />
+    <ClCompile Include=".\region\GamePlayer.cpp" />
+    <ClCompile Include=".\region\RegionCellNode.cpp" />
+    <ClCompile Include=".\region\RegionChannelService.cpp" />
+    <ClCompile Include=".\region\RegionChannelServiceTimer.cpp" />
+    <ClCompile Include=".\region\RegionChannelService_Network.cpp" />
+    <ClCompile Include=".\region\RegionMapBoxImpl.cpp" />
+    <ClCompile Include=".\region\RegionMapBoxImpl_InOut.cpp" />
+    <ClCompile Include=".\sMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\config\GameConfig.h" />
+    <ClInclude Include=".\GameServiceApp.h" />
+    <ClInclude Include=".\network\FightRouterLinkTo.h" />
+    <ClInclude Include=".\region\GamePlayer.h" />
+    <ClInclude Include=".\region\IRegionMap.h" />
+    <ClInclude Include=".\region\RegionCellNode.h" />
+    <ClInclude Include=".\region\RegionChannelService.h" />
+    <ClInclude Include=".\region\RegionMapBoxImpl.h" />
+    <ClInclude Include=".\region\RegionPlayerContainer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

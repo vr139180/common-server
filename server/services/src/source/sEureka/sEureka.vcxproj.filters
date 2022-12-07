@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{12aabf74-8011-444e-8e2a-e1539558c29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cluster">
+      <UniqueIdentifier>{b2cdcb6f-649f-428a-9c83-299b5363f62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{1be959ac-bee3-4667-ab9e-28de083e87d1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\sEurekaApp.cpp" />
+    <ClCompile Include=".\sMain.cpp" />
+    <ClCompile Include=".\network\EurekaSession.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\network\EurekaLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\network\EurekaLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl_Timer.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl_NetCmd.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl_Maintnce.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\services\ServiceRegisterCtrl.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\services\ServiceRegisterCtrl_NetCmd.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl_Boost.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\services\ServiceRegisterCtrl_Timer.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\network\ServiceLinkFrom.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaClusterCtrl_MSChange.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cluster\EurekaLostMaintance.cpp">
+      <Filter>cluster</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\sEurekaApp.h" />
+    <ClInclude Include=".\network\EurekaSession.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\cluster\EurekaClusterCtrl.h">
+      <Filter>cluster</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\IEurekaNodeLink.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\EurekaLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\EurekaLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\services\ServiceRegisterCtrl.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\ServiceLinkFrom.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\debugdefine.h" />
+    <ClInclude Include=".\network\EurekaLinkToHolder.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\EurekaLinkFromHolder.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\ServiceLinkFromHolder.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\cluster\EurekaLostMaintance.h">
+      <Filter>cluster</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".\ReadMe.txt" />
+  </ItemGroup>
+</Project>

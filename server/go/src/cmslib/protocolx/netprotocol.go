@@ -35,7 +35,7 @@ func (p *ProtoHeadBase) GetMsgLen() uint32 {
 func (p ProtoHeadBase) DecodeBool(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val bool) {
 	succ = false
 
-	if (*offset)+1 < maxlen {
+	if (*offset)+1 > maxlen {
 		return
 	}
 
@@ -67,7 +67,7 @@ func (p ProtoHeadBase) EncodeBool(pdata *bytes.Buffer, offset *uint32, val bool)
 func (p ProtoHeadBase) DecodeUint16(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val uint16) {
 	succ = false
 
-	if (*offset)+2 < maxlen {
+	if (*offset)+2 > maxlen {
 		return
 	}
 
@@ -93,7 +93,7 @@ func (p ProtoHeadBase) EncodeUint16(pdata *bytes.Buffer, offset *uint32, val uin
 func (p ProtoHeadBase) DecodeUint32(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val uint32) {
 	succ = false
 
-	if (*offset)+4 < maxlen {
+	if (*offset)+4 > maxlen {
 		return
 	}
 
@@ -119,7 +119,7 @@ func (p ProtoHeadBase) EncodeUint32(pdata *bytes.Buffer, offset *uint32, val uin
 func (p ProtoHeadBase) Decodeint8(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val int8) {
 	succ = false
 
-	if (*offset)+1 < maxlen {
+	if (*offset)+1 > maxlen {
 		return
 	}
 
@@ -145,7 +145,7 @@ func (p ProtoHeadBase) Encodeint8(pdata *bytes.Buffer, offset *uint32, val int8)
 func (p ProtoHeadBase) Decodeint16(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val int16) {
 	succ = false
 
-	if (*offset)+2 < maxlen {
+	if (*offset)+2 > maxlen {
 		return
 	}
 
@@ -171,7 +171,7 @@ func (p ProtoHeadBase) Encodeint16(pdata *bytes.Buffer, offset *uint32, val int1
 func (p ProtoHeadBase) Decodeint32(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val int32) {
 	succ = false
 
-	if (*offset)+4 < maxlen {
+	if (*offset)+4 > maxlen {
 		return
 	}
 
@@ -197,7 +197,7 @@ func (p ProtoHeadBase) Encodeint32(pdata *bytes.Buffer, offset *uint32, val int3
 func (p ProtoHeadBase) Decodeint64(pbuf []byte, maxlen uint32, offset *uint32) (succ bool, val int64) {
 	succ = false
 
-	if (*offset)+8 < maxlen {
+	if (*offset)+8 > maxlen {
 		return
 	}
 
@@ -295,7 +295,7 @@ func (p *UserToken) GetTokenToken() int64 {
 
 //----------------------------------------------SProtocolHead--------------------------------------
 type SProtocolHead struct {
-	*ProtoHeadBase
+	ProtoHeadBase
 
 	FromType int8
 	ToType   int8
@@ -320,7 +320,7 @@ func (p *SProtocolHead) EncodeHead(pdata *bytes.Buffer) bool {
 	var offset uint32 = 0
 
 	//占位长度
-	p.EncodeUint16(pdata, &offset, 0)
+	p.EncodeUint32(pdata, &offset, 0)
 
 	p.EncodeUint16(pdata, &offset, p.MsgId)
 	p.Encodeint8(pdata, &offset, p.FromType)

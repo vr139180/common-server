@@ -63,6 +63,7 @@ protected:
 
 	//app lock
 	ThreadLock			lock_;
+	ThreadLock			cmd_lock_;
 };
 
 #endif	//__VIRTUALMAINTHREAD_H__

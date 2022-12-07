@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4D177ACF-BE8F-44BC-8D4E-AE2DB44DA9B7}</ProjectGuid>
+    <RootNamespace>cmsLib</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\..\..\libs\</OutDir>
+    <IntDir>..\..\..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\..\..\libs\</OutDir>
+    <IntDir>..\..\..\objs\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Message>subwcrev . $(ProjectDir)..\source\libs\cmsLib\version.template.h $(ProjectDir)..\source\libs\cmsLib\version.h</Message>
+      <Command />
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../sdk/include;../;../../../sdk/include/lua;../../../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_WIN32;_LIB;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4267;4200;4244;4100;4310;4701</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Message>subwcrev . $(ProjectDir)..\source\libs\cmsLib\version.template.h $(ProjectDir)..\source\libs\cmsLib\version.h</Message>
+      <Command />
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../../../sdk/include;../;../../../sdk/include/lua;../../../sdk/include/protobuf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WIN32;_LIB;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>4267;4200;4244;4100;4310;4701</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include=".\base\OSSystem.cpp" />
+    <ClCompile Include=".\base\Profile.cpp" />
+    <ClCompile Include=".\encryption\rsa\RSAUtil.cpp" />
+    <ClCompile Include=".\hash\HashUtil.cpp" />
+    <ClCompile Include=".\httpcurl\HttpClient.cpp" />
+    <ClCompile Include=".\httpcurl\HTTPCurlRequest.cpp" />
+    <ClCompile Include=".\httpcurl\HttpUrl.cpp" />
+    <ClCompile Include=".\httpcurl\HttpUtilities.cpp" />
+    <ClCompile Include=".\json\JSONUtil.cpp" />
+    <ClCompile Include=".\log\default_webservice_sink_factory.cpp" />
+    <ClCompile Include=".\log\LoggerHelper.cpp" />
+    <ClCompile Include=".\log\WSSinkBackend.cpp" />
+    <ClCompile Include=".\lua\ScriptContext.cpp" />
+    <ClCompile Include=".\lua_src\lapi.c" />
+    <ClCompile Include=".\lua_src\lauxlib.c" />
+    <ClCompile Include=".\lua_src\lbaselib.c" />
+    <ClCompile Include=".\lua_src\lcode.c" />
+    <ClCompile Include=".\lua_src\lcorolib.c" />
+    <ClCompile Include=".\lua_src\lctype.c" />
+    <ClCompile Include=".\lua_src\ldblib.c" />
+    <ClCompile Include=".\lua_src\ldebug.c" />
+    <ClCompile Include=".\lua_src\ldo.c" />
+    <ClCompile Include=".\lua_src\ldump.c" />
+    <ClCompile Include=".\lua_src\lfunc.c" />
+    <ClCompile Include=".\lua_src\lgc.c" />
+    <ClCompile Include=".\lua_src\linit.c" />
+    <ClCompile Include=".\lua_src\liolib.c" />
+    <ClCompile Include=".\lua_src\llex.c" />
+    <ClCompile Include=".\lua_src\lmathlib.c" />
+    <ClCompile Include=".\lua_src\lmem.c" />
+    <ClCompile Include=".\lua_src\loadlib.c" />
+    <ClCompile Include=".\lua_src\lobject.c" />
+    <ClCompile Include=".\lua_src\lopcodes.c" />
+    <ClCompile Include=".\lua_src\loslib.c" />
+    <ClCompile Include=".\lua_src\lparser.c" />
+    <ClCompile Include=".\lua_src\lstate.c" />
+    <ClCompile Include=".\lua_src\lstring.c" />
+    <ClCompile Include=".\lua_src\lstrlib.c" />
+    <ClCompile Include=".\lua_src\ltable.c" />
+    <ClCompile Include=".\lua_src\ltablib.c" />
+    <ClCompile Include=".\lua_src\ltm.c" />
+    <ClCompile Include=".\lua_src\lua.c" />
+    <ClCompile Include=".\lua_src\luac.c" />
+    <ClCompile Include=".\lua_src\lundump.c" />
+    <ClCompile Include=".\lua_src\lutf8lib.c" />
+    <ClCompile Include=".\lua_src\lvm.c" />
+    <ClCompile Include=".\lua_src\lzio.c" />
+    <ClCompile Include=".\net\LinkToBase.cpp" />
+    <ClCompile Include=".\net\NetSessionBindEvent.cpp" />
+    <ClCompile Include=".\OSDriver.cpp" />
+    <ClCompile Include=".\os\win32\OSDriverWin32.cpp" />
+    <ClCompile Include=".\os\linux\OSDriverLinux.cpp" />
+    <ClCompile Include=".\prolib\BasicProtocol.cpp" />
+    <ClCompile Include=".\prolib\BasicProtocol_Code.cpp" />
+    <ClCompile Include=".\prolib\ProtocolFactory.cpp" />
+    <ClCompile Include=".\redis\RedisClient.cpp" />
+    <ClCompile Include=".\system\AppStateMonitor.cpp" />
+    <ClCompile Include=".\system\VirtualMainThread.cpp" />
+    <ClCompile Include=".\tinyxml2\tinyxml2.cpp" />
+    <ClCompile Include=".\Version.cpp" />
+    <ClCompile Include=".\wincrash\crashhandler.cpp" />
+    <ClCompile Include=".\util\FileLogOnlyOnce.cpp" />
+    <ClCompile Include=".\util\FileUtil.cpp" />
+    <ClCompile Include=".\util\ShareUtil.cpp" />
+    <ClCompile Include=".\util\XmlUtil.cpp" />
+    <ClCompile Include=".\net\MutexAllocator.cpp" />
+    <ClCompile Include=".\net\NetAcceptor.cpp" />
+    <ClCompile Include=".\net\NetConnector.cpp" />
+    <ClCompile Include=".\net\NetDriverX.cpp" />
+    <ClCompile Include=".\net\NetSession.cpp">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ClCompile Include=".\system\CommandBase.cpp" />
+    <ClCompile Include=".\ServerAppBase.cpp" />
+    <ClCompile Include=".\ServerAppWrapper.cpp" />
+    <ClCompile Include=".\ThreadLock.cpp" />
+    <ClCompile Include=".\system\TimerContainer.cpp" />
+    <ClCompile Include=".\encryption\md5\md5.cpp" />
+    <ClCompile Include=".\serialization\base64\base64.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\base\DataTable.h" />
+    <ClInclude Include=".\base\HashTable.h" />
+    <ClInclude Include=".\base\Hierarchy.h" />
+    <ClInclude Include=".\base\OSSystem.h" />
+    <ClInclude Include=".\base\Profile.h" />
+    <ClInclude Include=".\common_result.h" />
+    <ClInclude Include=".\core_type.h" />
+    <ClInclude Include=".\encryption\rsa\RSAUtil.h" />
+    <ClInclude Include=".\hash\HashUtil.h" />
+    <ClInclude Include=".\httpcurl\HTTPBinData.h" />
+    <ClInclude Include=".\httpcurl\HTTPBinWrite.h" />
+    <ClInclude Include=".\httpcurl\HttpClient.h" />
+    <ClInclude Include=".\httpcurl\HTTPCurlRequest.h" />
+    <ClInclude Include=".\httpcurl\HTTPData.h" />
+    <ClInclude Include=".\httpcurl\HttpHeaders.h" />
+    <ClInclude Include=".\httpcurl\HTTPProxy.h" />
+    <ClInclude Include=".\httpcurl\HttpReader.h" />
+    <ClInclude Include=".\httpcurl\HttpResponse.h" />
+    <ClInclude Include=".\httpcurl\HTTPStringData.h" />
+    <ClInclude Include=".\httpcurl\HttpStringWrite.h" />
+    <ClInclude Include=".\httpcurl\HttpUrl.h" />
+    <ClInclude Include=".\httpcurl\HttpUtilities.h" />
+    <ClInclude Include=".\httpcurl\HttpWrite.h" />
+    <ClInclude Include=".\jobsystem\JobMTBase.h" />
+    <ClInclude Include=".\jobsystem\JobSystem.h" />
+    <ClInclude Include=".\jobsystem\ThreadContext.h" />
+    <ClInclude Include=".\jobsystem\ThreadContextFactory.h" />
+    <ClInclude Include=".\jobsystem\ThreadContextPool.h" />
+    <ClInclude Include=".\json\JSONUtil.h" />
+    <ClInclude Include=".\log\LoggerHelper.h" />
+    <ClInclude Include=".\log\WSSinkBackend.h" />
+    <ClInclude Include=".\lua\ScriptContext.h" />
+    <ClInclude Include=".\net\LinkToBase.h" />
+    <ClInclude Include=".\net\NetHashingWithVNode.h" />
+    <ClInclude Include=".\net\ws_custom_static_buffer.h" />
+    <ClInclude Include=".\OSDriver.h" />
+    <ClInclude Include=".\os\win32\OSDriverWin32.h" />
+    <ClInclude Include=".\os\linux\OSDriverLinux.h" />
+    <ClInclude Include=".\prolib\BasicProtocol.h" />
+    <ClInclude Include=".\redis\RedisClient.h" />
+    <ClInclude Include=".\redis\RedisProtoBufThreadCache.h" />
+    <ClInclude Include=".\system\AppStateMonitor.h" />
+    <ClInclude Include=".\system\VirtualMainThread.h" />
+    <ClInclude Include=".\GlobalSettings.h" />
+    <ClInclude Include=".\prolib\prolibdef.h" />
+    <ClInclude Include=".\prolib\ProtocolFactory.h" />
+    <ClInclude Include=".\prolib\SingletonT.h" />
+    <ClInclude Include=".\prolib\StaticString.h" />
+    <ClInclude Include=".\prolib\TStaticArray.h" />
+    <ClInclude Include=".\tinyxml2\tinyxml2.h" />
+    <ClInclude Include=".\util\Random.h" />
+    <ClInclude Include=".\wincrash\crashhandler.h" />
+    <ClInclude Include=".\util\FileLogOnlyOnce.h" />
+    <ClInclude Include=".\util\FileUtil.h" />
+    <ClInclude Include=".\util\ShareUtil.h" />
+    <ClInclude Include=".\util\XmlUtil.h" />
+    <ClInclude Include=".\CommandListener.h" />
+    <ClInclude Include=".\net\MutexAllocator.h" />
+    <ClInclude Include=".\net\NetAcceptor.h" />
+    <ClInclude Include=".\net\NetAcceptorEvent.h" />
+    <ClInclude Include=".\net\NetConnector.h" />
+    <ClInclude Include=".\net\NetDriverX.h" />
+    <ClInclude Include=".\net\NetSession.h" />
+    <ClInclude Include=".\net\NetSessionBindEvent.h" />
+    <ClInclude Include=".\system\CommandBase.h" />
+    <ClInclude Include=".\ServerAppBase.h" />
+    <ClInclude Include=".\ServerAppWrapper.h" />
+    <ClInclude Include=".\ThreadLock.h" />
+    <ClInclude Include=".\system\TimerContainer.h" />
+    <ClInclude Include=".\encryption\md5\md5.h" />
+    <ClInclude Include=".\serialization\base64\base64.h" />
+    <ClInclude Include=".\cmsLib.h" />
+    <ClInclude Include=".\Log.h" />
+    <ClInclude Include=".\Version.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

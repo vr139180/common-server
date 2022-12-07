@@ -21,7 +21,7 @@ const DATASYNC_USERS_CONFIRM = "-DATASYNC-:users-confirm"
 
 //-----------------------user detail--------------------------
 //role detail lld=role_iid
-const USER_DETAIL = "-UROLE:%s"
+const USER_DETAIL = "-UROLE:#%s"
 
 //userbase
 const USER_DETAIL_USERBASE = "user:base"

@@ -30,7 +30,7 @@ void ServerAppBase::uninit()
 
 void ServerAppBase::free_cmds()
 {
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	for( int ii =0; ii < 2; ++ii)
 	{
@@ -90,7 +90,7 @@ CommandBase* ServerAppBase::pop_one_cmd()
 	{
 		if( system_cmds_[ANOTHER_CMD_LIST(cur_syscmds_)].size() > 0)
 		{
-			ThreadLockWrapper guard( lock_);
+			ThreadLockWrapper guard(cmd_lock_);
 
 			cur_syscmds_ =ANOTHER_CMD_LIST(cur_syscmds_);
 		}
@@ -98,7 +98,7 @@ CommandBase* ServerAppBase::pop_one_cmd()
 		{
 			if( net_cmds_[ANOTHER_CMD_LIST(cur_netcmds_)].size() > 0)
 			{
-				ThreadLockWrapper guard( lock_);
+				ThreadLockWrapper guard(cmd_lock_);
 
 				cur_netcmds_ =ANOTHER_CMD_LIST( cur_netcmds_);
 			}
@@ -106,7 +106,7 @@ CommandBase* ServerAppBase::pop_one_cmd()
 			{
 				if( user_cmds_[ANOTHER_CMD_LIST( cur_usercmds_)].size() > 0)
 				{
-					ThreadLockWrapper guard( lock_);
+					ThreadLockWrapper guard(cmd_lock_);
 
 					cur_usercmds_ =ANOTHER_CMD_LIST( cur_usercmds_);
 				}
@@ -140,7 +140,7 @@ CommandBase* ServerAppBase::pop_net_cmd()
 	{
 		if (net_cmds_[ANOTHER_CMD_LIST(cur_netcmds_)].size() > 0)
 		{
-			ThreadLockWrapper guard(lock_);
+			ThreadLockWrapper guard(cmd_lock_);
 
 			cur_netcmds_ = ANOTHER_CMD_LIST(cur_netcmds_);
 		}
@@ -148,7 +148,7 @@ CommandBase* ServerAppBase::pop_net_cmd()
 		{
 			if (user_cmds_[ANOTHER_CMD_LIST(cur_usercmds_)].size() > 0)
 			{
-				ThreadLockWrapper guard(lock_);
+				ThreadLockWrapper guard(cmd_lock_);
 
 				cur_usercmds_ = ANOTHER_CMD_LIST(cur_usercmds_);
 			}
@@ -176,7 +176,7 @@ CommandBase* ServerAppBase::pop_sys_cmd()
 	{
 		if (system_cmds_[ANOTHER_CMD_LIST(cur_syscmds_)].size() > 0)
 		{
-			ThreadLockWrapper guard(lock_);
+			ThreadLockWrapper guard(cmd_lock_);
 
 			cur_syscmds_ = ANOTHER_CMD_LIST(cur_syscmds_);
 		}
@@ -191,7 +191,7 @@ void ServerAppBase::regist_syscmd( CommandBase* p)
 
 	if( will_quit_app_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 	system_cmds_[ANOTHER_CMD_LIST( cur_syscmds_)].push_back( p_p.release());
 }
 
@@ -201,7 +201,7 @@ void ServerAppBase::regist_netcmd( CommandBase *p)
 
 	if( will_quit_app_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	net_cmds_[ANOTHER_CMD_LIST( cur_netcmds_)].push_back( p_p.release());
 }
@@ -212,7 +212,7 @@ void ServerAppBase::regist_usercmd( CommandBase *p)
 
 	if( will_quit_app_) return;
 
-	ThreadLockWrapper guard( lock_);
+	ThreadLockWrapper guard(cmd_lock_);
 
 	user_cmds_[ANOTHER_CMD_LIST( cur_usercmds_)].push_back( p_p.release());
 }

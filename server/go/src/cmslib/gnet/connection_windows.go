@@ -177,7 +177,7 @@ func (c *stdConn) writeProtobuf(pro *protocolx.NetProtocol) (int, error) {
 			return 0, errors.New("codec not support ProtobufCodec")
 		}
 
-		head := &pro.Head
+		head := pro.WriteHead()
 
 		if head.UnpackProtocol {
 			if pro.Msg == nil {

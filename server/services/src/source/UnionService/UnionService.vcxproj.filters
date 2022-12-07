@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\UnionServiceApp.cpp" />
+    <ClCompile Include=".\sMain.cpp" />
+    <ClCompile Include=".\UnionServiceApp_NetCmd.cpp" />
+    <ClCompile Include=".\network\ServiceRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\UnionServiceApp.h" />
+    <ClInclude Include=".\config\UnionConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\ServiceRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{491b1450-d94a-4186-9860-f912276ec899}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

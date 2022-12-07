@@ -30,7 +30,7 @@ type RedisUtil struct {
 	ctx context.Context
 }
 
-func NewRedisUtil(opt RedisOption) (*RedisUtil, error) {
+func NewRedisUtil(opt *RedisOption) (*RedisUtil, error) {
 	ru := RedisUtil{}
 
 	ru.ctx = context.Background()

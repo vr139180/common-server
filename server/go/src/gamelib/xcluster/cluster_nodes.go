@@ -127,8 +127,6 @@ func (c *ClusterServiceCtrl) onMthServiceConnected(s IClusterNetSession) {
 	pro := protocolx.NewNetProtocolByHeadMsg(req, &c.defaultSHead)
 
 	head := pro.WriteHead()
-	head.ToBroadCast = false
-	head.RouterBalance = false
 	head.ToType = int8(c.targetSType)
 
 	ns.SendMessage(pro)

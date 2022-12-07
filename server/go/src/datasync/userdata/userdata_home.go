@@ -64,6 +64,10 @@ func (u *userBase) redisBean2DbBean() (b *entity.RoleBaseInfo) {
 	b.Nickname = u.base_data.GetNickname()
 	b.Registime = utilc.SecondToTime(u.base_data.GetRegistime())
 	b.Levels = u.base_data.GetLevels()
+	pos := u.base_data.GetLoc()
+	b.LocX = pos.X
+	b.LocY = pos.Y
+	b.LocZ = pos.Z
 
 	return b
 }

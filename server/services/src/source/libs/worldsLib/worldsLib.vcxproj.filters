@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include=".\cmsworld_const.h" />
+    <ClInclude Include=".\GameRegionMeta.h" />
+    <ClInclude Include=".\GameWorldHelper.h" />
+    <ClInclude Include=".\geometry\common_types.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include=".\utils\WorldUtil.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\GameRegionMeta.cpp" />
+    <ClCompile Include=".\GameWorldHelper.cpp" />
+    <ClCompile Include=".\geometry\common_types.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include=".\utils\WorldUtil.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="utils">
+      <UniqueIdentifier>{d92b37da-5a5c-4b3e-9776-ed5c90e1ab17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geometry">
+      <UniqueIdentifier>{701f87d6-87f2-47ba-8562-10be86a504bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

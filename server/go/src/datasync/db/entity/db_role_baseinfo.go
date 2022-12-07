@@ -25,6 +25,9 @@ type RoleBaseInfo struct {
 	Nickname  string    `xorm:"'nickname'"`
 	Registime time.Time `xorm:"'registime'"`
 	Levels    int32     `xorm:"'levels'"`
+	LocX      float32   `xorm:"'location_x'"`
+	LocY      float32   `xorm:"'location_y'"`
+	LocZ      float32   `xorm:"'location_z'"`
 }
 
 func (r RoleBaseInfo) TableName() string {

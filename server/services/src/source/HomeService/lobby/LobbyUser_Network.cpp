@@ -122,7 +122,7 @@ void LobbyUser::on_ls_rolelocsave_ntf(S_INT_64 roleid, const GLoc3D& loc)
 		return;
 
 	roles_data_.role_update_loc(get_user_iid(), roleid, loc);
-	base_data_.update_role_loc(loc);
+	this->role_move_to(loc);
 }
 
 void LobbyUser::db_role_selected_done()

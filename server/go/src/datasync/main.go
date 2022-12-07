@@ -36,7 +36,7 @@ func main() {
 	svr := server.NewServerWrapper(app)
 	err := svr.InitApp()
 	if err != nil {
-		panic(err)
+		return
 	}
 
 	svr.Run()

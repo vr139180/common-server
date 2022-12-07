@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\GameServiceApp.cpp" />
+    <ClCompile Include=".\sMain.cpp" />
+    <ClCompile Include=".\GameServiceApp_NetCmd.cpp" />
+    <ClCompile Include=".\network\FightRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\GamePlayer.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionChannelService.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionMapBoxImpl.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionCellNode.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionChannelService_Network.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionChannelServiceTimer.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+    <ClCompile Include=".\region\RegionMapBoxImpl_InOut.cpp">
+      <Filter>region</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\GameServiceApp.h" />
+    <ClInclude Include=".\config\GameConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\FightRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\GamePlayer.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\IRegionMap.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\RegionChannelService.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\RegionMapBoxImpl.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\RegionPlayerContainer.h">
+      <Filter>region</Filter>
+    </ClInclude>
+    <ClInclude Include=".\region\RegionCellNode.h">
+      <Filter>region</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{9335a345-3d24-4d0d-8947-e5c1829d7912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="region">
+      <UniqueIdentifier>{81d5743c-2cb8-4d86-921d-c3371868f182}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

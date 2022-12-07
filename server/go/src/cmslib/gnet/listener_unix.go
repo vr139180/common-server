@@ -101,6 +101,11 @@ func initListener(network, addr string, options *Options) (l *listener, err erro
 		sockOpts = append(sockOpts, sockOpt)
 	}
 	l = &listener{network: network, address: addr, sockOpts: sockOpts}
-	err = l.normalize()
+	// SH:Lujf:SH
+	if options.IgnoreListen {
+		err = nil
+	} else {
+		err = l.normalize()
+	}
 	return
 }

@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\HomeServiceApp.cpp" />
+    <ClCompile Include=".\sMain.cpp" />
+    <ClCompile Include=".\HomeServiceApp_NetCmd.cpp" />
+    <ClCompile Include=".\lobby\LobbyService.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyService_Network.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\DBSCtrl.cpp">
+      <Filter>dbs</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\dbThread.cpp">
+      <Filter>dbs</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserCacheData.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser_Redis.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\cmd\BaseDBCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\cmd\LoadUserInfoCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserBase.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserBuildings.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserHome.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserPets.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserRoles.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\cmd\LoadUserRolesCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include=".\dbs\cmd\CreateUserRoleCmd.cpp">
+      <Filter>dbs\cmd</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser_Network.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser_Database.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserOperate.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserCacheData_Build.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserCacheData_Pet.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser_Task.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyUser_Lua.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyService_Lua.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserTasks.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserCacheData_Task.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\LobbyService_Task.cpp">
+      <Filter>lobby</Filter>
+    </ClCompile>
+    <ClCompile Include=".\network\DataRouterLinkTo.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include=".\lobby\user\UserCacheData_Base.cpp">
+      <Filter>lobby\user</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\HomeServiceApp.h" />
+    <ClInclude Include=".\config\HomeConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\LobbyService.h">
+      <Filter>lobby</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\LobbyUser.h">
+      <Filter>lobby</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\DBSCtrl.h">
+      <Filter>dbs</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\dbThread.h">
+      <Filter>dbs</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserCacheData.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserBuildings.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserPets.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\cmd\BaseDBCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\cmd\LoadUserInfoCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserBase.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserHome.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserOperate.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserRoles.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\cmd\LoadUserRolesCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include=".\dbs\cmd\CreateUserRoleCmd.h">
+      <Filter>dbs\cmd</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\user\UserTasks.h">
+      <Filter>lobby\user</Filter>
+    </ClInclude>
+    <ClInclude Include=".\network\DataRouterLinkTo.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include=".\lobby\LobbyUserContainer.h">
+      <Filter>lobby</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include=".\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="network">
+      <UniqueIdentifier>{155dba6b-086e-40d4-b38d-0f3a3651c8dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{6a05a6e9-0c71-40ce-ba26-7c67720eca72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lobby">
+      <UniqueIdentifier>{2b3fbb9d-714e-4bc8-bfe8-65e0e5e30a21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbs">
+      <UniqueIdentifier>{21eba8c5-d95e-4028-9bfd-ddf33c4d18d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lobby\user">
+      <UniqueIdentifier>{8be0d726-e5df-4688-b9d3-4936191ea0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbs\cmd">
+      <UniqueIdentifier>{8417fe2a-a1d3-4ec6-bc56-2a70f5668975}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

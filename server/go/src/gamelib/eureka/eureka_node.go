@@ -55,6 +55,7 @@ func (sn *ServiceNodeInfo) GetExtParamByKey(k string) (v string, ok bool) {
 // 构建一个service节点描述信息
 func newServiceNodeInfo(s service.ServiceType, tid int64, token int64, ip string, port int, exts map[string]string, isrouter bool) (n *ServiceNodeInfo) {
 	n = new(ServiceNodeInfo)
+
 	n.SvrType = s
 	n.Iid = tid
 	n.Token = token
@@ -114,10 +115,10 @@ func newEurekaNodeInfo2(node map[string]interface{}) (n *EurekaNodeInfo) {
 	}
 
 	n = new(EurekaNodeInfo)
-	n.iid = id.(int64)
+	n.iid = int64(id.(float64))
 	n.ip = ip.(string)
-	n.port = port.(int)
-	n.token = token.(int64)
+	n.port = int(port.(float64))
+	n.token = int64(token.(float64))
 	n.ismaster = true
 
 	return

@@ -80,6 +80,8 @@ func (ec *EurekaCluster) timerRouterAutoConfig(now int64, interval int, tid int6
 	ec.SendToMaster(req)
 
 	ec.appProxy.OnServiceRegisted(ec.mynode.Iid)
+
+	return
 }
 
 // 一个节点连接成功
@@ -205,78 +207,66 @@ func (ec *EurekaCluster) onMthServiceBindAck(ns gnet.NetSession, pro *protocolx.
 	es, _ := ns.(*EurekaSession)
 	ack, _ := pro.Msg.(*gpro.Erk_ServiceBindAck)
 
-	node := es.node
-
-	delete(ec.waitConnections, node.iid)
-	delete(ec.authsConnection, es)
-	delete(ec.eurekaConnections, es.node.iid)
-
-	ind := ec.eurekaVector.IndexOf(es)
-	if ind != -1 {
-		ec.eurekaVector.Remove(ind)
-	}
-
 	if ack.GetResult() == 0 {
 		//succeess
+		node := es.node
+
+		delete(ec.waitConnections, node.iid)
+		delete(ec.authsConnection, es)
+
+		delete(ec.eurekaConnections, es.node.iid)
+		ind := ec.eurekaVector.IndexOf(es)
+		if ind != -1 {
+			ec.eurekaVector.Remove(ind)
+		}
+
 		ec.eurekaConnections[node.iid] = es
 		ec.eurekaVector.Add(es)
-	} else {
-		//放回wait列表
-		_, ok := ec.eurekaNodes[node.iid]
-		if ok {
-			ec.waitConnections[node.iid] = node
+
+		//重新绑定的master
+		if ec.masterEurekaIid == node.iid && ec.masterEurekaToken == node.token {
+			ec.masterLink = es
+			ec.SubscribeToMasterNode()
 		}
+
+	} else {
+		es.Close()
 	}
 
-	logx.Debugf("-------bind result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections), ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
+	logx.Debugf("-------bind result, eureka connections:%d vector:%d waits:%d auths:%d", len(ec.eurekaConnections),
+		ec.eurekaVector.Size(), len(ec.waitConnections), len(ec.authsConnection))
 }
 
 func (ec *EurekaCluster) onMthEurekaUpdateNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
 	ack, _ := pro.Msg.(*gpro.Erk_EurekaUpdateNtf)
 
 	for _, v := range ack.Online {
-		_, ok := ec.eurekaNodes[v.GetIid()]
-		if ok {
+		if ec.IsExistEurekaNode(v.GetIid()) {
 			continue
 		}
 
-		pinfo := newEurekaServerNode(v.Iid, v.Token, v.Ip, int(v.Port))
+		pinfo := newEurekaNodeInfo(v.Iid, v.Token, v.Ip, int(v.Port), v.Ismaster)
 		ec.eurekaNodes[pinfo.iid] = pinfo
 
-		if !ec.IsOnlineEurekaNode(pinfo.iid) {
-			ec.waitConnections[pinfo.iid] = pinfo
+		//eureka已经在线
+		if ec.IsOnlineEurekaNode(pinfo.iid) {
+			continue
 		}
+
+		//放入连接池
+		ec.waitConnections[pinfo.iid] = pinfo
+
+		logx.Debugf("slaver eureka node:%d wait to connecting", pinfo.iid)
 	}
 
+	//删除下线的服务，但是不直接断开连接。通过错误重连时来自动维护
 	for _, v := range ack.Offline {
 		logx.Debugf("------ sync eureka offline:%d", v)
 		_, ok := ec.eurekaNodes[v]
-		if !ok {
-			continue
-		}
-
-		delete(ec.eurekaNodes, v)
-		delete(ec.waitConnections, v)
-		d, ok := ec.eurekaConnections[v]
 		if ok {
-			delete(ec.authsConnection, d)
-			delete(ec.eurekaConnections, v)
-			//force close
-			d.Close()
+			delete(ec.eurekaNodes, v)
 		}
 	}
-}
-
-func (ec *EurekaCluster) onMthRouterOnlineNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
-
-}
-
-func (ec *EurekaCluster) onMthMasterChaneNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
-
-}
-
-func (ec *EurekaCluster) onMthRouterSubScribeNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
-
 }
 
 func (ec *EurekaCluster) onMthServiceSubScribeNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
@@ -285,8 +275,8 @@ func (ec *EurekaCluster) onMthServiceSubScribeNtf(ns gnet.NetSession, pro *proto
 	stype := int(ack.SvrType)
 	nodes := ec.getServiceNodesByType(stype)
 	newiid := []*ServiceNodeInfo{}
-
-	for _, v := range ack.Online {
+	//在线服务增量信息
+	for _, v := range ack.Newsvrs {
 		_, ok := nodes[v.Iid]
 		if ok {
 			continue
@@ -300,14 +290,15 @@ func (ec *EurekaCluster) onMthServiceSubScribeNtf(ns gnet.NetSession, pro *proto
 			}
 		}
 
-		ps := newServiceNodeInfo(service.ServiceType(stype), v.Iid, v.Token, v.Ip, int(v.Port), exts)
+		ps := newServiceNodeInfo(service.ServiceType(stype), v.Iid, v.Token, v.Ip, int(v.Port), exts, v.Isrouter)
 		nodes[ps.Iid] = ps
 
 		newiid = append(newiid, ps)
 	}
 
+	//下线服务
 	deliid := []int64{}
-	for _, v := range ack.Offline {
+	for _, v := range ack.Offsvrs {
 		_, ok := nodes[v]
 		if !ok {
 			continue
@@ -321,20 +312,32 @@ func (ec *EurekaCluster) onMthServiceSubScribeNtf(ns gnet.NetSession, pro *proto
 	if ec.appProxy != nil && (len(newiid) > 0 || len(deliid) > 0) && ec.IsRegisted() {
 		ec.appProxy.OnServiceChanged(service.ServiceType(stype), newiid, deliid)
 	}
+}
 
-	//获取过一次service订阅后发送确认协议，确认注册完成
-	if ec.curState == eurekaRegisted {
-		confirm := &gpro.Erk_ServiceRegist_Confirm{}
-		confirm.Iid = ec.GetMyNode().Iid
-		confirm.Token = ec.GetMyNode().Token
+func (ec *EurekaCluster) onMthRouterOnlineNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
+	ack, _ := pro.Msg.(*gpro.Erk_RouterSubscribeNtf)
+	ctype := service.ServiceType(ack.SvrType)
 
-		ens, _ := ns.(*EurekaSession)
-		ens.SendNetProtocol(confirm)
+	svriid := []int64{}
+	svriid = append(svriid, ack.Svriids...)
 
-		ec.curState = eurekaReady
+	ec.appProxy.OnRouterBalanceNew(ctype, svriid)
+}
 
-		if ec.appProxy != nil {
-			ec.appProxy.OnServiceRegisted(ec.mynode.Iid)
+func (ec *EurekaCluster) onMthMasterChaneNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
+	ack, _ := pro.Msg.(*gpro.Erk_MasterChangeNtf)
+
+	if ec.masterEurekaIid != ack.Newmaster || ec.masterEurekaToken != ack.Mastertoken {
+		ec.masterEurekaIid = ack.Newmaster
+		ec.masterEurekaToken = ack.Mastertoken
+		ec.masterLink = ec.GetEurekaLinkById(ec.masterEurekaIid)
+
+		if ec.masterLink != nil {
+			ec.SubscribeToMasterNode()
 		}
 	}
+}
+
+func (ec *EurekaCluster) onMthRouterSubScribeNtf(ns gnet.NetSession, pro *protocolx.NetProtocol) {
+	//ack, _ := pro.Msg.(*gpro.Svr_RouterOnlineNtf)
 }

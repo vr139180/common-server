@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="metas">
+      <UniqueIdentifier>{4b546efa-bdfe-4abd-9914-c8ad933f1392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{5bc858f1-541c-4ad8-b31a-a749d88435e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cpptasks">
+      <UniqueIdentifier>{28688617-9544-42bd-abbd-3af7cbf0e8eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\meta\TaskGroupMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\TaskMetaHome.cpp" />
+    <ClCompile Include=".\meta\TaskMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\TaskGroupCellMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\ConditionsMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\TaskXmlCondition.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\TaskXmlObjective.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\UserTasksResolver.cpp" />
+    <ClCompile Include=".\service\TaskCellRT.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\service\TaskGroupCellRT.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\service\TaskResultLua.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\service\ITaskImplCpp.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include=".\cpptasks\MyTaskCppTemplate.cpp">
+      <Filter>cpptasks</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\TaskCppObjective.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+    <ClCompile Include=".\meta\TaskRewardMeta.cpp">
+      <Filter>metas</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\meta\TaskGroupMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\TaskMetaHome.h" />
+    <ClInclude Include=".\meta\TaskMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\TaskGroupCellMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\ConditionsMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\task_const.h" />
+    <ClInclude Include=".\service\ITaskEnv.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\service\ITaskResTrigger.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\TaskXmlCondition.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\TaskXmlObjective.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\UserTasksResolver.h" />
+    <ClInclude Include=".\service\TaskCellRT.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\service\TaskGroupCellRT.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\TaskFunc_Defined.h" />
+    <ClInclude Include=".\service\TaskResultLua.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\service\ITaskImplCpp.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include=".\cpptasks\MyTaskCppTemplate.h">
+      <Filter>cpptasks</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\TaskCppObjective.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+    <ClInclude Include=".\meta\TaskRewardMeta.h">
+      <Filter>metas</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

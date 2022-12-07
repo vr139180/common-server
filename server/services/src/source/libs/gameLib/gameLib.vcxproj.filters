@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include=".\LogExt.h" />
+    <ClInclude Include=".\GameDef.h" />
+    <ClInclude Include=".\config\ConfigTool.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\FileConfigSourceImpl.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\HttpConfigSourceImpl.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\IConfigContentSource.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\service_type.h" />
+    <ClInclude Include=".\config\ConfigHelper.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\DatabaseOption.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\EurekaConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\RedisOption.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\config\GlobalOption.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include=".\redis\global_redis_const.h">
+      <Filter>redis</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\EurekaClusterClient.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\EurekaClusterLink.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\EurekaNodeInfo.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\eureka_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\Proto_all.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include=".\redis\DTaskRedis.h">
+      <Filter>redis</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\ServiceNodeInfo.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\IEurekaClientIntegrate.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\LinkToHolder.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\proto_iid.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\user_login.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\SessionMthHolder.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\LinkFromHolder.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\global_const.h" />
+    <ClInclude Include=".\protobuf\cpp\proto_iid_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\gatehome\GHUsersSeparate.h">
+      <Filter>gatehome</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\global_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\redis\user_redis_const.h">
+      <Filter>redis</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\db_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\user_building.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\user_pet.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\user_chat.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\mail_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\item_warehouse.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\mail_system_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\friend_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\friend_system_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\NetLinkFromBase.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\task_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\logstash\LogRecordBase.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
+    <ClInclude Include=".\logstash\AppMonitorLog.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
+    <ClInclude Include=".\logstash\GameDataLog.h">
+      <Filter>logstash</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\matchmaking_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\robot_test_internal.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\LinkFromConsistentHash.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\cpp\game_system.pb.h">
+      <Filter>protobuf\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include=".\commons\GLoc3D.h">
+      <Filter>commons</Filter>
+    </ClInclude>
+    <ClInclude Include=".\protobuf\ProtoUtil.h">
+      <Filter>protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include=".\eureka\GateNodeInfo.h">
+      <Filter>eureka</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="eureka">
+      <UniqueIdentifier>{f8c96fd1-a5a7-4ffd-846d-710279aaebc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{0813e61a-31d3-432b-ace4-f0d40f9b9609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="redis">
+      <UniqueIdentifier>{25d6e3d0-82ae-486c-88ab-aebca06c933d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf">
+      <UniqueIdentifier>{12e1f923-90dc-46fa-8af4-d4818e3e2c45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuf\cpp">
+      <UniqueIdentifier>{034138c4-34e8-4047-b3fc-14683db8692a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="commons">
+      <UniqueIdentifier>{4e400e24-8dc1-4092-840f-d2ba1e4785af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gatehome">
+      <UniqueIdentifier>{101247c1-e827-4a29-b647-b73c483070a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logstash">
+      <UniqueIdentifier>{937fc109-ce7b-4bbd-8df1-4fabaa82fb21}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\config\ConfigTool.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\config\FileConfigSourceImpl.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\config\HttpConfigSourceImpl.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\config\ConfigHelper.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\config\RedisOption.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\EurekaClusterClient.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\EurekaClusterLink.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\EurekaNodeInfo.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\EurekaClusterClient_NetCmd.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\eureka_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\ProtocolFactory_NetPro.cpp">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include=".\redis\DTaskRedis.cpp">
+      <Filter>redis</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\ServiceNodeInfo.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\proto_iid.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\user_login.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\proto_iid_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\config\DatabaseOption.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\global_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\db_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\user_building.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\user_pet.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\user_chat.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\mail_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\item_warehouse.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\mail_system_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\friend_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\friend_system_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\task_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\logstash\LogRecordBase.cpp">
+      <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include=".\logstash\AppMonitorLog.cpp">
+      <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include=".\logstash\GameDataLog.cpp">
+      <Filter>logstash</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\matchmaking_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\robot_test_internal.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\cpp\game_system.pb.cc">
+      <Filter>protobuf\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include=".\commons\GLoc3D.cpp">
+      <Filter>commons</Filter>
+    </ClCompile>
+    <ClCompile Include=".\protobuf\ProtoUtil.cpp">
+      <Filter>protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include=".\eureka\GateNodeInfo.cpp">
+      <Filter>eureka</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

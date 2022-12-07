@@ -19,10 +19,9 @@ import (
 	"cmslib/gnet"
 	"cmslib/logx"
 	"cmslib/netx"
+	"cmslib/protocolx"
 	"errors"
 	"runtime"
-
-	"google.golang.org/protobuf/proto"
 )
 
 // 服务app接口
@@ -146,14 +145,14 @@ func (s *ServerBase) OnTCPOpened(c gnet.Conn) {
 func (s *ServerBase) OnTCPClosed(c gnet.Conn, err error) {
 }
 
-func (s *ServerBase) OnRecvMessage(c gnet.Conn, id int, m proto.Message) {
+func (s *ServerBase) OnRecvMessage(c gnet.Conn, m *protocolx.NetProtocol) {
 }
 
 //-----------------------------------------------------------
 
-// listen on tcp ip,port
-func (s *ServerBase) Accept(ip string, port int) {
-	go s.TcpSvr.Accept(ip, port)
+// listen on tcp ip,port, true: dont listen
+func (s *ServerBase) Accept(ip string, port int, ignorelisten bool) {
+	go s.TcpSvr.Accept(ip, port, ignorelisten)
 }
 
 func (s *ServerBase) RegistCommand(cmd ICommandBase) {
@@ -197,7 +196,10 @@ func (s ServerWrapper) InitApp() error {
 		return err
 	}
 
-	s.svr.InitNetwork()
+	err = s.svr.InitNetwork()
+	if err != nil {
+		return err
+	}
 
 	err = s.svr.InitDatabase()
 	if err != nil {
