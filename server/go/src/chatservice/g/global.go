@@ -17,10 +17,9 @@ package g
 
 import (
 	"chatservice/xinf"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	"gamelib/eureka"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type IAppGlobal interface {
@@ -32,7 +31,7 @@ type IAppGlobal interface {
 
 	GetMyNode() *eureka.ServiceNodeInfo
 
-	SendMsgToRouter(msg proto.Message)
+	SendMsgToRouter(pro *protocolx.NetProtocol)
 }
 
 var appInstance IAppGlobal
@@ -61,6 +60,6 @@ func GetMyNode() *eureka.ServiceNodeInfo {
 	return appInstance.GetMyNode()
 }
 
-func SendMsgToRouter(msg proto.Message) {
-	appInstance.SendMsgToRouter(msg)
+func SendMsgToRouter(pro *protocolx.NetProtocol) {
+	appInstance.SendMsgToRouter(pro)
 }

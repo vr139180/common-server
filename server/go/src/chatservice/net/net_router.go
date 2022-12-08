@@ -18,11 +18,10 @@ package net
 import (
 	"chatservice/channel"
 	"cmslib/gnet"
+	"cmslib/protocolx"
 	"gamelib/eureka"
 	"gamelib/protobuf/gpro"
 	"gamelib/xcluster"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type RouterNetSession struct {
@@ -49,8 +48,8 @@ func (l *RouterNetSession) GetExtParamByKey(k string) (v string, ok bool) {
 	return
 }
 
-func (l *RouterNetSession) OnUserChannelActive(session gnet.NetSession, iid int, msg proto.Message) {
-	act := msg.(*gpro.Chat_UserChannelsActive)
+func (l *RouterNetSession) OnUserChannelActive(session gnet.NetSession, pro *protocolx.NetProtocol) {
+	act := pro.Msg.(*gpro.Chat_UserChannelsActive)
 
 	for _, cc := range act.Channels {
 		ctype := channel.GetChannelType(cc.Type)
@@ -58,14 +57,14 @@ func (l *RouterNetSession) OnUserChannelActive(session gnet.NetSession, iid int,
 			continue
 		}
 
-		uinfo := channel.NewUserInfo(act.GetUtoken().Giduid, act.GetUtoken().Slottoken)
+		uinfo := channel.NewUserInfo(pro.Head)
 
 		l.channelCtrl.UserActiveChannel(ctype, cc.Channeldid, uinfo)
 	}
 }
 
-func (l *RouterNetSession) OnUserSay(session gnet.NetSession, iid int, msg proto.Message) {
-	say := msg.(*gpro.Chat_UserMsgSay)
+func (l *RouterNetSession) OnUserSay(session gnet.NetSession, pro *protocolx.NetProtocol) {
+	say := pro.Msg.(*gpro.Chat_UserMsgSay)
 	ctype := channel.GetChannelType(say.GetChannel().Type)
 	if !channel.IsValidateChannelType(ctype) || say.GetChannel().Channeldid <= 0 {
 		return
@@ -75,18 +74,19 @@ func (l *RouterNetSession) OnUserSay(session gnet.NetSession, iid int, msg proto
 		return
 	}
 
-	l.channelCtrl.UserSaySomthing(ctype, say.GetChannel().Channeldid, say)
+	l.channelCtrl.UserSaySomthing(ctype, say.GetChannel().Channeldid, pro)
 }
 
 //--------------------gnet.NetSession interface-----------------------
-func (l *RouterNetSession) OnRecvMessage(id int, pro proto.Message) {
-	if id == int(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK) {
+func (l *RouterNetSession) OnRecvMessage(pro *protocolx.NetProtocol) {
+	msgid := pro.GetMsgId()
+	if msgid == uint16(gpro.ERK_PROTYPE_SVR_SERVICEBINDSERVICE_ACK) {
 		//整合cluster node的注册机制
-		l.parent.OnResNodeRegistAck(l, id, pro)
-	} else if id == int(gpro.CHAT_PROTYPE_CHAT_USERCHANNELS_ACTIVE) {
-		l.OnUserChannelActive(l, id, pro)
-	} else if id == int(gpro.CHAT_PROTYPE_CHAT_USERMSG_SAY) {
-		l.OnUserSay(l, id, pro)
+		l.parent.OnResNodeRegistAck(l, pro)
+	} else if msgid == uint16(gpro.CHAT_PROTYPE_CHAT_USERCHANNELS_ACTIVE) {
+		l.OnUserChannelActive(l, pro)
+	} else if msgid == uint16(gpro.CHAT_PROTYPE_CHAT_USERMSG_SAY) {
+		l.OnUserSay(l, pro)
 	}
 }
 
@@ -109,6 +109,6 @@ func (l *RouterNetSession) GetNetSession() gnet.NetSession {
 	return l
 }
 
-func (l *RouterNetSession) SendClusterMessage(msg proto.Message) {
-	l.SendMessage(msg)
+func (l *RouterNetSession) SendClusterMessage(pro *protocolx.NetProtocol) {
+	l.SendMessage(pro)
 }

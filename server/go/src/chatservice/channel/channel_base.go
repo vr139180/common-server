@@ -17,6 +17,7 @@ package channel
 
 import (
 	"cmslib/datas"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 )
@@ -48,7 +49,7 @@ type IChannel interface {
 	NeedMoveChannel(tnow int64) bool
 
 	UserActive(*UserInfo, int64)
-	UserSay(*gpro.Chat_UserMsgSay)
+	UserSay(*protocolx.NetProtocol)
 
 	//定时维护离线用户情况
 	//用户数超过1000 需要定时维护，维护间隔15分钟
@@ -119,13 +120,13 @@ func (cb *channelBase) GetUserByIid(uid int64) (u *UserInfo) {
 }
 
 func (cb *channelBase) UserActive(u *UserInfo, tnow int64) {
-	ou := cb.GetUserByIid(u.userIid)
+	ou := cb.GetUserByIid(u.GetUserIid())
 	if ou != nil {
 		cb.usersLink.DelElement(ou)
 	}
 
 	cb.usersLink.AddHeadElement(u)
-	cb.users[u.userIid] = u
+	cb.users[u.GetUserIid()] = u
 
 	//激活处理
 	cb.MaintanceOfflineUsers(tnow, false)
@@ -135,16 +136,16 @@ func (cb *channelBase) UserSay(msg *gpro.Chat_UserMsgSay) {
 
 }
 
-func (cb *channelBase) getUserOfMsg(msg *gpro.Chat_UserMsgSay) (u *UserInfo) {
-	_, uid := ParseUserGate(uint64(msg.Utoken.Giduid))
+func (cb *channelBase) getUserOfMsg(pro *protocolx.NetProtocol) (u *UserInfo) {
+	uid := pro.GetTokenUserIid()
 	u = cb.GetUserByIid(uid)
 	if u == nil {
 		return
 	}
 
-	if u.slotToken != msg.Utoken.Slottoken {
-		u = nil
-	}
+	//if u.slotToken != msg.Utoken.Slottoken {
+	//	u = nil
+	//}
 
 	return
 }
@@ -205,7 +206,7 @@ func (cb *channelBase) MaintanceOfflineUsers(tnow int64, force bool) {
 		}
 
 		//remove user
-		delete(cb.users, uinfo.userIid)
+		delete(cb.users, uinfo.GetUserIid())
 		cb.usersLink.DelElement(cuser)
 
 		cuser = cb.usersLink.GetTailElement()

@@ -13,7 +13,6 @@
 // limitations under the License.
 //
 
-
 package friendservice
 
 import (
@@ -27,7 +26,6 @@ func (l *FriendService) OnServiceRegisted(iid int64) {
 	logx.Warnf("<<<<<<<<<<<< friend service node:%d online to eureka >>>>>>>>>>>>", iid)
 
 	l.routerSvrs.RealStartTimer(true)
-
 	l.softTimer.SetRealState(true)
 }
 
@@ -39,7 +37,10 @@ func (l *FriendService) OnEurekaLosted() {
 
 func (l *FriendService) OnServiceChanged(stype service.ServiceType, newiids []*eureka.ServiceNodeInfo, deliids []int64) {
 	logx.Debugf("eureka service subscribed change notify type:%d", int(stype))
-	if stype == service.ServiceType_Router {
+	if stype == service.ServiceType_ServiceRouter {
 		l.routerSvrs.SyncServiceNodes(stype, newiids, deliids)
 	}
+}
+
+func (l *FriendService) OnRouterBalanceNew(stype service.ServiceType, svrs []int64) {
 }

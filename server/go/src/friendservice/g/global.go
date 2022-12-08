@@ -17,11 +17,10 @@ package g
 
 import (
 	"cmslib/mysqlx"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	"friendservice/xinf"
 	"gamelib/eureka"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type IAppGlobal interface {
@@ -36,7 +35,7 @@ type IAppGlobal interface {
 
 	GetMyNode() *eureka.ServiceNodeInfo
 
-	SendMsgToRouter(msg proto.Message)
+	SendMsgToRouter(pro *protocolx.NetProtocol)
 }
 
 var appInstance IAppGlobal
@@ -73,6 +72,6 @@ func GetMyNode() *eureka.ServiceNodeInfo {
 	return appInstance.GetMyNode()
 }
 
-func SendMsgToRouter(msg proto.Message) {
-	appInstance.SendMsgToRouter(msg)
+func SendMsgToRouter(pro *protocolx.NetProtocol) {
+	appInstance.SendMsgToRouter(pro)
 }

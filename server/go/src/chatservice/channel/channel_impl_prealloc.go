@@ -16,6 +16,7 @@
 package channel
 
 import (
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 )
@@ -31,13 +32,14 @@ func newPreAllocChannel(t ChannelType, cid int64, cind int) (pc *PreAllocChannel
 	return
 }
 
-func (cb *PreAllocChannel) UserSay(msg *gpro.Chat_UserMsgSay) {
-	say := cb.getUserOfMsg(msg)
+func (cb *PreAllocChannel) UserSay(pro *protocolx.NetProtocol) {
+	say := cb.getUserOfMsg(pro)
 	if say == nil {
 		return
 	}
 
-	item := cb.saveMessage(say.userIid, msg)
+	msg := pro.Msg.(*gpro.Chat_UserMsgSay)
+	item := cb.saveMessage(say.GetUserIid(), msg)
 
 	tnow := utilc.GetTimestamp()
 	for iu := cb.usersLink.GetHeadElement(); iu != nil; {

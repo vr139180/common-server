@@ -17,6 +17,7 @@ package friendservice
 
 import (
 	"cmslib/mysqlx"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
@@ -29,8 +30,6 @@ import (
 	"gamelib/eureka"
 	"gamelib/protobuf"
 	"gamelib/xcluster"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type FriendService struct {
@@ -69,8 +68,8 @@ func (r *FriendService) GetDBClient() *mysqlx.MysqlClient {
 	return r.dbClient
 }
 
-func (r *FriendService) SendMsgToRouter(msg proto.Message) {
-	r.routerSvrs.SendMessage(msg)
+func (r *FriendService) SendMsgToRouter(pro *protocolx.NetProtocol) {
+	r.routerSvrs.SendNetMessage2(pro)
 }
 
 func (r *FriendService) DoFriendsMaintance(loopIndex int) {

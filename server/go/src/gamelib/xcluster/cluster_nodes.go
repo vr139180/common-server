@@ -124,9 +124,9 @@ func (c *ClusterServiceCtrl) onMthServiceConnected(s IClusterNetSession) {
 	req.Toiid = tonode.Iid
 	req.Totoken = tonode.Token
 
-	pro := protocolx.NewNetProtocolByHeadMsg(req, &c.defaultSHead)
-
+	pro := protocolx.NewNetProtocolByMsg(req)
 	head := pro.WriteHead()
+	head.FromType = int8(c.mynode.SvrType)
 	head.ToType = int8(c.targetSType)
 
 	ns.SendMessage(pro)

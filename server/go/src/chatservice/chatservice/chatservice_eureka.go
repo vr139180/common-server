@@ -37,7 +37,10 @@ func (l *ChatService) OnEurekaLosted() {
 
 func (l *ChatService) OnServiceChanged(stype service.ServiceType, newiids []*eureka.ServiceNodeInfo, deliids []int64) {
 	logx.Debugf("eureka service subscribed change notify type:%d", int(stype))
-	if stype == service.ServiceType_Router {
+	if stype == service.ServiceType_ServiceRouter {
 		l.routerSvrs.SyncServiceNodes(stype, newiids, deliids)
 	}
+}
+
+func (l *ChatService) OnRouterBalanceNew(stype service.ServiceType, svrs []int64) {
 }

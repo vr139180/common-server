@@ -18,28 +18,24 @@ package friends
 import (
 	"cmslib/datas"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"friendservice/g"
-	"friendservice/xinf"
 	"gamelib/protobuf/gpro"
 
 	"google.golang.org/protobuf/proto"
 )
 
 //--------------------------------------------------------------------------------------------
-type FRIENDHANDLER func(*gpro.UserToken, int, proto.Message)
+type FRIENDHANDLER func(*protocolx.NetProtocol)
 
 type friendNetCmdHandler struct {
-	iid   int
-	pro   proto.Message
-	token *gpro.UserToken
-	f     FRIENDHANDLER
+	pro *protocolx.NetProtocol
+	f   FRIENDHANDLER
 }
 
-func newFriendNetCmdHandle(token *gpro.UserToken, iid int, pro proto.Message, f FRIENDHANDLER) (c *friendNetCmdHandler) {
+func newFriendNetCmdHandle(pro *protocolx.NetProtocol, f FRIENDHANDLER) (c *friendNetCmdHandler) {
 	c = new(friendNetCmdHandler)
-	c.token = token
-	c.iid = iid
 	c.pro = pro
 	c.f = f
 
@@ -47,7 +43,7 @@ func newFriendNetCmdHandle(token *gpro.UserToken, iid int, pro proto.Message, f 
 }
 
 func (c *friendNetCmdHandler) ProcessFriend() {
-	c.f(c.token, c.iid, c.pro)
+	c.f(c.pro)
 }
 
 //--------------------------------------------------------------------------------------------
@@ -89,14 +85,14 @@ func (ch *FriendsHolder) OneDayMaintance() {
 
 }
 
-func (ch *FriendsHolder) CacheFriendHome(roleiid int64, frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, token *gpro.UserToken) *FriendHome {
+func (ch *FriendsHolder) CacheFriendHome(roleiid int64, frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead *protocolx.SProtocolHead) *FriendHome {
 	home := ch.GetFriendHomeBy(roleiid)
 	if home == nil {
 		home = newFriendHome(roleiid, ch)
 		ch.friends[home.RoleIid] = home
 		ch.friendsLink.AddHeadElement(home)
 
-		home.InitFriendHome(frds, invites, token)
+		home.InitFriendHome(frds, invites, shead)
 
 		logx.Infof("FriendsHolder->CacheFriendHome cache user friend home:%d", roleiid)
 	}
@@ -127,7 +123,7 @@ func (ch *FriendsHolder) NewFriendInvite(roleiid int64, invite *gpro.FriendInvit
 	}
 }
 
-func (ch *FriendsHolder) InviteConfirm(roleiid int64, inviteiid int64, agree bool, relation *gpro.FriendRelation, token *gpro.UserToken) {
+func (ch *FriendsHolder) InviteConfirm(roleiid int64, inviteiid int64, agree bool, relation *gpro.FriendRelation, shead *protocolx.SProtocolHead) {
 	rd := g.GetRedis()
 
 	udkey := rd.BuildKey(REDIS_USERFRIENDHOME, roleiid)
@@ -168,7 +164,7 @@ func (ch *FriendsHolder) InviteConfirm(roleiid int64, inviteiid int64, agree boo
 
 	home := ch.GetFriendHomeBy(roleiid)
 	if home != nil {
-		home.InviteConfirmB(inviteiid, agree, relation, token)
+		home.InviteConfirmB(inviteiid, agree, relation, shead)
 	}
 }
 
@@ -200,8 +196,8 @@ func (ch *FriendsHolder) DeleteFriend(roleiid int64, friendiid int64) {
 	}
 }
 
-func (ch *FriendsHolder) OnFriendOtherChangeNotify(_ *gpro.UserToken, id int, pro proto.Message) {
-	msg := pro.(*gpro.Frd_FriendChangeOtherNtf)
+func (ch *FriendsHolder) OnFriendOtherChangeNotify(pro *protocolx.NetProtocol) {
+	msg := pro.Msg.(*gpro.Frd_FriendChangeOtherNtf)
 
 	//只需要移除内存中的数据，不需要更新redis数据
 	home := ch.GetFriendHomeBy(msg.NotifyRoleiid)
@@ -211,38 +207,39 @@ func (ch *FriendsHolder) OnFriendOtherChangeNotify(_ *gpro.UserToken, id int, pr
 }
 
 //run in the boxholder goroutine
-func (ch *FriendsHolder) OnNetCmdHander(token *gpro.UserToken, id int, pro proto.Message) {
+func (ch *FriendsHolder) OnNetCmdHander(pro *protocolx.NetProtocol) {
 
-	_, useriid := xinf.ParseUserGate(uint64(token.GetGiduid()))
+	roleiid := pro.GetRoleIid()
 
-	frdHome := ch.GetFriendHomeBy(useriid)
+	frdHome := ch.GetFriendHomeBy(roleiid)
 	if frdHome == nil {
-		frdHome2, success := initFriendHomeFromRedis(useriid, token, ch)
+		frdHome2, success := initFriendHomeFromRedis(roleiid, pro.Head, ch)
 		if success {
 			frdHome = frdHome2
 			ch.friendsLink.AddHeadElement(frdHome)
 			ch.friends[frdHome.RoleIid] = frdHome
 		} else {
-			cmd := newDBLoadFriendHomeCmd(useriid, ch, token, id, pro)
+			cmd := newDBLoadFriendHomeCmd(roleiid, ch, pro)
 			g.PostDBProcessor(cmd)
 		}
 	}
 
 	if frdHome != nil {
-		ch.triggerNetProcess(frdHome, id, pro)
+		ch.triggerNetProcess(frdHome, pro)
 	}
 
 }
 
-func (ch *FriendsHolder) triggerNetProcess(home *FriendHome, id int, pro proto.Message) {
-	if id == int(gpro.FRIEND_PROTYPE_FRD_INVITECONFIRM_REQ) {
-		msg := pro.(*gpro.Frd_InviteConfirmReq)
-		home.InviteConfirmA(msg.Iid, msg.Agree, msg.Utoken)
-	} else if id == int(gpro.FRIEND_PROTYPE_FRD_FRIENDDELETE_REQ) {
-		msg := pro.(*gpro.Frd_FriendDeleteReq)
-		home.DeleteFriendA(msg.Friendiid, msg.Utoken)
-	} else if id == int(gpro.FRIEND_PROTYPE_FRD_FRIENDLIST_REQ) {
-		msg := pro.(*gpro.Frd_FriendListReq)
+func (ch *FriendsHolder) triggerNetProcess(home *FriendHome, pro *protocolx.NetProtocol) {
+	msgid := pro.GetMsgId()
+	if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_INVITECONFIRM_REQ) {
+		msg := pro.Msg.(*gpro.Frd_InviteConfirmReq)
+		home.InviteConfirmA(msg.Iid, msg.Agree, pro.Head)
+	} else if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDDELETE_REQ) {
+		msg := pro.Msg.(*gpro.Frd_FriendDeleteReq)
+		home.DeleteFriendA(msg.Friendiid, pro.Head)
+	} else if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDLIST_REQ) {
+		msg := pro.Msg.(*gpro.Frd_FriendListReq)
 		home.QueryFriends(msg)
 	}
 }

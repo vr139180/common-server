@@ -18,8 +18,8 @@ package channel
 import (
 	"chatservice/g"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
-	"gamelib/protobuf/gpro"
 )
 
 const hashmap_multipy = 2
@@ -125,7 +125,7 @@ func (cc *ChannelCtrl) UserActiveChannel(t ChannelType, cid int64, u *UserInfo) 
 	g.PostChatProcessor(cindex, pp)
 }
 
-func (cc *ChannelCtrl) UserSaySomthing(t ChannelType, cid int64, msg *gpro.Chat_UserMsgSay) {
+func (cc *ChannelCtrl) UserSaySomthing(t ChannelType, cid int64, pro *protocolx.NetProtocol) {
 	cindex, ok := cc.getLoopFromChannelIidMustExist(t, cid)
 	if !ok {
 		return
@@ -136,7 +136,7 @@ func (cc *ChannelCtrl) UserSaySomthing(t ChannelType, cid int64, msg *gpro.Chat_
 	pp := new(UserSayProcessor)
 	pp.ctype = t
 	pp.cid = cid
-	pp.msg = msg
+	pp.pro = pro
 	pp.ch = ch
 
 	g.PostChatProcessor(cindex, pp)

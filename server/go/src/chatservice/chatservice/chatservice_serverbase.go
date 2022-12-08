@@ -13,7 +13,6 @@
 // limitations under the License.
 //
 
-
 package chatservice
 
 import (
@@ -21,6 +20,7 @@ import (
 	"chatservice/processor"
 	"cmslib/logx"
 	"cmslib/netx"
+	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
 	"cmslib/utilc"
@@ -114,6 +114,7 @@ func (l *ChatService) InitDatabase() (err error) {
 
 	ropt := &(l.AppOption.RedisOpt)
 	l.redisX, err = redisutil.NewRedisUtil(ropt)
+
 	if err != nil {
 		logx.Errorf("init redis client failed")
 		return err
@@ -133,7 +134,7 @@ func (l *ChatService) InitFinish() error {
 	l.channelCtrl = channel.NewChannelCtrl(l.AppOption.CHProcessorNum)
 
 	l.eureka.Start()
-	
+
 	l.routerSvrs.Start()
 
 	return nil

@@ -274,7 +274,7 @@ func (p *UserToken) GetTokenGateIid() int64 {
 	return int64((grd & USERGATE_MASK_ZERO_L) >> 43)
 }
 
-func (p *UserToken) GetTokenRoleIid() int64 {
+func (p *UserToken) GetTokenUserIid() int64 {
 	grd := uint64(p.TokenGidRid)
 	return int64(grd & USERGATE_MASK_ZERO_H)
 }
@@ -467,10 +467,18 @@ func (np *NetProtocol) SetHead(head *SProtocolHead) {
 	np.Head = *head
 }
 
-func (np *NetProtocol) GetTokenRoleIid() int64 {
-	return np.Head.Token.GetTokenRoleIid()
-}
-
 func (np *NetProtocol) GetUserToken() UserToken {
 	return np.Head.Token
+}
+
+func (np *NetProtocol) GetTokenUserIid() int64 {
+	return np.Head.Token.GetTokenUserIid()
+}
+
+func (np *NetProtocol) GetRoleIid() int64 {
+	return np.Head.RoleId
+}
+
+func (np *NetProtocol) GetGameIid() int64 {
+	return np.Head.GameId
 }

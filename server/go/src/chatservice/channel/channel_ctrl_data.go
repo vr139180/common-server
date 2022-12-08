@@ -17,8 +17,8 @@ package channel
 
 import (
 	"cmslib/datas"
+	"cmslib/protocolx"
 	"cmslib/utilc"
-	"gamelib/protobuf/gpro"
 	"sync/atomic"
 )
 
@@ -46,7 +46,7 @@ type UserSayProcessor struct {
 	ch    *ChannelHolder
 	ctype ChannelType
 	cid   int64
-	msg   *gpro.Chat_UserMsgSay
+	pro   *protocolx.NetProtocol
 }
 
 //-----xinf.IChatProcessor-----
@@ -57,7 +57,7 @@ func (us *UserSayProcessor) ProcessChat() {
 		return
 	}
 
-	cl.UserSay(us.msg)
+	cl.UserSay(us.pro)
 }
 
 //-------------------------------------------------------------------------

@@ -13,10 +13,10 @@
 // limitations under the License.
 //
 
-
 package channel
 
 import (
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
 )
@@ -36,9 +36,11 @@ func (cb *SingleChannel) IsPreDefined() bool {
 	return false
 }
 
-func (cb *SingleChannel) UserSay(msg *gpro.Chat_UserMsgSay) {
+func (cb *SingleChannel) UserSay(pro *protocolx.NetProtocol) {
 
-	_, uid := ParseUserGate(uint64(msg.Utoken.Giduid))
+	uid := pro.GetTokenUserIid()
+
+	msg := pro.Msg.(*gpro.Chat_UserMsgSay)
 	item := cb.saveMessage(uid, msg)
 
 	tnow := utilc.GetTimestamp()

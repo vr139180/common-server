@@ -65,8 +65,6 @@ type ClusterServiceCtrl struct {
 	targetSType service.ServiceType
 	appProxy    IClusterAppWrapper
 
-	defaultSHead protocolx.SProtocolHead
-
 	//---------------------------------------------------
 	timerContainer *timerx.TimerContainer //软件定时器
 	ch             chan interface{}
@@ -74,10 +72,8 @@ type ClusterServiceCtrl struct {
 	loopWG         sync.WaitGroup
 }
 
-func NewClusterServiceCtrl(ts *netx.TCPServer, s service.ServiceType, app IClusterAppWrapper, head protocolx.SProtocolHead) (c *ClusterServiceCtrl) {
+func NewClusterServiceCtrl(ts *netx.TCPServer, s service.ServiceType, app IClusterAppWrapper) (c *ClusterServiceCtrl) {
 	c = new(ClusterServiceCtrl)
-
-	c.defaultSHead = head
 
 	c.tcpServer = ts
 	c.appProxy = app
@@ -153,7 +149,7 @@ func (c *ClusterServiceCtrl) run() {
 	}
 }
 
-func (c *ClusterServiceCtrl) SendNetMessage(totype int8, token protocolx.UserToken, msg proto.Message) {
+func (c *ClusterServiceCtrl) SendNetMessage(totype service.ServiceType, h *protocolx.SProtocolHead, msg proto.Message) {
 
 	defer func() {
 		c.cond.L.Unlock()
@@ -170,10 +166,32 @@ func (c *ClusterServiceCtrl) SendNetMessage(totype int8, token protocolx.UserTok
 	}
 	v, ok := c.serviceVector.Get(c.curServiceIndex)
 	if ok {
-		pro := protocolx.NewNetProtocolByHeadMsg(msg, &c.defaultSHead)
+		pro := protocolx.NewNetProtocolByHeadMsg(msg, h)
 		head := pro.WriteHead()
-		head.ToType = totype
-		head.Token = token
+		head.ToType = int8(totype)
+		v.(IClusterNetSession).SendClusterMessage(pro)
+	}
+
+	c.curServiceIndex++
+}
+
+func (c *ClusterServiceCtrl) SendNetMessage2(pro *protocolx.NetProtocol) {
+
+	defer func() {
+		c.cond.L.Unlock()
+	}()
+
+	c.cond.L.Lock()
+	l := c.serviceVector.Size()
+	if l == 0 {
+		return
+	}
+
+	if c.curServiceIndex >= l {
+		c.curServiceIndex = 0
+	}
+	v, ok := c.serviceVector.Get(c.curServiceIndex)
+	if ok {
 		v.(IClusterNetSession).SendClusterMessage(pro)
 	}
 

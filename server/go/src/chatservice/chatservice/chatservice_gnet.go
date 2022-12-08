@@ -13,17 +13,17 @@
 // limitations under the License.
 //
 
-
 package chatservice
 
 import (
 	"chatservice/net"
 	"cmslib/gnet"
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"errors"
 	"gamelib/eureka"
 
-	"google.golang.org/protobuf/proto"
+	_ "google.golang.org/protobuf/proto"
 )
 
 func (l *ChatService) GetProtoFactory() (fact gnet.IProtobufFactory, err error) {
@@ -62,10 +62,7 @@ func (l *ChatService) OnTCPOpened(c gnet.Conn) {
 			panic(errors.New("not support other interface, only gnet.NetSession"))
 		}
 	} else {
-		if !l.eureka.IsReady() {
-			c.Close()
-			return
-		}
+		c.Close()
 	}
 }
 
@@ -86,12 +83,17 @@ func (l *ChatService) OnTCPClosed(c gnet.Conn, err error) {
 	}
 }
 
-func (l *ChatService) OnRecvMessage(c gnet.Conn, id int, m proto.Message) {
+func (l *ChatService) OnRecvMessage(c gnet.Conn, pro *protocolx.NetProtocol) {
 	s := c.Context()
 	if s != nil {
 		ns, ok := s.(gnet.NetSession)
 		if ok {
-			ns.OnRecvMessage(id, m)
+			ns.OnRecvMessage(pro)
+		}
+	} else {
+		if !l.eureka.IsReady() {
+			c.Close()
+			return
 		}
 	}
 }

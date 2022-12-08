@@ -13,11 +13,11 @@
 // limitations under the License.
 //
 
-
 package friends
 
 import (
 	"cmslib/logx"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"friendservice/data/db/entity"
 	"friendservice/g"
@@ -35,17 +35,13 @@ type dbLoadFriendHomeCmd struct {
 
 	RoleIid int64
 	holder  *FriendsHolder
-	token   *gpro.UserToken
-	id      int
-	pro     proto.Message
+	pro     *protocolx.NetProtocol
 }
 
-func newDBLoadFriendHomeCmd(roleiid int64, holder *FriendsHolder, token *gpro.UserToken, id int, pro proto.Message) (c *dbLoadFriendHomeCmd) {
+func newDBLoadFriendHomeCmd(roleiid int64, holder *FriendsHolder, pro *protocolx.NetProtocol) (c *dbLoadFriendHomeCmd) {
 	c = new(dbLoadFriendHomeCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
-	c.token = token
-	c.id = id
 	c.pro = pro
 
 	return
@@ -115,9 +111,9 @@ select f.iid as iid, f.from_roleiid as from_roleiid, f.invite_time as invite_tim
 }
 
 func (c *dbLoadFriendHomeCmd) ProcessFriend() {
-	home := c.holder.CacheFriendHome(c.RoleIid, c.frds, c.invites, c.token)
+	home := c.holder.CacheFriendHome(c.RoleIid, c.frds, c.invites, c.pro.Head)
 	if home != nil {
-		c.holder.triggerNetProcess(home, c.id, c.pro)
+		c.holder.triggerNetProcess(home, c.pro)
 	}
 }
 
@@ -128,14 +124,14 @@ type dbInviteFriendCmd struct {
 	FromRoleIid int64
 	RoleIid     int64
 	holder      *FriendsHolder
-	token       *gpro.UserToken
+	shead       protocolx.SProtocolHead
 }
 
-func newDBInviteFriendCmd(roleiid int64, fromiid int64, holder *FriendsHolder, token *gpro.UserToken) (c *dbInviteFriendCmd) {
+func newDBInviteFriendCmd(roleiid int64, fromiid int64, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbInviteFriendCmd) {
 	c = new(dbInviteFriendCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
-	c.token = token
+	c.shead = shead
 	c.FromRoleIid = fromiid
 
 	return
@@ -226,7 +222,7 @@ select f.iid as Iid, f.from_roleiid as from_roleiid, f.invite_time as invite_tim
 		logx.Errorf("dbInviteFriendCmd - invite friends:%d failed, err:%s", c.FromRoleIid, err.Error())
 	}
 
-	ack := &gpro.Frd_FriendInviteAck{Utoken: c.token, InviteIid: c.RoleIid, Result: int32(result)}
+	ack := &gpro.Frd_FriendInviteAck{InviteIid: c.RoleIid, Result: int32(result)}
 	if c.invite != nil {
 		ack.Invite = c.invite
 	}
@@ -250,15 +246,15 @@ type dbInviteConfirmCmd struct {
 	FromIid int64
 	RoleIid int64
 	holder  *FriendsHolder
-	token   *gpro.UserToken
+	shead   protocolx.SProtocolHead
 }
 
-func newDBInviteConfirmCmd(roleiid int64, fromiid int64, iid int64, agree bool, holder *FriendsHolder, token *gpro.UserToken) (c *dbInviteConfirmCmd) {
+func newDBInviteConfirmCmd(roleiid int64, fromiid int64, iid int64, agree bool, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbInviteConfirmCmd) {
 	c = new(dbInviteConfirmCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
 	c.FromIid = fromiid
-	c.token = token
+	c.shead = shead
 	c.Iid = iid
 	c.Agree = agree
 
@@ -361,16 +357,16 @@ type dbFriendDeleteCmd struct {
 	RoleIid   int64
 	FriendIid int64
 	holder    *FriendsHolder
-	token     *gpro.UserToken
+	shead     protocolx.SProtocolHead
 }
 
-func newDBFriendDeleteCmd(roleiid int64, frdiid int64, iid int64, holder *FriendsHolder, token *gpro.UserToken) (c *dbFriendDeleteCmd) {
+func newDBFriendDeleteCmd(roleiid int64, frdiid int64, iid int64, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbFriendDeleteCmd) {
 	c = new(dbFriendDeleteCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
 	c.FriendIid = frdiid
 	c.Iid = iid
-	c.token = token
+	c.shead = shead
 
 	return
 }
@@ -406,7 +402,7 @@ func (c *dbFriendDeleteCmd) RunInDBProcessor() {
 		logx.Errorf("dbFriendDeleteCmd - delete friend iid:%d failed, err:%s", c.Iid, err.Error())
 	}
 
-	ack := &gpro.Frd_FriendDeleteAck{Utoken: c.token, Friendiid: c.FriendIid, Result: int32(result)}
+	ack := &gpro.Frd_FriendDeleteAck{Friendiid: c.FriendIid, Result: int32(result)}
 	g.SendMsgToRouter(ack)
 
 	if result == 0 {

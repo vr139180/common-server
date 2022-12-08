@@ -24,6 +24,7 @@ import (
 	"cmslib/timerx"
 	"cmslib/utilc"
 	"encoding/xml"
+	"errors"
 	"friendservice/dbprocessor"
 	"friendservice/friends"
 	"friendservice/processor"
@@ -94,17 +95,19 @@ func (l *FriendService) InitNetwork() (err error) {
 		return err
 	}
 
-	//chathash扩展参数
-	ext1, _ := l.configTool.GetExtParamByKey(FRIENDSERVICE_EXTPARAM_FRDHASH)
-	exts := make(map[string]string)
-	exts[FRIENDSERVICE_EXTPARAM_FRDHASH] = ext1
+	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
+	if !ok {
+		return errors.New("get eureka master node failed.")
+	}
 
-	subs := [...]int{int(service.ServiceType_Router)}
-	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Friend, l.configTool.Ip, l.configTool.Port, exts, subs[0:], l)
+	subs := [...]int{int(service.ServiceType_ServiceRouter)}
+	balances := [...]int{int(service.ServiceType_Friend)}
+	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Friend, l.configTool.Ip, l.configTool.Port, nil,
+		node, subs[0:], balances[0:], false, l)
 
-	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_Router, l)
+	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l)
 
-	l.Accept(l.configTool.Ip, l.configTool.Port)
+	l.Accept(l.configTool.Ip, l.configTool.Port, true)
 
 	return nil
 }
@@ -140,7 +143,7 @@ func (l *FriendService) InitFinish() error {
 	l.dbProcessor = dbprocessor.NewDBFriendProcessor(l.AppOption.MLProcessorNum)
 	l.dbProcessor.Start()
 
-	l.eureka.Start(l.configTool.GlobalOpt.EurekaIp, l.configTool.GlobalOpt.EurekaPort)
+	l.eureka.Start()
 	l.routerSvrs.Start()
 
 	return nil

@@ -17,6 +17,7 @@ package friends
 
 import (
 	"cmslib/datas"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"fmt"
 	"friendservice/g"
@@ -142,7 +143,7 @@ func newFriendHome(roleiid int64, ch *FriendsHolder) (f *FriendHome) {
 	return
 }
 
-func initFriendHomeFromRedis(roleiid int64, token *gpro.UserToken, ch *FriendsHolder) (u *FriendHome, success bool) {
+func initFriendHomeFromRedis(roleiid int64, shead protocolx.SProtocolHead, ch *FriendsHolder) (u *FriendHome, success bool) {
 	success = false
 	rd := g.GetRedis()
 
@@ -182,13 +183,13 @@ func initFriendHomeFromRedis(roleiid int64, token *gpro.UserToken, ch *FriendsHo
 	}
 
 	u = newFriendHome(roleiid, ch)
-	u.InitFriendHome(frds, invites, token)
+	u.InitFriendHome(frds, invites, shead)
 
 	success = true
 	return
 }
 
-func (f *FriendHome) InitFriendHome(frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, token *gpro.UserToken) {
+func (f *FriendHome) InitFriendHome(frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead protocolx.SProtocolHead) {
 	if f.inited {
 		return
 	}
@@ -215,7 +216,7 @@ func (f *FriendHome) InitFriendHome(frds []*gpro.FriendRelation, invites []*gpro
 
 	f.saveAllToRedis()
 
-	f.SyncUserToken(token)
+	f.SyncUserToken(shead)
 }
 
 func (f *FriendHome) saveAllToRedis() {
@@ -259,7 +260,7 @@ func (f *FriendHome) saveAllToRedis() {
 	rd.Expire(udkey, USER_FRIENDSHOME_EXPIRESEC)
 }
 
-func (f *FriendHome) SyncUserToken(token *gpro.UserToken) {
+func (f *FriendHome) SyncUserToken(shead protocolx.SProtocolHead) {
 	f.userInfo.Token = token
 	f.gateIid, _ = xinf.ParseUserGate(uint64(token.GetGiduid()))
 
@@ -269,10 +270,6 @@ func (f *FriendHome) SyncUserToken(token *gpro.UserToken) {
 	if dat != nil {
 		rd.AddEX(udkey, dat, USER_FRIENDSINFO_EXPIRESEC)
 	}
-}
-
-func (f *FriendHome) cloneUserToken() *gpro.UserToken {
-	return (proto.Clone(f.userInfo.Token)).(*gpro.UserToken)
 }
 
 func (f *FriendHome) cloneFriendInvite(iv *gpro.FriendInviteItem) *gpro.FriendInviteItem {
@@ -324,20 +321,20 @@ func (f *FriendHome) getFriendBy(friendiid int64) *friendUserInfo {
 	return fi
 }
 
-func (f *FriendHome) InviteConfirmA(iid int64, agree bool, token *gpro.UserToken) {
+func (f *FriendHome) InviteConfirmA(iid int64, agree bool, shead protocolx.SProtocolHead) {
 
 	invite := f.getFriendInvite(iid)
 	if invite == nil {
-		ack := &gpro.Frd_InviteConfirmAck{Utoken: token, Iid: iid, Agree: agree, Result: 2}
+		ack := &gpro.Frd_InviteConfirmAck{Iid: iid, Agree: agree, Result: 2}
 		g.SendMsgToRouter(ack)
 		return
 	}
 
-	cmd := newDBInviteConfirmCmd(f.RoleIid, invite.FromIid, iid, agree, f.ch, token)
+	cmd := newDBInviteConfirmCmd(f.RoleIid, invite.FromIid, iid, agree, f.ch, shead)
 	g.PostDBProcessor(cmd)
 }
 
-func (f *FriendHome) InviteConfirmB(inviteiid int64, agree bool, relation *gpro.FriendRelation, token *gpro.UserToken) {
+func (f *FriendHome) InviteConfirmB(inviteiid int64, agree bool, relation *gpro.FriendRelation, shead protocolx.SProtocolHead) {
 	f.deleteFriendInvite(inviteiid)
 
 	if agree {
@@ -383,16 +380,16 @@ func (f *FriendHome) FriendChangeNotify(friendiid int64, addordel bool, relation
 	}
 }
 
-func (f *FriendHome) DeleteFriendA(frdiid int64, token *gpro.UserToken) {
+func (f *FriendHome) DeleteFriendA(frdiid int64, shead protocolx.SProtocolHead) {
 
 	fi := f.getFriendBy(frdiid)
 	if fi == nil {
-		ack := &gpro.Frd_FriendDeleteAck{Utoken: token, Friendiid: frdiid, Result: 2}
+		ack := &gpro.Frd_FriendDeleteAck{Friendiid: frdiid, Result: 2}
 		g.SendMsgToRouter(ack)
 		return
 	}
 
-	cmd := newDBFriendDeleteCmd(f.RoleIid, frdiid, fi.GetIid(), f.ch, token)
+	cmd := newDBFriendDeleteCmd(f.RoleIid, frdiid, fi.GetIid(), f.ch, shead)
 	g.PostDBProcessor(cmd)
 }
 

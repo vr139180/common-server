@@ -18,8 +18,10 @@ package channel
 import (
 	"chatservice/g"
 	"cmslib/datas"
+	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
+	"gamelib/service"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -27,21 +29,16 @@ import (
 type UserInfo struct {
 	datas.DoubleLinkBase
 
-	userIid int64
-	gateIid int64
-	//user token head
-	sidUid    int64
-	slotToken int64
+	s_head protocolx.SProtocolHead
 
 	//最后更新时间
 	lastUpdate int64
 }
 
-func NewUserInfo(siduid int64, slottoken int64) (u *UserInfo) {
+func NewUserInfo(h protocolx.SProtocolHead) (u *UserInfo) {
 	u = new(UserInfo)
-	u.sidUid = siduid
-	u.slotToken = slottoken
-	u.gateIid, u.userIid = ParseUserGate(uint64(siduid))
+
+	u.s_head = h
 
 	u.UpdateLasttime()
 
@@ -52,6 +49,14 @@ func (u *UserInfo) UpdateLasttime() {
 	u.lastUpdate = utilc.GetTimestamp()
 }
 
+func (u *UserInfo) GetUserIid() int64 {
+	return u.s_head.Token.GetTokenUserIid()
+}
+
+func (u *UserInfo) GetGateIid() int64 {
+	return u.s_head.Token.GetTokenGateIid()
+}
+
 func (u *UserInfo) IsActived(tnow int64) bool {
 	return ((u.lastUpdate + CHANNEL_USER_ACTIVE_STEP) >= tnow)
 }
@@ -59,24 +64,23 @@ func (u *UserInfo) IsActived(tnow int64) bool {
 func (u *UserInfo) SendChatMsg(item *gpro.ChatMessageItem, ch IChannel) {
 
 	msg := &gpro.Chat_ChatMsgNtf{}
-	msg.Utoken = &gpro.UserToken{Giduid: u.sidUid, Slottoken: u.slotToken}
 	msg.Channel = &gpro.ChatChannelInfo{Type: GetCTypeOfChannelType(ch.GetType()), Channeldid: ch.GetChannelId()}
 	nitem := proto.Clone(item)
 	msg.Msgs = &gpro.ChatMessageItems{}
 	msg.Msgs.Msgs = append(msg.Msgs.Msgs, nitem.(*gpro.ChatMessageItem))
 
-	g.SendMsgToRouter(msg)
+	u.SendNetProtocol(msg)
 }
 
-//0b0000000000000000000001111111111111111111111111111111111111111111
-const USERGATE_MASK_ZERO_H = uint64(0x7FFFFFFFFFF)
+func (u *UserInfo) SendNetProtocol(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByHeadMsg(msg, &u.s_head)
+	g.SendMsgToRouter(pro)
+}
 
-//0b1111111111111111111110000000000000000000000000000000000000000000
-const USERGATE_MASK_ZERO_L = uint64(0xFFFFF80000000000)
+func (u *UserInfo) SendNetProtocolTo(gto service.ServiceType, msg proto.Message) {
+	pro := protocolx.NewNetProtocolByHeadMsg(msg, &u.s_head)
+	h := pro.WriteHead()
+	h.ToType = int8(gto)
 
-func ParseUserGate(uidgid uint64) (gateid int64, userid int64) {
-	gateid = int64((uidgid & USERGATE_MASK_ZERO_L) >> 43)
-	userid = int64((uidgid & USERGATE_MASK_ZERO_H))
-
-	return
+	g.SendMsgToRouter(pro)
 }

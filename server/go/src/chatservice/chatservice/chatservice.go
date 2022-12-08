@@ -20,6 +20,7 @@ import (
 	"chatservice/configsvr"
 	"chatservice/processor"
 	"chatservice/xinf"
+	"cmslib/protocolx"
 	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
@@ -27,8 +28,6 @@ import (
 	"gamelib/eureka"
 	"gamelib/protobuf"
 	"gamelib/xcluster"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type ChatService struct {
@@ -60,8 +59,8 @@ func (r *ChatService) GetRedis() *redisutil.RedisUtil {
 	return r.redisX
 }
 
-func (r *ChatService) SendMsgToRouter(msg proto.Message) {
-	r.routerSvrs.SendMessage(msg)
+func (r *ChatService) SendMsgToRouter(pro *protocolx.NetProtocol) {
+	r.routerSvrs.SendNetMessage2(pro)
 }
 
 func (r *ChatService) DoChannelMaintance(loopIndex int) {

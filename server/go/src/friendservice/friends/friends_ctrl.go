@@ -13,15 +13,12 @@
 // limitations under the License.
 //
 
-
 package friends
 
 import (
+	"cmslib/protocolx"
 	"friendservice/g"
-	"friendservice/xinf"
 	"gamelib/protobuf/gpro"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type FriendsCtrl struct {
@@ -58,11 +55,13 @@ func (cc *FriendsCtrl) DoFriendsMaintance(loopIndex int) {
 }
 
 //run in net goroutine
-func (cc *FriendsCtrl) ProcessNetCmd(id int, pro proto.Message) {
-	if id == int(gpro.FRIEND_PROTYPE_FRD_FRIENDINVITE_REQ) {
-		msg := pro.(*gpro.Frd_FriendInviteReq)
+func (cc *FriendsCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
+	id := pro.GetMsgId()
+	if id == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDINVITE_REQ) {
 
-		_, roleiid := xinf.ParseUserGate(uint64(msg.Utoken.GetGiduid()))
+		msg := pro.Msg.(*gpro.Frd_FriendInviteReq)
+
+		roleiid := pro.GetRoleIid()
 		//不能自己邀请自己
 		if roleiid == msg.InviteIid {
 			return
@@ -71,36 +70,31 @@ func (cc *FriendsCtrl) ProcessNetCmd(id int, pro proto.Message) {
 		//invite将会被派发到被邀请人的goroutine去
 		lind := cc.getHashKeyOfRole(msg.InviteIid)
 		mh := cc.loopHolders[lind]
-		cmd := newDBInviteFriendCmd(msg.InviteIid, roleiid, mh, msg.Utoken)
+		cmd := newDBInviteFriendCmd(msg.InviteIid, roleiid, mh, pro.Head)
 		g.PostDBProcessor(cmd)
-	} else if id == int(gpro.FRIEND_PROTYPE_FRD_FRIENDCHANGEOTHER_NTF) {
-		msg := pro.(*gpro.Frd_FriendChangeOtherNtf)
+
+	} else if id == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDCHANGEOTHER_NTF) {
+
+		msg := pro.Msg.(*gpro.Frd_FriendChangeOtherNtf)
 		lind := cc.getHashKeyOfRole(msg.NotifyRoleiid)
 		mh := cc.loopHolders[lind]
-		cmd := newFriendNetCmdHandle(nil, id, pro, mh.OnFriendOtherChangeNotify)
+		cmd := newFriendNetCmdHandle(nil, pro, mh.OnFriendOtherChangeNotify)
 		g.PostFriendProcessor(lind, cmd)
-	} else {
-		var ut *gpro.UserToken
-		switch id {
-		case int(gpro.FRIEND_PROTYPE_FRD_INVITECONFIRM_REQ):
-			msg := pro.(*gpro.Frd_InviteConfirmReq)
-			ut = msg.Utoken
-		case int(gpro.FRIEND_PROTYPE_FRD_FRIENDDELETE_REQ):
-			msg := pro.(*gpro.Frd_FriendDeleteReq)
-			ut = msg.Utoken
-		case int(gpro.FRIEND_PROTYPE_FRD_FRIENDLIST_REQ):
-			msg := pro.(*gpro.Frd_FriendListReq)
-			ut = msg.Utoken
-		}
 
-		if ut == nil {
+	} else {
+		switch id {
+		case uint16(gpro.FRIEND_PROTYPE_FRD_INVITECONFIRM_REQ):
+		case uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDDELETE_REQ):
+		case uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDLIST_REQ):
+			break
+		default:
 			return
 		}
 
-		_, uid := xinf.ParseUserGate(uint64(ut.GetGiduid()))
-		lind := cc.getHashKeyOfRole(uid)
+		roleiid := pro.GetRoleIid()
+		lind := cc.getHashKeyOfRole(roleiid)
 		mh := cc.loopHolders[lind]
-		cmd := newFriendNetCmdHandle(ut, id, pro, mh.OnNetCmdHander)
+		cmd := newFriendNetCmdHandle(ut, pro, mh.OnNetCmdHander)
 		g.PostFriendProcessor(lind, cmd)
 	}
 }
