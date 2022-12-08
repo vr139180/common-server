@@ -63,7 +63,7 @@ void LobbyService::on_lb_userlogout_ntf(NetProtocol* pro, bool& autorelease)
 
 	logDebug(out_runtime, "recv user:%lld logout notify, force save data to redis", puser->get_user_iid());
 	//强制保存一下
-	puser->save_all(true);
+	puser->save_all();
 }
 
 void LobbyService::on_lb_rolelist_req(NetProtocol* pro, bool& autorelease)

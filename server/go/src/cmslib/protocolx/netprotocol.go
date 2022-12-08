@@ -299,6 +299,7 @@ type SProtocolHead struct {
 
 	FromType int8
 	ToType   int8
+	Circles  int8
 	//token信息
 	Token          UserToken
 	RoleId         int64
@@ -325,6 +326,7 @@ func (p *SProtocolHead) EncodeHead(pdata *bytes.Buffer) bool {
 	p.EncodeUint16(pdata, &offset, p.MsgId)
 	p.Encodeint8(pdata, &offset, p.FromType)
 	p.Encodeint8(pdata, &offset, p.ToType)
+	p.Encodeint8(pdata, &offset, p.Circles)
 	p.Encodeint64(pdata, &offset, p.Token.TokenGidRid)
 	p.Encodeint64(pdata, &offset, p.Token.TokenSlotToken)
 	p.Encodeint64(pdata, &offset, p.RoleId)
@@ -362,6 +364,11 @@ func (p *SProtocolHead) DecodeHead(pbuf []byte, maxlen uint32) bool {
 		return false
 	}
 	succ, p.ToType = p.Decodeint8(pdata, maxlen, &offset)
+	if !succ {
+		return false
+	}
+
+	succ, p.Circles = p.Decodeint8(pdata, maxlen, &offset)
 	if !succ {
 		return false
 	}
@@ -446,6 +453,14 @@ func (np *NetProtocol) GetMsgId() uint16 {
 
 func (np *NetProtocol) WriteHead() *SProtocolHead {
 	return &np.Head
+}
+
+func (np *NetProtocol) Ciricles() {
+	np.Head.Circles++
+}
+
+func (np *NetProtocol) IsCircleOut(maax int8) bool {
+	return np.Head.Circles > maax
 }
 
 func (np *NetProtocol) SetHead(head *SProtocolHead) {

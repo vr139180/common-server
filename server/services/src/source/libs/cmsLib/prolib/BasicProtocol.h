@@ -175,6 +175,7 @@ public:
 	S_INT_64 get_roleiid() { return head_.get_role_iid(); }
 	S_INT_64 get_gameid() { return head_.get_gameid(); }
 	S_INT_8 get_to() { return head_.to_type_; }
+	S_INT_8 get_from() { return head_.from_type_; }
 
 	void inc_circle() { head_.inc_circles(); }
 	bool circle_out(S_INT_8 maax) { return head_.circle_out(maax); }

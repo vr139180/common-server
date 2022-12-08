@@ -39,18 +39,21 @@ public:
 	virtual ~LobbyService();
 
 	void init_lobby();
-	void reset_syscmd();
 
 	LobbyUser* get_usercheck_from_msg(NetProtocol* msg);
 	LobbyUser* get_userbyid_from_msg(NetProtocol* msg);
 	LobbyUser* get_userbyid_from_msg(const SProtocolHead& head);
+
+	//vnode发生变化后，对用户数据进行维护
+	void vnode_cluster_maintance();
 
 protected:
 	void init_luacontext();
 	void uninit_luacontext();
 
 protected:
-	void reset_lobby( void*);
+	void on_vnode_cluster_maintance( void*);
+
 	//---------------------------VirtualMainThread virtual function----------------------
 	virtual void thread_worker();
 

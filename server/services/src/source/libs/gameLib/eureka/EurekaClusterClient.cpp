@@ -406,7 +406,7 @@ void EurekaClusterClient::subscribe_to_masternode()
 	}
 
 	//router节点，订阅负载均衡信息
-	if (is_router_node_ && subscribe_balance_.size() > 0)
+	if (subscribe_balance_.size() > 0)
 	{
 		PRO::Erk_RouterSubscribe_req* req = new PRO::Erk_RouterSubscribe_req();
 		req->set_myiid(get_myiid());

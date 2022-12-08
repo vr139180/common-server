@@ -15,6 +15,9 @@
 
 #include "lobby/LobbyService.h"
 
+#include <gameLib/commons/ConsistentHashChecker.h>
+#include <gameLib/LogExt.h>
+
 #include "config/HomeConfig.h"
 #include "HomeServiceApp.h"
 
@@ -76,15 +79,10 @@ void LobbyService::init_lobby()
 	init_luacontext();
 }
 
-void LobbyService::reset_lobby( void*)
-{
-
-}
-
-void LobbyService::reset_syscmd()
+void LobbyService::vnode_cluster_maintance()
 {
 	SystemCommand<void>* cmd =
-		new SystemCommand<void>(boost::bind(&LobbyService::reset_lobby, this, this));
+		new SystemCommand<void>(boost::bind(&LobbyService::on_vnode_cluster_maintance, this, this));
 	this->regist_syscmd(cmd);
 }
 
@@ -104,4 +102,22 @@ LobbyUser* LobbyService::get_userbyid_from_msg(NetProtocol* msg)
 LobbyUser* LobbyService::get_userbyid_from_msg(const SProtocolHead& head)
 {
 	return lobby_users_.get_lobbyuser( head.get_token_useriid());
+}
+
+void LobbyService::on_vnode_cluster_maintance(void*)
+{
+	std::list<LobbyUser*> allusers;
+	lobby_users_.get_all_users(allusers);
+
+	//根据新的hash规则，去除不属于本节点管理的user数据
+	for (std::list<LobbyUser*>::iterator iter = allusers.begin(); iter != allusers.end(); ++iter)
+	{
+		LobbyUser* puser = (*iter);
+		if (!ConsistentHashChecker::instance().is_need_recircle_cluster(puser->get_user_iid()))
+			continue;
+		puser->save_all(false);
+
+		logDebug(out_runtime, "home maintance, user:%lld be removed from this home cluster node", puser->get_user_iid());
+		lobby_users_.free_lobbyuser(puser->get_user_iid());
+	}
 }

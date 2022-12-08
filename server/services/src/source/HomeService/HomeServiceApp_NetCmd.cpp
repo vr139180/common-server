@@ -20,6 +20,7 @@
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/commons/ConsistentHashChecker.h>
+#include <gamelib/global_const.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -44,6 +45,7 @@ void HomeServiceApp::mth_notify_routerbalance_new(NETSERVICE_TYPE type, std::lis
 	if (type == NETSERVICE_TYPE::ERK_SERVICE_HOME)
 	{
 		ConsistentHashChecker::instance().sync_balance_services(svrs);
+		vnode_maintance();
 	}
 }
 
@@ -62,4 +64,12 @@ void HomeServiceApp::mth_eureka_losted()
 
 	logError(out_runtime, "home service[%lld] lost all connections of eureka, service will shutdown......", EurekaClusterClient::instance().get_myiid());
 	this->quit_app();
+}
+
+void HomeServiceApp::vnode_maintance()
+{
+	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
+	{
+		all_lobbys_[ii].vnode_cluster_maintance();
+	}
 }

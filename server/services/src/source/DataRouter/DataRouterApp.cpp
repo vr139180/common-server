@@ -401,6 +401,9 @@ void DataRouterApp::dispatch_to_router(NetProtocol* pro)
 		router_to_gate(xptr.release());
 	}
 	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_HOME) {
+		if (pro->circle_out(VNODE_MAX_CIRCLES))
+			return;
+
 		router_to_home(xptr.release());
 	}
 	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_STATE) {
@@ -427,13 +430,6 @@ void DataRouterApp::router_to_state(NetProtocol* pro)
 
 void DataRouterApp::router_to_home(NetProtocol* pro)
 {
-	//check circles
-	if (pro->circle_out(VNODE_MAX_CIRCLES))
-	{
-		delete pro;
-		return;
-	}
-	
 	home_links_from_.send_protocol(pro->get_useriid(), pro);
 }
 

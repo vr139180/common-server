@@ -274,9 +274,7 @@ void HomeServiceApp::dispatch_to_lobby(NetProtocol* msg)
 	//针对扩容或者收缩之后，部分数据定向到老的cluser
 	if (ConsistentHashChecker::instance().is_need_recircle_cluster(uid))
 	{
-		SProtocolHead& head = msg->write_head();
-		head.inc_circles();
-
+		msg->inc_circle();
 		send_netprotocol(msg);
 		return;
 	}

@@ -95,6 +95,8 @@ protected:
 	//timer
 	void auto_connect_timer( u64 tnow, int interval, u64 iid, bool& finish);
 
+	void vnode_maintance();
+
 protected:
 	//注册成功之后标注为true
 	bool								is_ready_;

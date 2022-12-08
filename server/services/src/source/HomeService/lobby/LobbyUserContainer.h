@@ -141,6 +141,8 @@ public:
 	T* get_lobbyuser(S_INT_64 userid);
 	void free_lobbyuser(S_INT_64 userid);
 
+	void get_all_users(std::list<T*>& dats);
+
 protected:
 	void release();
 
@@ -217,6 +219,16 @@ void LobbyUserContainer<T>::init_cap(LobbyService* p, int minsize)
 
 		DoubleLinkNode* pnod = new DoubleLinkNode();
 		free_nodes_.push_back(pnod);
+	}
+}
+
+template<typename T>
+void LobbyUserContainer<T>::get_all_users(std::list<T*>& dats)
+{
+	for (typename USER_MAP_DATA::iterator iter = user_map_.begin(); iter != user_map_.end(); ++iter)
+	{
+		DoubleLinkNode* pnod = iter->second;
+		dats.push_back(pnod->data());
 	}
 }
 

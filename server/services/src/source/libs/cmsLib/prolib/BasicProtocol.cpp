@@ -204,6 +204,8 @@ bool SProtocolHead::encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 		return false;
 	if (Encode(pdata, maxlen, offset, to_type_) != SC_OK)
 		return false;
+	if (Encode(pdata, maxlen, offset, circles_) != SC_OK)
+		return false;
 	if (Encode(pdata, maxlen, offset, token_giduid_) != SC_OK)
 		return false;
 	if (Encode(pdata, maxlen, offset, token_slottoken_) != SC_OK)
@@ -231,6 +233,8 @@ bool SProtocolHead::decode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen)
 	if (Decode(pdata, maxlen, offset, this->from_type_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->to_type_) != SC_OK)
+		return false;
+	if (Decode(pdata, maxlen, offset, this->circles_) != SC_OK)
 		return false;
 	if (Decode(pdata, maxlen, offset, this->token_giduid_) != SC_OK)
 		return false;

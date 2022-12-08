@@ -384,7 +384,7 @@ void ServiceRegisterCtrl::on_mth_routersubscribe_req(NetProtocol* pro, bool& aut
 	//-------------------------协议同步-----------------------
 	ServiceLinkFrom* plink = service_mth_links_.get_servicelink_byiid(req->myiid());
 	ServiceNodeInfo* pNode = find_servicenode_byiid(req->myiid());
-	if (plink == 0 || pNode == 0 || !pNode->isrouter)
+	if (plink == 0 || pNode == 0)
 		return;
 
 	bool bdiff = false;
