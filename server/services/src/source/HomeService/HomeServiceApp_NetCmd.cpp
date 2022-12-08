@@ -19,6 +19,7 @@
 #include <cmsLib/base/OSSystem.h>
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
+#include <gameLib/commons/ConsistentHashChecker.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -35,9 +36,22 @@ void HomeServiceApp::mth_notify_servicenode_new(NETSERVICE_TYPE type,
 	}
 }
 
+void HomeServiceApp::mth_notify_routerbalance_new(NETSERVICE_TYPE type, std::list<S_INT_64>& svrs)
+{
+	logDebug(out_runtime, "recv routerbalance sycn type:%s node:%d from eureka",
+		NetServiceType::to_string(type).c_str(), svrs.size());
+
+	if (type == NETSERVICE_TYPE::ERK_SERVICE_HOME)
+	{
+		ConsistentHashChecker::instance().sync_balance_services(svrs);
+	}
+}
+
 void HomeServiceApp::mth_service_registed(S_INT_64 sid)
 {
 	logInfo(out_runtime, "<<<<<<<<<<<< home service node:%lld online to eureka >>>>>>>>>>>>", sid);
+
+	ConsistentHashChecker::instance().init_myid(sid);
 
 	this->is_ready_ = true;
 }

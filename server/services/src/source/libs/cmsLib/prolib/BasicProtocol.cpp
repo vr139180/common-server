@@ -110,6 +110,7 @@ SProtocolHead& SProtocolHead::operator = (const SProtocolHead& v)
 
 	this->from_type_ = v.from_type_;
 	this->to_type_ = v.to_type_;
+	this->circles_ = v.circles_;
 	this->token_giduid_ = v.token_giduid_;
 	this->token_slottoken_ = v.token_slottoken_;
 	this->role_iid_ = v.role_iid_;

@@ -27,7 +27,6 @@ public:
 public:
 	//现成一次tick循环次数
 	int loopnum_;
-	int vnode_;
 	
 	//redis配置
 	config::RedisOption	redis_;

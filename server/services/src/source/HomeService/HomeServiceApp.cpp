@@ -26,6 +26,7 @@
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
 #include <gameLib/global_const.h>
+#include <gameLib/commons/ConsistentHashChecker.h>
 
 #include <taskLib/TaskMetaHome.h>
 
@@ -114,7 +115,9 @@ HomeConfig* HomeServiceApp::get_config()
 
 bool HomeServiceApp::pre_init()
 {
-	lobby_hash_.init_vnode(800);
+	lobby_hash_.init_vnode(VNODE_HOMESERVICE_NUM);
+	ConsistentHashChecker::instance().init_vnode(VNODE_HOMESERVICE_NUM);
+
 	this->all_lobbys_.reset(new LobbyService[HOME_LOBBY_THREADNUM]);
 	for (int ii = 0; ii < HOME_LOBBY_THREADNUM; ++ii)
 	{
@@ -130,6 +133,7 @@ bool HomeServiceApp::pre_init()
 	std::list< NETSERVICE_TYPE> subscribe_types;
 	subscribe_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER);
 	std::list< NETSERVICE_TYPE> router_types;
+	router_types.push_back(NETSERVICE_TYPE::ERK_SERVICE_HOME);
 
 	EurekaNodeInfo enode;
 	if (!EurekaClusterClient::get_eureka_masterinfo(gopt.eureka_.c_str(), enode))
@@ -264,8 +268,20 @@ void HomeServiceApp::on_disconnected_with_datarouter(DataRouterLinkTo* plink)
 
 void HomeServiceApp::dispatch_to_lobby(NetProtocol* msg)
 {
-	//根据用户userid来派发，而不是roleid
 	S_INT_64 uid = msg->get_useriid();
+
+	//需要测试一下，是否是本机需要处理的数据
+	//针对扩容或者收缩之后，部分数据定向到老的cluser
+	if (ConsistentHashChecker::instance().is_need_recircle_cluster(uid))
+	{
+		SProtocolHead& head = msg->write_head();
+		head.inc_circles();
+
+		send_netprotocol(msg);
+		return;
+	}
+
+	//根据用户userid来派发，而不是roleid
 	S_INT_32 lobbyind = lobby_hash_.get_netnode_byval(uid);
 	LobbyService* plobby = &(all_lobbys_[lobbyind]);
 

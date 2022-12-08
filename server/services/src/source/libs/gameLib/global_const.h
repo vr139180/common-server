@@ -16,6 +16,15 @@
 #ifndef __GLOBAL_CONST_H__
 #define __GLOBAL_CONST_H__
 
+//vnode必须一致
+#define VNODE_HOMESERVICE_NUM	800
+#define VNODE_CHATSERVICE_NUM	800
+#define VNODE_MAILSERVICE_NUM	800
+#define VNODE_FRIENDSERVICE_NUM	800
+//cluster最大循环次数.超出之后router端drop掉请求
+#define VNODE_MAX_CIRCLES		3
+
+
 //gate单个支持的用户连接数
 #define GATE_PLAYER_MAX			10000
 #define GATE_PIECE_NUM_MAX		2000

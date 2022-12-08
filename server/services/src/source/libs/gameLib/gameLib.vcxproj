@@ -52,6 +52,7 @@
     <ClCompile Include=".\protobuf\ProtocolFactory_NetPro.cpp" />
     <ClCompile Include=".\protobuf\ProtoUtil.cpp" />
     <ClCompile Include=".\redis\DTaskRedis.cpp" />
+    <ClCompile Include="commons\ConsistentHashChecker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\commons\GLoc3D.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include=".\redis\global_redis_const.h" />
     <ClInclude Include=".\redis\user_redis_const.h" />
     <ClInclude Include=".\service_type.h" />
+    <ClInclude Include="commons\ConsistentHashChecker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

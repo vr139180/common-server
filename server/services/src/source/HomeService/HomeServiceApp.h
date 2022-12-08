@@ -73,7 +73,7 @@ public:
 
 	virtual void mth_notify_servicenode_new(NETSERVICE_TYPE, 
 		std::list<ServiceNodeInfo*>& nodes, std::list<S_INT_64>& deliids);
-	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs) {}
+	virtual void mth_notify_routerbalance_new(NETSERVICE_TYPE, std::list<S_INT_64>& svrs);
 
 	virtual void mth_service_registed(S_INT_64 sid);
 	virtual void mth_eureka_losted();

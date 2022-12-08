@@ -24,6 +24,7 @@
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
+#include <gameLib/global_const.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -79,7 +80,6 @@ RouterConfig* ServiceRouterApp::load_routerconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->vnode_ = XmlUtil::GetXmlAttrInt(root, "vnode", 800);
 
 	return xptr.release();
 }
@@ -90,9 +90,9 @@ bool ServiceRouterApp::pre_init()
 
 	gate_links_from_.init_holder();
 
-	chat_links_from_.init_holder(conf_->vnode_);
-	mail_links_from_.init_holder(conf_->vnode_);
-	friend_links_from_.init_holder(conf_->vnode_);
+	chat_links_from_.init_holder( VNODE_CHATSERVICE_NUM);
+	mail_links_from_.init_holder( VNODE_MAILSERVICE_NUM);
+	friend_links_from_.init_holder( VNODE_FRIENDSERVICE_NUM);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -168,10 +168,12 @@ void ServiceRouterApp::uninit_network()
 		acceptor_->end_listen();
 	NetDriverX::getInstance().uninitNetDriver();
 
-	gate_links_from_.uninit_holder();
 	chat_links_from_.uninit_holder();
 	mail_links_from_.uninit_holder();
 	friend_links_from_.uninit_holder();
+
+	gate_links_from_.uninit_holder();
+	datarouter_link_mth_.free_all();
 
 	session_from_.unint_sessions();
 

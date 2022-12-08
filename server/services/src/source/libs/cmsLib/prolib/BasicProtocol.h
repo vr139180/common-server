@@ -99,7 +99,7 @@ public:
 class SProtocolHead : public CProtoHeadBase
 {
 public:
-	SProtocolHead():from_type_(-1), to_type_(-1) , token_giduid_(0), token_slottoken_(0),
+	SProtocolHead():from_type_(-1), to_type_(-1), circles_(0), token_giduid_(0), token_slottoken_(0),
 		role_iid_(0), gameid_(0), unpack_protocol_(true){}
 
 	bool encode_head(S_UINT_8 *pbuf, S_UINT_32 maxlen);
@@ -123,6 +123,9 @@ public:
 	S_INT_64 get_gameid() const { return gameid_; }
 	void set_gameid(S_INT_64 gid) { gameid_ = gid; }
 
+	void inc_circles() { ++circles_; }
+	bool circle_out(S_INT_8 maax) { return circles_ > maax; }
+
 	bool is_same_session(const SProtocolHead& head) {
 		return get_token_useriid() == head.get_token_useriid() && get_token_token() == head.get_token_token();
 	}
@@ -142,6 +145,8 @@ public:
 	S_INT_8		from_type_;
 	//发送给哪类服务器
 	S_INT_8		to_type_;
+	//负载均衡时重复定位cluster的回环次数
+	S_INT_8		circles_;
 	//token信息
 	S_INT_64	token_giduid_;
 	S_INT_64	token_slottoken_;
@@ -170,6 +175,9 @@ public:
 	S_INT_64 get_roleiid() { return head_.get_role_iid(); }
 	S_INT_64 get_gameid() { return head_.get_gameid(); }
 	S_INT_8 get_to() { return head_.to_type_; }
+
+	void inc_circle() { head_.inc_circles(); }
+	bool circle_out(S_INT_8 maax) { return head_.circle_out(maax); }
 
 	NetProtocol* clone();
 

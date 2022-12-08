@@ -25,6 +25,7 @@
 #include <gameLib/protobuf/Proto_all.h>
 #include <gameLib/config/ConfigHelper.h>
 #include <gameLib/config/ConfigTool.h>
+#include <gameLib/global_const.h>
 
 USE_PROTOCOL_NAMESPACE
 
@@ -80,7 +81,6 @@ RouterConfig* DataRouterApp::load_routerconfig()
 	tinyxml2::XMLElement* root = doc.RootElement();
 
 	config->loopnum_ = XmlUtil::GetXmlAttrInt(root, "loopnum", 100);
-	config->vnode_ = XmlUtil::GetXmlAttrInt(root, "vnode", 800);
 
 	return xptr.release();
 }
@@ -94,7 +94,7 @@ bool DataRouterApp::pre_init()
 	servicerouter_links_from_.init_holder();
 	state_links_from_.init_holder();
 
-	home_links_from_.init_holder( conf_->vnode_);
+	home_links_from_.init_holder(VNODE_HOMESERVICE_NUM);
 
 	//eureka init
 	ConfigHelper& cf = ConfigHelper::instance();
@@ -427,6 +427,13 @@ void DataRouterApp::router_to_state(NetProtocol* pro)
 
 void DataRouterApp::router_to_home(NetProtocol* pro)
 {
+	//check circles
+	if (pro->circle_out(VNODE_MAX_CIRCLES))
+	{
+		delete pro;
+		return;
+	}
+	
 	home_links_from_.send_protocol(pro->get_useriid(), pro);
 }
 

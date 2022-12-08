@@ -13,20 +13,10 @@
 // limitations under the License.
 //
 
-#ifndef __ROUTERCONFIG_H__
-#define __ROUTERCONFIG_H__
+#include <gameLib/commons/ConsistentHashChecker.h>
 
-#include <string>
-#include <gameLib/config/RedisOption.h>
-
-class RouterConfig
+ConsistentHashChecker& ConsistentHashChecker::instance()
 {
-public:
-	RouterConfig(){}
-
-public:
-	//现成一次tick循环次数
-	int loopnum_;
-};
-
-#endif //__ROUTERCONFIG_H__
+	static ConsistentHashChecker s_instance;
+	return s_instance;
+}

@@ -149,6 +149,9 @@
     <ClInclude Include=".\eureka\GateNodeInfo.h">
       <Filter>eureka</Filter>
     </ClInclude>
+    <ClInclude Include="commons\ConsistentHashChecker.h">
+      <Filter>commons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="eureka">
@@ -287,6 +290,9 @@
     </ClCompile>
     <ClCompile Include=".\eureka\GateNodeInfo.cpp">
       <Filter>eureka</Filter>
+    </ClCompile>
+    <ClCompile Include="commons\ConsistentHashChecker.cpp">
+      <Filter>commons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
