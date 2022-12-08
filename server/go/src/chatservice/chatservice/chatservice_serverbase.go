@@ -1,3 +1,19 @@
+// Copyright 2021 common-server Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+
 package chatservice
 
 import (
@@ -9,6 +25,7 @@ import (
 	"cmslib/timerx"
 	"cmslib/utilc"
 	"encoding/xml"
+	"errors"
 	"gamelib/config"
 	"gamelib/eureka"
 	"gamelib/protobuf"
@@ -76,30 +93,31 @@ func (l *ChatService) InitNetwork() (err error) {
 		return err
 	}
 
-	//chathash扩展参数
-	ext1, _ := l.configTool.GetExtParamByKey(CHATSERVICE_EXTPARAM_CHATHASH)
-	exts := make(map[string]string)
-	exts[CHATSERVICE_EXTPARAM_CHATHASH] = ext1
+	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
+	if !ok {
+		return errors.New("get eureka master node failed.")
+	}
 
-	subs := [...]int{int(service.ServiceType_Router)}
-	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Chat, l.configTool.Ip, l.configTool.Port, exts, subs[0:], l)
+	subs := [...]int{int(service.ServiceType_ServiceRouter)}
+	balances := [...]int{int(service.ServiceType_Chat)}
+	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Chat, l.configTool.Ip, l.configTool.Port, nil,
+		node, subs[0:], balances[0:], false, l)
 
-	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_Router, l)
+	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l)
 
-	l.Accept(l.configTool.Ip, l.configTool.Port)
+	l.Accept(l.configTool.Ip, l.configTool.Port, true)
 
 	return nil
 }
 
 func (l *ChatService) InitDatabase() (err error) {
-	/*
-		ropt := &(l.AppOption.RedisOpt)
-		l.redisX, err = redisutil.NewRedisUtil(ropt.Ip, ropt.Port, ropt.Auth, ropt.Db)
-		if err != nil {
-			logx.Errorf("init redis client failed")
-			return err
-		}
-	*/
+
+	ropt := &(l.AppOption.RedisOpt)
+	l.redisX, err = redisutil.NewRedisUtil(ropt)
+	if err != nil {
+		logx.Errorf("init redis client failed")
+		return err
+	}
 
 	l.softTimer = timerx.NewTimerContainer(1 * 1000)
 
@@ -114,7 +132,8 @@ func (l *ChatService) InitFinish() error {
 
 	l.channelCtrl = channel.NewChannelCtrl(l.AppOption.CHProcessorNum)
 
-	l.eureka.Start(l.configTool.GlobalOpt.EurekaIp, l.configTool.GlobalOpt.EurekaPort)
+	l.eureka.Start()
+	
 	l.routerSvrs.Start()
 
 	return nil

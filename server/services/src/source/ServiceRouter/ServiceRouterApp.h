@@ -54,6 +54,9 @@ public:
 	RouterConfig* get_config() { return conf_.get(); }
 
 public:
+
+	void dispatch_to_router(NetProtocol* pro);
+
 	void send_protocal_to_gate( S_INT_64 gateiid, BasicProtocol* msg);
 	void send_protocal_to_gate(S_INT_64 gateiid, NetProtocol* msg);
 

@@ -195,8 +195,6 @@ void DataRouterApp::mth_service_registed(S_INT_64 sid)
 	logInfo(out_runtime, "<<<<<<<<<<<< datarouter node:%lld online to eureka >>>>>>>>>>>>", sid);
 	
 	this->is_ready_ = true;
-
-	//sid作为custom channel id的种子
 }
 
 void DataRouterApp::mth_eureka_losted()

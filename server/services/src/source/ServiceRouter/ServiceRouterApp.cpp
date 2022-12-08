@@ -339,6 +339,85 @@ void ServiceRouterApp::on_disconnected_with_chatservice(ChatServiceLinkFrom* pli
 	}
 }
 
+void ServiceRouterApp::on_disconnected_with_mailservice(MailServiceLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		mail_links_from_.return_freelink(plink);
+
+		plink->reset();
+		psession->reset();
+
+		session_from_.return_freesession_mth(psession);
+	}
+}
+
+void ServiceRouterApp::on_disconnected_with_frdservice(FriendServiceLinkFrom* plink)
+{
+	RouterSession* psession = plink->get_session();
+	if (psession == 0)
+		return;
+
+	plink->registinfo_tolog(false);
+
+	{
+		ThreadLockWrapper guard(get_threadlock());
+
+		//断开映射关系
+		friend_links_from_.return_freelink(plink);
+
+		session_from_.return_freesession_mth(psession);
+
+		plink->reset();
+		psession->reset();
+	}
+}
+
+void ServiceRouterApp::dispatch_to_router(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	std::unique_ptr<NetProtocol> xptr(pro);
+	NETSERVICE_TYPE gto = (NETSERVICE_TYPE)pro->get_to();
+
+	if (gto == NETSERVICE_TYPE::ERK_SERVICE_CHAT)
+	{
+		if (pro->circle_out(VNODE_MAX_CIRCLES))
+			return;
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_FRIEND)
+	{
+		if (pro->circle_out(VNODE_MAX_CIRCLES))
+			return;
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_MAIL)
+	{
+		if (pro->circle_out(VNODE_MAX_CIRCLES))
+			return;
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GATE || gto == NETSERVICE_TYPE::ERK_SERVICE_HOME ||
+		gto == NETSERVICE_TYPE::ERK_SERVICE_STATE || gto == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
+	{
+
+	}
+	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GAME || gto == NETSERVICE_TYPE::ERK_SERVICE_UNION ||
+		gto == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
+	{
+
+	}
+}
+
 void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* msg)
 {
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
@@ -391,46 +470,4 @@ void ServiceRouterApp::send_protocal_to_friend(S_INT_64 roleiid, BasicProtocol* 
 void ServiceRouterApp::send_protocal_to_friend(NetProtocol* msg)
 {
 	friend_links_from_.send_protocol(msg->get_roleiid(), msg);
-}
-
-void ServiceRouterApp::on_disconnected_with_mailservice(MailServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		mail_links_from_.return_freelink(plink);
-
-		plink->reset();
-		psession->reset();
-
-		session_from_.return_freesession_mth(psession);
-	}
-}
-
-void ServiceRouterApp::on_disconnected_with_frdservice(FriendServiceLinkFrom* plink)
-{
-	RouterSession* psession = plink->get_session();
-	if (psession == 0)
-		return;
-
-	plink->registinfo_tolog(false);
-
-	{
-		ThreadLockWrapper guard(get_threadlock());
-
-		//断开映射关系
-		friend_links_from_.return_freelink(plink);
-
-		session_from_.return_freesession_mth(psession);
-
-		plink->reset();
-		psession->reset();
-	}
 }
