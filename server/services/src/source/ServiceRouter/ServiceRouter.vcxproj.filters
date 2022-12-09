@@ -13,18 +13,6 @@
     <ClCompile Include=".\chatmodule\ChatModule_Network.cpp">
       <Filter>chat</Filter>
     </ClCompile>
-    <ClCompile Include=".\mailmodule\MailModule.cpp">
-      <Filter>mail</Filter>
-    </ClCompile>
-    <ClCompile Include=".\mailmodule\MailModule_Network.cpp">
-      <Filter>mail</Filter>
-    </ClCompile>
-    <ClCompile Include=".\friends\FriendModule.cpp">
-      <Filter>friend</Filter>
-    </ClCompile>
-    <ClCompile Include=".\friends\FriendModule_Network.cpp">
-      <Filter>friend</Filter>
-    </ClCompile>
     <ClCompile Include=".\network\ChatServiceLinkFrom.cpp">
       <Filter>network</Filter>
     </ClCompile>
@@ -51,12 +39,6 @@
     </ClInclude>
     <ClInclude Include=".\chatmodule\ChatModule.h">
       <Filter>chat</Filter>
-    </ClInclude>
-    <ClInclude Include=".\mailmodule\MailModule.h">
-      <Filter>mail</Filter>
-    </ClInclude>
-    <ClInclude Include=".\friends\FriendModule.h">
-      <Filter>friend</Filter>
     </ClInclude>
     <ClInclude Include=".\network\ChatServiceLinkFrom.h">
       <Filter>network</Filter>
@@ -86,12 +68,6 @@
     </Filter>
     <Filter Include="chat">
       <UniqueIdentifier>{19f8384e-2be7-4f89-af23-38426d46a9e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mail">
-      <UniqueIdentifier>{77b468b1-f523-4403-ac44-260de1a52db8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="friend">
-      <UniqueIdentifier>{43a97bb9-2600-43c2-9385-45be2f7117d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

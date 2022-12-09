@@ -28,12 +28,11 @@ void ChatModule::process_chat_msg( NetProtocol* pro)
 	S_UINT_16 msgid = pro->get_msg();
 	if (msgid == CHAT_PROTYPE::CHAT_CUSTOMCHANNELID_REQ)
 	{
-		Chat_CustomChannelId_req* req = dynamic_cast<Chat_CustomChannelId_req*>(pro->msg_);
-		//on_customchannelid_req(req->utoken().giduid(), req->utoken().slottoken());
+		on_customchannelid_req(pro->head_);
 	}
 	else if (msgid == CHAT_PROTYPE::CHAT_USERCHANNELS_ACTIVE)
 	{
-		on_userchannel_active(pro->msg_);
+		on_userchannel_active(pro);
 	}
 	else if (msgid == CHAT_PROTYPE::CHAT_USERMSG_SAY)
 	{
@@ -41,61 +40,54 @@ void ChatModule::process_chat_msg( NetProtocol* pro)
 	}
 }
 
-void ChatModule::on_customchannelid_req(S_INT_64 sidgid, S_INT_64 slottoken)
+void ChatModule::on_customchannelid_req( const SProtocolHead& head)
 {
-	S_INT_64 gateid = 0;
-
-	S_INT_64 cid = this->new_custom_channelid();
-	
 	Chat_CustomChannelId_ack *ack = new Chat_CustomChannelId_ack();
-	//ProtoUtil::set_usertokenx(ack, sidgid, slottoken);
 	ack->set_result(0);
 
-	ChatChannelInfo *info = new ChatChannelInfo();
+	ChatChannelInfo *info = ack->mutable_channel();
 	info->set_type(ChatChannelType::ChatChannelT_Custom);
+	S_INT_64 cid = this->new_custom_channelid();
 	info->set_channeldid(cid);
-	ack->set_allocated_channel( info);
 
-	svrApp.send_protocal_to_gate(gateid, ack);
+	NetProtocol* pro = new NetProtocol( head, ack);
+	SProtocolHead& wh = pro->write_head();
+	wh.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
+	wh.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_GATE;
+
+	svrApp.router_to_gate(pro);
 }
 
-void ChatModule::on_userchannel_active(BasicProtocol* pro)
+void ChatModule::on_userchannel_active(NetProtocol* pro)
 {
-	//pro dont destroy
-	Chat_UserChannels_active* act = dynamic_cast<Chat_UserChannels_active*>(pro);
-
-	//分拆到各个chats
-	//const UserToken& ut = act->utoken();
-
+	//用来合并激活协议
+	boost::unordered_map<S_INT_64, Chat_UserChannels_active*> hmsg;
+	
 	//user作为一个单独的channel来激活
-	S_INT_64 uid = 0;
-	//ProtoTokenUtil::parse_usergate2(ut.giduid(), uid);
-
-	boost::unordered_map<int, Chat_UserChannels_active*> hmsg;
-	
-	int cid = channelid_to_chathash(ChatChannelType::ChatChannelT_Single, uid);
-	
+	S_INT_64 roleid = pro->get_roleiid();
 	Chat_UserChannels_active* nd = new Chat_UserChannels_active();
-	//ProtoUtil::set_usertokenx(nd, ut.giduid(), ut.slottoken());
 	ChatChannelInfo* pi = nd->add_channels();
 	pi->set_type(ChatChannelType::ChatChannelT_Single);
-	pi->set_channeldid(uid);
+	pi->set_channeldid(roleid);
+
+	S_INT_64 cid = svrApp.get_chat_by_channelid(roleid);
 	hmsg[cid] = nd;
 
+	Chat_UserChannels_active* act = dynamic_cast<Chat_UserChannels_active*>(pro->msg_);
 	for (int ii = 0; ii < act->channels_size(); ++ii)
 	{
 		const ChatChannelInfo& c = act->channels(ii);
-		cid = channelid_to_chathash( c.type(), c.channeldid());
+		S_INT_64 cid = svrApp.get_chat_by_channelid(c.channeldid());
 
-		boost::unordered_map<int, Chat_UserChannels_active*>::iterator fiter = hmsg.find(cid);
+		boost::unordered_map<S_INT_64, Chat_UserChannels_active*>::iterator fiter = hmsg.find(cid);
 		if (fiter == hmsg.end())
 		{
 			nd = new Chat_UserChannels_active();
-			//ProtoUtil::set_usertokenx(nd, ut.giduid(), ut.slottoken());
 
 			pi = nd->add_channels();
 			pi->set_type( c.type());
 			pi->set_channeldid( c.channeldid());
+
 			hmsg[cid] = nd;
 		}
 		else
@@ -108,14 +100,13 @@ void ChatModule::on_userchannel_active(BasicProtocol* pro)
 	}
 
 	//router to chat
-	for (boost::unordered_map<int, Chat_UserChannels_active*>::iterator iter = hmsg.begin();
-		iter != hmsg.end(); ++iter)
+	for (boost::unordered_map<S_INT_64, Chat_UserChannels_active*>::iterator iter = hmsg.begin(); iter != hmsg.end(); ++iter)
 	{
-		int cid = iter->first;
+		S_INT_64 cid = iter->first;
 		Chat_UserChannels_active* c = iter->second;
-
-		svrApp.send_protocal_to_chat(cid, c);
+		send_to_chat(cid, pro->head_, c);
 	}
+	hmsg.clear();
 }
 
 void ChatModule::on_user_say_somthing(NetProtocol* pro)
@@ -123,7 +114,6 @@ void ChatModule::on_user_say_somthing(NetProtocol* pro)
 	//you need to manage pro object destroy or somthing
 	Chat_UserMsg_say* say = dynamic_cast<Chat_UserMsg_say*>(pro->msg_);
 	const ChatChannelInfo& cl = say->channel();
-	int chatiid = channelid_to_chathash(cl.type(), cl.channeldid());
 
-	svrApp.send_protocal_to_chat(chatiid, say);
+	send_to_chat(cl.channeldid(), pro);
 }

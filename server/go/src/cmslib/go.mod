@@ -5,11 +5,13 @@ go 1.17
 require (
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
+	github.com/satori/go.uuid v1.2.0
 	google.golang.org/protobuf v1.26.0
 	xorm.io/xorm v1.2.5
 )
 
 require (
+	github.com/emirpasic/gods v1.18.1
 	github.com/go-redis/redis/v8 v8.11.4
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/panjf2000/ants/v2 v2.4.7
@@ -37,7 +39,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/syndtr/goleveldb v1.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	xorm.io/builder v0.3.9 // indirect

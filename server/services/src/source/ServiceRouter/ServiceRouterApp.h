@@ -55,27 +55,23 @@ public:
 
 public:
 
-	void dispatch_to_router(NetProtocol* pro);
+	void router_to_gate(NetProtocol* pro);
 
-	void send_protocal_to_gate( S_INT_64 gateiid, BasicProtocol* msg);
-	void send_protocal_to_gate(S_INT_64 gateiid, NetProtocol* msg);
-
-	void broad_protocal_to_gate(BasicProtocol* msg) {
-		gate_links_from_.broadcast(msg);
+	void router_to_chat(S_INT_64 channelid, NetProtocol* pro);
+	S_INT_64 get_chat_by_channelid(S_INT_64 cid);
+	//don't delete pro
+	void broadcast_to_gate(NetProtocol* pro) {
+		gate_links_from_.broadcast(pro);
 	}
 
-	void send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg);
+	void router_to_mail(NetProtocol* pro);
+	void router_to_friend(NetProtocol* pro);
 
-	void send_protocal_to_mail(S_INT_64 roleid, BasicProtocol* msg);
-	void send_protocal_to_mail(NetProtocol* msg);
 	void send_protocal_to_mail_circle(NetProtocol* msg);
 
 	void broad_protocal_to_mails(BasicProtocol* msg) {
 		mail_links_from_.broadcast(msg);
 	}
-
-	void send_protocal_to_friend(S_INT_64 roleiid, BasicProtocol* msg);
-	void send_protocal_to_friend(NetProtocol* msg);
 
 public:
 

@@ -120,13 +120,13 @@ func (cb *channelBase) GetUserByIid(uid int64) (u *UserInfo) {
 }
 
 func (cb *channelBase) UserActive(u *UserInfo, tnow int64) {
-	ou := cb.GetUserByIid(u.GetUserIid())
+	ou := cb.GetUserByIid(u.GetRoleIid())
 	if ou != nil {
 		cb.usersLink.DelElement(ou)
 	}
 
 	cb.usersLink.AddHeadElement(u)
-	cb.users[u.GetUserIid()] = u
+	cb.users[u.GetRoleIid()] = u
 
 	//激活处理
 	cb.MaintanceOfflineUsers(tnow, false)
@@ -137,24 +137,24 @@ func (cb *channelBase) UserSay(msg *gpro.Chat_UserMsgSay) {
 }
 
 func (cb *channelBase) getUserOfMsg(pro *protocolx.NetProtocol) (u *UserInfo) {
-	uid := pro.GetTokenUserIid()
-	u = cb.GetUserByIid(uid)
+	rid := pro.GetRoleIid()
+	u = cb.GetUserByIid(rid)
 	if u == nil {
 		return
 	}
 
-	//if u.slotToken != msg.Utoken.Slottoken {
-	//	u = nil
-	//}
+	if u.token != pro.Head.Token {
+		u = nil
+	}
 
 	return
 }
 
-func (cb *channelBase) saveMessage(userid int64, msg *gpro.Chat_UserMsgSay) *gpro.ChatMessageItem {
+func (cb *channelBase) saveMessage(roleiid int64, msg *gpro.Chat_UserMsgSay) *gpro.ChatMessageItem {
 
 	item := &gpro.ChatMessageItem{}
 
-	item.SendUserIid = userid
+	item.SendUserIid = roleiid
 	item.SendNickname = msg.GetNickname()
 	item.SendTime = utilc.GetTimeSecond()
 	item.MsgContent = msg.GetMsgContent()
@@ -206,7 +206,7 @@ func (cb *channelBase) MaintanceOfflineUsers(tnow int64, force bool) {
 		}
 
 		//remove user
-		delete(cb.users, uinfo.GetUserIid())
+		delete(cb.users, uinfo.GetRoleIid())
 		cb.usersLink.DelElement(cuser)
 
 		cuser = cb.usersLink.GetTailElement()

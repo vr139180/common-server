@@ -21,8 +21,6 @@
 #include <gameLib/protobuf/Proto_all.h>
 
 #include "chatmodule/ChatModule.h"
-#include "mailmodule/MailModule.h"
-#include "friends/FriendModule.h"
 
 USE_PROTOCOL_NAMESPACE
 
@@ -185,8 +183,6 @@ void ServiceRouterApp::mth_service_registed(S_INT_64 sid)
 
 	//sid作为custom channel id的种子
 	ChatModule::instance().init_chatmodule(sid);
-	MailModule::instance().init_mailmodule(sid);
-	FriendModule::instance().init_friendmodule(sid);
 }
 
 void ServiceRouterApp::mth_eureka_losted()

@@ -38,10 +38,10 @@ func (cb *SingleChannel) IsPreDefined() bool {
 
 func (cb *SingleChannel) UserSay(pro *protocolx.NetProtocol) {
 
-	uid := pro.GetTokenUserIid()
+	rid := pro.GetRoleIid()
 
 	msg := pro.Msg.(*gpro.Chat_UserMsgSay)
-	item := cb.saveMessage(uid, msg)
+	item := cb.saveMessage(rid, msg)
 
 	tnow := utilc.GetTimestamp()
 	for iu := cb.usersLink.GetHeadElement(); iu != nil; {

@@ -99,8 +99,8 @@ func (cc *MailBoxCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
 			return
 		}
 
-		uid := pro.GetTokenRoleIid()
-		lind := cc.getHashKeyOfReceiver(uid)
+		rid := pro.GetRoleIid()
+		lind := cc.getHashKeyOfReceiver(rid)
 		mh := cc.loopHolders[lind]
 		cmd := newMBoxNetCmdHandle(pro, mh.OnNetCmdHanderl)
 		g.PostMailProcessor(lind, cmd)

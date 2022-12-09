@@ -135,10 +135,6 @@
   <ItemGroup>
     <ClCompile Include=".\chatmodule\ChatModule.cpp" />
     <ClCompile Include=".\chatmodule\ChatModule_Network.cpp" />
-    <ClCompile Include=".\friends\FriendModule.cpp" />
-    <ClCompile Include=".\friends\FriendModule_Network.cpp" />
-    <ClCompile Include=".\mailmodule\MailModule.cpp" />
-    <ClCompile Include=".\mailmodule\MailModule_Network.cpp" />
     <ClCompile Include=".\network\ChatServiceLinkFrom.cpp" />
     <ClCompile Include=".\network\DataRouterLinkTo.cpp" />
     <ClCompile Include=".\network\FriendServiceLinkFrom.cpp" />
@@ -152,8 +148,6 @@
   <ItemGroup>
     <ClInclude Include=".\chatmodule\ChatModule.h" />
     <ClInclude Include=".\config\RouterConfig.h" />
-    <ClInclude Include=".\friends\FriendModule.h" />
-    <ClInclude Include=".\mailmodule\MailModule.h" />
     <ClInclude Include=".\network\ChatServiceLinkFrom.h" />
     <ClInclude Include=".\network\DataRouterLinkTo.h" />
     <ClInclude Include=".\network\FriendServiceLinkFrom.h" />

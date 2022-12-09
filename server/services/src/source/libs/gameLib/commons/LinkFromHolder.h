@@ -54,6 +54,20 @@ public:
 		}
 	}
 
+	void broadcast(NetProtocol* pro)
+	{
+		ThreadLockWrapper guard(lock_);
+
+		typename boost::unordered_map<S_INT_64, T*>::iterator iter = online_links_.begin();
+		for (; iter != online_links_.end(); ++iter)
+		{
+			NetProtocol* np = pro->clone();
+
+			T* link = iter->second;
+			link->send_protocol( np);
+		}
+	}
+
 protected:
 	std::list<T*>	all_service_link_;
 	std::set<T*>	free_links_;

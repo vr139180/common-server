@@ -57,13 +57,11 @@ void ChatServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	std::unique_ptr<NetProtocol> p_msg(pro);
 	if (msgid == PRO::CHAT_PROTYPE::CHAT_GLOBALMSG_NTF)
 	{
-		svrApp.broad_protocal_to_gate(pro->msg_);
+		svrApp.broadcast_to_gate(pro);
 	}
 	else if (msgid == PRO::CHAT_PROTYPE::CHAT_CHATMSG_NTF)
 	{
-		PRO::Chat_ChatMsg_ntf* ntf = dynamic_cast<PRO::Chat_ChatMsg_ntf*>(pro->msg_);
-		S_INT_64 gateid = 0;
-		svrApp.send_protocal_to_gate(gateid, p_msg.release());
+		svrApp.router_to_gate(p_msg.release());
 	}
 }
 

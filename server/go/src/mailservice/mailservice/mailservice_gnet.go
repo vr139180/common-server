@@ -48,10 +48,7 @@ func (l *MailService) OnTCPOpened(c gnet.Conn) {
 			panic(errors.New("not support other interface, only gnet.NetSession"))
 		}
 	} else {
-		if !l.eureka.IsReady() {
-			c.Close()
-			return
-		}
+		c.Close()
 	}
 }
 
@@ -78,6 +75,11 @@ func (l *MailService) OnRecvMessage(c gnet.Conn, m *protocolx.NetProtocol) {
 		ns, ok := s.(gnet.NetSession)
 		if ok {
 			ns.OnRecvMessage(m)
+		}
+	} else {
+		if !l.eureka.IsReady() {
+			c.Close()
+			return
 		}
 	}
 }

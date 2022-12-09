@@ -69,8 +69,7 @@ void MailServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	}
 	else
 	{
-		S_INT_64 gateid = pro->head_.get_token_gateiid();
-		svrApp.send_protocal_to_gate(gateid, p_msg.release());
+		svrApp.router_to_gate(p_msg.release());
 	}
 }
 

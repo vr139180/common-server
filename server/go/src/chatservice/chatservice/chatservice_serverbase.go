@@ -85,6 +85,23 @@ func (l *ChatService) LoadGameConfig() (err error) {
 }
 
 func (l *ChatService) InitNetwork() (err error) {
+	/*
+		vx := netx.NewNetHashingWithVNode(800)
+		vx.AddRealNode(10)
+		vx.AddRealNode(100)
+		vx.AddRealNode(50)
+		vx.AddRealNode(80)
+		vx.BuildNetHashing()
+		var val int64 = vx.GetNetNodeByKey(100)
+		logx.Debugf("%d", val)
+		val = vx.GetNetNodeByKey(1000)
+		logx.Debugf("%d", val)
+		val = vx.GetNetNodeByKey(5)
+		logx.Debugf("%d", val)
+		val = vx.GetNetNodeByKey(50)
+		logx.Debugf("%d", val)
+	*/
+
 	// init factory
 	l.proFactory = protobuf.NewProtobufFactory()
 	// call parent initnetwork
@@ -95,7 +112,7 @@ func (l *ChatService) InitNetwork() (err error) {
 
 	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
 	if !ok {
-		return errors.New("get eureka master node failed.")
+		return errors.New("get eureka master node failed")
 	}
 
 	subs := [...]int{int(service.ServiceType_ServiceRouter)}

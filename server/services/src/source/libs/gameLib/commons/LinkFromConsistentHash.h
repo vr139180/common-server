@@ -38,6 +38,7 @@ public:
 	void sync_balance_services(std::list<S_INT_64>& iids);
 
 	T* ask_free_link();
+	T* get_servicelink_bykey(S_INT_64 iid);
 	T* get_servicelink_byiid(S_INT_64 iid);
 	T* get_servicelink_byiid_nomutex(S_INT_64 iid);
 	virtual void return_freelink(T* link);
@@ -214,6 +215,20 @@ T* LinkFromConsistentHash<T>::regist_onlinelink(T* link)
 
 	online_links_[link->get_iid()] = link;
 	return link;
+}
+
+template<typename T>
+T* LinkFromConsistentHash<T>::get_servicelink_bykey(S_INT_64 iid)
+{
+	T* plink = 0;
+	{
+		ThreadLockWrapper guard(lock_);
+
+		S_INT_64 linkid = nethash_.get_netnode_byval(iid);
+		plink = get_servicelink_byiid_nomutex(linkid);
+	}
+
+	return plink;
 }
 
 template<typename T>

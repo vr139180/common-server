@@ -47,7 +47,22 @@ S_INT_64 ChatModule::new_custom_channelid()
 	return (((channel_seed_ << 43)&CUSTOMCHANNEL_MASK_ZERO_L) | iids_);
 }
 
-int ChatModule::channelid_to_chathash(int type, S_INT_64 channelid)
+void ChatModule::send_to_chat( S_INT_64 channelid, const SProtocolHead& head, BasicProtocol* msg)
 {
-	return (channelid);
+	NetProtocol* pro = new NetProtocol(head, msg);
+
+	SProtocolHead& wh = pro->write_head();
+	wh.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
+	wh.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_CHAT;
+
+	svrApp.router_to_chat(channelid, pro);
+}
+
+void ChatModule::send_to_chat(S_INT_64 channelid, NetProtocol* pro)
+{
+	SProtocolHead& wh = pro->write_head();
+	wh.from_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_SVRROUTER;
+	wh.to_type_ = (S_INT_8)NETSERVICE_TYPE::ERK_SERVICE_CHAT;
+
+	svrApp.router_to_chat(channelid, pro);
 }

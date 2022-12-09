@@ -19,12 +19,12 @@ import (
 	"cmslib/logx"
 	"cmslib/mysqlx"
 	"cmslib/netx"
-	"cmslib/protocolx"
 	"cmslib/redisutil"
 	server "cmslib/server"
 	"cmslib/timerx"
 	"cmslib/utilc"
 	"encoding/xml"
+	"errors"
 	"gamelib/config"
 	"gamelib/eureka"
 	"gamelib/protobuf"
@@ -95,17 +95,19 @@ func (l *MailService) InitNetwork() (err error) {
 		return err
 	}
 
-	//chathash扩展参数
-	exts := make(map[string]string)
+	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
+	if !ok {
+		return errors.New("get eureka master node failed.")
+	}
 
 	subs := [...]int{int(service.ServiceType_ServiceRouter)}
-	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Mail, l.configTool.Ip, l.configTool.Port, exts, subs[0:], l)
+	balances := [...]int{int(service.ServiceType_Mail)}
+	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_Mail, l.configTool.Ip, l.configTool.Port, nil,
+		node, subs[0:], balances[0:], false, l)
 
-	var defhead protocolx.SProtocolHead
-	defhead.InitHead()
-	defhead.FromType = int8(service.ServiceType_Mail)
-	defhead.ToType = int8(service.ServiceType_ServiceRouter)
-	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l, defhead)
+	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l)
+
+	l.Accept(l.configTool.Ip, l.configTool.Port, true)
 
 	return nil
 }
@@ -119,7 +121,7 @@ func (l *MailService) InitDatabase() (err error) {
 	}
 
 	ropt := &(l.AppOption.RedisOpt)
-	l.redisX, err = redisutil.NewRedisUtil(ropt.Ip, ropt.Port, ropt.Auth, ropt.Db)
+	l.redisX, err = redisutil.NewRedisUtil(ropt)
 	if err != nil {
 		logx.Errorf("init redis client failed")
 		return err
@@ -141,7 +143,7 @@ func (l *MailService) InitFinish() error {
 	l.dbProcessor = dbprocessor.NewDBMailProcessor(l.AppOption.MLProcessorNum)
 	l.dbProcessor.Start()
 
-	l.eureka.Start(l.configTool.GlobalOpt.EurekaIp, l.configTool.GlobalOpt.EurekaPort)
+	l.eureka.Start()
 	l.routerSvrs.Start()
 
 	return nil

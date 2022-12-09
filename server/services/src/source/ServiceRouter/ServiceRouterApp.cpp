@@ -381,7 +381,7 @@ void ServiceRouterApp::on_disconnected_with_frdservice(FriendServiceLinkFrom* pl
 	}
 }
 
-void ServiceRouterApp::dispatch_to_router(NetProtocol* pro)
+void ServiceRouterApp::router_to_gate(NetProtocol* pro)
 {
 	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
 		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
@@ -389,85 +389,65 @@ void ServiceRouterApp::dispatch_to_router(NetProtocol* pro)
 		pro->get_msg());
 
 	std::unique_ptr<NetProtocol> xptr(pro);
-	NETSERVICE_TYPE gto = (NETSERVICE_TYPE)pro->get_to();
-
-	if (gto == NETSERVICE_TYPE::ERK_SERVICE_CHAT)
-	{
-		if (pro->circle_out(VNODE_MAX_CIRCLES))
-			return;
-	}
-	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_FRIEND)
-	{
-		if (pro->circle_out(VNODE_MAX_CIRCLES))
-			return;
-	}
-	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_MAIL)
-	{
-		if (pro->circle_out(VNODE_MAX_CIRCLES))
-			return;
-	}
-	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GATE || gto == NETSERVICE_TYPE::ERK_SERVICE_HOME ||
-		gto == NETSERVICE_TYPE::ERK_SERVICE_STATE || gto == NETSERVICE_TYPE::ERK_SERVICE_DATAROUTER)
-	{
-
-	}
-	else if (gto == NETSERVICE_TYPE::ERK_SERVICE_GAME || gto == NETSERVICE_TYPE::ERK_SERVICE_UNION ||
-		gto == NETSERVICE_TYPE::ERK_SERVICE_FIGHTROUTER)
-	{
-
-	}
-}
-
-void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, BasicProtocol* msg)
-{
+	S_INT_64 gateiid = pro->head_.get_token_gateiid();
 	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
 	if (plink == 0)
-	{
-		delete msg;
 		return;
-	}
 
-	plink->send_netprotocol(msg);
+	plink->send_protocol(xptr.release());
 }
 
-void ServiceRouterApp::send_protocal_to_gate(S_INT_64 gateiid, NetProtocol* msg)
+void ServiceRouterApp::router_to_chat(S_INT_64 channelid, NetProtocol* pro)
 {
-	GateServiceLinkFrom* plink = gate_links_from_.get_servicelink_byiid(gateiid);
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	std::unique_ptr<NetProtocol> xptr(pro);
+	if (pro->circle_out(VNODE_MAX_CIRCLES))
+		return;
+
+	chat_links_from_.send_protocol(channelid, xptr.release());
+}
+
+void ServiceRouterApp::router_to_mail(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	std::unique_ptr<NetProtocol> xptr(pro);
+	if (pro->circle_out(VNODE_MAX_CIRCLES))
+		return;
+
+	mail_links_from_.send_protocol(pro->get_roleiid(), pro);
+}
+
+void ServiceRouterApp::router_to_friend(NetProtocol* pro)
+{
+	logDebug(out_runtime, "msg router from:%s to:%s msgid:%d",
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.from_type_).c_str(),
+		NetServiceType::to_string((NETSERVICE_TYPE)pro->head_.to_type_).c_str(),
+		pro->get_msg());
+
+	std::unique_ptr<NetProtocol> xptr(pro);
+	if (pro->circle_out(VNODE_MAX_CIRCLES))
+		return;
+
+	friend_links_from_.send_protocol(pro->get_roleiid(), pro);
+}
+
+S_INT_64 ServiceRouterApp::get_chat_by_channelid(S_INT_64 cid)
+{
+	ChatServiceLinkFrom* plink = chat_links_from_.get_servicelink_bykey(cid);
 	if (plink == 0)
-	{
-		delete msg;
-		return;
-	}
-
-	plink->send_protocol(msg);
-}
-
-void ServiceRouterApp::send_protocal_to_chat(S_INT_64 chathash, BasicProtocol* msg)
-{
-	chat_links_from_.send_netprotocol(chathash, msg);
-}
-
-void ServiceRouterApp::send_protocal_to_mail(S_INT_64 roleiid, BasicProtocol* msg)
-{
-	mail_links_from_.send_netprotocol(roleiid, msg);
-}
-
-void ServiceRouterApp::send_protocal_to_mail(NetProtocol* msg)
-{
-	mail_links_from_.send_protocol(msg->get_roleiid(), msg);
+		return 0;
+	return plink->get_iid();
 }
 
 void ServiceRouterApp::send_protocal_to_mail_circle(NetProtocol* msg)
 {
 	//mail_links_from_.send_mth_protocol_circle(msg);
-}
-
-void ServiceRouterApp::send_protocal_to_friend(S_INT_64 roleiid, BasicProtocol* msg)
-{
-	friend_links_from_.send_netprotocol(roleiid, msg);
-}
-
-void ServiceRouterApp::send_protocal_to_friend(NetProtocol* msg)
-{
-	friend_links_from_.send_protocol(msg->get_roleiid(), msg);
 }

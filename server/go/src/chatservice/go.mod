@@ -11,7 +11,7 @@ require google.golang.org/protobuf v1.26.0
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-redis/redis/v8 v8.11.4 // indirect
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible // indirect
 	github.com/lestrrat-go/strftime v1.0.5 // indirect
@@ -29,6 +29,8 @@ require (
 )
 
 replace cmslib => D:\workspace\common_server\server\go\src\cmslib
+
 replace gamelib => D:\workspace\common_server\server\go\src\gamelib
+
 //replace cmslib => /datas/go/src/cmslib
 //replace gamelib => /datas/go/src/gamelib

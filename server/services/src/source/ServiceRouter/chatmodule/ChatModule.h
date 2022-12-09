@@ -34,16 +34,17 @@ public:
 	void process_chat_msg( NetProtocol* pro);
 
 protected:
-	void on_customchannelid_req(S_INT_64 sidgid, S_INT_64 slottoken);
-	void on_userchannel_active(BasicProtocol* pro);
+	void on_customchannelid_req(const SProtocolHead& head);
+
+	void on_userchannel_active(NetProtocol* pro);
 	void on_user_say_somthing(NetProtocol* pro);
+
+	void send_to_chat(S_INT_64 channelid, const SProtocolHead& head, BasicProtocol* msg);
+	void send_to_chat(S_INT_64 channelid, NetProtocol* pro);
 
 protected:
 	//新建新的编号
 	S_INT_64 new_custom_channelid();
-
-	//channeldid hash 到chat服务
-	int channelid_to_chathash( int type, S_INT_64 channelid);
 
 private:
 	//sid作为custom channel id的种子

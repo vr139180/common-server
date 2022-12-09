@@ -29,7 +29,8 @@ import (
 type UserInfo struct {
 	datas.DoubleLinkBase
 
-	s_head protocolx.SProtocolHead
+	roleiid int64
+	token   protocolx.UserToken
 
 	//最后更新时间
 	lastUpdate int64
@@ -38,7 +39,8 @@ type UserInfo struct {
 func NewUserInfo(h protocolx.SProtocolHead) (u *UserInfo) {
 	u = new(UserInfo)
 
-	u.s_head = h
+	u.token = h.Token
+	u.roleiid = h.RoleId
 
 	u.UpdateLasttime()
 
@@ -49,12 +51,12 @@ func (u *UserInfo) UpdateLasttime() {
 	u.lastUpdate = utilc.GetTimestamp()
 }
 
-func (u *UserInfo) GetUserIid() int64 {
-	return u.s_head.Token.GetTokenUserIid()
+func (u *UserInfo) GetRoleIid() int64 {
+	return u.roleiid
 }
 
 func (u *UserInfo) GetGateIid() int64 {
-	return u.s_head.Token.GetTokenGateIid()
+	return u.token.GetTokenGateIid()
 }
 
 func (u *UserInfo) IsActived(tnow int64) bool {
@@ -73,14 +75,24 @@ func (u *UserInfo) SendChatMsg(item *gpro.ChatMessageItem, ch IChannel) {
 }
 
 func (u *UserInfo) SendNetProtocol(msg proto.Message) {
-	pro := protocolx.NewNetProtocolByHeadMsg(msg, &u.s_head)
+	pro := protocolx.NewNetProtocolByMsg(msg)
+	head := pro.WriteHead()
+	head.Token = u.token
+	head.RoleId = u.roleiid
+	head.ToType = int8(service.ServiceType_Gate)
+	head.FromType = int8(service.ServiceType_Chat)
+
 	g.SendMsgToRouter(pro)
 }
 
 func (u *UserInfo) SendNetProtocolTo(gto service.ServiceType, msg proto.Message) {
-	pro := protocolx.NewNetProtocolByHeadMsg(msg, &u.s_head)
-	h := pro.WriteHead()
-	h.ToType = int8(gto)
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	head := pro.WriteHead()
+	head.Token = u.token
+	head.RoleId = u.roleiid
+	head.ToType = int8(gto)
+	head.FromType = int8(service.ServiceType_Chat)
 
 	g.SendMsgToRouter(pro)
 }

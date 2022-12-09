@@ -43,7 +43,7 @@ func (cb *CustomChannel) UserSay(pro *protocolx.NetProtocol) {
 	}
 
 	msg := pro.Msg.(*gpro.Chat_UserMsgSay)
-	item := cb.saveMessage(say.GetUserIid(), msg)
+	item := cb.saveMessage(say.GetRoleIid(), msg)
 
 	tnow := utilc.GetTimestamp()
 	for iu := cb.usersLink.GetHeadElement(); iu != nil; {

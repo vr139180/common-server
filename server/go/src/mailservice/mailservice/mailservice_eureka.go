@@ -42,3 +42,6 @@ func (l *MailService) OnServiceChanged(stype service.ServiceType, newiids []*eur
 		l.routerSvrs.SyncServiceNodes(stype, newiids, deliids)
 	}
 }
+
+func (l *MailService) OnRouterBalanceNew(stype service.ServiceType, svrs []int64) {
+}

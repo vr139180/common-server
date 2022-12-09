@@ -22,8 +22,6 @@
 #include <gameLib/protobuf/Proto_all.h>
 
 #include "chatmodule/ChatModule.h"
-#include "mailmodule/MailModule.h"
-#include "friends/FriendModule.h"
 
 #include "ServiceRouterApp.h"
 
@@ -65,11 +63,18 @@ void GateServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	}
 	else if (msgid > PRO::MAIL_PROTYPE::MAIL_MSG_BEGIN && msgid < PRO::MAIL_PROTYPE::MAIL_MSGALL_END)
 	{
-		MailModule::instance().process_mail_msg( p_msg.release());
+		if (msgid == PRO::MAIL_PROTYPE::MAIL_SYSTEMMAIL_REQ)
+		{
+			//svrApp.send_protocal_to_mail_circle(p_msg.release());
+		}
+		else
+		{
+			svrApp.router_to_mail(p_msg.release());
+		}
 	}
 	else if (msgid > PRO::FRIEND_PROTYPE::FRIEND_MSG_BEGIN && msgid < PRO::FRIEND_PROTYPE::FRIEND_MSGALL_END)
 	{
-		FriendModule::instance().process_friend_msg( p_msg.release());
+		svrApp.router_to_friend(p_msg.release());
 	}
 }
 

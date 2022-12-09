@@ -85,8 +85,29 @@ RouterConfig* DataRouterApp::load_routerconfig()
 	return xptr.release();
 }
 
+#include <cmsLib/net/NetHashingWithVNode.h>
+
 bool DataRouterApp::pre_init()
 {
+	/*
+	NetHashingWithVNode<S_INT_64> nodes;
+	nodes.init_vnode(800);
+	nodes.add_realnode(10, 10);
+	nodes.add_realnode(100, 100);
+	nodes.add_realnode(50, 50);
+	nodes.add_realnode(80, 80);
+	nodes.build_nethashing();
+
+	S_INT_64 val = nodes.get_netnode_byval(100);
+	logDebug(out_runtime, "%lld", val);
+	val = nodes.get_netnode_byval(1000);
+	logDebug(out_runtime, "%lld", val);
+	val = nodes.get_netnode_byval(5);
+	logDebug(out_runtime, "%lld", val);
+	val = nodes.get_netnode_byval(50);
+	logDebug(out_runtime, "%lld", val);
+	*/
+
 	session_from_.init_sessions(ConfigHelper::instance().get_globaloption().svrnum_min);
 
 	gate_links_from_.init_holder();

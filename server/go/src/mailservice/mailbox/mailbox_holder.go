@@ -226,18 +226,18 @@ func (ch *MailBoxHolder) DeleteMail(roleiid int64, mailiid int64, token protocol
 //run in the boxholder goroutine
 func (ch *MailBoxHolder) OnNetCmdHanderl(pro *protocolx.NetProtocol) {
 
-	useriid := pro.GetTokenRoleIid()
+	roleid := pro.GetRoleIid()
 
-	mbox := ch.GetMailBoxBy(useriid)
+	mbox := ch.GetMailBoxBy(roleid)
 	if mbox == nil {
-		ubox, success := initUserMailBoxFromRedis(useriid, pro.GetUserToken(), ch)
+		ubox, success := initUserMailBoxFromRedis(roleid, pro.GetUserToken(), ch)
 		if success {
 			mbox = ubox
 			ch.mailboxsLink.AddHeadElement(ubox)
 			ch.mailboxs[ubox.GetReceiver()] = ubox
 		} else {
 			//load from database
-			cmd := newDBLoadUserMailCmd(useriid, ch, pro)
+			cmd := newDBLoadUserMailCmd(roleid, ch, pro)
 			g.PostDBProcessor(cmd)
 		}
 	}

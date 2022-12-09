@@ -22,8 +22,6 @@
 #include <gameLib/LogExt.h>
 #include <gameLib/protobuf/Proto_all.h>
 
-#include "friends/FriendModule.h"
-
 #include "ServiceRouterApp.h"
 
 FriendServiceLinkFrom::FriendServiceLinkFrom() :NetLinkFromBase<RouterSession>()
@@ -62,12 +60,11 @@ void FriendServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	{
 		//系统邮件发送成功之后，在route广播通知各个mail 更新最新的系统邮件
 		//PRO::Frd_FriendChangeOther_ntf* ack = dynamic_cast<PRO::Frd_FriendChangeOther_ntf*>(pro->msg_);
-		svrApp.send_protocal_to_friend(p_msg.release());
+		//svrApp.send_protocal_to_friend(p_msg.release());
 	}
 	else
 	{
-		S_INT_64 gateid = pro->head_.get_token_gateiid();
-		svrApp.send_protocal_to_gate(gateid, p_msg.release());
+		svrApp.router_to_gate(p_msg.release());
 	}
 }
 

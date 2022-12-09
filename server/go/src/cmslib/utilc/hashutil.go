@@ -13,22 +13,35 @@
 // limitations under the License.
 //
 
-#include "friends/FriendModule.h"
+package utilc
 
-#include <cmsLib/util/Random.h>
+//fnv1-32hash算法
+func HashFNV1_32(str string) int32 {
+	var p int32 = 16777619
+	var hash int32 = 0
+	{
+		vv := 2166136261
+		hash = int32(vv)
+	}
 
-#include "ServiceRouterApp.h"
+	for _, s := range []byte(str) {
+		hash = (hash ^ int32(s)) * p
+	}
 
-FriendModule::FriendModule()
-{
-}
+	hash += hash << 13
+	hash ^= hash >> 7
+	hash += hash << 3
+	hash ^= hash >> 17
+	hash += hash << 5
 
-FriendModule& FriendModule::instance()
-{
-	static FriendModule s_instance;
-	return s_instance;
-}
+	if hash < 0 {
+		hash *= -1
+	}
 
-void FriendModule::init_friendmodule(S_INT_64 myiid)
-{
+	return hash
+	/*
+		h := fnv.New32()
+		h.Write([]byte(str))
+		return int32(h.Sum32())
+	*/
 }

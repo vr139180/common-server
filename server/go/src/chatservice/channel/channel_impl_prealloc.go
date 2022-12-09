@@ -32,6 +32,19 @@ func newPreAllocChannel(t ChannelType, cid int64, cind int) (pc *PreAllocChannel
 	return
 }
 
+func (cb *PreAllocChannel) UserActive(u *UserInfo, tnow int64) {
+	ou := cb.GetUserByIid(u.GetRoleIid())
+	if ou != nil {
+		cb.usersLink.DelElement(ou)
+	}
+
+	cb.usersLink.AddHeadElement(u)
+	cb.users[u.GetRoleIid()] = u
+
+	//激活处理
+	cb.MaintanceOfflineUsers(tnow, false)
+}
+
 func (cb *PreAllocChannel) UserSay(pro *protocolx.NetProtocol) {
 	say := cb.getUserOfMsg(pro)
 	if say == nil {
@@ -39,7 +52,7 @@ func (cb *PreAllocChannel) UserSay(pro *protocolx.NetProtocol) {
 	}
 
 	msg := pro.Msg.(*gpro.Chat_UserMsgSay)
-	item := cb.saveMessage(say.GetUserIid(), msg)
+	item := cb.saveMessage(say.GetRoleIid(), msg)
 
 	tnow := utilc.GetTimestamp()
 	for iu := cb.usersLink.GetHeadElement(); iu != nil; {

@@ -30,8 +30,6 @@ import (
 	"mailservice/mailbox"
 	"mailservice/processor"
 	"mailservice/xinf"
-
-	"google.golang.org/protobuf/proto"
 )
 
 type MailService struct {
@@ -74,8 +72,8 @@ func (r *MailService) GetDBClient() *mysqlx.MysqlClient {
 	return r.dbClient
 }
 
-func (r *MailService) SendMsgToRouter(totype int8, token protocolx.UserToken, msg proto.Message) {
-	r.routerSvrs.SendNetMessage(totype, token, msg)
+func (r *MailService) SendMsgToRouter(pro *protocolx.NetProtocol) {
+	r.routerSvrs.SendNetMessage2(pro)
 }
 
 func (r *MailService) DoMailBoxMaintance(loopIndex int) {

@@ -140,7 +140,7 @@ void ScriptDlg::regist()
 	add_function("pet_releaseone(1)", "抛弃一个宠物");
 
 	//chat
-	add_function("chat_say(2,100,'abc xxx U')", "发送聊天消息 2,4,5  100,userid,200");
+	add_function("chat_say(2,100,'abc xxx U')", "发送聊天 t:2,4,5 cid:100 msg:");
 
 	//mail
 	add_function("mail_useractive()", "激活邮箱");
