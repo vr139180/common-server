@@ -21,7 +21,6 @@ import (
 	"cmslib/utilc"
 	"fmt"
 	"friendservice/g"
-	"friendservice/xinf"
 	"gamelib/protobuf/gpro"
 	"strings"
 
@@ -119,10 +118,8 @@ type FriendHome struct {
 	//user info
 	inited bool
 
-	gateIid int64
 	//user token head
-	userInfo gpro.FriendUserInfo
-
+	userToken protocolx.UserToken
 	//接收方
 	RoleIid int64
 
@@ -143,7 +140,7 @@ func newFriendHome(roleiid int64, ch *FriendsHolder) (f *FriendHome) {
 	return
 }
 
-func initFriendHomeFromRedis(roleiid int64, shead protocolx.SProtocolHead, ch *FriendsHolder) (u *FriendHome, success bool) {
+func initFriendHomeFromRedis(roleiid int64, shead protocolx.UserToken, ch *FriendsHolder) (u *FriendHome, success bool) {
 	success = false
 	rd := g.GetRedis()
 
@@ -189,7 +186,7 @@ func initFriendHomeFromRedis(roleiid int64, shead protocolx.SProtocolHead, ch *F
 	return
 }
 
-func (f *FriendHome) InitFriendHome(frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead protocolx.SProtocolHead) {
+func (f *FriendHome) InitFriendHome(frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead protocolx.UserToken) {
 	if f.inited {
 		return
 	}
@@ -260,13 +257,12 @@ func (f *FriendHome) saveAllToRedis() {
 	rd.Expire(udkey, USER_FRIENDSHOME_EXPIRESEC)
 }
 
-func (f *FriendHome) SyncUserToken(shead protocolx.SProtocolHead) {
-	f.userInfo.Token = token
-	f.gateIid, _ = xinf.ParseUserGate(uint64(token.GetGiduid()))
+func (f *FriendHome) SyncUserToken(token protocolx.UserToken) {
+	f.userToken = token
 
 	rd := g.GetRedis()
 	udkey := rd.BuildKey(REDIS_USERINFO, f.RoleIid)
-	dat := utilc.ProtoToBytes(&f.userInfo)
+	dat := utilc.ProtoToBytes(&f.userToken)
 	if dat != nil {
 		rd.AddEX(udkey, dat, USER_FRIENDSINFO_EXPIRESEC)
 	}

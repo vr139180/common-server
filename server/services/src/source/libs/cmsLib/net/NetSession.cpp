@@ -146,7 +146,8 @@ void NetSession::reset_nomutex()
 		if (websocket_ != 0 && websocket_->is_open())
 		{
 			websocket::close_reason err;
-			websocket_->close(err);
+			boost::system::error_code cs;
+			websocket_->close(err, cs);
 		}
 
 		websocket_.reset();

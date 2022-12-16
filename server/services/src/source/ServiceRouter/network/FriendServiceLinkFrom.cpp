@@ -58,7 +58,6 @@ void FriendServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 	
 	if (msgid == PRO::FRIEND_PROTYPE::FRD_FRIENDCHANGEOTHER_NTF)
 	{
-		//系统邮件发送成功之后，在route广播通知各个mail 更新最新的系统邮件
 		//PRO::Frd_FriendChangeOther_ntf* ack = dynamic_cast<PRO::Frd_FriendChangeOther_ntf*>(pro->msg_);
 		//svrApp.send_protocal_to_friend(p_msg.release());
 	}
