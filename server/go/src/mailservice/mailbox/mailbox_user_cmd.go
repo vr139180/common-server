@@ -20,6 +20,7 @@ import (
 	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
+	"gamelib/service"
 	"mailservice/data/db/entity"
 	"mailservice/g"
 	"time"
@@ -34,12 +35,15 @@ type dbNewUserMailCmd struct {
 	ctrl *MailBoxCtrl
 
 	mdata *gpro.MailNormalItem
+
+	result int32
 }
 
 func newDBNewUserMailCmd(p *protocolx.NetProtocol, ctrl *MailBoxCtrl) (c *dbNewUserMailCmd) {
 	c = new(dbNewUserMailCmd)
 	c.mailc = p
 	c.ctrl = ctrl
+	c.result = 0
 
 	return
 }
@@ -59,7 +63,7 @@ func (c *dbNewUserMailCmd) RunInDBProcessor() {
 	bean.AttachInfo = mailreq.GetAttachinfo()
 	bean.CreateTime = time.Now()
 
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err2 := session.Begin()
 		if err2 != nil {
@@ -74,7 +78,7 @@ func (c *dbNewUserMailCmd) RunInDBProcessor() {
 		}
 
 		if affect > 0 {
-			result = 0
+			c.result = 0
 			c.mdata = dbToRedisBeanOfUserMail(bean)
 		}
 
@@ -83,24 +87,39 @@ func (c *dbNewUserMailCmd) RunInDBProcessor() {
 	})
 
 	if err != nil {
-		result = 1
+		c.result = 1
 		logx.Errorf("new a user mail failed, err:%s", err.Error())
 	}
 
-	if result == 0 {
+	if c.result == 0 {
 		logx.Debugf("new a user mail:%d success", bean.Iid)
-		g.PostToSysMailProcessor(c)
 	}
 
-	ack := &gpro.Mail_NewMailAck{Result: int32(result)}
-	if c.mdata != nil {
-		ack.Mail = c.mdata
-	}
 	g.PostToSysMailProcessor(c)
 }
 
 func (c *dbNewUserMailCmd) ProcessMail() {
-	c.ctrl.NotifyNewUserMail(c.mdata)
+	{
+		ack := &gpro.Mail_NewMailAck{Result: c.result}
+		if c.mdata != nil {
+			ack.Mail = c.mdata
+		}
+
+		mailreq := c.mailc.Msg.(*gpro.Mail_NewMailReq)
+
+		pro := protocolx.NewNetProtocolByMsg(ack)
+		head := pro.WriteHead()
+		head.Token = c.mailc.GetUserToken()
+		head.RoleId = mailreq.GetSenderIid()
+		head.ToType = int8(service.ServiceType_Gate)
+		head.FromType = int8(service.ServiceType_Mail)
+
+		g.SendNetToRouter(pro)
+	}
+
+	if c.result == 0 {
+		c.ctrl.NotifyNewUserMail(c.mdata)
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -278,6 +297,8 @@ type dbReadMailCmd struct {
 	RoleIid int64
 	holder  *MailBoxHolder
 	token   protocolx.UserToken
+
+	result int32
 }
 
 func newDBReadMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocolx.UserToken) (c *dbReadMailCmd) {
@@ -286,6 +307,7 @@ func newDBReadMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocol
 	c.RoleIid = roleiid
 	c.holder = h
 	c.token = token
+	c.result = 0
 
 	return
 }
@@ -293,7 +315,7 @@ func newDBReadMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocol
 func (c *dbReadMailCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err1 := session.Begin()
 		if err1 != nil {
@@ -308,9 +330,9 @@ func (c *dbReadMailCmd) RunInDBProcessor() {
 		}
 
 		if affect > 0 {
-			result = 0
+			c.result = 0
 		} else {
-			result = 3 //already read
+			c.result = 3 //already read
 		}
 
 		err1 = session.Commit()
@@ -318,19 +340,21 @@ func (c *dbReadMailCmd) RunInDBProcessor() {
 	})
 
 	if err != nil {
-		result = 1
+		c.result = 1
 		logx.Errorf("read user:%d mail:%d failed, err:%s", c.RoleIid, c.mailiid, err.Error())
 	}
 
-	ack := &gpro.Mail_ReadMailAck{Result: int32(result), MailIid: c.mailiid}
-	g.SendMsgToRouter(ack)
-
-	if result == 0 {
-		g.PostMailProcessor(c.holder.loopIndex, c)
-	}
+	g.PostMailProcessor(c.holder.loopIndex, c)
 }
 
 func (c *dbReadMailCmd) ProcessMail() {
+	mbox := c.holder.GetMailBoxBy(c.RoleIid)
+	if mbox != nil {
+		ubox := mbox.(*MailBoxRoleOfUser)
+
+		ack := &gpro.Mail_ReadMailAck{Result: c.result, MailIid: c.mailiid}
+		ubox.SendNetProtocol(ack)
+	}
 	c.holder.ReadMail(c.RoleIid, c.mailiid, c.token)
 }
 
@@ -340,6 +364,8 @@ type dbDeleteMailCmd struct {
 	RoleIid int64
 	holder  *MailBoxHolder
 	token   protocolx.UserToken
+
+	result int32
 }
 
 func newDBDeleteMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protocolx.UserToken) (c *dbDeleteMailCmd) {
@@ -348,6 +374,7 @@ func newDBDeleteMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protoc
 	c.RoleIid = roleiid
 	c.holder = h
 	c.token = token
+	c.result = 0
 
 	return
 }
@@ -355,7 +382,7 @@ func newDBDeleteMailCmd(mid int64, roleiid int64, h *MailBoxHolder, token protoc
 func (c *dbDeleteMailCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err1 := session.Begin()
 		if err1 != nil {
@@ -370,9 +397,9 @@ func (c *dbDeleteMailCmd) RunInDBProcessor() {
 		}
 
 		if affect > 0 {
-			result = 0
+			c.result = 0
 		} else {
-			result = 2
+			c.result = 2
 		}
 
 		err1 = session.Commit()
@@ -380,20 +407,22 @@ func (c *dbDeleteMailCmd) RunInDBProcessor() {
 	})
 
 	if err != nil {
-		result = 1
+		c.result = 1
 		logx.Errorf("delete user:%d mail:%d failed, err:%s", c.RoleIid, c.mailiid, err.Error())
 	}
 
-	ack := &gpro.Mail_DeleteMailAck{Result: int32(result), MailIid: c.mailiid}
-
-	g.SendMsgToRouter(ack)
-
-	if result == 0 {
-		g.PostMailProcessor(c.holder.loopIndex, c)
-	}
+	g.PostMailProcessor(c.holder.loopIndex, c)
 }
 
 func (c *dbDeleteMailCmd) ProcessMail() {
+	mbox := c.holder.GetMailBoxBy(c.RoleIid)
+	if mbox != nil {
+		ubox := mbox.(*MailBoxRoleOfUser)
+
+		ack := &gpro.Mail_DeleteMailAck{Result: c.result, MailIid: c.mailiid}
+		ubox.SendNetProtocol(ack)
+	}
+
 	c.holder.DeleteMail(c.RoleIid, c.mailiid, c.token)
 }
 

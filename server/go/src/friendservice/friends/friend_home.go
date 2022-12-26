@@ -51,7 +51,32 @@ type friendUserInfo struct {
 	data *gpro.FriendRelation
 	//token
 	online *gpro.FriendUserInfo
+
+	//IDoubleLink members
+	preObj  datas.IDoubleLink
+	nextObj datas.IDoubleLink
 }
+
+//-----------------------------IDoubleLink----------------------------------------
+func (p *friendUserInfo) DLGetPreObj() (n datas.IDoubleLink) {
+	n = p.preObj
+	return
+}
+
+func (p *friendUserInfo) DLSetPreObj(n datas.IDoubleLink) {
+	p.preObj = n
+}
+
+func (p *friendUserInfo) DLGetNextObj() (n datas.IDoubleLink) {
+	n = p.nextObj
+	return
+}
+
+func (p *friendUserInfo) DLSetNextObj(n datas.IDoubleLink) {
+	p.nextObj = n
+}
+
+//-------------------------------------------------------------------------------
 
 func newFriendUserInfo(d *gpro.FriendRelation) (fi *friendUserInfo) {
 	fi = new(friendUserInfo)

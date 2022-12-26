@@ -66,6 +66,8 @@ void MailServiceLinkFrom::on_recv_protocol_netthread(NetProtocol* pro)
 			ntf.set_mailiid( ack->mail().iid());
 			svrApp.broad_protocal_to_mails(&ntf);
 		}
+
+		//TODO:转发回系统邮件请求方
 	}
 	else
 	{

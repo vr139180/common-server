@@ -19,8 +19,11 @@ import (
 	"cmslib/protocolx"
 	"cmslib/utilc"
 	"gamelib/protobuf/gpro"
+	"gamelib/service"
 	"mailservice/data/db/entity"
 	"mailservice/g"
+
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -59,9 +62,7 @@ type MailBoxRoleOfUser struct {
 	unreadNum int
 
 	//user info
-	inited  bool
-	userIid int64
-	gateIid int64
+	inited bool
 	//user token head
 	token protocolx.UserToken
 
@@ -215,9 +216,37 @@ func (u *MailBoxRoleOfUser) saveAllToRedis() {
 
 func (u *MailBoxRoleOfUser) SyncUserToken(token protocolx.UserToken) {
 	u.token = token
+}
 
-	u.gateIid = token.GetTokenGateIid()
-	u.userIid = token.GetTokenRoleIid()
+func (u *MailBoxRoleOfUser) GetRoleIid() int64 {
+	return u.GetReceiver()
+}
+
+func (u *MailBoxRoleOfUser) GetGateIid() int64 {
+	return u.token.GetTokenGateIid()
+}
+
+func (u *MailBoxRoleOfUser) SendNetProtocol(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+	head := pro.WriteHead()
+	head.Token = u.token
+	head.RoleId = u.receiver
+	head.ToType = int8(service.ServiceType_Gate)
+	head.FromType = int8(service.ServiceType_Mail)
+
+	g.SendNetToRouter(pro)
+}
+
+func (u *MailBoxRoleOfUser) SendNetProtocolTo(gto service.ServiceType, msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	head := pro.WriteHead()
+	head.Token = u.token
+	head.RoleId = u.receiver
+	head.ToType = int8(gto)
+	head.FromType = int8(service.ServiceType_Mail)
+
+	g.SendNetToRouter(pro)
 }
 
 func (u *MailBoxRoleOfUser) SyncSystemMail() {
@@ -283,7 +312,7 @@ func (u *MailBoxRoleOfUser) triggerNewMailNotify() {
 
 	msg := &gpro.Mail_NewMailNtf{}
 
-	g.SendMsgToRouter(msg)
+	u.SendNetProtocol(msg)
 }
 
 func (u *MailBoxRoleOfUser) NewMail(mail *gpro.MailNormalItem) {
@@ -318,7 +347,7 @@ func (u *MailBoxRoleOfUser) GetMailsFromBox(pro *protocolx.NetProtocol) {
 	ack.Mails = cts
 	ack.Totle = int32(u.totleNum)
 
-	g.SendMsgToRouter(ack)
+	u.SendNetProtocol(ack)
 }
 
 func (u *MailBoxRoleOfUser) ReadMail(token protocolx.UserToken, mailiid int64) {

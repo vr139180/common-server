@@ -97,7 +97,7 @@ func (l *MailService) InitNetwork() (err error) {
 
 	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
 	if !ok {
-		return errors.New("get eureka master node failed.")
+		return errors.New("get eureka master node failed")
 	}
 
 	subs := [...]int{int(service.ServiceType_ServiceRouter)}

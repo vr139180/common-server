@@ -67,8 +67,6 @@ public:
 	void router_to_mail(NetProtocol* pro);
 	void router_to_friend(NetProtocol* pro);
 
-	void send_protocal_to_mail_circle(NetProtocol* msg);
-
 	void broad_protocal_to_mails(BasicProtocol* msg) {
 		mail_links_from_.broadcast(msg);
 	}

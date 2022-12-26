@@ -24,12 +24,15 @@ import (
 	"gamelib/config"
 	"gamelib/eureka"
 	"gamelib/protobuf"
+	"gamelib/service"
 	"gamelib/xcluster"
 	"mailservice/configsvr"
 	"mailservice/dbprocessor"
 	"mailservice/mailbox"
 	"mailservice/processor"
 	"mailservice/xinf"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type MailService struct {
@@ -72,7 +75,16 @@ func (r *MailService) GetDBClient() *mysqlx.MysqlClient {
 	return r.dbClient
 }
 
-func (r *MailService) SendMsgToRouter(pro *protocolx.NetProtocol) {
+func (r *MailService) SendNetToRouter(pro *protocolx.NetProtocol) {
+	r.routerSvrs.SendNetMessage2(pro)
+}
+
+func (r *MailService) SendMsgToRouter(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	head := pro.WriteHead()
+	head.ToType = int8(service.ServiceType_ServiceRouter)
+	head.FromType = int8(service.ServiceType_Mail)
 	r.routerSvrs.SendNetMessage2(pro)
 }
 

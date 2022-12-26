@@ -422,7 +422,20 @@ void ServiceRouterApp::router_to_mail(NetProtocol* pro)
 	if (pro->circle_out(VNODE_MAX_CIRCLES))
 		return;
 
-	mail_links_from_.send_protocol(pro->get_roleiid(), pro);
+	if (pro->get_msg() == PRO::MAIL_PROTYPE::MAIL_NEWMAIL_REQ)
+	{
+		PRO::Mail_NewMail_req* req = dynamic_cast<PRO::Mail_NewMail_req*>(pro->msg_);
+		mail_links_from_.send_protocol(req->receiver_iid(), xptr.release());
+	}
+	else if (pro->get_msg() == PRO::MAIL_PROTYPE::MAIL_SYSTEMMAIL_REQ)
+	{
+		PRO::Mail_SystemMail_req* req = dynamic_cast<PRO::Mail_SystemMail_req*>(pro->msg_);
+		mail_links_from_.send_protocol(req->sender_iid(), xptr.release());
+	}
+	else
+	{
+		mail_links_from_.send_protocol(pro->get_roleiid(), xptr.release());
+	}
 }
 
 void ServiceRouterApp::router_to_friend(NetProtocol* pro)
@@ -436,7 +449,7 @@ void ServiceRouterApp::router_to_friend(NetProtocol* pro)
 	if (pro->circle_out(VNODE_MAX_CIRCLES))
 		return;
 
-	friend_links_from_.send_protocol(pro->get_roleiid(), pro);
+	friend_links_from_.send_protocol(pro->get_roleiid(), xptr.release());
 }
 
 S_INT_64 ServiceRouterApp::get_chat_by_channelid(S_INT_64 cid)
@@ -445,9 +458,4 @@ S_INT_64 ServiceRouterApp::get_chat_by_channelid(S_INT_64 cid)
 	if (plink == 0)
 		return 0;
 	return plink->get_iid();
-}
-
-void ServiceRouterApp::send_protocal_to_mail_circle(NetProtocol* msg)
-{
-	//mail_links_from_.send_mth_protocol_circle(msg);
 }

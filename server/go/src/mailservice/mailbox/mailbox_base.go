@@ -57,7 +57,32 @@ type MailBoxBase struct {
 	receiver int64
 	//分配到的channel goroutine index
 	loopIndex int
+
+	//IDoubleLink members
+	preObj  datas.IDoubleLink
+	nextObj datas.IDoubleLink
 }
+
+//--------------------------IDoubleLink-------------------------------------------
+func (p *MailBoxBase) DLGetPreObj() (n datas.IDoubleLink) {
+	n = p.preObj
+	return
+}
+
+func (p *MailBoxBase) DLSetPreObj(n datas.IDoubleLink) {
+	p.preObj = n
+}
+
+func (p *MailBoxBase) DLGetNextObj() (n datas.IDoubleLink) {
+	n = p.nextObj
+	return
+}
+
+func (p *MailBoxBase) DLSetNextObj(n datas.IDoubleLink) {
+	p.nextObj = n
+}
+
+//--------------------------------------------------------------------------------
 
 func (cb *MailBoxBase) InitBase(t MailBoxType, cid int64, cind int) {
 	cb.ctype = t
