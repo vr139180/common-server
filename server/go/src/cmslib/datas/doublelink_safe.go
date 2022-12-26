@@ -26,39 +26,19 @@ type IDoubleLink interface {
 	DLSetPreObj(n IDoubleLink)
 	DLGetNextObj() (n IDoubleLink)
 	DLSetNextObj(n IDoubleLink)
-	DLAddHead(n IDoubleLink)
-	DLAddTail(n IDoubleLink)
-	DLDelSelf()
+	DLAddHead(obj IDoubleLink, n IDoubleLink)
+	DLAddTail(obj IDoubleLink, n IDoubleLink)
+	DLDelSelf(obj IDoubleLink)
 }
 
 // 简单封装,
 type DoubleLinkBase struct {
-	//IDoubleLink members
-	preObj  IDoubleLink
-	nextObj IDoubleLink
 }
 
 //-------------------------IDoubleLink interface-------------------------------------
-func (p *DoubleLinkBase) DLGetPreObj() (n IDoubleLink) {
-	n = p.preObj
-	return
-}
 
-func (p *DoubleLinkBase) DLSetPreObj(n IDoubleLink) {
-	p.preObj = n
-}
-
-func (p *DoubleLinkBase) DLGetNextObj() (n IDoubleLink) {
-	n = p.nextObj
-	return
-}
-
-func (p *DoubleLinkBase) DLSetNextObj(n IDoubleLink) {
-	p.nextObj = n
-}
-
-func (p *DoubleLinkBase) DLAddHead(n IDoubleLink) {
-	pre := p.preObj
+func (p *DoubleLinkBase) DLAddHead(obj IDoubleLink, n IDoubleLink) {
+	pre := obj.DLGetPreObj()
 	next := n.DLGetNextObj()
 
 	if pre != nil {
@@ -66,16 +46,16 @@ func (p *DoubleLinkBase) DLAddHead(n IDoubleLink) {
 	}
 	n.DLSetPreObj(pre)
 
-	n.DLSetNextObj(p)
-	p.DLSetPreObj(n)
+	n.DLSetNextObj(obj)
+	obj.DLSetPreObj(n)
 
 	if next != nil {
 		next.DLSetPreObj(nil)
 	}
 }
 
-func (p *DoubleLinkBase) DLAddTail(n IDoubleLink) {
-	next := p.nextObj
+func (p *DoubleLinkBase) DLAddTail(obj IDoubleLink, n IDoubleLink) {
+	next := obj.DLGetNextObj()
 	pre := n.DLGetPreObj()
 
 	if next != nil {
@@ -83,17 +63,17 @@ func (p *DoubleLinkBase) DLAddTail(n IDoubleLink) {
 	}
 	n.DLSetNextObj(next)
 
-	p.DLSetNextObj(n)
-	n.DLSetPreObj(p)
+	obj.DLSetNextObj(n)
+	n.DLSetPreObj(obj)
 
 	if pre != nil {
 		pre.DLSetNextObj(nil)
 	}
 }
 
-func (p *DoubleLinkBase) DLDelSelf() {
-	pre := p.preObj
-	next := p.nextObj
+func (p *DoubleLinkBase) DLDelSelf(obj IDoubleLink) {
+	pre := obj.DLGetPreObj()
+	next := obj.DLGetNextObj()
 
 	if pre != nil {
 		pre.DLSetNextObj(next)
@@ -102,8 +82,8 @@ func (p *DoubleLinkBase) DLDelSelf() {
 		next.DLSetPreObj(pre)
 	}
 
-	p.preObj = nil
-	p.nextObj = nil
+	obj.DLSetPreObj(nil)
+	obj.DLSetNextObj(nil)
 }
 
 //--------------------------------------------------------------------------------------
@@ -145,7 +125,7 @@ func (d *DoubleLinkUnSafe) AddHeadElement(e IDoubleLink) {
 		d.head = e
 		d.tail = d.head
 	} else {
-		d.head.DLAddHead(e)
+		d.head.DLAddHead(d.head, e)
 		d.head = e
 	}
 }
@@ -159,7 +139,7 @@ func (d *DoubleLinkUnSafe) AddTailElement(e IDoubleLink) {
 		d.head = e
 		d.tail = e
 	} else {
-		d.tail.DLAddTail(e)
+		d.tail.DLAddTail(d.tail, e)
 		d.tail = e
 	}
 }
@@ -171,7 +151,7 @@ func (d *DoubleLinkUnSafe) DelElement(e IDoubleLink) {
 
 	if d.head == e {
 		n := d.head.DLGetNextObj()
-		e.DLDelSelf()
+		e.DLDelSelf(e)
 		d.head = n
 
 		if d.head == nil {
@@ -180,7 +160,7 @@ func (d *DoubleLinkUnSafe) DelElement(e IDoubleLink) {
 
 	} else {
 		p := d.tail.DLGetPreObj()
-		e.DLDelSelf()
+		e.DLDelSelf(e)
 
 		if d.tail == e {
 			d.tail = p

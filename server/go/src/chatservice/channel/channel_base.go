@@ -80,7 +80,32 @@ type channelBase struct {
 	channelId int64
 	//分配到的channel goroutine index
 	loopIndex int
+
+	//IDoubleLink members
+	preObj  datas.IDoubleLink
+	nextObj datas.IDoubleLink
 }
+
+//-----------------------------------IDoubleLink implement-------------------------------
+func (u *channelBase) DLGetPreObj() (n datas.IDoubleLink) {
+	n = u.preObj
+	return
+}
+
+func (u *channelBase) DLSetPreObj(n datas.IDoubleLink) {
+	u.preObj = n
+}
+
+func (u *channelBase) DLGetNextObj() (n datas.IDoubleLink) {
+	n = u.nextObj
+	return
+}
+
+func (u *channelBase) DLSetNextObj(n datas.IDoubleLink) {
+	u.nextObj = n
+}
+
+//-----------------------------------IDoubleLink implement-------------------------------
 
 func (cb *channelBase) InitBase(t ChannelType, cid int64, cind int) {
 	cb.ctype = t

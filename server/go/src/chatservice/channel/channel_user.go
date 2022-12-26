@@ -34,7 +34,32 @@ type UserInfo struct {
 
 	//最后更新时间
 	lastUpdate int64
+
+	//IDoubleLink members
+	preObj  datas.IDoubleLink
+	nextObj datas.IDoubleLink
 }
+
+//-----------------------------------IDoubleLink implement-------------------------------
+func (u *UserInfo) DLGetPreObj() (n datas.IDoubleLink) {
+	n = u.preObj
+	return
+}
+
+func (u *UserInfo) DLSetPreObj(n datas.IDoubleLink) {
+	u.preObj = n
+}
+
+func (u *UserInfo) DLGetNextObj() (n datas.IDoubleLink) {
+	n = u.nextObj
+	return
+}
+
+func (u *UserInfo) DLSetNextObj(n datas.IDoubleLink) {
+	u.nextObj = n
+}
+
+//-----------------------------------IDoubleLink implement-------------------------------
 
 func NewUserInfo(h protocolx.SProtocolHead) (u *UserInfo) {
 	u = new(UserInfo)
