@@ -111,7 +111,7 @@ select f.iid as iid, f.from_roleiid as from_roleiid, f.invite_time as invite_tim
 }
 
 func (c *dbLoadFriendHomeCmd) ProcessFriend() {
-	home := c.holder.CacheFriendHome(c.RoleIid, c.frds, c.invites, c.pro.Head)
+	home := c.holder.CacheFriendHome(c.RoleIid, c.frds, c.invites, c.pro.GetUserToken())
 	if home != nil {
 		c.holder.triggerNetProcess(home, c.pro)
 	}
@@ -124,15 +124,18 @@ type dbInviteFriendCmd struct {
 	FromRoleIid int64
 	RoleIid     int64
 	holder      *FriendsHolder
-	shead       protocolx.SProtocolHead
+	shead       protocolx.UserToken
+
+	result int32
 }
 
-func newDBInviteFriendCmd(roleiid int64, fromiid int64, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbInviteFriendCmd) {
+func newDBInviteFriendCmd(roleiid int64, fromiid int64, holder *FriendsHolder, shead protocolx.UserToken) (c *dbInviteFriendCmd) {
 	c = new(dbInviteFriendCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
 	c.shead = shead
 	c.FromRoleIid = fromiid
+	c.result = 0
 
 	return
 }
@@ -140,7 +143,7 @@ func newDBInviteFriendCmd(roleiid int64, fromiid int64, holder *FriendsHolder, s
 func (c *dbInviteFriendCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err1 := session.Begin()
 		if err1 != nil {
@@ -154,7 +157,7 @@ func (c *dbInviteFriendCmd) RunInDBProcessor() {
 		}
 
 		if rls == 0 {
-			result = 3
+			c.result = 3
 			session.Commit()
 			return nil, nil
 		}
@@ -168,7 +171,7 @@ func (c *dbInviteFriendCmd) RunInDBProcessor() {
 
 		if cnt > 0 {
 			//ready exist
-			result = 2
+			c.result = 2
 			session.Commit()
 			return nil, nil
 		}
@@ -207,7 +210,7 @@ select f.iid as Iid, f.from_roleiid as from_roleiid, f.invite_time as invite_tim
 			logx.Debugf("invite info iid:%d fromiid:%d time:%s nick:%s", d.Iid, d.FromRoleIid, d.InviteTime, d.InviteName)
 
 			c.invite = dbToRedisBeanOfFriendInvite(&invites[0])
-			result = 0
+			c.result = 0
 		} else {
 			session.Rollback()
 			return nil, nil
@@ -218,23 +221,26 @@ select f.iid as Iid, f.from_roleiid as from_roleiid, f.invite_time as invite_tim
 	})
 
 	if err != nil {
-		result = 1
+		c.result = 1
 		logx.Errorf("dbInviteFriendCmd - invite friends:%d failed, err:%s", c.FromRoleIid, err.Error())
 	}
 
-	ack := &gpro.Frd_FriendInviteAck{InviteIid: c.RoleIid, Result: int32(result)}
-	if c.invite != nil {
-		ack.Invite = c.invite
-	}
-	g.SendMsgToRouter(ack)
-
-	if result == 0 {
-		g.PostFriendProcessor(c.holder.loopIndex, c)
-	}
+	g.PostFriendProcessor(c.holder.loopIndex, c)
 }
 
 func (c *dbInviteFriendCmd) ProcessFriend() {
-	c.holder.NewFriendInvite(c.RoleIid, c.invite)
+	fhome := c.holder.GetFriendHomeBy(c.RoleIid)
+	if fhome != nil {
+		ack := &gpro.Frd_FriendInviteAck{InviteIid: c.RoleIid, Result: int32(c.result)}
+		if c.invite != nil {
+			ack.Invite = c.invite
+		}
+		fhome.SendNetProtocol(ack)
+	}
+
+	if c.result == 0 {
+		c.holder.NewFriendInvite(c.RoleIid, c.invite)
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -246,10 +252,12 @@ type dbInviteConfirmCmd struct {
 	FromIid int64
 	RoleIid int64
 	holder  *FriendsHolder
-	shead   protocolx.SProtocolHead
+	shead   protocolx.UserToken
+
+	result int32
 }
 
-func newDBInviteConfirmCmd(roleiid int64, fromiid int64, iid int64, agree bool, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbInviteConfirmCmd) {
+func newDBInviteConfirmCmd(roleiid int64, fromiid int64, iid int64, agree bool, holder *FriendsHolder, shead protocolx.UserToken) (c *dbInviteConfirmCmd) {
 	c = new(dbInviteConfirmCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
@@ -257,6 +265,7 @@ func newDBInviteConfirmCmd(roleiid int64, fromiid int64, iid int64, agree bool, 
 	c.shead = shead
 	c.Iid = iid
 	c.Agree = agree
+	c.result = 0
 
 	return
 }
@@ -265,7 +274,7 @@ func (c *dbInviteConfirmCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
 	//0 success
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err1 := session.Begin()
 		if err1 != nil {
@@ -281,7 +290,7 @@ func (c *dbInviteConfirmCmd) RunInDBProcessor() {
 		}
 
 		if affect <= 0 {
-			result = 2
+			c.result = 2
 			session.Rollback()
 
 			return nil, nil
@@ -320,10 +329,10 @@ where f.frdiid = r.role_iid order by f.iid asc
 				return nil, nil
 			}
 
-			result = 0
+			c.result = 0
 			c.relation = dbToRedisBeanOfFriendRelation(&frds[0])
 		} else {
-			result = 0
+			c.result = 0
 		}
 
 		err1 = session.Commit()
@@ -332,23 +341,25 @@ where f.frdiid = r.role_iid order by f.iid asc
 
 	if err != nil {
 		logx.Errorf("dbInviteConfirmCmd - invite confirm user:%d iid:%d failed, err:%s", c.RoleIid, c.Iid, err.Error())
-		result = 1
+		c.result = 1
 	}
 
-	//处理失败
-	ack := &gpro.Frd_InviteConfirmAck{Utoken: c.token, Iid: c.Iid, Agree: c.Agree, Result: int32(result)}
-	if c.relation != nil {
-		ack.Friend = proto.Clone(c.relation).(*gpro.FriendRelation)
-	}
-	g.SendMsgToRouter(ack)
-
-	if result == 0 {
-		g.PostFriendProcessor(c.holder.loopIndex, c)
-	}
+	g.PostFriendProcessor(c.holder.loopIndex, c)
 }
 
 func (c *dbInviteConfirmCmd) ProcessFriend() {
-	c.holder.InviteConfirm(c.RoleIid, c.Iid, c.Agree, c.relation, c.token)
+	fhome := c.holder.GetFriendHomeBy(c.RoleIid)
+	if fhome != nil {
+		ack := &gpro.Frd_InviteConfirmAck{Iid: c.Iid, Agree: c.Agree, Result: int32(c.result)}
+		if c.relation != nil {
+			ack.Friend = proto.Clone(c.relation).(*gpro.FriendRelation)
+		}
+		fhome.SendNetProtocol(ack)
+	}
+
+	if c.result == 0 {
+		c.holder.InviteConfirm(c.RoleIid, c.Iid, c.Agree, c.relation, c.shead)
+	}
 }
 
 //---------------------------------------------------------------------------------------
@@ -357,16 +368,19 @@ type dbFriendDeleteCmd struct {
 	RoleIid   int64
 	FriendIid int64
 	holder    *FriendsHolder
-	shead     protocolx.SProtocolHead
+	shead     protocolx.UserToken
+
+	result int32
 }
 
-func newDBFriendDeleteCmd(roleiid int64, frdiid int64, iid int64, holder *FriendsHolder, shead protocolx.SProtocolHead) (c *dbFriendDeleteCmd) {
+func newDBFriendDeleteCmd(roleiid int64, frdiid int64, iid int64, holder *FriendsHolder, shead protocolx.UserToken) (c *dbFriendDeleteCmd) {
 	c = new(dbFriendDeleteCmd)
 	c.holder = holder
 	c.RoleIid = roleiid
 	c.FriendIid = frdiid
 	c.Iid = iid
 	c.shead = shead
+	c.result = 0
 
 	return
 }
@@ -374,7 +388,7 @@ func newDBFriendDeleteCmd(roleiid int64, frdiid int64, iid int64, holder *Friend
 func (c *dbFriendDeleteCmd) RunInDBProcessor() {
 	db := g.GetDBClient()
 
-	result := 1
+	c.result = 1
 	_, err := db.Transaction(func(session *xorm.Session) (interface{}, error) {
 		err1 := session.Begin()
 		if err1 != nil {
@@ -389,9 +403,9 @@ func (c *dbFriendDeleteCmd) RunInDBProcessor() {
 		}
 
 		if affect <= 0 {
-			result = 2
+			c.result = 2
 		} else {
-			result = 0
+			c.result = 0
 		}
 
 		err1 = session.Commit()
@@ -402,16 +416,19 @@ func (c *dbFriendDeleteCmd) RunInDBProcessor() {
 		logx.Errorf("dbFriendDeleteCmd - delete friend iid:%d failed, err:%s", c.Iid, err.Error())
 	}
 
-	ack := &gpro.Frd_FriendDeleteAck{Friendiid: c.FriendIid, Result: int32(result)}
-	g.SendMsgToRouter(ack)
-
-	if result == 0 {
-		g.PostFriendProcessor(c.holder.loopIndex, c)
-	}
+	g.PostFriendProcessor(c.holder.loopIndex, c)
 }
 
 func (c *dbFriendDeleteCmd) ProcessFriend() {
-	c.holder.DeleteFriend(c.RoleIid, c.FriendIid)
+	fhome := c.holder.GetFriendHomeBy(c.RoleIid)
+	if fhome != nil {
+		ack := &gpro.Frd_FriendDeleteAck{Friendiid: c.FriendIid, Result: int32(c.result)}
+		fhome.SendNetProtocol(ack)
+	}
+
+	if c.result == 0 {
+		c.holder.DeleteFriend(c.RoleIid, c.FriendIid)
+	}
 }
 
 //---------------------------------------------------------------------------------------

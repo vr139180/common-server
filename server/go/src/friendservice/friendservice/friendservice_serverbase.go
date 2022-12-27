@@ -97,7 +97,7 @@ func (l *FriendService) InitNetwork() (err error) {
 
 	ok, node := eureka.GetEurekaMasterInfo(l.configTool.GlobalOpt.Eureka)
 	if !ok {
-		return errors.New("get eureka master node failed.")
+		return errors.New("get eureka master node failed")
 	}
 
 	subs := [...]int{int(service.ServiceType_ServiceRouter)}
@@ -121,7 +121,7 @@ func (l *FriendService) InitDatabase() (err error) {
 	}
 
 	ropt := &(l.AppOption.RedisOpt)
-	l.redisX, err = redisutil.NewRedisUtil(ropt.Ip, ropt.Port, ropt.Auth, ropt.Db)
+	l.redisX, err = redisutil.NewRedisUtil(ropt)
 	if err != nil {
 		logx.Errorf("init redis client failed")
 		return err

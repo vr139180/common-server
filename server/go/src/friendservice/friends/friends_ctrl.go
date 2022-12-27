@@ -70,7 +70,7 @@ func (cc *FriendsCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
 		//invite将会被派发到被邀请人的goroutine去
 		lind := cc.getHashKeyOfRole(msg.InviteIid)
 		mh := cc.loopHolders[lind]
-		cmd := newDBInviteFriendCmd(msg.InviteIid, roleiid, mh, pro.Head)
+		cmd := newDBInviteFriendCmd(msg.InviteIid, roleiid, mh, pro.GetUserToken())
 		g.PostDBProcessor(cmd)
 
 	} else if id == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDCHANGEOTHER_NTF) {
@@ -78,7 +78,7 @@ func (cc *FriendsCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
 		msg := pro.Msg.(*gpro.Frd_FriendChangeOtherNtf)
 		lind := cc.getHashKeyOfRole(msg.NotifyRoleiid)
 		mh := cc.loopHolders[lind]
-		cmd := newFriendNetCmdHandle(nil, pro, mh.OnFriendOtherChangeNotify)
+		cmd := newFriendNetCmdHandle(pro, mh.OnFriendOtherChangeNotify)
 		g.PostFriendProcessor(lind, cmd)
 
 	} else {
@@ -94,7 +94,7 @@ func (cc *FriendsCtrl) ProcessNetCmd(pro *protocolx.NetProtocol) {
 		roleiid := pro.GetRoleIid()
 		lind := cc.getHashKeyOfRole(roleiid)
 		mh := cc.loopHolders[lind]
-		cmd := newFriendNetCmdHandle(ut, pro, mh.OnNetCmdHander)
+		cmd := newFriendNetCmdHandle(pro, mh.OnNetCmdHander)
 		g.PostFriendProcessor(lind, cmd)
 	}
 }

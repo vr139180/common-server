@@ -21,6 +21,8 @@ import (
 	"cmslib/redisutil"
 	"friendservice/xinf"
 	"gamelib/eureka"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type IAppGlobal interface {
@@ -35,7 +37,8 @@ type IAppGlobal interface {
 
 	GetMyNode() *eureka.ServiceNodeInfo
 
-	SendMsgToRouter(pro *protocolx.NetProtocol)
+	SendNetToRouter(pro *protocolx.NetProtocol)
+	SendMsgToRouter(msg proto.Message)
 }
 
 var appInstance IAppGlobal
@@ -72,6 +75,10 @@ func GetMyNode() *eureka.ServiceNodeInfo {
 	return appInstance.GetMyNode()
 }
 
-func SendMsgToRouter(pro *protocolx.NetProtocol) {
-	appInstance.SendMsgToRouter(pro)
+func SendNetToRouter(pro *protocolx.NetProtocol) {
+	appInstance.SendNetToRouter(pro)
+}
+
+func SendMsgToRouter(msg proto.Message) {
+	appInstance.SendMsgToRouter(msg)
 }

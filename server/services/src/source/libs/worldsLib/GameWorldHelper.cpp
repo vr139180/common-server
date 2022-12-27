@@ -96,7 +96,8 @@ bool GameWorldHelper::init_gameworld()
 	for (tinyxml2::XMLElement* re = starts->FirstChildElement("startpoint"); re != 0; re = re->NextSiblingElement("startpoint"))
 	{
 		GLoc3D loc;
-		if (!GLoc3D::build_from_str(XmlUtil::GetXmlAttrStr(re, "pos", ""), loc))
+		std::string xstr = XmlUtil::GetXmlAttrStr(re, "pos", "");
+		if (!GLoc3D::build_from_str( xstr, loc))
 			return false;
 
 		start_points_.push_back(loc);

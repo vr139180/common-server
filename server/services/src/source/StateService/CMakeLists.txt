@@ -11,6 +11,9 @@ endif()
 
 set(CMAKE_BUILD_TYPE "Release")
 
+set(MYSQL_H /usr/include/mysql)
+set(MYSQL_LIB /usr/lib64/mysql)
+
 set(CMS_SDKDIR ${SERVICE_DIR}/src/sdk)
 set(SRCTOPDIR ${SERVICE_DIR}/src)
 
@@ -27,9 +30,9 @@ file(GLOB_RECURSE src_ls1 ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE rm1 ${CMAKE_CURRENT_SOURCE_DIR}/CMakeCXXCompilerId.cpp)
 list(REMOVE_ITEM src_ls1 ${rm1})
 
-include_directories(${SRCTOPDIR}/source/${PRJ_NAME} ${SRCTOPDIR}/source/libs ${CMS_SDKDIR}/include ${CMS_SDKDIR}/include/lua ${CMS_SDKDIR}/include/protobuf/include)
+include_directories(${SRCTOPDIR}/source/${PRJ_NAME} ${SRCTOPDIR}/source/libs ${CMS_SDKDIR}/include ${CMS_SDKDIR}/include/lua ${CMS_SDKDIR}/include/protobuf/include ${MYSQL_H})
 
-link_directories(${CMS_SDKDIR}/linuxlib ${SRCTOPDIR}/libs)
+link_directories(${CMS_SDKDIR}/linuxlib ${SRCTOPDIR}/libs ${MYSQL_LIB})
 
 add_executable(${PRJ_NAME} ${src_ls1})
 

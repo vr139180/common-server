@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.22)
 
-set(PRJ_NAME "RouterService")
+set(PRJ_NAME "ServiceRouter")
 
 project (${PRJ_NAME})
 

@@ -42,6 +42,9 @@ void ServerAppWrapper::run()
 	signal( SIGTERM, ServerAppWrapper::signal_handler);
 #ifdef EW_PLATFORM_WINDOWS
 	signal( SIGBREAK, ServerAppWrapper::signal_handler);
+#else
+	signal(SIGUSR1, ServerAppWrapper::signal_handler);
+	signal(SIGUSR2, ServerAppWrapper::signal_handler);
 #endif
 
 	logInfo( out_runtime, "System OS: %s\n", OSSystem::mOSType.c_str());
@@ -103,14 +106,12 @@ void ServerAppWrapper::signal_handler( s32 sig)
 	if ( sig == SIGINT || sig == SIGTERM 
 #ifdef EW_PLATFORM_WINDOWS
 		|| sig == SIGBREAK
+#else
+		|| sig == SIGUSR1 || sig == SIGUSR2
 #endif
 		)
 	{
-		signal( SIGINT, ServerAppWrapper::signal_handler);
-		signal( SIGTERM, ServerAppWrapper::signal_handler);
-#ifdef EW_PLATFORM_WINDOWS
-		signal( SIGBREAK, ServerAppWrapper::signal_handler);
-#endif
+		logInfo(out_runtime, "signal handler:%d, exit service....", sig);
 
 		if( app_)
 			app_->quit_app();

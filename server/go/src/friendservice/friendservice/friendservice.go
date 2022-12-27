@@ -29,7 +29,10 @@ import (
 	"gamelib/config"
 	"gamelib/eureka"
 	"gamelib/protobuf"
+	"gamelib/service"
 	"gamelib/xcluster"
+
+	"google.golang.org/protobuf/proto"
 )
 
 type FriendService struct {
@@ -68,7 +71,16 @@ func (r *FriendService) GetDBClient() *mysqlx.MysqlClient {
 	return r.dbClient
 }
 
-func (r *FriendService) SendMsgToRouter(pro *protocolx.NetProtocol) {
+func (r *FriendService) SendNetToRouter(pro *protocolx.NetProtocol) {
+	r.routerSvrs.SendNetMessage2(pro)
+}
+
+func (r *FriendService) SendMsgToRouter(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	head := pro.WriteHead()
+	head.ToType = int8(service.ServiceType_ServiceRouter)
+	head.FromType = int8(service.ServiceType_Friend)
 	r.routerSvrs.SendNetMessage2(pro)
 }
 

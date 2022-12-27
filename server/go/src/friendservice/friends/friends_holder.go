@@ -85,11 +85,12 @@ func (ch *FriendsHolder) OneDayMaintance() {
 
 }
 
-func (ch *FriendsHolder) CacheFriendHome(roleiid int64, frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead *protocolx.SProtocolHead) *FriendHome {
+func (ch *FriendsHolder) CacheFriendHome(roleiid int64, frds []*gpro.FriendRelation, invites []*gpro.FriendInviteItem, shead protocolx.UserToken) *FriendHome {
 	home := ch.GetFriendHomeBy(roleiid)
 	if home == nil {
 		home = newFriendHome(roleiid, ch)
 		ch.friends[home.RoleIid] = home
+
 		ch.friendsLink.AddHeadElement(home)
 
 		home.InitFriendHome(frds, invites, shead)
@@ -123,7 +124,7 @@ func (ch *FriendsHolder) NewFriendInvite(roleiid int64, invite *gpro.FriendInvit
 	}
 }
 
-func (ch *FriendsHolder) InviteConfirm(roleiid int64, inviteiid int64, agree bool, relation *gpro.FriendRelation, shead *protocolx.SProtocolHead) {
+func (ch *FriendsHolder) InviteConfirm(roleiid int64, inviteiid int64, agree bool, relation *gpro.FriendRelation, shead protocolx.UserToken) {
 	rd := g.GetRedis()
 
 	udkey := rd.BuildKey(REDIS_USERFRIENDHOME, roleiid)
@@ -213,7 +214,7 @@ func (ch *FriendsHolder) OnNetCmdHander(pro *protocolx.NetProtocol) {
 
 	frdHome := ch.GetFriendHomeBy(roleiid)
 	if frdHome == nil {
-		frdHome2, success := initFriendHomeFromRedis(roleiid, pro.Head, ch)
+		frdHome2, success := initFriendHomeFromRedis(roleiid, pro.GetUserToken(), ch)
 		if success {
 			frdHome = frdHome2
 			ch.friendsLink.AddHeadElement(frdHome)
@@ -234,12 +235,12 @@ func (ch *FriendsHolder) triggerNetProcess(home *FriendHome, pro *protocolx.NetP
 	msgid := pro.GetMsgId()
 	if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_INVITECONFIRM_REQ) {
 		msg := pro.Msg.(*gpro.Frd_InviteConfirmReq)
-		home.InviteConfirmA(msg.Iid, msg.Agree, pro.Head)
+		home.InviteConfirmA(msg.Iid, msg.Agree, pro.GetUserToken())
 	} else if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDDELETE_REQ) {
 		msg := pro.Msg.(*gpro.Frd_FriendDeleteReq)
-		home.DeleteFriendA(msg.Friendiid, pro.Head)
+		home.DeleteFriendA(msg.Friendiid, pro.GetUserToken())
 	} else if msgid == uint16(gpro.FRIEND_PROTYPE_FRD_FRIENDLIST_REQ) {
 		msg := pro.Msg.(*gpro.Frd_FriendListReq)
-		home.QueryFriends(msg)
+		home.QueryFriends(msg, pro.GetUserToken())
 	}
 }

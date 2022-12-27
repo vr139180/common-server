@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"friendservice/g"
 	"gamelib/protobuf/gpro"
+	"gamelib/service"
 	"strings"
 
 	"google.golang.org/protobuf/proto"
@@ -149,7 +150,32 @@ type FriendHome struct {
 	RoleIid int64
 
 	ch *FriendsHolder
+
+	//IDoubleLink members
+	preObj  datas.IDoubleLink
+	nextObj datas.IDoubleLink
 }
+
+//-----------------------------IDoubleLink----------------------------------------
+func (p *FriendHome) DLGetPreObj() (n datas.IDoubleLink) {
+	n = p.preObj
+	return
+}
+
+func (p *FriendHome) DLSetPreObj(n datas.IDoubleLink) {
+	p.preObj = n
+}
+
+func (p *FriendHome) DLGetNextObj() (n datas.IDoubleLink) {
+	n = p.nextObj
+	return
+}
+
+func (p *FriendHome) DLSetNextObj(n datas.IDoubleLink) {
+	p.nextObj = n
+}
+
+//-------------------------------------------------------------------------------
 
 func newFriendHome(roleiid int64, ch *FriendsHolder) (f *FriendHome) {
 	f = new(FriendHome)
@@ -285,12 +311,37 @@ func (f *FriendHome) saveAllToRedis() {
 func (f *FriendHome) SyncUserToken(token protocolx.UserToken) {
 	f.userToken = token
 
-	rd := g.GetRedis()
-	udkey := rd.BuildKey(REDIS_USERINFO, f.RoleIid)
-	dat := utilc.ProtoToBytes(&f.userToken)
-	if dat != nil {
-		rd.AddEX(udkey, dat, USER_FRIENDSINFO_EXPIRESEC)
-	}
+	/*
+		rd := g.GetRedis()
+		udkey := rd.BuildKey(REDIS_USERINFO, f.RoleIid)
+		dat := utilc.ProtoToBytes(&f.userToken)
+		if dat != nil {
+			rd.AddEX(udkey, dat, USER_FRIENDSINFO_EXPIRESEC)
+		}
+	*/
+}
+
+func (f *FriendHome) SendNetProtocol(msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+	head := pro.WriteHead()
+	head.Token = f.userToken
+	head.RoleId = f.RoleIid
+	head.ToType = int8(service.ServiceType_Gate)
+	head.FromType = int8(service.ServiceType_Friend)
+
+	g.SendNetToRouter(pro)
+}
+
+func (f *FriendHome) SendNetProtocolTo(gto service.ServiceType, msg proto.Message) {
+	pro := protocolx.NewNetProtocolByMsg(msg)
+
+	head := pro.WriteHead()
+	head.Token = f.userToken
+	head.RoleId = f.RoleIid
+	head.ToType = int8(gto)
+	head.FromType = int8(service.ServiceType_Friend)
+
+	g.SendNetToRouter(pro)
 }
 
 func (f *FriendHome) cloneFriendInvite(iv *gpro.FriendInviteItem) *gpro.FriendInviteItem {
@@ -342,12 +393,12 @@ func (f *FriendHome) getFriendBy(friendiid int64) *friendUserInfo {
 	return fi
 }
 
-func (f *FriendHome) InviteConfirmA(iid int64, agree bool, shead protocolx.SProtocolHead) {
+func (f *FriendHome) InviteConfirmA(iid int64, agree bool, shead protocolx.UserToken) {
 
 	invite := f.getFriendInvite(iid)
 	if invite == nil {
 		ack := &gpro.Frd_InviteConfirmAck{Iid: iid, Agree: agree, Result: 2}
-		g.SendMsgToRouter(ack)
+		f.SendNetProtocol(ack)
 		return
 	}
 
@@ -355,7 +406,7 @@ func (f *FriendHome) InviteConfirmA(iid int64, agree bool, shead protocolx.SProt
 	g.PostDBProcessor(cmd)
 }
 
-func (f *FriendHome) InviteConfirmB(inviteiid int64, agree bool, relation *gpro.FriendRelation, shead protocolx.SProtocolHead) {
+func (f *FriendHome) InviteConfirmB(inviteiid int64, agree bool, relation *gpro.FriendRelation, shead protocolx.UserToken) {
 	f.deleteFriendInvite(inviteiid)
 
 	if agree {
@@ -401,12 +452,12 @@ func (f *FriendHome) FriendChangeNotify(friendiid int64, addordel bool, relation
 	}
 }
 
-func (f *FriendHome) DeleteFriendA(frdiid int64, shead protocolx.SProtocolHead) {
+func (f *FriendHome) DeleteFriendA(frdiid int64, shead protocolx.UserToken) {
 
 	fi := f.getFriendBy(frdiid)
 	if fi == nil {
 		ack := &gpro.Frd_FriendDeleteAck{Friendiid: frdiid, Result: 2}
-		g.SendMsgToRouter(ack)
+		f.SendNetProtocol(ack)
 		return
 	}
 
@@ -425,11 +476,10 @@ func (f *FriendHome) DeleteFriendB(friendiid int64) {
 	f.totleFriends = len(f.friendDatas)
 }
 
-func (f *FriendHome) QueryFriends(req *gpro.Frd_FriendListReq) {
-	f.SyncUserToken(req.Utoken)
+func (f *FriendHome) QueryFriends(req *gpro.Frd_FriendListReq, shead protocolx.UserToken) {
+	f.SyncUserToken(shead)
 
 	ack := new(gpro.Frd_FriendListAck)
-	ack.Utoken = f.cloneUserToken()
 	ack.Next = req.Next
 
 	//----invite----
@@ -514,7 +564,7 @@ func (f *FriendHome) QueryFriends(req *gpro.Frd_FriendListReq) {
 		}
 	}
 
-	g.SendMsgToRouter(ack)
+	f.SendNetProtocol(ack)
 }
 
 func (f *FriendHome) syncFriendUserInfo(keys map[string]*friendUserInfo) {
