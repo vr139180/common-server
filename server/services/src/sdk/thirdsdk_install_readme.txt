@@ -87,8 +87,20 @@ then :
 fi
 
 #mysqlclient install
-rpm -ivh https://repo.mysql.com//mysql57-community-release-el7-11.noarch.rpm
+rpm -ivh https://repo.mysql.com/mysql80-community-release-el7-7.noarch.rpm
+rpm -ivh https://repo.mysql.com//mysql80-community-release-el8-4.noarch.rpm
 rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
-yum install mysql-community-client.x86_64 -y
+
+yum module disable mysql
+yum install mysql-community-server
+yum install mysql-community-client
+yum install mysql-community-devel
+
 cd /usr/lib64/
 ln ./mysql/libmysqlclient.so.20.3.25 libmysqlclient.so
+
+#gdb install
+vi /etc/yum.repos.d/CentOS-Linux-Debuginfo.repo
+修改 enabled=1
+yum debuginfo-install libgcc-8.5.0-4.el8_5.x86_64 libstdc++-8.5.0-4.el8_5.x86_64 mysql-libs-8.0.26-1.module_el8.4.0+915+de215114.x86_64 openssl-libs-1.1.1k-5.el8_5.x86_64 zlib-1.2.11-17.el8.x86_64
+
