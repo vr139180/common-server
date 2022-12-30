@@ -122,7 +122,7 @@ func (l *ChatService) InitNetwork() (err error) {
 
 	l.routerSvrs = xcluster.NewClusterServiceCtrl(l.TcpSvr, service.ServiceType_ServiceRouter, l)
 
-	l.Accept(l.configTool.Ip, l.configTool.Port, true)
+	l.Accept(l.configTool.Ip, l.configTool.Port)
 
 	return nil
 }

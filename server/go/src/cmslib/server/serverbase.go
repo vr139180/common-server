@@ -151,8 +151,8 @@ func (s *ServerBase) OnRecvMessage(c gnet.Conn, m *protocolx.NetProtocol) {
 //-----------------------------------------------------------
 
 // listen on tcp ip,port, true: dont listen
-func (s *ServerBase) Accept(ip string, port int, ignorelisten bool) {
-	go s.TcpSvr.Accept(ip, port, ignorelisten)
+func (s *ServerBase) Accept(ip string, port int) {
+	go s.TcpSvr.Accept(ip, port)
 }
 
 func (s *ServerBase) RegistCommand(cmd ICommandBase) {

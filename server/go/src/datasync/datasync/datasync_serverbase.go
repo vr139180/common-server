@@ -104,7 +104,7 @@ func (l *DataSync) InitNetwork() (err error) {
 	l.eureka = eureka.NewEurekaCluster(l.TcpSvr, service.ServiceType_DataSync, l.configTool.Ip, l.configTool.Port, nil,
 		node, subs[0:], balances[0:], false, l)
 
-	l.Accept(l.configTool.Ip, l.configTool.Port, true)
+	l.Accept(l.configTool.Ip, l.configTool.Port)
 
 	l.serializeTool = dbserialize.NewDBSerializePool(l.AppOption.SerializeLoopNum)
 

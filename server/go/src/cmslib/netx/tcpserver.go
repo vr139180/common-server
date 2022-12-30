@@ -66,7 +66,7 @@ func NewTCPServer(app ITCPServerApp) (svr *TCPServer, err error) {
 }
 
 // server 绑定端口并开始监听连接
-func (t *TCPServer) Accept(ip string, port int, ignorelisten bool) (err error) {
+func (t *TCPServer) Accept(ip string, port int) (err error) {
 
 	if t.Codec == nil {
 		logx.Errorf("server must init protobuf codec for gnet middlue")
@@ -83,7 +83,7 @@ func (t *TCPServer) Accept(ip string, port int, ignorelisten bool) (err error) {
 	var gnetLog logging.Logger = logx.GetDefaultLogger()
 
 	err = gnet.Serve(t, addr, gnet.WithMulticore(true), gnet.WithTCPKeepAlive(time.Minute*5),
-		gnet.WithReusePort(true), gnet.WithLogger(gnetLog), gnet.WithCodec(cc), gnet.WithIgnoreListen(ignorelisten))
+		gnet.WithReusePort(true), gnet.WithLogger(gnetLog), gnet.WithCodec(cc))
 	if err != nil {
 		return err
 	}

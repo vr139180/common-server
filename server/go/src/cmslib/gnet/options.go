@@ -113,9 +113,6 @@ type Options struct {
 	// Logger is the customized logger for logging info, if it is not set,
 	// then gnet will use the default logger powered by go.uber.org/zap.
 	Logger logging.Logger
-
-	// SH:Lujf:SH
-	IgnoreListen bool
 }
 
 // WithOptions sets up all options.
@@ -236,12 +233,3 @@ func WithLogger(logger logging.Logger) Option {
 		opts.Logger = logger
 	}
 }
-
-// SH:Lujf:SH
-func WithIgnoreListen(ignoreListen bool) Option {
-	return func(opts *Options) {
-		opts.IgnoreListen = ignoreListen
-	}
-}
-
-// -

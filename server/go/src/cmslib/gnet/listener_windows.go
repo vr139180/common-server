@@ -73,12 +73,7 @@ func (ln *listener) close() {
 
 func initListener(network, addr string, opt *Options) (l *listener, err error) {
 	l = &listener{network: network, address: addr}
-	// SH:Lujf:SH
-	if opt.IgnoreListen {
-		err = nil
-	} else {
-		err = l.normalize()
-	}
+	err = l.normalize()
 
 	return
 }
