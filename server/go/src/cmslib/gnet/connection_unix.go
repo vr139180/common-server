@@ -236,31 +236,58 @@ func (c *conn) writev(bs [][]byte) (err error) {
 
 // SH:Lujf:SH
 // eventloop 中写消息到tcp流
-func (c *conn) writeProtobuf(pro protocolx.NetProtocol) (int, error) {
+func (c *conn) writeProtobuf(pro *protocolx.NetProtocol) (int, error) {
+	if pro == nil {
+		return 0, nil
+	}
+
 	pcode, ok := c.codec.(*ProtobufCodec)
 	if !ok {
 		return 0, errors.New("codec not support ProtobufCodec")
 	}
 
-	len2 := uint32(proto.Size(pro.Msg))
+	head := pro.WriteHead()
 
-	id, err := pcode.Factory.ProtoToId(pro.Msg)
-	if err != nil {
-		return 0, err
+	if head.UnpackProtocol {
+		if pro.Msg == nil {
+			return 0, errors.New("pro.Msg == nil")
+		}
+
+		id, err := pcode.Factory.ProtoToId(pro.Msg)
+		if err != nil {
+			return 0, err
+		}
+
+		head.MsgId = id
 	}
-
-	var sid uint32 = uint32(id)
-	slen := len2<<16 | sid
 
 	outFrame := bytes.NewBuffer([]byte{})
-	binary.Write(outFrame, binary.LittleEndian, slen)
+	head.EncodeHead(outFrame)
 
-	data, err := proto.Marshal(pro.Msg)
-	if err != nil {
-		return 0, err
+	if head.UnpackProtocol {
+		data, err := proto.Marshal(pro.Msg)
+		if err != nil {
+			return 0, err
+		}
+
+		err = binary.Write(outFrame, binary.BigEndian, data)
+		if err != nil {
+			return 0, err
+		}
+
+		datalen := uint32(len(data))
+
+		head.EncodeTotleLen(outFrame, datalen)
+	} else {
+		if pro.DataLen > 0 {
+			err := binary.Write(outFrame, binary.BigEndian, pro.MsgData)
+			if err != nil {
+				return 0, err
+			}
+
+			head.EncodeTotleLen(outFrame, uint32(pro.DataLen))
+		}
 	}
-
-	binary.Write(outFrame, binary.LittleEndian, data)
 
 	dats := outFrame.Bytes()
 
@@ -271,6 +298,9 @@ func (c *conn) writeProtobuf(pro protocolx.NetProtocol) (int, error) {
 	// If there is pending data in outbound buffer, the current data ought to be appended to the outbound buffer
 	// for maintaining the sequence of network packets.
 	n := 0
+	var err error
+	err = nil
+
 	if !c.outboundBuffer.IsEmpty() {
 		n, err = c.outboundBuffer.Write(dats)
 		return n, err
@@ -302,7 +332,7 @@ func (c *conn) asyncWriteProtobuf(itf interface{}) error {
 		return nil
 	}
 
-	_, err := c.writeProtobuf(itf.(protocolx.NetProtocol))
+	_, err := c.writeProtobuf(itf.(*protocolx.NetProtocol))
 	return err
 }
 
@@ -410,7 +440,7 @@ func (c *conn) RemoteAddr() net.Addr       { return c.remoteAddr }
 // ==================================== Concurrency-safe API's ====================================
 //+ SH:Lujf:SH
 // 发送protobuf协议，在发送时构造字节流
-func (c *conn) AsyncWriteProtobuf(pro protocolx.NetProtocol) error {
+func (c *conn) AsyncWriteProtobuf(pro *protocolx.NetProtocol) error {
 	c.loop.poller.Trigger(c.asyncWriteProtobuf, pro)
 	return nil
 }

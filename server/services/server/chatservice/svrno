@@ -1,0 +1,4 @@
+<app ip="127.0.0.1" port="6001" neths="4" confsrc="filesrc" loglevel="debug" logdir="" logfile="chatservice.log">
+	<filesrc datadir="../datas" />
+	<httpsrc url="http://127.0.0.1" />
+</app>

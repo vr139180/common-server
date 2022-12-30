@@ -1,3 +1,0 @@
-<chat loopnum="500" chprocessor="8">
-  <redis name="master" ip="127.0.0.1" port="6379" db="4" auth="123456" socket_timeout="100" />
-</chat>

@@ -8,12 +8,13 @@ require gamelib v1.0.0
 
 require (
 	google.golang.org/protobuf v1.26.0
+	xorm.io/xorm v1.2.5
 )
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
-	github.com/emirpasic/gods v1.12.0 // indirect
+	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/go-redis/redis/v8 v8.11.4 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.7.4 // indirect
@@ -35,10 +36,8 @@ require (
 	golang.org/x/sys v0.0.0-20211204120058-94396e421777 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	xorm.io/builder v0.3.9 // indirect
-	xorm.io/xorm v1.2.5 // indirect
 )
 
-replace cmslib => D:\workspace\common_server\server\go\src\cmslib
-replace gamelib => D:\workspace\common_server\server\go\src\gamelib
-//replace cmslib => /datas/go/src/cmslib
-//replace gamelib => /datas/go/src/gamelib
+replace cmslib => ../cmslib
+
+replace gamelib => ../gamelib

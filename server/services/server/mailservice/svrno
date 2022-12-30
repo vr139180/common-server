@@ -1,0 +1,6 @@
+<app ip="127.0.0.1" port="6003" loglevel="debug" logdir="" logfile="mailservice.log" confsrc="filesrc">
+	<filesrc datadir="../datas" />
+	<httpsrc url="http://127.0.0.1" />
+	<exts>
+	</exts>
+</app>

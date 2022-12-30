@@ -1,4 +1,4 @@
-<friend loopnum="500" mlprocessor="8">
-  <redis name="master" ip="127.0.0.1" port="6379" db="6" auth="123456" socket_timeout="100" />
+<mail loopnum="500" mlprocessor="8">
+  <redis name="master" ip="127.0.0.1" port="6379" db="0" auth="123456" socket_timeout="100" />
   <db dns="root:123456@tcp(127.0.0.1:3306)/cms?charset=utf8&amp;parseTime=true" maxopenconns="10" maxidleconns="5" maxlivetime="0" showsql="true"/>
-</friend>
+</mail>
