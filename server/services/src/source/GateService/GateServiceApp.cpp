@@ -110,7 +110,8 @@ bool GateServiceApp::pre_init()
 
 	EurekaServerExtParam exts;
 	exts[GATE_INSTANCE_EXTPARAM] = std::to_string((S_INT_32)conf_->gate_type_);
-	std::string xx = exts[GATE_INSTANCE_EXTPARAM];
+	exts[GATE_WIP] = ConfigHelper::instance().find_ext(GATE_WIP);
+	exts[GATE_WPORT] = ConfigHelper::instance().find_ext(GATE_WPORT);
 
 	EurekaClusterClient::instance().init(this, NETSERVICE_TYPE::ERK_SERVICE_GATE,
 		cf.get_ip().c_str(), cf.get_port(), exts, enode, subscribe_types, router_types);

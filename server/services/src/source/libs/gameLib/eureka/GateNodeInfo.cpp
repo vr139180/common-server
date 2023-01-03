@@ -31,6 +31,13 @@ GateNodeInfo::GateNodeInfo(const ServiceNodeInfo& sinfo)
 	ip = sinfo.ip;
 	port = sinfo.port;
 	socket_type = ShareUtil::atoi(sinfo.get_extparam_bykey(GATE_INSTANCE_EXTPARAM).c_str());
+	std::string wip = sinfo.get_extparam_bykey(GATE_WIP);
+	std::string wport = sinfo.get_extparam_bykey(GATE_WPORT);
+	if (wip != "" && wport != "")
+	{
+		ip = wip;
+		port = ShareUtil::atoi(wport.c_str());
+	}
 }
 
 bool GateNodeInfo::to_json(std::string& val)

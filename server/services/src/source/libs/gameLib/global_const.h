@@ -30,6 +30,9 @@
 #define GATE_PIECE_NUM_MAX		2000
 //gate扩展属性
 #define GATE_INSTANCE_EXTPARAM	"linktype"
+//gate外网ip+port
+#define GATE_WIP				"wip"
+#define GATE_WPORT				"wport"
 
 //home正常设计容量
 #define HOME_LOBBY_THREADNUM	1				//lobby线程数

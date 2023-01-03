@@ -1,8 +1,10 @@
-﻿<app ip="127.0.0.1" port="8001" neths="4" confsrc="filesrc">
+﻿<app ip="0.0.0.0" port="8001" neths="4" confsrc="filesrc">
 	<filesrc datadir="../datas" />
 	<httpsrc url="http://127.0.0.1" />
 	<exts>
 		<!-- tcp/ws -->
 		<ext k="linktype" v="tcp"/>
+		<ext k="wip" v="127.0.0.1"/>
+		<ext k="wport" v="8001"/>
 	</exts>
 </app>
