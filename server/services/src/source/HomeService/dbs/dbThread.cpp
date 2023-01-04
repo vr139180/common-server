@@ -23,6 +23,8 @@
 #include <gameLib/LogExt.h>
 
 #include "dbs/DBSCtrl.h"
+//5h idle
+#define MYSQL_ONLINE_ACTIVE	1000*60*60*5
 
 DBThread::DBThread(DBSCtrl* p):parent_(p)
 , finished_(false)
@@ -42,16 +44,26 @@ void DBThread::init()
 void DBThread::run()
 {
 	sql::mysql::get_driver_instance()->threadInit();
+	S_INT_64 last_check_ = OSSystem::mOS->GetTimestamp();
 
 	while (!finished_)
 	{
 		OSSystem::mOS->thread_yield();
+		S_INT_64 tnow = OSSystem::mOS->GetTimestamp();
 
 		BaseDBCmd* pcmd = parent_->pop_db_cmd();
 		if (pcmd == 0)
-			continue;
+		{
+			if (last_check_ + MYSQL_ONLINE_ACTIVE < tnow)
+			{
+				if (connection_active())
+					last_check_ = tnow;
+			}
 
-		if (p_mysql_connection_.get() == 0 || p_mysql_connection_->isClosed())
+			continue;
+		}
+
+		if (!p_mysql_connection_->isValid() || p_mysql_connection_->isClosed())
 		{
 			p_mysql_connection_->reconnect();
 
@@ -60,6 +72,8 @@ void DBThread::run()
 		}
 
 		pcmd->run_in_db_thread(p_mysql_connection_.get());
+		last_check_ = tnow;
+
 		if (pcmd->reused())
 			pcmd->dispath_again();
 		else
@@ -77,4 +91,19 @@ void DBThread::run()
 void DBThread::finish()
 {
 	finished_ = true;
+}
+
+bool DBThread::connection_active()
+{
+	try
+	{
+		if (!p_mysql_connection_->isValid() || p_mysql_connection_->isClosed())
+			p_mysql_connection_->reconnect();
+
+		p_mysql_connection_->nativeSQL("select 1 from dual;");
+		return true;
+	}
+	catch (...) {
+		return false;
+	}
 }

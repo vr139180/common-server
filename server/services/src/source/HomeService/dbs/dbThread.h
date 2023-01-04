@@ -33,6 +33,9 @@ public:
 	void finish();
 
 protected:
+	bool connection_active();
+
+protected:
 	std::shared_ptr<sql::Connection>	p_mysql_connection_;
 	DBSCtrl*							parent_;
 	bool								finished_;
