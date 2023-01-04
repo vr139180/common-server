@@ -34,8 +34,8 @@ set(EXECUTABLE_OUTPUT_PATH ${SERVICE_DIR}/server/${PRJ_NAME})
 add_definitions(-DCURL_STATICLIB)
 add_definitions(-D_GLIBCXX_USE_CXX11_ABI=0)
 
-set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -std=c++11 -O0 -Wall -g -ggdb")
-set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -std=c++11 -O3 -Wall")
+set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -std=c++11 -O0 -Wall -g -ggdb -fno-omit-frame-pointer")
+set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -std=c++11 -O3 -Wall -fno-omit-frame-pointer")
 
 file(GLOB_RECURSE src_ls1 ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 file(GLOB_RECURSE rm1 ${CMAKE_CURRENT_SOURCE_DIR}/CMakeCXXCompilerId.cpp)
@@ -51,6 +51,6 @@ target_link_libraries(${PRJ_OUTPUT} -Wl,--start-group libcurl.a libmysqlcppconn-
  libboost_atomic.a libboost_chrono.a libboost_container.a libboost_context.a libboost_contract.a libboost_coroutine.a libz.a
  libboost_date_time.a libboost_exception.a libboost_filesystem.a libboost_iostreams.a libboost_log.a libboost_log_setup.a 
  libboost_program_options.a libboost_random.a libboost_regex.a libboost_serialization.a libboost_system.a libboost_thread.a 
- libboost_timer.a libboost_type_erasure.a libboost_wserialization.a 
+ libboost_timer.a libboost_type_erasure.a libboost_wserialization.a libtcmalloc_minimal.a
  ${CMSLIB_NAME} ${GAMELIB_NAME} ${TASKLIB_NAME} -lpthread -ldl -lssl -lcrypto -lmysqlclient
  -Wl,--end-group)

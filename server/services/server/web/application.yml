@@ -1,0 +1,59 @@
+server:
+  port: 3002
+
+mybatis:
+  typeAliasesPackage: com.cms.center.mybits.entity
+  mapperLocations: classpath:/mybits/mapper/*.xml
+  configuration:
+    call-setters-on-nulls: true
+    #关闭驼峰命名
+    map-underscore-to-camel-case: false
+
+logging:
+  config: classpath:log4j2.xml
+
+spring:
+  application:
+    name: cmsweb
+  datasource:
+    name: druidDatSource
+    url: jdbc:mysql://127.0.0.1:3306/cms?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 20
+    minIdle: 10
+    maxActive: 100
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    filters: config,stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+    type: com.alibaba.druid.pool.DruidDataSource
+    connection-init-sqls: set names utf8mb4
+
+  redis:
+    host: 127.0.0.1
+    password: 123456
+    port: 6379
+    database: 0
+    timeout: 3000
+    jedis:
+      pool:
+        max-totle: 6
+        max-idle: 6
+        max-wait-millis: 1000
+        min-idle: 0
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        num-tests-per-eviction-run: 2
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+

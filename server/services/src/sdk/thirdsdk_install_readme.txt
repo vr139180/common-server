@@ -73,6 +73,10 @@ make
 #curl
 cmake -DBUILD_SHARED_LIBS=NO -DCURL_ENABLE_SSL=NO -DCMAKE_USE_LIBSSH2=NO .
 
+#tcmalloc
+./configure --enable-frame-pointers
+make & make install
+
 #protobuff
 ./configure --disable-shared --prefix/
 

@@ -1,1 +1,1 @@
-java -jar cmsweb-0.0.1-SNAPSHOT.jar
+java -jar cmsweb-0.0.1-SNAPSHOT.jar --spring.config.location=./application.yml
